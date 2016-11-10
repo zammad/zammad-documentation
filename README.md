@@ -1,6 +1,6 @@
 # zammad documentation
 
-If you want to contribute to zammad.org, just create pull requests.
+If you want to contribute to zammad documentation, just create pull requests.
 
 ## Documentation
 
@@ -16,3 +16,8 @@ Zammad hosts documentation on readthedocs.org which supports Sphinx with reStruc
 Thanks! ❤️ ❤️ ❤️
 
   Zammad Team
+
+
+[![Documentation Status](https://readthedocs.org/projects/zammad/badge/?version=latest)](http://zammad.readthedocs.io/en/latest/?badge=latest)
+
+
