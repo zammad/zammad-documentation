@@ -1,0 +1,121 @@
+Welcome to Zammad's documentation!
+==================================
+
+The documentation for Zammad is organized into a couple of sections:
+
+* :ref:`about-docs`
+* :ref:`prerequisites-docs`
+* :ref:`install-docs`
+* :ref:`getting-started-docs`
+* :ref:`migration-docs`
+* :ref:`general-docs`
+* :ref:`channels-docs`
+* :ref:`rest-api-docs`
+* :ref:`appendix-docs`
+
+
+.. _about-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: About
+
+   about-zammad
+
+
+.. _prerequisites-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Prerequisites
+
+   prerequisites-software
+
+
+.. _install-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Installation
+
+   install-source
+   install-rpm
+   install-deb
+   install-docker
+   install-vagrant
+   install-elasticsearch
+
+
+.. _getting-started-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting started
+
+   getting-started-first-steps
+
+
+.. _migration-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Migration
+
+   migration-otrs
+   migration-zendesk
+
+
+.. _general-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: General
+
+   general-ticket
+   general-search
+   general-glossary
+   general-permissions
+
+
+.. _channels-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Channels
+
+   channel-mail
+   channel-form
+   channel-chat
+   channel-twitter
+   channel-facebook
+   channel-fetchmail
+
+
+.. _rest-api-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: REST API
+
+   api-intro
+   api-user
+   api-organization
+   api-group
+   api-ticket
+   api-ticket-state
+   api-ticket-priority
+
+
+.. _appendix-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Appendix
+
+   appendix-install-source-debian
+   appendix-install-source-mac
+
