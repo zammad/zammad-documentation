@@ -4,14 +4,14 @@ If you want to contribute to zammad documentation, just create pull requests.
 
 ## Documentation
 
-Zammad hosts documentation on readthedocs.org which supports Sphinx with reStructuredText and CommonMark.
+Zammad hosts a searchable version of this documentation on https://zammad.readthedocs.io
 
-- http://readthedocs.org/
-- http://sphinx.pocoo.org/
-- http://sphinx.pocoo.org/rest.html
-- http://commonmark.org/
-- http://daringfireball.net/projects/markdown/syntax
+## ReStructuredText markup
 
+If you like to edit the docs use the ReStructuredText markup language. Infos about this markup language can be found at:
+
+- http://www.sphinx-doc.org/en/stable/rest.html
+- http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
 
 Thanks! ❤️ ❤️ ❤️
 
