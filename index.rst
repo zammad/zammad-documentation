@@ -75,7 +75,6 @@ The documentation for Zammad is organized into a couple of sections:
    general-ticket
    general-search
    general-glossary
-   general-permissions
 
 
 .. _channels-docs:
