@@ -89,3 +89,12 @@ After you have configured Zammad for using Elasticsearch, you need to rebuild th
 
  rake searchindex:rebuild # drop/create/reload
 
+
+Using Elasticsearch on another server
+=====================================
+
+Elasticsearch can also be installed on another server but you have to know that this is insecure out of the box because Elasticsearch has no authentication.
+For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentification to access it from Zammad.
+You can find an example config for Nginx in contrib/nginx/elasticsearch.conf.
+
+
