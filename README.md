@@ -4,7 +4,7 @@ If you want to contribute to zammad documentation, just create pull requests.
 
 ## Documentation
 
-Zammad hosts a searchable version of this documentation on https://zammad.readthedocs.io
+Zammad hosts a searchable version of this documentation on https://docs.zammad.org
 
 ## ReStructuredText markup
 
@@ -18,6 +18,6 @@ Thanks! ❤️ ❤️ ❤️
   Zammad Team
 
 
-[![Documentation Status](https://readthedocs.org/projects/zammad/badge/?version=latest)](http://zammad.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/zammad/badge/?version=latest)](https://docs.zammad.org)
 
 
