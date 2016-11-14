@@ -10,6 +10,7 @@ The documentation for Zammad is organized into a couple of sections:
 * :ref:`migration-docs`
 * :ref:`general-docs`
 * :ref:`channels-docs`
+* :ref:`contributing-docs`
 * :ref:`rest-api-docs`
 * :ref:`appendix-docs`
 
@@ -91,6 +92,17 @@ The documentation for Zammad is organized into a couple of sections:
    channel-facebook
    channel-fetchmail
 
+.. _contributing-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Contributing / Development
+
+   contributing-start
+   contributing-branches
+   contributing-packages
+   contributing-dev-install
 
 .. _rest-api-docs:
 
@@ -106,15 +118,3 @@ The documentation for Zammad is organized into a couple of sections:
    api-ticket
    api-ticket-state
    api-ticket-priority
-
-
-.. _appendix-docs:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Appendix
-
-   appendix-install-source-debian
-   appendix-install-source-mac
-

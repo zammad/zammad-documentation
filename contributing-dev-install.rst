@@ -1,18 +1,21 @@
-Install from source for developers (Debian 7,8 / Ubuntu 16.04)
-**************************************************************
+Developer installation
+**********************
+
+Install from source (Debian 7,8 / Ubuntu 16.04)
+===============================================
 
 With Nginx & MySQL
-==================
+------------------
 
 Prerequisites
--------------
++++++++++++++
 
 ::
 
  apt-get install curl git-core patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev sqlite3 libsqlite3-dev autotools-dev libxslt1-dev libyaml-0-2 autoconf automake libreadline6-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev libmysqlclient-dev mysql-server nginx gawk
 
 Add User
---------
+++++++++
 
 ::
 
@@ -21,14 +24,14 @@ Add User
 
 
 Create MySQL User zammad (for Debian: upgrade MySQL to v5.6+ before, see: http://dev.mysql.com/downloads/repo/apt/)
--------------------------------------------------------------------------------------------------------------------
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ::
 
  mysql --defaults-extra-file=/etc/mysql/debian.cnf -e "CREATE USER 'zammad'@'localhost' IDENTIFIED BY 'Your_Pass_Word!'; GRANT ALL PRIVILEGES ON zammad_prod.* TO 'zammad'@'localhost'; FLUSH PRIVILEGES;"
 
 Get Zammad
-----------
+++++++++++
 
 ::
 
@@ -39,9 +42,7 @@ Get Zammad
  exit
 
 Create Nginx Config
--------------------
-
-
++++++++++++++++++++
 
 ::
 
@@ -58,7 +59,7 @@ Create Nginx Config
  ln -s /etc/nginx/sites-available/zammad.conf /etc/nginx/sites-enabled/zammad.conf
 
 Install Environnment
---------------------
+++++++++++++++++++++
 
 ::
 
@@ -73,7 +74,7 @@ Install Environnment
  gem install bundler
 
 Install Zammad
---------------
+++++++++++++++
 
 ::
 
@@ -94,7 +95,7 @@ Install Zammad
  rake assets:precompile
 
 Start Zammad
-------------
+++++++++++++
 
 ::
 
@@ -103,7 +104,7 @@ Start Zammad
  script/scheduler.rb start &>> log/zammad.log &
 
 Restart nginx as root
----------------------
++++++++++++++++++++++
 
 ::
 
@@ -111,6 +112,71 @@ Restart nginx as root
  systemctl restart nginx
 
 Go to http://localhost and you'll see:
--------------------------------------
+++++++++++++++++++++++++++++++++++++++
 
 * "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+
+
+Install from source (Mac OS 10.8)
+=================================
+
+Prerequisites
+-------------
+
+* Install Xcode from the App Store, open it -> Xcode menu > Preferences > Downloads -> install command line tools
+
+::
+
+ curl -L https://get.rvm.io | bash -s stable --ruby
+ source ~/.rvm/scripts/rvm
+ start new shell -> ruby -v
+
+Get Zammad
+----------
+
+::
+
+ test -d ~/zammad/ || mkdir ~/zammad
+ cd ~/zammad/
+ curl -L -O https://ftp.zammad.com/zammad-latest.tar.bz2 | tar -xj
+
+
+Install Zammad
+--------------
+
+::
+
+ cd zammad-latest
+ bundle install
+ sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib # if needed!
+ rake db:create
+ rake db:migrate
+ rake db:seed
+
+
+Database connect
+----------------
+
+::
+
+ cd zammad-latest
+ cp config/database.yml.dist config/database.yml
+ rake db:create
+ rake db:migrate
+ rake db:seed
+
+Start Zammad
+------------
+
+::
+
+ puma -p 3000 # application web server
+ script/websocket-server.rb start # non blocking websocket server
+ script/scheduler.rb start # generate overviews on demand, just send changed data to browser
+
+
+Visit Zammad in your browser page
+---------------------------------
+
+* http://localhost:3000/#getting_started
+
