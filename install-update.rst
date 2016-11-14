@@ -1,5 +1,5 @@
-Updateing Zammad
-****************
+Updating Zammad
+***************
 
 Source update
 =============
@@ -53,14 +53,17 @@ Start the application server, websocket server and scheduler.
 6. Go and login to Zammad
 -------------------------
 
+
+
 DEB update
 ==========
-
 
 ::
 
  apt-get update
  apt-get upgrade
+
+
 
 RPM update
 ==========
