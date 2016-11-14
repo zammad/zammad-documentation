@@ -6,14 +6,18 @@ The Zammad main repo @ https://github.com/zammad/zammad has several branches
 Master
 ======
 
-* current unreleased development state of current minor release
-* stable
+* current unreleased development state of current minor release with all bugfixes
+* is the the branch where features work correctly
+* could be used for experienced users for production
+
 
 Develop
 =======
 
 * current unreleased development state of next major release
 * unstable
+* is the first instance where all feature and bugfix branches are merged
+* this branch will have some issues all the time - no use for production
 
 Stable
 ======
