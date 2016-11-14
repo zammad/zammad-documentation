@@ -6,13 +6,11 @@ We use Elasticsearch for the awesome search in Zammad.
 Install Elasticsearch and its Attachment plugin
 ===============================================
 
-
-
 Install Elasticsearch 2.4 or 5.0 on your machine
------------------------------------------
+------------------------------------------------
 
 Elasticsearch 2.4:
-
+++++++++++++++++++
 
 * Download via https://www.elastic.co/downloads/elasticsearch (2.4.x)
 * Install the Attachment plugin
@@ -24,6 +22,7 @@ Elasticsearch 2.4:
 
 
 Elasticsearch 5.0:
+++++++++++++++++++
 
 * Download via https://www.elastic.co/downloads/elasticsearch (5.0.x)
 * Install the Attachment plugin
@@ -32,7 +31,6 @@ Elasticsearch 5.0:
 
  cd /usr/share/elasticsearch
  bin/elasticsearch-plugin install mapper-attachments
-
 
 
 Start Elasticsearch
