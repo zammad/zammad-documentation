@@ -12,7 +12,6 @@ The documentation for Zammad is organized into a couple of sections:
 * :ref:`channels-docs`
 * :ref:`contributing-docs`
 * :ref:`rest-api-docs`
-* :ref:`appendix-docs`
 
 
 .. _about-docs:
