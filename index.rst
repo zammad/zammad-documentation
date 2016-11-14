@@ -101,9 +101,9 @@ The documentation for Zammad is organized into a couple of sections:
 
    contributing-start
    contributing-branches
+   contributing-packages
    contributing-ci
    contributing-code-quality
-   contributing-packages
    contributing-dev-install
 
 .. _rest-api-docs:
