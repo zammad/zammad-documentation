@@ -62,11 +62,12 @@ Update with RPM
 Note: Please backup your Zammad instance before update!
 
 
+1. Verify repo baseurl
+----------------------
+
 During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
 correct baseurl (see below).
 
-1. Verify repo baseurl
-----------------------
 CentOS7
 
 ::
@@ -77,15 +78,8 @@ CentOS7
   enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
 
 
-2. Stop Zammad
---------------
 
-::
-
-  shell> sudo service zammad stop
-
-
-3. Update Zammad
+2. Update Zammad
 ----------------
 
 ::
@@ -93,17 +87,10 @@ CentOS7
   shell> sudo yum update zammad
 
 
-Note: The package will automatically execute maintanance task like database changes.
-
-4. Start Zammad
----------------
-
-::
-
-  shell> sudo service zammad stop
+Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.
 
 
-5. Go and login to Zammad
+3. Go and login to Zammad
 -------------------------
 
 
@@ -115,34 +102,29 @@ Update with DEB
 Note: Please backup your Zammad instance before update!
 
 
+1. Verify repo baseurl
+----------------------
+
 During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
 correct baseurl (see below).
 
-1. Verify repo baseurl
-----------------------
 
 Debian
 
 ::
+
   echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
 
 Ubuntu
 
 ::
+
   echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
 
 
-2. Stop Zammad
---------------
-
-::
-
-  shell> sudo service zammad stop
-
-
-3. Update Zammad
+2. Update Zammad
 ----------------
 
 ::
@@ -151,15 +133,8 @@ Ubuntu
   shell> apt-get upgrade
 
 
-Note: The package will automatically execute maintanance task like database changes.
-
-4. Start Zammad
----------------
-
-::
-
-  shell> sudo service zammad stop
+Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.
 
 
-5. Go and login to Zammad
+3. Go and login to Zammad
 -------------------------
