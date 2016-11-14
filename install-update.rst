@@ -4,6 +4,8 @@ Updating Zammad
 Source update
 =============
 
+**Note: Please backup your Zammad instance before update!**
+
 1. Download Zammad on your system
 ---------------------------------
 
@@ -25,11 +27,14 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
  zammad@shell> cd zammad
  zammad@shell> gem install bundler
 
-# For PostgreSQL (note, the option says "without ... mysql")::
+* For PostgreSQL (note, the option says "without ... mysql")::
+
  zammad@shell> bundle install --without test development mysql
 
-# For MySQL (note, the option says "without ... postgres")::
+* For MySQL (note, the option says "without ... postgres")::
+
  zammad@shell> bundle install --without test development postgres
+
 
 3. Stop zammad services
 -----------------------
@@ -58,9 +63,7 @@ Start the application server, websocket server and scheduler.
 Update with RPM
 ===============
 
-
-Note: Please backup your Zammad instance before update!
-
+**Note: Please backup your Zammad instance before update!**
 
 1. Verify repo baseurl
 ----------------------
@@ -77,17 +80,14 @@ CentOS7
   baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
   enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
 
-
-
 2. Update Zammad
 ----------------
 
 ::
 
-  shell> sudo yum update zammad
+ shell> sudo yum update zammad
 
-
-Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.
+**Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.**
 
 
 3. Go and login to Zammad
@@ -99,7 +99,7 @@ Update with DEB
 ===============
 
 
-Note: Please backup your Zammad instance before update!
+**Note: Please backup your Zammad instance before update!**
 
 
 1. Verify repo baseurl
@@ -110,6 +110,7 @@ correct baseurl (see below).
 
 
 Debian
+++++++
 
 ::
 
@@ -117,11 +118,10 @@ Debian
 
 
 Ubuntu
-
+++++++
 ::
 
   echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
-
 
 
 2. Update Zammad
@@ -133,7 +133,7 @@ Ubuntu
   shell> apt-get upgrade
 
 
-Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.
+**Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.**
 
 
 3. Go and login to Zammad
