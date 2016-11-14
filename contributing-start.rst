@@ -18,6 +18,8 @@ Do you want to contribute to the Zammad documentation?
 
 Open a new GitHub pull request @ https://github.com/zammad/zammad-documentation with your changes.
 
+The Zammad documentation is hosted on readthedocs.org. You can read it here at https://docs.zammad.org or browse the fikles via GitHub which also renders the used ReStructuredText markup markup.
+
 ReStructuredText markup
 -----------------------
 
