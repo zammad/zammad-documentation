@@ -36,7 +36,7 @@ The documentation for Zammad is organized into a couple of sections:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Installation
+   :caption: Installation & Update
 
    install-source
    install-rpm
@@ -44,6 +44,7 @@ The documentation for Zammad is organized into a couple of sections:
    install-docker
    install-vagrant
    install-elasticsearch
+   install-update
 
 
 .. _getting-started-docs:
