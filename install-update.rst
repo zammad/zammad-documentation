@@ -62,7 +62,7 @@ Update with RPM
 ===============
 
 
-Note: Please backup your Zammad instance before update!
+**Note: Please backup your Zammad instance before update!**
 
 
 During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
@@ -103,7 +103,7 @@ Update with DEB
 ===============
 
 
-Note: Please backup your Zammad instance before update!
+**Note: Please backup your Zammad instance before update!**
 
 
 During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
