@@ -4,6 +4,8 @@ Updating Zammad
 Source update
 =============
 
+**Note: Please backup your Zammad instance before update!**
+
 1. Download Zammad on your system
 ---------------------------------
 
@@ -61,9 +63,7 @@ Start the application server, websocket server and scheduler.
 Update with RPM
 ===============
 
-
 **Note: Please backup your Zammad instance before update!**
-
 
 During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
 correct baseurl (see below).
