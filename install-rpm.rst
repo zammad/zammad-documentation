@@ -19,7 +19,7 @@ CentOS7
 
  echo "[zammad]
  name=Repository for zammad/zammad application.
- baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/package-1.0
+ baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
  enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
 
 
@@ -30,7 +30,7 @@ CentOS6
 
  echo "[zammad]
  name=Repository for zammad/zammad application.
- baseurl=https://rpm.packager.io/gh/zammad/zammad/centos6/package-1.0
+ baseurl=https://rpm.packager.io/gh/zammad/zammad/centos6/stable
  enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
 
 ::

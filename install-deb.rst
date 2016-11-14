@@ -16,14 +16,14 @@ Debian:
 
 ::
 
- echo "deb https://deb.packager.io/gh/zammad/zammad jessie develop" | sudo tee /etc/apt/sources.list.d/zammad.list
+ echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
 Ubuntu:
 -------
 
 ::
 
- echo "deb https://deb.packager.io/gh/zammad/zammad xenial develop" | sudo tee /etc/apt/sources.list.d/zammad.list
+ echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
 ::
 
