@@ -67,43 +67,30 @@ correct baseurl (see below).
 
 1. Verify repo baseurl
 ----------------------
+
 CentOS7
 
-::
-
-  echo "[zammad]
-  name=Repository for zammad/zammad application.
-  baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
-  enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
-
-
-2. Stop Zammad
---------------
 
 ::
 
-  shell> sudo service zammad stop
+ echo "[zammad]
+ name=Repository for zammad/zammad application.
+ baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
+ enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
 
 
-3. Update Zammad
+2. Update Zammad
 ----------------
 
 ::
 
-  shell> sudo yum update zammad
+ shell> sudo yum update zammad
 
 
-Note: The package will automatically execute maintanance task like database changes.
-
-4. Start Zammad
----------------
-
-::
-
-  shell> sudo service zammad stop
+Note: The package will automatically execute maintanance task like database changes and Zammad restart.
 
 
-5. Go and login to Zammad
+3. Go and login to Zammad
 -------------------------
 
 
@@ -122,27 +109,22 @@ correct baseurl (see below).
 ----------------------
 
 Debian
+++++++
 
 ::
-  echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
+
+ echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
 
 Ubuntu
-
-::
-  echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
-
-
-
-2. Stop Zammad
---------------
+++++++
 
 ::
 
-  shell> sudo service zammad stop
+ echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
 
-3. Update Zammad
+2. Update Zammad
 ----------------
 
 ::
@@ -151,15 +133,8 @@ Ubuntu
   shell> apt-get upgrade
 
 
-Note: The package will automatically execute maintanance task like database changes.
-
-4. Start Zammad
----------------
-
-::
-
-  shell> sudo service zammad stop
+Note: The package will automatically execute maintanance task like database changes and Zammad restart.
 
 
-5. Go and login to Zammad
+3. Go and login to Zammad
 -------------------------
