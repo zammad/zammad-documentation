@@ -15,15 +15,16 @@ Add Zammad DEB Repo and install
  sudo apt-get install zammad
 
 
-Start Zammad services:
-======================
+Go to http://localhost and you'll see:
+======================================
 
-::
-
- sudo systemctl zammad start
+* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
 
 You can manage the Zammad services manually:
---------------------------------------------
+============================================
+
+Zammad
+------
 
 ::
 
@@ -63,7 +64,3 @@ only websocket server
  sudo systemctl restart zammad-websocket
 
 
-Go to http://localhost and you'll see:
-======================================
-
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
