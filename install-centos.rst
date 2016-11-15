@@ -1,5 +1,5 @@
-Install with RPM
-****************
+Install on CentOS
+*****************
 
 Currently we support RHEL6/CentOS6 and RHEL7/CentOS7.
 
@@ -21,6 +21,10 @@ CentOS7
  name=Repository for zammad/zammad application.
  baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
  enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
+
+::
+
+ sudo yum install zammad
 
 
 CentOS6

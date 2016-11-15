@@ -1,7 +1,7 @@
-Install with DEB
+Install on Ubuntu
 ****************
 
-Currently we support Debian 8 & Ubuntu 16.04
+Currently we support Ubuntu 16.04
 
 
 Add Zammad DEB Repo and install
@@ -10,25 +10,10 @@ Add Zammad DEB Repo and install
 ::
 
  wget -qO - https://deb.packager.io/key | sudo apt-key add -
-
-Debian:
--------
-
-::
-
- echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
-
-Ubuntu:
--------
-
-::
-
  echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
-
-::
-
  sudo apt-get update
  sudo apt-get install zammad
+
 
 Start Zammad services:
 ======================

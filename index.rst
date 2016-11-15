@@ -39,8 +39,10 @@ The documentation for Zammad is organized into a couple of sections:
    :caption: Installation & Update
 
    install-source
-   install-rpm
-   install-deb
+   install-centos
+   install-debian
+   install-ubuntu
+   install-suse
    install-docker
    install-vagrant
    install-elasticsearch
