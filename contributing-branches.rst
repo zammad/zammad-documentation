@@ -9,7 +9,7 @@ Master
 * Default GitHub branch
 * Current unreleased development state of next stable minor release
 * Bug fixes of current stable version are added here
-* Is the the branch where features work correctly
+* Is the branch where features work correctly
 * Could be used for experienced users for production
 * If current stable is 1.1.0 this would be next 1.1.1
 
