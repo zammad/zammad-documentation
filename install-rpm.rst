@@ -102,40 +102,40 @@ You can manage the Zammad services manually:
 
 ::
 
- sudo service zammad status
- sudo service zammad stop
- sudo service zammad start
- sudo service zammad restart
+ sudo service status zammad
+ sudo service stop zammad
+ sudo service start zammad
+ sudo service restart zammad
 
 only web application server
 ---------------------------
 
 ::
 
- sudo service zammad-web status
- sudo service zammad-web stop
- sudo service zammad-web start
- sudo service zammad-web restart
+ sudo service status zammad-wew
+ sudo service stop zammad-web
+ sudo service start zammad-web
+ sudo service restart zammad-web
 
 only worker process
 -------------------
 
 ::
 
- sudo service zammad-worker status
- sudo service zammad-worker stop
- sudo service zammad-worker start
- sudo service zammad-worker restart
+ sudo service status zammad-worker
+ sudo service stop zammad-worker
+ sudo service zammad-worker
+ sudo service restart zammad-worker
 
 only websocket server
 ---------------------
 
 ::
 
- sudo service zammad-websocket status
- sudo service zammad-websocket stop
- sudo service zammad-websocket start
- sudo service zammad-websocket restart
+ sudo service status zammad-websocket
+ sudo service stop zammad-websocket
+ sudo service start zammad-websocket
+ sudo service restart zammad-websocket
 
 
 Go to http://localhost:3000 and you'll see:
