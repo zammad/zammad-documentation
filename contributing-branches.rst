@@ -6,7 +6,7 @@ The Zammad main repo @ https://github.com/zammad/zammad has several branches
 Master
 ======
 
-* default GitGub branch
+* default GitHub branch
 * current unreleased development state of current minor release with all bugfixes
 * is the the branch where features work correctly
 * could be used for experienced users for production
