@@ -1,5 +1,5 @@
-Install on Debian
-*****************
+Install on Debian via DEB
+*************************
 
 Currently we support Debian 8
 

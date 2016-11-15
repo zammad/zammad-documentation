@@ -1,5 +1,5 @@
-Install on Ubuntu
-****************
+Install on Ubuntu via DEB
+*************************
 
 Currently we support Ubuntu 16.04
 

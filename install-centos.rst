@@ -1,5 +1,5 @@
-Install on CentOS
-*****************
+Install on CentOS via RPM
+*************************
 
 Currently we support RHEL6/CentOS6 and RHEL7/CentOS7.
 

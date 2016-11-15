@@ -1,5 +1,5 @@
-Install on Suse
-***************
+Install on Suse via RPM
+***********************
 
 Currently we support SLES 12 & OpenSuse 42.
 
