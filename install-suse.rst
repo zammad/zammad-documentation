@@ -18,7 +18,7 @@ Go to http://localhost and you'll see:
 
 * "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
 
-You can manage the Zammad systemctls manually:
+You can manage the Zammad services manually:
 ============================================
 
 Zammad
