@@ -3,8 +3,8 @@ Install on Suse via RPM
 
 Currently we support SLES 12 and Opensuse 42.2
 
-Add Zammad RPM repo and install RPM
-===================================
+Add Zammad RPM repo and install
+===============================
 
 ::
 
