@@ -1,7 +1,7 @@
 Install on CentOS via RPM
 *************************
 
-Currently we support RHEL6/CentOS6 and RHEL7/CentOS7.
+Currently we support RHEL7 & CentOS7.
 
 
 Add Zammad & epel-release RPM repos and install RPM
@@ -11,33 +11,10 @@ Add Zammad & epel-release RPM repos and install RPM
 
  sudo yum install epel-release
  sudo rpm --import https://rpm.packager.io/key
-
-CentOS7
--------
-
-::
-
  echo "[zammad]
  name=Repository for zammad/zammad application.
  baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
  enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
-
-CentOS6
--------
-
-::
-
- echo "[zammad]
- name=Repository for zammad/zammad application.
- baseurl=https://rpm.packager.io/gh/zammad/zammad/centos6/stable
- enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
-
-
-Install Zammad
-==============
-
-::
-
  sudo yum install zammad
 
 
