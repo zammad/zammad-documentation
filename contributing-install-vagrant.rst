@@ -21,9 +21,20 @@ Run Vagrant
  cd zammad-vagrant
  vagrant up
 
+
 That’s it! You’re now running Zammad in a Vagrant environment.
 
 Go to http://localhost:3001 and you'll see:
--------------------------------------------
+===========================================
 
 *  "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+
+
+SSH into the machine
+====================
+
+After "vagrant up"
+
+::
+
+ vagrant ssh
