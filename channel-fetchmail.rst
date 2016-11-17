@@ -64,6 +64,8 @@ vi .procmailrc
  SYS_HOME="/home/zammad"
  RAILS_ENV=production
  GEM_PATH=/opt/zammad/vendor/bundle/ruby/2.3.0/
+ LOGFILE="$SYS_HOME/procmail.log"
+ #VERBOSE="on"
 
  :0 :
  | rails r 'Channel::Driver::MailStdin.new(trusted: true)'
