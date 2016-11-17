@@ -26,7 +26,7 @@ Docker run will run a command in a new container, -i attaches stdin and stdout, 
 
 ::
 
- docker run -ti -p 3001:80 zammad/zammad
+ docker run -ti -p 80:80 zammad/zammad
 
 
 That’s it! You’re now using a bash shell inside of a Zammad docker container.
@@ -34,7 +34,7 @@ That’s it! You’re now using a bash shell inside of a Zammad docker container
 To disconnect or detach from the shell without exiting, use the escape sequence Ctrl-p + Ctrl-q.
 
 
-Go to http://localhost:3001 and you'll see:
+Go to http://localhost and you'll see:
 ===========================================
 
 * "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.

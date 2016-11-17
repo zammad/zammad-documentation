@@ -26,7 +26,7 @@ Run Vagrant
 
 That’s it! You’re now running Zammad in a Vagrant environment.
 
-Go to http://localhost:3001 and you'll see:
+Go to http://localhost and you'll see:
 ===========================================
 
 *  "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
@@ -59,6 +59,14 @@ If you get errors like:
  A VirtualBox machine with the name 'Zammad' already exists.
  Please use another name or delete the machine with the existing
  name, and try again.
+
+or
+
+::
+
+ Bringing machine 'default' up with 'virtualbox' provider...
+ ==> default: Checking if box 'centos/7' is up to date...
+ ==> default: VirtualBox VM is already running.
 
 
 Use the following commands to fix it:
