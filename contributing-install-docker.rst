@@ -3,6 +3,8 @@ Install with Docker
 
 Docker is a container-based software framework for automating deployment of applications. Our Docker image is a **single container** based application designed to have Zammad **up and running fast for testing proposes**.
 
+Be aware that Vagrant is meaned for developers and therefore uses our unstable packages from the "develop" branch on GitHub.
+
 Your Docker environment needs to be up and running.
 
 You can find the image at https://hub.docker.com/r/zammad/zammad/
