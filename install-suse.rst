@@ -26,38 +26,38 @@ Zammad
 
 ::
 
- sudo systemctl status zammad
- sudo systemctl stop zammad
- sudo systemctl start zammad
- sudo systemctl restart zammad
+ sudo systemctl zammad status
+ sudo systemctl zammad stop
+ sudo systemctl zammad start
+ sudo systemctl zammad restart
 
 Only web application server
 ---------------------------
 
 ::
 
- sudo systemctl status zammad-wew
- sudo systemctl stop zammad-web
- sudo systemctl start zammad-web
- sudo systemctl restart zammad-web
+ sudo systemctl zammad-wew status
+ sudo systemctl zammad-web stop
+ sudo systemctl zammad-web start
+ sudo systemctl zammad-web restart
 
 Only worker process
 -------------------
 
 ::
 
- sudo systemctl status zammad-worker
- sudo systemctl stop zammad-worker
- sudo systemctl zammad-worker
- sudo systemctl restart zammad-worker
+ sudo systemctl zammad-worker status
+ sudo systemctl zammad-worker stop
+ sudo systemctl zammad-worker start
+ sudo systemctl zammad-worker restart
 
 Only websocket server
 ---------------------
 
 ::
 
- sudo systemctl status zammad-websocket
- sudo systemctl stop zammad-websocket
- sudo systemctl start zammad-websocket
- sudo systemctl restart zammad-websocket
+ sudo systemctl zammad-websocket status
+ sudo systemctl zammad-websocket stop
+ sudo systemctl zammad-websocket start
+ sudo systemctl zammad-websocket restart
 

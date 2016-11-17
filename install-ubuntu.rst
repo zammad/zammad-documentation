@@ -11,8 +11,8 @@ Add Zammad DEB Repo and install
 
  wget -qO - https://deb.packager.io/key | sudo apt-key add -
  echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
- sudo apt-get update
- sudo apt-get install zammad
+ sudo apt update
+ sudo apt install zammad
 
 
 Go to http://localhost and you'll see:
@@ -29,39 +29,39 @@ Zammad
 
 ::
 
- sudo systemctl status zammad
- sudo systemctl stop zammad
- sudo systemctl start zammad
- sudo systemctl restart zammad
+ sudo systemctl zammad status
+ sudo systemctl zammad stop
+ sudo systemctl zammad start
+ sudo systemctl zammad restart
 
 Only web application server
 ---------------------------
 
 ::
 
- sudo systemctl status zammad-web
- sudo systemctl stop zammad-web
- sudo systemctl start zammad-web
- sudo systemctl restart zammad-web
+ sudo systemctl zammad-web status
+ sudo systemctl zammad-web stop
+ sudo systemctl zammad-web start
+ sudo systemctl zammad-web restart
 
 Only worker process
 -------------------
 
 ::
 
- sudo systemctl status zammad-worker
- sudo systemctl stop zammad-worker
- sudo systemctl start zammad-worker
- sudo systemctl restart zammad-worker
+ sudo systemctl zammad-worker status
+ sudo systemctl zammad-worker stop
+ sudo systemctl zammad-worker start
+ sudo systemctl zammad-worker restart
 
 Only websocket server
 ---------------------
 
 ::
 
- sudo systemctl status zammad-websocket
- sudo systemctl stop zammad-websocket
- sudo systemctl start zammad-websocket
- sudo systemctl restart zammad-websocket
+ sudo systemctl zammad-websocket status
+ sudo systemctl zammad-websocket stop
+ sudo systemctl zammad-websocket start
+ sudo systemctl zammad-websocket restart
 
 
