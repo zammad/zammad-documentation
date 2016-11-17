@@ -56,14 +56,6 @@ If you get errors like:
 
 ::
 
- A VirtualBox machine with the name 'Zammad' already exists.
- Please use another name or delete the machine with the existing
- name, and try again.
-
-or
-
-::
-
  Bringing machine 'default' up with 'virtualbox' provider...
  ==> default: Checking if box 'centos/7' is up to date...
  ==> default: VirtualBox VM is already running.
@@ -74,5 +66,5 @@ Use the following commands to fix it:
 ::
 
  vboxmanage controlvm Zammad poweroff
- vboxmanage unregistervm Zammad
+
  
