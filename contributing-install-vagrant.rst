@@ -52,7 +52,7 @@ After this you can switch to root user via:
 Problems to start the VM?
 =========================
 
-Iy you get errors like:
+If you get errors like:
 
 ::
 
