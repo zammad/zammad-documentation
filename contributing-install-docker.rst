@@ -13,7 +13,9 @@ Download the Docker Image
 =========================
 
 Let’s begin using Docker!
+
 ::
+
  docker pull zammad/zammad
 
 
@@ -21,7 +23,9 @@ Run a Docker Container
 ======================
 
 Docker run will run a command in a new container, -i attaches stdin and stdout, -t allocates a tty, and we’re using the standard Zammad container.
+
 ::
+
  docker run -ti -p 3001:80 zammad/zammad
 
 

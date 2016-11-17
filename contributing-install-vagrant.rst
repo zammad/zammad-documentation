@@ -42,6 +42,13 @@ After "vagrant up"
  vagrant ssh
 
 
+After this you can switch to root user via:
+
+::
+
+ sudo -i
+
+
 Problems to start the VM?
 =========================
 
