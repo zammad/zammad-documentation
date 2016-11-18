@@ -18,14 +18,14 @@ Clone the Vagrant file
 
 
 For stable branch packages
--------------------
+--------------------------
 
 ::
 
  git checkout stable
 
 For develop branch packages
---------------------
+---------------------------
 
 ::
 
