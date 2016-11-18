@@ -14,13 +14,29 @@ Clone the Vagrant file
 ::
 
  git clone git@github.com:zammad/zammad-vagrant.git
+ cd zammad-vagrant
+
+
+For stable branch packages
+-------------------
+
+::
+
+ git checkout stable
+
+For develop branch packages
+--------------------
+
+::
+
+ git checkout develop
+
 
 Run Vagrant
 ===========
 
 ::
 
- cd zammad-vagrant
  vagrant up
 
 
