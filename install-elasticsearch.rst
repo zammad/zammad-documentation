@@ -72,6 +72,21 @@ Debian 8:
  systemctl enable elasticsearch
 
 
+Ubuntu 16.04:
++++++++++++++
+
+::
+
+ echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+ apt-get update
+ apt-get install openjdk-8-jre elasticsearch
+ cd /usr/share/elasticsearch
+ sudo bin/elasticsearch-plugin install mapper-attachments
+ systemctl restart elasticsearch
+ systemctl enable elasticsearch
+
+
 Configure Zammad to work with Elasticsearch
 ===========================================
 
