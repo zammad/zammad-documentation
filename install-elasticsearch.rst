@@ -47,7 +47,9 @@ CentOS 7:
  enabled=1
  autorefresh=1
  type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-5.x.repo
- yum install elasticsearch
+ yum install java-1.8.0-openjdk elasticsearch
+ cd /usr/share/elasticsearch
+ sudo bin/elasticsearch-plugin install mapper-attachments
  systemctl start elasticsearch
  systemctl enable elasticsearch
 
