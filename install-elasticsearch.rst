@@ -147,5 +147,3 @@ For this reason you should run elasticsearch on 127.0.0.1 and use a reverse prox
 You can find a Nginx reverse proxy config here:
 
 * https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf
-
-
