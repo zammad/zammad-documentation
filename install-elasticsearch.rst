@@ -105,8 +105,8 @@ After you have configured Zammad for using Elasticsearch, you need to rebuild th
  zammad run rake searchindex:rebuild
 
 
-In certain cases you can also use the following settings **(optional)**
-=======================================================================
+Optional settings
+=================
 
 Elasticsearch with HTTP basic auth
 ----------------------------------
