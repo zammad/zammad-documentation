@@ -1,7 +1,7 @@
 Pipe (Fetchmail)
 ****************
 
-Maybe you want to add mails via Fetchmail & Procmail.
+Maybe you want to add mails via Fetchmail & Procmail to Zammad.
 
 To get this work you need to pipe your mail to rails.
 
