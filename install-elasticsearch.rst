@@ -123,7 +123,6 @@ Maximum attachment size which is used for indexing, default is 50 MB (optional)
  zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
 
-
 Using Elasticsearch on another server
 =====================================
 
