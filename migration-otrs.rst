@@ -38,11 +38,14 @@ If you miss this at the beginning or you want to re-import again you have to use
  Setting.set('import_mode', true)
  Import::OTRS.start
 
-After importing, switch Zammad back to non import mode
+After the import is done switch Zammad back to non import mode and mark the system initialization as done
 
 ::
 
  Setting.set('import_mode', false)
+ Setting.set('system_init_done', true)
 
 Start all Zammad processes again. Done.
+
+**Note: It's currently not possible to import the user passwords. Therefore each user has to go through the reset password procedure!**
 
