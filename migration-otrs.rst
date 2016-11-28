@@ -47,5 +47,5 @@ After the import is done switch Zammad back to non import mode and mark the syst
 
 Start all Zammad processes again. Done.
 
-**Note: It's currently not possible to import the user passwords. Therefore each user has to go through the reset password procedure!**
+**Note: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.**
 
