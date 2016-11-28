@@ -39,10 +39,10 @@ The documentation for Zammad is organized into a couple of sections:
    :caption: Installation & Update
 
    install-source
-   install-rpm
-   install-deb
-   install-docker
-   install-vagrant
+   install-centos
+   install-debian
+   install-ubuntu
+   install-suse
    install-elasticsearch
    install-update
 
@@ -104,7 +104,9 @@ The documentation for Zammad is organized into a couple of sections:
    contributing-packages
    contributing-ci
    contributing-code-quality
-   contributing-dev-install
+   contributing-install-docker
+   contributing-install-vagrant
+   contributing-install-source
 
 .. _rest-api-docs:
 

@@ -1,7 +1,7 @@
 Pipe (Fetchmail)
 ****************
 
-Maybe you want to add mails via Fetchmail & Procmail.
+Maybe you want to add mails via Fetchmail & Procmail to Zammad.
 
 To get this work you need to pipe your mail to rails.
 
@@ -61,6 +61,12 @@ vi .procmailrc
  # Pipe all emails into Zammad
  # --
  PATH=/opt/zammad/bin:/opt/zammad/vendor/bundle/bin:/sbin:/bin:/usr/sbin:/usr/bin:
+ SYS_HOME="/home/zammad"
+ RAILS_ENV=production
+ GEM_PATH=/opt/zammad/vendor/bundle/ruby/2.3.0/
+ LOGFILE="$SYS_HOME/procmail.log"
+ #VERBOSE="on"
+
  :0 :
  | rails r 'Channel::Driver::MailStdin.new(trusted: true)'
 

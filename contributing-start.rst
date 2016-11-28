@@ -25,8 +25,9 @@ ReStructuredText markup
 
 If you like to edit the docs use the ReStructuredText markup language. Infos about this markup language can be found at:
 
-- http://www.sphinx-doc.org/en/stable/rest.html
-- http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
+* http://www.sphinx-doc.org/en/stable/rest.html
+* http://docutils.sourceforge.net/docs/user/rst/quickref.html
+* http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
 
 Thanks! ❤️ ❤️ ❤️
 

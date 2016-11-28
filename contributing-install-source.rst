@@ -1,5 +1,5 @@
-Developer installation
-**********************
+Install from source
+*******************
 
 Install from source (Debian 7,8 / Ubuntu 16.04)
 ===============================================
