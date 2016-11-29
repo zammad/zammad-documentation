@@ -25,7 +25,9 @@ Response::
     "type": "escalation",
     "seen": true,
     "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
+    "updated_by_id": 123,
+    "created_at": "2016-08-16T07:55:42.119Z",
+    "created_at_id": 123
   },
   {
     "id": 124,
@@ -33,8 +35,10 @@ Response::
     "object": "Ticket",
     "type": "update",
     "seen": false,
-    "updated_at": "2016-08-16T07:55:43.119Z",
-    "created_at": "2016-08-16T07:55:43.119Z"
+    "updated_at": "2016-08-16T07:55:47.119Z",
+    "updated_by_id": 123,
+    "created_at": "2016-08-16T07:55:47.119Z",
+    "created_at_id": 123
   },
   {
     "id": 125,
@@ -42,8 +46,10 @@ Response::
     "object": "Ticket",
     "type": "create",
     "seen": false,
-    "updated_at": "2016-08-16T07:57:42.119Z",
-    "created_at": "2016-08-16T07:57:42.119Z"
+    "updated_at": "2016-08-16T07:57:49.119Z",
+    "updated_by_id": 123,
+    "created_at": "2016-08-16T07:57:49.119Z",
+    "created_at_id": 123
   },
  ]
 
@@ -70,7 +76,9 @@ Response::
   "type": "escalation",
   "seen": true,
   "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
+  "updated_by_id": 123,
+  "created_at": "2016-08-16T07:55:42.119Z",
+  "created_at_id": 123
  }
 
 Update
@@ -100,7 +108,9 @@ Response::
   "type": "escalation",
   "seen": true,
   "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
+  "updated_by_id": 123,
+  "created_at": "2016-08-16T07:55:42.119Z",
+  "created_at_id": 123
  }
 
 
