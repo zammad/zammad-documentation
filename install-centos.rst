@@ -42,7 +42,7 @@ Only web application server
 
 ::
 
- sudo systemctl status zammad-wew
+ sudo systemctl status zammad-web
  sudo systemctl stop zammad-web
  sudo systemctl start zammad-web
  sudo systemctl restart zammad-web
