@@ -38,11 +38,14 @@ If you miss this at the beginning or you want to re-import again you have to use
  Setting.set('import_mode', true)
  Import::OTRS.start
 
-After importing, switch Zammad back to non import mode
+After the import is done switch Zammad back to non import mode and mark the system initialization as done
 
 ::
 
  Setting.set('import_mode', false)
+ Setting.set('system_init_done', true)
 
 Start all Zammad processes again. Done.
+
+**Note: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.**
 
