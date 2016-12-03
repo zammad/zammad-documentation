@@ -14,9 +14,20 @@ Download the Docker Image
 
 Let’s begin using Docker!
 
+Install stable branch
+---------------------
+
 ::
 
- docker pull zammad/zammad
+ docker pull zammad/zammad:stable
+
+
+Install develop branch
+----------------------
+
+::
+
+ docker pull zammad/zammad:develop
 
 
 Run a Docker Container
@@ -24,9 +35,19 @@ Run a Docker Container
 
 Docker run will run a command in a new container, -i attaches stdin and stdout, -t allocates a tty, and we’re using the standard Zammad container.
 
+Run stable
+----------
+
 ::
 
- docker run -ti -p 80:80 zammad/zammad
+ docker run -ti -p 80:80 zammad/zammad:stable
+
+Run develop
+-----------
+
+::
+
+ docker run -ti -p 80:80 zammad/zammad:develop
 
 
 That’s it! You’re now using a bash shell inside of a Zammad docker container.
