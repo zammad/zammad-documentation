@@ -4,8 +4,8 @@ from OTRS
 Install plugins on OTRS
 =======================
 
-Install Znuny4OTRS-Repo on OTRS
--------------------------------
+Install Znuny4OTRS-Repo
+-----------------------
 
 This is a dependency for the OTRS migration plugin
 
@@ -18,8 +18,8 @@ This is a dependency for the OTRS migration plugin
   *  http://portal.znuny.com/api/addon_repos/public/309/latest
 
 
-Install OTRS migration plugin on OTRS
--------------------------------------
+Install OTRS migration plugin
+-----------------------------
 
 * OTRS 5:
 
