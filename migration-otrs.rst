@@ -34,8 +34,8 @@ Install OTRS migration plugin
   * https://portal.znuny.com/api/addon_repos/public/287/latest
 
 
-Via Browser
-===========
+Import via Browser
+==================
 
 After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
 From there you're able to start migration from OTRS.
@@ -43,8 +43,8 @@ From there you're able to start migration from OTRS.
 See the Video @ http://days.zammad.org/features/migrator
 
 
-Via command line
-================
+Import via command line
+=======================
 
 If you miss this at the beginning or you want to re-import again you have to use the command line at the moment.
 
