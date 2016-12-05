@@ -48,9 +48,7 @@ Via command line
 
 If you miss this at the beginning or you want to re-import again you have to use the command line at the moment.
 
-* Stop all Zammad processes and switch Zammad to import mode (no events are fired - e. g. notifications, sending emails, ...)
-
-  You need to run the following commands in the zammad context. So start
+Stop all Zammad processes and switch Zammad to import mode (no events are fired - e. g. notifications, sending emails, ...)
 
 
 If you installed the zammad DEB or RPM package
@@ -66,11 +64,13 @@ If you installed from source
 
 :: 
 
+ su zammad
+ cd /opt/zammad
  rails c
 
 
-Enter the following commands in the rails schell
-------------------------------------------------
+Enter the following commands in the rails shell
+-----------------------------------------------
 
 ::
 
