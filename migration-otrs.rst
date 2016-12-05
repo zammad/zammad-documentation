@@ -14,6 +14,16 @@ Via command line
 
 If you miss this at the beginning or you want to re-import again you have to use the command line at the moment.
 
+* Install Znuny4OTRS-Repo, which is a dependency for the OTRS migration plugin
+
+  * OTRS 5:
+
+    * http://portal.znuny.com/api/addon_repos/public/615/latest
+
+  * OTRS 4:
+
+    * http://portal.znuny.com/api/addon_repos/public/309/latest
+
 * Install OTRS migration plugin on OTRS
 
   * OTRS 5:
@@ -30,9 +40,12 @@ If you miss this at the beginning or you want to re-import again you have to use
 
 * Stop all Zammad processes and switch Zammad to import mode (no events are fired - e. g. notifications, sending emails, ...)
 
+  You need to run the following commands in the zammad context. So start
+
 ::
 
- rails c
+ zammad run rails c
+
  Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
  Setting.set('import_otrs_endpoint_key', 'xxx')
  Setting.set('import_mode', true)
