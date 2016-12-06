@@ -18,6 +18,8 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 2. Install all dependencies
 ===========================
 
+Please note that a wotrking ruby 2.3.1 environment is needed now.
+
 ::
 
  zammad@shell> cd zammad
