@@ -9,7 +9,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 ::
 
  root@shell> useradd zammad -m -d /opt/zammad -s /bin/bash
- root@shell> cd /opt/
+ root@shell> cd /opt
  root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
  root@shell> tar -xzf zammad-latest.tar.gz -C zammad
  root@shell> su - zammad
@@ -43,7 +43,7 @@ For MySQL (note, the option says "without ... postgres")
 
 ::
 
- zammad@shell> cp config/database.yml.dist config/database.yml
+ zammad@shell> cp config/database.yml.pkgr config/database.yml
  zammad@shell> vi config/database.yml
 
 
