@@ -8,11 +8,10 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 
 ::
 
- root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
+ root@shell> useradd zammad -m -d /opt/zammad -s /bin/bash
  root@shell> cd /opt/
- root@shell> mkdir zammad
+ root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
  root@shell> tar -xzf zammad-latest.tar.gz -C zammad
- root@shell> useradd zammad
  root@shell> su - zammad
 
 
@@ -28,7 +27,7 @@ For PostgreSQL (note, the option says "without ... mysql")
 ----------------------------------------------------------
 
 ::
- 
+
  zammad@shell> bundle install --without test development mysql
 
 For MySQL (note, the option says "without ... postgres")
