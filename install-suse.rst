@@ -3,15 +3,26 @@ Install on SUSE via RPM
 
 Currently we support SLES 12 and OpenSUSE 42.2
 
+Install dependencies
+====================
+
+On SLES12
+---------
+
+::
+
+ sudo zypper addrepo "http://nginx.org/packages/sles/12" "nginx"
+
+
 Add Zammad RPM repo and install
 ===============================
 
 ::
 
- sudo zypper addrepo -G -t yum -c "http://nginx.org/packages/sles/12" "nginx"
  sudo rpm --import https://rpm.packager.io/key
  sudo zypper addrepo "https://rpm.packager.io/gh/zammad/zammad/sles12/stable" "zammad"
  sudo zypper install zammad
+
 
 
 Go to http://localhost and you'll see:
