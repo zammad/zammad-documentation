@@ -13,7 +13,8 @@ What information is stored exactly on images.zammad.com, and for how long?
 Which other parts of the system do leak data?
 =============================================
 
-* Zammad use 4 online services (which you all can enabled/disable via Admin → System → Services)
+* Zammad use 4 online services 
+* you can enabled/disable all of them via Admin → System → Services
 
 **Note: You als can create and setup your own backends/services for this, if you want.**
 
