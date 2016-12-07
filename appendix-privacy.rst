@@ -10,7 +10,7 @@ What information is stored exactly on images.zammad.com, and for how long?
   * md5 sums of email addresses are used to cache images for 7 days
   * md5 sums domains are used to cache images for 30 days
 
-Which other parts of the system do leak data?
+Which other parts of the system do send data?
 =============================================
 
 * Zammad use 4 online services 
