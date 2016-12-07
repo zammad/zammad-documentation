@@ -12,6 +12,7 @@ The documentation for Zammad is organized into a couple of sections:
 * :ref:`channels-docs`
 * :ref:`contributing-docs`
 * :ref:`rest-api-docs`
+* :ref:`appendix`
 
 
 .. _about-docs:
@@ -123,3 +124,10 @@ The documentation for Zammad is organized into a couple of sections:
    api-ticket-state
    api-ticket-priority
    api-notification
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Appendix
+
+   appendix-privacy
