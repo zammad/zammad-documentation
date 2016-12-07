@@ -36,4 +36,6 @@ Which other parts of the system do leak data?
 
   * GeoLocation - Currently there is only a google maps backend to lookup geo locations
 
-* The source code of this services is under: https://github.com/zammad/zammad/tree/develop/lib/service
+* The source code of this services is available under: 
+
+  * https://github.com/zammad/zammad/tree/develop/lib/service
