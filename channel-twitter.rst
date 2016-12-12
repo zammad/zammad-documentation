@@ -39,12 +39,12 @@ Configure Zammad as Twitter app
 
 Go to "Admin -> Channels -> Twitter"
 
-.. image:: images/zammad_connect_app1.png
+.. image:: images/zammad_connect_twitter_app1.png
    :alt: Admin -> Channels -> Twitter
 
 Click on "Connect Twitter App" and enter your "Consumer Key", "Consumer Secret" and verify the "Callback URL".
 
-.. image:: images/zammad_connect_app2.png
+.. image:: images/zammad_connect_twitter_app2.png
    :alt: Connect Twitter App, click "Submit"
 
 Done, your Zammad is configured as Twitter App now.
