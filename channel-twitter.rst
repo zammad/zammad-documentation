@@ -65,12 +65,12 @@ Click on "Add Account", then you will see the authorize app page of Twitter. Cli
 
 You will get redirected back to Zammad. Now you need to configure your search keys, where mentions and direct messages should get routed.
 
-.. image:: zammad_linked_twitter_account.png
+.. image:: images/zammad_linked_twitter_account.png
    :alt: Back in Zammad - settings
 
 After you are done, you will get an overview of all linked Twitter Accounts.
 
-.. image:: zammad_linked_twitter_account_done.png
+.. image:: images/zammad_linked_twitter_account_done.png
    :alt: Back in Zammad - settings
 
 Start using your new channel
