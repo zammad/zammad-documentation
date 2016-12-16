@@ -79,9 +79,9 @@ Install Zammad
 ::
 
  bundle install --without test development postgres
- cp config/database.yml.dist config/database.yml
+ cp config/database.yml.pkgr config/database.yml
 
-* insert mysql user, pass & host
+* insert mysql user, pass & change adapter to mysql2
 
 ::
 
