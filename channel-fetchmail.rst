@@ -18,7 +18,7 @@ On the Commandline
 Fetchmail
 =========
 
-Create .ftechmail.rc
+Create .fetchmailrc
 --------------------
 
 ::
