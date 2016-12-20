@@ -17,27 +17,24 @@ Clone the Vagrant file
  cd zammad-vagrant
 
 
-For stable branch packages
+Run Vagrant
+===========
+
+
+For stable branch package
+-------------------------
+
+::
+
+ PACKAGER_REPO=stable vagrant up --provision
+
+For develop branch package
 --------------------------
 
 ::
 
- git checkout stable
+ vagrant up --provision
 
-For develop branch packages
----------------------------
-
-::
-
- git checkout develop
-
-
-Run Vagrant
-===========
-
-::
-
- vagrant up
 
 
 That’s it! You’re now running Zammad in a Vagrant environment.
