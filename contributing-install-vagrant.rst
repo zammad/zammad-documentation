@@ -39,7 +39,7 @@ For develop branch package
 
 That’s it! You’re now running Zammad in a Vagrant environment.
 
-Go to http://localhost:3000 and you'll see:
+Go to http://localhost:8080 and you'll see:
 ===========================================
 
 *  "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
