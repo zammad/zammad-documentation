@@ -12,6 +12,14 @@ Run a Docker Container
 
 Docker run will run a command in a new container, -i attaches stdin and stdout, -t allocates a tty, and we’re using the standard Zammad container.
 
+Set vm.max_map_count for Elasticsearch
+--------------------------------------
+
+::
+
+ sysctl -w vm.max_map_count=262144
+
+
 Run stable
 ----------
 
