@@ -28,8 +28,8 @@ Generic install Elasticsearch 5.0:
 
 ::
 
- cd /usr/share/elasticsearch
- bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+
 
 * Start elasticsearch
 
@@ -48,8 +48,7 @@ CentOS 7:
  autorefresh=1
  type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-5.x.repo
  yum install java-1.8.0-openjdk elasticsearch
- cd /usr/share/elasticsearch
- sudo bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
  systemctl start elasticsearch
  systemctl enable elasticsearch
 
@@ -66,8 +65,7 @@ Debian 8:
  apt-get update
  apt-get install openjdk-8-jre elasticsearch
  sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
- cd /usr/share/elasticsearch
- sudo bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
@@ -81,8 +79,7 @@ Ubuntu 16.04:
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
  apt-get install openjdk-8-jre elasticsearch
- cd /usr/share/elasticsearch
- sudo bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
