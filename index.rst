@@ -31,6 +31,7 @@ The documentation for Zammad is organized into a couple of sections:
    :caption: Prerequisites
 
    prerequisites-software
+   prerequisites-hardware
 
 
 .. _install-docs:
