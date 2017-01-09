@@ -46,6 +46,7 @@ The documentation for Zammad is organized into a couple of sections:
    install-ubuntu
    install-suse
    install-elasticsearch
+   install-docker-compose
    install-update
 
 
