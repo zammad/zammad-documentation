@@ -58,6 +58,7 @@ Maintenance
 Updating Zammad
 ---------------
 
+* docker-compose stop
 * docker-compose pull
 * docker-compose up
 
