@@ -9,12 +9,22 @@ The Docker images are hosted on Dockerhub:
 
 * https://hub.docker.com/r/zammad/zammad-docker-compose/
 
+
+Install Docker Environemnt
+==========================
+
 Your Docker environment needs to be up and running and you need to have docker-compose installed.
 
-Install Docker-compopse
-=======================
+Docker
+------
+
+* https://docs.docker.com/engine/installation/
+
+Docker-Compose
+--------------
 
 * https://docs.docker.com/compose/install/
+
 
 Getting started with zammad-docker-compose
 ==========================================
@@ -35,10 +45,12 @@ Start Zammad using DockerHub images
 
 * docker-compose up
 
+
 Go to http://localhost and you'll see:
 ======================================
 
 * "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+
 
 Maintenance
 ===========
@@ -59,6 +71,7 @@ Recreate locally build images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * GIT_BRANCH=develop docker-compose -f docker-compose-build.yml build --no-cache
+
 
 Open shell in running Zammad image
 ----------------------------------
