@@ -1,7 +1,10 @@
 Install with Docker
 *******************
 
-Docker is a container-based software framework for automating deployment of applications. Our Docker image is a **single container** based application designed to have Zammad **up and running fast for testing proposes**.
+Docker is a container-based software framework for automating deployment of applications. 
+Our Docker image is a **single container** based application designed to have Zammad **up and running fast for testing proposes**.
+
+If you like to run Docker in production try our Docker-compose version: https://docs.zammad.org/en/latest/install-docker-compose.html
 
 Your Docker environment needs to be up and running.
 
