@@ -22,7 +22,7 @@ Getting started with zammad-docker-compose
 Clone GitHub repo
 -----------------
 
-* git clone git@github.com:zammad/zammad-docker-compose.git
+* git https://github.com/zammad/zammad-docker-compose.git
 * cd zammad-docker-compose
 
 Setting vm.max_map_count for Elasticsearch
