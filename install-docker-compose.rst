@@ -30,8 +30,8 @@ Setting vm.max_map_count for Elasticsearch
 
 * sysctl -w vm.max_map_count=262144
 
-Using DockerHub images
-----------------------
+Start Zammad using DockerHub images
+-----------------------------------
 
 * docker-compose up
 
@@ -50,8 +50,8 @@ Updating Zammad
 * docker-compose up
 
 
-Building Docker images locally with development branch
-------------------------------------------------------
+Start Zammad building Docker images locally with development branch
+-------------------------------------------------------------------
 
 * GIT_BRANCH=develop docker-compose -f docker-compose-build.yml up
 
