@@ -3,6 +3,29 @@ Install on Debian via DEB
 
 Currently we support Debian 8
 
+Prerequisites
+=============
+
+Be sure to use an  UTF-8 locale or PostgreSQL will not install.
+
+Check locale
+------------
+
+::
+
+ locale
+
+If there is nothing with UTF-8 in the name shown like "LANG=en_US.UTF-8" you have to set a new locale.
+
+Set locale
+----------
+
+::
+
+ apt-get install locales
+ locale-gen en_US.UTF-8
+ echo "LANG=en_US.UTF-8" > /etc/default/locale
+
 
 Add Zammad DEB Repo and install
 ===============================
