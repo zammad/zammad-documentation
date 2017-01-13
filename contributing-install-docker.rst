@@ -22,23 +22,15 @@ Set vm.max_map_count for Elasticsearch
 
  sysctl -w vm.max_map_count=262144
 
-
-Run stable
-----------
-
-::
-
- docker run -ti -p 80:80 zammad/zammad:stable
-
-Run develop
------------
+Run docker container
+--------------------
 
 ::
 
- docker run -ti -p 80:80 zammad/zammad:develop
+ docker run -ti -p 80:80 zammad/zammad
 
 
-That’s it! You’re now using a bash shell inside of a Zammad docker container.
+That’s it! You’re now using a bash shell inside of a Zammad docker container using the develop branch of the GitHub repo.
 
 To disconnect or detach from the shell without exiting, use the escape sequence Ctrl-p + Ctrl-q.
 
