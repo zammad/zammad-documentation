@@ -36,6 +36,6 @@ To disconnect or detach from the shell without exiting, use the escape sequence 
 
 
 Go to http://localhost and you'll see:
-===========================================
+======================================
 
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+* "Welcome to Zammad!", there you need to create your admin user.
