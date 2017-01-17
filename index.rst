@@ -122,6 +122,7 @@ The documentation for Zammad is organized into a couple of sections:
    api-user
    api-organization
    api-group
+   api-object
    api-ticket
    api-ticket-state
    api-ticket-priority
