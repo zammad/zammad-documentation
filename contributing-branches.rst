@@ -9,7 +9,7 @@ Master
 * Current stable release
 * Bug fixes of current stable version are added here
 * Is the branch where features work correctly
-* Could be used for experienced users for production
+* Can be used for for production
 * If current stable is 1.1.0 this would be next 1.1.1
 
 
