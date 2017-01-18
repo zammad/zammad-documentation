@@ -74,13 +74,31 @@ Example::
 
  POST /api/v1/users/{id} HTTP/1.1
  Content-Type: application/json
- 
+
  {
   "name":"some name",
   "organization_id": 123,
   "note":"some note"
  }
 
+Example CURL Requests
+==============
+
+Get information:
+
+ curl -u test@zammad.com:test123 https://xxx.zammad.com/api/v1/users/3
+
+Put information:
+
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X PUT -d '{ json: 'data' }' https://xxx.zammad.com/api/v1/tickets/3
+
+Post information:
+
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{ json: 'data' }' https://xxx.zammad.com/api/v1/users/3
+
+Post file and form data:
+
+ curl -u test@zammad.com:test123 -X POST --form form_id=740354910 --form File=@/workspace/test.jpg https://xxx.zammad.com/api/v1/ticket_attachment_upload
 
 Response Format
 ===============
@@ -91,7 +109,7 @@ Example::
 
  Status: 201 Created
  Content-Type:application/json; charset=utf-8
- 
+
  {
   "id": 123,
   "name":"some name",
@@ -115,7 +133,7 @@ will return a record link this::
 
  Status: 200 Ok
  Content-Type:application/json; charset=utf-8
- 
+
  {
   "id": 123,
   "name":"some name",
@@ -139,7 +157,7 @@ will return 5 records beginning with first record of all::
 
  Status: 200 Ok
  Content-Type:application/json; charset=utf-8
- 
+
  [
   {
     "id": 1,
