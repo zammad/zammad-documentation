@@ -22,7 +22,9 @@ Upload Attachment
 ======
 
 To upload an attachment you need to save the attachment to a form id. The uploaded attachment will be saved in a temporarily
-storage and you need to create an article with the given form_id to actually save the uploaded attachment to the ticket (_api-ticket-article#Create).
+storage and you need to create an article with the given form_id to actually save the uploaded attachment to the ticket (Article_).
+
+.. _Article: api-ticket-article.rst#Create
 
 Required permission:
 
