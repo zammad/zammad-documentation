@@ -27,6 +27,7 @@ Examples
 * state:(new OR open) AND title:(full text search) # state: new OR open & title: full OR text OR search
 * tag: sometag
 * tag: "some tag"
+* owner.email: "bod@example.com" AND state: (new OR open OR pending*) # show all open tickets of a certain agent
 * state:closed AND _missing_:tag # all closed objects without tags
 * article_count: [1 TO 5] # tickets with 1 to 5 articles
 * article:count: [10 TO *] # tickets with 10 or more articles
