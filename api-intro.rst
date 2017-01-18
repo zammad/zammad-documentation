@@ -84,19 +84,19 @@ Example::
 Example CURL Requests
 ==============
 
-Get information:
+Get information::
 
  curl -u test@zammad.com:test123 https://xxx.zammad.com/api/v1/users/3
 
-Put information:
+Put information::
 
  curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X PUT -d '{ json: 'data' }' https://xxx.zammad.com/api/v1/tickets/3
 
-Post information:
+Post information::
 
  curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{ json: 'data' }' https://xxx.zammad.com/api/v1/users/3
 
-Post file and form data:
+Post file and form data::
 
  curl -u test@zammad.com:test123 -X POST --form form_id=740354910 --form File=@/workspace/test.jpg https://xxx.zammad.com/api/v1/ticket_attachment_upload
 
