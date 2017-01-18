@@ -22,7 +22,7 @@ Upload Attachment
 ======
 
 To upload an attachment you need to save the attachment to a form id. The uploaded attachment will be saved in a temporarily
-storage and you need to create an article with the given form_id to actually save the uploaded attachment to the ticket (<api-ticket-article.rst#Create>).
+storage and you need to create an article with the given form_id to actually save the uploaded attachment to the ticket (_api-ticket-article#Create).
 
 Required permission:
 
@@ -42,10 +42,6 @@ Request::
  Content-Type: image/jpeg
 
  ...
-
-Example CURL::
-
- curl -u {username}:{password} --form form_id=740354910 --form File=@/workspace/test.jpg https://{URL}/api/v1/ticket_attachment_upload
 
 Response::
 
