@@ -27,7 +27,7 @@ storage and you need to `create an article`_ with the given form_id to actually 
 There is also an example upload curl request given in the introduction_.
 
 .. _create an article: api-ticket-article.html#Create
-.. _introduction: api-intro.html#Example CURL Requests
+.. _introduction: api-intro.html#example-curl-requests
 
 Required permission:
 
