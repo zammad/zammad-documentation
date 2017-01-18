@@ -49,6 +49,7 @@ Stop the application server, websocket server and scheduler.
  zammad@shell> export RAILS_ENV=production
  zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no http reverse proxy
  zammad@shell> rake db:migrate
+ zammad@shell> rake assets:precompile 
 
 5. Start zammad services
 ------------------------
