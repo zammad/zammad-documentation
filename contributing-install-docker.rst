@@ -27,7 +27,7 @@ Run docker container
 
 ::
 
- docker run -ti -p 80:80 zammad/zammad
+ docker run -ti --name zammad -p 80:80 zammad/zammad
 
 
 That’s it! You’re now using a bash shell inside of a Zammad docker container using the develop branch of the GitHub repo.
