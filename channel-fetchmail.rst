@@ -26,6 +26,7 @@ Create .fetchmailrc
  su - zammad
  cd ~
  touch .fetchmailrc
+ chmod 0600 .fetchmailrc
 
 
 vi .fetchmailrc
@@ -36,7 +37,7 @@ vi .fetchmailrc
  #
  # zammad fetchmail config
  #
- poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda /usr/bin/procmail is zammad here
+ poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda "rails r 'Channel::Driver::MailStdin.new(trusted: true)'"
 
 
 
