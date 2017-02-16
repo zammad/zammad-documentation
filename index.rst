@@ -93,6 +93,7 @@ The documentation for Zammad is organized into a couple of sections:
    channel-chat
    channel-twitter
    channel-facebook
+   channel-telegram
    channel-fetchmail
 
 .. _contributing-docs:
