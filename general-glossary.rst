@@ -4,14 +4,8 @@ Glossary
 Article
 =======
 
-* A case consists of multiple articles. 
+* A ticket consists of multiple articles. 
 * An article goes through a channel.
-
-Case
-====
-
-* All request are named case. 
-* In other systems this is also called issue, ticket, etc.
 
 Channel
 =======
@@ -30,7 +24,7 @@ Organization
 ============
 
 * Organizations are used to group users. 
-* The common use case is to group the employees of a company to one organization.
+* The common use case is to group the employees of a company into one organization.
 
 Overview
 ========
@@ -50,10 +44,17 @@ Textmodule
 
 * While writing an article are textmodules available to assist the agent's work.
 
+Ticket
+====
+
+* All requests are call ticket. 
+* In other systems this is also called issue, case, etc.
+
+
 User
 ====
 
-* Every persons which are used in Zammad are called person. 
+* Every person in Zammad is called user. 
 * Each person needs a minimum of one assigned role. 
 * Three roles are predefined: Administrator, Agent, Customer
 
