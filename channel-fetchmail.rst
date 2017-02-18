@@ -37,7 +37,7 @@ vi .fetchmailrc
  #
  # zammad fetchmail config
  #
- poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda "rails r 'Channel::Driver::MailStdin.new(trusted: true)'""
+ poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda "rails r 'Channel::Driver::MailStdin.new(trusted: true)'"
 
 
 Thats it. Mails are now directly piped into Zammad.
