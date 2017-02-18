@@ -27,8 +27,6 @@ Create .fetchmailrc
  cd ~
  touch .fetchmailrc
  chmod 0600 .fetchmailrc
- echo "poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda "rails r 'Channel::Driver::MailStdin.new(trusted: true)'"" > .fetchmailrc
-
 
  vi .fetchmailrc
  ---------------
