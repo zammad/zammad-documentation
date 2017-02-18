@@ -26,7 +26,31 @@ Create .fetchmailrc
  su - zammad
  cd ~
  touch .fetchmailrc
+ chmod 0600 .fetchmailrc
+ echo "poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda "rails r 'Channel::Driver::MailStdin.new(trusted: true)'"" > .fetchmailrc
 
+
+ vi .fetchmailrc
+ ---------------
+
+ ::
+
+  #
+  # zammad fetchmail config
+  #
+
+
+Thats it. Mails are now directly piped into Zammad.
+
+
+
+
+Using Procmail for advnaced features like presorting
+====================================================
+
+If you want to do some more with your mails, like presorting to a Zammad group or filtering spam, you can use Procmail.
+
+Fetchmail config looks slightly different.
 
 vi .fetchmailrc
 ---------------
@@ -38,10 +62,6 @@ vi .fetchmailrc
  #
  poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda /usr/bin/procmail is zammad here
 
-
-
-Procmail
-========
 
 Create .procmailrc
 ------------------
@@ -156,5 +176,3 @@ Ignore Header
 
 * If you want to ignore whole email, just set the "X-Zammad-Ignore" header.
 * Example: X-Zammad-Ignore: [yes|true]
-
-
