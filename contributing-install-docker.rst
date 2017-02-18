@@ -1,7 +1,7 @@
 Install with Docker
 *******************
 
-Docker is a container-based software framework for automating deployment of applications. 
+Docker is a container-based software framework for automating deployment of applications.
 Our Docker image is a **single container** based application designed to have Zammad **up and running fast for testing proposes**.
 
 If you like to run Docker in production try our Docker-compose version: https://docs.zammad.org/en/latest/install-docker-compose.html
@@ -27,7 +27,7 @@ Run docker container
 
 ::
 
- docker run -ti --name zammad -p 80:80 zammad/zammad
+ docker container run -ti --name zammad -p 80:80 zammad/zammad
 
 
 That’s it! You’re now using a bash shell inside of a Zammad docker container using the develop branch of the GitHub repo.
