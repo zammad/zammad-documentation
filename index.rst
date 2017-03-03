@@ -96,6 +96,15 @@ The documentation for Zammad is organized into a couple of sections:
    channel-telegram
    channel-fetchmail
 
+.. _admin-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Administration
+
+   admin-trigger
+
 .. _contributing-docs:
 
 .. toctree::
