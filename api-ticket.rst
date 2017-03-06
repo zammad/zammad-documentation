@@ -153,6 +153,8 @@ Response::
 
 If you want to include attachments to first article, the payload looks like:
 
+Request::
+
  POST /api/v1/tickets
 
  {
