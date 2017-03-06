@@ -21,6 +21,7 @@ Response::
   {
     "id": 123,
     "title": "Help me!",
+    "group_id": 1,
     "state_id": 1,
     "priority_id": 2,
     ...
@@ -55,11 +56,12 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 123,
     "title": "Help me!",
+    "group_id": 1,
     "state_id": 1,
     "priority_id": 2,
     ...
@@ -96,10 +98,11 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "title": "Help me!",
+  "group_id": 1,
   "state_id": 1,
   "priority_id": 2,
   ...
@@ -120,11 +123,10 @@ Required permission:
 Request::
 
  POST /api/v1/tickets
- 
+
  {
   "title": "Help me!",
-  "state_id": 1,
-  "priority_id": 2,
+  "group": "Users",
   "article": {
     "subject": "some subject",
     "body": "some message"
@@ -136,16 +138,44 @@ Request::
 Response::
 
  Status: 201 Created
- 
+
  {
   "id": 123,
   "title": "Help me!",
+  "group_id": 1,
   "state_id": 1,
   "priority_id": 2,
   ...
   "note": "some note",
   "updated_at": "2016-08-16T07:55:42.119Z",
   "created_at": "2016-08-16T07:55:42.119Z"
+ }
+
+If you want to include attachments to first article, the payload looks like:
+
+ POST /api/v1/tickets
+
+ {
+  "title": "Help me!",
+  "group": "Users",
+  "article": {
+    "subject": "some subject",
+    "body": "some message",
+    "attachments": [
+      {
+        "filename": "some_file1.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      },
+      {
+        "filename": "some_file2.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      }
+    ]
+  },
+  ...
+  "note": "some note",
  }
 
 
@@ -160,12 +190,13 @@ Required permission:
 Request::
 
  PUT /api/v1/tickets/{id}
- 
+
  {
   "id": 123,
   "title": "Help me!",
-  "state_id": 1,
-  "priority_id": 2,
+  "group": "Users",
+  "state": "open",
+  "priority": "3 high",
   "article": {
     "subject": "some subject of update",
     "body": "some message of update"
@@ -177,16 +208,45 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "title": "Help me!",
+  "group_id": 1,
   "state_id": 1,
   "priority_id": 2,
   ...
   "note": "some note",
   "updated_at": "2016-08-16T07:55:42.119Z",
   "created_at": "2016-08-16T07:55:42.119Z"
+ }
+
+If you want to include attachments to article, the payload looks like:
+
+ PUT /api/v1/tickets
+
+ {
+  "id": 123,
+  "title": "Help me!",
+  "group": "Users",
+  "article": {
+    "subject": "some subject",
+    "body": "some message",
+    "attachments": [
+      {
+        "filename": "some_file1.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      },
+      {
+        "filename": "some_file2.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      }
+    ]
+  },
+  ...
+  "note": "some note",
  }
 
 
@@ -204,5 +264,5 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {}
