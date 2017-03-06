@@ -180,6 +180,23 @@ Request::
   "note": "some note",
  }
 
+If you want to add inline images, just use data uris in html markup:
+
+Request::
+
+ POST /api/v1/tickets
+
+ {
+  "title": "Help me!",
+  "group": "Users",
+  "article": {
+    "content_type": "text/html",
+    "subject": "some subject",
+    "body": "<b>some</b> message witn inline image <img src=\"data:image/jpeg;base64,ABCDEFG==\">"
+  },
+  ...
+  "note": "some note",
+ }
 
 Update
 ======
@@ -229,7 +246,7 @@ If you want to include attachments to article, the payload looks like:
 
 Request::
 
- PUT /api/v1/tickets
+ PUT /api/v1/tickets/{id}
 
  {
   "id": 123,
@@ -255,6 +272,24 @@ Request::
   "note": "some note",
  }
 
+If you want to add inline images, just use data uris in html markup:
+
+Request::
+
+ PUT /api/v1/tickets/{id}
+
+ {
+  "id": 123,
+  "title": "Help me!",
+  "group": "Users",
+  "article": {
+    "content_type": "text/html",
+    "subject": "some subject",
+    "body": "<b>some</b> message witn inline image <img src=\"data:image/jpeg;base64,ABCDEFG==\">"
+  },
+  ...
+  "note": "some note",
+ }
 
 Delete
 ======
