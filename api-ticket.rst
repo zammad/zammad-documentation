@@ -221,7 +221,11 @@ Response::
   "created_at": "2016-08-16T07:55:42.119Z"
  }
 
+
 If you want to include attachments to article, the payload looks like:
+
+
+Request::
 
  PUT /api/v1/tickets
 
