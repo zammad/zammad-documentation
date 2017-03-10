@@ -132,7 +132,7 @@ Request::
     "body": "some message"
   },
   ...
-  "note": "some note",
+  "note": "some note"
  }
 
 Response::
@@ -177,7 +177,7 @@ Request::
     ]
   },
   ...
-  "note": "some note",
+  "note": "some note"
  }
 
 If you want to add inline images, just use data uris in html markup:
@@ -195,7 +195,7 @@ Request::
     "body": "<b>some</b> message witn inline image <img src=\"data:image/jpeg;base64,ABCDEFG==\">"
   },
   ...
-  "note": "some note",
+  "note": "some note"
  }
 
 Update
@@ -269,7 +269,7 @@ Request::
     ]
   },
   ...
-  "note": "some note",
+  "note": "some note"
  }
 
 If you want to add inline images, just use data uris in html markup:
@@ -288,7 +288,7 @@ Request::
     "body": "<b>some</b> message witn inline image <img src=\"data:image/jpeg;base64,ABCDEFG==\">"
   },
   ...
-  "note": "some note",
+  "note": "some note"
  }
 
 Delete

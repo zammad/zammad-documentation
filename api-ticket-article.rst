@@ -1,46 +1,74 @@
 Ticket Article
 ******
 
+Show
+====
+
+Required permission:
+
+* ticket.agent (access to related ticket)
+* ticket.customer (access to related ticket with customer_id ** current_user.id || organization_id ** current_user.organization_id)
+
+Request::
+
+ GET /api/v1/ticket_articles/{id}
+
+
+Response::
+
+ Status: 200 Ok
+
+ {
+    "id": 3,
+    "ticket_id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12.0"
+    "attachments": [
+      {
+        "filename": "some_file1.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      },
+      {
+        "filename": "some_file2.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      }
+    ],
+    ...
+    "created_at": "2016-10-19T10:07:12.011Z",
+    "updated_at": "2017-01-18T12:45:53.420Z"
+ }
+
+
 Create
 ======
 
 Required permission:
 
-* ticket.agent (create in all allocated groups)
-* ticket.customer
+* ticket.agent (access to related ticket)
+* ticket.customer (access to related ticket with customer_id ** current_user.id || organization_id ** current_user.organization_id)
 
 Request::
 
- PUT /api/v1/tickets/:id
+ POST /api/v1/ticket_articles
 
  {
-     "number": "72003",
-     "title": "test",
-     "group_id": "1",
-     "owner_id": 1,
-     "customer_id": 6,
-     "state_id": "1",
-     "priority_id": "2",
-     "article": {
-         "from": "Harald Habebe",
-         "to": "",
-         "cc": "",
-         "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
-         "content_type": "text/html",
-         "ticket_id": 3,
-         "type_id": 10,
-         "sender_id": 1,
-         "internal": "true",
-         "in_reply_to": "",
-         "form_id": "1111111",
-         "time_unit": "12"
-     },
-     "updated_at": "2017-01-18T11:56:13.561Z",
-     "pending_time": null,
-     "aaaaa": "",
-     "anrede": "",
-     "asdf": "",
-     "id": 3
+    "ticket_id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12"
  }
 
 Response::
@@ -48,51 +76,137 @@ Response::
  Status: 201 Created
 
  {
-     "id": 3,
-     "group_id": 1,
-     "priority_id": 2,
-     "state_id": 1,
-     "organization_id": 3,
-     "number": "72003",
-     "title": "test",
-     "owner_id": 1,
-     "customer_id": 6,
-     "note": null,
-     "first_response_at": null,
-     "first_response_escalation_at": null,
-     "first_response_in_min": null,
-     "first_response_diff_in_min": null,
-     "close_at": null,
-     "close_escalation_at": null,
-     "close_in_min": null,
-     "close_diff_in_min": null,
-     "update_escalation_at": null,
-     "update_in_min": null,
-     "update_diff_in_min": null,
-     "last_contact_at": "2016-10-19T10:07:12.072Z",
-     "last_contact_agent_at": null,
-     "last_contact_customer_at": "2016-10-19T10:07:12.072Z",
-     "create_article_type_id": 11,
-     "create_article_sender_id": 2,
-     "article_count": 9,
-     "escalation_at": null,
-     "pending_time": null,
-     "type": null,
-     "preferences": {
-         "escalation_calculation": {}
-     },
-     "updated_by_id": 3,
-     "created_by_id": 6,
-     "created_at": "2016-10-19T10:07:12.011Z",
-     "updated_at": "2017-01-18T12:45:53.420Z",
-     "anrede": "",
-     "asdf": "",
-     "time_unit": "62.0",
-     "aaaaa": ""
+    "id": 3,
+    "ticket_id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12.0"
+    ...
+    "created_at": "2016-10-19T10:07:12.011Z",
+    "updated_at": "2017-01-18T12:45:53.420Z"
  }
 
 
+If you want to include attachments to article, the payload looks like:
+
+Request::
+
+ POST /api/v1/ticket_articles
+
+ {
+    "ticket_id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12",
+    "attachments": [
+      {
+        "filename": "some_file1.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      },
+      {
+        "filename": "some_file2.txt",
+        "data": "content in base64",
+        "mime-type": "text/plain"
+      }
+    ]
+ }
+
+Response::
+
+ Status: 201 Created
+
+ {
+    "id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12.0"
+    "attachments": [
+      {
+        "id": 123,
+        "filename": "some_file1.txt",
+        "preferences": {
+          "Mime-Type": "text/plain"
+        }
+      },
+      {
+        "id": 124,
+        "filename": "some_file2.txt",
+        "preferences": {
+          "Mime-Type": "text/plain"
+        }
+      }
+    ],
+    ...
+    "created_at": "2016-10-19T10:07:12.011Z",
+    "updated_at": "2017-01-18T12:45:53.420Z"
+ }
+
+To download attachments you need to call "GET /api/v1/ticket_attachment/#{ticket_id}/#{article_id}/#{id}".
 
 
+If you want to add inline images, just use data uris in html markup:
 
+Request::
 
+ POST /api/v1/ticket_articles
+
+ {
+    "ticket_id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "<b>some</b> message witn inline image <img src=\"data:image/jpeg;base64,ABCDEFG==\">"
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12"
+ }
+
+Response::
+
+ Status: 201 Created
+
+ {
+    "id": 3,
+    "ticket_id": 3,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12.0"
+    "attachments": [
+      {
+        "id": 123,
+        "filename": "44.262871107@zammad.example.com",
+        "preferences": {
+          "Mime-Type": "image/jpeg",
+          "Content-ID"=>"44.262871107@zammad.example.com",
+          "Content-Disposition"=>"inline"
+        }
+      }
+    ],
+    ...
+    "created_at": "2016-10-19T10:07:12.011Z",
+    "updated_at": "2017-01-18T12:45:53.420Z"
+ }
+
+To download attachments you need to call "GET /api/v1/ticket_attachment/#{ticket_id}/#{article_id}/#{id}".

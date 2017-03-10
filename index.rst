@@ -135,7 +135,6 @@ The documentation for Zammad is organized into a couple of sections:
    api-ticket
    api-ticket-state
    api-ticket-priority
-   api-ticket-attachment
    api-ticket-article
    api-notification
    api-object
