@@ -96,14 +96,26 @@ The documentation for Zammad is organized into a couple of sections:
    channel-telegram
    channel-fetchmail
 
-.. _admin-docs:
+
+.. _admin-webfrontend:
 
 .. toctree::
    :maxdepth: 2
    :glob:
-   :caption: Administration
+   :caption: Administration via webfrontend
 
-   admin-trigger
+   admin-webfrontend-trigger
+
+
+.. _admin-console:
+
+.. toctree::
+  :maxdepth: 2
+  :glob:
+  :caption: Administration via console
+
+  admin-console
+
 
 .. _contributing-docs:
 
