@@ -129,7 +129,9 @@ Request::
   "group": "Users",
   "article": {
     "subject": "some subject",
-    "body": "some message"
+    "body": "some message",
+    "type": "note",
+    "internal": false
   },
   ...
   "note": "some note"
@@ -150,6 +152,8 @@ Response::
   "updated_at": "2016-08-16T07:55:42.119Z",
   "created_at": "2016-08-16T07:55:42.119Z"
  }
+
+For more article attributes have a look into "Ticket Article".
 
 If you want to include attachments to first article, the payload looks like:
 
