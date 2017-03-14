@@ -31,14 +31,17 @@ Response::
     "time_unit": "12.0"
     "attachments": [
       {
+        "id": 123,
         "filename": "some_file1.txt",
-        "data": "content in base64",
-        "mime-type": "text/plain"
+        "preferences": {
+          "Mime-Type": "text/plain"
+        }
       },
       {
+        "id": 124,
         "filename": "some_file2.txt",
-        "data": "content in base64",
-        "mime-type": "text/plain"
+        "preferences": {
+          "Mime-Type": "text/plain"
       }
     ],
     ...
