@@ -43,6 +43,7 @@ Response::
         "filename": "some_file2.txt",
         "preferences": {
           "Mime-Type": "text/plain"
+        }
       }
     ],
     ...
