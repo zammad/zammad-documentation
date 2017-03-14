@@ -21,6 +21,7 @@ Response::
  {
     "id": 3,
     "ticket_id": 3,
+    "from": "Bob Smith",
     "to": "",
     "cc": "",
     "subject": "some subject",
@@ -81,6 +82,7 @@ Response::
  {
     "id": 3,
     "ticket_id": 3,
+    "from": "Bob Smith",
     "to": "",
     "cc": "",
     "subject": "some subject",
@@ -131,6 +133,7 @@ Response::
 
  {
     "id": 3,
+    "from": "Bob Smith",
     "to": "",
     "cc": "",
     "subject": "some subject",
@@ -188,6 +191,7 @@ Response::
  {
     "id": 3,
     "ticket_id": 3,
+    "from": "Bob Smith",
     "to": "",
     "cc": "",
     "subject": "some subject",
