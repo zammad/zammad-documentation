@@ -10,6 +10,8 @@ The documentation for Zammad is organized into a couple of sections:
 * :ref:`migration-docs`
 * :ref:`general-docs`
 * :ref:`channels-docs`
+* :ref:`admin-webfrontend`
+* :ref:`admin-console`
 * :ref:`contributing-docs`
 * :ref:`rest-api-docs`
 * :ref:`appendix`
