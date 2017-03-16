@@ -81,7 +81,16 @@ CentOS7
   baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
   enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
 
-2. Update Zammad
+
+2. Stop Zammad
+----------------
+
+::
+
+  shell> sudo systemctl stop zammad
+
+
+3. Update Zammad
 ----------------
 
 ::
@@ -91,7 +100,15 @@ CentOS7
 **Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.**
 
 
-3. Go and login to Zammad
+4. Start Zammad
+----------------
+
+::
+
+  shell> sudo systemctl start zammad
+
+
+5. Go and login to Zammad
 -------------------------
 
 
@@ -124,8 +141,15 @@ Ubuntu
 
   echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
 
+2. Stop Zammad
+----------------
 
-2. Update Zammad
+::
+
+  shell> sudo systemctl stop zammad
+
+
+3. Update Zammad
 ----------------
 
 ::
@@ -133,9 +157,15 @@ Ubuntu
   shell> apt-get update
   shell> apt-get upgrade
 
-
 **Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.**
 
+4. Start Zammad
+----------------
 
-3. Go and login to Zammad
+::
+
+  shell> sudo systemctl start zammad
+
+
+5. Go and login to Zammad
 -------------------------
