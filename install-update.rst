@@ -13,9 +13,9 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 
 ::
 
+ root@shell> cd /opt
  root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
- root@shell> cd /opt/
- root@shell> tar -xzf zammad-latest.tar.gz
+ root@shell> tar -C zammad -xzf zammad-latest.tar.gz
  root@shell> chown -R zammad /opt/zammad
  root@shell> su - zammad
 
@@ -49,7 +49,7 @@ Stop the application server, websocket server and scheduler.
  zammad@shell> export RAILS_ENV=production
  zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no http reverse proxy
  zammad@shell> rake db:migrate
- zammad@shell> rake assets:precompile 
+ zammad@shell> rake assets:precompile
 
 5. Start zammad services
 ------------------------
