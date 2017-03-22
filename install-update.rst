@@ -15,7 +15,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 
  root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
  root@shell> cd /opt/
- root@shell> tar -xzf zammad-latest.tar.gz
+ root@shell> tar -xzf zammad-latest.tar.gz -C zammad
  root@shell> chown -R zammad /opt/zammad
  root@shell> su - zammad
 
