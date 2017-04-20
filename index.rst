@@ -152,6 +152,7 @@ The documentation for Zammad is organized into a couple of sections:
    api-ticket-article
    api-notification
    api-object
+   api-tags
 
 .. toctree::
    :maxdepth: 2
