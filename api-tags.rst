@@ -6,7 +6,7 @@ List
 
 Required permission:
 
-* ticket.agent or admin.user
+* ticket.agent or admin.tag
 
 Request::
 
@@ -30,7 +30,7 @@ Search
 
 Required permission:
 
-* ticket.agent or admin.user
+* ticket.agent or admin.tag
 
 Request::
 
@@ -60,7 +60,7 @@ Add
 
 Required permission:
 
-* ticket.agent or admin.user
+* ticket.agent or admin.tag
 
 Request::
 
@@ -77,7 +77,7 @@ Remove
 
 Required permission:
 
-* ticket.agent or admin.user
+* ticket.agent or admin.tag
 
 Request::
 
@@ -94,7 +94,7 @@ Admin - List
 
 Required permission:
 
-* admin.user
+* admin.tag
 
 Request::
 
@@ -137,7 +137,7 @@ Admin - Create
 
 Required permission:
 
-* admin.user
+* admin.tag
 
 Request::
 
@@ -158,7 +158,7 @@ Admin - Rename
 
 Required permission:
 
-* admin.user
+* admin.tag
 
 Request::
 
@@ -180,7 +180,7 @@ Admin - Delete
 
 Required permission:
 
-* admin.user
+* admin.tag
 
 Request::
 
