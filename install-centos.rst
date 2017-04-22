@@ -18,7 +18,7 @@ Add Zammad & epel-release RPM repos and install RPM
  sudo yum -y install zammad
 
 
-Go to http://localhost:3000 and you'll see:
+Go to http://localhost and you'll see:
 ===========================================
 
 * "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
@@ -66,5 +66,3 @@ Only websocket server
  sudo systemctl stop zammad-websocket
  sudo systemctl start zammad-websocket
  sudo systemctl restart zammad-websocket
-
-
