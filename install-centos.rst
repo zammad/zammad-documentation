@@ -24,6 +24,12 @@ Go to http://localhost and you'll see:
 * "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
 
 
+On remote server:
+=================
+
+Add your FQDN to servername directive in /etc/nginx/conf.d/zammad.conf and restart your webserver.
+
+
 You can manage the Zammad services manually:
 ===========================================
 

@@ -33,6 +33,12 @@ Go to http://localhost and you'll see:
 Note: Make sure that the firewall is not blocking port 80 (configure firewall via "yast firewall" or stop it via "systemctl stop SuSEfirewall2").
 
 
+On remote server:
+=================
+
+Add your FQDN to servername directive in /etc/nginx/conf.d/zammad.conf and restart your webserver.
+
+
 You can manage the Zammad services manually:
 ============================================
 
@@ -75,4 +81,3 @@ Only websocket server
  sudo systemctl stop zammad-websocket
  sudo systemctl start zammad-websocket
  sudo systemctl restart zammad-websocket
-
