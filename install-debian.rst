@@ -47,7 +47,8 @@ Go to http://localhost and you'll see:
 On remote server:
 =================
 
-Add your FQDN to servername directive in /etc/nginx/conf.d/zammad.conf and restart your webserver.
+Add your fully qualified domain name or public IP to servername directive in your webserver configuration and restart your webserver.
+The installer will give you a hint where the zammads webserver config file is located.
 
 
 You can manage the Zammad services manually:
