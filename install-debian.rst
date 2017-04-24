@@ -33,7 +33,7 @@ Add Zammad DEB Repo and install
 ::
 
  wget -qO - https://deb.packager.io/key | sudo apt-key add -
- sudo echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
+ echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
  sudo apt-get install apt-transport-https
  sudo apt-get update
  sudo apt-get install zammad
