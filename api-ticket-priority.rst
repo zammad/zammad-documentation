@@ -18,7 +18,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 123,
@@ -55,7 +55,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "name": "Ticket Priority 1",
@@ -76,7 +76,7 @@ Required permission:
 Request::
 
  POST /api/v1/ticket_priorities
- 
+
  {
   "name": "Ticket Priority 1",
   "active": true,
@@ -87,7 +87,7 @@ Request::
 Response::
 
  Status: 201 Created
- 
+
  {
   "id": 123,
   "name": "Ticket Priority 1",
@@ -107,7 +107,7 @@ Required permission:
 Request::
 
  PUT /api/v1/ticket_priorities/{id}
- 
+
  {
   "id": 123,
   "name": "Ticket Priority 1",
@@ -119,7 +119,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "name": "Ticket Priority 1",
@@ -135,7 +135,7 @@ Delete
 
 Required permission:
 
-* admin.object (only if no references in history tables and tickets exists)
+* admin.object (only if no references in history tables and tickets exist)
 
 Request::
 
@@ -145,5 +145,5 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {}

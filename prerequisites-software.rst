@@ -26,7 +26,7 @@ Currently we require Ruby 2.3.1 (all required rubygems like ruby on rails are li
 ================
 
 In a typical web environment today, you use an reverse proxy to deliver the static content of your application.
-Only the "expensive" app required http requests are forwarded to the application server.
+Only the "expensive" app required HTTP requests are forwarded to the application server.
 
 The following reverse proxies are supported:
 

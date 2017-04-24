@@ -155,7 +155,7 @@ Response::
 
 For more article attributes have a look into "Ticket Article".
 
-If you want to include attachments to first article, the payload looks like:
+If you want to include attachments of the first article, the payload looks like:
 
 Request::
 
@@ -184,7 +184,7 @@ Request::
   "note": "some note"
  }
 
-If you want to add inline images, just use data uris in html markup:
+If you want to add inline images, just use data URIs in HTML markup:
 
 Request::
 
@@ -245,7 +245,7 @@ Response::
  }
 
 
-If you want to include attachments to article, the payload looks like:
+If you want to include attachments of the article, the payload looks like:
 
 
 Request::
@@ -276,7 +276,7 @@ Request::
   "note": "some note"
  }
 
-If you want to add inline images, just use data uris in html markup:
+If you want to add inline images, just use data URIs in HTML markup:
 
 Request::
 

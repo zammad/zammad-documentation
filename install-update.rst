@@ -9,7 +9,7 @@ Source update
 1. Download Zammad on your system
 ---------------------------------
 
-You can directly download Zammad from https://ftp.zammad.com/ or use the direct url to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
+You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
 
 ::
 
@@ -47,7 +47,7 @@ Stop the application server, websocket server and scheduler.
 ::
 
  zammad@shell> export RAILS_ENV=production
- zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no http reverse proxy
+ zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no HTTP reverse proxy
  zammad@shell> rake db:migrate
  zammad@shell> rake assets:precompile
 

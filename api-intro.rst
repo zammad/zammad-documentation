@@ -10,19 +10,19 @@ This chapter describes the Zammad API v1.
 The API
 =======
 
-The API is a REST/JSON API. Endpoints are documented with the HTTP method for the request and a partial resource.
+Zammad provides a REST/JSON API. Its endpoints are documented with the HTTP method for the request and a partial resource.
 
 Example::
 
  GET /api/v1/users
 
 
-The full url looks like::
+The full URL looks like::
 
  https://your_zammad/api/v1/users
 
 
-Curly braces, {}, indicate values you have to supply for the url.
+Curly braces {} indicate values you have to supply for the URL.
 
 Example::
 
@@ -32,33 +32,33 @@ Example::
 Authentication
 ==============
 
-Zammad supports 3 different authentication methods for the Zammad API.
+Zammad supports three different authentication methods for API.
 
 
 HTTP Basic Authentication (username/password)
 ---------------------------------------------
 
-The username/password provided as http header in the http call. The Zammad admin can enable/disable his authentication method in the admin interface. Read more about HTTP Basic Authentication [here](https://en.wikipedia.org/wiki/Basic_access_authentication).
+The username/password must be provided as HTTP header in the HTTP call. The Zammad admin can enable/disable the authentication method in the admin interface. Read more about HTTP basic authentication [here](https://en.wikipedia.org/wiki/Basic_access_authentication).
 
 Example::
 
  curl -u {username}:{password} https://your_zammad/api/v1/users
 
 
-HTTP Token Authentication (Access Token)
+HTTP Token Authentication (access token)
 ----------------------------------------
 
-The access token provided as http header in the http call. Each user need to create it's own access token in user preferences. The Zammad admin can enable/disable his authentication method in the admin interface.
+The access token must be provided as HTTP header in the HTTP call. Each user needs to create its own access token in the user preferences. The Zammad admin can enable/disable the authentication method in the admin interface.
 
 Example::
 
  curl -H "Authorization: Token token={your_token}" https://your_zammad/api/v1/users
 
 
-OAuth2 (Token Access)
+OAuth2 (token access)
 ---------------------
 
-The Zammad API supports OAuth2 authorization. In order to create OAuth2 tokens by an external application, the Zammad user needs to create an Application in the admin interface first. In your requests, specify the access token in an authorization header as follows:
+The Zammad API supports OAuth2 authorization. In order to create OAuth2 tokens for an external application, the Zammad user needs to create an application in the admin interface. The access token then has to be given within the HTTP header:
 
 Example::
 
@@ -68,7 +68,7 @@ Example::
 Request Format
 ==============
 
-The Zammad API is a JSON API, so you need to set a "Content-Type: application/json" in each http call. If you do not so, you will get and text/html response.
+Zammad uses JSON for its API, so you need to set a "Content-Type: application/json" in each HTTP call. Otherwise the response will be text/html.
 
 Example::
 
@@ -82,7 +82,7 @@ Example::
  }
 
 Example CURL Requests
-==============
+=====================
 
 Get information::
 
@@ -103,7 +103,7 @@ Post file and form data::
 Response Format
 ===============
 
-If an response is successful, an HTTP status codes in the 200 or 300 range is returned. If an item got created or updated, all new attributes will be returned (also server site generated attributes like created_at and updated_at).
+If a response is successful, an HTTP status code in the 200 or 300 range will be returned. If an item has been created or updated, all new attributes will be returned (also server side generated attributes like created_at and updated_at).
 
 Example::
 
@@ -123,13 +123,13 @@ Example::
 Response Format (expanded)
 ==========================
 
-If you want to get reference lookup in response (e. g. the organization attribute will be added at response), you just need to add a ```expand=true``` to the request url.
+If you want to retrieve expanded information for a request (e. g. the organization attribute), you just need to add an ```expand=true``` to the request URL.
 
 Example::
 
  GET /api/v1/users/{id}?expand=true HTTP/1.1
 
-will return a record link this::
+will return the following structure, expanded by "organization"::
 
  Status: 200 Ok
  Content-Type:application/json; charset=utf-8
@@ -145,15 +145,14 @@ will return a record link this::
  }
 
 
-
 Pagination
 ==========
 
-All resources support a pagination functionality. You can do like this::
+All resources support pagination::
 
  GET /api/v1/users?expand=true&page=1,per_page=5 HTTP/1.1
 
-will return 5 records beginning with first record of all::
+will return five records beginning with first record of all::
 
  Status: 200 Ok
  Content-Type:application/json; charset=utf-8

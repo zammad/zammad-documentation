@@ -16,7 +16,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "firstname": "Bob",
@@ -35,7 +35,7 @@ List
 Required permission:
 
 * ticket.agent or admin.user (can read all users)
-* any (can only read it's own user if exists)
+* any (can only read its own user if exists)
 
 Request::
 
@@ -44,7 +44,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 123,
@@ -83,7 +83,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 123,
@@ -122,7 +122,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "firstname": "Bob",
@@ -146,7 +146,7 @@ Required permission:
 Request::
 
  POST /api/v1/users
- 
+
  {
   "firstname": "Bob",
   "lastname": "Smith",
@@ -159,7 +159,7 @@ Request::
 Response::
 
  Status: 201 Created
- 
+
  {
   "id": 123,
   "firstname": "Bob",
@@ -185,7 +185,7 @@ Required permission:
 Request::
 
  PUT /api/v1/users/{id}
- 
+
  {
   "firstname": "Bob",
   "lastname": "Smith",
@@ -198,7 +198,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "firstname": "Bob",
@@ -217,7 +217,7 @@ Delete
 
 Required permission:
 
-* admin.user (only if no references in history tables and tickets exists)
+* admin.user (only if no references in history tables and tickets exist)
 
 Request::
 
@@ -227,6 +227,6 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {}
 

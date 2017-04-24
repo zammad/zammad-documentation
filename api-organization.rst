@@ -7,7 +7,7 @@ List
 Required permission:
 
 * ticket.agent or admin.organization (can read all organizations)
-* any (can only read it's own organization if exists)
+* any (can only read its own organization if exists)
 
 Request::
 
@@ -16,7 +16,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 123,
@@ -53,7 +53,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 123,
@@ -83,7 +83,7 @@ Show
 Required permission:
 
 * ticket.agent or admin.organization (can read all organizations)
-* any (can only read it's own user if exists)
+* any (can only read its own user if exists)
 
 Request::
 
@@ -92,7 +92,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "name": "Org 1",
@@ -113,7 +113,7 @@ Required permission:
 Request::
 
  POST /api/v1/organizations
- 
+
  {
   "name": "Org 1",
   "shared": true,
@@ -124,7 +124,7 @@ Request::
 Response::
 
  Status: 201 Created
- 
+
  {
   "id": 123,
   "name": "Org 1",
@@ -146,7 +146,7 @@ Required permission:
 Request::
 
  PUT /api/v1/organizations/{id}
- 
+
  {
   "id": 123,
   "name": "Org 1",
@@ -158,7 +158,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "name": "Org 1",
@@ -174,7 +174,7 @@ Delete
 
 Required permission:
 
-* admin.organization (only if no references in history tables and tickets exists)
+* admin.organization (only if no references in history tables and tickets exist)
 
 Request::
 
@@ -184,6 +184,6 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {}
 

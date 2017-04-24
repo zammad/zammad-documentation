@@ -59,7 +59,7 @@ Show
 
 Required permission:
 
-* authenticated user (content of notitifcations depends on user permissions)
+* authenticated user (content of notifications depends on user permissions)
 
 Request::
 
@@ -119,7 +119,7 @@ Delete
 
 Required permission:
 
-* authenticated user (content of notitifcations depends on user permissions)
+* authenticated user (content of notifications depends on user permissions)
 
 Request::
 
@@ -137,7 +137,7 @@ Mark all as read
 
 Required permission:
 
-* authenticated user (content of notitifcations depends on user permissions)
+* authenticated user (content of notifications depends on user permissions)
 
 Request::
 
