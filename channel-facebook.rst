@@ -1,12 +1,12 @@
 Facebook
 ********
 
-It's possible to put your Facebook Page communication into Zammad. To do so, you need to follow these steps:
+It's possible to put your Facebook page communication into Zammad. To do so, you need to follow these steps:
 
 Register Facebook app
 =====================
 
-Register your Zammad as Facebook app under https://developers.facebook.com.
+Register your Zammad as Facebook app at https://developers.facebook.com.
 
 .. image:: images/developers.facebook.com-create-app.png
    :alt: new app page
@@ -42,7 +42,7 @@ Go to "Admin -> Channels -> Facebook"
 .. image:: images/zammad_connect_app1.png
    :alt: Admin -> Channels -> Facebook
 
-Click on "Connect Facebook App" and enter your "App ID", "APP Secret" and verify the "Callback URL".
+Click on "Connect Facebook App" and enter your "App ID", "App Secret" and verify the "Callback URL".
 
 .. image:: images/zammad_connect_app2.png
    :alt: Connect Facebook App, click "Submit"
@@ -79,4 +79,4 @@ Start using your new channel
 
 Start and write a post to your page, short time later you will have a new ticket in Zammad.
 
-Just click on reply button (as you do it for emails) to send a comment.
+Just click on the reply button (as you do it for emails) to send a comment.

@@ -1,11 +1,11 @@
 Pipe (Fetchmail)
 ****************
 
-Maybe you want to add mails via Fetchmail & Procmail to Zammad.
+Maybe you want to add emails via Fetchmail and Procmail to Zammad.
 
-To get this work you need to pipe your mail to rails.
+To get this to work you need to pipe your emails to rails.
 
-On the Commandline
+Command line
 ==================
 
 ::
@@ -40,14 +40,14 @@ vi .fetchmailrc
  poll your.mail.server protocol POP3 user USERNAME pass PASSWORD mda "rails r 'Channel::Driver::MailStdin.new(trusted: true)'"
 
 
-Thats it. Mails are now directly piped into Zammad.
+Thats it. Mails now will be directly piped into Zammad.
 
 
 
-Using Procmail for advnaced features like presorting
-====================================================
+Using Procmail for advanced features like presorting
+=====================================================
 
-If you want to do some more with your mails, like presorting to a Zammad group or filtering spam, you can use Procmail.
+If you want to do some more with your emails, like presorting to a Zammad group or filtering spam, you can use Procmail.
 
 Fetchmail config looks slightly different.
 
@@ -91,62 +91,62 @@ vi .procmailrc
 
 
 
-Supported mail header for presorting
-====================================
+Supported email headers for presorting
+======================================
 
-Ticket-Attributes
+Ticket attributes
 -----------------
 
-For ticket creation use "X-Zammad-Ticket-Attribute: some value", if you want to change
-ticket attributes on follow up, use "X-Zammad-Ticket-FollowUp-Attribute: some value".
+For ticket creation use "X-Zammad-Ticket-Attribute: some value". If you want to change
+ticket attributes on follow-up, use "X-Zammad-Ticket-FollowUp-Attribute: some value".
 
 
 X-Zammad-Ticket-Priority
 ++++++++++++++++++++++++
 
-* Set priority of ticket (for whole list check your database).
+* Sets priority of ticket (for available priorities check Zammad's database).
 * Example: X-Zammad-Ticket-Priority: (1 low|2 normal|3 high)
 
 
 X-Zammad-Ticket-Group
 +++++++++++++++++++++
 
-* Presort of group (highest sort priority).
+* Presorts by group (highest sort priority).
 * Example: X-Zammad-Ticket-Group: [one system group]
 
 
 X-Zammad-Ticket-Owner
 +++++++++++++++++++++
 
-* Assign ticket to agent.
+* Assigns ticket to agent.
 * Example: X-Zammad-Ticket-Owner: [login of agent]
 
 
 X-Zammad-Ticket-State
 +++++++++++++++++++++
 
-* Set state of ticket (for whole list check your database)! Be careful!
+* Sets state of ticket (for available states check Zammad's database)! Be careful!
 * Example: X-Zammad-Ticket-State: (new|open|...)
 
 X-Zammad-Customer-Email
 +++++++++++++++++++++++
 
-* Set customer via explicit email.
+* Sets customer via explicit email address.
 * Example: X-Zammad-Customer-Email: [email address]
 
 
 X-Zammad-Customer-Login
 +++++++++++++++++++++++
 
-* Set customer via explicit login.
+* Sets customer via explicit login.
 * Example: X-Zammad-Customer-Login: [login]
 
 
 
-Article-Attributes
+Article attributes
 ------------------
 
-Every time if an article is created (new ticket or/and follow up) you can use
+Everytime an article is being created (new ticket or/and follow up) you can use
 "X-Zammad-Article-Attribute: some value".
 
 
@@ -160,7 +160,7 @@ X-Zammad-Article-Sender
 X-Zammad-Article-Type
 +++++++++++++++++++++
 
-* Article type (for whole list check your database).
+* Article type (for available types check Zammad's database).
 * Example: X-Zammad-Article-Type: (email|phone|fax|sms|webrequest|note|twitter status|direct-message|facebook|...)
 
 
@@ -173,5 +173,5 @@ X-Zammad-Article-Visibility
 Ignore Header
 +++++++++++++
 
-* If you want to ignore whole email, just set the "X-Zammad-Ignore" header.
+* If you want to ignore an email, just set the "X-Zammad-Ignore" header.
 * Example: X-Zammad-Ignore: [yes|true]
