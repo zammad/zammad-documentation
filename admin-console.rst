@@ -1,7 +1,7 @@
 Console
 *******
 
-Zammad uses Ruby on Rails so you can make use of the rails console: http://guides.rubyonrails.org/
+Zammad uses Ruby on Rails so you can make use of the rails console: http://guides.rubyonrails.org/command_line.html
 
 
 To open the rails console on the shell you have enter the following commands.
