@@ -200,9 +200,12 @@ Enable proxy
  rails> Setting.set('proxy_password', 'some pass')
 
 
+Destroy stuff
+-------------
 
-###################
- rails r 'OnlineNotification.destroy_all'
- rails r 'ActivityStream.destroy_all'
- rails r 'RecentView.destroy_all'
- rails r 'History.destroy_all'
+::
+
+ rails> OnlineNotification.destroy_all
+ rails> ActivityStream.destroy_all
+ rails> RecentView.destroy_all
+ rails> History.destroy_all
