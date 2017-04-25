@@ -143,7 +143,7 @@ Response::
  }
 
 Create
-====
+======
 
 Required permission:
 
@@ -192,7 +192,7 @@ Response::
  }
 
 Update
-====
+======
 
 Required permission:
 
@@ -261,7 +261,7 @@ Response::
  }
 
 Execute Database Migrations
-====
+===========================
 
 Required permission:
 

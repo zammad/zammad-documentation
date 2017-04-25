@@ -1,30 +1,30 @@
 Trigger
 *******
 
-Triggers will be executed (ordered by name) on every ticket create or update to execute changes on tickets or to send notifications.
+Triggers will be executed (ordered by name) on every ticket creation or update. They execute changes on tickets or to send notifications.
 
 
 Use cases
 =========
 
-Example of use cases where triggers are useful.
+Examples for using triggers:
 
-* Send auto reply for new tickets to customer to let them know that a ticket has been created.
-* Set ticket owner on first reply if no owner is set.
+* Sending auto replies for new tickets to customers to let them know that a ticket has been created.
+* Setting the ticket owner on first reply if no owner is set.
 
 
 Conditions
 ==========
 
-Based on matching conditions certain changes on tickets will be made and/or notifications will be sent.
+Based on matching conditions, certain changes on tickets will be made and/or notifications will be sent.
 
-* Ticket-Attributes: Define matching ticket attributes where a trigger will executed. You can also distinguish between creating and updating tickets (it's called action).
+* Ticket attributes: Define matching ticket attributes for which a trigger will be executed. You can also distinguish between creating and updating tickets (it's called action).
 
-* Article-Attributes: If you define article attributes, the changed ticket must have a new article and the new article must match selected attributes.
+* Article attributes: If you define article attributes, the changed ticket must have a new article and the new article must match the selected attributes.
 
-* Customer-Attributes: The customer attributes of the changed ticket must match with these selected attributes.
+* Customer attributes: The customer attributes of the changed ticket must match these selected attributes.
 
-* Organization-Attributes: The organization attributes of the changed ticket must match with these selected attributes.
+* Organization attributes: The organization attributes of the changed ticket must match these selected attributes.
 
 
 Execution

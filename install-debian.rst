@@ -6,7 +6,7 @@ Currently we support Debian 8
 Prerequisites
 =============
 
-Be sure to use an  UTF-8 locale or PostgreSQL will not install.
+Be sure to use an UTF-8 locale or PostgreSQL will not install.
 
 Check locale
 ------------
@@ -27,7 +27,7 @@ Set locale
  echo "LANG=en_US.UTF-8" > /etc/default/locale
 
 
-Add Zammad DEB Repo and install
+Add Zammad DEB repo and install
 ===============================
 
 ::
@@ -41,14 +41,14 @@ Add Zammad DEB Repo and install
 Go to http://localhost and you'll see:
 ======================================
 
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
 On remote server:
 =================
 
-Add your fully qualified domain name or public IP to servername directive in your webserver configuration and restart your webserver.
-The installer will give you a hint where Zammads webserver config file is located.
+Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
+The installer will give you a hint where Zammad's web server config file is located.
 
 
 You can manage the Zammad services manually:

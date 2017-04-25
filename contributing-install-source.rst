@@ -1,7 +1,7 @@
 Install from source
 *******************
 
-Install from source (Debian 7,8 / Ubuntu 16.04)
+Install from source (Debian 7, 8 / Ubuntu 16.04)
 ===============================================
 
 With Nginx & MySQL
@@ -23,7 +23,7 @@ Add User
  echo "export RAILS_ENV=production" >> /opt/zammad/.bashrc
 
 
-Create MySQL User zammad (for Debian: upgrade MySQL to v5.6+ before, see: http://dev.mysql.com/downloads/repo/apt/)
+Create MySQL user zammad (for Debian: upgrade MySQL to v5.6+ before, see: http://dev.mysql.com/downloads/repo/apt/)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ::
@@ -58,7 +58,7 @@ Create Nginx Config
 
  ln -s /etc/nginx/sites-available/zammad.conf /etc/nginx/sites-enabled/zammad.conf
 
-Install Environnment
+Install environnment
 ++++++++++++++++++++
 
 ::
@@ -114,7 +114,7 @@ Restart nginx as root
 Go to http://localhost and you'll see:
 ++++++++++++++++++++++++++++++++++++++
 
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
 Install from source (Mac OS 10.8)
@@ -175,8 +175,8 @@ Start Zammad
  script/scheduler.rb start # generate overviews on demand, just send changed data to browser
 
 
-Visit Zammad in your browser page
----------------------------------
+Visit Zammad in your browser
+----------------------------
 
 * http://localhost:3000/#getting_started
 

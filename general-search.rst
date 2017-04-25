@@ -3,7 +3,7 @@ Search Cheat Sheet
 
 Tickets, articles (with attachments), users and organizations are indexed by default.
 
-A simple search for all objects can be: "something". If you want to search for objetcs with certain attributes you can use "attribute: something".
+A simple search for all objects can be: "something". If you want to search for objects with certain attributes you can use "attribute: something".
 
 * For example: "customer: some name"
 

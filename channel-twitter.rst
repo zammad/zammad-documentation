@@ -19,12 +19,12 @@ Click on "Create New App"
 Enter app settings. As "Callback URL" you need to enter "https://zammad_host/api/v1/external_credentials/twitter/callback"
 
 .. image:: images/apps.twitter.com_created_app_screen.png
-   :alt: new app is created
+   :alt: new app is being created
 
 After the app has been created, update the application icon and organization attributes.
 
 .. image:: images/apps.twitter.com_set_permissions.png
-   :alt: set permissions to receive & send direct messages
+   :alt: set permissions to receive and send direct messages
 
 Next we need to set _read, write and access direct messages permissions_ for the app.
 
@@ -81,7 +81,7 @@ Start and write a message (direct message or tweet), short time later you will h
 .. image:: images/zammad_first_tweet_as_ticket.png
    :alt: A new Ticket - the tweet - just reply
 
-Just click on reply button (as you do it for emails) to send a reply.
+Just click on the reply button (as you do it for emails) to send a reply.
 
 .. image:: images/zammad_first_tweet_as_ticket_reply.png
    :alt: Ticket after reply sent out

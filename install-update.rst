@@ -6,10 +6,10 @@ Source update
 
 **Note: Please backup your Zammad instance before update!**
 
-1. Download Zammad on your system
+1. Download Zammad to your system
 ---------------------------------
 
-You can directly download Zammad from https://ftp.zammad.com/ or use the direct url to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
+You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
 
 ::
 
@@ -36,7 +36,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
  zammad@shell> bundle install --without test development postgres
 
 
-3. Stop zammad services
+3. Stop Zammad services
 -----------------------
 
 Stop the application server, websocket server and scheduler.
@@ -47,11 +47,11 @@ Stop the application server, websocket server and scheduler.
 ::
 
  zammad@shell> export RAILS_ENV=production
- zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no http reverse proxy
+ zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no HTTP reverse proxy
  zammad@shell> rake db:migrate
  zammad@shell> rake assets:precompile
 
-5. Start zammad services
+5. Start Zammad services
 ------------------------
 
 Start the application server, websocket server and scheduler.
@@ -97,7 +97,7 @@ CentOS7
 
  shell> sudo yum update zammad
 
-**Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.**
+**Note: The package will automatically execute maintenance tasks like database changes and will restart Zammad for you.**
 
 
 4. Start Zammad
@@ -108,8 +108,8 @@ CentOS7
   shell> sudo systemctl start zammad
 
 
-5. Go and login to Zammad
--------------------------
+5. Go and log in to Zammad
+--------------------------
 
 
 
@@ -157,7 +157,7 @@ Ubuntu
   shell> apt-get update
   shell> apt-get upgrade
 
-**Note: The package will automatically execute maintanance task like database changes and will restart Zammad for you.**
+**Note: The package will automatically execute maintenance tasks like database changes and will restart Zammad for you.**
 
 4. Start Zammad
 ----------------
@@ -167,5 +167,5 @@ Ubuntu
   shell> sudo systemctl start zammad
 
 
-5. Go and login to Zammad
--------------------------
+5. Go and log in to Zammad
+--------------------------

@@ -4,7 +4,7 @@ Install from source (generic)
 1. Install Zammad on your system
 ================================
 
-You can directly download Zammad from https://ftp.zammad.com/ or use the direct url to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
+You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
 
 ::
 
@@ -75,4 +75,4 @@ For MySQL (note, the option says "without ... postgres")
 6. Go to http://localhost:3000 and you'll see:
 ==============================================
 
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+* "Welcome to Zammad!", there you need to create your admin user and invite other agents.

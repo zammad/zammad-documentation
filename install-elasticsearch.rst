@@ -1,8 +1,8 @@
 Set up Elasticsearch
 ********************
 
-We use Elasticsearch for the awesome search in Zammad. 
-This manual uses "zammad" command which is only available if you installed Zammad from one of our package repos.
+We use Elasticsearch for the awesome search in Zammad.
+This manual uses the "zammad" command which is only available if you installed Zammad from one of our package repos.
 
 Install Elasticsearch and its Attachment plugin
 ===============================================
@@ -120,7 +120,7 @@ Extra Elasticsearch index name space (optional)
 
  zammad run rails r "Setting.set('es_index', Socket.gethostname + '_zammad')"
 
-Ignore certain file extentions for indexing (optional)
+Ignore certain file extensions for indexing (optional)
 ------------------------------------------------------
 
 ::
@@ -139,8 +139,8 @@ Using Elasticsearch on another server
 =====================================
 
 Elasticsearch can also be installed on another server but you have to know that this is insecure out of the box because Elasticsearch has no authentication.
-For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentification to access it from Zammad.
+For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentication to access it from Zammad.
 
-You can find a Nginx reverse proxy config here:
+You can find an Nginx reverse proxy config here:
 
 * https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf

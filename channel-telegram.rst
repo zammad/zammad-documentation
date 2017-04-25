@@ -1,32 +1,32 @@
 Telegram
-*******
+********
 
-It's possible to put your Telegram Bot communication into Zammad. To do so, you need to follow these steps.
+It's possible to put your Telegram bot communication into Zammad. To do so, you need to follow these steps.
 
-Note: Your Zammad instance need to be available via https from public (we use Telegram WebHooks).
+Note: Your Zammad instance needs to be publicly available via HTTPS (we use Telegram WebHooks).
 
-Register a Telegram Bot app
+Register a Telegram bot app
 ====================
 
-Register your Telegram Bot via your Telegram client, see also here: https://core.telegram.org/bots#3-how-do-i-create-a-bot
+Register your Telegram bot via your Telegram client, see also here: https://core.telegram.org/bots#3-how-do-i-create-a-bot
 
-Got to BotFather
+Go to BotFather
 
 .. image:: images/telegram_bot_start.png
    :alt: inital page
 
-Register a new bot by using "/newbot", definde name and username
+Register a new bot by using "/newbot" and define its name and username
 
 .. image:: images/telegram_bot_name_and_username.png
    :alt: /newbot
 
-All done, you will get your Telegram Bot API token
+All done, you will get your Telegram bot API token
 
 .. image:: images/telegram_bot_finish.png
-   :alt: bot is created
+   :alt: bot has been created
 
 
-Configure Zammad as Telegram Bot
+Configure Zammad as Telegram bot
 ===============================
 
 Go to "Admin -> Channels -> Telegram" and click "Add Bot"
@@ -34,18 +34,18 @@ Go to "Admin -> Channels -> Telegram" and click "Add Bot"
 .. image:: images/telegram_admin_new.png
    :alt: Admin -> Channels -> Telegram
 
-Enter your "API Token", enter your "welcome message" and set the incoming group.
+Enter your "API Token", your "welcome message" and set the incoming group.
 
 .. image:: images/telegram_admin_new_done.png
-   :alt: Telegram Bot added
+   :alt: Telegram bot added
 
-Done, your Zammad is configured as Telegram Bot now.
+Done, your Zammad is configured as Telegram bot now.
 
 
 Start using your new channel
 ============================
 
-Go to your Telegram client, search for your new Telegram Bot and start writing a message.
+Go to your Telegram client, search for your new Telegram bot and start writing a message.
 
 .. image:: images/telegram_client_search_bot.png
    :alt: search for bot

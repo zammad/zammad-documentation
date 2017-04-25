@@ -3,7 +3,7 @@ Console
 
 To open the rails console on the shell you have enter the following commands.
 
-1.) Start Zammads Rails console
+1.) Start Zammad's Rails console
 =========================================================
 
 If you used a Zammad DEB or RPM package:

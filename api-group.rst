@@ -15,7 +15,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
    {
      "id": 123,
@@ -62,7 +62,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  {
   "id": 123,
   "name": "Group 1",
@@ -169,7 +169,7 @@ Delete
 
 Required permission:
 
-* admin.group (only if no references in history tables and tickets exists)
+* admin.group (only if no references in history tables and tickets exist)
 
 Request::
 

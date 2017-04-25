@@ -1,14 +1,14 @@
 Start
 *****
 
-We would be glad if you contribute to Zammad. You can do this on several places. Contributions are mainly done by forking one of our repos on GitHub and creating a pull request from your changes.
+We would be glad if you contribute to Zammad. You can do this in several ways. Contributions are mainly done by forking one of our repos on GitHub and creating a pull request with your changes.
 
-All repos can be found @ https://github.com/zammad
+All repos can be found at https://github.com/zammad
 
 Source Code
 ===========
 
-The Zammad sourcecode can be found on GitHub @ https://github.com/zammad/zammad
+The Zammad source code can be found on GitHub at https://github.com/zammad/zammad
 
 
 Documentation
@@ -16,19 +16,19 @@ Documentation
 
 Do you want to contribute to the Zammad documentation?
 
-Open a new GitHub pull request @ https://github.com/zammad/zammad-documentation with your changes.
+Open a new GitHub pull request at https://github.com/zammad/zammad-documentation with your changes.
 
-The Zammad documentation is hosted on readthedocs.org. You can read it here at https://docs.zammad.org or browse the fikles via GitHub which also renders the used ReStructuredText markup markup.
+The Zammad documentation is hosted on readthedocs.org. You can read it there at https://docs.zammad.org or browse the files via GitHub which also renders the used ReStructuredText markup.
 
 ReStructuredText markup
 -----------------------
 
-If you like to edit the docs use the ReStructuredText markup language. Infos about this markup language can be found at:
+If you like to edit the docs use the ReStructuredText markup language. Information about this language can be found at:
 
 * http://www.sphinx-doc.org/en/stable/rest.html
 * http://docutils.sourceforge.net/docs/user/rst/quickref.html
 * http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
 
-Thanks! ❤️ ❤️ ❤️
+Thanks! ❤ ❤ ❤
 
   Zammad Team
