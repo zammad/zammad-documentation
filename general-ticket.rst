@@ -1,16 +1,16 @@
-All about the Ticket
-********************
+Everything about the ticket
+***************************
 
 A ticket is a container for a conversation with the customer about one dedicated topic/issue.
 
-Ticket States
+Ticket states
 =============
 
 In default setup Zammad has the following ticket states:
 
 * new
 
-  * Ticket is created by customer, no agent has sent out a response to the customer right now
+  * Ticket has been created by a customer, no agent has sent out a response to the customer yet
   * If an agent replies to the customer, the ticket will change its state to "open" automatically
 
 * open
@@ -32,17 +32,17 @@ In default setup Zammad has the following ticket states:
 
 * closed
 
-  * Ticket is solved/finished, no further action/attention needed
+  * Ticket has been solved/finished, no further action/attention needed
 
 
-Ticket Colors
+Ticket colors
 =============
 
-On almost every place in the UI where a ticket is shown you will see a colored circle. The color shows you if the ticket needs attention:
+Almost anywhere a ticket is being shown you will see a colored circle. The color tells you if the ticket needs attention:
 
 * Orange
 
-  * Ticket is created, somebody needs to work on it
+  * Ticket has been created, somebody needs to work on it
   * Pending reminder of ticket has been reached, somebody needs to work on it
 
 * Red
@@ -55,4 +55,4 @@ On almost every place in the UI where a ticket is shown you will see a colored c
 
 * Dark gray
 
-  * Pending reminder or pending close is set but not yet reached, no further action/attention needed right now
+  * Pending reminder or pending close has been set but not yet reached, no further action/attention needed right now

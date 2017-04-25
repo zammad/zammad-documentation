@@ -75,4 +75,4 @@ For MySQL (note, the option says "without ... postgres")
 6. Go to http://localhost:3000 and you'll see:
 ==============================================
 
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+* "Welcome to Zammad!", there you need to create your admin user and invite other agents.

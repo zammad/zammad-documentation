@@ -114,7 +114,7 @@ Restart nginx as root
 Go to http://localhost and you'll see:
 ++++++++++++++++++++++++++++++++++++++
 
-* "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
 Install from source (Mac OS 10.8)

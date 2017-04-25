@@ -42,7 +42,7 @@ That’s it! You’re now running Zammad in a Vagrant environment.
 Go to http://localhost:8080 and you'll see:
 ===========================================
 
-*  "Welcome to Zammad!", there you need to create your admin user and you need to invite other agents.
+*  "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
 SSH into the machine

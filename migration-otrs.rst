@@ -9,7 +9,7 @@ Install plugins on OTRS
 Install Znuny4OTRS-Repo
 -----------------------
 
-This is a dependency for the OTRS migration plugin
+This is a dependency of the OTRS migration plugin
 
 * On OTRS 5:
 
@@ -40,9 +40,9 @@ Import via Browser
 ==================
 
 After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
-From there you're able to start migration from OTRS.
+From there you're able to start the migration from OTRS.
 
-See the Video @ http://days.zammad.org/features/migrator
+See the Video at http://days.zammad.org/features/migrator
 
 
 Import via command line
@@ -53,7 +53,7 @@ If you miss this at the beginning or you want to re-import again you have to use
 Stop all Zammad processes and switch Zammad to import mode (no events are fired - e. g. notifications, sending emails, ...)
 
 
-If you installed the zammad DEB or RPM package
+If you installed the Zammad DEB or RPM package
 ----------------------------------------------
 
 ::
@@ -72,7 +72,7 @@ If you installed from source
 
 
 Enter the following commands in the rails console
-------------------------------------------------
+-------------------------------------------------
 
 ::
 
@@ -82,7 +82,7 @@ Enter the following commands in the rails console
  Import::OTRS.start
 
 
-After the import is done switch Zammad back to non import mode and mark the system initialization as done
+After the import is done switch Zammad back to non-import mode and mark the system initialization as done.
 
 ::
 
@@ -97,7 +97,7 @@ Importing a diff
 In some cases it might be desirable to update the already imported data from OTRS. This is possible with the following commands.
 
 Enter the following commands in the rails console
-------------------------------------------------
+-------------------------------------------------
 
 ::
 
@@ -107,7 +107,7 @@ Enter the following commands in the rails console
  Setting.set('system_init_done', false)
  Import::OTRS.diff_worker
 
-After the import is done switch Zammad back to non import mode and mark the system initialization as done
+After the import is done switch Zammad back to non-import mode and mark the system initialization as done.
 
 ::
 
@@ -122,7 +122,7 @@ Restarting from scratch
 
 First make sure all Zammad processes are stopped. After that reset your database.
 
-If you installed the zammad DEB or RPM package
+If you installed the Zammad DEB or RPM package
 ----------------------------------------------
 
 ::

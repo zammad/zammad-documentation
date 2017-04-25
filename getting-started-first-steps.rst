@@ -1,4 +1,4 @@
-First Steps
+First steps
 ***********
 
 After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
