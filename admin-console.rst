@@ -101,8 +101,8 @@ Fetch mails
  rails> Channel.fetch
 
 
-Get ticklet state types
------------------------
+Get ticket state types
+----------------------
 
 ::
 
