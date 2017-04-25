@@ -218,3 +218,27 @@ Response::
  }
 
 To download attachments you need to call "GET /api/v1/ticket_attachment/#{ticket_id}/#{article_id}/#{id}".
+
+If you want to create a phone ticket on behalf for a specific customer, use origin_by_id:
+
+Required permission:
+
+* ticket.agent (access to related ticket)
+
+Request::
+
+ POST /api/v1/ticket_articles
+
+ {
+    "ticket_id": 3,
+    "origin_by_id": 5,
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "<b>some</b> message witn inline image <img src=\"data:image/jpeg;base64,ABCDEFG==\">"
+    "content_type": "text/html",
+    "sender": "Customer",
+    "type": "phone",
+    "internal": false,
+    "time_unit": "12"
+ }
