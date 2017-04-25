@@ -154,6 +154,8 @@ The documentation for Zammad is organized into a couple of sections:
    api-object
    api-tags
 
+.. _appendix:
+
 .. toctree::
    :maxdepth: 2
    :glob:
