@@ -4,7 +4,7 @@ Console
 Zammad uses Ruby on Rails so you can make use of the rails console: http://guides.rubyonrails.org/command_line.html
 
 
-To open the rails console on the shell you have enter the following commands.
+To open the rails console on the shell you have to enter the following commands.
 
 Start Zammad's Rails console
 ============================
@@ -16,8 +16,8 @@ If you used a Zammad DEB or RPM package:
 
  shell> zammad run rails c
 
-If you compiled Zammad by yoursef just use:
--------------------------------------------
+If you installed Zammad from source use:
+----------------------------------------
 
 ::
 
