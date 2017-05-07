@@ -162,3 +162,4 @@ The documentation for Zammad is organized into a couple of sections:
    :caption: Appendix
 
    appendix-privacy
+   appendix-backup-and-restore
