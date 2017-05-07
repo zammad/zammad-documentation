@@ -1,5 +1,5 @@
-Backup & Restore
-****************
+Backup and Restore
+******************
 
 Zammad contains simple backup & restore scripts that can be executed via command line or cron job.
 You can find the scripts in the "/opt/zammad/contrib/backup" directory.
