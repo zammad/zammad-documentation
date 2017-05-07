@@ -34,7 +34,7 @@ With menu for choosing backup date
 
  ./zammad_restore.sh
 
-With command line argument for backup database
+With command line argument for backup filedate
 ----------------------------------------------
 
 ::
