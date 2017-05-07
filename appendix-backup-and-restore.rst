@@ -15,9 +15,9 @@ Create Backup
 =============
 
 ::
-  cd /opt/zammad/contrib/backup
-  ./zammad_backup.sh
 
+ cd /opt/zammad/contrib/backup
+ ./zammad_backup.sh
 
 
 Restore everything
