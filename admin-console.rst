@@ -32,8 +32,8 @@ Find user
 
 ::
 
-  rails> User.find(4)
-  rails> User.find_by(email: 'your@email')
+ rails> User.find(4)
+ rails> User.find_by(email: 'your@email')
 
 
 Find group
@@ -57,13 +57,15 @@ Change priority
 
 ::
 
-  rails> priority2 = Priority.find(2)
-  rails> priority2.name = '2-high'
-  rails> priority2.default_create = true
-  rails> priority2.save!
+ rails> priority2 = Priority.find(2)
+ rails> priority2.name = '2-high'
+ rails> priority2.default_create = true
+ rails> priority2.save!
 
 
-Get ticket_hook setting------
+Get ticket_hook setting
+-----------------------
+
 ::
 
  rails> Setting.get('ticket_hook')
@@ -90,7 +92,7 @@ Set storage_rpovider Setting
 
 ::
 
-  rails> Setting.set('storage_provider', 'DB')
+ rails> Setting.set('storage_provider', 'DB')
 
 
 Fetch mails
