@@ -17,7 +17,7 @@ Examples
 ========
 
 * number:1118566
-* title:"some words with spaces" # exact phrase / without quotation marks " an OR search for the words will be performed
+* title:"some words with spaces" # exact phrase / without quotation marks " an AND search for the words will be performed (in Zammad 1.5 and lower an OR search will be performed)
 * title:"some wor*" # exact phrase beginning with "some wor*" will be searched
 * created_at:[2017-01-01 TO 2017-12-31] # a time range
 * created_at:>now-1h # created within last hour
