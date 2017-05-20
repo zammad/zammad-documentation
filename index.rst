@@ -161,5 +161,7 @@ The documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: Appendix
 
-   appendix-privacy
+
    appendix-backup-and-restore
+   appendix-configure-env-vars
+   appendix-privacy
