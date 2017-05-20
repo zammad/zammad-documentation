@@ -15,7 +15,7 @@ Configure IP
 Configure ports
 ===============
 
-Please not that you also have to reconfigurte Nginx when changing the ports!
+Please note that you also have to reconfigure Nginx when changing the ports!
 
 ::
 
