@@ -20,5 +20,5 @@ Please note that you also have to reconfigure Nginx when changing the ports!
 ::
 
  zammad config:set ZAMMAD_RAILS_PORT=3000
- zammad config:set ZAMMAD_WEBOSCKET_PORT=6042
+ zammad config:set ZAMMAD_WEBSOCKET_PORT=6042
  systemctl restart zammad
