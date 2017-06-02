@@ -63,7 +63,8 @@ Debian 8:
  echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
- apt-get install openjdk-8-jre elasticsearch
+ apt-get install -t jessie-backports openjdk-8-jre
+ apt-get install elasticsearch
  sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
  systemctl restart elasticsearch
