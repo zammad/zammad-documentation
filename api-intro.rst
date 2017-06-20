@@ -90,15 +90,37 @@ Get information::
 
 Put information::
 
- curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X PUT -d '{ json: 'data' }' https://xxx.zammad.com/api/v1/tickets/3
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X PUT -d '{ json: "data" }' https://xxx.zammad.com/api/v1/tickets/3
 
 Post information::
 
- curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{ json: 'data' }' https://xxx.zammad.com/api/v1/users/3
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{ json: "data" }' https://xxx.zammad.com/api/v1/users/3
 
 Post file and form data::
 
  curl -u test@zammad.com:test123 -X POST --form form_id=740354910 --form File=@/workspace/test.jpg https://xxx.zammad.com/api/v1/ticket_attachment_upload
+
+More in detail with tickets and users:
+
+Create a new ticket::
+
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}' https://xxx.zammad.com/api/v1/tickets
+
+Search for tickets:
+
+ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=some+message&limit=10&expand=true'
+ 
+Create an new user::
+
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"firstname":"Bob","lastname":"Smith","email":"email_of_customer@example.com","roles":["Customer"],"password":"some_password"}' https://xxx.zammad.com/api/v1/users
+
+Create an new user (with welcome email)::
+
+ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"firstname":"Bob","lastname":"Smith","email":"email_of_customer@example.com","roles":["Customer"],"password":"some_password","invite":true}' https://xxx.zammad.com/api/v1/users
+
+Search for users:
+
+ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/users/search?query=smith&limit=10&expand=true'
 
 Response Format
 ===============
