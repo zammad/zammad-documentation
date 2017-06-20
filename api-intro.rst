@@ -100,7 +100,8 @@ Post file and form data::
 
  curl -u test@zammad.com:test123 -X POST --form form_id=740354910 --form File=@/workspace/test.jpg https://xxx.zammad.com/api/v1/ticket_attachment_upload
 
-More in detail with tickets and users:
+Example CURL Requests (for tickets and users)
+=============================================
 
 Create a new ticket::
 
