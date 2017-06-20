@@ -24,6 +24,7 @@ Response::
     "group_id": 1,
     "state_id": 1,
     "priority_id": 2,
+    "customer_id": 2,
     ...
     "note": "some note",
     "updated_at": "2016-08-16T07:55:42.119Z",
@@ -34,6 +35,7 @@ Response::
     "title": "Just want to ask for support",
     "state_id": 2,
     "priority_id": 2,
+    "customer_id": 2,
     ...
     "note": "some note",
     "updated_at": "2016-08-16T07:55:42.119Z",
@@ -64,6 +66,7 @@ Response::
     "group_id": 1,
     "state_id": 1,
     "priority_id": 2,
+    "customer_id": 2,
     ...
     "note": "some note",
     "updated_at": "2016-08-16T07:55:42.119Z",
@@ -74,6 +77,7 @@ Response::
     "title": "Just want to ask for support",
     "state_id": 2,
     "priority_id": 2,
+    "customer_id": 2,
     ...
     "note": "some note",
     "updated_at": "2016-08-16T07:55:42.119Z",
@@ -105,6 +109,7 @@ Response::
   "group_id": 1,
   "state_id": 1,
   "priority_id": 2,
+  "customer_id": 2,
   ...
   "note": "some note",
   "updated_at": "2016-08-16T07:55:42.119Z",
@@ -127,6 +132,7 @@ Request::
  {
   "title": "Help me!",
   "group": "Users",
+  "customer": "email_of_existing_customer@example.com",
   "article": {
     "subject": "some subject",
     "body": "some message",
@@ -147,6 +153,7 @@ Response::
   "group_id": 1,
   "state_id": 1,
   "priority_id": 2,
+  "customer_id": 2,
   ...
   "note": "some note",
   "updated_at": "2016-08-16T07:55:42.119Z",
