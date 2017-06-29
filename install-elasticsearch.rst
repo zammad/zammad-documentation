@@ -90,7 +90,7 @@ Configure Zammad to work with Elasticsearch
 
 ::
 
- zammad run rails r "Setting.set('es_url', 'http://127.0.0.1:9200')"
+ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
 
 Create Elasticsearch index
