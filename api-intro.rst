@@ -104,9 +104,15 @@ Create a new ticket::
 
  curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}' https://xxx.zammad.com/api/v1/tickets
 
-Search for tickets::
+Search for tickets (with contains "some message")::
 
  curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=some+message&limit=10&expand=true'
+ 
+Search for tickets (for tickets with state new and open )::
+
+ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=state:new%20OR%20state:open&limit=10&expand=true'
+
+For more search examples see https://docs.zammad.org/en/latest/general-search.html
  
 Create an new user::
 
