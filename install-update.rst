@@ -33,6 +33,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 
 * For MySQL (note, the option says "without ... postgres")::
 ::
+
  zammad@shell> bundle install --without test development postgres
 
 
