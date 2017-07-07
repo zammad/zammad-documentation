@@ -44,6 +44,8 @@ nginx
 
 */etc/nginx/sites-enabled/zammad.conf*
 
+::
+
  server {
      listen 80;
 
