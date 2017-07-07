@@ -35,11 +35,11 @@ nginx
 
 */etc/nginx/sites-enabled/zammad.conf*
 
-  server {
-      listen 80;
+ server {
+     listen 80;
 
-      # replace 'localhost' with your fqdn if you want to use zammad from remote
-      server_name localhost;
+     # replace 'localhost' with your fqdn if you want to use zammad from remote
+     server_name localhost;
 
 
 You can manage the Zammad services manually:
