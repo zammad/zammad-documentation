@@ -31,7 +31,7 @@ Add your fully qualified domain name or public IP to server name directive in yo
 The installer will give you a hint where Zammad's web server config file is located.
 
 nginx
-+++++++++++++++++
+^^^^^^^^^^^^^^^^^
 
 */etc/nginx/sites-enabled/zammad.conf*
 
