@@ -37,4 +37,4 @@ Go to "Admin -> Security -> Twitter -> Third Party Applications -> Twitter Secti
 .. image:: images/zammad_connect_twitter_thirdparty1.png
    :alt: Admin -> Security -> Third Party Applications
    
-   Fill in the "Twitter Key" and the "Twitter Secret" and click the "Submit" button.
+Fill in the "Twitter Key" and the "Twitter Secret" and click the "Submit" button.
