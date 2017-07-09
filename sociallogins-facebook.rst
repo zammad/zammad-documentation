@@ -39,8 +39,8 @@ Navigate to "Admin -> Security -> Third Party Applications" and enter the App ID
    :alt: Zammad Configuration
    
    
-   Notice: Don't forget to enable the function
-   ======
+Notice: Don't forget to enable the function
+======
    
    
 
