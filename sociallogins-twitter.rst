@@ -35,6 +35,6 @@ Configure Zammad as Twitter app
 Go to "Admin -> Security -> Twitter -> Third Party Applications -> Twitter Section"
 
 .. image:: images/zammad_connect_twitter_thirdparty1.png
-   :alt: Admin -> Channels -> Twitter
+   :alt: Admin -> Security -> Third Party Applications
    
    Fill in the "Twitter Key" and the "Twitter Secret" and click the "Submit" button.
