@@ -168,12 +168,12 @@ The documentation for Zammad is organized into a couple of sections:
    appendix-privacy
    
    
-.. sociallogins:
+.. __sociallogins__:
    
 .. toctree::
    :maxdepth: 2 
    :glob:  
-   :caption: sociallogins
+   :caption: social logins
    
    sociallogins-facebook
    sociallogins-github
