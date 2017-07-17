@@ -8,7 +8,7 @@ Register GitHub App
 ===================
 
 Visit https://www.github.com/settings/applications/new and enter the app settings.
-As callback URL enter "https://zammad_host/auth/gitlab/callback"
+As callback URL enter "https://zammad_host/auth/github/callback"
 where zammad_host has to be replaced with your Zammad FQDN
 
 .. image:: images/zammad_connect_github_thirdparty_github.png
