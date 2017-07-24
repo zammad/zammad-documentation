@@ -32,11 +32,13 @@ Add Zammad DEB repo and install
 
 ::
 
- wget -qO - https://deb.packager.io/key | sudo apt-key add -
- echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
- sudo apt-get install apt-transport-https
- sudo apt-get update
- sudo apt-get install zammad
+ sudo apt-key adv --keyserver http://dl.packager.io/srv/zammad/zammad/key \
+  --recv-keys 6257DF9972462F57A20FFB2AB6D583CCBD33EEB8
+sudo wget -O /etc/apt/sources.list.d/zammad.list \
+  https://dl.packager.io/srv/zammad/zammad/develop/installer/debian/8.repo
+sudo apt-get install wget apt-transport-https
+sudo apt-get update
+sudo apt-get install zammad
 
 
 Go to http://localhost and you'll see:
