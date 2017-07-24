@@ -9,7 +9,9 @@ Register Twitter app
 .. image:: images/apps.twitter.com_start.png
    :alt: inital page
    
-Click on "Create App"
+
+   Click on "Create App"
+
    
    
    .. image:: images/apps.twitter.com_new_app_screen.png

@@ -20,11 +20,24 @@ Go to http://localhost and you'll see:
 * "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
-On remote server:
+Change your webserver configuration (non localhost connections):
 =================
 
 Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
 The installer will give you a hint where Zammad's web server config file is located.
+
+nginx
+--------
+
+*/etc/nginx/sites-enabled/zammad.conf*
+
+::
+
+ server {
+     listen 80;
+
+     # replace 'localhost' with your fqdn if you want to use zammad from remote
+     server_name localhost;
 
 
 You can manage the Zammad services manually:

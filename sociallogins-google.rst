@@ -10,8 +10,7 @@ Create an OAUTH Client ID
 .. image:: images/cloud.developers.google.com-create-oauth-id.png
    :alt: Google
    
-Configure Zammad as Google app
-==============================
+   
    
 Navigate to "Admind -> Security -> Third Party Applications" and enter the OAUTH Keys
 

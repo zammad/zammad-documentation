@@ -173,7 +173,7 @@ The documentation for Zammad is organized into a couple of sections:
 .. toctree::
    :maxdepth: 2 
    :glob:  
-   :caption: social logins
+   :caption: Social Logins
    
    sociallogins-facebook
    sociallogins-github
@@ -181,6 +181,4 @@ The documentation for Zammad is organized into a couple of sections:
    sociallogins-linkedin
    sociallogins-twitter
    sociallogins-google
-   
-   
 
