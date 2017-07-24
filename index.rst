@@ -181,3 +181,4 @@ The documentation for Zammad is organized into a couple of sections:
    sociallogins-linkedin
    sociallogins-twitter
    sociallogins-google
+
