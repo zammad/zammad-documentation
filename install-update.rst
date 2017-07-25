@@ -68,23 +68,7 @@ Update with RPM
 
 **Note: Please backup your Zammad instance before update!**
 
-1. Verify repo baseurl
-----------------------
-
-During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
-correct baseurl (see below).
-
-CentOS7
-
-::
-
-  echo "[zammad]
-  name=Repository for zammad/zammad application.
-  baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
-  enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
-
-
-2. Stop Zammad
+1. Stop Zammad
 ----------------
 
 ::
@@ -122,28 +106,7 @@ Update with DEB
 **Note: Please backup your Zammad instance before update!**
 
 
-1. Verify repo baseurl
-----------------------
-
-During development we reorganized our repo structure. Please update your /etc/yum.repos.d/zammad.repo with the
-correct baseurl (see below).
-
-
-Debian
-++++++
-
-::
-
-  echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
-
-
-Ubuntu
-++++++
-::
-
-  echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
-
-2. Stop Zammad
+1. Stop Zammad
 ----------------
 
 ::
