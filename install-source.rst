@@ -22,7 +22,6 @@ Please note that a working ruby 2.3.1 environment is needed.
 
 ::
 
- zammad@shell> cd zammad
  zammad@shell> gem install bundler rake rails
 
 For PostgreSQL (note, the option says "without ... mysql")

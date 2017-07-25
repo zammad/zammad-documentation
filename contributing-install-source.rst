@@ -37,7 +37,7 @@ Get Zammad
 
  su zammad
  cd ~
- wget https://ftp.zammad.com/zammad-latest.tar.gz
+ curl -O https://ftp.zammad.com/zammad-latest.tar.gz
  tar -xzf zammad-latest.tar.gz
  exit
 

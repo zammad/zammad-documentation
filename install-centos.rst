@@ -9,9 +9,9 @@ Add Zammad & epel-release RPM repos and install RPM
 
 ::
 
- sudo yum -y install epel-release
+ sudo yum -y install epel-release wget
  sudo wget -O /etc/yum.repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
- sudo yum install zammad
+ sudo yum -y install zammad
 
 
 Go to http://localhost and you'll see:
