@@ -22,7 +22,7 @@ Set locale
 
 ::
 
- sudo apt-get install locales
+ sudo apt-get install apt-transport-https locales sudo wget
  sudo locale-gen en_US.UTF-8
  sudo echo "LANG=en_US.UTF-8" > /etc/default/locale
 
@@ -32,9 +32,8 @@ Add Zammad DEB repo and install
 
 ::
 
- wget -qO - https://deb.packager.io/key | sudo apt-key add -
- echo "deb https://deb.packager.io/gh/zammad/zammad jessie stable" | sudo tee /etc/apt/sources.list.d/zammad.list
- sudo apt-get install apt-transport-https
+ sudo apt-key adv --keyserver http://dl.packager.io/srv/zammad/zammad/key --recv-keys 6257DF9972462F57A20FFB2AB6D583CCBD33EEB8
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
  sudo apt-get update
  sudo apt-get install zammad
 

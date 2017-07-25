@@ -19,8 +19,7 @@ Add Zammad RPM repo and install
 
 ::
 
- sudo rpm --import https://rpm.packager.io/key
- sudo zypper addrepo "https://rpm.packager.io/gh/zammad/zammad/sles12/stable" "zammad"
+ sudo wget -O /etc/zypp/repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/12.repo
  sudo zypper install zammad
 
 

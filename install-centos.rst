@@ -10,12 +10,8 @@ Add Zammad & epel-release RPM repos and install RPM
 ::
 
  sudo yum -y install epel-release
- sudo rpm --import https://rpm.packager.io/key
- echo "[zammad]
- name=Repository for zammad/zammad application.
- baseurl=https://rpm.packager.io/gh/zammad/zammad/centos7/stable
- enabled=1" | sudo tee /etc/yum.repos.d/zammad.repo
- sudo yum -y install zammad
+ sudo wget -O /etc/yum.repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
+ sudo yum install zammad
 
 
 Go to http://localhost and you'll see:

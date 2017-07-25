@@ -23,7 +23,7 @@ Set locale
 
 ::
 
- apt-get install locales
+ apt-get install apt-transport-https locales sudo wget
  locale-gen en_US.UTF-8
  echo "LANG=en_US.UTF-8" > /etc/default/locale
 
@@ -33,8 +33,8 @@ Add Zammad DEB Repo and install
 
 ::
 
- wget -qO - https://deb.packager.io/key | sudo apt-key add -
- echo "deb https://deb.packager.io/gh/zammad/zammad xenial stable" | sudo tee /etc/apt/sources.list.d/zammad.list
+ sudo apt-key adv --keyserver http://dl.packager.io/srv/zammad/zammad/key --recv-keys 6257DF9972462F57A20FFB2AB6D583CCBD33EEB8
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
  sudo apt-get update
  sudo apt-get install zammad
 
