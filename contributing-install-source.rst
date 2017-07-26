@@ -1,6 +1,132 @@
 Install from source
 *******************
 
+Install from source (Debian 9)
+==============================
+
+With Nginx & MySQL, port 8080
+-----------------------------
+Those instructions can be used to install Zammad on an empty Debian Stretch installation - which can typically be created in Docker using:
+
+::
+
+ docker pull debian:stretch
+ docker run --rm -it -p 8080:8080 debian:stretch /bin/bash
+ 
+It is by no means meant to install a production instance - rather to install a test / demo / development one.
+
+Prerequisites
++++++++++++++
+
+::
+
+ apt-get update && apt-get upgrade
+ apt-get install -y curl git-core patch build-essential bison zlib1g-dev libxml2-dev autotools-dev libxslt1-dev libyaml-0-2 autoconf automake libreadline6-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev default-libmysqlclient-dev mysql-server nginx gawk vim procps sudo
+Add User
+++++++++
+
+::
+
+ useradd zammad -m -d /opt/zammad -s /bin/bash
+ adduser zammad sudo
+ echo 'zammad ALL=NOPASSWD: ALL' >> /etc/sudoers
+
+Create MySQL user zammad
+++++++++++++++++++++++++
+
+::
+
+ service mysql start
+ mysql --defaults-extra-file=/etc/mysql/debian.cnf -e "CREATE USER 'zammad'@'localhost' IDENTIFIED BY 'Your_Pass_Word'; GRANT ALL PRIVILEGES ON zammad_production.* TO 'zammad'@'localhost'; FLUSH PRIVILEGES;"
+
+Get Zammad
+++++++++++
+
+::
+
+ su - zammad
+ curl -O https://ftp.zammad.com/zammad-latest.tar.gz
+ tar -xzf zammad-latest.tar.gz
+ exit
+
+Create Nginx Config
++++++++++++++++++++
+
+::
+
+ cp /opt/zammad/contrib/nginx/zammad.conf /etc/nginx/sites-available/zammad.conf
+
+* Modify /etc/nginx/sites-available/zammad.conf to use listen 8080
+
+::
+
+ vi /etc/nginx/sites-available/zammad.conf
+
+::
+
+ ln -s /etc/nginx/sites-available/zammad.conf /etc/nginx/sites-enabled/zammad.conf
+
+Install environnment
+++++++++++++++++++++
+
+::
+
+ su - zammad
+ gpg -v --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+ curl -L https://get.rvm.io | bash -s stable
+ source /opt/zammad/.rvm/scripts/rvm
+ echo "source /opt/zammad/.rvm/scripts/rvm" >> /opt/zammad/.bashrc
+ echo "rvm --default use 2.3.1" >> /opt/zammad/.bashrc
+ rvm install 2.3.1
+ echo "export RAILS_ENV=production" >> /opt/zammad/.bashrc
+ exit
+ su - zammad
+ gem install bundler
+
+Install Zammad
+++++++++++++++
+
+::
+
+ bundle install --without test development postgres
+ cp config/database.yml.pkgr config/database.yml
+
+* insert mysql user, pass & change adapter to mysql2
+
+::
+
+ vi config/database.yml
+
+::
+
+ rake db:create
+ rake db:migrate
+ rake db:seed
+ rake assets:precompile
+
+Start Zammad
+++++++++++++
+
+::
+
+ rails s -p 3000 -b 0.0.0.0 &>> log/zammad.log &
+ script/websocket-server.rb start &>> log/zammad.log &
+ script/scheduler.rb start
+
+Restart nginx as root
++++++++++++++++++++++
+
+::
+
+ exit
+ service nginx restart
+
+Go to http://localhost:8080 and you'll see:
++++++++++++++++++++++++++++++++++++++++++++
+
+* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
+
+
 Install from source (Debian 7, 8 / Ubuntu 16.04)
 ===============================================
 
