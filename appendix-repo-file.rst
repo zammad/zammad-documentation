@@ -1,11 +1,11 @@
 Package Repo Files
 ******************
 
-Recently our packaging service provider (_packager.io: http://www.packager.io/) did an improvment to the package distribution which cause the need to update your Zammad repo file (e. g. /etc/apt/sources.list.d/zammad.list or  /etc/yum.repos.d/zammad.repo) on your operating system.
+Recently our packaging service provider (packager.io: http://www.packager.io/) improved its package distribution which makes it necessary that you update your Zammad repo file (e. g. /etc/apt/sources.list.d/zammad.list or /etc/yum.repos.d/zammad.repo) on your operating system.
 
 For more background information see: https://blog.packager.io/posts/24-change-of-repository-urls
 
-Here the following commands to update your Zammad repo file:
+Please use the following commands to update your Zammad repo file:
 
 
 CentOS 7
@@ -51,9 +51,9 @@ SLES 12
  sudo zypper update zammad
 
 
-Remark
+Note
 =============
-If you are on old repo file, you will get error messages like:
+If you're using an old repo file, you will get error messages like these:
 
 ::
 
