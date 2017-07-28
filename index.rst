@@ -165,16 +165,17 @@ The documentation for Zammad is organized into a couple of sections:
 
    appendix-backup-and-restore
    appendix-configure-env-vars
+   appendix-repo-file
    appendix-privacy
-   
-   
+
+
 .. _sociallogins:
-   
+
 .. toctree::
-   :maxdepth: 2 
-   :glob:  
+   :maxdepth: 2
+   :glob:
    :caption: Social Logins
-   
+
    sociallogins-facebook
    sociallogins-github
    sociallogins-gitlab

@@ -19,6 +19,7 @@ Add Zammad RPM repo and install
 
 ::
 
+ sudo zypper install wget
  sudo wget -O /etc/zypp/repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/12.repo
  sudo zypper install zammad
 
