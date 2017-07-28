@@ -1,7 +1,9 @@
 Package Repo Files
 ******************
 
-Recently our packaging service provider (packager.io: http://www.packager.io/) improved its package distribution which makes it necessary that you update your Zammad repo file (e. g. /etc/apt/sources.list.d/zammad.list or /etc/yum.repos.d/zammad.repo) on your operating system.
+Recently (24 Jul 2017) our packaging service provider (packager.io: http://www.packager.io/) improved its package distribution which makes it necessary that you update your Zammad repo file (e. g. /etc/apt/sources.list.d/zammad.list or /etc/yum.repos.d/zammad.repo) on your operating system.
+
+If you're using an old repo file, you will not be able to update Zammad.
 
 For more background information see: https://blog.packager.io/posts/24-change-of-repository-urls
 
