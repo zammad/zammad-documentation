@@ -12,6 +12,7 @@ Prerequisites
 
 ::
 
+ apt-get update
  apt-get install curl git-core patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev sqlite3 libsqlite3-dev autotools-dev libxslt1-dev libyaml-0-2 autoconf automake libreadline6-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev libmysqlclient-dev mysql-server nginx gawk
 
 Add User
@@ -28,7 +29,7 @@ Create MySQL user zammad (for Debian: upgrade MySQL to v5.6+ before, see: http:/
 
 ::
 
- mysql --defaults-extra-file=/etc/mysql/debian.cnf -e "CREATE USER 'zammad'@'localhost' IDENTIFIED BY 'Your_Pass_Word!'; GRANT ALL PRIVILEGES ON zammad_prod.* TO 'zammad'@'localhost'; FLUSH PRIVILEGES;"
+ mysql --defaults-extra-file=/etc/mysql/debian.cnf -e "CREATE USER 'zammad'@'localhost' IDENTIFIED BY 'Your_Pass_Word'; GRANT ALL PRIVILEGES ON zammad_prod.* TO 'zammad'@'localhost'; FLUSH PRIVILEGES;"
 
 Get Zammad
 ++++++++++
@@ -39,32 +40,14 @@ Get Zammad
  cd ~
  curl -O https://ftp.zammad.com/zammad-latest.tar.gz
  tar -xzf zammad-latest.tar.gz
- exit
+ rm zammad-latest.tar.gz
 
-Create Nginx Config
-+++++++++++++++++++
-
-::
-
- cp /opt/zammad/contrib/nginx/zammad.conf /etc/nginx/sites-available/zammad.conf
-
-* change servername "localhost" to your domain if your're not testing localy
-
-::
-
- vi /etc/nginx/sites-available/zammad.conf
-
-::
-
- ln -s /etc/nginx/sites-available/zammad.conf /etc/nginx/sites-enabled/zammad.conf
 
 Install environnment
 ++++++++++++++++++++
 
 ::
 
- su zammad
- cd ~
  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
  curl -L https://get.rvm.io | bash -s stable
  source /opt/zammad/.rvm/scripts/rvm
@@ -103,12 +86,32 @@ Start Zammad
  script/websocket-server.rb start &>> log/zammad.log &
  script/scheduler.rb start &>> log/zammad.log &
 
+
+
+Create Nginx Config
++++++++++++++++++++
+
+::
+
+ exit
+ cp /opt/zammad/contrib/nginx/zammad.conf /etc/nginx/sites-available/zammad.conf
+
+* change servername "localhost" to your domain if your're not testing localy
+
+ ::
+
+  vi /etc/nginx/sites-available/zammad.conf
+
+ ::
+
+  ln -s /etc/nginx/sites-available/zammad.conf /etc/nginx/sites-enabled/zammad.conf
+
+
 Restart nginx as root
 +++++++++++++++++++++
 
 ::
 
- exit
  systemctl restart nginx
 
 Go to http://localhost and you'll see:
@@ -179,4 +182,3 @@ Visit Zammad in your browser
 ----------------------------
 
 * http://localhost:3000/#getting_started
-
