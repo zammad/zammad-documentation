@@ -18,7 +18,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 2. Install all dependencies
 ===========================
 
-Please note that a working ruby 2.3.1 environment is needed.
+Please note that a working ruby 2.4.1 environment is needed.
 
 ::
 
@@ -132,8 +132,8 @@ Install environnment
  curl -L https://get.rvm.io | bash -s stable
  source /opt/zammad/.rvm/scripts/rvm
  echo "source /opt/zammad/.rvm/scripts/rvm" >> /opt/zammad/.bashrc
- echo "rvm --default use 2.3.1" >> /opt/zammad/.bashrc
- rvm install 2.3.1
+ echo "rvm --default use 2.4.1" >> /opt/zammad/.bashrc
+ rvm install 2.4.1
  gem install bundler
 
 Install Zammad
