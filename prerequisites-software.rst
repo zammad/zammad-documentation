@@ -19,7 +19,7 @@ Side note: We tend to recommend PostgreSQL. For the last 10 years we had the bes
 2. Ruby Programming Language
 ============================
 
-Zammad requires Ruby (all required rubygems like ruby on rails are listed in the Gemfile). The following Ruby versions are supported:
+Zammad requires Ruby (all required rubygems like ruby on rails are listed in the Gemfile). The following Ruby version is supported:
 
 * Ruby 2.4.1
 
