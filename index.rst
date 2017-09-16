@@ -135,6 +135,7 @@ The documentation for Zammad is organized into a couple of sections:
    contributing-install-docker
    contributing-install-vagrant
 
+
 .. _rest-api-docs:
 
 .. toctree::

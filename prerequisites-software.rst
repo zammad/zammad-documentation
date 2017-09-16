@@ -19,7 +19,9 @@ Side note: We tend to recommend PostgreSQL. For the last 10 years we had the bes
 2. Ruby Programming Language
 ============================
 
-Currently we require Ruby 2.3.1 (all required rubygems like ruby on rails are listed in the Gemfile).
+Zammad requires Ruby (all required rubygems like ruby on rails are listed in the Gemfile). The following Ruby versions are supported:
+
+* Ruby 2.4.1
 
 
 3. Reverse Proxy
@@ -37,4 +39,7 @@ The following reverse proxies are supported:
 4. Elasticsearch
 ================
 
-For excellent search performance we use Elasticsearch. We support Elasticsearch 2.4+.
+For excellent search performance we use Elasticsearch.
+The following Elasticsearch versions are supported:
+
+* Elasticsearch 2.4+
