@@ -134,7 +134,6 @@ The documentation for Zammad is organized into a couple of sections:
    contributing-code-quality
    contributing-install-docker
    contributing-install-vagrant
-   contributing-install-source
 
 .. _rest-api-docs:
 
