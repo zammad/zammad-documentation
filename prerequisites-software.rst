@@ -3,8 +3,15 @@ Software
 
 If you want to install Zammad, you need the following software.
 
+1. Ruby Programming Language
+============================
 
-1. Database Server
+Zammad requires Ruby (all required rubygems like ruby on rails are listed in the Gemfile). The following Ruby version is supported:
+
+* Ruby 2.4.1
+
+
+2. Database Server
 ==================
 
 Zammad will store all content in an RDBMS. You can choose between the following products.
@@ -14,14 +21,6 @@ Zammad will store all content in an RDBMS. You can choose between the following 
 * PostgreSQL 9.1+
 
 Side note: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
-
-
-2. Ruby Programming Language
-============================
-
-Zammad requires Ruby (all required rubygems like ruby on rails are listed in the Gemfile). The following Ruby version is supported:
-
-* Ruby 2.4.1
 
 
 3. Reverse Proxy
