@@ -1,11 +1,14 @@
-Social Logins - Facebook
-************************
+Security - Third-party applications (Login providers)
+*****************************************************
+
+Facebook
+========
 
 It is possible to create a quick login for your helpdesk via Facebook To do so, you need to follow these steps:
 
 
 Register Facebook app
-=====================
+---------------------
 
 Visit [https://developers.facebook.com/apps/] and click on "Add a new App"
 
@@ -31,7 +34,7 @@ Navigate to app review and Check "Make [appname] public?"
 
 
 Configure Zammad as Facebook app
-================================
+--------------------------------
 
 Navigate to "Admin -> Security -> Third Party Applications" and enter the App ID and the App Secret. You can find this Key in the Dashbard of your Facebok app
 
@@ -40,14 +43,14 @@ Navigate to "Admin -> Security -> Third Party Applications" and enter the App ID
 
 
 
-Social Logins - GitHub
-**********************
+GitHub
+======
 
 It is possible to create a quick login for your helpdesk via GitHub.
 To activate the quick login you need to enable OAuth for GitHub.
 
-Register GitHub App
-===================
+Register GitHub app
+-------------------
 
 Visit https://www.github.com/settings/applications/new and enter the app settings.
 As callback URL enter "https://zammad_host/auth/github/callback"
@@ -58,7 +61,7 @@ where zammad_host has to be replaced with your Zammad FQDN
 
 
 Configure Zammad as GitHub app
-==============================
+-------------------------------
 
 Enter the "APP ID" and the "APP SECRET" from the GitHub OAUTH Applications Dashboard
 
@@ -82,14 +85,14 @@ When you grant the access you will be redirected to your Zammad instance
 and logged in as a customer.
 
 
-Social Logins - Gitlab
-**********************
+Gitlab
+======
 
 It is possible to create a quick login for your helpdesk via Gitlab.
 To activate the quick login you need to enable OAuth for Gitlab.
 
-Register Gitlab App
-===================
+Register Gitlab app
+-------------------
 
 To register an app in Gitlab open your profile and select applications.
 
@@ -103,7 +106,7 @@ At the moment we need the "api" scope. This is caused due a bug
 in Gitlab: https://gitlab.com/gitlab-org/gitlab-ce/issues/33022
 
 Configure Zammad as Gitlab app
-==============================
+------------------------------
 
 Enter the "APP ID" and the "APP SECRET" from the Gitlab OAUTH Applications Dashboard.
 .. image:: images/zammad_connect_gitlab_thirdparty_zammad.png
@@ -128,11 +131,12 @@ and logged in as a customer.
 
 
 
-Social Logins - Google
-**********************
+Google
+======
 
 Register Google app
-====================
+-------------------
+
 Visit https://console.cloud.google.com/projectcreate and create an project
 
 Go to https://console.developers.google.com. Select Credentials from the menu and then Create Credentials
@@ -151,13 +155,13 @@ Navigate to "Admin -> Security -> Third Party Applications" -> Google and enter 
 
 
 
-Social Logins - Twitter
-***********************
+Twitter
+=======
 
 It is possible to create a quick login for your helpdesk via Twitter To do so, you need to follow these steps:
 
 Register Twitter app
-====================
+--------------------
 
 .. image:: images/apps.twitter.com_start.png
 :alt: inital page
@@ -183,7 +187,7 @@ Next we need to set _read, write and access direct messages permissions_ for the
 Go to "Keys and Access Token" tab and note the "Consumer Key" and "Consumer Secret".
 
 Configure Zammad as Twitter app
-===============================
+-------------------------------
 
 Go to "Admin -> Security -> Twitter -> Third Party Applications -> Twitter Section"
 
@@ -195,7 +199,7 @@ Fill in the "Twitter Key" and the "Twitter Secret" and click the "Submit" button
 
 
 
-Social Logins - LinkedIn
-************************
+LinkedIn
+========
 
 This section is coming soon

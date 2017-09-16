@@ -107,13 +107,7 @@ The documentation for Zammad is organized into a couple of sections:
    :caption: Administration via webfrontend
 
    admin-webfrontend-trigger
-   admin-webfrontend-sociallogins
-   admin-webfrontend-sociallogins-facebook
-   admin-webfrontend-sociallogins-github
-   admin-webfrontend-sociallogins-gitlab
-   admin-webfrontend-sociallogins-linkedin
-   admin-webfrontend-sociallogins-twitter
-   admin-webfrontend-sociallogins-google
+   admin-webfrontend-security-thirdparty
 
 
 .. _admin-console:
