@@ -1,5 +1,5 @@
-Twitter
-*******
+Social Logins - Twitter
+***********************
 
 It is possible to create a quick login for your helpdesk via Twitter To do so, you need to follow these steps:
 
@@ -8,15 +8,15 @@ Register Twitter app
 
 .. image:: images/apps.twitter.com_start.png
    :alt: inital page
-   
+
    Click on "Create App"
-   
-   
+
+
    .. image:: images/apps.twitter.com_new_app_screen.png
    :alt: new app page
-   
+
    Enter app settings. As "Callback URL" you need to enter "https://zammad_host/api/v1/external_credentials/twitter/callback"
-   
+
    After the app has been created, update the application icon and organization attributes.
 
 .. image:: images/apps.twitter.com_set_permissions.png
@@ -36,5 +36,5 @@ Go to "Admin -> Security -> Twitter -> Third Party Applications -> Twitter Secti
 
 .. image:: images/zammad_connect_twitter_thirdparty1.png
    :alt: Admin -> Security -> Third Party Applications
-   
+
 Fill in the "Twitter Key" and the "Twitter Secret" and click the "Submit" button.

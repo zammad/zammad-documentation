@@ -1,5 +1,5 @@
-Google
-******
+Social Logins - Google
+**********************
 
 Register Google app
 ====================
@@ -11,18 +11,14 @@ Create an OAUTH Client ID
 
 .. image:: images/cloud.developers.google.com-create-oauth-id.png
    :alt: Google
-   
-   
-   
+
+
+
 Navigate to "Admin -> Security -> Third Party Applications" -> Google and enter the OAUTH Keys (Client ID & Client's Secret)
 
 .. image:: images/zammad_connect_google_thirdparty1.png
    :alt: Zammad
-   
-   
+
+
 Notice: Don't forget to enabe the function
 ======
-
-
-
-
