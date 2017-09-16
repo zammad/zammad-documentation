@@ -43,4 +43,4 @@ The following reverse proxies are supported:
 For excellent search performance we use Elasticsearch.
 The following Elasticsearch versions are supported:
 
-* Elasticsearch 2.4+
+* Elasticsearch 2.4 up to 5.5
