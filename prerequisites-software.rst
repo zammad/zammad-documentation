@@ -15,7 +15,8 @@ The following Ruby version is supported:
 2. Database Server
 ==================
 
-Zammad will store all content in an RDBMS. You can choose between the following products.
+Zammad will store all content in an RDBMS.
+You can choose between the following products:
 
 * MySQL 5.6+
 * MariaDB 10.0+
