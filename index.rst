@@ -15,7 +15,6 @@ The documentation for Zammad is organized into a couple of sections:
 * :ref:`contributing-docs`
 * :ref:`rest-api-docs`
 * :ref:`appendix`
-* :ref:`sociallogins`
 
 
 .. _about-docs:
@@ -103,11 +102,18 @@ The documentation for Zammad is organized into a couple of sections:
 .. _admin-webfrontend:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :glob:
    :caption: Administration via webfrontend
 
    admin-webfrontend-trigger
+   admin-webfrontend-sociallogins
+   admin-webfrontend-sociallogins-facebook
+   admin-webfrontend-sociallogins-github
+   admin-webfrontend-sociallogins-gitlab
+   admin-webfrontend-sociallogins-linkedin
+   admin-webfrontend-sociallogins-twitter
+   admin-webfrontend-sociallogins-google
 
 
 .. _admin-console:
@@ -167,18 +173,3 @@ The documentation for Zammad is organized into a couple of sections:
    appendix-configure-env-vars
    appendix-repo-file
    appendix-privacy
-
-
-.. _sociallogins:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Social Logins
-
-   sociallogins-facebook
-   sociallogins-github
-   sociallogins-gitlab
-   sociallogins-linkedin
-   sociallogins-twitter
-   sociallogins-google
