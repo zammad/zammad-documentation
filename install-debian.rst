@@ -33,7 +33,7 @@ Add Zammad DEB repo and install
 ::
 
  wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
- sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
  sudo apt-get update
  sudo apt-get install zammad
 
