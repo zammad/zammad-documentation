@@ -33,10 +33,12 @@ Add Zammad DEB Repo and install
 
 ::
 
- sudo apt-key adv --keyserver http://dl.packager.io/srv/zammad/zammad/key --recv-keys 6257DF9972462F57A20FFB2AB6D583CCBD33EEB8
- sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
- sudo apt-get update
- sudo apt-get install zammad
+wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/develop/installer/debian/8.repo
+sudo apt-get update
+sudo apt-get install zammad
+
+Note: You might need to apt-get install wget apt-transport-https for the above instructions to work.
 
 
 Go to http://localhost and you'll see:
