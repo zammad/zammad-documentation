@@ -1,6 +1,57 @@
 Ticket Article
 ******
 
+By Ticket
+====
+
+Required permission:
+
+* ticket.agent (access to related ticket)
+* ticket.customer (access to related ticket with customer_id ** current_user.id || organization_id ** current_user.organization_id)
+
+Request::
+
+ GET /api/v1/ticket_articles/by_ticket/{ticketId}
+
+Response::
+
+ Status: 200 Ok
+ 
+ [
+  {
+    "id": 3,
+    "ticket_id": 3,
+    "from": "Bob Smith",
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "12.0"
+    ...
+    "updated_at": "2016-08-15T07:55:42.119Z",
+    "created_at": "2016-08-15T07:55:42.119Z"
+ }, 
+ {
+    "id": 4,
+    "ticket_id": 3,
+    "from": "Bob Smith",
+    "to": "",
+    "cc": "",
+    "subject": "some subject",
+    "body": "huhuhuu<br>huhuhuu<br>huhuhuu<br><br>",
+    "content_type": "text/html",
+    "type": "note",
+    "internal": false,
+    "time_unit": "15.0"
+    ...   
+    "updated_at": "2016-08-16T07:55:42.119Z",
+    "created_at": "2016-08-16T07:55:42.119Z"
+  },
+ ]
+
 Show
 ====
 
