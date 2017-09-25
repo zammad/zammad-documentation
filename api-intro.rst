@@ -211,3 +211,4 @@ API clients
 
 * Ruby Client - https://github.com/zammad/zammad-api-client-ruby
 * PHP Client - https://github.com/zammad/zammad-api-client-php
+* .NET Client - https://github.com/Asesjix/Zammad-Client
