@@ -4,24 +4,34 @@ Install on CentOS via RPM
 Currently we support RHEL7 & CentOS7.
 
 
-Add Zammad & epel-release RPM repos and install RPM
-===================================================
+Add Zammad, Elasticsearch & epel-release RPM repos and install RPM
+==================================================================
 
 ::
 
  sudo yum -y install epel-release wget
  sudo wget -O /etc/yum.repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
+
+ echo "[elasticsearch-5.x]
+ name=Elasticsearch repository for 5.x packages
+ baseurl=https://artifacts.elastic.co/packages/5.x/yum
+ gpgcheck=1
+ gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+ enabled=1
+ autorefresh=1
+ type=rpm-md" | sudo tee /etc/yum.repos.d/elasticsearch.repo
+
  sudo yum -y install zammad
 
 
 Go to http://localhost and you'll see:
-===========================================
+======================================
 
 * "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
 Change your webserver configuration (non localhost connections):
-=================
+================================================================
 
 Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
 The installer will give you a hint where Zammad's web server config file is located.
