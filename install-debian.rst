@@ -56,7 +56,6 @@ For Debian 8
  sudo apt-get update
  sudo apt-get install zammad
 
-Note: You might need to apt-get install wget apt-transport-https for the above instructions to work.
 
 
 Go to http://localhost and you'll see:
