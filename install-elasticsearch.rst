@@ -26,14 +26,18 @@ Generic install Elasticsearch 2.4:
 Generic install Elasticsearch 5.0:
 ++++++++++++++++++++++++++++++++++
 
-
-
 * Download and install via https://www.elastic.co/downloads/elasticsearch (5.0.x)
 * Install the Attachment plugin
 
 ::
 
  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+
+* Setting vm.max_map_count for Elasticsearch
+
+::
+
+ sysctl -w vm.max_map_count=262144
 
 
 * Start elasticsearch
