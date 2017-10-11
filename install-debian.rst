@@ -1,7 +1,7 @@
 Install on Debian via DEB
 *************************
 
-Currently we support Debian 8
+Currently we support Debian 8 and 9
 
 Prerequisites
 =============
@@ -33,7 +33,26 @@ Add Zammad DEB repo and install
 ::
 
  wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
- sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
+
+
+For Debian 8
+------------
+
+ ::
+
+  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
+
+
+For Debian 8
+------------
+
+ ::
+
+  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
+
+
+::
+
  sudo apt-get update
  sudo apt-get install zammad
 
