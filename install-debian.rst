@@ -38,17 +38,17 @@ Add Zammad DEB repo and install
 For Debian 8
 ------------
 
- ::
+::
 
-  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
 
 
-For Debian 8
+For Debian 9
 ------------
 
- ::
+::
 
-  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
 
 
 ::
