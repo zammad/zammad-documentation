@@ -21,7 +21,7 @@ Add Zammad, Elasticsearch & epel-release RPM repos and install RPM
  autorefresh=1
  type=rpm-md" | sudo tee /etc/yum.repos.d/elasticsearch.repo
 
- sudo yum -i install elasticsearch
+ sudo yum -i install java elasticsearch
  sudo systemctl daemon-reload
  sudo systemctl enable elasticsearch
  sudo systemctl start elasticsearch
