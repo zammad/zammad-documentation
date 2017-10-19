@@ -42,6 +42,8 @@ Navigate to "Admin -> Security -> Third Party Applications" and enter the App ID
 :alt: Zammad Configuration
 
 
+Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
+
 
 GitHub
 ======
@@ -83,6 +85,8 @@ similar to this:
 
 When you grant the access you will be redirected to your Zammad instance
 and logged in as a customer.
+
+Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
 
 
 Gitlab
@@ -129,6 +133,7 @@ When you grant the access you will be redirected to your Zammad instance
 and logged in as a customer.
 
 
+Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
 
 
 Google
@@ -161,6 +166,7 @@ Navigate to "Admin -> Security -> Third Party Applications" -> Google and enter 
 .. image:: images/zammad_connect_google_thirdparty1.png
 :alt: Zammad
 
+Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
 
 
 Twitter
@@ -170,6 +176,8 @@ It is possible to create a quick login for your helpdesk via Twitter To do so, y
 
 Register Twitter app
 --------------------
+
+Go to https://dev.twitter.com/apps and login with your account.
 
 .. image:: images/apps.twitter.com_start.png
 :alt: inital page
@@ -205,6 +213,59 @@ Go to "Admin -> Security -> Twitter -> Third Party Applications -> Twitter Secti
 Fill in the "Twitter Key" and the "Twitter Secret" and click the "Submit" button.
 
 
+Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
+
+
+Microsoft (also Office 365)
+=======
+
+It is possible to create a quick login for your helpdesk via Microsoft (also Office 365) To do so, you need to follow these steps:
+
+Register Microsoft app
+--------------------
+
+Go to https://identity.microsoft.com (or https://apps.dev.microsoft.com) and login with your account.
+
+
+.. image:: images/identity.microsoft.com_new_app_screen.png
+:alt: inital page
+
+Click on "Create App"
+
+
+.. image:: images/identity.microsoft.com_new_app_screen2.png
+:alt: new app page
+
+Enter app settings. Then a new plattform and select "web".
+
+
+.. image:: images/identity.microsoft.com_new_app_screen_add_platform.png
+:alt: new plattform
+
+
+.. image:: images/identity.microsoft.com_new_app_screen_add_platform_url.png
+:alt: set callack/redirect url
+
+As "Redirect URL" you need to enter "https://yourdomain.zammad.com/auth/microsoft_office365/callback"
+
+After the app has been created, update the application icon and organization attributes.
+
+.. image:: images/apps.twitter.com_get_credentials.png
+:alt: click on "Generate New Passwort", note "Password" and "Application Id"
+
+Click on "Generate New Password" button and note the "Password" and "Application Id".
+
+Configure Zammad as Microsoft app
+-------------------------------
+
+Go to "Admin -> Security -> Twitter -> Third Party Applications -> Office 365 Section"
+
+.. image:: images/zammad_connect_microsoft_thirdparty1.png
+:alt: Admin -> Security -> Third Party Applications
+
+Fill in the "APP ID" and the "APP SECRET" and click the "Submit" button.
+
+Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
 
 
 LinkedIn
