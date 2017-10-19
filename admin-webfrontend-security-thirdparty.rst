@@ -250,9 +250,6 @@ As "Redirect URL" you need to enter "https://yourdomain.zammad.com/auth/microsof
 
 After the app has been created, update the application icon and organization attributes.
 
-.. image:: images/apps.twitter.com_get_credentials.png
-:alt: click on "Generate New Passwort", note "Password" and "Application Id"
-
 Click on "Generate New Password" button and note the "Password" and "Application Id".
 
 Configure Zammad as Microsoft app
