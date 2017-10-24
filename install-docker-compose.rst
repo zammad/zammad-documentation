@@ -59,6 +59,7 @@ Updating Zammad
 ---------------
 
 * docker-compose stop
+* git pull
 * docker-compose pull
 * docker-compose up
 
