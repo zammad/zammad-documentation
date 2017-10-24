@@ -209,6 +209,20 @@ Request::
   "note": "some note"
  }
 
+If you want to use or create an customer by email address at ticket creation, you can do with "guess:customer@example.com" in the customer_id attribute:
+
+Request::
+
+ POST /api/v1/tickets
+
+ {
+  "title": "Help me!",
+  "group": "Users",
+  "customer_id": "guess:customer@example.com",
+  ...
+  "note": "some note"
+ }
+
 Update
 ======
 
