@@ -82,7 +82,7 @@ vi .procmailrc
  PATH=/opt/zammad/bin:/opt/zammad/vendor/bundle/bin:/sbin:/bin:/usr/sbin:/usr/bin:
  SYS_HOME="/home/zammad"
  RAILS_ENV=production
- GEM_PATH=/opt/zammad/vendor/bundle/ruby/2.3.0/
+ GEM_PATH=/opt/zammad/vendor/bundle/ruby/2.4.1/
  LOGFILE="$SYS_HOME/procmail.log"
  #VERBOSE="on"
 
