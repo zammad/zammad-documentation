@@ -151,7 +151,7 @@ Required permission:
 
 Request::
 
- PUT /api/v1/object_manager_attributes
+ POST /api/v1/object_manager_attributes
 
 Response::
 
