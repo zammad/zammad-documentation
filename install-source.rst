@@ -63,6 +63,10 @@ For MySQL (note, the option says "without ... postgres")
 5. Change directory to zammad (if needed) and start services:
 =============================================================
 
+::
+
+ zammad@shell> rake assets:precompile
+
 You can start all services by hand or use systemd to start / stop Zammad.
 
 Starting all servers manually
@@ -70,7 +74,6 @@ Starting all servers manually
 
 ::
 
- zammad@shell> rake assets:precompile
  zammad@shell> rails s -p 3000 # application web server
  zammad@shell> script/websocket-server.rb start # non blocking websocket server
  zammad@shell> script/scheduler.rb start # generate overviews on demand, just send changed data to browser
