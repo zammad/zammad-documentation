@@ -79,8 +79,8 @@ Starting servers with Systemd
 
 ::
 
-  cd scriptssystemd
-  ./install-zammad-systemd-services.sh
+  cd scripts/systemd
+  sudo ./install-zammad-systemd-services.sh
 
 
 6. Go to http://localhost:3000 and you'll see:
