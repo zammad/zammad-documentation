@@ -60,8 +60,11 @@ For MySQL (note, the option says "without ... postgres")
  zammad@shell> rake db:seed
 
 
-5. Change directory to zammad (if needed) and start the web server:
+5. Change directory to zammad (if needed) and start rails server:
 ===================================================================
+
+Starting all servers manually
+-----------------------------
 
 ::
 
@@ -71,10 +74,20 @@ For MySQL (note, the option says "without ... postgres")
  zammad@shell> script/scheduler.rb start # generate overviews on demand, just send changed data to browser
 
 
+Starting servers with Systemd
+-----------------------------
+
+::
+
+  cd scriptssystemd
+  ./install-zammad-systemd-services.sh
+
+
 6. Go to http://localhost:3000 and you'll see:
 ==============================================
 
 * "Welcome to Zammad!", there you need to create your admin user and invite other agents.
+
 
 
 
