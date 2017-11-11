@@ -60,8 +60,10 @@ For MySQL (note, the option says "without ... postgres")
  zammad@shell> rake db:seed
 
 
-5. Change directory to zammad (if needed) and start rails server:
-===================================================================
+5. Change directory to zammad (if needed) and start services:
+=============================================================
+
+You can start all services by hand or use systemd to start / stop Zammad.
 
 Starting all servers manually
 -----------------------------
@@ -79,8 +81,8 @@ Starting servers with Systemd
 
 ::
 
-  cd scripts/systemd
-  sudo ./install-zammad-systemd-services.sh
+  zammad@shell> cd scripts/systemd
+  zammad@shell> sudo ./install-zammad-systemd-services.sh
 
 
 6. Go to http://localhost:3000 and you'll see:
