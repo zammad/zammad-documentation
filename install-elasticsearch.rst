@@ -3,7 +3,7 @@ Set up Elasticsearch
 
 We use Elasticsearch for the awesome search in Zammad.
 
-Currently Elasticsearch 2.4 to 5.5 are supported.
+Currently Elasticsearch 2.4.0 to 5.5.3 are supported.
 
 This manual uses the "zammad" command which is only available if you installed Zammad from one of our package repos.
 
