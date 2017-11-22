@@ -12,10 +12,12 @@ Your Docker environment needs to be up and running.
 
 You can find the image at https://hub.docker.com/r/zammad/zammad/
 
-Run a Docker Container
+You need at least 4 GB of RAM to run the container.
+
+Run the Docker Container
 ======================
 
-Docker run will run a command in a new container, -i attaches stdin and stdout, -t allocates a tty, and we’re using the standard Zammad container.
+Docker run will run a command in a new container, -i attaches stdin and stdout, -t allocates a tty.
 
 Set vm.max_map_count for Elasticsearch
 --------------------------------------
