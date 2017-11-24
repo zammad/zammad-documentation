@@ -23,10 +23,10 @@ Generic install Elasticsearch 2.4:
 
 * Start elasticsearch
 
-Generic install Elasticsearch 5.0:
+Generic install Elasticsearch 5.x:
 ++++++++++++++++++++++++++++++++++
 
-* Download and install via https://www.elastic.co/downloads/elasticsearch (5.0.x)
+* Download and install via https://www.elastic.co/downloads/elasticsearch (5.x)
 * Install the Attachment plugin
 
 ::
