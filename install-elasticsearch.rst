@@ -3,7 +3,7 @@ Set up Elasticsearch
 
 We use Elasticsearch for the awesome search in Zammad.
 
-Currently Elasticsearch 2.4.x to 5.6.x are supported.
+Currently Elasticsearch 2.4.x to 5.5.x are supported (Note: 5.6.x and mapper-attachments plugin is not working - you will get timeout on REST calls).
 
 This manual uses the "zammad" command which is only available if you installed Zammad from one of our package repos.
 
