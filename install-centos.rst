@@ -32,8 +32,8 @@ Add Zammad, Elasticsearch & epel-release RPM repos and install RPM
 SeLinux & Firewalld
 ===================
 
-On Centos SeLinu 6 Firewalld are possibly enabled. 
-To get efverything work you have to use teh follwoing commands:
+On Centos SeLinux & Firewalld are possibly enabled. 
+To get everything work you have to use the following commands:
 
 ::
 
