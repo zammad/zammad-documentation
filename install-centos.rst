@@ -29,6 +29,21 @@ Add Zammad, Elasticsearch & epel-release RPM repos and install RPM
  sudo yum -y install zammad
 
 
+SeLinux & Firewalld
+===================
+
+On Centos SeLinu 6 Firewalld are possibly enabled. 
+To get efverything work you have to use teh follwoing commands:
+
+::
+
+ setsebool httpd_can_network_connect on -P
+ firewall-cmd --zone=public --add-service=http --permanent
+ firewall-cmd --zone=public --add-service=https --permanent
+ firewall-cmd --reload
+
+
+
 Go to http://localhost and you'll see:
 ======================================
 
