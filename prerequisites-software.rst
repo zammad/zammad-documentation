@@ -43,4 +43,5 @@ The following reverse proxies are supported:
 For excellent search performance we use Elasticsearch.
 The following Elasticsearch versions are supported:
 
-* Elasticsearch 2.4 up to 5.5
+* Elasticsearch 2.4 up to 5.5 with mapper-attachments plugin
+* Elasticsearch 5.6 with ingest-attachment plugin
