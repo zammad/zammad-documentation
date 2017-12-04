@@ -3,14 +3,17 @@ Set up Elasticsearch
 
 We use Elasticsearch for the awesome search in Zammad.
 
-Currently Elasticsearch 2.4.x to 5.5.x are supported (Note: 5.6.x and mapper-attachments plugin is not working - you will get timeout on REST calls).
+Currently we support:
+
+* Elasticsearch 2.4.x to 5.5.x with mapper-attachments plugin
+* Elasticsearch 5.6.x with ingest-attachment plugin
 
 This manual uses the "zammad" command which is only available if you installed Zammad from one of our package repos.
 
 Install Elasticsearch and its Attachment plugin
 ===============================================
 
-Generic install Elasticsearch 2.4:
+Generic install Elasticsearch 2.4 (mapper-attachments):
 ++++++++++++++++++++++++++++++++++
 
 * Download and install via https://www.elastic.co/downloads/elasticsearch (2.4.x)
@@ -23,15 +26,34 @@ Generic install Elasticsearch 2.4:
 
 * Start elasticsearch
 
-Generic install Elasticsearch 5.x:
+Generic install Elasticsearch 5.0-5.5 (mapper-attachments):
 ++++++++++++++++++++++++++++++++++
 
-* Download and install via https://www.elastic.co/downloads/elasticsearch (5.x)
+* Download and install via https://www.elastic.co/downloads/elasticsearch (5.0-5.5)
 * Install the Attachment plugin
 
 ::
 
  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+
+* Setting vm.max_map_count for Elasticsearch
+
+::
+
+ sysctl -w vm.max_map_count=262144
+
+
+* Start elasticsearch
+
+Generic install Elasticsearch 5.6 (ingest-attachment):
+++++++++++++++++++++++++++++++++++
+
+* Download and install via https://www.elastic.co/downloads/elasticsearch (5.6)
+* Install the Attachment plugin
+
+::
+
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
 * Setting vm.max_map_count for Elasticsearch
 
