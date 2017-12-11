@@ -208,19 +208,19 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | close_at                     | null                     | First close time, after create                                |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| close_diff_in_min            | null                     | First close time, after create                                |
+| close_diff_in_min            | null                     | Business hours in minutes within or above the specified SLA for closing the ticket.|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| close_escalation_at          | null                     | Escalation close time (datetime, utc)                         |
+| close_escalation_at          | null                     | Time stamp of the escalation if the SLA of the closing time has been violated. (datetime, utc)|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| close_in_min                 | null                     |                                                               |
+| close_in_min                 | null                     | Business hours in minutes it took to close the ticket.        |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | create_article_sender        | Customer                 | Who has created the first article (Agent,Customer)            |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_sender_id     | 2                        | Sender id of the first article (agent|customer)               |
+| create_article_sender_id     | 2                        | Sender id of the first article (Agent|Customer)               |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_type          | web                      | Article type for the first article (Note, Mail, Phone...)     |
+| create_article_type          | web                      | Article type for the first article (note, email, phone...)    |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_type_id       | 11                       | Article type ID for the first article (Note, Mail, Phone...)  |
+| create_article_type_id       | 11                       | Article type ID for the first article (note, email, phone...) |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | created_at                   | 2017-08-03T14:21:38.701Z | Created timestamp (datetime utc)                              |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -232,15 +232,15 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | customer_id                  | 13                       | User id of the current customer (assigned to ticket)          |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| escalation_at                | null                     | Next escalation date (dateime utc)                            |
+| escalation_at                | null                     | Next first escalation date (nearest close_escalation_at, first_response_escalation_at or update_escalation_at (dateime utc)|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_at            | null                     | First Response time, after create (Datetime, utc)             |
+| first_response_at            | null                     | Time stamp of the first reaction to the customer (Datetime, utc)|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_diff_in_min   | null                     | First response time, after create, in minutes                 |
+| first_response_diff_in_min   | null                     | Business hours in minutes within or above the specified SLA for the first reaction to the customer.|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_escalation_at | null                     | Escalation first response time (datetime, utc)                |
+| first_response_escalation_at | null                     | Time stamp of the escalation if the SLA of the first reaction time has been violated. (datetime, utc)|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_in_min        | null                     | Escalation first response time (in minutes)                   |
+| first_response_in_min        | null                     | Business hours in minutes it took to send inital response to customer.|
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | group                        | Sales                    | Current ticket group (Sales, Support...)                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -254,9 +254,9 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | last_contact_customer_at     | 2017-08-03T14:21:38.701Z | Last contact from a customer, timestamp (datetime utc)        |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| note                         | null                     | Internal note for ticket (deprecated)                         |
+| note                         | null                     | Internal note for ticket                                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| number                       | 61019                    | Ticket number                                                 |
+| number                       | 61019                    | The uniq ticket number                                        |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | organization_id              | null                     | Id of the organization of a given customer                    |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -276,17 +276,17 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | state_id                     | 1                        | Ticket state id for available ticket states (new, open...)    |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| time_unit                    | null                     | Stored time units                                             |
+| time_unit                    | null                     | Accounted time units for this ticket                          |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | title                        | Feedback Form            | Ticket title                                                  |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | type                         | null                     | Ticket Type (deprecated)                                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| update_diff_in_min           | null                     | (Deprecated)?                                                 |
+| update_diff_in_min           | null                     | Business hours in minutes within or above the specified SLA for updating the ticket.|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| update_escalation_at         | null                     | Escalation update time (datetime, utc)                        |
+| update_escalation_at         | null                     | Time stamp of the last update reaction to the customer (Datetime, utc)|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| update_in_min                | null                     | Escalation update time in minutes                             |
+| update_in_min                | null                     | Business hours in minutes it took to send the last update response to customer|
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | updated_at                   | 2017-08-03T14:21:38.701Z | Last update timestamp (datetime utc)                          |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -307,7 +307,7 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | body                | :)                                             | Content of the article                                       |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| cc                  | null                                           | Content of the cc to field                                   |
+| cc                  | null                                           | Content of the optional cc field                       |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | content_type        | text/plain                                     | Content type                                                 |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -317,7 +317,7 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | created_by_id       | 13                                             | Who (UserID) has created the article                         |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| from                | Christopher Miller via <order@chrispresso.com> | Sender adress                                                |
+| from                | Christopher Miller via <order@chrispresso.com> | Sender address of the article                                               |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | id                  | 19                                             | internal (DB) article id                                     |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -325,15 +325,15 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | internal            | FALSE                                          | Is article visible for customer                              |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| message_id          | null                                           | Message ID (if article was an E-Mail)                        |
+| message_id          | null                                           | Message ID (if article was an email)                        |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | message_id_md5      | null                                           | internal message id MD5 Checksum                             |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| origin_by_id        | null                                           |                                                              |
+| origin_by_id        | null                                           | For which real user (UserID) the article creation has been done (for example the customer which was calling on the phone).|
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| preferences         | { }                                            | Hash for additional information                              |
+| preferences         | { }                                            | Hash for additional information.                              |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| references          | null                                           | (Deprecated)                                                 |
+| references          | null                                           | Email references header.                                                 |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | reply_to            | null                                           | Content of the reply to field                                |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -347,9 +347,9 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | to                  | null                                           | Content of the to field                                      |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| type                | web                                            | Article type (Phone, E-Mail, Web...)                         |
+| type                | web                                            | Article type (phone, email, web...)                         |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| type_id             | 11                                             | Article type id (Phome, E-Mail, Web...)                      |
+| type_id             | 11                                             | Article type id (phone, email, web...)                      |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | updated_at          | 2017-08-03T14:21:38.701Z                       | Update time of the article (DateTime, UTC)                   |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
