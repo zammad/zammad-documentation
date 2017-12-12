@@ -16,6 +16,9 @@ Note: In general you can use Elasticsearch queries for search (https://www.elast
 Examples
 ========
 
+For a more detailed list of available attributes please see:
+[https://docs.zammad.org/en/latest/install-elasticsearch.html#list-of-values-which-are-stored-in-elasticsearch]
+
 * number:1118566
 * title:"some words with spaces" # exact phrase / without quotation marks " an AND search for the words will be performed (in Zammad 1.5 and lower an OR search will be performed)
 * title:"some wor*" # exact phrase beginning with "some wor*" will be searched
