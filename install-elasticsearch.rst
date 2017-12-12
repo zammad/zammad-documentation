@@ -224,7 +224,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | create_article_type_id       | 11                       | Article type ID for the first article (note, email, phone...) |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| created_at                   | 2017-08-03T14:21:38.701Z | Created timestamp (DateTime, UTC)                              |
+| created_at                   | 2017-08-03T14:21:38.701Z | Created timestamp (DateTime, UTC)                             |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | created_by                   | User                     | User details of the user who created the ticket               |
 +------------------------------+--------------------------+---------------------------------------------------------------+
