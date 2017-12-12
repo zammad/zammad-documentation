@@ -208,9 +208,11 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | close_at                     | null                     | First close time, after create                                |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| close_diff_in_min            | null                     | Business hours in minutes within or above the specified SLA for closing the ticket.|
+| close_diff_in_min            | null                     | Business hours in minutes within or above the specified SLA   |
+|                              |                          | for closing the ticket.                                       |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| close_escalation_at          | null                     | Time stamp of the escalation if the SLA of the closing time has been violated. (datetime, utc)|
+| close_escalation_at          | null                     | Time stamp of the escalation if the SLA of the closing time   |
+|                              |                          | has been violated. (DateTime, UTC)                            |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | close_in_min                 | null                     | Business hours in minutes it took to close the ticket.        |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -222,7 +224,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | create_article_type_id       | 11                       | Article type ID for the first article (note, email, phone...) |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| created_at                   | 2017-08-03T14:21:38.701Z | Created timestamp (datetime utc)                              |
+| created_at                   | 2017-08-03T14:21:38.701Z | Created timestamp (DateTime, UTC)                              |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | created_by                   | User                     | User details of the user who created the ticket               |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -232,15 +234,21 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | customer_id                  | 13                       | User id of the current customer (assigned to ticket)          |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| escalation_at                | null                     | Next first escalation date (nearest close_escalation_at, first_response_escalation_at or update_escalation_at (dateime utc)|
+| escalation_at                | null                     | Next first escalation date (nearest close_escalation_at,      |
+|                              |                          | first_response_escalation_at or update_escalation_at          |
+|                              |                          | (DateTime, UTC)                                               |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_at            | null                     | Time stamp of the first reaction to the customer (Datetime, utc)|
+| first_response_at            | null                     | Time stamp of the first reaction to the customer              |
+|                              |                          | (DateTime, UTC)                                               |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_diff_in_min   | null                     | Business hours in minutes within or above the specified SLA for the first reaction to the customer.|
+| first_response_diff_in_min   | null                     | Business hours in minutes within or above the specified SLA   |
+|                              |                          | for the first reaction to the customer.                       |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_escalation_at | null                     | Time stamp of the escalation if the SLA of the first reaction time has been violated. (datetime, utc)|
+| first_response_escalation_at | null                     | Time stamp of the escalation if the SLA of the first reaction |
+|                              |                          | time has been violated. (DateTime, UTC)                       |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_in_min        | null                     | Business hours in minutes it took to send inital response to customer.|
+| first_response_in_min        | null                     | Business hours in minutes it took to send inital response to  |
+|                              |                          | customer.                                                     |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | group                        | Sales                    | Current ticket group (Sales, Support...)                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -248,11 +256,11 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | id                           | 19                       | Ticket id                                                     |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| last_contact_agent_at        | null                     | Last contact to customer from agent, timestamp (datetime utc) |
+| last_contact_agent_at        | null                     | Last contact to customer from agent, timestamp (DateTime, UTC)|
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| last_contact_at              | 2017-08-03T14:21:38.701Z | Last contact timestamp (datetime utc)                         |
+| last_contact_at              | 2017-08-03T14:21:38.701Z | Last contact timestamp (DateTime, UTC)                        |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| last_contact_customer_at     | 2017-08-03T14:21:38.701Z | Last contact from a customer, timestamp (datetime utc)        |
+| last_contact_customer_at     | 2017-08-03T14:21:38.701Z | Last contact from a customer, timestamp (DateTime, UTC)       |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | note                         | null                     | Internal note for ticket                                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -264,7 +272,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | owner_id                     | 1                        | User id of owner                                              |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| pending_time                 | null                     | Current pending time (datetime utc)                           |
+| pending_time                 | null                     | Current pending time (DateTime, UTC)                          |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | preferences                  |                          | Sub Hash for special information                              |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -282,13 +290,16 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | type                         | null                     | Ticket Type (deprecated)                                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| update_diff_in_min           | null                     | Business hours in minutes within or above the specified SLA for updating the ticket.|
+| update_diff_in_min           | null                     | Business hours in minutes within or above the specified SLA   |
+|                              |                          | for updating the ticket.                                      |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| update_escalation_at         | null                     | Time stamp of the last update reaction to the customer (Datetime, utc)|
+| update_escalation_at         | null                     | Time stamp of the last update reaction to the customer        |
+|                              |                          | (DateTime, UTC)                                               |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| update_in_min                | null                     | Business hours in minutes it took to send the last update response to customer|
+| update_in_min                | null                     | Business hours in minutes it took to send the last update     |
+|                              |                          | response to customer                                          |
 +------------------------------+--------------------------+---------------------------------------------------------------+
-| updated_at                   | 2017-08-03T14:21:38.701Z | Last update timestamp (datetime utc)                          |
+| updated_at                   | 2017-08-03T14:21:38.701Z | Last update timestamp (DateTime, UTC)                         |
 +------------------------------+--------------------------+---------------------------------------------------------------+
 | updated_by                   | User                     | User who updated the ticket                                   |
 +------------------------------+--------------------------+---------------------------------------------------------------+
@@ -307,7 +318,7 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | body                | :)                                             | Content of the article                                       |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| cc                  | null                                           | Content of the optional cc field                       |
+| cc                  | null                                           | Content of the optional cc field                             |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | content_type        | text/plain                                     | Content type                                                 |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -317,7 +328,7 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | created_by_id       | 13                                             | Who (UserID) has created the article                         |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| from                | Christopher Miller via <order@chrispresso.com> | Sender address of the article                                               |
+| from                | Christopher Miller via <order@chrispresso.com> | Sender address of the article                                |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | id                  | 19                                             | internal (DB) article id                                     |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -325,15 +336,16 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | internal            | FALSE                                          | Is article visible for customer                              |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| message_id          | null                                           | Message ID (if article was an email)                        |
+| message_id          | null                                           | Message ID (if article was an email)                         |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | message_id_md5      | null                                           | internal message id MD5 Checksum                             |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| origin_by_id        | null                                           | For which real user (UserID) the article creation has been done (for example the customer which was calling on the phone).|
+| origin_by_id        | null                                           | For which real user (UserID) the article creation has been   |
+|                     |                                                | done. For example the customer which was calling on the phone|
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| preferences         | { }                                            | Hash for additional information.                              |
+| preferences         | { }                                            | Hash for additional information.                             |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| references          | null                                           | Email references header.                                                 |
+| references          | null                                           | Email references header.                                     |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | reply_to            | null                                           | Content of the reply to field                                |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -347,9 +359,9 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | to                  | null                                           | Content of the to field                                      |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| type                | web                                            | Article type (phone, email, web...)                         |
+| type                | web                                            | Article type (phone, email, web...)                          |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| type_id             | 11                                             | Article type id (phone, email, web...)                      |
+| type_id             | 11                                             | Article type id (phone, email, web...)                       |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | updated_at          | 2017-08-03T14:21:38.701Z                       | Update time of the article (DateTime, UTC)                   |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
@@ -374,7 +386,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +-----------------+--------------------------+-----------------------------------------+
 | country         |                          | User Country                            |
 +-----------------+--------------------------+-----------------------------------------+
-| created_at      | 2017-07-26T21:21:28.000Z | User creation date (datetime, utc)      |
+| created_at      | 2017-07-26T21:21:28.000Z | User creation date (DateTime, UTC)      |
 +-----------------+--------------------------+-----------------------------------------+
 | created_by_id   | 1                        | ID of user who created the current user |
 +-----------------+--------------------------+-----------------------------------------+
@@ -388,7 +400,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +-----------------+--------------------------+-----------------------------------------+
 | id              | 3                        | Internal id (database, autincrement)    |
 +-----------------+--------------------------+-----------------------------------------+
-| last_login      | 2017-07-26T21:23:15.019Z | User last login (datetime, utc)         |
+| last_login      | 2017-07-26T21:23:15.019Z | User last login (DateTime, UTC)         |
 +-----------------+--------------------------+-----------------------------------------+
 | lastname        | Miller                   | User Lastname                           |
 +-----------------+--------------------------+-----------------------------------------+
@@ -406,7 +418,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +-----------------+--------------------------+-----------------------------------------+
 | street          |                          | User Street                             |
 +-----------------+--------------------------+-----------------------------------------+
-| updated_at      | 2017-07-27T15:04:47.270Z | Last update date (datetime, utc)        |
+| updated_at      | 2017-07-27T15:04:47.270Z | Last update date (DateTime, UTC)        |
 +-----------------+--------------------------+-----------------------------------------+
 | updated_by_id   | 3                        | ID of user who updated the current user |
 +-----------------+--------------------------+-----------------------------------------+
