@@ -260,7 +260,7 @@ Database connect
 ::
 
  cd zammad-latest
- cp config/database.yml.dist config/database.yml
+ cp config/database.yml.pkgr config/database.yml
  rake db:create
  rake db:migrate
  rake db:seed
