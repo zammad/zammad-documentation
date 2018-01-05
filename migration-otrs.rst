@@ -11,6 +11,10 @@ Install Znuny4OTRS-Repo
 
 This is a dependency of the OTRS migration plugin
 
+* On OTRS 6:
+
+  *  http://portal.znuny.com/api/addon_repos/public/1029/latest
+
 * On OTRS 5:
 
   *  http://portal.znuny.com/api/addon_repos/public/615/latest
@@ -22,6 +26,10 @@ This is a dependency of the OTRS migration plugin
 
 Install OTRS migration plugin
 -----------------------------
+
+* OTRS 6:
+
+  * https://portal.znuny.com/api/addon_repos/public/1085/latest
 
 * OTRS 5:
 
