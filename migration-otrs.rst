@@ -13,15 +13,15 @@ This is a dependency of the OTRS migration plugin
 
 * On OTRS 6:
 
-  *  http://portal.znuny.com/api/addon_repos/public/1029/latest
+  *  https://addons.znuny.com/api/addon_repos/public/1029/latest
 
 * On OTRS 5:
 
-  *  http://portal.znuny.com/api/addon_repos/public/615/latest
+  *  https://addons.znuny.com/api/addon_repos/public/615/latest
 
 * On OTRS 4:
 
-  *  http://portal.znuny.com/api/addon_repos/public/309/latest
+  *  https://addons.znuny.com/api/addon_repos/public/309/latest
 
 
 Install OTRS migration plugin
@@ -29,19 +29,19 @@ Install OTRS migration plugin
 
 * OTRS 6:
 
-  * https://portal.znuny.com/api/addon_repos/public/1085/latest
+  * https://addons.znuny.com/api/addon_repos/public/1085/latest
 
 * OTRS 5:
 
-  * https://portal.znuny.com/api/addon_repos/public/617/latest
+  * https://addons.znuny.com/api/addon_repos/public/617/latest
 
 * OTRS 4:
 
-  * https://portal.znuny.com/api/addon_repos/public/383/latest
+  * https://addons.znuny.com/api/addon_repos/public/383/latest
 
 * OTRS 3.1 - 3.3:
 
-  * https://portal.znuny.com/api/addon_repos/public/287/latest
+  * https://addons.znuny.com/api/addon_repos/public/287/latest
 
 
 Import via Browser
