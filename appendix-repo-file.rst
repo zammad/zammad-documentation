@@ -17,7 +17,7 @@ CentOS 7
 
  sudo yum -y install epel-release wget
  sudo wget -O /etc/yum.repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
- sudo yum -y update zammad
+ sudo yum install zammad
 
 
 Debian 8
@@ -26,8 +26,20 @@ Debian 8
 ::
 
  sudo apt-get install wget
- sudo apt-key adv --keyserver http://dl.packager.io/srv/zammad/zammad/key --recv-keys 6257DF9972462F57A20FFB2AB6D583CCBD33EEB8
+ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/8.repo
+ sudo apt-get update
+ sudo apt-get install zammad
+
+
+Debian 9
+=============
+
+::
+
+ sudo apt-get install wget
+ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
  sudo apt-get update
  sudo apt-get install zammad
 
@@ -38,10 +50,11 @@ Ubuntu 16.04
 ::
 
  sudo apt-get install wget
- sudo apt-key adv --keyserver http://dl.packager.io/srv/zammad/zammad/key --recv-keys 6257DF9972462F57A20FFB2AB6D583CCBD33EEB8
+ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
  sudo apt-get update
  sudo apt-get install zammad
+
 
 SLES 12
 =============
@@ -50,7 +63,7 @@ SLES 12
 
  sudo zypper install wget
  sudo wget -O /etc/zypp/repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/12.repo
- sudo zypper update zammad
+ sudo zypper install zammad
 
 
 Note
