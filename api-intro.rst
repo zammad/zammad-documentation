@@ -176,7 +176,7 @@ Pagination
 
 All resources support pagination::
 
- GET /api/v1/users?expand=true&page=1,per_page=5 HTTP/1.1
+ GET /api/v1/users?expand=true&page=1&per_page=5 HTTP/1.1
 
 will return five records beginning with first record of all::
 
