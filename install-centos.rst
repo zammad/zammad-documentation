@@ -59,7 +59,7 @@ The installer will give you a hint where Zammad's web server config file is loca
 nginx
 --------
 
-*/etc/nginx/sites-enabled/zammad.conf*
+*/etc/nginx/conf.d/zammad.conf*
 
 ::
 
