@@ -132,7 +132,7 @@ Delete a certain ticket
 
  rails> Ticket.find(4).destroy
 
-Delte some tickets
+Delete some tickets
 ------------------
 
 ::
