@@ -132,11 +132,11 @@ Example CURL Request on behalf of a different user
 It is possible to do a request on behalf of a different user. If you have your own application and you want to create a ticket for the customer
 without the information that the api user has created this ticket then you can transfer the target user with the request to create the ticket on behalf of the customer user.
 
-  curl -u test@zammad.com:test123
-       -H "Content-Type: application/json"
-       -H "X-On-Behalf-Of: user-login"
-       -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}'
-       https://xxx.zammad.com/api/v1/tickets
+ curl -u test@zammad.com:test123
+      -H "Content-Type: application/json"
+      -H "X-On-Behalf-Of: user-login"
+      -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}'
+      https://xxx.zammad.com/api/v1/tickets
 
 The value of the header has to contain one of the following values:
 
