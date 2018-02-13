@@ -24,6 +24,7 @@ You can choose between the following products:
 
 Side note: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
 
+If you like to use MySQL/MariaDB get sure to use UTF8 encoding. utf8mb4 for example will fail.
 
 3. Reverse Proxy
 ================
