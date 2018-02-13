@@ -107,13 +107,13 @@ Create a new ticket::
 Search for tickets (with contains "some message")::
 
  curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=some+message&limit=10&expand=true'
- 
+
 Search for tickets (for tickets with state new and open )::
 
  curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=state:new%20OR%20state:open&limit=10&expand=true'
 
 For more search examples see https://docs.zammad.org/en/latest/general-search.html
- 
+
 Create an new user::
 
  curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"firstname":"Bob","lastname":"Smith","email":"email_of_customer@example.com","roles":["Customer"],"password":"some_password"}' https://xxx.zammad.com/api/v1/users
@@ -125,6 +125,33 @@ Create an new user (with welcome email)::
 Search for users::
 
  curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/users/search?query=smith&limit=10&expand=true'
+
+Example CURL Request on behalf of a different user
+==========================================
+
+It is possible to do a request on behalf of a different user. If you have your own application and you want to create a ticket for the customer
+without the information that the api user has created this ticket then you can transfer the target user with the request to create the ticket on behalf of the customer user.
+
+  curl -u test@zammad.com:test123
+       -H "Content-Type: application/json"
+       -H "X-On-Behalf-Of: user-login"
+       -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}'
+       https://xxx.zammad.com/api/v1/tickets
+
+The value of the header has to contain one of the following values:
+
+* user id
+* user login
+* user email
+
+The value types will be checked in a cascade and the first detected user by id, login or email will be used for the request action.
+
+This functionality can be used for any type of action.
+
+Requirements for the feature:
+
+* Authenticated user must have **admin.user** permissions
+* Feature is available since Zammad version 2.4
 
 Response Format
 ===============
