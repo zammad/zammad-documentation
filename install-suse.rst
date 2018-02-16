@@ -6,6 +6,12 @@ Currently we support SLES 12 and OpenSUSE 42.2
 Install dependencies
 ====================
 
+Setup Elasticsearch
+-------------------
+
+https://docs.zammad.org/en/latest/install-elasticsearch.html
+
+
 On SLES12
 ---------
 
