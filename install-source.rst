@@ -1,6 +1,12 @@
 Install from source (generic)
 *****************************
 
+Setup Elasticsearch
+-------------------
+
+https://docs.zammad.org/en/latest/install-elasticsearch.html
+
+
 1. Install Zammad on your system
 ================================
 
