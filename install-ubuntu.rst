@@ -9,6 +9,13 @@ Prerequisites
 
 Be sure to use an UTF-8 locale or PostgreSQL will not install.
 
+
+Setup Elasticsearch
+-------------------
+
+https://docs.zammad.org/en/latest/install-elasticsearch.html#ubuntu-16-04
+
+
 Check locale
 ------------
 
