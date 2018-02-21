@@ -79,7 +79,7 @@ CentOS 7:
  autorefresh=1
  type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-5.x.repo
  yum install -y java-1.8.0-openjdk elasticsearch
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
  systemctl start elasticsearch
  systemctl enable elasticsearch
 
@@ -97,7 +97,7 @@ Debian 8:
  apt-get install -t jessie-backports openjdk-8-jre
  apt-get install elasticsearch
  sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
@@ -112,6 +112,7 @@ Debian 9:
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
  apt-get install openjdk-8-jre elasticsearch
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
@@ -125,7 +126,7 @@ Ubuntu 16.04:
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
  apt-get install openjdk-8-jre elasticsearch
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
