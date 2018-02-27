@@ -264,6 +264,48 @@ Fill in the "APP ID" and the "APP SECRET" and click the "Submit" button.
 
 Now you can link accounts via "Avatar -> Profil -> Link Accounts" or login via Zammad login page.
 
+Kerberos
+========
+
+You can now use a compatible Kerberos version 5 implementation (we suggest using MIT Kerberos)
+
+Configure your Zammad server to communicate with KDC 
+----------------------------------------------------
+
+You should have configured your server where Zammad is installed with at least similar configuration in /etc/krb5.conf like the below example:
+
+::
+
+  [logging]
+      default = FILE:/var/log/krb5.log
+
+  [libdefaults]
+      default_realm = ZAMMAD.COM
+      kdc_timesync = 1
+      ccache_type = 4
+      forwardable = true
+      proxiable = true
+
+  [realms]
+      ZAMMAD.COM = {
+          kdc = kdc.zammad.com
+          admin_server = kerberos-admin.zammad.com
+          default_domain = zammad.com
+      }
+
+  [domain_realm]
+      .zammad.com = ZAMMAD.COM
+      zammad.com = ZAMMAD.COM
+
+Configure Zammad to accept Kerberos authentication
+--------------------------------------------------
+
+Go to "Admin -> Security -> Third Party Applications
+
+Click on "Authentication via Kerberos" slider and click "Submit" button.
+
+.. image:: images/zammad_connect_kerberos_thirdparty1.png
+:alt: Enable Kerberos 
 
 LinkedIn
 ========
