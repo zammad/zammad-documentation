@@ -168,6 +168,14 @@ Set admin rights for user
  rails> u.save!
 
 
+Set password for user
+---------------------
+
+::
+
+ rails> User.find_by(email: 'you@example.com').update!(password: 'your_new_password')
+
+
 Configuring Elasticsearch
 -------------------------
 
