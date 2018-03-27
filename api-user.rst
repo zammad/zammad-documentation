@@ -113,6 +113,7 @@ Show
 Required permission:
 
 * ticket.agent or admin.user (can read all users)
+* customer with same organization (can read all users of same organization)
 * any (can only read it's own user if exists)
 
 Request::
@@ -179,8 +180,7 @@ Update
 Required permission:
 
 * admin.user
-* ticket.agent (can not set roles/role_ids and not set groups/group_ids - already assigned attributes will not changed)
-* any (can not set roles/role_ids and not set groups/group_ids - already assigned attributes will not changed)
+* ticket.agent (can only update customer accounts and not set roles/role_ids and not set groups/group_ids - already assigned attributes will not changed)
 
 Request::
 
