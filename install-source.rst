@@ -156,8 +156,8 @@ Install environnment
  curl -L https://get.rvm.io | bash -s stable
  source /opt/zammad/.rvm/scripts/rvm
  echo "source /opt/zammad/.rvm/scripts/rvm" >> /opt/zammad/.bashrc
- echo "rvm --default use 2.4.1" >> /opt/zammad/.bashrc
- rvm install 2.4.1
+ echo "rvm --default use 2.4.2" >> /opt/zammad/.bashrc
+ rvm install 2.4.2
  gem install bundler
 
 Install Zammad
@@ -168,7 +168,7 @@ Install Zammad
  bundle install --without test development postgres
  cp config/database.yml.pkgr config/database.yml
 
-* insert mysql user, pass & change adapter to mysql2
+* insert mysql user, pass & change adapter to mysql2 & change database to zammad_prod
 
 ::
 
