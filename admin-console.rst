@@ -219,3 +219,12 @@ Destroy stuff
  rails> ActivityStream.destroy_all
  rails> RecentView.destroy_all
  rails> History.destroy_all
+
+
+Fill a testsystem with testdata (don´t do this on your production system!)
+-------------
+
+::
+
+ rails> FillDB.load(agents: 50,customers: 1000,groups: 20,organizations: 40,overviews: 5,tickets: 100,)
+
