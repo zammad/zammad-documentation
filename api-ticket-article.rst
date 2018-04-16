@@ -258,8 +258,8 @@ Response::
         "filename": "44.262871107@zammad.example.com",
         "preferences": {
           "Mime-Type": "image/jpeg",
-          "Content-ID"=>"44.262871107@zammad.example.com",
-          "Content-Disposition"=>"inline"
+          "Content-ID": "44.262871107@zammad.example.com",
+          "Content-Disposition": "inline"
         }
       }
     ],
