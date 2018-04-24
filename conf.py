@@ -29,6 +29,9 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+import time
+
+
 extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
@@ -49,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Zammad'
-copyright = u'2016, Zammad'
+copyright = u'%s, Zammad' % time.strftime("%Y")
 author = u'Zammad'
 
 # The version info for the project you're documenting, acts as replacement for
