@@ -33,7 +33,7 @@ For a more detailed list of available attributes please see:
 * owner.email: "bod@example.com" AND state: (new OR open OR pending*) # show all open tickets of a certain agent
 * state:closed AND _missing_:tag # all closed objects without tags
 * article_count: [1 TO 5] # tickets with 1 to 5 articles
-* article:count: [10 TO *] # tickets with 10 or more articles
+* article_count: [10 TO *] # tickets with 10 or more articles
 * article.from: *bob* # also article.from can be used
 * article.body: heat~ # using the fuzzy operator will also find terms that are similar, in this case also "head"
 * article.body: /joh?n(ath[oa]n)/ # using regular expressions
