@@ -50,7 +50,7 @@ For MySQL (note, the option says "without ... postgres")
 
 ::
 
- zammad@shell> cp config/database.yml.pkgr config/database.yml
+ zammad@shell> cp config/database/database.yml config/database.yml
  zammad@shell> vi config/database.yml
 
 
@@ -166,7 +166,7 @@ Install Zammad
 ::
 
  bundle install --without test development postgres
- cp config/database.yml.pkgr config/database.yml
+ cp config/database/database.yml config/database.yml
 
 * insert mysql user, pass & change adapter to mysql2 & change database to zammad_prod
 
@@ -266,7 +266,7 @@ Database connect
 ::
 
  cd zammad-latest
- cp config/database.yml.pkgr config/database.yml
+ cp config/database/database.yml config/database.yml
  rake db:create
  rake db:migrate
  rake db:seed
