@@ -15,6 +15,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 ::
 
  root@shell> useradd zammad -m -d /opt/zammad -s /bin/bash
+ root@shell> echo "zammad ALL=(root)NOPASSWD:/usr/bin/apt-get" >/etc/sudoers.d/zammad
  root@shell> cd /opt
  root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
  root@shell> tar -xzf zammad-latest.tar.gz -C zammad
