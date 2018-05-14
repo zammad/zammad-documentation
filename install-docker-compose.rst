@@ -11,7 +11,7 @@ The Docker images are hosted on Dockerhub:
 
 You need at least 4 GB of RAM to run the containers.
 
-Install Docker Environemnt
+Install Docker Environment
 ==========================
 
 Your Docker environment needs to be up and running and you need to have docker-compose installed.
