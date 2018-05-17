@@ -24,7 +24,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 2. Install all dependencies
 ===========================
 
-Please note that a working ruby 2.4.1 environment is needed.
+Please note that a working ruby 2.4.2 environment is needed.
 
 ::
 
