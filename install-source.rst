@@ -36,6 +36,8 @@ For PostgreSQL (note, the option says "without ... mysql")
 ::
 
  zammad@shell> bundle install --without test development mysql
+ 
+ Please note: everytime you upgrade or restart PostgreSQL you have to restart all zammad services in order to work properly!
 
 For MySQL (note, the option says "without ... postgres")
 --------------------------------------------------------
