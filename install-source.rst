@@ -100,7 +100,19 @@ Starting servers with Systemd
 * "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
+Reset a Zammad installation (for a fresh start after testing)
+-------------------------------------------------------------
 
+Please note: this actions will delete all existing data! Dont use it on a production system.
+
+::
+
+ zammad@shell>sudo systemctl stop zammad
+ zammad@shell>rake db:drop
+ zammad@shell>rake db:create
+ zammad@shell>rake db:migrate
+ zammad@shell>rake db:seed
+ zammad@shell>sudo systemctl start zammad
 
 
 
