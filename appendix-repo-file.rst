@@ -56,6 +56,19 @@ Ubuntu 16.04
  sudo apt-get install zammad
 
 
+Ubuntu 18.04
+=============
+
+::
+
+ sudo apt-get install wget
+ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+ sudo wget -O /etc/apt/sources.list.d/zammad.list \
+   https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
+ sudo apt-get update
+ sudo apt-get install zammad
+
+
 SLES 12
 =============
 

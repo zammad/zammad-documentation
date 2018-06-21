@@ -105,7 +105,7 @@ Starting servers with Systemd
 
 
 
-Install from source (Debian 7, 8 / Ubuntu 16.04)
+Install from source (Debian 7, 8 / Ubuntu 16.04 / Ubuntu 18.04)
 ************************************************
 
 With Nginx & MySQL
