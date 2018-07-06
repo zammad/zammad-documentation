@@ -80,3 +80,8 @@ Open shell in running Zammad image
 ----------------------------------
 
 * docker-compose exec zammad /bin/bash
+
+Port compatibility error
+------------------------
+
+* The nginx container may have compatibility problems with other machines or services pointing to port 0.0.0.0:80. So to fix this, we'll just have to modify the file `docker-compose.override.yml` and select different ports
