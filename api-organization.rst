@@ -50,6 +50,8 @@ Request::
 
  GET /api/v1/organizations/search?query=what&limit=10
 
+Note: As of Zammad 2.6 parameters (sort_by=some_row and order_by=asc or desc) can also be used for sorting.
+
 Response::
 
  Status: 200 Ok
