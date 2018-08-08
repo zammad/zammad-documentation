@@ -82,7 +82,7 @@ Zammad currently supports the following responses for incoming calls:
 | Action | Description                                                              |
 +========+==========================================================================+
 | reject | Reject call or pretend to be busy (depending on your settings in Zammad) |
-+-------------+---------------------------------------------------------------------+
++--------+--------------------------------------------------------------------------+
 
 Example 1: Reject call signaling busy
 
