@@ -13,7 +13,7 @@ Feature list
 **Inbound**
 
 * Caller identification based on the CallerID (open a customer profile with just one click)
-Display of open and closed tickets of a customer in a special overview. This overview should also give the possibility to create a ticket for the given customer.
+* Display of open and closed tickets of a customer in a special overview. This overview should also give the possibility to create a ticket for the given customer.
 * Intelligent mapping of CallerIDs with direct (e.g. directly at the contact) and not direct (e.g. telephone numbers from the signature)
 * Caller Journal (which calls have been made and which have been handled and which require a callback)
 * Blocking of CallerIDs (already during the call) *
@@ -60,9 +60,9 @@ user[] | The user(s) realname involved. It is the name of the calling user when 
 
 You can simulate this POST request and test your server with a CURL command:
 
-```
-curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/integration/cti/:token
-```
+::
+  curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/integration/cti/:token
+
 
 #### The response (optional)
 
@@ -76,12 +76,11 @@ reject | Reject call or pretend to be busy (depending on your settings in Zammad
 
 Example 1: Reject call signaling busy
 
-```
-{
-  "action": "reject",
-  "reason": "busy"
-}
-```
+::
+  {
+    "action": "reject",
+    "reason": "busy"
+  }
 
 Zammad currently supports the following responses for outgoing calls:
 
@@ -92,13 +91,12 @@ dial | To set the caller id (depending on your settings in Zammad). Number need 
 
 Example 1: Set custom caller id for outgoing call
 
-```
-{
-  "action": "dial",
-  "callerId": "493055571642",
-  "number": "491711234567890"
-}
-```
+::
+  {
+    "action": "dial",
+    "callerId": "493055571642",
+    "number": "491711234567890"
+  }
 
 *Event: hangup*
 
@@ -115,9 +113,9 @@ answeringNumber | The number which was answering
 
 You can simulate this POST request and test your server with a CURL command:
 
-```
-curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/integration/cti/:token
-```
+::
+  curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/integration/cti/:token
+
 
 Hangup causes: For these reasons, hangups may occur because of these causes:
 
@@ -146,8 +144,8 @@ answeringNumber | The number of the answering destination. Useful when redirecti
 
 You can simulate this POST request and test your server with a CURL command:
 
-```
-curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/integration/cti/:token
-```
+::
+  curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/integration/cti/:token
+
 
 
