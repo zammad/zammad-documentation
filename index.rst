@@ -161,6 +161,14 @@ This system documentation for Zammad is organized into a couple of sections:
    api-notification
    api-object
    api-tags
+
+
+.. _cti-api-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: CTI API
    api-cti
 
 .. _appendix:
