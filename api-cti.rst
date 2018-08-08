@@ -49,18 +49,26 @@ Zammad supports the following three events (newCall, hangup and answer) in versi
 
 *Event: newCall*
 
-Attribute | Description
--- | --
-event | "newCall"
-from | The calling number (e.g. "493055571600" or "anonymous")
-to | The called number (e.g. "491711234567890")
-direction | The direction of the call (either "in" or "out")
-callId | A unique alphanumeric identifier to match events to specific calls (max. 250 characters)
-user[] | The user(s) realname involved. It is the name of the calling user when direction is "out", or of the users receiving the call when direction is "in". Group calls may be received by multiple users. In that case a "user[]" parameter is set for each of these users. It is always "user[]" (not "user"), even if only one user is involved.
++------------+-------------+
+|Attribute   | Description |
++============+=============+
+|event | "newCall"|
++------------+------------+
+|from | The calling number (e.g. "493055571600" or "anonymous")|
++------------+------------+
+|to | The called number (e.g. "491711234567890")|
++------------+------------+
+|direction | The direction of the call (either "in" or "out")|
++------------+------------+
+|callId | A unique alphanumeric identifier to match events to specific calls (max. 250 characters)|
++------------+------------+
+|user[] | The user(s) realname involved. It is the name of the calling user when direction is "out", or of the users receiving the call when direction is "in". Group calls may be received by multiple users. In that case a "user[]" parameter is set for each of these users. It is always "user[]" (not "user"), even if only one user is involved.|
++------------+------------+
 
 You can simulate this POST request and test your server with a CURL command:
 
 ::
+
   curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/integration/cti/:token
 
 
@@ -77,6 +85,7 @@ reject | Reject call or pretend to be busy (depending on your settings in Zammad
 Example 1: Reject call signaling busy
 
 ::
+
   {
     "action": "reject",
     "reason": "busy"
@@ -92,6 +101,7 @@ dial | To set the caller id (depending on your settings in Zammad). Number need 
 Example 1: Set custom caller id for outgoing call
 
 ::
+
   {
     "action": "dial",
     "callerId": "493055571642",
@@ -114,6 +124,7 @@ answeringNumber | The number which was answering
 You can simulate this POST request and test your server with a CURL command:
 
 ::
+
   curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/integration/cti/:token
 
 
@@ -145,6 +156,7 @@ answeringNumber | The number of the answering destination. Useful when redirecti
 You can simulate this POST request and test your server with a CURL command:
 
 ::
+
   curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/integration/cti/:token
 
 
