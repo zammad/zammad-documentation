@@ -169,7 +169,10 @@ This system documentation for Zammad is organized into a couple of sections:
    :maxdepth: 2
    :glob:
    :caption: CTI API
-   api-cti
+
+   cti-api-intro
+   cti-api-push
+
 
 .. _appendix:
 

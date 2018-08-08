@@ -1,49 +1,21 @@
-CTI API
-****
-
-In many use cases, agents work in connection customer conversations over the phone. 
-
-It is a great relief when the telephone system (PBX) is integrated with Zammad, which makes processes with agents more effective.
-
-The goal of the document is to provide the necessary API documentation to enable PBX vendors to easily integrate with Zammad.
-
-Feature list
-============
-
-**Inbound**
-
-* Caller identification based on the CallerID (open a customer profile with just one click)
-* Display of open and closed tickets of a customer in a special overview. This overview should also give the possibility to create a ticket for the given customer.
-* Intelligent mapping of CallerIDs with direct (e.g. directly at the contact) and not direct (e.g. telephone numbers from the signature)
-* Caller Journal (which calls have been made and which have been handled and which require a callback)
-* Blocking of CallerIDs (already during the call) *
-* Support to allow an agent to set a DND - like state *
-* Overview of agents who currently handle a call 
-
-
-**Outbound**
-
-* Direct dialling of the customer telephone number and indexing of the call *
-* Set the outbound caller ID based on the line phone number (e. g. set sender caller id based on country of destination caller id) *
-
-
- _* if supported by the PBX/telephone system_
-
 CTI Push API
-============
+***
 
-**How it works**
+How it works
+============
 
 Events can be transferred in realtime from the telephone system to the Zammad CTI Push API (REST API) via a generic interface.
 
 Depending on the event, Zammad offers various functions to quickly and easily identify callers and the corresponding tickets, for example, or to provide a caller log. Or to modify the incoming or outgoing call.
 
-**Endpoint**
+Endpoint
+============
 
 The endpoint of your Zammad CTI Push API looks like http://localhost:3000/api/v1/integration/cti/:token and can be found in Zammad -> Admin -> Integrations -> CTI (generic) -> Endpoint
 
 
-**Events**
+Events
+============
 
 Zammad supports the following three events (newCall, hangup and answer) in version 2.x.
 
@@ -188,6 +160,5 @@ You can simulate this POST request and test your server with a CURL command:
 ::
 
   curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/integration/cti/:token
-
 
 
