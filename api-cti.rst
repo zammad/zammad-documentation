@@ -49,21 +49,21 @@ Zammad supports the following three events (newCall, hangup and answer) in versi
 
 *Event: newCall*
 
-+------------+-------------+
-|Attribute   | Description |
-+============+=============+
-|event | "newCall"|
-+------------+------------+
-|from | The calling number (e.g. "493055571600" or "anonymous")|
-+------------+------------+
-|to | The called number (e.g. "491711234567890")|
-+------------+------------+
-|direction | The direction of the call (either "in" or "out")|
-+------------+------------+
-|callId | A unique alphanumeric identifier to match events to specific calls (max. 250 characters)|
-+------------+------------+
-|user[] | The user(s) realname involved. It is the name of the calling user when direction is "out", or of the users receiving the call when direction is "in". Group calls may be received by multiple users. In that case a "user[]" parameter is set for each of these users. It is always "user[]" (not "user"), even if only one user is involved.|
-+------------+------------+
++-------------+-------------+
+| Attribute   | Description |
++============+==============+
+| event       | "newCall"   |
++-------------+-------------+
+| from        | The calling number (e.g. "493055571600" or "anonymous") |
++-------------+-------------+
+| to          | The called number (e.g. "491711234567890") |
++-------------+-------------+
+| direction   | The direction of the call (either "in" or "out") |
++-------------+-------------+
+| callId      | A unique alphanumeric identifier to match events to specific calls (max. 250 characters) |
++-------------+-------------+
+| user[]      | The user(s) realname involved. It is the name of the calling user when direction is "out", or of the users receiving the call when direction is "in". Group calls may be received by multiple users. In that case a "user[]" parameter is set for each of these users. It is always "user[]" (not "user"), even if only one user is involved. |
++-------------+-------------+
 
 You can simulate this POST request and test your server with a CURL command:
 
