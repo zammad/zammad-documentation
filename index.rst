@@ -161,6 +161,7 @@ This system documentation for Zammad is organized into a couple of sections:
    api-notification
    api-object
    api-tags
+   api-cti
 
 .. _appendix:
 
