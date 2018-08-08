@@ -98,10 +98,11 @@ Example 1: Reject call signaling busy
 
 Zammad currently supports the following responses for outgoing calls:
 
-Action | Description
--- | --
-dial | To set the caller id (depending on your settings in Zammad). Number need to be in E.164 format.
-
++--------+-------------------------------------------------------------------------------------------------+
+| Action | Description                                                                                     |
++========+=================================================================================================+
+| dial   | To set the caller id (depending on your settings in Zammad). Number need to be in E.164 format. |
++--------+-------------------------------------------------------------------------------------------------+
 
 Example 1: Set custom caller id for outgoing call
 
@@ -115,16 +116,23 @@ Example 1: Set custom caller id for outgoing call
 
 *Event: hangup*
 
-Attribute | Description
--- | --
-event | "hangup"
-callId | Same as in newCall-event for a specific call
-cause | The cause for the hangup event (see below) 
-from | The calling number (e.g. "493055571600" or "anonymous")
-to | The called number (e.g. "491711234567890")
-direction | The direction of the call (either "in" or "out")
-answeringNumber | The number which was answering 
-
++-----------------+---------------------------------------------------------+
+| Attribute       | Description                                             |
++=================+=========================================================+
+| event           | "hangup"                                                |
++-----------------+---------------------------------------------------------+
+| callId          | Same as in newCall-event for a specific call            |
++-----------------+---------------------------------------------------------+
+| cause           | The cause for the hangup event (see                     |
++-----------------+---------------------------------------------------------+
+| from            | The calling number (e.g. "493055571600" or "anonymous") |
++-----------------+---------------------------------------------------------+
+| to              | The called number (e.g. "491711234567890")              |
++-----------------+---------------------------------------------------------+
+| direction       | The direction of the call (either "in" or "out")        |
++------------------+--------------------------------------------------------+
+| answeringNumber | The number which was answering                          |
++-------------+-------------------------------------------------------------+
 
 You can simulate this POST request and test your server with a CURL command:
 
@@ -135,27 +143,44 @@ You can simulate this POST request and test your server with a CURL command:
 
 Hangup causes: For these reasons, hangups may occur because of these causes:
 
-Attribute | Description
--- | --
-normalClearing | One of the parties hung up after the call was established.
-busy | The called party was busy
-cancel | The caller hung up before the called party picked up
-noAnswer | The called party rejected the call (e.g. through a DND setting)
-congestion | The called party could not be reached
-notFound | The called number does not exist or called party is offline
-forwarded | The call was forwarded to a different party
++-----------------+-----------------------------------------------------------------+
+| Attribute       | Description                                                     |
++=================+=================================================================+
+| normalClearing  | One of the parties hung up after the call was established.      |
++-----------------+-----------------------------------------------------------------+
+| busy            | The called party was busy                                       |
++-----------------+-----------------------------------------------------------------+
+| cancel          | The caller hung up before the called party picked up            |
++-----------------+-----------------------------------------------------------------+
+| noAnswer        | The called party rejected the call (e.g. through a DND setting) |
++-----------------+-----------------------------------------------------------------+
+| congestion      | The called party could not be reached                           |
++-----------------+-----------------------------------------------------------------+
+| notFound        | The called number does not exist or called party is offline     |
++-----------------+-----------------------------------------------------------------+
+| forwarded       | The call was forwarded to a different party                     |
++-----------------+-----------------------------------------------------------------+
+
 
 *Event: answer*
 
-Attribute | Description
--- | --
-event | "answer"
-callId | Same as in newCall-event for a specific call
-user | Name of the user who answered this call. Only incoming calls can have this parameter
-from | The calling number (e.g. "492111234567" or "anonymous")
-to | The called number (e.g. "491711234567890")
-direction | The direction of the call (either "in" or "out")
-answeringNumber | The number of the answering destination. Useful when redirecting to multiple destinations
++------------------+-------------------------------------------------------------------------------------------+
+| Attribute        | Description                                                                               |
++==================+===========================================================================================+
+| event            | "answer"                                                                                  |
++------------------+-------------------------------------------------------------------------------------------+
+| callId           | Same as in newCall-event for a specific call                                              |
++------------------+-------------------------------------------------------------------------------------------+
+| user             | Name of the user who answered this call. Only incoming calls can have this parameter      |
++------------------+-------------------------------------------------------------------------------------------+
+| from             | The calling number (e.g. "492111234567" or "anonymous")                                   |
++------------------+-------------------------------------------------------------------------------------------+
+| to               | The called number (e.g. "491711234567890")                                                |
++------------------+-------------------------------------------------------------------------------------------+
+| direction        | The direction of the call (either "in" or "out")                                          |
++------------------+-------------------------------------------------------------------------------------------+
+| answeringNumber  | The number of the answering destination. Useful when redirecting to multiple destinations |
++------------------+-------------------------------------------------------------------------------------------+
 
 
 You can simulate this POST request and test your server with a CURL command:
