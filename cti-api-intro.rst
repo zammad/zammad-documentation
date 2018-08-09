@@ -27,6 +27,6 @@ Feature list
 * Set the outbound caller ID based on the line phone number (e. g. set sender caller id based on country of destination caller id) *
 
 
- ** if supported by the PBX/telephone system*
+ * if supported by the PBX/telephone system
 
 

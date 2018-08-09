@@ -19,7 +19,7 @@ Events
 
 Zammad supports the following three events (newCall, hangup and answer) in version 2.x.
 
-*Event: newCall*
+**Event: newCall**
 
 +-------------+------------------------------------------------------------------------------------------+
 | Attribute   | Description                                                                              |
@@ -85,7 +85,7 @@ Example 1: Set custom caller id for outgoing call
     "number": "491711234567890"
   }
 
-*Event: hangup*
+**Event: hangup**
 
 +-----------------+---------------------------------------------------------+
 | Attribute       | Description                                             |
@@ -133,7 +133,7 @@ Hangup causes: For these reasons, hangups may occur because of these causes:
 +-----------------+-----------------------------------------------------------------+
 
 
-*Event: answer*
+**Event: answer**
 
 +------------------+-------------------------------------------------------------------------------------------+
 | Attribute        | Description                                                                               |
