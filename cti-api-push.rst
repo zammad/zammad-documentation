@@ -1,5 +1,5 @@
 CTI Push API
-***
+************
 
 How it works
 ============
@@ -46,8 +46,7 @@ You can simulate this POST request and test your server with a CURL command:
 
   curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/integration/cti/:token
 
-
-#### The response (optional)
+*The response (optional)*
 
 After sending the POST request to Zammad, your PBX can accept an JSON response to determine what to do (e. g. for `direction=in` to block the caller or for `direction=out` to set a caller id).
 
