@@ -1,4 +1,4 @@
-CTI Push API
+Push API
 ************
 
 How it works
