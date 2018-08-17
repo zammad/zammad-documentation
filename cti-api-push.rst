@@ -11,7 +11,7 @@ Depending on the event, Zammad offers various functions to quickly and easily id
 Endpoint
 ============
 
-The endpoint of your Zammad CTI Push API looks like http://localhost:3000/api/v1/integration/cti/:token and can be found in Zammad -> Admin -> Integrations -> CTI (generic) -> Endpoint
+The endpoint of your Zammad CTI Push API looks like http://localhost:3000/api/v1/cti/:token and can be found in Zammad -> Admin -> Integrations -> CTI (generic) -> Endpoint
 
 
 Events
@@ -44,7 +44,7 @@ You can simulate this POST request and test your server with a CURL command:
 
 ::
 
-  curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/integration/cti/:token
+  curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/cti/:token
 
 *The response (optional)*
 
@@ -109,7 +109,7 @@ You can simulate this POST request and test your server with a CURL command:
 
 ::
 
-  curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/integration/cti/:token
+  curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/cti/:token
 
 
 Hangup causes: For these reasons, hangups may occur because of these causes:
@@ -158,6 +158,6 @@ You can simulate this POST request and test your server with a CURL command:
 
 ::
 
-  curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/integration/cti/:token
+  curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/cti/:token
 
 
