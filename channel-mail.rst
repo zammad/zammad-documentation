@@ -2,6 +2,7 @@ Mail
 ****
 
 If you want to fetch emails via POP3 or IMAP you have to create a mail channel in system settings "#channels/email".
+
 **If you're using a Office365 Mailbox, please ensure that it's a real usermailbox and not a shared mailbox!**
 
 Just follow these steps:
