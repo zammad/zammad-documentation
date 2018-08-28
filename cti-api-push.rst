@@ -39,6 +39,8 @@ Zammad supports the following three events (newCall, hangup and answer) in versi
 |             | received by multiple users. In that case a "user[]" parameter is set for each of these   |
 |             | users. It is always "user[]" (not "user"), even if only one user is involved.            |
 +-------------+------------------------------------------------------------------------------------------+
+| queue       | The queue name (e. g. helpdesk). This field is optional.                                 |
++-------------+------------------------------------------------------------------------------------------+
 
 You can simulate this POST request and test your server with a CURL command:
 
@@ -103,7 +105,7 @@ Example 1: Set custom caller id for outgoing call
 | direction       | The direction of the call (either "in" or "out")        |
 +------------------+--------------------------------------------------------+
 | answeringNumber | The number which was answering                          |
-+-------------+-------------------------------------------------------------+
++-----------------+---------------------------------------------------------+
 
 You can simulate this POST request and test your server with a CURL command:
 
