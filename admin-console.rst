@@ -154,8 +154,7 @@ Add translation
 
 ::
 
- rails> Translation.create!(source: 'Username / email', target: 'My Username / My Email', locale: 'en-us', format: 'string', created_by_id: 1, updated_by_id: 1)
- rails> Translation.create_if_not_exists( :locale => 'de', :source => "New", :target => "Neu" )
+ rails> Translation.create_if_not_exists( :locale => 'de-de', :source => "New", :target => "Neu", format: 'string', created_by_id: 1, updated_by_id: 1 )
 
 
 Set admin rights for user
