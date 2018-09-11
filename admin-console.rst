@@ -57,7 +57,7 @@ Change priority
 
 ::
 
- rails> priority2 = Priority.find(2)
+ rails> priority2 = Ticket::Priority.find(2)
  rails> priority2.name = '2-high'
  rails> priority2.default_create = true
  rails> priority2.save!
