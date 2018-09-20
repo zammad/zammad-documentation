@@ -1,12 +1,12 @@
 Welcome to Zammad's documentation!
 ==================================
-The zammad documentation consists of three parts:
+The Zammad documentation consists of three parts:
 
-- zammad system installation and configuration (this documentation)
+- Zammad system installation and configuration (this documentation)
 
-- zammad administration (http://zammad-admin-documentation.readthedocs.io/en/latest/index.html)
+- Zammad administration (http://zammad-admin-documentation.readthedocs.io/en/latest/index.html)
 
-- zammad user documentation (http://zammad-user-documentation.readthedocs.io/en/latest/index.html)
+- Zammad user documentation (http://zammad-user-documentation.readthedocs.io/en/latest/index.html)
 
 This system documentation for Zammad is organized into a couple of sections:
 

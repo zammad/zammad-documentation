@@ -42,6 +42,32 @@ Find group
 ::
 
  rails> Group.find_by(name: 'Users').follow_up_possible
+ 
+
+Change / Update E-Mail-Adress of User
+-------------------------------------
+
+::
+
+ rails> u=User.find(**USERID**)
+ rails> u.email = 'user@exmaple.com'
+ rails> u.save!
+  
+  
+You need to find the User-ID of the user first for this.
+  
+  
+Change / Update Login name of User
+----------------------------------
+
+::
+
+ rails> u=User.find(**USERID**)
+ rails> u.login = 'user@exmaple.com'
+ rails> u.save!
+  
+  
+You need to find the User-ID of the user first for this.
 
 
 Update the customer of a bundle of tickets
