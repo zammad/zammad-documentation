@@ -22,6 +22,10 @@ This is a dependency of the OTRS migration plugin
 * On OTRS 4:
 
   *  https://addons.znuny.com/api/addon_repos/public/309/latest
+  
+* On OTRS 3:
+
+  *  https://addons.znuny.com/api/addon_repos/public/142/latest
 
 
 Install OTRS migration plugin
