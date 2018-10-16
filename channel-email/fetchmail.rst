@@ -1,12 +1,12 @@
-Pipe (Fetchmail)
-****************
+CLI Import (Fetchmail / Procmail)
+*********************************
 
 Maybe you want to add emails via Fetchmail and Procmail to Zammad.
 
 To get this to work you need to pipe your emails to rails.
 
 Command line
-==================
+============
 
 ::
 
@@ -45,7 +45,7 @@ That's it. Emails now will be directly piped into Zammad.
 
 
 Using Procmail for advanced features like presorting
-=====================================================
+====================================================
 
 If you want to do some more with your emails, like presorting to a Zammad group or filtering spam, you can use Procmail.
 
@@ -175,3 +175,4 @@ Ignore Header
 
 * If you want to ignore an email, just set the "X-Zammad-Ignore" header.
 * Example: X-Zammad-Ignore: [yes|true]
+

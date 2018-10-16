@@ -97,13 +97,12 @@ This system documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: Channels
 
-   channel-mail
+   channel-email
    channel-form
    channel-chat
    channel-twitter
    channel-facebook
    channel-telegram
-   channel-fetchmail
 
 
 .. _admin-webfrontend:
