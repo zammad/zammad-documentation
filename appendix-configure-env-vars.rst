@@ -24,7 +24,7 @@ Please note that you also have to reconfigure Nginx when changing the ports!
  systemctl restart zammad
 
 Application Servers
-===============
+===================
 
 Per default one application server will get started. If you have more http requests (user sessions) you need to increase the amount of your application server. The typical problem is long waiting times in the web interface for opening or editing tickets. 
 
@@ -32,3 +32,18 @@ Per default one application server will get started. If you have more http reque
 
  zammad config:set WEB_CONCURRENCY=3
  systemctl restart zammad
+
+Configure Restart Command
+=========================
+If you need to make changes (creating objects) to Zammad, it can be necessary to restart the service. 
+This can be done manually or automatic. If you like to use the automatic way you need to set an special environment variable.
+
+Note: you might need to adjust the value for APP_RESTART_CMD if you have / need a different command to restart your Zammad on your installation.
+
+::
+
+ zammad config:set APP_RESTART_CMD="systemctl restart zammad"
+
+
+
+
