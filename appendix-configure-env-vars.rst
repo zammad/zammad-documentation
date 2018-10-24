@@ -36,7 +36,7 @@ Per default one application server will get started. If you have more http reque
 Configure Restart Command
 =========================
 If you need to make changes (creating objects) to Zammad, it can be necessary to restart the service. 
-This can be done manually or automatic. For use the automatic solution you need to set an special ENV Var
+This can be done manually or automatic. If you like to use the automatic way you need to set an special environment variable.
 
 Note: you might need to adjust the value for APP_RESTART_CMD if you have / need a different command to restart your Zammad on your installation.
 
