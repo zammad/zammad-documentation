@@ -137,7 +137,7 @@ Get ticket state types
  rails> Ticket::StateType.all
 
 
-Add new ticket state and make it available in ticket screens
+Add new ticket state
 --------------------
 
 option a) a pending remidner state (send reminder notification to agent if time has reached)
