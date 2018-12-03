@@ -18,10 +18,10 @@ Register your Zammad as Twitter app under http://developer.twitter.com. It's req
 
 Click on your login name on the right top, then "Apps"
 
-.. image:: apps.twitter.com_create_app_screen.png
+.. image:: images/apps.twitter.com_create_app_screen.png
    :alt: new app page
 
-.. image:: apps.twitter.com_create_app_screen2.png
+.. image:: images/apps.twitter.com_create_app_screen2.png
    :alt: new app page
 
 Enter app settings. As "Callback URL" you need to enter "https://zammad_host/api/v1/external_credentials/twitter/callback"
