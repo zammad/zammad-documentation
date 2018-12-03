@@ -3,17 +3,25 @@ Twitter
 
 It's possible to put your Twitter communication into Zammad. To do so, you need to follow these steps:
 
+Register Twitter developer account
+====================
+Register your Twitter developer account under http://developer.twitter.com. After your register the account you get the following welcome screen:
+
+.. image:: images/app.twitter.com_developer_account.png
+   :alt: welcome Twitter developer account
+
+
 Register Twitter app
 ====================
 
-Register your Zammad as Twitter app under http://apps.twitter.com. It's required to let Zammad read/write tweets.
+Register your Zammad as Twitter app under http://developer.twitter.com. It's required to let Zammad read/write tweets and direct messages.
 
-.. image:: images/apps.twitter.com_start.png
-   :alt: inital page
+Click on your login name on the right top, then "Apps"
 
-Click on "Create New App"
+.. image:: apps.twitter.com_create_app_screen.png
+   :alt: new app page
 
-.. image:: images/apps.twitter.com_new_app_screen.png
+.. image:: apps.twitter.com_create_app_screen2.png
    :alt: new app page
 
 Enter app settings. As "Callback URL" you need to enter "https://zammad_host/api/v1/external_credentials/twitter/callback"
@@ -31,7 +39,14 @@ Next we need to set _read, write and access direct messages permissions_ for the
 .. image:: images/apps.twitter.com_get_credentials.png
    :alt: click on Keys & Access Token, note them
 
-Go to "Keys and Access Token" tab and note the "Consumer Key" and "Consumer Secret".
+Go to "Keys and Access Token" tab and note the "Consumer Key", "Consumer Secret", "Access token" and "Access token secret".
+
+Next we need to create a "Dev Environment", click on your login name on the right top, then "Dev Environments"
+
+.. image:: images/apps.twitter.com_dev_environment.png
+   :alt: setup a new Dev Environment
+
+Rember the "Dev environment label", you need it later.
 
 
 Configure Zammad as Twitter app
@@ -42,7 +57,7 @@ Go to "Admin -> Channels -> Twitter"
 .. image:: images/zammad_connect_twitter_app1.png
    :alt: Admin -> Channels -> Twitter
 
-Click on "Connect Twitter App" and enter your "Consumer Key", "Consumer Secret" and verify the "Callback URL".
+Click on "Connect Twitter App" and enter your "Consumer Key", "Consumer Secret", "Access token" and "Access token secret", "Dev environment label" and verify the "Callback URL".
 
 .. image:: images/zammad_connect_twitter_app2.png
    :alt: Connect Twitter App, click "Submit"
