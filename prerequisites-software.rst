@@ -27,7 +27,7 @@ Side note: We tend to recommend PostgreSQL. For the last 10 years we had the bes
 Required configuration for MySQL/MariaDB:
 
 * Use UTF8 encoding. utf8mb4 for example will fail.
-* Set max_allowed_packet to a value larger than the default of 4 MB (64 MB+ recommended).
+* Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 
 3. Reverse Proxy
 ================
@@ -47,5 +47,5 @@ The following reverse proxies are supported:
 For excellent search performance we use Elasticsearch.
 The following Elasticsearch versions are supported:
 
-* Elasticsearch 2.4 up to 5.5 with mapper-attachments plugin
-* Elasticsearch 5.6 with ingest-attachment plugin
+* Elasticsearch 2.4 up to 5.5 with ``mapper-attachments`` plugin
+* Elasticsearch 5.6 with ``ingest-attachment`` plugin
