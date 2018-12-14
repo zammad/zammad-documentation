@@ -1,6 +1,9 @@
 Install on Ubuntu via DEB
 *************************
 
+.. Note:: We currently support Ubuntu 16.04 LTS and 18.04 LTS.
+
+
 Prerequisites
 =============
 
@@ -10,7 +13,10 @@ Be sure to use an UTF-8 locale or PostgreSQL will not install.
 Setup Elasticsearch
 -------------------
 
-https://docs.zammad.org/en/latest/install-elasticsearch.html#ubuntu-18-04
+For installing and setting up elasticsearch for Zammad, please refer our guide_ .
+
+
+.. _guide: https://docs.zammad.org/en/latest/install-elasticsearch.html#ubuntu-16-04-18-04
 
 
 Check locale
@@ -32,14 +38,35 @@ Set locale
  echo "LANG=en_US.UTF-8" > /etc/default/locale
 
 
-Add Zammad DEB Repo and install
-===============================
+Add Zammad DEB Repo
+===================
+
+Ubuntu 18.04
+------------
+
+::
+
+ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+ sudo wget -O /etc/apt/sources.list.d/zammad.list \
+   https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
+   
+
+
+Ubuntu 18.04
+------------
 
 ::
 
  wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
  sudo wget -O /etc/apt/sources.list.d/zammad.list \
    https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
+   
+
+Install on Ubuntu (16.04 and 18.04)
+-----------------------------------
+   
+::
+
  sudo apt-get update
  sudo apt-get install zammad
 

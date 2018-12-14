@@ -118,7 +118,7 @@ Please note: this actions will delete all existing data! Dont use it on a produc
 
 
 Install from source (Debian 7, 8 / Ubuntu 16.04 / Ubuntu 18.04)
-************************************************
+***************************************************************
 
 With Nginx & MySQL
 ==================
