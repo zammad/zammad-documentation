@@ -41,7 +41,7 @@ Set locale
 Add Zammad DEB Repo
 ===================
 
-Ubuntu 18.04
+Ubuntu 16.04
 ------------
 
 ::
