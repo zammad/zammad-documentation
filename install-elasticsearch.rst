@@ -117,8 +117,8 @@ Debian 9:
  systemctl enable elasticsearch
 
 
-Ubuntu 16.04:
-+++++++++++++
+Ubuntu 16.04 & 18.04:
++++++++++++++++++++++
 
 ::
 
