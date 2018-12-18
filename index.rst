@@ -15,9 +15,6 @@ This system documentation for Zammad is organized into a couple of sections:
 * :ref:`install-docs`
 * :ref:`getting-started-docs`
 * :ref:`migration-docs`
-* :ref:`general-docs`
-* :ref:`channels-docs`
-* :ref:`admin-webfrontend`
 * :ref:`admin-console`
 * :ref:`contributing-docs`
 * :ref:`rest-api-docs`
@@ -78,33 +75,6 @@ This system documentation for Zammad is organized into a couple of sections:
    migration-zendesk
 
 
-.. _general-docs:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: General
-
-   general-ticket
-   general-search
-   general-glossary
-
-
-.. _channels-docs:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Channels
-
-   channel-email
-   channel-form
-   channel-chat
-   channel-twitter
-   channel-facebook
-   channel-telegram
-
-
 .. _admin-webfrontend:
 
 .. toctree::
@@ -112,8 +82,7 @@ This system documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: Administration via webfrontend
 
-   admin-webfrontend-trigger
-   admin-webfrontend-security-thirdparty
+   Admin-Documentation <https://zammad-admin-documentation.readthedocs.io/>
 
 
 .. _admin-console:
