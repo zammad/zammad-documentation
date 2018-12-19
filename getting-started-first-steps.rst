@@ -5,7 +5,7 @@ After installing Zammad, open http://localhost:3000 with your browser and follow
 
 You can find further information about Zammad's configuration on our Admin-Documentation_ (for Zammad-Administration within the WebApp).
 
-.. _Admin-Documentation: https://zammad-admin-documentation.readthedocs.io/en/latest/index.html
+.. _Admin-Documentation: https://admin-docs.zammad.org/
 
 Basically you need to do the following things:
 

@@ -1,5 +1,7 @@
+.. _install_elasticsearch:
+
 Set up Elasticsearch
-********************
+====================
 
 We use Elasticsearch for the awesome search in Zammad.
 
@@ -14,7 +16,7 @@ Install Elasticsearch and its Attachment plugin
 ===============================================
 
 Generic install Elasticsearch 2.4 (mapper-attachments):
-++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Download and install via https://www.elastic.co/downloads/elasticsearch (2.4.x)
 * Install the Attachment plugin

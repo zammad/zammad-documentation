@@ -1,30 +1,22 @@
 Install on CentOS via RPM
 *************************
 
-Currently we support RHEL7 & CentOS7.
+.. Note:: Currently we support RHEL7 & CentOS7.
+
+Setup Elasticsearch
+-------------------
+
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Please take a look at the following page: :ref:`install_elasticsearch` .
 
 
-Add Zammad, Elasticsearch & epel-release RPM repos and install RPM
-==================================================================
+Add Zammad-Repo and Install Zammad
+==================================
 
 ::
 
  sudo yum -y install epel-release wget
  sudo wget -O /etc/yum.repos.d/zammad.repo https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
-
- echo "[elasticsearch-5.x]
- name=Elasticsearch repository for 5.x packages
- baseurl=https://artifacts.elastic.co/packages/5.x/yum
- gpgcheck=1
- gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
- enabled=1
- autorefresh=1
- type=rpm-md" | sudo tee /etc/yum.repos.d/elasticsearch.repo
-
- sudo yum -y install java elasticsearch
- sudo systemctl daemon-reload
- sudo systemctl enable elasticsearch
- sudo systemctl start elasticsearch
 
  sudo yum -y install zammad
 

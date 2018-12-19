@@ -4,7 +4,7 @@ from OTRS
 Install plugins on OTRS
 =======================
 
-**Note: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.**
+.. Note:: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.
 
 Install Znuny4OTRS-Repo
 -----------------------
@@ -54,7 +54,7 @@ Import via Browser
 After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
 From there you're able to start the migration from OTRS.
 
-See the Video at http://days.zammad.org/features/migrator
+See the Video at `this site <https://days.zammad.org/features/migrator>`_ .
 
 
 Import via command line

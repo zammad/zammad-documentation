@@ -22,12 +22,13 @@ You can choose between the following products:
 * MariaDB 10.0+
 * PostgreSQL 9.1+
 
-Side note: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
+.. Note:: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
 
-Required configuration for MySQL/MariaDB:
+.. Warning:: **Required configuration for MySQL/MariaDB:**
+  
+  * Use UTF8 encoding. utf8mb4 for example will fail.
+  * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 
-* Use UTF8 encoding. utf8mb4 for example will fail.
-* Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 
 3. Reverse Proxy
 ================

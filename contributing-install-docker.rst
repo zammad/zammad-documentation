@@ -6,7 +6,7 @@ Our Docker image is a **single container** based application designed to have Za
 
 Please note that this is a non persistent storage container and **all Zammad data is lost** when you're stopping the container.
 
-If you like to run Docker in production environment try our Docker-compose version: https://docs.zammad.org/en/latest/install-docker-compose.html
+If you like to run Docker in production environment try our Docker-compose version: :ref:`install_docker_compose` .
 
 Your Docker environment needs to be up and running.
 

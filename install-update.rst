@@ -4,7 +4,7 @@ Updating Zammad
 Source update
 =============
 
-**Note: Please backup your Zammad instance before update!**
+.. Note:: Please backup your Zammad instance before update!
 
 1. Download Zammad to your system
 ---------------------------------
