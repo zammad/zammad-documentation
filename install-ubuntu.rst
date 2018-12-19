@@ -13,10 +13,8 @@ Be sure to use an UTF-8 locale or PostgreSQL will not install.
 Setup Elasticsearch
 -------------------
 
-For installing and setting up elasticsearch for Zammad, please refer our guide_ .
-
-
-.. _guide: https://docs.zammad.org/en/latest/install-elasticsearch.html#ubuntu-16-04-18-04
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Please take a look at the following page: :ref:`install_elasticsearch` .
 
 
 Check locale

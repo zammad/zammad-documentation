@@ -4,7 +4,8 @@ Install from source (generic)
 Setup Elasticsearch
 -------------------
 
-https://docs.zammad.org/en/latest/install-elasticsearch.html
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Please take a look at the following page: :ref:`install_elasticsearch` .
 
 
 1. Install Zammad on your system

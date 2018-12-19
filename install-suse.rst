@@ -1,7 +1,10 @@
 Install on SUSE via RPM
 ***********************
 
-Currently we support SLES 12 and OpenSUSE 42.2
+.. Note:: Currently we support SLES 12 and OpenSUSE with versions 42.2 and 42.3
+
+.. Warning:: OpenSUSE LEAP 15.0 hasn't been tested yet, but should work as well.
+
 
 Install dependencies
 ====================
@@ -9,11 +12,12 @@ Install dependencies
 Setup Elasticsearch
 -------------------
 
-https://docs.zammad.org/en/latest/install-elasticsearch.html
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Please take a look at the following page: :ref:`install_elasticsearch` .
 
 
-On SLES12
----------
+nginx on SLES12
+---------------
 
 ::
 
@@ -40,7 +44,7 @@ Note: Make sure that the firewall is not blocking port 80 (configure firewall vi
 
 
 Change your webserver configuration (non localhost connections):
-=================
+================================================================
 
 Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
 The installer will give you a hint where Zammad's web server config file is located.

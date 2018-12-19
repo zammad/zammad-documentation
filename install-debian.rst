@@ -1,7 +1,7 @@
 Install on Debian via DEB
 *************************
 
-Currently we support Debian 8 and 9
+.. Note:: Currently we support Debian 8 and 9
 
 Prerequisites
 =============
@@ -12,7 +12,8 @@ Be sure to use an UTF-8 locale or PostgreSQL will not install.
 Setup Elasticsearch
 -------------------
 
-https://docs.zammad.org/en/latest/install-elasticsearch.html
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Please take a look at the following page: :ref:`install_elasticsearch` .
 
 
 Check locale
@@ -72,13 +73,13 @@ Go to http://localhost and you'll see:
 
 
 Change your webserver configuration (non localhost connections):
-=================
+================================================================
 
 Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
 The installer will give you a hint where Zammad's web server config file is located.
 
 nginx
---------
+-----
 
 */etc/nginx/sites-enabled/zammad.conf*
 

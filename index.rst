@@ -4,9 +4,9 @@ The Zammad documentation consists of three parts:
 
 - Zammad system installation and configuration (this documentation)
 
-- Zammad administration (http://zammad-admin-documentation.readthedocs.io/en/latest/index.html)
+- Zammad administration (https://admin-docs.zammad.org)
 
-- Zammad user documentation (http://zammad-user-documentation.readthedocs.io/en/latest/index.html)
+- Zammad user documentation (https://user-docs.zammad.org)
 
 This system documentation for Zammad is organized into a couple of sections:
 
@@ -82,7 +82,7 @@ This system documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: Administration via webfrontend
 
-   Admin-Documentation <https://zammad-admin-documentation.readthedocs.io/>
+   Admin-Documentation <https://admin-docs.zammad.org/>
 
 
 .. _admin-console:

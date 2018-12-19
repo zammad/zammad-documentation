@@ -1,5 +1,9 @@
+.. _install_docker_compose:
+
 Install with Docker-Compose
 ***************************
+
+.. Warning:: We currently do not support Docker environments in productive use.
 
 Docker is a container-based software framework for automating deployment of applications. Compose is a tool for defining and running multi-container Docker applications.
 This repo is meant to be the starting point for somebody who likes to use dockerized multi-container Zammad in production.

@@ -112,7 +112,7 @@ Search for tickets (for tickets with state new and open )::
 
  curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=state:new%20OR%20state:open&limit=10&expand=true'
 
-For more search examples see https://docs.zammad.org/en/latest/general-search.html
+For more search examples regarding searching, please see `this page <https://user-docs.zammad.org/en/latest/advanced/search.html>`_ .
 
 Create an new user::
 
@@ -172,7 +172,7 @@ Example::
 Response Format (expanded)
 ==========================
 
-If you want to retrieve expanded information for a request (e. g. the organization attribute), you just need to add an ```expand=true``` to the request URL.
+If you want to retrieve expanded information for a request (e. g. the organization attribute), you just need to add an ``expand=true`` to the request URL.
 
 Example::
 
