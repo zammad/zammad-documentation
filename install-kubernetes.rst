@@ -1,5 +1,3 @@
-.. _install_kubernetes:
-
 Install on Kubernetes via Helm
 ******************************
 
