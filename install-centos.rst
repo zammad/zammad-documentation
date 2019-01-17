@@ -4,7 +4,7 @@ Install on CentOS via RPM
 .. Note:: Currently we support RHEL7 & CentOS7.
 
 Setup Elasticsearch
--------------------
+===================
 
 Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
 Please take a look at the following page: :ref:`install_elasticsearch` .
@@ -49,7 +49,7 @@ Add your fully qualified domain name or public IP to server name directive in yo
 The installer will give you a hint where Zammad's web server config file is located.
 
 nginx
---------
+=====
 
 */etc/nginx/conf.d/zammad.conf*
 
