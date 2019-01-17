@@ -3,8 +3,11 @@ Install on CentOS via RPM
 
 .. Note:: Currently we support RHEL7 & CentOS7.
 
+Prerequisites
+=============
+
 Setup Elasticsearch
-===================
+-------------------
 
 Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
 Please take a look at the following page: :ref:`install_elasticsearch` .
@@ -22,7 +25,7 @@ Add Zammad-Repo and Install Zammad
 
 
 SeLinux & Firewalld
-===================
+-------------------
 
 On Centos SeLinux & Firewalld are possibly enabled. 
 To get everything work you have to use the following commands:
@@ -43,13 +46,13 @@ Go to http://localhost and you'll see:
 
 
 Change your webserver configuration (non localhost connections):
-================================================================
+----------------------------------------------------------------
 
 Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
 The installer will give you a hint where Zammad's web server config file is located.
 
 nginx
-=====
+-----
 
 */etc/nginx/conf.d/zammad.conf*
 
