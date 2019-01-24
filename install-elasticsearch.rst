@@ -69,7 +69,7 @@ Generic install Elasticsearch 5.6 (ingest-attachment):
  sysctl -w vm.max_map_count=262144
  
  
-.. Tipp:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
+.. Tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
  
  
 * Start elasticsearch
