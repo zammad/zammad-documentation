@@ -19,16 +19,16 @@ The following command will allow you to run a single command, without running a 
 
 .. Tip:: If you enter a ``p`` in front of your command (e.g. like ``rails r 'p Delayed::Job.count'``), you'll actually receive a printed output (without you won't!).
 
-When you installed Zammad from a package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+when you've installed Zammad from a package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
  shell> zammad run rails r '{COMMAND}'
 
  
-When you installed Zammad from source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+when you've installed Zammad from source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -40,16 +40,16 @@ Running several commands in a shell
 
 The following command will provide you a rails console, you can run several commands inside it.
 
-When you installed Zammad from a package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+when you've installed Zammad from a package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
  shell> zammad run rails c
 
  
-When you installed Zammad from source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+when you've installed Zammad from source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
