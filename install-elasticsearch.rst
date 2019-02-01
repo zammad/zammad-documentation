@@ -43,6 +43,11 @@ Generic install Elasticsearch 5.0-5.5 (mapper-attachments):
 ::
 
  sysctl -w vm.max_map_count=262144
+ 
+
+On Mac you also have to do:
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
 
 
 * Start elasticsearch
@@ -62,9 +67,14 @@ Generic install Elasticsearch 5.6 (ingest-attachment):
 ::
 
  sysctl -w vm.max_map_count=262144
-
-
+ 
+ 
+.. Tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
+ 
+ 
 * Start elasticsearch
+
+
 
 CentOS 7:
 +++++++++
@@ -315,9 +325,13 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | Field               | Sample Value                                   | Description                                                  |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| attachment._name    | file1.txt                                      | File name                                                    |
+| attachment.title    | file1.txt                                      | File name                                                    |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
-| attachment._content | Hello world                                    | File Content                                                 |
+| attachment.content  | Hello world                                    | File Content                                                 |
++---------------------+------------------------------------------------+--------------------------------------------------------------+
+| attachment.keywords | keyword                                        | File Keywords                                                |
++---------------------+------------------------------------------------+--------------------------------------------------------------+
+| attachment.content  | Max                                            | File Author                                                  |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | body                | :)                                             | Content of the article                                       |
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
