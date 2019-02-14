@@ -96,6 +96,24 @@ CentOS 7:
  systemctl enable elasticsearch
 
 
+Debian 8:
++++++++++
+
+::
+
+ apt-get install apt-transport-https sudo wget
+ echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
+ echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+ apt-get update
+ apt-get install -t jessie-backports openjdk-8-jre
+ apt-get install elasticsearch
+ sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
+ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+ systemctl restart elasticsearch
+ systemctl enable elasticsearch
+
+
 Debian 9:
 +++++++++
 
