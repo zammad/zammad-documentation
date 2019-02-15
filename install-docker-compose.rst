@@ -13,6 +13,8 @@ The Docker images are hosted on Dockerhub:
 
 * https://hub.docker.com/r/zammad/zammad-docker-compose/
 
+.. Tip:: Never use the "latest" tag. Use a tag which has a version attached.
+
 You need at least 4 GB of RAM to run the containers.
 
 Install Docker Environment
