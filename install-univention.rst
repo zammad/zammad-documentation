@@ -1,26 +1,24 @@
-Install on Univention via App-Store
-***********************************
+Installation on Univention Corporate Server via App Center
+**********************************************************
 
-.. Note:: As Zammad is using docker-compose for Univention, the minimum requirement is UCS 4.3.
+.. Note:: As Zammad is using Docker Compose for Univention Corporate Server, the minimum requirement is UCS 4.3-2 errata 345.
 
-Univention is a corporate server that unifies several small services into a big, powerful service collection.
-As it can already bring LDAP and mail integrations, Zammad is the perfect add-on for this suite.
+Univention Corporate Server (UCS) is an enterprise server with focus on identity and infrastructure management. With its marketplace called App Center it can easily extended by solutions like Zammad that benefit from integrations with the LDAP directory service and the mail infrastructure.
 
-`Click here to learn more about Univention and what it can do for you. <https://www.univention.de/>`_.
+`Click here to learn more about Univention and what it can do for you <https://www.univention.de/>`_.
 
 
 Prerequisites
 =============
 
-To install the Zammad app within the Univention universe, please ensure that you're using at least UCS 4.3.
+To install the Zammad app on UCS, please ensure that you're using at least UCS 4.3-2 errata 345.
 The basic installation will already meet our requirement. You'll need the following additional things:
 
-* a E-Mail-Server (no matter if handled via UCS or with an external system)
-  * you need this for notifications, as you can't use sendmail in our docker setup!
-* you should at least have **2 CPU-Cores and 4GB of RAM**
+* An email server (no matter if handled via UCS or with an external system) for notifications, as you can't use sendmail in our Docker setup!
+* You should at least have **2 CPU-Cores and 4GB of free RAM**.
 
 
-.. Note:: Running the Zammad-App with less than 4GB free RAM, this will lead to unexpected errors!
+.. Note:: Running the Zammad app with less than 4GB free RAM will lead to unexpected errors!
 
 You see, that's not much - so go a head with the installation.
 
@@ -28,13 +26,17 @@ You see, that's not much - so go a head with the installation.
 Installing Zammad
 =================
 
-The app installation it self is quite easy: Just open the App Center within Univention and search for ``Zammad``.
-Press ``Install``, read our license agreement and wait for the installation to finish.
+The app installation itself is quite easy: Just open the App Center within UCS management system and search for ``Zammad``.
+Press ``Install``, accept our license agreement and wait for the installation to finish.
 
 .. image:: images/univention/zammad-in-store.png
 
-The installation will take about 5-15 minutes, depending on your hardware speed.
-If it's finished, you can press ``open`` - you'll get to our Zammad-Wizard. It helps you with the minimum of information we need. ( See ``First steps you should consider`` )
+The installation will take about 5-15 minutes, depending on your hardware
+speed. Please give the installation the needed time and don't abort. During the
+automated setup there are some waits for services to come up. Please be
+patient!
+
+If it's finished, you can press ``open`` - you'll get to our Zammad Wizard. It helps you with the minimum of information we need. ( See ``First steps you should consider`` )
  
 .. image:: images/univention/installed-zammad.png
  
@@ -57,8 +59,8 @@ In order to make the installation as complete and convenient as possible, we're 
 	"LDAP activated", "<empty>", "false"
 
 
-.. Note:: ² Please note that LDAP is pre filled with authentication data and group mapping ``Zammad-Admin`` to Admin-Role and ``Zammad-Agent`` to Agent-Role. You can use those security groups.
-  LDAP-Sync is disabled during installation, as activating it would break the installation wizard of Zammad.
+.. Note:: ² Please note that the UCS LDAP directory is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to Agent-Role. You can use those security groups.
+  LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
 
 
 First steps you should consider
@@ -66,29 +68,30 @@ First steps you should consider
 
 The most important part is obvious: Run the wizard and insert the information for your admin account.
 
-.. Warning:: If the E-Mail-Address is used within UCS, you need to ensure that your user account within UCS has the needed Admin-Group, as other wise a LDAP-Synch will downgrade your account!
+.. Warning:: If the email address is used within UCS, you need to ensure that your user account within UCS has the needed Admin-Group, as otherwise a LDAP synchronization will downgrade your user account to the setup role!
 
 You can now enter your company name and upload a company logo, if you want to. (the company name is mandatory).
 The system URL has been set by our installation routine already, you should be good to continue without changing it.
 
 .. Note:: Changing the system URL might lead to broken links within notification mails.
 
-For the notification sender, you should use SMTP, as the docker container does not come with any sendmail or local MTA.
+For the notification sender, you should use SMTP, as the Docker container does not come with any sendmail or local MTA.
 If you choose local MTA, Zammad will not be able to send you any notifications.
 
-The last step offers you to add your first E-Mail-Accounts to Zammad.
-You're free to skip this step, you can configure your accounts later as well.
+The last step offers you to add your first email accounts to Zammad.
+You're free to skip this step, you can configure your accounts later, as well.
 
 Zammad is now ready to go.
-If you want to take advantage of Univentions LDAP-Server, you need to do the following before hand:
 
-* Add your desired Admin-Users to the security group ``Zammad-Admin`` 
-* Add your desired agents to the security group ``Zammad-Agent`` 
-* All user accounts that are not covered by the default group mapping, will be added as customer
+The identity management integration with UCS LDAP directory allows the system administrator to maintain the users at one single point.
+If you want to take advantage of UCS identity management integration, you need to do the following before hand:
 
+* Add your desired Zammad admin users to the user group ``Zammad-Admin``.
+* Add your desired Zammad agents to the user group ``Zammad-Agent``.
+* All user accounts that are not covered by the default group mapping, will be added in the Zammad customer role.
 
-You can now go to Admin-Settings -> Integration => LDAP and simply activate LDAP. 
-The first LDAP-Sync will start shortly after - Zammad will then sync your LDAP data hourly.
+You can now go to Admin-Settings -> Integration -> LDAP and simply activate LDAP.
+The first LDAP synchronization will start shortly thereafter - Zammad will then synchronize user account data with the UCS LDAP directory hourly.
 
 .. Note:: You're free to change the group-role mapping at any time. See `Configuring LDAP integration <https://admin-docs.zammad.org/en/latest/integrations/ldap.html>`_ for more information.
 
@@ -101,8 +104,8 @@ Further configuration
 The rest of the configuration is pretty straight forward and applies to our default.
 We split our documentation into two further parts that will be of your interest:
 
- * `Admin-Documentation <https://admin-docs.zammad.org/>`_ this documentation holds any information about how to configure Zammad via WebApp 
- * `User-Documentation <https://user-docs.zammad.org/>`_ this documentation holds a complete user documentation (how to work with Zammad)
+ * `Admin-Documentation <https://admin-docs.zammad.org/>`_: this documentation holds any information about how to configure Zammad via WebApp.
+ * `User-Documentation <https://user-docs.zammad.org/>`_: this documentation holds a complete user documentation (how to work with Zammad).
 
 
 Issues you might encounter
@@ -114,4 +117,5 @@ Zammad can't communicate with external systems
 ----------------------------------------------
 
 In rare cases (sometimes even right after installation), Zammad won't be able to communicate with e.g. external 
-E-Mail-Servers. Simply restarting the Zammad-App within Univention Portal should be enough to get it back to working.
+email servers. Simply restart the Zammad app the App Center module in the UCS management system and it should be enough to get it back working.
+
