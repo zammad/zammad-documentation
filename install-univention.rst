@@ -59,7 +59,7 @@ In order to make the installation as complete and convenient as possible, we're 
 	"LDAP activated", "<empty>", "false"
 
 
-.. Note:: ² Please note that the UCS LDAP directory is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to Agent-Role. You can use those security groups.
+.. Note:: ² Please note that the Zammad-LDAP integration is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to the Agent-Role. You can use those security groups.
   LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
 
 
