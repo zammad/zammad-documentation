@@ -162,7 +162,7 @@ Required permission:
 
 Request::
 
- PUT /api/v1/tag_list
+ PUT /api/v1/tag_list/{id}
 
  {
    id: 6,
@@ -184,11 +184,7 @@ Required permission:
 
 Request::
 
- DELETE /api/v1/tag_list
-
- {
-   id: 6,
- }
+ DELETE /api/v1/tag_list/{id}
 
 Response::
 
