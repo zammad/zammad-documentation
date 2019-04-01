@@ -8,8 +8,8 @@ Find user
 
 ::
 
- rails> User.find(4)
- rails> User.find_by(email: 'your@email')
+ User.find(4)
+ User.find_by(email: 'your@email')
 
 
 Change / Update E-Mail-Adress of User
@@ -17,9 +17,9 @@ Change / Update E-Mail-Adress of User
 
 ::
 
- rails> u=User.find(**USERID**)
- rails> u.email = 'user@exmaple.com'
- rails> u.save!
+ u=User.find(**USERID**)
+ u.email = 'user@exmaple.com'
+ u.save!
   
   
 You need to find the User-ID of the user first for this.
@@ -30,9 +30,9 @@ Change / Update Login name of User
 
 ::
 
- rails> u=User.find(**USERID**)
- rails> u.login = 'user@exmaple.com'
- rails> u.save!
+ u=User.find(**USERID**)
+ u.login = 'user@exmaple.com'
+ u.save!
   
   
 You need to find the User-ID of the user first for this.
@@ -43,9 +43,9 @@ Set admin rights for user
 
 ::
 
- rails> u = User.find_by(email: 'you@example.com')
- rails> u.roles = Role.where(name: ['Agent', 'Admin'])
- rails> u.save!
+ u = User.find_by(email: 'you@example.com')
+ u.roles = Role.where(name: ['Agent', 'Admin'])
+ u.save!
 
 
 Set password for user
@@ -53,5 +53,5 @@ Set password for user
 
 ::
 
- rails> User.find_by(email: 'you@example.com').update!(password: 'your_new_password')
+ User.find_by(email: 'you@example.com').update!(password: 'your_new_password')
 

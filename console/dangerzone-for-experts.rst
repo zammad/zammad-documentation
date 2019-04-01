@@ -11,15 +11,15 @@ Delete a certain ticket
 
 ::
 
- rails> Ticket.find(4).destroy
+ Ticket.find(4).destroy
 
 Delete some tickets
 ------------------
 
 ::
 
- rails> tickets_to_keep = [1, 2, 3] # enter the ids of all tickets you want to keep
- rails> (Ticket.all.pluck(:id) - tickets_to_keep).each { |id| Ticket.find(id).destroy }
+ tickets_to_keep = [1, 2, 3] # enter the ids of all tickets you want to keep
+ (Ticket.all.pluck(:id) - tickets_to_keep).each { |id| Ticket.find(id).destroy }
 
 
 Delete all tickets
@@ -27,7 +27,7 @@ Delete all tickets
 
 ::
 
- rails> Ticket.destroy_all
+ Ticket.destroy_all
 
 
 Destroy stuff
@@ -35,8 +35,8 @@ Destroy stuff
 
 ::
 
- rails> OnlineNotification.destroy_all
- rails> ActivityStream.destroy_all
- rails> RecentView.destroy_all
- rails> History.destroy_all
+ OnlineNotification.destroy_all
+ ActivityStream.destroy_all
+ RecentView.destroy_all
+ History.destroy_all
 
