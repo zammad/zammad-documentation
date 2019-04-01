@@ -60,7 +60,7 @@ Working on the console
 ======================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    console/zammad-settings
    console/working-on-users
