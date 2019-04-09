@@ -177,7 +177,7 @@ Extra Elasticsearch index name space (optional)
 
 ::
 
- zammad run rails r "Setting.set('es_index', Socket.gethostname + '_zammad')"
+ zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
 Ignore certain file extensions for indexing (optional)
 ------------------------------------------------------
