@@ -9,6 +9,7 @@ Working with ticket information
 Delete a certain ticket
 -----------------------
 
+The following command removes a specific ticket and all of it's articles from Zammad.
 ::
 
  Ticket.find(4).destroy
@@ -16,6 +17,7 @@ Delete a certain ticket
 Delete some tickets
 ------------------
 
+This will remove all existing tickets, except for those you specified within `tickets_to_keep`-variable before.
 ::
 
  tickets_to_keep = [1, 2, 3] # enter the ids of all tickets you want to keep
@@ -25,6 +27,7 @@ Delete some tickets
 Delete all tickets
 ------------------
 
+This removes all existing tickets within Zammad.
 ::
 
  Ticket.destroy_all
@@ -33,10 +36,11 @@ Delete all tickets
 Destroy stuff
 -------------
 
+These commands will destroy historical information within Zammad.
 ::
 
- OnlineNotification.destroy_all
- ActivityStream.destroy_all
- RecentView.destroy_all
- History.destroy_all
+ OnlineNotification.destroy_all	# Remove all online notifications
+ ActivityStream.destroy_all	# Remove all entries from the Activity Stream (Dashboard)
+ RecentView.destroy_all		# Removes the entries for all recently viewed Objects (Tickets, Users, Organizations)
+ History.destroy_all		# This removes all history information from Tickets, Users and Organizations (dangeorus!)
 

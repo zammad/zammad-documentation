@@ -59,6 +59,8 @@ when you've installed Zammad from source
 Working on the console
 ======================
 
+Here's a topic list for quick jumping and better overview.
+
 .. toctree::
    :maxdepth: 2
 
