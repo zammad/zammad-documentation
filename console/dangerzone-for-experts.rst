@@ -87,6 +87,40 @@ The following is the real deal. It will delete all tickets linked to a customer 
  end
 
 
+Removing organizations
+----------------------
+
+In order to delete groups, you need to ensure no users are assigned as group member.
+If you want to search for other conditions of a group ( so not `active: false` ) just replace it inside the `where()` clause.
+Ensure that the searched phrase is inside the organization Object!
+
+First to the preview of what is affected:
+::
+
+  # preview
+  list = ''
+  Organization.where(active: false).each {|org|
+  list += "ORGANIZATION #{org.name} \n"
+  }
+  puts list
+
+
+If the result is correct, you can run the below to finally un-assign users memberships followed by the organization removal.
+::
+
+  # delete organization
+  Organization.where(active: false).each {|org|
+  puts "Working on '#{org.name}' \n"
+  User.where(organization_id: org.id).each {|user|
+     puts "... Removing User '#{user.firstname} #{user.lastname}' from Organization"
+     user.organization_id=nil
+     user.save!
+  }
+  puts "... Deleting organisation \n\n"
+  org.destroy
+  }
+
+
 Destroy stuff
 -------------
 
