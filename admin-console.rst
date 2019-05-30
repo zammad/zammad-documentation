@@ -65,6 +65,7 @@ Here's a topic list for quick jumping and better overview.
    :maxdepth: 2
 
    console/zammad-settings
+   console/hidden-settings
    console/working-on-users
    console/working-on-tickets
    console/working-on-groups

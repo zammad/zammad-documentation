@@ -4,21 +4,6 @@ Getting and Updating Zammad-Settings
 .. Note:: Please note that this is not a full setting list, if you're missing settings, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 
-Send all outgoing E-Mails to a BCC-Mailbox
-------------------------------------------
-
-This option allows you to send all outgoing E-Mails (not notifications) to a specific mailbox.
-Please note that this shouldn't be a mailbox you're importing already! This will apply to all groups and is a global setting.
-::
- 
- Setting.set('system_bcc', 'alias@domain.tld')
-
-You can easilly check the current BCC-Setting by running the following: 
-::
- 
- Setting.get('system_bcc')
-
-
 Get ticket_hook setting
 -----------------------
 
@@ -94,17 +79,4 @@ Zammad needs to use a proxy for network communication? Set it here.
  Setting.set('proxy_username', 'some user')
  Setting.set('proxy_password', 'some pass') 
 
-
-Activate counter on grouped overviews
--------------------------------------
-
-This is a hidden setting which you can only set via Command-Line.
-This will globally enable a ticket number value in each heading for grouped elements.
-::
-  
-  Setting.set('ui_table_group_by_show_count', true)	# enable counter on grouped overviews
-  Setting.set('ui_table_group_by_show_count', false)	# disable counter on grouped overviews
-  Setting.get('ui_table_group_by_show_count')		# get current setting (if NIL, it's false)
-
-.. image:: /images/console/ui_table_group_by_show_count-example.png
  
