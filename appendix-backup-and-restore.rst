@@ -118,7 +118,7 @@ Things you need to do after migration on every system
 .. Note:: This does not apply to Docker images, as the following settings should be applied upon every start.
 
 .. Warning:: For Zammad-Versions **2.9 and earlier**, please run a change owner on your Zammad folder. 
-  Default-Installations should be fine with ``chwon -R zammad:zammad /opt/zammad/`` (Source code installations might differ).
+  Default-Installations should be fine with ``chown -R zammad:zammad /opt/zammad/`` (Source code installations might differ).
   Please restart Zammad after the change-owner command ``systemctl restart zammad``.
 
 Before you can use Zammad and all it's features, you'll need to ensure your Searchindex is up and running.
