@@ -51,6 +51,8 @@ Install OTRS migration plugin
 Import via Browser
 ==================
 
+.. Note:: If your OTRS installation is rather huge, you might want to consider using the command line version of this feature.
+
 After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
 From there you're able to start the migration from OTRS.
 
@@ -83,6 +85,20 @@ If you installed from source
  rails c
 
 
+Extending import time for big installations (optional)
+------------------------------------------------------
+
+Optional, if you're having a bigger installation or running in timeouts like:
+``Delayed::Worker.max_run_time is only 14400 seconds (4 hours)`` you need to run the following
+command within the rails console you started earlier (**BEFORE** running the Import):
+
+:: 
+  
+  Delayed::Worker.max_run_time = 7.days
+
+.. Note:: The above setting is only valid for the lifetime of the Zammad rails console.
+  If you close the console, the change is reset to the default value.
+ 
 Enter the following commands in the rails console
 -------------------------------------------------
 
@@ -105,6 +121,8 @@ Start all Zammad processes again. Done.
 
 Importing a diff
 ================
+
+.. Note:: This is only possible after finishing an earlier OTRS import **successful**.
 
 In some cases it might be desirable to update the already imported data from OTRS. This is possible with the following commands.
 
@@ -130,7 +148,7 @@ Start all Zammad processes again. Done.
 
 
 Restarting from scratch
-================
+=======================
 
 First make sure all Zammad processes are stopped. After that reset your database.
 
