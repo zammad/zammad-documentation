@@ -53,7 +53,7 @@ In order to make the installation as complete and convenient as possible, we're 
 	"notification sender", "Notification Master <noreply@#{config.fqdn}>", "Zammad <noreply@{FQDN-of-UCS}>"
 	"maximum email size", "10 MB", "35 MB"
 	"FQDN", "{FQDN-of-UCS}", "{FQDN-of-UCS}:10412"
-	"HTTP-Type", "<empty>", "http"
+	"HTTP-Type", "<empty>", "https"
 	"Allow customer registration", "true", "false"
 	"LDAP configuration", "<empty>", "Full LDAP-Configuration prepared ²"
 	"LDAP activated", "<empty>", "false"
