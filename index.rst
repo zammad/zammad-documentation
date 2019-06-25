@@ -54,6 +54,7 @@ This system documentation for Zammad is organized into a couple of sections:
    install-elasticsearch
    install-docker-compose
    install-kubernetes
+   install-univention
    install-update
 
 

@@ -29,7 +29,6 @@ Response::
     "content_type": "text/html",
     "type": "note",
     "internal": false,
-    "time_unit": "12.0"
     ...
     "updated_at": "2016-08-15T07:55:42.119Z",
     "created_at": "2016-08-15T07:55:42.119Z"
@@ -45,7 +44,6 @@ Response::
     "content_type": "text/html",
     "type": "note",
     "internal": false,
-    "time_unit": "15.0"
     ...   
     "updated_at": "2016-08-16T07:55:42.119Z",
     "created_at": "2016-08-16T07:55:42.119Z"
@@ -80,7 +78,6 @@ Response::
     "content_type": "text/html",
     "type": "note",
     "internal": false,
-    "time_unit": "12.0"
     "attachments": [
       {
         "id": 123,
