@@ -3,6 +3,27 @@ Working with ticket information
 
 .. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
+Get the RAW mail that Zammad fetched
+------------------------------------
+
+The following command will help you to check on received emls Zamamd fetched. This comes in handy if you delete Mails upon fetching and you need to check the eml itself.
+
+To get the first articles eml, you can use the following command. In our example the ticket number in question is ``101234``
+::
+  
+  Ticket.find_by(number:'101234').articles.first.as_raw.content
+
+If needed, you can also get the raw content of later articles (you'll need to find the correct article though). Again, we expect ``101234`` to be our ticket number.
+In the first step we get all article IDs of the ticket, from the list we get, we can then get the articles content.
+::
+  
+  > Ticket.find_by(number:'101234').articles_ids
+  => [4, 3, 2]
+  > Ticket::Article.find(3).as_raw.content
+
+.. Note:: If you just use ``Ticket::Article.find(3)`` you can see further information (like who sent the mail, when we fetched it, ...).
+
+
 Update all tickets of a specific customer
 -----------------------------------------
 
