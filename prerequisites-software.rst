@@ -9,7 +9,9 @@ If you want to install Zammad, you need the following software.
 Zammad requires Ruby. All required rubygems like ruby on rails are listed in the Gemfile.
 The following Ruby version is supported:
 
-* Ruby 2.4.4
+* Ruby 2.5.5
+
+.. Warning:: We changed our Ruby dependency with Zammad 3.1. Earlier Zammad-Versions require Ruby 2.4.4.
 
 2. Package Dependencies
 =======================
