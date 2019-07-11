@@ -8,7 +8,7 @@ We use Elasticsearch for the awesome search in Zammad.
 Currently we support:
 
 * Elasticsearch 2.4.x to 5.5.x with mapper-attachments plugin
-* Elasticsearch 5.6.x with ingest-attachment plugin
+* Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
 
 This manual uses the "zammad" command which is only available if you installed Zammad from one of our package repos.
 
@@ -29,7 +29,7 @@ Generic install Elasticsearch 2.4 (mapper-attachments):
 * Start elasticsearch
 
 Generic install Elasticsearch 5.0-5.5 (mapper-attachments):
-++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Download and install via https://www.elastic.co/downloads/elasticsearch (5.0-5.5)
 * Install the Attachment plugin
@@ -52,10 +52,10 @@ On Mac you also have to do:
 
 * Start elasticsearch
 
-Generic install Elasticsearch 5.6 (ingest-attachment):
-++++++++++++++++++++++++++++++++++
+Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-* Download and install via https://www.elastic.co/downloads/elasticsearch (5.6)
+* Download and install via https://www.elastic.co/downloads/elasticsearch (5.6, 6.x or 7.x)
 * Install the Attachment plugin
 
 ::
@@ -75,6 +75,7 @@ Generic install Elasticsearch 5.6 (ingest-attachment):
 * Start elasticsearch
 
 
+The most current repository installation path can be found `here <https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html>`_.
 
 CentOS 7:
 +++++++++
