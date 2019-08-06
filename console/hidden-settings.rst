@@ -86,3 +86,19 @@ Get the current state of this setting with:
   
   Setting.get('ui_user_organization_selector_with_email')
 
+
+Change Font-Settings for outgoing HTML-Mails
+--------------------------------------------
+
+.. Note:: Some Clients (like Outlook) might fallback to other Settings while it might work for other Clients.
+
+The below setting allows you to adjust Zammads email font setting. This setting does not require a service restart.
+::
+  
+  Setting.set("html_email_css_font", "font-family:'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif; font-size: 12px;")
+
+If you want to check the current setting, you can simply run the below code.
+::
+  
+  Setting.get('html_email_css_font')
+
