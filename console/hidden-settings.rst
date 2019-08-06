@@ -1,5 +1,5 @@
-Hidden Settings for console
-***************************
+Advanced customization settings
+*******************************
 
 On this page you can find some settings that you won't find within the Zammad UI.
 Those settings might come in handy as it can change Zamnmads behavior. 
