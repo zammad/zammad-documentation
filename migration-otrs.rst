@@ -89,12 +89,26 @@ Extending import time for big installations (optional)
 ------------------------------------------------------
 
 Optional, if you're having a bigger installation or running in timeouts like:
-``Delayed::Worker.max_run_time is only 14400 seconds (4 hours)`` you need to run the following
-command within the rails console you started earlier (**BEFORE** running the Import):
+``Delayed::Worker.max_run_time is only 14400 seconds (4 hours)`` you need to do the following:
 
-:: 
-  
-  Delayed::Worker.max_run_time = 7.days
+For importing via console
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* open the file ``config/initializers/delayed_jobs_settings_reset.rb`` and add the following at the end of it:
+  :: 
+    
+    Delayed::Worker.max_run_time = 7.days
+
+* Restart the Zammad-Service (``systemctl restart zammad``)
+
+For importing via browser (not recommended on big installations)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run below in a Zammad console and ensure to not close it during import:
+  :: 
+    
+    Delayed::Worker.max_run_time = 7.days
+
 
 .. Note:: The above setting is only valid for the lifetime of the Zammad rails console.
   If you close the console, the change is reset to the default value.
