@@ -115,6 +115,7 @@ Below we have gathered information to problems that might occur in combination w
 
 Zammad can't communicate with external systems
    univention/running-console-commands-on-univention
+   univention/issues-you-might-encounter
 
 In rare cases (sometimes even right after installation), Zammad won't be able to communicate with e.g. external 
 email servers. Simply restart the Zammad app the App Center module in the UCS management system and it should be enough to get it back working.
