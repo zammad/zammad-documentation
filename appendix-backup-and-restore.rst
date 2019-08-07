@@ -1,3 +1,5 @@
+.. _backup-and-restore:
+
 Backup and Restore
 ******************
 
@@ -24,6 +26,7 @@ Create Backup
 Creating a Backup is done very easy, you can just call the following to backup your Zammad-Instance.
 You can also run this as a cronjob to have a regular backup.
 ::
+
  cd /opt/zammad/contrib/backup
  ./zammad_backup.sh
 
@@ -71,6 +74,7 @@ With command line argument for backup date
 
 If you already know what backup you want to restore, you can just give the backup script the timestamp (from the filename) as argument, it will go straight to restoration.
 ::
+
  ./zammad_restore.sh 20170507121848
 
 
@@ -81,6 +85,7 @@ When migrated from a self hosted Zammad system
 ----------------------------------------------
 
 .. Note:: This step is only needed, if one of the following points is met:
+
     * The source and destination Zammad-Version are not the same
     * The Zammad-installation is not a source code installation
     * The Zammad-Backup is not an Export from Hosted-Setup
@@ -103,11 +108,13 @@ The following will uninstall and install Zammad without resolving dependencies:
 
 **Debian, Ubuntu**
 ::
+
   dpkg -r --force-depends zammad
   apt install zammad
 
 **openSuSe**
 ::
+
   zypper remove -R zammad
   zypper install zammad
 

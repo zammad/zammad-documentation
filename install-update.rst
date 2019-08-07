@@ -1,10 +1,10 @@
 Updating Zammad
 ***************
 
+.. Note:: Please backup your Zammad instance before update! You can learn how to back up Zammad on :ref:`backup-and-restore`.
+
 Source update
 =============
-
-.. Note:: Please backup your Zammad instance before update!
 
 1. Download Zammad to your system
 ---------------------------------
@@ -28,14 +28,12 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
  zammad@shell> gem install bundler
 
 * For PostgreSQL (note, the option says "without ... mysql")::
-::
-
- zammad@shell> bundle install --without test development mysql
+  
+   zammad@shell> bundle install --without test development mysql
 
 * For MySQL (note, the option says "without ... postgres")::
-::
-
- zammad@shell> bundle install --without test development postgres
+  
+   zammad@shell> bundle install --without test development postgres
 
 
 3. Stop Zammad services
@@ -62,11 +60,9 @@ Start the application server, websocket server and scheduler.
 -------------------------
 
 
-
 Update with RPM
 ===============
 
-**Note: Please backup your Zammad instance before update!**
 
 1. Stop Zammad
 ----------------
@@ -134,3 +130,9 @@ Update with DEB
 
 5. Go and log in to Zammad
 --------------------------
+
+Updating elasticsearch
+======================
+
+If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_ 
+as it will have the most current information for you.
