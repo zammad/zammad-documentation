@@ -43,7 +43,7 @@ This system documentation for Zammad is organized into a couple of sections:
 .. _install-docs:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Installation & Update
 
    install-source
