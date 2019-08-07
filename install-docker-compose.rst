@@ -9,9 +9,7 @@ Docker is a container-based software framework for automating deployment of appl
 This repo is meant to be the starting point for somebody who likes to use dockerized multi-container Zammad in production.
 The Zammad Docker image uses the stable branch of Zammad's Git repo.
 
-The Docker images are hosted on Dockerhub:
-
-* https://hub.docker.com/r/zammad/zammad-docker-compose/
+The Docker images are hosted on `Dockerhub <https://hub.docker.com/r/zammad/zammad-docker-compose/>`_.
 
 .. Tip:: Never use the "latest" tag. Use a tag which has a version attached.
 
