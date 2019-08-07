@@ -10,7 +10,9 @@ Currently we support:
 * Elasticsearch 2.4.x to 5.5.x with mapper-attachments plugin
 * Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
 
-This manual uses the "zammad" command which is only available if you installed Zammad from one of our package repos.
+This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
+If you're using a source code based install, simply leave that part away and just run ``rails ...`` or ``rake ...`` where ever neded.
+
 
 Install Elasticsearch and its Attachment plugin
 ===============================================
@@ -27,6 +29,7 @@ Generic install Elasticsearch 2.4 (mapper-attachments):
  bin/plugin install mapper-attachments
 
 * Start elasticsearch
+
 
 Generic install Elasticsearch 5.0-5.5 (mapper-attachments):
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -52,6 +55,7 @@ On Mac you also have to do:
 
 * Start elasticsearch
 
+
 Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -75,7 +79,7 @@ Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
 * Start elasticsearch
 
 
-The most current repository installation path can be found `here <https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html>`_.
+The most current repository installation path can be found `here <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
 
 CentOS 7:
 +++++++++
@@ -83,14 +87,14 @@ CentOS 7:
 ::
 
  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
- echo "[elasticsearch-5.x]
- name=Elasticsearch repository for 5.x packages
- baseurl=https://artifacts.elastic.co/packages/5.x/yum
+ echo "[elasticsearch-7.x]
+ name=Elasticsearch repository for 7.x packages
+ baseurl=https://artifacts.elastic.co/packages/7.x/yum
  gpgcheck=1
  gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
  enabled=1
  autorefresh=1
- type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-5.x.repo
+ type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
  yum install -y java-1.8.0-openjdk elasticsearch
  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
  systemctl start elasticsearch
@@ -104,7 +108,7 @@ Debian 8:
 
  apt-get install apt-transport-https sudo wget
  echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
- echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
  apt-get install -t jessie-backports openjdk-8-jre
@@ -121,7 +125,7 @@ Debian 9:
 ::
 
  apt-get install apt-transport-https sudo wget
- echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
  apt-get install openjdk-8-jre elasticsearch
@@ -135,7 +139,8 @@ Ubuntu 16.04 & 18.04:
 
 ::
 
- echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+ apt-get install apt-transport-https sudo wget
+ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
  apt-get update
  apt-get install openjdk-8-jre elasticsearch
@@ -166,30 +171,40 @@ Optional settings
 =================
 
 Elasticsearch with HTTP basic auth
-----------------------------------
+++++++++++++++++++++++++++++++++++
 
+If you're using another elasticsearch instance, you might need to authenticate against it.
+Below options help you with that.
 ::
 
  zammad run rails r "Setting.set('es_user', 'elasticsearch')"
  zammad run rails r "Setting.set('es_password', 'zammad')"
 
-Extra Elasticsearch index name space (optional)
-----------------------------------------------
 
+Extra Elasticsearch index name space
+++++++++++++++++++++++++++++++++++++
+
+If you're running several Zammad instances (or other services using ES) with a central elasticsearch server, 
+you might want to specify which index Zammad should use.
 ::
 
  zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
-Ignore certain file extensions for indexing (optional)
-------------------------------------------------------
+Ignore certain file extensions for indexing
++++++++++++++++++++++++++++++++++++++++++++
 
+Some attachments might be troublesome when indexing or simply not needed within the search index.
+You can tell Zammad to ignore those attachments by specifying their file extension so it won't post it to elasticsearch.
 ::
 
  zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
-Maximum attachment size which is used for indexing, default is 50 MB (optional)
--------------------------------------------------------------------------------
+Maximum attachment size which is used for indexing
+++++++++++++++++++++++++++++++++++++++++++++++++++
 
+.. Note:: By default Zammad will limit indexing to attachments to 50 MB.
+
+Limiting the maximum size of attachments (for indexing) might be usefull, you can set it like so:
 ::
 
  zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
@@ -201,9 +216,10 @@ Using Elasticsearch on another server
 Elasticsearch can also be installed on another server but you have to know that this is insecure out of the box because Elasticsearch has no authentication.
 For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentication to access it from Zammad.
 
-You can find an Nginx reverse proxy config here:
+.. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
 
-* https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf
+`You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
+
 
 List of values which are stored in ElasticSearch
 ================================================
@@ -321,7 +337,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 
 Article
-++++
++++++++
 
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | Field               | Sample Value                                   | Description                                                  |
