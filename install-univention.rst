@@ -107,16 +107,19 @@ We split our documentation into two further parts that will be of your interest:
  * `Admin-Documentation <https://admin-docs.zammad.org/>`_: this documentation holds any information about how to configure Zammad via WebApp.
  * `User-Documentation <https://user-docs.zammad.org/>`_: this documentation holds a complete user documentation (how to work with Zammad).
 
+Further information
+===================
 
-Issues you might encounter
+The following sub pages might come in handy and help you to understand how the app works or on how to solve an issue.
 ==========================
 
-Below we have gathered information to problems that might occur in combination with Univention.
+.. toctree::
+   :maxdepth: 1
 
 Zammad can't communicate with external systems
    univention/running-console-commands-on-univention
    univention/issues-you-might-encounter
 
-In rare cases (sometimes even right after installation), Zammad won't be able to communicate with e.g. external 
+.. Warning:: **Never** change any configurations the Zammad-App scripts create and work with! This will lead to unexpected issues and loss of configurations upon update!
 email servers. Simply restart the Zammad app the App Center module in the UCS management system and it should be enough to get it back working.
 
