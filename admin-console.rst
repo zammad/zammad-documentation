@@ -1,3 +1,5 @@
+.. _zammad-console:
+
 Console
 *******
 
