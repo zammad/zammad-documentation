@@ -50,9 +50,9 @@ In order to make the installation as complete and convenient as possible, we're 
 	:header: "value", "default value", "new value"
 	:widths: 10,20,20
 	
-	"notification sender", "Notification Master <noreply@#{config.fqdn}>", "Zammad <noreply@{FQDN-of-UCS}>"
+	"notification sender", "Notification Master <noreply@#{config.fqdn}>", "Zammad <noreply@{FQDN-of-UCS}> ³"
 	"maximum email size", "10 MB", "35 MB"
-	"FQDN", "{FQDN-of-UCS}", "{FQDN-of-UCS}:10412"
+	"FQDN", "{FQDN-of-UCS}", "{FQDN-of-UCS}:10412 ³"
 	"HTTP-Type", "<empty>", "https"
 	"Allow customer registration", "true", "false"
 	"LDAP configuration", "<empty>", "Full LDAP-Configuration prepared ²"
@@ -62,6 +62,8 @@ In order to make the installation as complete and convenient as possible, we're 
 .. Note:: ² Please note that the Zammad-LDAP integration is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to the Agent-Role. You can use those security groups.
   LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
 
+
+.. Note:: ³ Please note that these settings are updated automatically, if you update FQDN and Port settings within the :ref:`ucs-app-settings` .
 
 First steps you should consider
 ===============================
@@ -111,15 +113,13 @@ Further information
 ===================
 
 The following sub pages might come in handy and help you to understand how the app works or on how to solve an issue.
-==========================
 
 .. toctree::
    :maxdepth: 1
 
-Zammad can't communicate with external systems
+   univention/app-settings
    univention/running-console-commands-on-univention
    univention/issues-you-might-encounter
 
 .. Warning:: **Never** change any configurations the Zammad-App scripts create and work with! This will lead to unexpected issues and loss of configurations upon update!
-email servers. Simply restart the Zammad app the App Center module in the UCS management system and it should be enough to get it back working.
 
