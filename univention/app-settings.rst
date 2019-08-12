@@ -71,5 +71,5 @@ You can also choose to use your very own certificate by selecting ``Custom Certi
 For this it's important to know, that we expect the certificate to be within a specific location (``/etc/univention/ssl/``).
 Within the two text fields, you'll need to provide the filenames of your certificate and your certificate-key.
 
-These certificates can be kept in a subfolder. If we cannot use either of the two files, we reset the setting to the default Univention certificate. 
+These certificates can be kept in a subfolder. If we cannot find either of the two files, we reset the setting to the default Univention certificate. 
 
