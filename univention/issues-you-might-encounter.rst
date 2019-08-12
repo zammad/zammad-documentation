@@ -17,10 +17,10 @@ This issue rises because of how the "Getting Started"-Wizard in Zammad works.
 Even though the wizard reports the correct FQDN-Setting (and we manually set it), it will overwrite the setting after sanitizing what it recognized.
 
 This is an application level issue and a subject to change - you can find more information about this in `Issue 2651 <https://github.com/zammad/zammad/issues/2651>`_.
-To solve this, just go into the Univention App-Settings (for Zammad-App) and apply the settings **after** finishing the wizard.
+To solve this, just go into the Univention app-settings (for Zammad-app) and apply the settings **after** finishing the wizard.
 
 
-Customers can't click on the "Knowledge base"-URL within the customer portal
+Customers can't click on the "Knowledge Base"-URL within the customer portal
 ---------------------------------------------------------------------------
 
 This currently can't be fixed, as Zammad is available via one Port only.
