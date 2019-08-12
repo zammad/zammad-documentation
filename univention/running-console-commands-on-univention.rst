@@ -1,10 +1,10 @@
 Running console commands on an Univention-Host
 ==============================================
 
-I some cases you might need to access Zammads rails console on the Univention-Host.
+In some cases you might need to access Zammads rails console on the Univention-Host.
 For this, you'll need to get the correct container ID first.
 
-Univention will hold this information for you, you can get it like so::
+Univention will hold this information for you, you can get it like that::
 
   ucr get appcenter/apps/zammad/container
 
