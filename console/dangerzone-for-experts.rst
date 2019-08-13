@@ -70,6 +70,9 @@ The following is the real deal. It will delete all tickets linked to a customer 
     ticket.destroy
   end
 
+  puts "  Removing possible Avatars ..."
+  Avatar.remove('User', user.id)
+
   puts "  Removing references for user with E-Mail #{user.email}..."
   ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
   History.where(created_by_id: user.id).update_all(created_by_id: 1)
