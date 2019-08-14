@@ -6,6 +6,34 @@ DANGERZONE (Deletion of stuff)
 .. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 
+Merging one users references into another user
+----------------------------------------------
+
+Zammad allows you to merge references of an user into another. 
+This comes in handy if you have more than one user account for one physical person and want to clean your user base without deleting the old references.
+
+.. Note:: This is **not** a user merge function! It will not merge any user attributes, but only user references (like created attachments, articles, ...)!
+
+To use this feature, just replace ``{destination-mail-address}`` with the e-mail address of the user you want to merge the references into. 
+Replace ``{source-mail-address}`` with the e-mail address of the user the references shall come from.
+
+.. Warning:: The below command changes references, especially for Karma-Entries this might lead to problems.
+  These errors are **no Bugs**, if you need technical advice, please feel free to use the `Community <https://community.zammad.org>`_.
+
+::
+  
+  destination = User.find_by(email: '{destination-mail-address}')
+  source = User.find_by(email: '{source-mail-address}')
+  
+  destination.merge(source.id)
+
+The reason why this function is so useful is, that this will allow you to remove agent accounts if needed. 
+The following command will destroy data, so use it with care!
+::
+  
+  source.destroy!
+
+
 Delete a certain ticket
 -----------------------
 
