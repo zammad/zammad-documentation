@@ -1,7 +1,7 @@
 Getting and Updating Zammad-Settings
 ************************************
 
-.. Note:: Please note that this is not a full setting list, if you're missing settings, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. Note:: Please note that this is not a full setting list, if you're missing settings, feel free to ask over at the `Community <https://community.zammad.org>`_.
 
 
 Get ticket_hook setting

@@ -4,7 +4,7 @@ Advanced customization settings
 On this page you can find some settings that you won't find within the Zammad UI.
 Those settings might come in handy as it can change Zamnmads behavior. 
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at the `Community <https://community.zammad.org>`_.
 
 Send all outgoing E-Mails to a BCC-Mailbox
 ------------------------------------------
