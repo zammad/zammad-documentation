@@ -17,8 +17,8 @@ This comes in handy if you have more than one user account for one physical pers
 To use this feature, just replace ``{destination-mail-address}`` with the e-mail address of the user you want to merge the references into. 
 Replace ``{source-mail-address}`` with the e-mail address of the user the references shall come from.
 
-.. Warning:: The below command changes references, especially for Karma-Entries this might lead to problems.
-  These errors are **no Bugs**, if you need technical advice, please feel free to use the `Community <https://community.zammad.org>`_.
+.. Warning:: The below command changes references. This might lead to problems.
+  These errors are **no Bugs** as this is an experimental (not yet official) function. If you need technical advice, please feel free to use the `Community <https://community.zammad.org>`_.
 
 ::
   
