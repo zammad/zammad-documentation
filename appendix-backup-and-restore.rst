@@ -90,7 +90,7 @@ When migrated from a self hosted Zammad system
     * The Zammad-installation is not a source code installation
     * The Zammad-Backup is not an Export from Hosted-Setup
   
-  If no points affect you, just continue with `blah <#things-you-need-to-do-after-migration-on-every-system>`_
+  If no points affect you, just continue with `the things you need to do after migration on every system <#things-you-need-to-do-after-migration-on-every-system>`_.
 
 If your versions differ, it might happen, that your Zammad-Service will not start cleanly.
 You can update your installation
