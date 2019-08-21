@@ -21,6 +21,27 @@ This comes in handy if you e.g. added a new state that you need to translate for
  Translation.create_if_not_exists( :locale => 'de-de', :source => "New", :target => "Neu", format: 'string', created_by_id: 1, updated_by_id: 1 )
 
 
+Translating Attributes
+~~~~~~~~~~~~~~~~~~~~~~
+
+By default Zammad will not translate Attributes. A small exception here is the state dropdown, which has translation enabled by default.
+With the following code you can enable translation, this will translate the attribute display name and the display names of values (if it's a value field).
+For this to work, just replace ``{attribute-name}`` against the name of your Attribute. 
+::
+  
+  attribute = ObjectManager::Attribute.find_by(name: '{attribute-name}')
+  attribute.data_option[:translate] = true		# set this to false to disable translation again
+  attribute.save!
+
+.. Note:: Translating value display names works for the following attribute types:
+  
+  * Boolean
+  * Select
+  * Tree Select
+  
+  If you're translating the display name of e.g. an Integer-Attribute, this works as well!
+
+
 Fill a test system with test data
 ---------------------------------
 
