@@ -25,8 +25,8 @@ Translating attributes
 ~~~~~~~~~~~~~~~~~~~~~~
 
 By default Zammad will not translate custom attributes.
-With the following code you can enable translation, this will translate the attribute display name and the display names of values (if it's a value field).
-For this to work, just replace ``{attribute-name}`` against the name of your Attribute. 
+With the following code you can enable translation. 
+This will translate the attribute display name and the display names of values (if it's a value field).
 For this to work, just replace ``{attribute-name}`` against the name of your attribute. 
 ::
   
