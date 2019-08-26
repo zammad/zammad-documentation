@@ -21,12 +21,13 @@ This comes in handy if you e.g. added a new state that you need to translate for
  Translation.create_if_not_exists( :locale => 'de-de', :source => "New", :target => "Neu", format: 'string', created_by_id: 1, updated_by_id: 1 )
 
 
-Translating Attributes
+Translating attributes
 ~~~~~~~~~~~~~~~~~~~~~~
 
-By default Zammad will not translate Attributes. A small exception here is the state dropdown, which has translation enabled by default.
+By default Zammad will not translate custom attributes.
 With the following code you can enable translation, this will translate the attribute display name and the display names of values (if it's a value field).
 For this to work, just replace ``{attribute-name}`` against the name of your Attribute. 
+For this to work, just replace ``{attribute-name}`` against the name of your attribute. 
 ::
   
   attribute = ObjectManager::Attribute.find_by(name: '{attribute-name}')
@@ -39,7 +40,7 @@ For this to work, just replace ``{attribute-name}`` against the name of your Att
   * Select
   * Tree Select
   
-  If you're translating the display name of e.g. an Integer-Attribute, this works as well!
+  If you're translating the display name of e.g. an Integer-attribute, this works as well!
 
 
 Fill a test system with test data
