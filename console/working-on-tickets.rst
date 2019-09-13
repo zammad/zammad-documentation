@@ -108,49 +108,22 @@ A pending action that will change to another state if "pending till" has been re
 Add a date and time picker (pending till) for pending states
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you need to pick a date and time for a pending state (which usually makes sense), you'll need to run the following code.
-To do this state specific, just use ``state_id: {UD}`` while ``{ID}`` is the ID of the state you created before.
-If you want to apply this to all pending states, you can use ``state_id: Ticket::State.by_category(:pending).pluck(:id)`` instead of ``state_id: {UD}``
+To add the time picker (pending till) to the new pending state, you'll need to execute the following code:
+
 ::
-  ObjectManager::Attribute.add(
-  force: true,
-  object: 'Ticket',
-  name: 'pending_time',
-  display: 'Pending till',
-  data_type: 'datetime',
-  data_option: {
-  future: true,
-  past: false,
-  diff: 24,
-  null: true,
-  translate: true,
-  required_if: {
-  state_id: {ID},
-  },
-  shown_if: {
-  state_id: {ID},
-  },
-  },
-  editable: false,
-  active: true,
-  screens: {
-  create_middle: {
-  '-all-' => {
-  null: false,
-  item_class: 'column',
-  },
-  },
-  edit: {
-  '-all-' => {
-  null: false,
-  },
-  },
-  },
-  to_create: false,
-  to_migrate: false,
-  to_delete: false,
-  position: 41,
-  )
+
+    attribute = ObjectManager::Attribute.get(
+      object: 'Ticket',
+      name: 'pending_time',
+    )
+    attribute.data_option[:required_if][:state_id] = Ticket::State.by_category(:pending).pluck(:id)
+    attribute.data_option[:shown_if][:state_id] = Ticket::State.by_category(:pending).pluck(:id)
+    attribute.save!
+
+
+Note: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with 
+  ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
+
 
 
 Make new states available to UI
