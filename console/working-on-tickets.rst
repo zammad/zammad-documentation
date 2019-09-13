@@ -108,7 +108,7 @@ A pending action that will change to another state if "pending till" has been re
 Add a date and time picker (pending till) for pending states
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You want to make the time picker (pending till) to be available for the new pending state, then you'll need to run the following code.
+To add the time picker (pending till) to the new pending state, you'll need to execute the following code:
 
 ::
 
@@ -121,7 +121,8 @@ You want to make the time picker (pending till) to be available for the new pend
     attribute.save!
 
 
-Note: In enhanced cases zou want do define the state_ids by our self. In this case just pick the state_ids from `Ticket::State.by_category(:pending).pluck(:id)` and assigne them directliy to the snipped above.
+Note: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with 
+  ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
 
 
 
