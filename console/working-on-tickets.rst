@@ -130,13 +130,13 @@ Make new states available to UI
 
 Before being able to use the new states within the WebApp, you need to run the following commands to make them available.
 
-.. Note:: Please replace ``{State-Name}`` with the earlier chosen State-Name. Rails will lookup the state ID for you.
+.. Warn:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
 
 ::
 
     attribute = ObjectManager::Attribute.get(
       object: 'Ticket',
-      name: '{State-Name}',
+      name: 'state_id',
     )
     attribute.data_option[:filter] = Ticket::State.by_category(:viewable).pluck(:id)
     attribute.screens[:create_middle]['ticket.agent'][:filter] = Ticket::State.by_category(:viewable_agent_new).pluck(:id)
