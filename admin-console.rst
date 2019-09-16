@@ -68,6 +68,7 @@ Here's a topic list for quick jumping and better overview.
    console/hidden-settings
    console/working-on-users
    console/working-on-tickets
+   console/working-on-ticket-articles
    console/working-on-groups
    console/other-usefull-commands
    console/dangerzone-for-experts
