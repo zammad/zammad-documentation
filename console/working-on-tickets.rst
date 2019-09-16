@@ -121,8 +121,7 @@ To add the time picker (pending till) to the new pending state, you'll need to e
     attribute.save!
 
 
-Note: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with 
-  ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
+.. Note:: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
 
 
 
@@ -130,6 +129,9 @@ Make new states available to UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before being able to use the new states within the WebApp, you need to run the following commands to make them available.
+
+.. Warn:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
+
 ::
 
     attribute = ObjectManager::Attribute.get(
