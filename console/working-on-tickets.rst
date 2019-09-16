@@ -121,8 +121,7 @@ To add the time picker (pending till) to the new pending state, you'll need to e
     attribute.save!
 
 
-Note: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with 
-  ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
+.. Note:: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
 
 
 
