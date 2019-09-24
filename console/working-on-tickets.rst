@@ -145,3 +145,32 @@ Before being able to use the new states within the WebApp, you need to run the f
     attribute.screens[:edit]['ticket.customer'][:filter] = Ticket::State.by_category(:viewable_customer_edit).pluck(:id)
     attribute.save!
 
+
+Limit available states for customers
+------------------------------------
+
+By default Zammad allows customers to change Ticket states to ``open`` and ``closed``. 
+If this does not meet your requirenments, you can adjust this at anytime.
+The below example shows how to restrict your customer to only close tickets if needed:
+
+::
+  
+  attribute = ObjectManager::Attribute.find_by(name: 'state_id')
+  attribute.screens['edit']['ticket.customer']['filter'] = Ticket::State.where(name: ['closed']).pluck(:id)
+  attribute.save!
+
+
+.. Hint:: If you want to allow several different states for customers, you need to provide the state names as array - like so: ``['closed', 'open', 'my-amazing-state']`` (instead of ``['closed']``).
+
+You can check the current active states that customers can set like so:
+
+::
+  
+  ObjectManager::Attribute.find_by(name: 'state_id').screens['edit']['ticket.customer']['filter']
+
+The above will return one or more IDs - if you're not sure which state they belong to, you can check the state name with the following command. (Ensure to replace ``{ID}`` with your returned ID(s))
+
+::
+  
+  Ticket::State.find({ID}).name
+
