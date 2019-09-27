@@ -155,7 +155,10 @@ The below example shows how to restrict your customer to only close tickets if n
 
 ::
   
-  attribute = ObjectManager::Attribute.find_by(name: 'state_id')
+  attribute = ObjectManager::Attribute.get(
+    object: 'Ticket',
+    name: 'state_id',
+  )
   attribute.screens['edit']['ticket.customer']['filter'] = Ticket::State.where(name: ['closed']).pluck(:id)
   attribute.save!
 
@@ -166,7 +169,10 @@ You can check the current active states that customers can set like so:
 
 ::
   
-  ObjectManager::Attribute.find_by(name: 'state_id').screens['edit']['ticket.customer']['filter']
+  ObjectManager::Attribute.get(
+    object: 'Ticket',
+    name: 'state_id',
+  ).screens['edit']['ticket.customer']['filter']
 
 The above will return one or more IDs - if you're not sure which state they belong to, you can check the state name with the following command. (Ensure to replace ``{ID}`` with your returned ID(s))
 
