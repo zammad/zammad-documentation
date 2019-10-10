@@ -1,3 +1,5 @@
+Zammad provides enhanced Migration Wizards for importing data from OTRS and Zendesk. Thus, it is very easy to migrate existing helpdesk and support systems from OTRS and Zendesk to Zammad.
+
 from OTRS
 *********
 
