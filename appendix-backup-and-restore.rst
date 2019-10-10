@@ -30,7 +30,7 @@ You can also run this as a cronjob to have a regular backup.
  cd /opt/zammad/contrib/backup
  ./zammad_backup.sh
 
-.. Note:: Please note that you should run the cronjob as User ``zammad`` (ensure this user can write to the backup-directory). If you're using the root user, you might want to `consider the following issue <https://github.com/zammad/zammad/issues/2508>`_.
+.. Note:: Please note that you should run the cronjob as User ``zammad`` (ensure this user can write to the backup-directory). If you're using the root user, you might want to consider the following issues `"Permission issue for Backup" <https://github.com/zammad/zammad/issues/2508>`_ and `"Backup script asks for password" <https://github.com/zammad/zammad/issues/2705>`_.
 
 .. Warning:: If you plan on migrating your Zammad-Installation to another system, ensure to stop Zammad before creating a Backup. Other wise, data might change!
   You can do this with: ``systemctl disable zammad && systemctl stop zammad``
