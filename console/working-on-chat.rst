@@ -7,7 +7,7 @@ Removing IP information from Chat-Sessions
 ------------------------------------------
 
 In some cases you might need or want to remove IP information from closed Chat-Sessions. 
-The below exmaple will remove all IP information if the Chat-Session was last updated 7 days ago and is closed.
+The below example will remove all IP information if the Chat-Session was last updated 7 days ago and is closed.
 ::
   
   Chat::Session.where(state: 'closed').where('updated_at < ?', 7.days.ago).each do |session|
