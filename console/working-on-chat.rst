@@ -15,6 +15,6 @@ The below example will remove all IP information if the Chat-Session was last up
 
     session.preferences.delete('geo_ip')
     session.preferences.delete('remote_ip')
-    session.save!
+    session.save!(touch: false)
   end
 
