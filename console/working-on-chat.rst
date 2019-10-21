@@ -11,6 +11,8 @@ The below example will remove all IP information if the Chat-Session was last up
 ::
   
   Chat::Session.where(state: 'closed').where('updated_at < ?', 7.days.ago).each do |session|
+    next if session.preferences['remote_ip'].blank?
+
     session.preferences.delete('geo_ip')
     session.preferences.delete('remote_ip')
     session.save!
