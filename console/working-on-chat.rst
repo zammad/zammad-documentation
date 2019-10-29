@@ -1,20 +1,23 @@
-Working on chat based information
-*********************************
+Working with chat logs
+**********************
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at the `Community <https://community.zammad.org>`_.
+.. hint:: To find out how to do something not listed below,
+   post your question on the `community boards <https://community.zammad.org>`_.
 
-Removing IP information from Chat-Sessions
-------------------------------------------
+.. _console-chat-ip:
 
-In some cases you might need or want to remove IP information from closed Chat-Sessions. 
-The below example will remove all IP information if the Chat-Session was last updated 7 days ago and is closed.
-::
-  
-  Chat::Session.where(state: 'closed').where('updated_at < ?', 7.days.ago).each do |session|
-    next if session.preferences['remote_ip'].blank?
+Removing IP address logs
+------------------------
 
-    session.preferences.delete('geo_ip')
-    session.preferences.delete('remote_ip')
-    session.save!(touch: false)
-  end
+Use the following command to remove all IP address records
+from **closed chats that haven’t been updated in the last seven days**:
 
+.. code-block:: ruby
+
+   Chat::Session.where(state: 'closed').where('updated_at < ?', 7.days.ago).each do |session|
+     next if session.preferences['remote_ip'].blank?
+
+     session.preferences.delete('geo_ip')
+     session.preferences.delete('remote_ip')
+     session.save!(touch: false)
+   end

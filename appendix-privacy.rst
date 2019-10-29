@@ -1,82 +1,103 @@
-Privacy
-*******
+Privacy & Data Retention
+************************
 
-Zammads related information
-===========================
+How long does Zammad hold onto user data? How can I manage its user data retention behavior?
 
-Ticket and user storage times
------------------------------
+On-Premises Data
+================
 
-Tickets and users are stored forever in Zammad. However, if needed, you can use the `Scheduler <https://admin-docs.zammad.org/en/latest/manage-scheduler.html>`_ to automatically remove tickets after a specific time. 
-If you need to delete user and ticket data ("Right to forget"), you currently can use the `Console <https://docs.zammad.org/en/latest/console/dangerzone-for-experts.html>`_.
+The following kinds of data are stored locally on the production system:
 
+Tickets and users
+   By default, Zammad never automatically deletes tickets or users.
 
-Chat-Sessions
--------------
+   To enable automatic deletion of tickets after a given interval,
+   `use the scheduler <https://admin-docs.zammad.org/en/latest/manage-scheduler.html>`_.
+   To manually delete users and all their associated tickets
+   (*e.g.,* in compliance with a “Right to Forget” request under the GDPR),
+   :ref:`use the console <console-dangerzone>`. 
 
-Chat-Sessions will be removed after 3 months, as long as they're in closed-state. 
-Please note that Chat-Sessions also contain IP address information that you `might want to cleanup earlier <https://docs.zammad.org/en/latest/console/working-on-chat.html#removing-ip-information-from-chat-sessions>`_.
+   .. note:: The ability to delete users via the admin panel
+      is planned for a future release of Zammad.
 
+Chat sessions
+   Once a chat session has been marked **closed**,
+   it is scheduled for automatic deletion 3 months later.
 
-CTI Caller-Log
---------------
+   IP address logs for chat sessions can be manually deleted
+   by :ref:`following the directions here <console-chat-ip>`.
 
-The caller log shows the last 60 entries. 
-Zammad will remove all CTI Caller-Log information after 12 months.
+CTI caller log
+   The caller log shows only the 60 most recent entries.
+   Each entry in the caller log is automatically deleted after 12 months.
 
-Logfiles
---------
+Log files
+   Zammad writes log files to disk (typically under ``/opt/zammad/log/``).
 
-Zammad writes logfiles (normally in ``/opt/zammad/log/``) which are not changed or deleted by Zammad after wards. 
-We suggest using logrotation here. Package installations will by default rotate log files nightly and remove the oldest one after 14 days.
+   Package installations will set up a separate system utility called
+   ``logrotate`` to rename and archive (or *rotate*) log files on a nightly
+   basis and remove old logs after 14 days.
 
-User-Sessions
--------------
+   If installing from source, it is strongly recommended to configure ``logrotate``
+   or a similar log management utility; Zammad will not purge old logs on its own.
 
-As long as the user is authenticated, Zammad will hold Session information (including Location (if applicable), IP address, Browser, creation date and last update) for the time the session is active. These information can be either deleted by the admin via UI or at the moment the user log outs.
+User sessions
+   Zammad maintains session information about every user currently logged in.
 
-Please note that the user can, if logging out every time, remove the session by himself at any point.
-Also, users can delete their Session information via the "Device" preference menu.
+   This information is automatically purged when a user logs out,
+   and can be viewed or manually deleted via the admin panel (under **System → Sessions**).
+   Users may also delete their own session information
+   via the user preferences menu, under **Device**.
 
+   Session information includes IP address (and possibly geographic location), browser,
+   time of original login, and time of last visit.
 
-External services
+External Services
 =================
 
-What information is stored exactly on images.zammad.com, and for how long?
---------------------------------------------------------------------------
+Zammad utilizes third-party web services for certain functions,
+meaning that user data may occasionally be sent or exposed to third parties.
+These functions can be individually disabled in the admin panel
+under **Settings → System → Services**.
 
-* We use images.zammad.com to serve user avatars (based on email address fetched from e. g. gravatar) and organization logo (based on domain used for Zammad login page after initial admin account creation).
+.. note:: By default, the third-party services that Zammad relies on
+   are mostly ones hosted and managed by the Zammad Foundation itself,
+   but Zammad can be extended to interface with other services instead.
 
-  * images.zammad.com is only a proxy for images (e. g. found on public resources like gravatar)
-  * md5 sums of email addresses are used to cache images for 7 days
-  * md5 sums of domains are used to cache images for 30 days
+   The source code for these third-party service integrations can be found
+   `here <https://github.com/zammad/zammad/tree/develop/lib/service>`_.
 
-Which other parts of the system do send data?
----------------------------------------------
+Images
+   No private images or personally-identifying information are stored on images.zammad.com.
 
-* Zammad uses 4 online services
-* you can enabled/disable all of them via Admin → System → Services
+   The Images service caches publicly-available images from sources like Gravatar
+   and serves them to the Zammad application as user avatars and organization logos.
+   These images are discovered using MD5 digests of user email addresses and organization domain names.
+   User avatars are cached for 7 days; organization logos are cached for 30 days.
 
-**Note: You can also create and set up your own backends/services for this, if you want.**
+GeoCalendar
+   No user information is stored or cached on geo.zammad.com.
 
-* Image: To serve user avatars (based on email address fetched from e. g. gravatar) and organization logo (based on domain used for Zammad login page after initial admin account creation).
+   As part of its service-level agreement (SLA) functionality,
+   Zammad requires detailed, localized calendar information
+   (*e.g.,* to set the time zone and
+   accommodate national holidays and daylight savings time).
+   The GeoCalendar service is used to retrieve this information.
 
-  * images.zammad.com is only a proxy for images
-  * md5 sums of email addresses are used to cache images for 7 days
-  * md5 sums of domains are used to cache images for 30 days
+GeoIP
+   No user information is stored or cached on geo.zammad.com.
 
-* GeoCalendar: Zammad can handle SLAs, for SLAs calendars (time zone, working hours and vacation days are important). This GeoCalendar service is executed after initial admin account creation to automatically configure the calendar of the admin (time zone, vacation days, ...).
+   One of Zammad’s security features is to track user sessions
+   based on the user’s browser and country of origin.
+   Suspicious login activity from a different browser or country may trigger Zammad
+   to dispatch an alert email to the affected user.
+   The GeoIP service is used to associate IP addresses to a geographic origin.
 
-  * GeoCalendar - No information is stored or cached on geo.zammad.com
+Geolocation
+   Since Zammad’s geolocation service relies on Google’s
+   `Geocoding API <https://developers.google.com/maps/documentation/geocoding/policies>`_,
+   its use is subject to the `Google Privacy Policy <https://policies.google.com/privacy>`_.
 
-* GeoIp: Zammad has a security feature to track user sessions based on the user's browser and country. So if your session or password is used (maybe stolen) on a new browser or from a different country, Zammad will inform the Agent about the new use of password/session via email.
-
-  * GeoIp - No information is stored or cached on geo.zammad.com
-
-* GeoLocation: A ticket overview will not only be shown in a regular table, but on a map. For this map we need to know the geo location of certain items.
-
-  * GeoLocation - Currently there is only a google maps backend to lookup geo locations
-
-* The source code of this services is available at:
-
-  * https://github.com/zammad/zammad/tree/develop/lib/service
+   Zammad uses geolocation to associate tickets with locations
+   to support map-style ticket overviews,
+   which display tickets as points on a map rather than items in a list.
