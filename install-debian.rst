@@ -1,7 +1,7 @@
 Install on Debian via DEB
 *************************
 
-.. Note:: Currently we support Debian 8 and 9
+.. Note:: Currently we support Debian 8, 9 and 10
 
 Prerequisites
 =============
@@ -57,6 +57,13 @@ For Debian 9
 ::
 
  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
+
+For Debian 10
+------------
+
+::
+
+ sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/10.repo
 
 
 ::
