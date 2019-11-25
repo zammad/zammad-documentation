@@ -172,6 +172,31 @@ After you have configured Zammad for using Elasticsearch, you need to rebuild th
  zammad run rake searchindex:rebuild
 
 
+Adjust default settings of elasticsearch
+========================================
+
+To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible 
+content length for http requests by adding the following to your ``/etc/elasticsearch/elasticsearch.yml``:
+
+::
+  
+  http.max_content_length: 400mb
+
+
+
+.. Note:: The following step is only necessary starting with elasticsearch 7 and newer.
+
+
+To enable Zammad to search for many values at the same time (to speed up your search), you'll also need to add the followingf option to your ``/etc/elasticsearch/elasticsearch.yml``:
+
+::
+  
+  indices.query.bool.max_clause_count: 2000
+
+Above setting is necessary, as the default value is ``1024`` which is too low. 
+elasticsearch 6.x will only throw a deprecation warning, so you might want to adjust it with above as well.
+
+
 Optional settings
 *****************
 
