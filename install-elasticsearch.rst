@@ -215,15 +215,21 @@ Limiting the maximum size of attachments (for indexing) might be usefull, you ca
  zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
 
-Using Elasticsearch on another server
+Using elasticsearch on another server
 =====================================
 
-Elasticsearch can also be installed on another server but you have to know that this is insecure out of the box because Elasticsearch has no authentication.
-For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentication to access it from Zammad.
+elasticsearch also allows you to use authentication via X-Pack to run it on another system as the one Zammad runs on.
+Please note that the configuration of this functionality is out of scope of this documentation.
+
+Elastic provides a great documentation on `how to set up X-Pack <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_.
+
+
+Versions prior elasticsearch 6.3
+--------------------------------
 
 .. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
-
-`You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
+  
+  `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
 
 
 List of values which are stored in ElasticSearch
