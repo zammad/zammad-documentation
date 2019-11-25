@@ -152,10 +152,15 @@ Ubuntu 16.04 & 18.04:
 Configure Zammad to work with Elasticsearch
 *******************************************
 
+First of all we need to tell Zammad where it can find elasticsearch. 
+
 ::
 
  zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
+
+If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at 
+`Optional settings`_.
 
 Create Elasticsearch index
 ==========================
