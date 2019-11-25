@@ -175,6 +175,8 @@ After you have configured Zammad for using Elasticsearch, you need to rebuild th
 Adjust default settings of elasticsearch
 ========================================
 
+.. Note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
+
 To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible 
 content length for http requests by adding the following to your ``/etc/elasticsearch/elasticsearch.yml``:
 
