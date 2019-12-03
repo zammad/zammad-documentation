@@ -8,9 +8,9 @@ We use Elasticsearch for the awesome search in Zammad.
 Currently we support:
 
 * Elasticsearch 2.4.x to 5.5.x with mapper-attachments plugin
-* Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
+* Elasticsearch 5.6.x, 6.x, 7.0.x-7.4.x with ingest-attachment plugin
 
-.. Warning:: Please note that Zammad does currently support Elasticsearch up to 7.4.X. Newer Versions currently are incompatible. For more information regarding this topic, please see `Issue 2824 <https://github.com/zammad/zammad/issues/2824>`_.
+.. Warning:: Please note that Zammad does not support Elasticsearch 7.5.x or higher. There is an incompatiblity that needs to be resolved. You can subscribe to `Issue 2824 <https://github.com/zammad/zammad/issues/2824>`_ to be informed about the progress. Stay tuned!
 
 
 This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
