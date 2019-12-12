@@ -169,8 +169,8 @@ Install environnment
  curl -L https://get.rvm.io | bash -s stable
  source /opt/zammad/.rvm/scripts/rvm
  echo "source /opt/zammad/.rvm/scripts/rvm" >> /opt/zammad/.bashrc
- echo "rvm --default use 2.4.4" >> /opt/zammad/.bashrc
- rvm install 2.4.4
+ echo "rvm --default use 2.5.5" >> /opt/zammad/.bashrc
+ rvm install 2.5.5
  gem install bundler
 
 Install Zammad
