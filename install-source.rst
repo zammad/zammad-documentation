@@ -153,8 +153,7 @@ Get Zammad
 
 ::
 
- su zammad
- cd ~
+ su - zammad
  curl -O https://ftp.zammad.com/zammad-latest.tar.gz
  tar -xzf zammad-latest.tar.gz
  rm zammad-latest.tar.gz
