@@ -141,7 +141,7 @@ Before being able to use the new states within the WebApp, you need to run the f
     attribute.data_option[:filter] = Ticket::State.by_category(:viewable).pluck(:id)
     attribute.screens[:create_middle]['ticket.agent'][:filter] = Ticket::State.by_category(:viewable_agent_new).pluck(:id)
     attribute.screens[:create_middle]['ticket.customer'][:filter] = Ticket::State.by_category(:viewable_customer_new).pluck(:id)
-    attribute.screens[:edit]['ticket.agent'][:filter] = Ticket::State.by_category(:viewable_agent_new).pluck(:id)
+    attribute.screens[:edit]['ticket.agent'][:filter] = Ticket::State.by_category(:viewable_agent_edit).pluck(:id)
     attribute.screens[:edit]['ticket.customer'][:filter] = Ticket::State.by_category(:viewable_customer_edit).pluck(:id)
     attribute.save!
 
