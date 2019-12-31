@@ -3,7 +3,10 @@ Install on SUSE via RPM
 
 .. Note:: Currently we support SLES 12 and OpenSUSE with versions 42.2 and 42.3
 
-.. Warning:: OpenSUSE LEAP 15.0 hasn't been tested yet, but should work as well.
+.. Warning:: SUSE later LEAP 42.3 is currently not available for package installation, due to missing packager-service support.
+  **SLES 15 (and later) and Leap 15.0 (and later) is not supported, you can't install Zammad!**
+  
+  If you still want to use Zammad on SUSE, you might want to use :ref:`install_docker_compose` instead.
 
 
 Install dependencies
