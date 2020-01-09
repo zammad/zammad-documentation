@@ -95,4 +95,4 @@ The following Elasticsearch versions are supported:
 .. Warning:: Please note that Elasticsearch 6.x and 7.x support came with Zammad 3.1.
   If you try to use Elasticsearch newer than 5.6.x on Zammad 3.0 and earlier, your search index will **not work**.
 
-.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on the future releases.
+.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.

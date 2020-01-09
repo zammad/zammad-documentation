@@ -10,7 +10,7 @@ Currently we support:
 * Elasticsearch 5.5.x with mapper-attachments plugin
 * Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
 
-.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on the future releases.
+.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.
 
 This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
 If you're using a source code based install, simply leave that part away and just run ``rails ...`` or ``rake ...`` where ever neded.
