@@ -216,7 +216,7 @@ Versions prior elasticsearch 6.3
   `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
 
 
-List of values which are stored in ElasticSearch
+List of values which are stored in Elasticsearch
 ************************************************
 
 Ticket
