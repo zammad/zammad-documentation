@@ -148,7 +148,7 @@ If you need to use authentication for your elasticsearch installation or specifi
 `Optional settings`_.
 
 Create Elasticsearch index
---------------------------
+==========================
 
 After you have configured Zammad for using Elasticsearch, you need to rebuild the index with the following command:
 
@@ -156,8 +156,8 @@ After you have configured Zammad for using Elasticsearch, you need to rebuild th
 
  zammad run rake searchindex:rebuild
 
-Optional settings
-*****************
+Optional settings for Elasticsearch
+***********************************
 
 Elasticsearch with HTTP basic auth
 ==================================
@@ -209,7 +209,7 @@ Elastic provides a great documentation on `how to set up X-Pack <https://www.ela
 
 
 Versions prior elasticsearch 6.3
---------------------------------
+++++++++++++++++++++++++++++++++
 
 .. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
   
