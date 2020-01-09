@@ -111,25 +111,41 @@ Ubuntu 16.04 & 18.04:
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
-Adjust Elasticsearch configuration
-++++++++++++++++++++++++++++++++++
+Adjust default settings of Elasticsearch
+++++++++++++++++++++++++++++++++++++++++
 
-In order to ensure a working Elasticsearch instance, we suggest adding / changing the following two settings on Elasticsearchs configuration.
+.. Note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
+
+To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible 
+content length for http requests by adding the following to your ``/etc/elasticsearch/elasticsearch.yml``:
 
 ::
   
   http.max_content_length: 400mb
+
+.. Note:: The following step is only necessary starting with elasticsearch 7 and newer.
+
+
+To enable Zammad to search for many values at the same time (to speed up your search), you'll also need to add the followingf option to your ``/etc/elasticsearch/elasticsearch.yml``:
+
+::
+  
   indices.query.bool.max_clause_count: 2000
 
-The configuration file usually can be found in ``/etc/elasticsearch/elasticsearch.yml``.
+Above setting is necessary, as the default value is ``1024`` which is too low. 
+elasticsearch 6.x will only throw a deprecation warning, so you might want to adjust it with above as well.
 
 Configure Zammad to work with Elasticsearch
 *******************************************
+
+First of all we need to tell Zammad where it can find elasticsearch. 
 
 ::
 
  zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
+If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at 
+`Optional settings`_.
 
 Create Elasticsearch index
 --------------------------
@@ -184,15 +200,21 @@ Limiting the maximum size of attachments (for indexing) might be usefull, you ca
  zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
 
-Using Elasticsearch on another server
+Using elasticsearch on another server
 =====================================
 
-Elasticsearch can also be installed on another server but you have to know that this is insecure out of the box because Elasticsearch has no authentication.
-For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentication to access it from Zammad.
+elasticsearch also allows you to use authentication via X-Pack to run it on another system as the one Zammad runs on.
+Please note that the configuration of this functionality is out of scope of this documentation.
+
+Elastic provides a great documentation on `how to set up X-Pack <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_.
+
+
+Versions prior elasticsearch 6.3
+--------------------------------
 
 .. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
-
-`You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
+  
+  `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
 
 
 List of values which are stored in ElasticSearch
