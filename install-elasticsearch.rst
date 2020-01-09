@@ -156,12 +156,11 @@ After you have configured Zammad for using Elasticsearch, you need to rebuild th
 
  zammad run rake searchindex:rebuild
 
-
 Optional settings
-=================
+*****************
 
 Elasticsearch with HTTP basic auth
-----------------------------------
+==================================
 
 If you're using another elasticsearch instance, you might need to authenticate against it.
 Below options help you with that.
@@ -172,7 +171,7 @@ Below options help you with that.
 
 
 Extra Elasticsearch index name space
-------------------------------------
+====================================
 
 If you're running several Zammad instances (or other services using ES) with a central elasticsearch server, 
 you might want to specify which index Zammad should use.
@@ -181,7 +180,7 @@ you might want to specify which index Zammad should use.
  zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
 Ignore certain file extensions for indexing
--------------------------------------------
+===========================================
 
 Some attachments might be troublesome when indexing or simply not needed within the search index.
 You can tell Zammad to ignore those attachments by specifying their file extension so it won't post it to elasticsearch.
@@ -190,7 +189,7 @@ You can tell Zammad to ignore those attachments by specifying their file extensi
  zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
 Maximum attachment size which is used for indexing
---------------------------------------------------
+==================================================
 
 .. Note:: By default Zammad will limit indexing to attachments to 50 MB.
 
@@ -218,10 +217,10 @@ Versions prior elasticsearch 6.3
 
 
 List of values which are stored in ElasticSearch
-================================================
+************************************************
 
 Ticket
-------
+======
 
 Please note that these fields may vary if you created custom fields (objects) in the admin interface.
 
@@ -333,7 +332,7 @@ Please note that these fields may vary if you created custom fields (objects) in
 +------------------------------+--------------------------+---------------------------------------------------------------+
 
 Article
--------
+=======
 
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 | Field               | Sample Value                                   | Description                                                  |
@@ -401,7 +400,7 @@ Article
 +---------------------+------------------------------------------------+--------------------------------------------------------------+
 
 User
-++++
+====
 
 Please note that these fields may vary if you created custom fields (objects) in the admin interface.
 
