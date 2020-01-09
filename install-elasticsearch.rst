@@ -148,6 +148,17 @@ Ubuntu 16.04 & 18.04:
  systemctl restart elasticsearch
  systemctl enable elasticsearch
 
+Adjust Elasticsearch configuration
+++++++++++++++++++++++++++++++++++
+
+In order to ensure a working Elasticsearch instance, we suggest adding / changing the following two settings on Elasticsearchs configuration.
+
+::
+  
+  http.max_content_length: 400mb
+  indices.query.bool.max_clause_count: 2000
+
+The configuration file usually can be found in ``/etc/elasticsearch/elasticsearch.yml``.
 
 Configure Zammad to work with Elasticsearch
 *******************************************
