@@ -7,8 +7,10 @@ We use Elasticsearch for the awesome search in Zammad.
 
 Currently we support:
 
-* Elasticsearch 2.4.x to 5.5.x with mapper-attachments plugin
+* Elasticsearch 5.5.x with mapper-attachments plugin
 * Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
+
+.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on the future releases.
 
 This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
 If you're using a source code based install, simply leave that part away and just run ``rails ...`` or ``rake ...`` where ever neded.
@@ -16,45 +18,6 @@ If you're using a source code based install, simply leave that part away and jus
 
 Install Elasticsearch and its Attachment plugin
 ===============================================
-
-Generic install Elasticsearch 2.4 (mapper-attachments):
--------------------------------------------------------
-
-* Download and install via https://www.elastic.co/downloads/elasticsearch (2.4.x)
-* Install the Attachment plugin
-
-::
-
- cd /usr/share/elasticsearch
- bin/plugin install mapper-attachments
-
-* Start elasticsearch
-
-
-Generic install Elasticsearch 5.0-5.5 (mapper-attachments):
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-* Download and install via https://www.elastic.co/downloads/elasticsearch (5.0-5.5)
-* Install the Attachment plugin
-
-::
-
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
-
-* Setting vm.max_map_count for Elasticsearch
-
-::
-
- sysctl -w vm.max_map_count=262144
- 
-
-On Mac you also have to do:
-
-* https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
-
-
-* Start elasticsearch
-
 
 Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

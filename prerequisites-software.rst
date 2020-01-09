@@ -89,8 +89,10 @@ The following reverse proxies are supported:
 For excellent search performance we use Elasticsearch.
 The following Elasticsearch versions are supported:
 
-* Elasticsearch 2.4 up to 5.5 with ``mapper-attachments`` plugin
+* Elasticsearch 5.5 with ``mapper-attachments`` plugin
 * Elasticsearch 5.6, 6.x & 7.x with ``ingest-attachment`` plugin
 
 .. Warning:: Please note that Elasticsearch 6.x and 7.x support came with Zammad 3.1.
   If you try to use Elasticsearch newer than 5.6.x on Zammad 3.0 and earlier, your search index will **not work**.
+
+.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on the future releases.
