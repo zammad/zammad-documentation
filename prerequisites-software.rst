@@ -21,14 +21,14 @@ If you're using the package install, the packages below will automatically insta
 
 .. note:: The below package dependency was added with Zammad 2.9 which improves image previews.
 
-.. warning:: Please note that upgrading from Zammad 2.8 and earlier might fail, because your system does not satisfy the new dependencies. 
+.. warning:: Please note that upgrading from Zammad 2.8 and earlier might fail, because your system does not satisfy the new dependencies.
    Below installation commands will help you out (you can update normally afterwards)
 
 Debian 8 & 9, Ubuntu 16.04 & 18.04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
-  
+
   apt-get install libimlib2 libimlib2-dev
 
 
@@ -36,7 +36,7 @@ OpenSuSe
 ^^^^^^^^
 
 ::
-  
+
   zypper install imlib2 imlib2-devel
 
 
@@ -44,7 +44,7 @@ CentOS 7
 ^^^^^^^^
 
 ::
-  
+
   yum install imlib2 imlib2-devel
 
 
@@ -61,7 +61,7 @@ You can choose between the following products:
 .. note:: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
-  
+
    * Use UTF8 encoding. utf8mb4 for example will fail.
    * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 

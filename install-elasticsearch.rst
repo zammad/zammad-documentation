@@ -34,11 +34,11 @@ Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
 ::
 
  sysctl -w vm.max_map_count=262144
- 
- 
+
+
 .. tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
- 
- 
+
+
 * Start elasticsearch
 
 
@@ -116,11 +116,11 @@ Adjust default settings of Elasticsearch
 
 .. note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
 
-To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible 
+To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible
 content length for http requests by adding the following to your ``/etc/elasticsearch/elasticsearch.yml``:
 
 ::
-  
+
   http.max_content_length: 400mb
 
 .. note:: The following step is only necessary starting with elasticsearch 7 and newer.
@@ -129,22 +129,22 @@ content length for http requests by adding the following to your ``/etc/elastics
 To enable Zammad to search for many values at the same time (to speed up your search), you'll also need to add the followingf option to your ``/etc/elasticsearch/elasticsearch.yml``:
 
 ::
-  
+
   indices.query.bool.max_clause_count: 2000
 
-Above setting is necessary, as the default value is ``1024`` which is too low. 
+Above setting is necessary, as the default value is ``1024`` which is too low.
 elasticsearch 6.x will only throw a deprecation warning, so you might want to adjust it with above as well.
 
 Configure Zammad to work with Elasticsearch
 *******************************************
 
-First of all we need to tell Zammad where it can find elasticsearch. 
+First of all we need to tell Zammad where it can find elasticsearch.
 
 ::
 
  zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
-If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at 
+If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at
 `Optional settings`_.
 
 Create Elasticsearch index
@@ -173,7 +173,7 @@ Below options help you with that.
 Extra Elasticsearch index name space
 ====================================
 
-If you're running several Zammad instances (or other services using ES) with a central elasticsearch server, 
+If you're running several Zammad instances (or other services using ES) with a central elasticsearch server,
 you might want to specify which index Zammad should use.
 ::
 
@@ -212,7 +212,7 @@ Versions prior elasticsearch 6.3
 --------------------------------
 
 .. note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
-  
+
    `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
 
 
@@ -459,5 +459,3 @@ Please note that these fields may vary if you created custom fields (objects) in
 +-----------------+--------------------------+-----------------------------------------+
 | zip             |                          | User ZIP                                |
 +-----------------+--------------------------+-----------------------------------------+
-
-
