@@ -10,7 +10,7 @@ Currently we support:
 * Elasticsearch 5.5.x with mapper-attachments plugin
 * Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
 
-.. Warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.
+.. warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.
 
 This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
 If you're using a source code based install, simply leave that part away and just run ``rails ...`` or ``rake ...`` where ever neded.
@@ -36,7 +36,7 @@ Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
  sysctl -w vm.max_map_count=262144
  
  
-.. Tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
+.. tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
  
  
 * Start elasticsearch
@@ -114,7 +114,7 @@ Ubuntu 16.04 & 18.04:
 Adjust default settings of Elasticsearch
 ----------------------------------------
 
-.. Note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
+.. note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
 
 To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible 
 content length for http requests by adding the following to your ``/etc/elasticsearch/elasticsearch.yml``:
@@ -123,7 +123,7 @@ content length for http requests by adding the following to your ``/etc/elastics
   
   http.max_content_length: 400mb
 
-.. Note:: The following step is only necessary starting with elasticsearch 7 and newer.
+.. note:: The following step is only necessary starting with elasticsearch 7 and newer.
 
 
 To enable Zammad to search for many values at the same time (to speed up your search), you'll also need to add the followingf option to your ``/etc/elasticsearch/elasticsearch.yml``:
@@ -191,7 +191,7 @@ You can tell Zammad to ignore those attachments by specifying their file extensi
 Maximum attachment size which is used for indexing
 ==================================================
 
-.. Note:: By default Zammad will limit indexing to attachments to 50 MB.
+.. note:: By default Zammad will limit indexing to attachments to 50 MB.
 
 Limiting the maximum size of attachments (for indexing) might be usefull, you can set it like so:
 ::
@@ -211,9 +211,9 @@ Elastic provides a great documentation on `how to set up X-Pack <https://www.ela
 Versions prior elasticsearch 6.3
 --------------------------------
 
-.. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
+.. note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
   
-  `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
+   `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
 
 
 List of fields being stored in Elasticsearch
