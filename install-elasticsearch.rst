@@ -20,7 +20,7 @@ Install Elasticsearch and its Attachment plugin
 ===============================================
 
 Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------------------
 
 * Download and install via https://www.elastic.co/downloads/elasticsearch (5.6, 6.x or 7.x)
 * Install the Attachment plugin
@@ -45,7 +45,7 @@ Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
 The most current repository installation path can be found `here <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
 
 CentOS 7:
-+++++++++
+---------
 
 ::
 
@@ -65,7 +65,7 @@ CentOS 7:
 
 
 Debian 8:
-+++++++++
+---------
 
 ::
 
@@ -83,7 +83,7 @@ Debian 8:
 
 
 Debian 9:
-+++++++++
+---------
 
 ::
 
@@ -98,7 +98,7 @@ Debian 9:
 
 
 Ubuntu 16.04 & 18.04:
-+++++++++++++++++++++
+---------------------
 
 ::
 
@@ -112,7 +112,7 @@ Ubuntu 16.04 & 18.04:
  systemctl enable elasticsearch
 
 Adjust default settings of Elasticsearch
-++++++++++++++++++++++++++++++++++++++++
+----------------------------------------
 
 .. Note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
 
@@ -209,7 +209,7 @@ Elastic provides a great documentation on `how to set up X-Pack <https://www.ela
 
 
 Versions prior elasticsearch 6.3
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
   
