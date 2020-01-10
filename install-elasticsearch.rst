@@ -131,8 +131,7 @@ First of all we need to tell Zammad where it can find elasticsearch::
 
    zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
-If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at
-`Optional settings`_.
+If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at :ref:`optional-settings`.
 
 Create Elasticsearch index
 ==========================
@@ -140,6 +139,8 @@ Create Elasticsearch index
 After you have configured Zammad for using Elasticsearch, you need to rebuild the index with the following command::
 
    zammad run rake searchindex:rebuild
+
+.. _optional-settings:
 
 Optional settings for Elasticsearch
 ***********************************
