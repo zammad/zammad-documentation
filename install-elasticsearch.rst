@@ -31,7 +31,7 @@ Step 1: Installation
       $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
       $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
 
-      # Explicitly set (or increase) the virtual memory map limit
+      # Increase the virtual memory map limit
       $ sudo sysctl -w vm.max_map_count=262144
 
    and start Elasticsearch.
@@ -153,7 +153,11 @@ Optional settings
       $ zammad run rails r "Setting.set('es_user', '<username>')"
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
-   .. hint:: Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
+   .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
+
+      For HTTP Basic auth, try `this nginx reverse proxy config <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
+
+      Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
       Consult the official Elasticsearch guides for more details.
 
 :Index namespacing:
@@ -178,13 +182,6 @@ Optional settings
 
       # Files larger than this size (in MB) will not be indexed
       $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
-
-Versions prior elasticsearch 6.3
---------------------------------
-
-.. note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
-
-   `You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_
 
 Appendix
 ========
