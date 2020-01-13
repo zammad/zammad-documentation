@@ -29,7 +29,7 @@ Installing Zammad
 The app installation itself is quite easy: Just open the App Center within UCS management system and search for ``Zammad``.
 Press ``Install``, accept our license agreement and wait for the installation to finish.
 
-.. image:: images/univention/zammad-in-store.png
+.. image:: /images/univention/zammad-in-store.png
 
 The installation will take about 5-15 minutes, depending on your hardware
 speed. Please give the installation the needed time and don't abort. During the
@@ -38,7 +38,7 @@ patient!
 
 If it's finished, you can press ``open`` - you'll get to our Zammad Wizard. It helps you with the minimum of information we need. ( See ``First steps you should consider`` )
  
-.. image:: images/univention/installed-zammad.png
+.. image:: /images/univention/installed-zammad.png
  
 
 Values we automatically change during the UCS-Setup
@@ -97,7 +97,7 @@ The first LDAP synchronization will start shortly thereafter - Zammad will then 
 
 .. Note:: You're free to change the group-role mapping at any time. See `Configuring LDAP integration <https://admin-docs.zammad.org/en/latest/integrations/ldap.html>`_ for more information.
 
-.. image:: images/univention/initial-setup-ucs.gif
+.. image:: /images/univention/initial-setup-ucs.gif
 
 
 Further configuration

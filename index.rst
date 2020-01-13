@@ -27,7 +27,7 @@ This system documentation for Zammad is organized into a couple of sections:
    :maxdepth: 2
    :caption: About
 
-   about-zammad
+   /about/zammad
 
 
 .. _prerequisites-docs:
@@ -36,8 +36,8 @@ This system documentation for Zammad is organized into a couple of sections:
    :maxdepth: 2
    :caption: Prerequisites
 
-   prerequisites-software
-   prerequisites-hardware
+   /prerequisites/software
+   /prerequisites/hardware
 
 
 .. _install-docs:
@@ -46,16 +46,16 @@ This system documentation for Zammad is organized into a couple of sections:
    :maxdepth: 1
    :caption: Installation & Update
 
-   install-source
-   install-centos
-   install-debian
-   install-ubuntu
-   install-suse
-   install-elasticsearch
-   install-docker-compose
-   install-kubernetes
-   install-univention
-   install-update
+   /install/source
+   /install/centos
+   /install/debian
+   /install/ubuntu
+   /install/suse
+   /install/elasticsearch
+   /install/docker-compose
+   /install/kubernetes
+   /install/univention
+   /install/update
 
 
 .. _getting-started-docs:
@@ -64,7 +64,7 @@ This system documentation for Zammad is organized into a couple of sections:
    :maxdepth: 2
    :caption: Getting started
 
-   getting-started-first-steps
+   /getting-started/first-steps
 
 
 .. _migration-docs:
@@ -73,8 +73,8 @@ This system documentation for Zammad is organized into a couple of sections:
    :maxdepth: 2
    :caption: Migration
 
-   migration-otrs
-   migration-zendesk
+   /migration/otrs
+   /migration/zendesk
 
 
 .. _admin-webfrontend:
@@ -90,11 +90,11 @@ This system documentation for Zammad is organized into a couple of sections:
 .. _admin-console:
 
 .. toctree::
-  :maxdepth: 2
-  :glob:
-  :caption: Administration via console
+   :maxdepth: 2
+   :glob:
+   :caption: Administration via console
 
-  admin-console
+   /admin/console
 
 
 .. _contributing-docs:
@@ -104,13 +104,13 @@ This system documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: Contributing / Development
 
-   contributing-start
-   contributing-branches
-   contributing-packages
-   contributing-ci
-   contributing-code-quality
-   contributing-install-docker
-   contributing-install-vagrant
+   /contributing/start
+   /contributing/branches
+   /contributing/packages
+   /contributing/ci
+   /contributing/code-quality
+   /contributing/install-docker
+   /contributing/install-vagrant
 
 
 .. _rest-api-docs:
@@ -120,18 +120,18 @@ This system documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: REST API
 
-   api-intro
-   api-user
-   api-organization
-   api-group
-   api-ticket
-   api-ticket-state
-   api-ticket-priority
-   api-ticket-article
-   api-notification
-   api-object
-   api-tags
-   api-user_access_token
+   /api/intro
+   /api/user
+   /api/organization
+   /api/group
+   /api/ticket
+   /api/ticket-state
+   /api/ticket-priority
+   /api/ticket-article
+   /api/notification
+   /api/object
+   /api/tags
+   /api/user-access-token
 
 
 .. _cti-api-docs:
@@ -141,8 +141,8 @@ This system documentation for Zammad is organized into a couple of sections:
    :glob:
    :caption: CTI API
 
-   cti-api-intro
-   cti-api-push
+   /cti/api-intro
+   /cti/api-push
 
 
 .. _appendix:
@@ -153,7 +153,7 @@ This system documentation for Zammad is organized into a couple of sections:
    :caption: Appendix
 
 
-   appendix-backup-and-restore
-   appendix-configure-env-vars
-   appendix-repo-file
-   appendix-privacy
+   /appendix/backup-and-restore
+   /appendix/configure-env-vars
+   /appendix/repo-file
+   /appendix/privacy
