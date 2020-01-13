@@ -3,17 +3,20 @@
 Set up Elasticsearch
 ********************
 
-We use Elasticsearch for the awesome search in Zammad.
+Zammad's search function is powered by Elasticsearch, and requires one of:
 
-Currently we support:
+* Elasticsearch 5.5 (with the `mapper attachments plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/mapper-attachments.html>`_)
+* Elasticsearch 5.6 or above (with the `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/ingest-attachment.html>`_)
 
-* Elasticsearch 5.5.x with mapper-attachments plugin
-* Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
+.. warning:: Versions below 5.5 may continue to work for the time being,
+   but are officially deprecated. Support will be dropped in upcoming releases.
 
-.. warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.
+.. note:: This guide uses the ``zammad run`` command prefix in command line examples.
+   This prefix is only applicable to package installations
+   (*i.e.,* via apt/yum/zypper, or ``.deb``/``.rpm`` files).
 
-This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
-If you're using a source code based install, simply leave that part away and just run ``rails ...`` or ``rake ...`` where ever neded.
+   If you installed from source, be sure to omit this prefix
+   and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
 
 Step 1: Installation
