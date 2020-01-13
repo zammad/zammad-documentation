@@ -69,7 +69,7 @@ nginx
 
 
 You can manage the Zammad services manually:
-===========================================
+============================================
 
 Zammad
 ------

@@ -38,11 +38,12 @@ Change / Update E-Mail-Adress of User
 If needed, you can simply change the E-Mail-Address of the user.
 
 .. Note:: Please note that the login attribute is not affected by this and Zammad thus might show different information within the UI.
-::
 
- u=User.find(**USERID**)
- u.email = 'user@exmaple.com'
- u.save!
+   ::
+
+      u=User.find(**USERID**)
+      u.email = 'user@exmaple.com'
+      u.save!
   
   
 You need to find the User-ID of the user first for this.

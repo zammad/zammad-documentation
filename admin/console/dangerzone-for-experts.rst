@@ -17,7 +17,7 @@ The following command removes a specific ticket and all of it's articles from Za
  Ticket.find(4).destroy
 
 Delete some tickets
-------------------
+-------------------
 
 This will remove all existing tickets, except for those you specified within `tickets_to_keep`-variable before.
 ::
@@ -61,32 +61,33 @@ The following will look for affected users. It will also give you a list of tick
 The following is the real deal. It will delete all tickets linked to a customer and afterwards remove the user.
 
 .. Note:: You need to run the overview-part (lookup) before you can run the below!
-::
 
- # Actual deletion, requires overview run before
- User.joins(roles: :permissions).where(email: target_user_emails.map(&:downcase), roles: { active: true }, permissions: { name: 'ticket.customer', active: true }).where.not(id: 1).find_each do |user|
-  puts "Customer #{user.login}/#{user.email} has #{Ticket.where(customer_id: user.id).count} tickets"
+   ::
 
-  Ticket.where(customer: user).find_each do |ticket|
-    puts "  Deleting ticket #{ticket.number}..."
-    ticket.destroy
-  end
+      # Actual deletion, requires overview run before
+      User.joins(roles: :permissions).where(email: target_user_emails.map(&:downcase), roles: { active: true }, permissions: { name: 'ticket.customer', active: true }).where.not(id: 1).find_each do |user|
+       puts "Customer #{user.login}/#{user.email} has #{Ticket.where(customer_id: user.id).count} tickets"
 
-  puts "  Removing references for user with E-Mail #{user.email}..."
-  ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
-  History.where(created_by_id: user.id).update_all(created_by_id: 1)
-  Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
-  Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
-  Store.where(created_by_id: user.id).update_all(created_by_id: 1)
-  StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
-  Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
-  if OnlineNotification.find_by(user_id: user.id)==""
-   OnlineNotification.find_by(user_id: user.id).destroy!
-  end
+       Ticket.where(customer: user).find_each do |ticket|
+         puts "  Deleting ticket #{ticket.number}..."
+         ticket.destroy
+       end
 
-  puts "  Deleting user #{user.login}/#{user.email}..."
-  user.destroy
- end
+       puts "  Removing references for user with E-Mail #{user.email}..."
+       ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
+       History.where(created_by_id: user.id).update_all(created_by_id: 1)
+       Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
+       Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
+       Store.where(created_by_id: user.id).update_all(created_by_id: 1)
+       StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
+       Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
+       if OnlineNotification.find_by(user_id: user.id)==""
+        OnlineNotification.find_by(user_id: user.id).destroy!
+       end
+
+       puts "  Deleting user #{user.login}/#{user.email}..."
+       user.destroy
+      end
 
 
 Removing organizations

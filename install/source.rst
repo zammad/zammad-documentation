@@ -1,5 +1,8 @@
-Install from source (generic)
-*****************************
+Install from source
+*******************
+
+Generic
+=======
 
 Setup Elasticsearch
 -------------------
@@ -9,7 +12,7 @@ Please take a look at the following page: :ref:`install_elasticsearch` .
 
 
 1. Install Zammad on your system
-================================
+--------------------------------
 
 You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
 
@@ -23,7 +26,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 
 
 2. Install all dependencies
-===========================
+---------------------------
 
 Please note that a working ruby 2.5.5 environment is needed.
 
@@ -32,14 +35,14 @@ Please note that a working ruby 2.5.5 environment is needed.
  zammad@shell> gem install bundler rake rails
 
 For PostgreSQL (note, the option says "without ... mysql")
-----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
  zammad@shell> bundle install --without test development mysql
 
 For MySQL (note, the option says "without ... postgres")
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -47,7 +50,7 @@ For MySQL (note, the option says "without ... postgres")
 
 
 3. Configure your databases
-===========================
+---------------------------
 
 ::
 
@@ -56,7 +59,7 @@ For MySQL (note, the option says "without ... postgres")
 
 
 4. Initialize your database
-===========================
+---------------------------
 
 ::
 
@@ -68,7 +71,7 @@ For MySQL (note, the option says "without ... postgres")
 
 
 5. Change directory to zammad (if needed) and start services:
-=============================================================
+-------------------------------------------------------------
 
 ::
 
@@ -77,7 +80,7 @@ For MySQL (note, the option says "without ... postgres")
 You can start all services by hand or use systemd to start / stop Zammad.
 
 Starting all servers manually
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -87,7 +90,7 @@ Starting all servers manually
 
 
 Starting servers with Systemd
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -96,13 +99,13 @@ Starting servers with Systemd
 
 
 6. Go to http://localhost:3000 and you'll see:
-==============================================
+----------------------------------------------
 
 * "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
 
 Reset a Zammad installation (for a fresh start after testing)
--------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please note: this actions will delete all existing data! Dont use it on a production system.
 
@@ -118,11 +121,8 @@ Please note: this actions will delete all existing data! Dont use it on a produc
 
 
 
-Install from source (Debian 7, 8 / Ubuntu 16.04 / Ubuntu 18.04)
-***************************************************************
-
-With Nginx & MySQL
-==================
+on Debian 7, 8 / Ubuntu 16.04 / Ubuntu 18.04 (with Nginx & MySQL)
+=================================================================
 
 Prerequisites
 -------------
@@ -225,7 +225,7 @@ Create Nginx Config & restart Nginx
 
  ::
 
- systemctl restart nginx
+  systemctl restart nginx
 
 
 Go to http://localhost and you'll see:
@@ -235,11 +235,11 @@ Go to http://localhost and you'll see:
 
 
 
-Install from source (Mac OS 10.8)
-*********************************
+on Mac OS 10.8
+==============
 
 Prerequisites
-=============
+-------------
 
 * Install Xcode from the App Store, open it -> Xcode menu > Preferences > Downloads -> install command line tools
 
@@ -250,7 +250,7 @@ Prerequisites
  start new shell -> ruby -v
 
 Get Zammad
-==========
+----------
 
 ::
 
@@ -260,7 +260,7 @@ Get Zammad
 
 
 Install Zammad
-==============
+--------------
 
 ::
 
@@ -273,7 +273,7 @@ Install Zammad
 
 
 Database connect
-================
+----------------
 
 ::
 
@@ -284,7 +284,7 @@ Database connect
  rake db:seed
 
 Start Zammad
-============
+------------
 
 ::
 
@@ -294,6 +294,6 @@ Start Zammad
 
 
 Visit Zammad in your browser
-============================
+----------------------------
 
 * http://localhost:3000/#getting_started

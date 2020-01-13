@@ -64,7 +64,7 @@ Add new ticket state
 .. Note:: You can use ``ignore_escalation: true,`` to ignore possible SLA escalations (pending reminder and pending close use that by default).
 
 Non-Pending states
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 A state that's not a pending state (e.g. open, closed). Just replace ``'open'`` by whatever you need (like closed).
 ::
@@ -130,7 +130,7 @@ Make new states available to UI
 
 Before being able to use the new states within the WebApp, you need to run the following commands to make them available.
 
-.. Warn:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
+.. Warning:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
 
 ::
 

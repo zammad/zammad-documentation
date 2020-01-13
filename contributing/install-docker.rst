@@ -15,7 +15,7 @@ You can find the image at https://hub.docker.com/r/zammad/zammad/
 You need at least 4 GB of RAM to run the container.
 
 Run the Docker Container
-======================
+========================
 
 Docker run will run a command in a new container, -i attaches stdin and stdout, -t allocates a tty.
 

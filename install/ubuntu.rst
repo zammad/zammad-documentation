@@ -78,7 +78,7 @@ Go to http://localhost and you'll see:
 
 
 Change your webserver configuration (non localhost connections):
-=================
+================================================================
 
 Add your fully qualified domain name or public IP to server name directive in your web server configuration and restart your web server.
 The installer will give you a hint where Zammad's web server config file is located.

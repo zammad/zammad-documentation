@@ -21,7 +21,7 @@ To solve this, just go into the Univention app-settings (for Zammad-app) and app
 
 
 Customers can't click on the "Knowledge Base"-URL within the customer portal
----------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 This currently can't be fixed, as Zammad is available via one Port only.
 The issue is described within `Issue 2628 <https://github.com/zammad/zammad/issues/2628>`_ and a subject to fix.

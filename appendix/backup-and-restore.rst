@@ -62,8 +62,8 @@ Change into the folder of Zammads backup-script.
 With menu for choosing backup date
 ----------------------------------
 
-When you call the restore script without further arguments, Zammad will show you a list of available backups.
-::
+When you call the restore script without further arguments, Zammad will show you a list of available backups. ::
+
  ./zammad_restore.sh
 
 
@@ -95,8 +95,8 @@ When migrated from a self hosted Zammad system
 If your versions differ, it might happen, that your Zammad-Service will not start cleanly.
 You can update your installation
 
-If you receive the following, you can workaround your problem with reinstalling Zammad (example on Debian, other Operating systems might differ)
-::
+If you receive the following, you can workaround your problem with reinstalling Zammad (example on Debian, other Operating systems might differ) ::
+
   root@zammad:/# apt-get update && apt install zammad
   Reading package lists... Done
   Building dependency tree

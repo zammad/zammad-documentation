@@ -127,7 +127,7 @@ Search for users::
  curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/users/search?query=smith&limit=10&expand=true'
 
 Example CURL Request on behalf of a different user
-==========================================
+==================================================
 
 It is possible to do a request on behalf of a different user. If you have your own application and you want to create a ticket for the customer
 without the information that the api user has created this ticket then you can transfer the target user with the request to create the ticket on behalf of the customer user::

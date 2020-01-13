@@ -1,5 +1,5 @@
 Introduction
-****
+************
 
 In many use cases, agents work in connection customer conversations over the phone.
 
@@ -8,7 +8,7 @@ It is a great relief when the telephone system (PBX) is integrated with Zammad, 
 The goal of the document is to provide the necessary API documentation to enable PBX vendors to easily integrate with Zammad.
 
 Feature list
-====
+============
 
 **Inbound**
 

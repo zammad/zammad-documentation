@@ -59,7 +59,7 @@ For Debian 9
  sudo wget -O /etc/apt/sources.list.d/zammad.list https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
 
 For Debian 10
-------------
+-------------
 
 ::
 

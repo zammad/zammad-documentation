@@ -56,7 +56,7 @@ Response::
  ]
 
 Add
-====
+===
 
 Required permission:
 
@@ -73,7 +73,7 @@ Response::
  true
 
 Remove
-====
+======
 
 Required permission:
 
@@ -90,7 +90,7 @@ Response::
  true
 
 Admin - List
-====
+============
 
 Required permission:
 
@@ -133,7 +133,7 @@ Response::
  ]
 
 Admin - Create
-====
+==============
 
 Required permission:
 
@@ -154,7 +154,7 @@ Response::
  {}
 
 Admin - Rename
-====
+==============
 
 Required permission:
 
@@ -176,7 +176,7 @@ Response::
  {}
 
 Admin - Delete
-====
+==============
 
 Required permission:
 
