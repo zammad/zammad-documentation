@@ -21,20 +21,22 @@ Step 1: Installation
 
 :Direct Download:
 
-   * Download and install via https://www.elastic.co/downloads/elasticsearch (5.6, 6.x or 7.x)
-   * Install the Attachment plugin::
+   Find the latest release on the `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
+   or see the `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
+   for in-depth instructions. Then,
 
-        sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+   .. code-block:: sh
 
-   * Setting vm.max_map_count for Elasticsearch::
+      # Install the attachment plugin
+      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
+      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
 
-        sysctl -w vm.max_map_count=262144
+      # Explicitly set (or increase) the virtual memory map limit
+      $ sudo sysctl -w vm.max_map_count=262144
 
-     .. tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
+   and start Elasticsearch.
 
-   * Start elasticsearch
-
-   The most current repository installation path can be found `here <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
+   .. tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
 
 :CentOS 7:
 
@@ -102,83 +104,80 @@ Step 1: Installation
 Step 2: Suggested Configuration
 ===============================
 
-.. note:: The we found the below settings to work good with Zammad. Please note that this is only suggestion that can affect your local environment.
+We use the following settings to optimize the performance of our Elasticsearch servers. Your mileage may vary.
 
-To ensure an optimal performance of Zammad together with elasticsearch, you might want to increase the maximum possible
-content length for http requests by adding the following to your ``/etc/elasticsearch/elasticsearch.yml``::
+.. code-block:: sh
 
+   # /etc/elasticsearch/elasticsearch.yml
+
+   # Tickets above this size (articles + attachments + metadata)
+   # may fail to be properly indexed (Default: 100mb).
+   #
+   # When Zammad sends tickets to Elasticsearch for indexing,
+   # it bundles together all the data on each individual ticket
+   # and issues a single HTTP request for it.
+   # Payloads exceeding this threshold will be truncated.
+   #
+   # Performance may suffer if it is set too high.
    http.max_content_length: 400mb
 
-.. note:: The following step is only necessary starting with elasticsearch 7 and newer.
-
-
-To enable Zammad to search for many values at the same time (to speed up your search), you'll also need to add the followingf option to your ``/etc/elasticsearch/elasticsearch.yml``::
-
+   # Allows the engine to generate larger (more complex) search queries.
+   # Elasticsearch will raise an error or deprecation notice if this value is too low,
+   # but setting it too high can overload system resources (Default: 1024).
+   #
+   # Available in version 6.6+ only.
    indices.query.bool.max_clause_count: 2000
 
-Above setting is necessary, as the default value is ``1024`` which is too low.
-elasticsearch 6.x will only throw a deprecation warning, so you might want to adjust it with above as well.
+.. note:: For more information on the ``indices.query.bool.max_clause_count`` setting,
+   see the `Elasticsearch 6.6 release notes <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/breaking-changes-6.6.html#_literal_query_string_literal_literal_multi_match_literal_and_literal_simple_query_string_literal_query>`_.
 
 Step 3: Connect Zammad
 ======================
 
-First of all we need to tell Zammad where it can find elasticsearch::
+.. code-block:: sh
 
-   zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+   # Set the Elasticsearch server address
+   $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
-If you need to use authentication for your elasticsearch installation or specific indice namings, please take a look at :ref:`optional-settings`.
-
-Create Elasticsearch index
---------------------------
-
-After you have configured Zammad for using Elasticsearch, you need to rebuild the index with the following command::
-
-   zammad run rake searchindex:rebuild
-
-.. _optional-settings:
+   # Build the search index
+   $ zammad run rake searchindex:rebuild
 
 Optional settings
 -----------------
 
-:Elasticsearch with HTTP basic auth:
+:Authentication:
 
-   If you're using another elasticsearch instance, you might need to authenticate against it.
-   Below options help you with that::
+   .. code-block:: sh
 
-      zammad run rails r "Setting.set('es_user', 'elasticsearch')"
-      zammad run rails r "Setting.set('es_password', 'zammad')"
+      # HTTP Basic
+      $ zammad run rails r "Setting.set('es_user', '<username>')"
+      $ zammad run rails r "Setting.set('es_password', '<password>')"
 
+   .. hint:: Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
+      Consult the official Elasticsearch guides for more details.
 
-:Extra Elasticsearch index name space:
+:Index namespacing:
 
-   If you're running several Zammad instances (or other services using ES) with a central elasticsearch server,
-   you might want to specify which index Zammad should use::
+   .. code-block:: sh
 
-      zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
+      # Useful when connecting multiple services or Zammad instances
+      # to a single Elasticsearch server (to prevent name collisions during indexing).
+      $ zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
-:Ignore certain file extensions for indexing:
+:File-attachment indexing rules:
 
-   Some attachments might be troublesome when indexing or simply not needed within the search index.
-   You can tell Zammad to ignore those attachments by specifying their file extension so it won't post it to elasticsearch::
+   .. code-block:: sh
 
-      zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
+      # Zammad supports searching by the contents of file attachments,
+      # which means Elasticsearch has to index those, too.
+      #
+      # Limiting such indexing can help conserve system resources.
 
-:Maximum attachment size which is used for indexing:
+      # Files with these extensions will not be indexed
+      $ zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
-   .. note:: By default Zammad will limit indexing to attachments to 50 MB.
-
-   Limiting the maximum size of attachments (for indexing) might be usefull, you can set it like so::
-
-      zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
-
-
-:Using elasticsearch on another server:
-
-   elasticsearch also allows you to use authentication via X-Pack to run it on another system as the one Zammad runs on.
-   Please note that the configuration of this functionality is out of scope of this documentation.
-
-   Elastic provides a great documentation on `how to set up X-Pack <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_.
-
+      # Files larger than this size (in MB) will not be indexed
+      $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
 Versions prior elasticsearch 6.3
 --------------------------------
@@ -195,4 +194,3 @@ Appendix
    :titlesonly:
 
    elasticsearch/indexed-attributes
-
