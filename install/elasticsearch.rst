@@ -1,5 +1,3 @@
-.. _install_elasticsearch:
-
 Set up Elasticsearch
 ********************
 

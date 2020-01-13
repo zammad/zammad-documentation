@@ -63,7 +63,7 @@ In order to make the installation as complete and convenient as possible, we're 
   LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
 
 
-.. Note:: ³ Please note that these settings are updated automatically, if you update FQDN and Port settings within the :ref:`ucs-app-settings` .
+.. Note:: ³ Please note that these settings are updated automatically, if you update FQDN and Port settings within the :doc:`/install/univention/app-settings` .
 
 First steps you should consider
 ===============================

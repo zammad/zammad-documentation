@@ -9,7 +9,7 @@ Univention will hold this information for you, you can get it like that::
   ucr get appcenter/apps/zammad/container
 
 
-Now where we have our ID, you can run any command from the :ref:`zammad-console` section with either::
+Now where we have our ID, you can run any command from the :doc:`/admin/console` section with either::
   
   docker exec -i "{Container-ID}" rails r "{COMMAND}"
 

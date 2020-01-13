@@ -15,7 +15,7 @@ Tickets and users
    `use the scheduler <https://admin-docs.zammad.org/en/latest/manage-scheduler.html>`_.
    To manually delete users and all their associated tickets
    (*e.g.,* in compliance with a “Right to Forget” request under the GDPR),
-   :ref:`use the console <console-dangerzone>`. 
+   :doc:`use the console </admin/console/dangerzone-for-experts>`. 
 
    .. note:: The ability to delete users via the admin panel
       is planned for a future release of Zammad.
@@ -25,7 +25,7 @@ Chat sessions
    it is scheduled for automatic deletion 3 months later.
 
    IP address logs for chat sessions can be manually deleted
-   by :ref:`following the directions here <console-chat-ip>`.
+   by :doc:`following the directions here </admin/console/working-on-chat>`.
 
 CTI caller log
    The caller log shows only the 60 most recent entries.

@@ -8,29 +8,12 @@ The Zammad documentation consists of three parts:
 
 - Zammad user documentation (https://user-docs.zammad.org)
 
-This system documentation for Zammad is organized into a couple of sections:
-
-* :ref:`about-docs`
-* :ref:`prerequisites-docs`
-* :ref:`install-docs`
-* :ref:`getting-started-docs`
-* :ref:`migration-docs`
-* :ref:`admin-console`
-* :ref:`contributing-docs`
-* :ref:`rest-api-docs`
-* :ref:`appendix`
-
-
-.. _about-docs:
-
 .. toctree::
    :maxdepth: 2
    :caption: About
 
    /about/zammad
 
-
-.. _prerequisites-docs:
 
 .. toctree::
    :maxdepth: 2
@@ -39,8 +22,6 @@ This system documentation for Zammad is organized into a couple of sections:
    /prerequisites/software
    /prerequisites/hardware
 
-
-.. _install-docs:
 
 .. toctree::
    :maxdepth: 1
@@ -58,16 +39,12 @@ This system documentation for Zammad is organized into a couple of sections:
    /install/update
 
 
-.. _getting-started-docs:
-
 .. toctree::
    :maxdepth: 2
    :caption: Getting started
 
    /getting-started/first-steps
 
-
-.. _migration-docs:
 
 .. toctree::
    :maxdepth: 2
@@ -77,8 +54,6 @@ This system documentation for Zammad is organized into a couple of sections:
    /migration/zendesk
 
 
-.. _admin-webfrontend:
-
 .. toctree::
    :maxdepth: 3
    :glob:
@@ -87,8 +62,6 @@ This system documentation for Zammad is organized into a couple of sections:
    Admin-Documentation <https://admin-docs.zammad.org/>
 
 
-.. _admin-console:
-
 .. toctree::
    :maxdepth: 2
    :glob:
@@ -96,8 +69,6 @@ This system documentation for Zammad is organized into a couple of sections:
 
    /admin/console
 
-
-.. _contributing-docs:
 
 .. toctree::
    :maxdepth: 2
@@ -112,8 +83,6 @@ This system documentation for Zammad is organized into a couple of sections:
    /contributing/install-docker
    /contributing/install-vagrant
 
-
-.. _rest-api-docs:
 
 .. toctree::
    :maxdepth: 2
@@ -134,8 +103,6 @@ This system documentation for Zammad is organized into a couple of sections:
    /api/user-access-token
 
 
-.. _cti-api-docs:
-
 .. toctree::
    :maxdepth: 2
    :glob:
@@ -144,8 +111,6 @@ This system documentation for Zammad is organized into a couple of sections:
    /cti/api-intro
    /cti/api-push
 
-
-.. _appendix:
 
 .. toctree::
    :maxdepth: 2

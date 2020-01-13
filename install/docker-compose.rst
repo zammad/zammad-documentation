@@ -1,5 +1,3 @@
-.. _install_docker_compose:
-
 Install with Docker-Compose
 ***************************
 

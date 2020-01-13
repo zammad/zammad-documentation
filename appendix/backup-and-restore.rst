@@ -1,5 +1,3 @@
-.. _backup-and-restore:
-
 Backup and Restore
 ******************
 
@@ -131,4 +129,4 @@ Things you need to do after migration on every system
 Before you can use Zammad and all it's features, you'll need to ensure your Searchindex is up and running.
 If you didn't install elasticsearch yet, now's a good time. If you already did, ensure to configure the ES-URL (if migrated) and also run a reindex.
 
-You can find further information on how to do that on the following page: :ref:`install_elasticsearch`.
+You can find further information on how to do that on the following page: :doc:`/install/elasticsearch`.

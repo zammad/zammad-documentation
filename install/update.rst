@@ -1,7 +1,7 @@
 Updating Zammad
 ***************
 
-.. Note:: Please backup your Zammad instance before update! You can learn how to back up Zammad on :ref:`backup-and-restore`.
+.. Note:: Please backup your Zammad instance before update! You can learn how to back up Zammad on :doc:`/appendix/backup-and-restore`.
 
 Source update
 =============

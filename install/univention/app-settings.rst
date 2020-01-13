@@ -1,5 +1,3 @@
-.. _ucs-app-settings:
-
 Univention App-Settings
 ***********************
 

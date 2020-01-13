@@ -4,8 +4,6 @@ Working with chat logs
 .. hint:: To find out how to do something not listed below,
    post your question on the `community boards <https://community.zammad.org>`_.
 
-.. _console-chat-ip:
-
 Removing IP address logs
 ------------------------
 

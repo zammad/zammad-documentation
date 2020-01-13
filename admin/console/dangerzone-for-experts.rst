@@ -1,5 +1,3 @@
-.. _console-dangerzone:
-
 DANGERZONE (Deletion of stuff)
 ******************************
 
