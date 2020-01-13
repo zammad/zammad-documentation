@@ -36,7 +36,9 @@ Step 1: Installation
 
    and start Elasticsearch.
 
-   .. tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
+   .. note:: 🐋 **Docker installations on macOS/Windows:**
+
+      Setting the ``vm.max_map_count`` kernel parameter requires `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites>`_.
 
 :CentOS 7:
 
