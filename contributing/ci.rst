@@ -22,4 +22,3 @@ Travis-CI
 
 .. image:: https://travis-ci.org/zammad/zammad.svg?branch=develop
   :target: https://travis-ci.org/zammad/zammad
-

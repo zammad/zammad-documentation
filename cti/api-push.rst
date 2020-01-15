@@ -161,5 +161,3 @@ You can simulate this POST request and test your server with a CURL command:
 ::
 
   curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/cti/:token
-
-

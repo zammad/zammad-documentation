@@ -87,7 +87,7 @@ When migrated from a self hosted Zammad system
     * The source and destination Zammad-Version are not the same
     * The Zammad-installation is not a source code installation
     * The Zammad-Backup is not an Export from Hosted-Setup
-  
+
   If no points affect you, just continue with `the things you need to do after migration on every system <#things-you-need-to-do-after-migration-on-every-system>`_.
 
 If your versions differ, it might happen, that your Zammad-Service will not start cleanly.
@@ -122,7 +122,7 @@ Things you need to do after migration on every system
 
 .. Note:: This does not apply to Docker images, as the following settings should be applied upon every start.
 
-.. Warning:: For Zammad-Versions **2.9 and earlier**, please run a change owner on your Zammad folder. 
+.. Warning:: For Zammad-Versions **2.9 and earlier**, please run a change owner on your Zammad folder.
   Default-Installations should be fine with ``chown -R zammad:zammad /opt/zammad/`` (Source code installations might differ).
   Please restart Zammad after the change-owner command ``systemctl restart zammad``.
 

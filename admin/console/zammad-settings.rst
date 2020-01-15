@@ -77,6 +77,4 @@ Zammad needs to use a proxy for network communication? Set it here.
 
  Setting.set('proxy', 'proxy.example.com:3128')
  Setting.set('proxy_username', 'some user')
- Setting.set('proxy_password', 'some pass') 
-
- 
+ Setting.set('proxy_password', 'some pass')

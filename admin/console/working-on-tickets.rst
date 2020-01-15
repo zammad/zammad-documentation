@@ -10,13 +10,13 @@ The following command will help you to check on received emls Zamamd fetched. Th
 
 To get the first articles eml, you can use the following command. In our example the ticket number in question is ``101234``
 ::
-  
+
   Ticket.find_by(number:'101234').articles.first.as_raw.content
 
 If needed, you can also get the raw content of later articles (you'll need to find the correct article though). Again, we expect ``101234`` to be our ticket number.
 In the first step we get all article IDs of the ticket, from the list we get, we can then get the articles content.
 ::
-  
+
   > Ticket.find_by(number:'101234').articles_ids
   => [4, 3, 2]
   > Ticket::Article.find(3).as_raw.content
@@ -92,7 +92,7 @@ A pending reminder state that will send a reminder notification to the agent if 
 
 Pending Action
 ^^^^^^^^^^^^^^
-	
+
 A pending action that will change to another state if "pending till" has been reached.
 ::
 
@@ -149,12 +149,12 @@ Before being able to use the new states within the WebApp, you need to run the f
 Limit available states for customers
 ------------------------------------
 
-By default Zammad allows customers to change Ticket states to ``open`` and ``closed``. 
+By default Zammad allows customers to change Ticket states to ``open`` and ``closed``.
 If this does not meet your requirenments, you can adjust this at anytime.
 The below example shows how to restrict your customer to only close tickets if needed:
 
 ::
-  
+
   attribute = ObjectManager::Attribute.get(
     object: 'Ticket',
     name: 'state_id',
@@ -168,7 +168,7 @@ The below example shows how to restrict your customer to only close tickets if n
 You can check the current active states that customers can set like so:
 
 ::
-  
+
   ObjectManager::Attribute.get(
     object: 'Ticket',
     name: 'state_id',
@@ -177,6 +177,5 @@ You can check the current active states that customers can set like so:
 The above will return one or more IDs - if you're not sure which state they belong to, you can check the state name with the following command. (Ensure to replace ``{ID}`` with your returned ID(s))
 
 ::
-  
-  Ticket::State.find({ID}).name
 
+  Ticket::State.find({ID}).name

@@ -36,7 +36,7 @@ Using another Port
 ==================
 
 Currently you can choose between ``Default Highport`` and ``Port 8443``.
-By default, we'll use Port ``10412`` for Zammad, if you decide for Port ``8443``, we'll handle the firewall steps needed and adjust 
+By default, we'll use Port ``10412`` for Zammad, if you decide for Port ``8443``, we'll handle the firewall steps needed and adjust
 the vHosts-Port.
 
 .. Warning:: Please ensure that if you choose another Port, that it's not used already! We do not verify this!
@@ -52,13 +52,13 @@ In some cases (and especially if you're using custom hostnames) this might be tr
 
 .. Note:: You can use custom certificates without changing the hostname.
 
-.. Warning:: We're not verifying if the certificates are valid in any way (e.g. still valid in time and if the hostname is inside). 
+.. Warning:: We're not verifying if the certificates are valid in any way (e.g. still valid in time and if the hostname is inside).
   This step might follow, but please be aware that this might lead to certificate issues.
 
 
 If you choose ``Let's Encrypt``, please ensure that you already have installed the ``Let's Encrypt App`` (by Univention GmbH) and also already aquired a certificate via it.
 If you're applying the settings, we'll check for the following two files:::
-  
+
   /etc/univention/letsencrypt/signed_chain.crt
   /etc/univention/letsencrypt/domain.key
 
@@ -69,5 +69,4 @@ You can also choose to use your very own certificate by selecting ``Custom Certi
 For this it's important to know, that we expect the certificate to be within a specific location (``/etc/univention/ssl/``).
 Within the two text fields, you'll need to provide the filenames of your certificate and your certificate-key.
 
-These certificates can be kept in a subfolder. If we cannot find either of the two files, we reset the setting to the default Univention certificate. 
-
+These certificates can be kept in a subfolder. If we cannot find either of the two files, we reset the setting to the default Univention certificate.

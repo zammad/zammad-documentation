@@ -132,4 +132,3 @@ These commands will destroy historical information within Zammad.
  ActivityStream.destroy_all	# Remove all entries from the Activity Stream (Dashboard)
  RecentView.destroy_all		# Removes the entries for all recently viewed Objects (Tickets, Users, Organizations)
  History.destroy_all		# This removes all history information from Tickets, Users and Organizations (dangeorus!)
-

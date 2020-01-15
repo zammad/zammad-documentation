@@ -79,5 +79,3 @@ Use the following commands to fix it:
 ::
 
  vboxmanage controlvm Zammad poweroff
-
-

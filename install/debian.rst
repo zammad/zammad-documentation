@@ -12,7 +12,7 @@ Be sure to use an UTF-8 locale or PostgreSQL will not install.
 Setup Elasticsearch
 -------------------
 
-Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
 Please take a look at the following page: :doc:`/install/elasticsearch` .
 
 

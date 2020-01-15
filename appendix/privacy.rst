@@ -15,7 +15,7 @@ Tickets and users
    `use the scheduler <https://admin-docs.zammad.org/en/latest/manage-scheduler.html>`_.
    To manually delete users and all their associated tickets
    (*e.g.,* in compliance with a “Right to Forget” request under the GDPR),
-   :doc:`use the console </admin/console/dangerzone-for-experts>`. 
+   :doc:`use the console </admin/console/dangerzone-for-experts>`.
 
    .. note:: The ability to delete users via the admin panel
       is planned for a future release of Zammad.

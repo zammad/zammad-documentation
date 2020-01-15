@@ -6,7 +6,7 @@ Below we have gathered information to problems that might occur in combination w
 Zammad can't communicate with external systems
 ----------------------------------------------
 
-In rare cases (sometimes even right after installation), Zammad won't be able to communicate with e.g. external 
+In rare cases (sometimes even right after installation), Zammad won't be able to communicate with e.g. external
 e-mail servers. Simply restart the Zammad app in the App Center module in the UCS management system and it should be enough to get it back working.
 
 
@@ -25,4 +25,3 @@ Customers can't click on the "Knowledge Base"-URL within the customer portal
 
 This currently can't be fixed, as Zammad is available via one Port only.
 The issue is described within `Issue 2628 <https://github.com/zammad/zammad/issues/2628>`_ and a subject to fix.
-

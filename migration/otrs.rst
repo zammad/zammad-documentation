@@ -22,7 +22,7 @@ This is a dependency of the OTRS migration plugin
 * On OTRS 4:
 
   *  https://addons.znuny.com/api/addon_repos/public/309/latest
-  
+
 * On OTRS 3:
 
   *  https://addons.znuny.com/api/addon_repos/public/142/latest
@@ -95,8 +95,8 @@ For importing via console
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * open the file ``config/initializers/delayed_jobs_settings_reset.rb`` and add the following at the end of it:
-  :: 
-    
+  ::
+
     Delayed::Worker.max_run_time = 7.days
 
 * Restart the Zammad-Service (``systemctl restart zammad``)
@@ -105,14 +105,14 @@ For importing via browser (not recommended on big installations)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run below in a Zammad console and ensure to not close it during import:
-  :: 
-    
+  ::
+
     Delayed::Worker.max_run_time = 7.days
 
 
 .. Note:: The above setting is only valid for the lifetime of the Zammad rails console.
   If you close the console, the change is reset to the default value.
- 
+
 Enter the following commands in the rails console
 -------------------------------------------------
 

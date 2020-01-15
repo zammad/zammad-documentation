@@ -26,7 +26,7 @@ when you've installed Zammad from a package
 
  shell> zammad run rails r '{COMMAND}'
 
- 
+
 when you've installed Zammad from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -47,7 +47,7 @@ when you've installed Zammad from a package
 
  shell> zammad run rails c
 
- 
+
 when you've installed Zammad from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -72,4 +72,3 @@ Here's a topic list for quick jumping and better overview.
    console/working-on-chat
    console/other-usefull-commands
    console/dangerzone-for-experts
-

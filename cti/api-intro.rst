@@ -28,5 +28,3 @@ Feature list
 
 
  * if supported by the PBX/telephone system
-
-

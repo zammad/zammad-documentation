@@ -37,4 +37,3 @@ Stable-X.x
 
 * There will be several more stable branches because we'll support the last three major versions of Zammad
 * If current stable version is 1.2.0 then the name of the branch is stable-1.2 and there also would be stable-1.1 and stable-1.0
-

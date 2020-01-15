@@ -37,9 +37,9 @@ automated setup there are some waits for services to come up. Please be
 patient!
 
 If it's finished, you can press ``open`` - you'll get to our Zammad Wizard. It helps you with the minimum of information we need. ( See ``First steps you should consider`` )
- 
+
 .. image:: /images/univention/installed-zammad.png
- 
+
 
 Values we automatically change during the UCS-Setup
 ---------------------------------------------------
@@ -49,7 +49,7 @@ In order to make the installation as complete and convenient as possible, we're 
 .. csv-table:: Changes values during installation
 	:header: "value", "default value", "new value"
 	:widths: 10,20,20
-	
+
 	"notification sender", "Notification Master <noreply@#{config.fqdn}>", "Zammad <noreply@{FQDN-of-UCS}> ³"
 	"maximum email size", "10 MB", "35 MB"
 	"FQDN", "{FQDN-of-UCS}", "{FQDN-of-UCS}:10412 ³"
@@ -122,4 +122,3 @@ The following sub pages might come in handy and help you to understand how the a
    univention/issues-you-might-encounter
 
 .. Warning:: **Never** change any configurations the Zammad-App scripts create and work with! This will lead to unexpected issues and loss of configurations upon update!
-

@@ -16,7 +16,7 @@ Request::
 Response::
 
  Status: 200 Ok
- 
+
  [
   {
     "id": 3,
@@ -32,7 +32,7 @@ Response::
     ...
     "updated_at": "2016-08-15T07:55:42.119Z",
     "created_at": "2016-08-15T07:55:42.119Z"
- }, 
+ },
  {
     "id": 4,
     "ticket_id": 3,
@@ -44,7 +44,7 @@ Response::
     "content_type": "text/html",
     "type": "note",
     "internal": false,
-    ...   
+    ...
     "updated_at": "2016-08-16T07:55:42.119Z",
     "created_at": "2016-08-16T07:55:42.119Z"
   },

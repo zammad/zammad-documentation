@@ -28,11 +28,11 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
  zammad@shell> gem install bundler
 
 * For PostgreSQL (note, the option says "without ... mysql")::
-  
+
    zammad@shell> bundle install --without test development mysql
 
 * For MySQL (note, the option says "without ... postgres")::
-  
+
    zammad@shell> bundle install --without test development postgres
 
 
@@ -134,5 +134,5 @@ Update with DEB
 Updating elasticsearch
 ======================
 
-If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_ 
+If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.

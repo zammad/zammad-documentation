@@ -18,7 +18,7 @@ Re-activate a locked user account
 ---------------------------------
 
 It sometimes happens that a user locks himself out by wildly trying the wrong password multiple times.
-Depending on your maximum failing login count (`default: 10 times`), Zammad might lock the account. 
+Depending on your maximum failing login count (`default: 10 times`), Zammad might lock the account.
 The user can't login any more (forever) if he doesn't change the password or you reset the counter.
 ::
 
@@ -44,11 +44,11 @@ If needed, you can simply change the E-Mail-Address of the user.
       u=User.find(**USERID**)
       u.email = 'user@exmaple.com'
       u.save!
-  
-  
+
+
 You need to find the User-ID of the user first for this.
-  
-  
+
+
 Change / Update Login name of User
 ----------------------------------
 
@@ -58,8 +58,8 @@ Change the user name of the user (e.g. if you want to login with a shorter usern
  u=User.find(**USERID**)
  u.login = 'user@exmaple.com'
  u.save!
-  
-  
+
+
 You need to find the User-ID of the user first for this.
 
 
@@ -81,4 +81,3 @@ You or the user did forget his password? No problem! Simply reset it by hand if 
 ::
 
  User.find_by(email: 'you@example.com').update!(password: 'your_new_password')
-

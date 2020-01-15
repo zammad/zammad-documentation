@@ -91,5 +91,3 @@ If you're using an old repo file, you will get error messages like these:
 ::
 
  Paket zammad-1.5.0-1500965473.2be861e2.centos7.x86_64.rpm not signed
-
-

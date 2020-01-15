@@ -11,5 +11,4 @@ Find group
 
 ::
 
- Group.find_by(name: 'Users').follow_up_possible 
-
+ Group.find_by(name: 'Users').follow_up_possible

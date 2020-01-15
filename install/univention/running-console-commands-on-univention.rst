@@ -10,11 +10,11 @@ Univention will hold this information for you, you can get it like that::
 
 
 Now where we have our ID, you can run any command from the :doc:`/admin/console` section with either::
-  
+
   docker exec -i "{Container-ID}" rails r "{COMMAND}"
 
 or -if you need a console for more commands- by::
-  
+
   docker exec -i "{Container-ID}" rails c
 
 
@@ -23,4 +23,3 @@ or -if you need a console for more commands- by::
 
 
 That's it!
-

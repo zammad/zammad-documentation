@@ -13,7 +13,7 @@ Be sure to use an UTF-8 locale or PostgreSQL will not install.
 Setup Elasticsearch
 -------------------
 
-Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad. 
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
 Please take a look at the following page: :doc:`/install/elasticsearch` .
 
 
@@ -47,7 +47,7 @@ Ubuntu 16.04
  wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
  sudo wget -O /etc/apt/sources.list.d/zammad.list \
    https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
-   
+
 
 
 Ubuntu 18.04
@@ -58,11 +58,11 @@ Ubuntu 18.04
  wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
  sudo wget -O /etc/apt/sources.list.d/zammad.list \
    https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
-   
+
 
 Install on Ubuntu (16.04 and 18.04)
 -----------------------------------
-   
+
 ::
 
  sudo apt-get update

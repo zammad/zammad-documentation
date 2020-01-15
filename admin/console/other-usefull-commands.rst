@@ -25,21 +25,21 @@ Translating attributes
 ~~~~~~~~~~~~~~~~~~~~~~
 
 By default Zammad will not translate custom attributes.
-With the following code you can enable translation. 
+With the following code you can enable translation.
 This will translate the attribute display name and the display names of values (if it's a value field).
-For this to work, just replace ``{attribute-name}`` against the name of your attribute. 
+For this to work, just replace ``{attribute-name}`` against the name of your attribute.
 ::
-  
+
   attribute = ObjectManager::Attribute.find_by(name: '{attribute-name}')
   attribute.data_option[:translate] = true		# set this to false to disable translation again
   attribute.save!
 
 .. Note:: Translating value display names works for the following attribute types:
-  
+
   * Boolean
   * Select
   * Tree Select
-  
+
   If you're translating the display name of e.g. an Integer-attribute, this works as well!
 
 
@@ -48,9 +48,8 @@ Fill a test system with test data
 
 .. Warning:: Don't run this in a productive environment! This can slow down Zammad and is hard to revert if you create much!
 
-The below command will add 50 agents, 1000 customers, 20 groups, 40 organizations, 5 new overviews and 100 tickets. 
-You can always use ``0`` to not create specific items. Zammad will create random "fill data". 
+The below command will add 50 agents, 1000 customers, 20 groups, 40 organizations, 5 new overviews and 100 tickets.
+You can always use ``0`` to not create specific items. Zammad will create random "fill data".
 ::
 
  FillDB.load(agents: 50,customers: 1000,groups: 20,organizations: 40,overviews: 5,tickets: 100,)
-
