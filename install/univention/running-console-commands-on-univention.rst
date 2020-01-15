@@ -18,7 +18,7 @@ or -if you need a console for more commands- by::
   docker exec -i "{Container-ID}" rails c
 
 
-.. Note:: Please replace ``{Container-ID}`` in the above commands by the ID the first command returns.
+.. note:: Please replace ``{Container-ID}`` in the above commands by the ID the first command returns.
   Replace ``{COMMAND}`` by any rails command Zammad supports.
 
 

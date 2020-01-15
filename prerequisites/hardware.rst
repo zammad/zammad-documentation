@@ -17,4 +17,4 @@ For optimal performance up to 40 agents:
 
 Of course at the end it depends on acutal load of concurent agents and data traffic.
 
-.. Note:: We can't suggest any disk space recommendations, as this highly depends on how you work. Zammad will always try to recognize the same attachments and store it just once.
+.. note:: We can't suggest any disk space recommendations, as this highly depends on how you work. Zammad will always try to recognize the same attachments and store it just once.

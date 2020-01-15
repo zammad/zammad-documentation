@@ -1,7 +1,7 @@
 Working on user information
 ***************************
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 Find user
 ---------
@@ -37,7 +37,7 @@ Change / Update E-Mail-Adress of User
 
 If needed, you can simply change the E-Mail-Address of the user.
 
-.. Note:: Please note that the login attribute is not affected by this and Zammad thus might show different information within the UI.
+.. note:: Please note that the login attribute is not affected by this and Zammad thus might show different information within the UI.
 
    ::
 

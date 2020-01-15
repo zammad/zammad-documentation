@@ -1,7 +1,7 @@
 Other useful commands
 **********************
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 Fetch mails
 -----------
@@ -34,7 +34,7 @@ For this to work, just replace ``{attribute-name}`` against the name of your att
   attribute.data_option[:translate] = true		# set this to false to disable translation again
   attribute.save!
 
-.. Note:: Translating value display names works for the following attribute types:
+.. note:: Translating value display names works for the following attribute types:
 
   * Boolean
   * Select
@@ -46,7 +46,7 @@ For this to work, just replace ``{attribute-name}`` against the name of your att
 Fill a test system with test data
 ---------------------------------
 
-.. Warning:: Don't run this in a productive environment! This can slow down Zammad and is hard to revert if you create much!
+.. warning:: Don't run this in a productive environment! This can slow down Zammad and is hard to revert if you create much!
 
 The below command will add 50 agents, 1000 customers, 20 groups, 40 organizations, 5 new overviews and 100 tickets.
 You can always use ``0`` to not create specific items. Zammad will create random "fill data".

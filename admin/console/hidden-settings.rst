@@ -4,7 +4,7 @@ Advanced customization settings
 On this page you can find some settings that you won't find within the Zammad UI.
 Those settings might come in handy as it can change Zamnmads behavior.
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 Send all outgoing E-Mails to a BCC-Mailbox
 ------------------------------------------
@@ -59,7 +59,7 @@ You can use three different warnings for Incoming Calls ``:"phone-in"=>""``, Out
 
   Setting.set('ui_ticket_create_notes', {:"phone-in"=>"You're about to note a incoming phone call.", :"phone-out"=>"You're about to note an outgoing phone call.", :"email-out"=>"You're going to send out an E-Mail."})
 
-.. Note:: You can use those three sub-settings independently, if you e.g. don't need a warning on incoming calls, simply leave out ``:"phone-in"=>""`` out of the setting.
+.. note:: You can use those three sub-settings independently, if you e.g. don't need a warning on incoming calls, simply leave out ``:"phone-in"=>""`` out of the setting.
   The setting itself is done within an array ( ``{}`` ).
 
 
@@ -90,7 +90,7 @@ Get the current state of this setting with:
 Change Font-Settings for outgoing HTML-Mails
 --------------------------------------------
 
-.. Note:: Some Clients (like Outlook) might fallback to other Settings while it might work for other Clients.
+.. note:: Some Clients (like Outlook) might fallback to other Settings while it might work for other Clients.
 
 The below setting allows you to adjust Zammads email font setting. This setting does not require a service restart.
 ::

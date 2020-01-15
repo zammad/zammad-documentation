@@ -1,9 +1,9 @@
 DANGERZONE (Deletion of stuff)
 ******************************
 
-.. DANGER:: Please note that the commands on this page cause **DATA LOSS**! Only proceed if you know what you're doing and you **have a backup**!
+.. danger:: Please note that the commands on this page cause **DATA LOSS**! Only proceed if you know what you're doing and you **have a backup**!
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 
 Delete a certain ticket
@@ -36,9 +36,9 @@ This removes all existing tickets within Zammad.
 Delete one or more users with all their related information
 -----------------------------------------------------------
 
-.. Warning:: You can't remove users without removing tickets of them!
+.. warning:: You can't remove users without removing tickets of them!
 
-.. Note:: This is meant for deleting customers, agents differ a bit and might have different results - user with caution!
+.. note:: This is meant for deleting customers, agents differ a bit and might have different results - user with caution!
 
 The following will look for affected users. It will also give you a list of tickets being affected.
 ::
@@ -58,7 +58,7 @@ The following will look for affected users. It will also give you a list of tick
 
 The following is the real deal. It will delete all tickets linked to a customer and afterwards remove the user.
 
-.. Note:: You need to run the overview-part (lookup) before you can run the below!
+.. note:: You need to run the overview-part (lookup) before you can run the below!
 
    ::
 

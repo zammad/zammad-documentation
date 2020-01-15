@@ -1,7 +1,7 @@
 Install on Ubuntu via DEB
 *************************
 
-.. Note:: We currently support Ubuntu 16.04 LTS and 18.04 LTS.
+.. note:: We currently support Ubuntu 16.04 LTS and 18.04 LTS.
 
 
 Prerequisites
@@ -86,7 +86,7 @@ The installer will give you a hint where Zammad's web server config file is loca
 nginx
 --------
 
-.. Warning:: Please **do not rename** the webserver config file for nginx or apache.
+.. warning:: Please **do not rename** the webserver config file for nginx or apache.
   The update process will re create it, if it does not exist!
 
 */etc/nginx/sites-enabled/zammad.conf*

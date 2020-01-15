@@ -1,7 +1,7 @@
 Install on Kubernetes via Helm
 ******************************
 
-.. Warning:: We currently do not support Kubernetes installations in productive use.
+.. warning:: We currently do not support Kubernetes installations in productive use.
 
 Kubernetes_ (k8s) is an open-source system for automating deployment, scaling, and management of containerized applications.
 

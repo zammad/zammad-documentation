@@ -1,9 +1,9 @@
 Install on SUSE via RPM
 ***********************
 
-.. Note:: Currently we support SLES 12 and OpenSUSE with versions 42.2 and 42.3
+.. note:: Currently we support SLES 12 and OpenSUSE with versions 42.2 and 42.3
 
-.. Warning:: OpenSUSE LEAP 15.0 hasn't been tested yet, but should work as well.
+.. warning:: OpenSUSE LEAP 15.0 hasn't been tested yet, but should work as well.
 
 
 Install dependencies
@@ -52,7 +52,7 @@ The installer will give you a hint where Zammad's web server config file is loca
 nginx
 --------
 
-.. Warning:: Please **do not rename** the webserver config file for nginx or apache.
+.. warning:: Please **do not rename** the webserver config file for nginx or apache.
   The update process will re create it, if it does not exist!
 
 */etc/nginx/sites-enabled/zammad.conf*

@@ -4,7 +4,7 @@ from OTRS
 Install plugins on OTRS
 =======================
 
-.. Note:: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.
+.. note:: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.
 
 Install Znuny4OTRS-Repo
 -----------------------
@@ -51,7 +51,7 @@ Install OTRS migration plugin
 Import via Browser
 ==================
 
-.. Note:: If your OTRS installation is rather huge, you might want to consider using the command line version of this feature.
+.. note:: If your OTRS installation is rather huge, you might want to consider using the command line version of this feature.
 
 After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
 From there you're able to start the migration from OTRS.
@@ -110,7 +110,7 @@ Run below in a Zammad console and ensure to not close it during import:
     Delayed::Worker.max_run_time = 7.days
 
 
-.. Note:: The above setting is only valid for the lifetime of the Zammad rails console.
+.. note:: The above setting is only valid for the lifetime of the Zammad rails console.
   If you close the console, the change is reset to the default value.
 
 Enter the following commands in the rails console
@@ -136,7 +136,7 @@ Start all Zammad processes again. Done.
 Importing a diff
 ================
 
-.. Note:: This is only possible after finishing an earlier OTRS import **successful**.
+.. note:: This is only possible after finishing an earlier OTRS import **successful**.
 
 In some cases it might be desirable to update the already imported data from OTRS. This is possible with the following commands.
 

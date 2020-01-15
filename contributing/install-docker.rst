@@ -26,7 +26,7 @@ Set vm.max_map_count for Elasticsearch
 
  sysctl -w vm.max_map_count=262144
 
-.. Tip:: For Mac OS: https://github.com/zammad/zammad-docker/issues/27#issuecomment-455171752
+.. tip:: For Mac OS: https://github.com/zammad/zammad-docker/issues/27#issuecomment-455171752
 
 Run docker container
 --------------------

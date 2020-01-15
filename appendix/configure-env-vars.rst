@@ -60,5 +60,5 @@ To reset this back to logfile logging run:
   zammad config:set RAILS_LOG_TO_STDOUT=
 
 
-.. Note:: **This applies to package installations:** Do not set it to ``enabled``, because we'll then unset the variable upon Update!
+.. note:: **This applies to package installations:** Do not set it to ``enabled``, because we'll then unset the variable upon Update!
   Using ``true`` is **update safe**.

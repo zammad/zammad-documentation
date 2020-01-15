@@ -1,7 +1,7 @@
 Univention App-Settings
 ***********************
 
-.. Note:: The App-Settings part is only valid starting with App version 3.1.0-7.
+.. note:: The App-Settings part is only valid starting with App version 3.1.0-7.
 
 Within the managment interface of Univention, you can change some access related settings:
 
@@ -9,7 +9,7 @@ Within the managment interface of Univention, you can change some access related
   * Another Port
   * Other certificates beside the Univention certificate
 
-.. Note:: Some settings require you to have a combination of the above settings.
+.. note:: Some settings require you to have a combination of the above settings.
   If the combination of settings is not met, the update script will automatically revert these changes.
 
   This ensures that your Univention Host stays operational. Please do not try to trick the scripts, it might cause outages.
@@ -24,12 +24,12 @@ Using another FQDN
 This consists of two settings: a selection and a text field.
 The default setting of the App is ``Default UCS-Hostname`` which will use the FQDN of the Univention-Host (and it's SSL-Certificate).
 
-.. Note:: In order to use custom hostnames, please also ensure to use a custom certificate.
+.. note:: In order to use custom hostnames, please also ensure to use a custom certificate.
 
 If you set ``Custom Hostname``, you'll need to enter a hostname in the text field below.
 Ensure that your Univention host can resolve the hostname (and it's pointing to the host in question!).
 
-.. Note:: We won't create any DNS entries or certificates during this process.
+.. note:: We won't create any DNS entries or certificates during this process.
 
 
 Using another Port
@@ -39,9 +39,9 @@ Currently you can choose between ``Default Highport`` and ``Port 8443``.
 By default, we'll use Port ``10412`` for Zammad, if you decide for Port ``8443``, we'll handle the firewall steps needed and adjust
 the vHosts-Port.
 
-.. Warning:: Please ensure that if you choose another Port, that it's not used already! We do not verify this!
+.. warning:: Please ensure that if you choose another Port, that it's not used already! We do not verify this!
 
-.. Note:: Please note that for technical reasons (how Univention and Zammad work) it's not possible to use Zammad on Port 443 or within a subdirectory.
+.. note:: Please note that for technical reasons (how Univention and Zammad work) it's not possible to use Zammad on Port 443 or within a subdirectory.
 
 
 Using other certificates
@@ -50,9 +50,9 @@ Using other certificates
 By default we're using the Univention-Host certificate (``Univention (default)``).
 In some cases (and especially if you're using custom hostnames) this might be troublesome.
 
-.. Note:: You can use custom certificates without changing the hostname.
+.. note:: You can use custom certificates without changing the hostname.
 
-.. Warning:: We're not verifying if the certificates are valid in any way (e.g. still valid in time and if the hostname is inside).
+.. warning:: We're not verifying if the certificates are valid in any way (e.g. still valid in time and if the hostname is inside).
   This step might follow, but please be aware that this might lead to certificate issues.
 
 

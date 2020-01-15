@@ -1,7 +1,7 @@
 Working with ticket information
 *******************************
 
-.. Note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
+.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
 
 Get the RAW mail that Zammad fetched
 ------------------------------------
@@ -21,13 +21,13 @@ In the first step we get all article IDs of the ticket, from the list we get, we
   => [4, 3, 2]
   > Ticket::Article.find(3).as_raw.content
 
-.. Note:: If you just use ``Ticket::Article.find(3)`` you can see further information (like who sent the mail, when we fetched it, ...).
+.. note:: If you just use ``Ticket::Article.find(3)`` you can see further information (like who sent the mail, when we fetched it, ...).
 
 
 Update all tickets of a specific customer
 -----------------------------------------
 
-.. Warning:: Please note that this action can be expensive in ressource terms, if you have many tickets, this might slow down Zammad.
+.. warning:: Please note that this action can be expensive in ressource terms, if you have many tickets, this might slow down Zammad.
 
 ::
 
@@ -51,7 +51,7 @@ Get ticket state types
 
 This will show all Ticket States needed for creating new states.
 
-.. Note:: Missing States you just created? You might want to use ``Ticket.State.all``  to display all states for Tickets.
+.. note:: Missing States you just created? You might want to use ``Ticket.State.all``  to display all states for Tickets.
 
 ::
 
@@ -61,7 +61,7 @@ This will show all Ticket States needed for creating new states.
 Add new ticket state
 --------------------
 
-.. Note:: You can use ``ignore_escalation: true,`` to ignore possible SLA escalations (pending reminder and pending close use that by default).
+.. note:: You can use ``ignore_escalation: true,`` to ignore possible SLA escalations (pending reminder and pending close use that by default).
 
 Non-Pending states
 ^^^^^^^^^^^^^^^^^^
@@ -121,7 +121,7 @@ To add the time picker (pending till) to the new pending state, you'll need to e
     attribute.save!
 
 
-.. Note:: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
+.. note:: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
 
 
 
@@ -130,7 +130,7 @@ Make new states available to UI
 
 Before being able to use the new states within the WebApp, you need to run the following commands to make them available.
 
-.. Warning:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
+.. warning:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
 
 ::
 
@@ -163,7 +163,7 @@ The below example shows how to restrict your customer to only close tickets if n
   attribute.save!
 
 
-.. Hint:: If you want to allow several different states for customers, you need to provide the state names as array - like so: ``['closed', 'open', 'my-amazing-state']`` (instead of ``['closed']``).
+.. hint:: If you want to allow several different states for customers, you need to provide the state names as array - like so: ``['closed', 'open', 'my-amazing-state']`` (instead of ``['closed']``).
 
 You can check the current active states that customers can set like so:
 

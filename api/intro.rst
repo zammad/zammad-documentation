@@ -236,4 +236,4 @@ API clients
 * PHP Client - https://github.com/zammad/zammad-api-client-php
 * .NET Client - https://github.com/Asesjix/Zammad-Client
 * Android API-Client - https://github.com/KirkBushman/zammad-android
-  .. Note:: Please note that this is a API client only, it's no "ready to use" App.
+  .. note:: Please note that this is a API client only, it's no "ready to use" App.

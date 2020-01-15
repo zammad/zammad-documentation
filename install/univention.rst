@@ -1,7 +1,7 @@
 Installation on Univention Corporate Server via App Center
 **********************************************************
 
-.. Note:: As Zammad is using Docker Compose for Univention Corporate Server, the minimum requirement is UCS 4.3-2 errata 345.
+.. note:: As Zammad is using Docker Compose for Univention Corporate Server, the minimum requirement is UCS 4.3-2 errata 345.
 
 Univention Corporate Server (UCS) is an enterprise server with focus on identity and infrastructure management. With its marketplace called App Center it can easily extended by solutions like Zammad that benefit from integrations with the LDAP directory service and the mail infrastructure.
 
@@ -18,7 +18,7 @@ The basic installation will already meet our requirement. You'll need the follow
 * You should at least have **2 CPU-Cores and 4GB of free RAM**.
 
 
-.. Note:: Running the Zammad app with less than 4GB free RAM will lead to unexpected errors!
+.. note:: Running the Zammad app with less than 4GB free RAM will lead to unexpected errors!
 
 You see, that's not much - so go a head with the installation.
 
@@ -59,23 +59,23 @@ In order to make the installation as complete and convenient as possible, we're 
 	"LDAP activated", "<empty>", "false"
 
 
-.. Note:: ² Please note that the Zammad-LDAP integration is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to the Agent-Role. You can use those security groups.
+.. note:: ² Please note that the Zammad-LDAP integration is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to the Agent-Role. You can use those security groups.
   LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
 
 
-.. Note:: ³ Please note that these settings are updated automatically, if you update FQDN and Port settings within the :doc:`/install/univention/app-settings` .
+.. note:: ³ Please note that these settings are updated automatically, if you update FQDN and Port settings within the :doc:`/install/univention/app-settings` .
 
 First steps you should consider
 ===============================
 
 The most important part is obvious: Run the wizard and insert the information for your admin account.
 
-.. Warning:: If the email address is used within UCS, you need to ensure that your user account within UCS has the needed Admin-Group, as otherwise a LDAP synchronization will downgrade your user account to the setup role!
+.. warning:: If the email address is used within UCS, you need to ensure that your user account within UCS has the needed Admin-Group, as otherwise a LDAP synchronization will downgrade your user account to the setup role!
 
 You can now enter your company name and upload a company logo, if you want to. (the company name is mandatory).
 The system URL has been set by our installation routine already, you should be good to continue without changing it.
 
-.. Note:: Changing the system URL might lead to broken links within notification mails.
+.. note:: Changing the system URL might lead to broken links within notification mails.
 
 For the notification sender, you should use SMTP, as the Docker container does not come with any sendmail or local MTA.
 If you choose local MTA, Zammad will not be able to send you any notifications.
@@ -95,7 +95,7 @@ If you want to take advantage of UCS identity management integration, you need t
 You can now go to Admin-Settings -> Integration -> LDAP and simply activate LDAP.
 The first LDAP synchronization will start shortly thereafter - Zammad will then synchronize user account data with the UCS LDAP directory hourly.
 
-.. Note:: You're free to change the group-role mapping at any time. See `Configuring LDAP integration <https://admin-docs.zammad.org/en/latest/integrations/ldap.html>`_ for more information.
+.. note:: You're free to change the group-role mapping at any time. See `Configuring LDAP integration <https://admin-docs.zammad.org/en/latest/integrations/ldap.html>`_ for more information.
 
 .. image:: /images/univention/initial-setup-ucs.gif
 
@@ -121,4 +121,4 @@ The following sub pages might come in handy and help you to understand how the a
    univention/running-console-commands-on-univention
    univention/issues-you-might-encounter
 
-.. Warning:: **Never** change any configurations the Zammad-App scripts create and work with! This will lead to unexpected issues and loss of configurations upon update!
+.. warning:: **Never** change any configurations the Zammad-App scripts create and work with! This will lead to unexpected issues and loss of configurations upon update!

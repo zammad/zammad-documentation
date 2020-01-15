@@ -4,7 +4,7 @@ Backup and Restore
 Zammad contains simple backup & restore scripts that can be executed via command line or cron job.
 You can find the scripts in the ``/opt/zammad/contrib/backup`` directory.
 
-.. Warning:: You'll need to rename the config file for the backup before you can use this script!
+.. warning:: You'll need to rename the config file for the backup before you can use this script!
 
 
 Configuration
@@ -14,7 +14,7 @@ Configuration
 * Configure backup path in ``/opt/zammad/contrib/backup/config`` if you want. The default backup path is ``/var/tmp/zammad_backup`` (needs to be created!)
 * If needed, you can also adjust the variable ``HOLD_DAYS`` to any value you need. Default value here is 10 backups before the oldest backup is deleted.
 
-.. Note:: Please note that the Backup script always creates a Full-Dump of ``/opt/zammad`` and a Full-Dump of your database. If your Zammad installation
+.. note:: Please note that the Backup script always creates a Full-Dump of ``/opt/zammad`` and a Full-Dump of your database. If your Zammad installation
   is rather big, you might need to ensure you have enough space.
 
 
@@ -28,9 +28,9 @@ You can also run this as a cronjob to have a regular backup.
  cd /opt/zammad/contrib/backup
  ./zammad_backup.sh
 
-.. Note:: Please note that you should run the cronjob as User ``zammad`` (ensure this user can write to the backup-directory). If you're using the root user, you might want to consider the following issues `"Permission issue for Backup" <https://github.com/zammad/zammad/issues/2508>`_ and `"Backup script asks for password" <https://github.com/zammad/zammad/issues/2705>`_.
+.. note:: Please note that you should run the cronjob as User ``zammad`` (ensure this user can write to the backup-directory). If you're using the root user, you might want to consider the following issues `"Permission issue for Backup" <https://github.com/zammad/zammad/issues/2508>`_ and `"Backup script asks for password" <https://github.com/zammad/zammad/issues/2705>`_.
 
-.. Warning:: If you plan on migrating your Zammad-Installation to another system, ensure to stop Zammad before creating a Backup. Other wise, data might change!
+.. warning:: If you plan on migrating your Zammad-Installation to another system, ensure to stop Zammad before creating a Backup. Other wise, data might change!
   You can do this with: ``systemctl disable zammad && systemctl stop zammad``
 
 
@@ -68,7 +68,7 @@ When you call the restore script without further arguments, Zammad will show you
 With command line argument for backup date
 ------------------------------------------
 
-.. Warning:: Only use the following option if you know what you're doing! The following command will overwrite existing data without further prompts!
+.. warning:: Only use the following option if you know what you're doing! The following command will overwrite existing data without further prompts!
 
 If you already know what backup you want to restore, you can just give the backup script the timestamp (from the filename) as argument, it will go straight to restoration.
 ::
@@ -82,7 +82,7 @@ What to do after restoration has been completed
 When migrated from a self hosted Zammad system
 ----------------------------------------------
 
-.. Note:: This step is only needed, if one of the following points is met:
+.. note:: This step is only needed, if one of the following points is met:
 
     * The source and destination Zammad-Version are not the same
     * The Zammad-installation is not a source code installation
@@ -120,9 +120,9 @@ The following will uninstall and install Zammad without resolving dependencies:
 Things you need to do after migration on every system
 -----------------------------------------------------
 
-.. Note:: This does not apply to Docker images, as the following settings should be applied upon every start.
+.. note:: This does not apply to Docker images, as the following settings should be applied upon every start.
 
-.. Warning:: For Zammad-Versions **2.9 and earlier**, please run a change owner on your Zammad folder.
+.. warning:: For Zammad-Versions **2.9 and earlier**, please run a change owner on your Zammad folder.
   Default-Installations should be fine with ``chown -R zammad:zammad /opt/zammad/`` (Source code installations might differ).
   Please restart Zammad after the change-owner command ``systemctl restart zammad``.
 
