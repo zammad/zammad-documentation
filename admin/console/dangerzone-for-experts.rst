@@ -1,134 +1,119 @@
-DANGERZONE (Deletion of stuff)
-******************************
+Deleting Records
+****************
 
-.. danger:: Please note that the commands on this page cause **DATA LOSS**! Only proceed if you know what you're doing and you **have a backup**!
+.. danger:: ☠️ The commands listed here cause **irrecoverable data loss**! Only proceed if you know what you're doing **and you have a backup**!
 
-.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
-
-
-Delete a certain ticket
------------------------
-
-The following command removes a specific ticket and all of it's articles from Zammad.
-::
-
- Ticket.find(4).destroy
-
-Delete some tickets
--------------------
-
-This will remove all existing tickets, except for those you specified within `tickets_to_keep`-variable before.
-::
-
- tickets_to_keep = [1, 2, 3] # enter the ids of all tickets you want to keep
- (Ticket.all.pluck(:id) - tickets_to_keep).each { |id| Ticket.find(id).destroy }
+.. note:: The list of commands below is not exhaustive. If you can't find what you're looking for here, you are encouraged to `ask the community <https://community.zammad.org>`_.
 
 
-Delete all tickets
+Deleting Tickets (and their articles)
+-------------------------------------
+
+.. code-block:: ruby
+
+   # Delete a ticket (specified by database ID)
+   >> Ticket.find(4).destroy
+
+   # Delete all tickets
+   >> Ticket.destroy_all
+
+   # Keep some tickets (specified by database ID); delete the rest
+   >> tickets_to_keep = [1, 2, 3]
+   >> Ticket.where.not(id: tickets_to_keep).destroy_all
+
+
+Deleting Customers
 ------------------
 
-This removes all existing tickets within Zammad.
-::
+.. warning:: Customers **may not** be deleted while they have tickets remaining in the system.
 
- Ticket.destroy_all
+   As such, the examples below will delete not only the specified customers, but **all tickets associated with them**, as well.
 
+.. code-block:: ruby
 
-Delete one or more users with all their related information
------------------------------------------------------------
+   # Select customers by email address
+   >> customers = User.where(email: %w[customer@example.com customer@example.org])
 
-.. warning:: You can't remove users without removing tickets of them!
+   >> customers = customers.joins(roles: :permissions)
+                           .where(roles: { active: true })
+                           .where(permissions: { name: 'ticket.customer', active: true })
+                           .where.not(id: 1)
 
-.. note:: This is meant for deleting customers, agents differ a bit and might have different results - user with caution!
+   # Preview affected users & tickets
+   >> puts customers.map do |user|
+        "Customer #{user.fullname}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}"
+      end.join("\n")
 
-The following will look for affected users. It will also give you a list of tickets being affected.
-::
+   # Proceed with deletion
+   >> customers.find_each do |user|
+        puts %{Preparing deletion of customer "#{user.fullname}" (and #{Ticket.where(customer_id: user.id).count} associated tickets)}
 
- target_user_emails = ['customer@example.com']
- # This will generate an overview what Zammad will remove
- list = ''
- target_user_emails.each {|email|
-   User.where(email: email.downcase).each {|user|
-     next if user.id == 1
-     next if !user.permissions?('ticket.customer')
-     list += "Customer #{user.login}/#{user.email}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}\n"
-   }
- }
- puts list
+        Ticket.where(customer: user).find_each do |ticket|
+          puts "  Deleting ticket ##{ticket.number}..."
+          ticket.destroy
+        end
 
+        puts "  Removing references for user with email #{user.email}..."
+        ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
+        History.where(created_by_id: user.id).update_all(created_by_id: 1)
+        Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
+        Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
+        Store.where(created_by_id: user.id).update_all(created_by_id: 1)
+        StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
+        Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
+        OnlineNotification.find_by(user_id: user.id)&.destroy!
 
-The following is the real deal. It will delete all tickets linked to a customer and afterwards remove the user.
-
-.. note:: You need to run the overview-part (lookup) before you can run the below!
-
-   ::
-
-      # Actual deletion, requires overview run before
-      User.joins(roles: :permissions).where(email: target_user_emails.map(&:downcase), roles: { active: true }, permissions: { name: 'ticket.customer', active: true }).where.not(id: 1).find_each do |user|
-       puts "Customer #{user.login}/#{user.email} has #{Ticket.where(customer_id: user.id).count} tickets"
-
-       Ticket.where(customer: user).find_each do |ticket|
-         puts "  Deleting ticket #{ticket.number}..."
-         ticket.destroy
-       end
-
-       puts "  Removing references for user with E-Mail #{user.email}..."
-       ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
-       History.where(created_by_id: user.id).update_all(created_by_id: 1)
-       Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
-       Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
-       Store.where(created_by_id: user.id).update_all(created_by_id: 1)
-       StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
-       Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
-       if OnlineNotification.find_by(user_id: user.id)==""
-        OnlineNotification.find_by(user_id: user.id).destroy!
-       end
-
-       puts "  Deleting user #{user.login}/#{user.email}..."
-       user.destroy
+        puts "  Deleting #{user.fullname}..."
+        user.destroy
       end
 
 
-Removing organizations
+Deleting Organizations
 ----------------------
 
-In order to delete groups, you need to ensure no users are assigned as group member.
-If you want to search for other conditions of a group ( so not `active: false` ) just replace it inside the `where()` clause.
-Ensure that the searched phrase is inside the organization Object!
+.. note:: Deleting an organization does **not** delete associated customers.
 
-First to the preview of what is affected:
-::
+.. code-block:: ruby
 
-  # preview
-  list = ''
-  Organization.where(active: false).each {|org|
-  list += "ORGANIZATION #{org.name} \n"
-  }
-  puts list
+   # Select organizations by "active" status
+   >> organizations = Organization.where(active: false)
+
+   # or, by name
+   >> organizations = Organization.where(name: 'Acme')
+
+   # or, by partial match on notes
+   >> organizations = Organization.where('note LIKE ?', '%foo%')
+
+   # Preview affected organizations
+   >> puts organizations.map { |org| "ORGANIZATION #{org.name}" }.join("\n")
+
+   # Proceed with deletion
+   >> organizations.each do |org|
+        puts %{Preparing deletion of organization "#{org.name}"...}
+
+        org.members.each do |member|
+           puts "  Removing #{member.fullname} from organization..."
+           member.update!(organization_id: nil)
+        end
+
+        puts "  Deleting #{org.name}..."
+        org.destroy
+      end
 
 
-If the result is correct, you can run the below to finally un-assign users memberships followed by the organization removal.
-::
+Deleting System Records
+-----------------------
 
-  # delete organization
-  Organization.where(active: false).each {|org|
-  puts "Working on '#{org.name}' \n"
-  User.where(organization_id: org.id).each {|user|
-     puts "... Removing User '#{user.firstname} #{user.lastname}' from Organization"
-     user.organization_id=nil
-     user.save!
-  }
-  puts "... Deleting organisation \n\n"
-  org.destroy
-  }
+.. code-block:: ruby
 
+   # Remove all online notifications
+   >> OnlineNotification.destroy_all
 
-Destroy stuff
--------------
+   # Remove all entries from the Activity Stream (dashboard)
+   >> ActivityStream.destroy_all
 
-These commands will destroy historical information within Zammad.
-::
+   # Remove entries for all recently viewed objects (tickets, users, organizations)
+   >> RecentView.destroy_all
 
- OnlineNotification.destroy_all	# Remove all online notifications
- ActivityStream.destroy_all	# Remove all entries from the Activity Stream (Dashboard)
- RecentView.destroy_all		# Removes the entries for all recently viewed Objects (Tickets, Users, Organizations)
- History.destroy_all		# This removes all history information from Tickets, Users and Organizations (dangeorus!)
+   # Remove all history information from tickets, users and organizations (dangerous!)
+   >> History.destroy_all
