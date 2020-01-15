@@ -12,36 +12,36 @@ Required permission:
 
 Request::
 
- GET /api/v1/ticket_states
+   GET /api/v1/ticket_states
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- [
-  {
-    "id": 123,
-    "name": "Ticket State 1",
-    "state_type_id": 1,
-    "next_state_id": null,
-    "ignore_escalation": true,
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
-  {
-    "id": 124,
-    "name": "Ticket State 2",
-    "state_type_id": 2,
-    "next_state_id": 4,
-    "ignore_escalation": false,
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
- ]
+   [
+     {
+       "id": 123,
+       "name": "Ticket State 1",
+       "state_type_id": 1,
+       "next_state_id": null,
+       "ignore_escalation": true,
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+     {
+       "id": 124,
+       "name": "Ticket State 2",
+       "state_type_id": 2,
+       "next_state_id": 4,
+       "ignore_escalation": false,
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+   ]
 
 Show
 ====
@@ -54,24 +54,23 @@ Required permission:
 
 Request::
 
- GET /api/v1/ticket_states/{id}
-
+   GET /api/v1/ticket_states/{id}
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {
-  "id": 123,
-  "name": "Ticket State 1",
-  "state_type_id": 1,
-  "next_state_id": null,
-  "ignore_escalation": true,
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 
 Create
@@ -83,33 +82,33 @@ Required permission:
 
 Request::
 
- POST /api/v1/ticket_states
+   POST /api/v1/ticket_states
 
- {
-  "name": "Ticket State 1",
-  "state_type_id": 1,
-  "next_state_id": null,
-  "ignore_escalation": true,
-  "active": true,
-  "note": "some note"
- }
+   {
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
+     "active": true,
+     "note": "some note"
+   }
 
 
 Response::
 
- Status: 201 Created
+   Status: 201 Created
 
- {
-  "id": 123,
-  "name": "Ticket State 1",
-  "state_type_id": 1,
-  "next_state_id": null,
-  "ignore_escalation": true,
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 
 Update
@@ -121,33 +120,33 @@ Required permission:
 
 Request::
 
- PUT /api/v1/ticket_states/{id}
+   PUT /api/v1/ticket_states/{id}
 
- {
-  "id": 123,
-  "name": "Ticket State 1",
-  "state_type_id": 1,
-  "next_state_id": null,
-  "ignore_escalation": true,
-  "active": true,
-  "note": "some note"
- }
+   {
+     "id": 123,
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
+     "active": true,
+     "note": "some note"
+   }
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {
-  "id": 123,
-  "name": "Ticket State 1",
-  "state_type_id": 1,
-  "next_state_id": null,
-  "ignore_escalation": true,
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 
 Delete
@@ -159,11 +158,10 @@ Required permission:
 
 Request::
 
- DELETE /api/v1/ticket_states/{id}
-
+   DELETE /api/v1/ticket_states/{id}
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {}
+   {}

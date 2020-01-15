@@ -11,10 +11,10 @@ First be sure that a Vagrant provider is installed. You can use "Virtual Box" fr
 Clone the Vagrant file
 ======================
 
-::
+.. code-block:: sh
 
- git clone git@github.com:zammad/zammad-vagrant.git
- cd zammad-vagrant
+   $ git clone git@github.com:zammad/zammad-vagrant.git
+   $ cd zammad-vagrant
 
 
 Run Vagrant
@@ -24,16 +24,16 @@ Run Vagrant
 For stable branch package
 -------------------------
 
-::
+.. code-block:: sh
 
- PACKAGER_REPO=stable vagrant up --provision
+   $ PACKAGER_REPO=stable vagrant up --provision
 
 For develop branch package
 --------------------------
 
-::
+.. code-block:: sh
 
- vagrant up --provision
+   $ vagrant up --provision
 
 
 
@@ -50,16 +50,16 @@ SSH into the machine
 
 After "vagrant up"
 
-::
+.. code-block:: sh
 
- vagrant ssh
+   $ vagrant ssh
 
 
 After this you can switch to root user via:
 
-::
+.. code-block:: sh
 
- sudo -i
+   $ sudo -i
 
 
 Problems starting the VM?
@@ -76,6 +76,6 @@ If you get errors like:
 
 Use the following commands to fix it:
 
-::
+.. code-block:: sh
 
- vboxmanage controlvm Zammad poweroff
+   $ vboxmanage controlvm Zammad poweroff

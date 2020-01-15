@@ -44,9 +44,9 @@ Zammad supports the following three events (newCall, hangup and answer) in versi
 
 You can simulate this POST request and test your server with a CURL command:
 
-::
+.. code-block:: sh
 
-  curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/cti/:token
+   $ curl -X POST --data "event=newCall&from=493055571600&to=491711234567890&direction=in&callId=123456&user[]=Alice&user[]=Bob" http://localhost:3000/api/v1/cti/:token
 
 *The response (optional)*
 
@@ -62,12 +62,12 @@ Zammad currently supports the following responses for incoming calls:
 
 Example 1: Reject call signaling busy
 
-::
+.. code-block:: json
 
-  {
-    "action": "reject",
-    "reason": "busy"
-  }
+   {
+     "action": "reject",
+     "reason": "busy"
+   }
 
 Zammad currently supports the following responses for outgoing calls:
 
@@ -79,13 +79,13 @@ Zammad currently supports the following responses for outgoing calls:
 
 Example 1: Set custom caller id for outgoing call
 
-::
+.. code-block:: json
 
-  {
-    "action": "dial",
-    "callerId": "493055571642",
-    "number": "491711234567890"
-  }
+   {
+     "action": "dial",
+     "callerId": "493055571642",
+     "number": "491711234567890"
+   }
 
 **Event: hangup**
 
@@ -109,9 +109,9 @@ Example 1: Set custom caller id for outgoing call
 
 You can simulate this POST request and test your server with a CURL command:
 
-::
+.. code-block:: sh
 
-  curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/cti/:token
+   $ curl -X POST --data "event=hangup&cause=normalClearing&callId=123456&from=493055571600&to=491711234567890&direction=in&answeringNumber=4921199999999" http://localhost:3000/api/v1/cti/:token
 
 
 Hangup causes: For these reasons, hangups may occur because of these causes:
@@ -158,6 +158,6 @@ Hangup causes: For these reasons, hangups may occur because of these causes:
 
 You can simulate this POST request and test your server with a CURL command:
 
-::
+.. code-block:: sh
 
-  curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/cti/:token
+   $ curl -X POST --data "event=answer&callId=123456&user=John+Doe&from=493055571600&to=491711234567890&direction=in&answeringNumber=21199999999" http://localhost:3000/api/v1/cti/:token

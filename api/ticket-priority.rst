@@ -12,31 +12,30 @@ Required permission:
 
 Request::
 
- GET /api/v1/ticket_priorities
-
+   GET /api/v1/ticket_priorities
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- [
-  {
-    "id": 123,
-    "name": "Ticket Priority 1",
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
-  {
-    "id": 124,
-    "name": "Ticket Priority 2",
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
- ]
+   [
+     {
+       "id": 123,
+       "name": "Ticket Priority 1",
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+     {
+       "id": 124,
+       "name": "Ticket Priority 2",
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+   ]
 
 
 Show
@@ -50,20 +49,20 @@ Required permission:
 
 Request::
 
- GET /api/v1/ticket_priorities/{id}
+   GET /api/v1/ticket_priorities/{id}
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {
-  "id": 123,
-  "name": "Ticket Priority 1",
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Ticket Priority 1",
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 
 Create
@@ -75,27 +74,26 @@ Required permission:
 
 Request::
 
- POST /api/v1/ticket_priorities
+   POST /api/v1/ticket_priorities
 
- {
-  "name": "Ticket Priority 1",
-  "active": true,
-  "note": "some note"
- }
-
+   {
+     "name": "Ticket Priority 1",
+     "active": true,
+     "note": "some note"
+   }
 
 Response::
 
- Status: 201 Created
+   Status: 201 Created
 
- {
-  "id": 123,
-  "name": "Ticket Priority 1",
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Ticket Priority 1",
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 Update
 ======
@@ -106,28 +104,27 @@ Required permission:
 
 Request::
 
- PUT /api/v1/ticket_priorities/{id}
+   PUT /api/v1/ticket_priorities/{id}
 
- {
-  "id": 123,
-  "name": "Ticket Priority 1",
-  "active": true,
-  "note": "some note"
- }
-
+   {
+     "id": 123,
+     "name": "Ticket Priority 1",
+     "active": true,
+     "note": "some note"
+   }
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {
-  "id": 123,
-  "name": "Ticket Priority 1",
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Ticket Priority 1",
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 
 Delete
@@ -139,11 +136,10 @@ Required permission:
 
 Request::
 
- DELETE /api/v1/ticket_priorities/{id}
-
+   DELETE /api/v1/ticket_priorities/{id}
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {}
+   {}

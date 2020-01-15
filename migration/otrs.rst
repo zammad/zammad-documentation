@@ -70,19 +70,19 @@ Stop all Zammad processes and switch Zammad to import mode (no events are fired 
 If you installed the Zammad DEB or RPM package
 ----------------------------------------------
 
-::
+.. code-block:: sh
 
- zammad run rails c
+   $ zammad run rails c
 
 
 If you installed from source
 ----------------------------
 
-::
+.. code-block:: sh
 
- su zammad
- cd /opt/zammad
- rails c
+   $ su zammad
+   $ cd /opt/zammad
+   $ rails c
 
 
 Extending import time for big installations (optional)
@@ -95,9 +95,10 @@ For importing via console
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * open the file ``config/initializers/delayed_jobs_settings_reset.rb`` and add the following at the end of it:
-  ::
 
-    Delayed::Worker.max_run_time = 7.days
+  .. code-block:: ruby
+
+     >> Delayed::Worker.max_run_time = 7.days
 
 * Restart the Zammad-Service (``systemctl restart zammad``)
 
@@ -105,31 +106,32 @@ For importing via browser (not recommended on big installations)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run below in a Zammad console and ensure to not close it during import:
-  ::
 
-    Delayed::Worker.max_run_time = 7.days
+  .. code-block:: ruby
+
+     >> Delayed::Worker.max_run_time = 7.days
 
 
 .. note:: The above setting is only valid for the lifetime of the Zammad rails console.
-  If you close the console, the change is reset to the default value.
+   If you close the console, the change is reset to the default value.
 
 Enter the following commands in the rails console
 -------------------------------------------------
 
-::
+.. code-block:: ruby
 
- Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
- Setting.set('import_otrs_endpoint_key', 'xxx')
- Setting.set('import_mode', true)
- Import::OTRS.start
+   >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
+   >> Setting.set('import_otrs_endpoint_key', 'xxx')
+   >> Setting.set('import_mode', true)
+   >> Import::OTRS.start
 
 
 After the import is done switch Zammad back to non-import mode and mark the system initialization as done.
 
-::
+.. code-block:: ruby
 
- Setting.set('import_mode', false)
- Setting.set('system_init_done', true)
+   >> Setting.set('import_mode', false)
+   >> Setting.set('system_init_done', true)
 
 Start all Zammad processes again. Done.
 
@@ -143,20 +145,20 @@ In some cases it might be desirable to update the already imported data from OTR
 Enter the following commands in the rails console
 -------------------------------------------------
 
-::
+.. code-block:: ruby
 
- Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
- Setting.set('import_otrs_endpoint_key', 'xxx')
- Setting.set('import_mode', true)
- Setting.set('system_init_done', false)
- Import::OTRS.diff_worker
+   >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
+   >> Setting.set('import_otrs_endpoint_key', 'xxx')
+   >> Setting.set('import_mode', true)
+   >> Setting.set('system_init_done', false)
+   >> Import::OTRS.diff_worker
 
 After the import is done switch Zammad back to non-import mode and mark the system initialization as done.
 
-::
+.. code-block:: ruby
 
- Setting.set('import_mode', false)
- Setting.set('system_init_done', true)
+   >> Setting.set('import_mode', false)
+   >> Setting.set('system_init_done', true)
 
 Start all Zammad processes again. Done.
 
@@ -169,22 +171,22 @@ First make sure all Zammad processes are stopped. After that reset your database
 If you installed the Zammad DEB or RPM package
 ----------------------------------------------
 
-::
+.. code-block:: sh
 
- zammad run rake db:drop
- zammad run rake db:create
- zammad run rake db:migrate
- zammad run rake db:seed
+   $ zammad run rake db:drop
+   $ zammad run rake db:create
+   $ zammad run rake db:migrate
+   $ zammad run rake db:seed
 
 
 If you installed from source
 ----------------------------
 
-::
+.. code-block:: sh
 
- rake db:drop
- rake db:create
- rake db:migrate
- rake db:seed
+   $ rake db:drop
+   $ rake db:create
+   $ rake db:migrate
+   $ rake db:seed
 
 After that your DB is reset and you can start the import right over.

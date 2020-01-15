@@ -21,4 +21,4 @@ Travis-CI
 * Current build test status is:
 
 .. image:: https://travis-ci.org/zammad/zammad.svg?branch=develop
-  :target: https://travis-ci.org/zammad/zammad
+   :target: https://travis-ci.org/zammad/zammad

@@ -24,28 +24,16 @@ If you're using the package install, the packages below will automatically insta
 .. warning:: Please note that upgrading from Zammad 2.8 and earlier might fail, because your system does not satisfy the new dependencies.
    Below installation commands will help you out (you can update normally afterwards)
 
-Debian 8 & 9, Ubuntu 16.04 & 18.04
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: sh
 
-::
+   # Debian 8 & 9, Ubuntu 16.04 & 18.04
+   $ apt-get install libimlib2 libimlib2-dev
 
-  apt-get install libimlib2 libimlib2-dev
+   # openSUSE
+   $ zypper install imlib2 imlib2-devel
 
-
-OpenSuSe
-^^^^^^^^
-
-::
-
-  zypper install imlib2 imlib2-devel
-
-
-CentOS 7
-^^^^^^^^
-
-::
-
-  yum install imlib2 imlib2-devel
+   # CentOS 7
+   $ yum install imlib2 imlib2-devel
 
 
 3. Database Server

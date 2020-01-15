@@ -11,32 +11,32 @@ Required permission:
 
 Request::
 
- GET /api/v1/organizations
+   GET /api/v1/organizations
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- [
-  {
-    "id": 123,
-    "name": "Org 1",
-    "shared": true,
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
-  {
-    "id": 124,
-    "name": "Org 2",
-    "shared": false,
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
- ]
+   [
+     {
+       "id": 123,
+       "name": "Org 1",
+       "shared": true,
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+     {
+       "id": 124,
+       "name": "Org 2",
+       "shared": false,
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+   ]
 
 
 Search
@@ -48,34 +48,34 @@ Required permission:
 
 Request::
 
- GET /api/v1/organizations/search?query=what&limit=10
+   GET /api/v1/organizations/search?query=what&limit=10
 
 Note: As of Zammad 2.6 parameters (sort_by=some_row and order_by=asc or desc) can also be used for sorting.
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- [
-  {
-    "id": 123,
-    "name": "Org 1",
-    "shared": true,
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
-  {
-    "id": 124,
-    "name": "Org 2",
-    "shared": false,
-    "active": true,
-    "note": "some note",
-    "updated_at": "2016-08-16T07:55:42.119Z",
-    "created_at": "2016-08-16T07:55:42.119Z"
-  },
- ]
+   [
+     {
+       "id": 123,
+       "name": "Org 1",
+       "shared": true,
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+     {
+       "id": 124,
+       "name": "Org 2",
+       "shared": false,
+       "active": true,
+       "note": "some note",
+       "updated_at": "2016-08-16T07:55:42.119Z",
+       "created_at": "2016-08-16T07:55:42.119Z"
+     },
+   ]
 
 
 
@@ -89,21 +89,21 @@ Required permission:
 
 Request::
 
- GET /api/v1/organizations/{id}
+   GET /api/v1/organizations/{id}
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {
-  "id": 123,
-  "name": "Org 1",
-  "shared": true,
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Org 1",
+     "shared": true,
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 Create
 ======
@@ -114,28 +114,28 @@ Required permission:
 
 Request::
 
- POST /api/v1/organizations
+   POST /api/v1/organizations
 
- {
-  "name": "Org 1",
-  "shared": true,
-  "active": true,
-  "note": "some note"
- }
+   {
+    "name": "Org 1",
+    "shared": true,
+    "active": true,
+    "note": "some note"
+   }
 
 Response::
 
- Status: 201 Created
+   Status: 201 Created
 
- {
-  "id": 123,
-  "name": "Org 1",
-  "shared": true,
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Org 1",
+     "shared": true,
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 
 Update
@@ -147,29 +147,29 @@ Required permission:
 
 Request::
 
- PUT /api/v1/organizations/{id}
+   PUT /api/v1/organizations/{id}
 
- {
-  "id": 123,
-  "name": "Org 1",
-  "shared": true,
-  "active": true,
-  "note": "some note"
- }
+   {
+     "id": 123,
+     "name": "Org 1",
+     "shared": true,
+     "active": true,
+     "note": "some note"
+   }
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {
-  "id": 123,
-  "name": "Org 1",
-  "shared": true,
-  "active": true,
-  "note": "some note",
-  "updated_at": "2016-08-16T07:55:42.119Z",
-  "created_at": "2016-08-16T07:55:42.119Z"
- }
+   {
+     "id": 123,
+     "name": "Org 1",
+     "shared": true,
+     "active": true,
+     "note": "some note",
+     "updated_at": "2016-08-16T07:55:42.119Z",
+     "created_at": "2016-08-16T07:55:42.119Z"
+   }
 
 Delete
 ======
@@ -180,11 +180,10 @@ Required permission:
 
 Request::
 
- DELETE /api/v1/organization/{id}
-
+   DELETE /api/v1/organization/{id}
 
 Response::
 
- Status: 200 Ok
+   Status: 200 Ok
 
- {}
+   {}

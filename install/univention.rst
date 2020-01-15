@@ -47,20 +47,20 @@ Values we automatically change during the UCS-Setup
 In order to make the installation as complete and convenient as possible, we're changing the following default values to the following:
 
 .. csv-table:: Changes values during installation
-	:header: "value", "default value", "new value"
-	:widths: 10,20,20
+   :header: "value", "default value", "new value"
+   :widths: 10,20,20
 
-	"notification sender", "Notification Master <noreply@#{config.fqdn}>", "Zammad <noreply@{FQDN-of-UCS}> ³"
-	"maximum email size", "10 MB", "35 MB"
-	"FQDN", "{FQDN-of-UCS}", "{FQDN-of-UCS}:10412 ³"
-	"HTTP-Type", "<empty>", "https"
-	"Allow customer registration", "true", "false"
-	"LDAP configuration", "<empty>", "Full LDAP-Configuration prepared ²"
-	"LDAP activated", "<empty>", "false"
+   "notification sender", "Notification Master <noreply@#{config.fqdn}>", "Zammad <noreply@{FQDN-of-UCS}> ³"
+   "maximum email size", "10 MB", "35 MB"
+   "FQDN", "{FQDN-of-UCS}", "{FQDN-of-UCS}:10412 ³"
+   "HTTP-Type", "<empty>", "https"
+   "Allow customer registration", "true", "false"
+   "LDAP configuration", "<empty>", "Full LDAP-Configuration prepared ²"
+   "LDAP activated", "<empty>", "false"
 
 
 .. note:: ² Please note that the Zammad-LDAP integration is pre filled with authentication data and the group mapping ``Zammad-Admin`` to the Admin-Role and ``Zammad-Agent`` to the Agent-Role. You can use those security groups.
-  LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
+   LDAP synchronization is disabled during installation, as activating it would disable the installation wizard of Zammad, which is needed to setup your Zammad instance properly.
 
 
 .. note:: ³ Please note that these settings are updated automatically, if you update FQDN and Port settings within the :doc:`/install/univention/app-settings` .

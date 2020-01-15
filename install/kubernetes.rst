@@ -19,17 +19,10 @@ The used Docker images are hosted on `Dockerhub <https://hub.docker.com/r/zammad
 You need the Helm binary installed / initialized and at least 4 GB of free RAM in the Kubernetes cluster run the containers.
 
 
-Add Helm repo
-=============
+.. code-block:: sh
 
-::
+   # Add Helm repo
+   $ helm repo add zammad https://zammad.github.io
 
- helm repo add zammad https://zammad.github.io
-
-
-Install / Upgrade Zammad
-========================
-
-::
-
- helm upgrade --install zammad zammad/zammad --namespace=zammad
+   # Install / Upgrade Zammad
+   $ helm upgrade --install zammad zammad/zammad --namespace=zammad

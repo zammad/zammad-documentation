@@ -22,18 +22,18 @@ Docker run will run a command in a new container, -i attaches stdin and stdout, 
 Set vm.max_map_count for Elasticsearch
 --------------------------------------
 
-::
+.. code-block:: sh
 
- sysctl -w vm.max_map_count=262144
+   $ sysctl -w vm.max_map_count=262144
 
 .. tip:: For Mac OS: https://github.com/zammad/zammad-docker/issues/27#issuecomment-455171752
 
 Run docker container
 --------------------
 
-::
+.. code-block:: sh
 
- docker container run -ti --rm --name zammad -p 80:80 zammad/zammad
+   $ docker container run -ti --rm --name zammad -p 80:80 zammad/zammad
 
 
 That’s it! You’re now using a bash shell inside of a Zammad docker container using the develop branch of the GitHub repo.

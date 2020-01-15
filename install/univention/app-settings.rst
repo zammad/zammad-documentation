@@ -10,9 +10,9 @@ Within the managment interface of Univention, you can change some access related
   * Other certificates beside the Univention certificate
 
 .. note:: Some settings require you to have a combination of the above settings.
-  If the combination of settings is not met, the update script will automatically revert these changes.
+   If the combination of settings is not met, the update script will automatically revert these changes.
 
-  This ensures that your Univention Host stays operational. Please do not try to trick the scripts, it might cause outages.
+   This ensures that your Univention Host stays operational. Please do not try to trick the scripts, it might cause outages.
 
 If you're using the default settings, we'll empty the values of the text fields to reduce confusion.
 This is not a Bug, but a "Feature".
@@ -53,14 +53,14 @@ In some cases (and especially if you're using custom hostnames) this might be tr
 .. note:: You can use custom certificates without changing the hostname.
 
 .. warning:: We're not verifying if the certificates are valid in any way (e.g. still valid in time and if the hostname is inside).
-  This step might follow, but please be aware that this might lead to certificate issues.
+   This step might follow, but please be aware that this might lead to certificate issues.
 
 
 If you choose ``Let's Encrypt``, please ensure that you already have installed the ``Let's Encrypt App`` (by Univention GmbH) and also already aquired a certificate via it.
 If you're applying the settings, we'll check for the following two files:::
 
-  /etc/univention/letsencrypt/signed_chain.crt
-  /etc/univention/letsencrypt/domain.key
+   /etc/univention/letsencrypt/signed_chain.crt
+   /etc/univention/letsencrypt/domain.key
 
 If we can't find these, we'll revert to the default Univention certificate.
 
