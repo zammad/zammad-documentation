@@ -3,466 +3,196 @@
 Set up Elasticsearch
 ********************
 
-We use Elasticsearch for the awesome search in Zammad.
+Zammad's search function is powered by Elasticsearch, and requires one of:
 
-Currently we support:
+* Elasticsearch 5.5 (with the `mapper attachments plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/mapper-attachments.html>`_)
+* Elasticsearch 5.6 or above (with the `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/ingest-attachment.html>`_)
 
-* Elasticsearch 2.4.x to 5.5.x with mapper-attachments plugin
-* Elasticsearch 5.6.x, 6.x, 7.x with ingest-attachment plugin
+.. warning:: Versions below 5.5 may continue to work for the time being,
+   but are officially deprecated. Support will be dropped in upcoming releases.
 
-This manual uses the ``zammad run`` command which is only available if you installed Zammad from one of our package repos.
-If you're using a source code based install, simply leave that part away and just run ``rails ...`` or ``rake ...`` where ever neded.
+.. note:: This guide uses the ``zammad run`` command prefix in command line examples.
+   This prefix is only applicable to package installations
+   (*i.e.,* via apt/yum/zypper, or ``.deb``/``.rpm`` files).
 
-
-Install Elasticsearch and its Attachment plugin
-===============================================
-
-Generic install Elasticsearch 2.4 (mapper-attachments):
--------------------------------------------------------
-
-* Download and install via https://www.elastic.co/downloads/elasticsearch (2.4.x)
-* Install the Attachment plugin
-
-::
-
- cd /usr/share/elasticsearch
- bin/plugin install mapper-attachments
-
-* Start elasticsearch
+   If you installed from source, be sure to omit this prefix
+   and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
 
-Generic install Elasticsearch 5.0-5.5 (mapper-attachments):
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step 1: Installation
+====================
 
-* Download and install via https://www.elastic.co/downloads/elasticsearch (5.0-5.5)
-* Install the Attachment plugin
+:Direct Download:
 
-::
+   Find the latest release on the `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
+   or see the `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
+   for in-depth instructions. Then,
 
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments
+   .. code-block:: sh
 
-* Setting vm.max_map_count for Elasticsearch
+      # Install the attachment plugin
+      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
+      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
 
-::
+      # Increase the virtual memory map limit
+      $ sudo sysctl -w vm.max_map_count=262144
 
- sysctl -w vm.max_map_count=262144
- 
+   and start Elasticsearch.
 
-On Mac you also have to do:
+   .. note:: 🐋 **Docker installations on macOS/Windows:**
 
-* https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
+      Setting the ``vm.max_map_count`` kernel parameter requires `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites>`_.
 
+:CentOS 7:
 
-* Start elasticsearch
+   ::
 
-
-Generic install Elasticsearch 5.6, 6.x, 7.x (ingest-attachment):
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-* Download and install via https://www.elastic.co/downloads/elasticsearch (5.6, 6.x or 7.x)
-* Install the Attachment plugin
-
-::
-
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-* Setting vm.max_map_count for Elasticsearch
-
-::
-
- sysctl -w vm.max_map_count=262144
- 
- 
-.. Tip:: On Mac OS you also have to do: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html#docker-cli-run-prod-mode
- 
- 
-* Start elasticsearch
+      rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      echo "[elasticsearch-7.x]
+      name=Elasticsearch repository for 7.x packages
+      baseurl=https://artifacts.elastic.co/packages/7.x/yum
+      gpgcheck=1
+      gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      enabled=1
+      autorefresh=1
+      type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
+      yum install -y java-1.8.0-openjdk elasticsearch
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      systemctl start elasticsearch
+      systemctl enable elasticsearch
 
 
-The most current repository installation path can be found `here <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
+:Debian 8:
 
-CentOS 7:
-+++++++++
+   ::
 
-::
-
- rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
- echo "[elasticsearch-7.x]
- name=Elasticsearch repository for 7.x packages
- baseurl=https://artifacts.elastic.co/packages/7.x/yum
- gpgcheck=1
- gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
- enabled=1
- autorefresh=1
- type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
- yum install -y java-1.8.0-openjdk elasticsearch
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
- systemctl start elasticsearch
- systemctl enable elasticsearch
+      apt-get install apt-transport-https sudo wget
+      echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
+      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+      apt-get update
+      apt-get install -t jessie-backports openjdk-8-jre
+      apt-get install elasticsearch
+      sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      systemctl restart elasticsearch
+      systemctl enable elasticsearch
 
 
-Debian 8:
-+++++++++
+:Debian 9:
 
-::
+   ::
 
- apt-get install apt-transport-https sudo wget
- echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
- echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
- wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
- apt-get update
- apt-get install -t jessie-backports openjdk-8-jre
- apt-get install elasticsearch
- sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
- systemctl restart elasticsearch
- systemctl enable elasticsearch
+      apt-get install apt-transport-https sudo wget
+      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+      apt-get update
+      apt-get install openjdk-8-jre elasticsearch
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      systemctl restart elasticsearch
+      systemctl enable elasticsearch
 
 
-Debian 9:
-+++++++++
+:Ubuntu 16.04 & 18.04:
 
-::
+   ::
 
- apt-get install apt-transport-https sudo wget
- echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
- wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
- apt-get update
- apt-get install openjdk-8-jre elasticsearch
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
- systemctl restart elasticsearch
- systemctl enable elasticsearch
+      apt-get install apt-transport-https sudo wget
+      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+      apt-get update
+      apt-get install openjdk-8-jre elasticsearch
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      systemctl restart elasticsearch
+      systemctl enable elasticsearch
 
+Step 2: Suggested Configuration
+===============================
 
-Ubuntu 16.04 & 18.04:
-+++++++++++++++++++++
+We use the following settings to optimize the performance of our Elasticsearch servers. Your mileage may vary.
 
-::
+.. code-block:: sh
 
- apt-get install apt-transport-https sudo wget
- echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
- wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
- apt-get update
- apt-get install openjdk-8-jre elasticsearch
- sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
- systemctl restart elasticsearch
- systemctl enable elasticsearch
+   # /etc/elasticsearch/elasticsearch.yml
 
+   # Tickets above this size (articles + attachments + metadata)
+   # may fail to be properly indexed (Default: 100mb).
+   #
+   # When Zammad sends tickets to Elasticsearch for indexing,
+   # it bundles together all the data on each individual ticket
+   # and issues a single HTTP request for it.
+   # Payloads exceeding this threshold will be truncated.
+   #
+   # Performance may suffer if it is set too high.
+   http.max_content_length: 400mb
 
-Configure Zammad to work with Elasticsearch
-*******************************************
+   # Allows the engine to generate larger (more complex) search queries.
+   # Elasticsearch will raise an error or deprecation notice if this value is too low,
+   # but setting it too high can overload system resources (Default: 1024).
+   #
+   # Available in version 6.6+ only.
+   indices.query.bool.max_clause_count: 2000
 
-::
+.. note:: For more information on the ``indices.query.bool.max_clause_count`` setting,
+   see the `Elasticsearch 6.6 release notes <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/breaking-changes-6.6.html#_literal_query_string_literal_literal_multi_match_literal_and_literal_simple_query_string_literal_query>`_.
 
- zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+Step 3: Connect Zammad
+======================
 
+.. code-block:: sh
 
-Create Elasticsearch index
---------------------------
+   # Set the Elasticsearch server address
+   $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
-After you have configured Zammad for using Elasticsearch, you need to rebuild the index with the following command:
-
-::
-
- zammad run rake searchindex:rebuild
-
+   # Build the search index
+   $ zammad run rake searchindex:rebuild
 
 Optional settings
-=================
+-----------------
 
-Elasticsearch with HTTP basic auth
-----------------------------------
+:Authentication:
 
-If you're using another elasticsearch instance, you might need to authenticate against it.
-Below options help you with that.
-::
+   .. code-block:: sh
 
- zammad run rails r "Setting.set('es_user', 'elasticsearch')"
- zammad run rails r "Setting.set('es_password', 'zammad')"
+      # HTTP Basic
+      $ zammad run rails r "Setting.set('es_user', '<username>')"
+      $ zammad run rails r "Setting.set('es_password', '<password>')"
 
+   .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
 
-Extra Elasticsearch index name space
-------------------------------------
+      For HTTP Basic auth, try `this nginx reverse proxy config <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
 
-If you're running several Zammad instances (or other services using ES) with a central elasticsearch server, 
-you might want to specify which index Zammad should use.
-::
+      Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
+      Consult the official Elasticsearch guides for more details.
 
- zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
+:Index namespacing:
 
-Ignore certain file extensions for indexing
--------------------------------------------
+   .. code-block:: sh
 
-Some attachments might be troublesome when indexing or simply not needed within the search index.
-You can tell Zammad to ignore those attachments by specifying their file extension so it won't post it to elasticsearch.
-::
+      # Useful when connecting multiple services or Zammad instances
+      # to a single Elasticsearch server (to prevent name collisions during indexing).
+      $ zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
- zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
+:File-attachment indexing rules:
 
-Maximum attachment size which is used for indexing
---------------------------------------------------
+   .. code-block:: sh
 
-.. Note:: By default Zammad will limit indexing to attachments to 50 MB.
+      # Zammad supports searching by the contents of file attachments,
+      # which means Elasticsearch has to index those, too.
+      #
+      # Limiting such indexing can help conserve system resources.
 
-Limiting the maximum size of attachments (for indexing) might be usefull, you can set it like so:
-::
+      # Files with these extensions will not be indexed
+      $ zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
- zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
+      # Files larger than this size (in MB) will not be indexed
+      $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
+Appendix
+========
 
-Using Elasticsearch on another server
-=====================================
+.. toctree::
+   :maxdepth: 0
+   :titlesonly:
 
-Elasticsearch can also be installed on another server but you have to know that this is insecure out of the box because Elasticsearch has no authentication.
-For this reason you should run elasticsearch on 127.0.0.1 and use a reverse proxy with authentication to access it from Zammad.
-
-.. Note:: Depending on the elasticsearch version it can provide authentication. There are also subscription based authentication features you can get from the elastic-team.
-
-`You can find an Nginx reverse proxy config here <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
-
-
-List of values which are stored in ElasticSearch
-================================================
-
-Ticket
-------
-
-Please note that these fields may vary if you created custom fields (objects) in the admin interface.
-
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| Field                        | Sample Value             | Description                                                   |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| article                      | Article                  | Article Hash, which includes all articles stored on a ticket  |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| article_count                | 1                        | Count of articles                                             |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| close_at                     | null                     | First close time, after create                                |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| close_diff_in_min            | null                     | Business hours in minutes within or above the specified SLA   |
-|                              |                          | for closing the ticket.                                       |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| close_escalation_at          | null                     | Time stamp of the escalation if the SLA of the closing time   |
-|                              |                          | has been violated. (DateTime, UTC)                            |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| close_in_min                 | null                     | Business hours in minutes it took to close the ticket.        |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_sender        | Customer                 | Who has created the first article (Agent,Customer)            |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_sender_id     | 2                        | Sender id of the first article (Agent|Customer)               |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_type          | web                      | Article type for the first article (note, email, phone...)    |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| create_article_type_id       | 11                       | Article type ID for the first article (note, email, phone...) |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| created_at                   | 2017-08-03T14:21:38.701Z | Created timestamp (DateTime, UTC)                             |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| created_by                   | User                     | User details of the user who created the ticket               |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| created_by_id                | 13                       | User id of user who created the ticket                        |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| customer                     | User                     | Customer details                                              |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| customer_id                  | 13                       | User id of the current customer (assigned to ticket)          |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| escalation_at                | null                     | Next first escalation date (nearest close_escalation_at,      |
-|                              |                          | first_response_escalation_at or update_escalation_at          |
-|                              |                          | (DateTime, UTC)                                               |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_at            | null                     | Time stamp of the first reaction to the customer              |
-|                              |                          | (DateTime, UTC)                                               |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_diff_in_min   | null                     | Business hours in minutes within or above the specified SLA   |
-|                              |                          | for the first reaction to the customer.                       |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_escalation_at | null                     | Time stamp of the escalation if the SLA of the first reaction |
-|                              |                          | time has been violated. (DateTime, UTC)                       |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| first_response_in_min        | null                     | Business hours in minutes it took to send inital response to  |
-|                              |                          | customer.                                                     |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| group                        | Sales                    | Current ticket group (Sales, Support...)                      |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| group_id                     | 1                        | Current ticket group id                                       |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| id                           | 19                       | Ticket id                                                     |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| last_contact_agent_at        | null                     | Last contact to customer from agent, timestamp (DateTime, UTC)|
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| last_contact_at              | 2017-08-03T14:21:38.701Z | Last contact timestamp (DateTime, UTC)                        |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| last_contact_customer_at     | 2017-08-03T14:21:38.701Z | Last contact from a customer, timestamp (DateTime, UTC)       |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| note                         | null                     | Internal note for ticket                                      |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| number                       | 61019                    | The uniq ticket number                                        |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| organization_id              | null                     | Id of the organization of a given customer                    |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| owner                        | User                     | Current owner (agent)                                         |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| owner_id                     | 1                        | User id of owner                                              |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| pending_time                 | null                     | Current pending time (DateTime, UTC)                          |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| preferences                  |                          | Sub Hash for special information                              |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| priority                     | 2 normal                 | Ticket priority                                               |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| priority_id                  | 2                        | ID of the currently set priority                              |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| state                        | new                      | Ticket state (new, open...)                                   |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| state_id                     | 1                        | Ticket state id for available ticket states (new, open...)    |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| time_unit                    | null                     | Accounted time units for this ticket                          |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| title                        | Feedback Form            | Ticket title                                                  |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| type                         | null                     | Ticket Type (deprecated)                                      |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| update_diff_in_min           | null                     | Business hours in minutes within or above the specified SLA   |
-|                              |                          | for updating the ticket.                                      |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| update_escalation_at         | null                     | Time stamp of the last update reaction to the customer        |
-|                              |                          | (DateTime, UTC)                                               |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| update_in_min                | null                     | Business hours in minutes it took to send the last update     |
-|                              |                          | response to customer                                          |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| updated_at                   | 2017-08-03T14:21:38.701Z | Last update timestamp (DateTime, UTC)                         |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| updated_by                   | User                     | User who updated the ticket                                   |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-| updated_by_id                | 13                       | User id of user who updated the ticket                        |
-+------------------------------+--------------------------+---------------------------------------------------------------+
-
-Article
--------
-
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| Field               | Sample Value                                   | Description                                                  |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| attachment.title    | file1.txt                                      | File name                                                    |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| attachment.content  | Hello world                                    | File Content                                                 |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| attachment.keywords | keyword                                        | File Keywords                                                |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| attachment.content  | Max                                            | File Author                                                  |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| body                | :)                                             | Content of the article                                       |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| cc                  | null                                           | Content of the optional cc field                             |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| content_type        | text/plain                                     | Content type                                                 |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| created_at          | 2017-08-03T14:21:38.000Z                       | Article create date (DateTime, UTC)                          |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| created_by          | See User                                       | Who has created the article                                  |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| created_by_id       | 13                                             | Who (UserID) has created the article                         |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| from                | Christopher Miller via <order@chrispresso.com> | Sender address of the article                                |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| id                  | 19                                             | internal (DB) article id                                     |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| in_reply_to         | null                                           | Content of reply to field                                    |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| internal            | FALSE                                          | Is article visible for customer                              |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| message_id          | null                                           | Message ID (if article was an email)                         |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| message_id_md5      | null                                           | internal message id MD5 Checksum                             |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| origin_by_id        | null                                           | For which real user (UserID) the article creation has been   |
-|                     |                                                | done. For example the customer which was calling on the phone|
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| preferences         | { }                                            | Hash for additional information.                             |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| references          | null                                           | Email references header.                                     |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| reply_to            | null                                           | Content of the reply to field                                |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| sender              | Customer                                       | Who is the sender (Customer, Agent)                          |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| sender_id           | 2                                              | Which type of user has created the article (Agent, Customer) |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| subject             | Feedback Form                                  | Article subject                                              |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| ticket_id           | 19                                             | referencing ticket ID                                        |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| to                  | null                                           | Content of the to field                                      |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| type                | web                                            | Article type (phone, email, web...)                          |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| type_id             | 11                                             | Article type id (phone, email, web...)                       |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| updated_at          | 2017-08-03T14:21:38.701Z                       | Update time of the article (DateTime, UTC)                   |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| updated_by          | See User                                       | Who has updated the article                                  |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-| updated_by_id       | 13                                             | Who (UserID) has updated the article                         |
-+---------------------+------------------------------------------------+--------------------------------------------------------------+
-
-User
-++++
-
-Please note that these fields may vary if you created custom fields (objects) in the admin interface.
-
-+-----------------+--------------------------+-----------------------------------------+
-| Field           | Sample Value             | Description                             |
-+-----------------+--------------------------+-----------------------------------------+
-| active          | TRUE                     | is activ (boolean)                      |
-+-----------------+--------------------------+-----------------------------------------+
-| address         |                          | User Adress                             |
-+-----------------+--------------------------+-----------------------------------------+
-| city            |                          | User City                               |
-+-----------------+--------------------------+-----------------------------------------+
-| country         |                          | User Country                            |
-+-----------------+--------------------------+-----------------------------------------+
-| created_at      | 2017-07-26T21:21:28.000Z | User creation date (DateTime, UTC)      |
-+-----------------+--------------------------+-----------------------------------------+
-| created_by_id   | 1                        | ID of user who created the current user |
-+-----------------+--------------------------+-----------------------------------------+
-| department      |                          | User Department                         |
-+-----------------+--------------------------+-----------------------------------------+
-| email           | chris@chrispresso.com    | User E-Mail                             |
-+-----------------+--------------------------+-----------------------------------------+
-| fax             |                          | User Fax                                |
-+-----------------+--------------------------+-----------------------------------------+
-| firstname       | Christopher              | User Firstname                          |
-+-----------------+--------------------------+-----------------------------------------+
-| id              | 3                        | Internal id (database, autincrement)    |
-+-----------------+--------------------------+-----------------------------------------+
-| last_login      | 2017-07-26T21:23:15.019Z | User last login (DateTime, UTC)         |
-+-----------------+--------------------------+-----------------------------------------+
-| lastname        | Miller                   | User Lastname                           |
-+-----------------+--------------------------+-----------------------------------------+
-| login           | chris@chrispresso.com    | User Login                              |
-+-----------------+--------------------------+-----------------------------------------+
-| mobile          |                          | User Mobile                             |
-+-----------------+--------------------------+-----------------------------------------+
-| note            |                          | internal note                           |
-+-----------------+--------------------------+-----------------------------------------+
-| organization    | Chrispresso Inc          | Orgnaization name of the current user   |
-+-----------------+--------------------------+-----------------------------------------+
-| organization_id | 2                        | ID which links to the organization name |
-+-----------------+--------------------------+-----------------------------------------+
-| phone           |                          | User Phone                              |
-+-----------------+--------------------------+-----------------------------------------+
-| street          |                          | User Street                             |
-+-----------------+--------------------------+-----------------------------------------+
-| updated_at      | 2017-07-27T15:04:47.270Z | Last update date (DateTime, UTC)        |
-+-----------------+--------------------------+-----------------------------------------+
-| updated_by_id   | 3                        | ID of user who updated the current user |
-+-----------------+--------------------------+-----------------------------------------+
-| verified        | FALSE                    | is verified (boolean)                   |
-+-----------------+--------------------------+-----------------------------------------+
-| vip             | FALSE                    | Is VIP (boolean)                        |
-+-----------------+--------------------------+-----------------------------------------+
-| web             |                          | User Web Url                            |
-+-----------------+--------------------------+-----------------------------------------+
-| zip             |                          | User ZIP                                |
-+-----------------+--------------------------+-----------------------------------------+
-
-
+   elasticsearch/indexed-attributes
