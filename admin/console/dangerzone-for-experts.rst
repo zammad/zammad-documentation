@@ -29,43 +29,47 @@ Deleting Customers
 
    As such, the examples below will delete not only the specified customers, but **all tickets associated with them**, as well.
 
-.. code-block:: ruby
+Step 1: Select customers by email address
+   .. code-block:: ruby
 
-   # Select customers by email address
-   >> customers = User.where(email: %w[customer@example.com customer@example.org])
+      >> customers = User.where(email: %w[customer@example.com customer@example.org])
 
-   >> customers = customers.joins(roles: :permissions)
-                           .where(roles: { active: true })
-                           .where(permissions: { name: 'ticket.customer', active: true })
-                           .where.not(id: 1)
+      >> customers = customers.joins(roles: :permissions)
+                              .where(roles: { active: true })
+                              .where(permissions: { name: 'ticket.customer', active: true })
+                              .where.not(id: 1)
 
-   # Preview affected users & tickets
-   >> puts customers.map do |user|
-        "Customer #{user.fullname}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}"
-      end.join("\n")
+Step 2: Preview affected users & tickets
+   .. code-block:: ruby
 
-   # Proceed with deletion
-   >> customers.find_each do |user|
-        puts %{Preparing deletion of customer "#{user.fullname}" (and #{Ticket.where(customer_id: user.id).count} associated tickets)}
+      >> puts customers.map do |user|
+           "Customer #{user.fullname}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}"
+         end.join("\n")
 
-        Ticket.where(customer: user).find_each do |ticket|
-          puts "  Deleting ticket ##{ticket.number}..."
-          ticket.destroy
-        end
+Step 3: Proceed with deletion
+   .. code-block:: ruby
 
-        puts "  Removing references for user with email #{user.email}..."
-        ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
-        History.where(created_by_id: user.id).update_all(created_by_id: 1)
-        Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
-        Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
-        Store.where(created_by_id: user.id).update_all(created_by_id: 1)
-        StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
-        Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
-        OnlineNotification.find_by(user_id: user.id)&.destroy!
+      >> customers.find_each do |user|
+           puts %{Preparing deletion of customer "#{user.fullname}" (and #{Ticket.where(customer_id: user.id).count} associated tickets)}
 
-        puts "  Deleting #{user.fullname}..."
-        user.destroy
-      end
+           Ticket.where(customer: user).find_each do |ticket|
+             puts "  Deleting ticket ##{ticket.number}..."
+             ticket.destroy
+           end
+
+           puts "  Removing references for user with email #{user.email}..."
+           ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
+           History.where(created_by_id: user.id).update_all(created_by_id: 1)
+           Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
+           Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
+           Store.where(created_by_id: user.id).update_all(created_by_id: 1)
+           StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
+           Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
+           OnlineNotification.find_by(user_id: user.id)&.destroy!
+
+           puts "  Deleting #{user.fullname}..."
+           user.destroy
+         end
 
 
 Deleting Organizations
@@ -73,32 +77,37 @@ Deleting Organizations
 
 .. note:: Deleting an organization does **not** delete associated customers.
 
-.. code-block:: ruby
+Step 1: Select organizations
+   .. code-block:: ruby
 
-   # Select organizations by "active" status
-   >> organizations = Organization.where(active: false)
+      # by "active" status
+      >> organizations = Organization.where(active: false)
 
-   # or, by name
-   >> organizations = Organization.where(name: 'Acme')
+      # by name
+      >> organizations = Organization.where(name: 'Acme')
 
-   # or, by partial match on notes
-   >> organizations = Organization.where('note LIKE ?', '%foo%')
+      # by partial match on notes
+      >> organizations = Organization.where('note LIKE ?', '%foo%')
 
-   # Preview affected organizations
-   >> puts organizations.map { |org| "ORGANIZATION #{org.name}" }.join("\n")
+Step 2: Preview affected organizations
+   .. code-block:: ruby
 
-   # Proceed with deletion
-   >> organizations.each do |org|
-        puts %{Preparing deletion of organization "#{org.name}"...}
+      >> puts organizations.map { |org| "ORGANIZATION #{org.name}" }.join("\n")
 
-        org.members.each do |member|
-           puts "  Removing #{member.fullname} from organization..."
-           member.update!(organization_id: nil)
-        end
+Step 3: Proceed with deletion
+   .. code-block:: ruby
 
-        puts "  Deleting #{org.name}..."
-        org.destroy
-      end
+      >> organizations.each do |org|
+           puts %{Preparing deletion of organization "#{org.name}"...}
+
+           org.members.each do |member|
+              puts "  Removing #{member.fullname} from organization..."
+              member.update!(organization_id: nil)
+           end
+
+           puts "  Deleting #{org.name}..."
+           org.destroy
+         end
 
 
 Deleting System Records
