@@ -32,19 +32,16 @@ Deleting Customers
 Step 1: Select customers by email address
    .. code-block:: ruby
 
-      >> customers = User.where(email: %w[customer@example.com customer@example.org])
+      >> customer_emails = %w[customer@example.com customer@example.org]
 
-      >> customers = customers.joins(roles: :permissions)
-                              .where(roles: { active: true })
-                              .where(permissions: { name: 'ticket.customer', active: true })
-                              .where.not(id: 1)
+      >> customers = User.joins(roles: :permissions).where(email: customer_emails, roles: { active: true }, permissions: { name: 'ticket.customer', active: true }).where.not(id: 1)
 
 Step 2: Preview affected users & tickets
    .. code-block:: ruby
 
-      >> puts customers.map do |user|
-           "Customer #{user.fullname}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}"
-         end.join("\n")
+      >> puts customers.map { |user| <<~PREVIEW }.join("\n")
+           Customer #{user.fullname}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}
+         PREVIEW
 
 Step 3: Proceed with deletion
    .. code-block:: ruby
