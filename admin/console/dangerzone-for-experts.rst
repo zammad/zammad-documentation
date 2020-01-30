@@ -40,7 +40,7 @@ Step 2: Preview affected users & tickets
    .. code-block:: ruby
 
       >> puts customers.map { |user| <<~PREVIEW }.join("\n")
-           Customer #{user.fullname}/#{user.id} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}
+           Customer #{user.fullname}/#{user.id}/#{user.email} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}
          PREVIEW
 
 Step 3: Proceed with deletion
