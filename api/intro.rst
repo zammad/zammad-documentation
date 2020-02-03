@@ -221,6 +221,7 @@ API clients
 
 * Ruby Client - https://github.com/zammad/zammad-api-client-ruby
 * PHP Client - https://github.com/zammad/zammad-api-client-php
+* Python Client - https://pypi.org/project/zammad-py/
 * .NET Client - https://github.com/Asesjix/Zammad-Client
 * Android API-Client - https://github.com/KirkBushman/zammad-android
   .. note:: Please note that this is a API client only, it's no "ready to use" App.
