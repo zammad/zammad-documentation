@@ -19,7 +19,7 @@ In the first step we get all article IDs of the ticket, from the list we get, we
 
 .. code-block:: ruby
 
-  >> Ticket.find_by(number:'101234').articles_ids
+  >> Ticket.find_by(number:'101234').article_ids
   => [4, 3, 2]
   >> Ticket::Article.find(3).as_raw.content
 
