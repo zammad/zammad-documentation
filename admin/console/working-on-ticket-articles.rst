@@ -11,7 +11,7 @@ By default, Zammad ignores notes with SLA activated. You might also want to ensu
 
 .. note:: The command below will only affect public notes, Zammad will still ignore private notes for SLA calculation!
 
-.. warning:: Changing notes to a communication article disables the possibility to delete those notes.
+.. warning:: Changing this setting will disable the option to delete public notes.
 
 .. code-block:: ruby
 
