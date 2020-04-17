@@ -1,7 +1,7 @@
 Updating Zammad
 ***************
 
-.. Note:: Please backup your Zammad instance before update! You can learn how to back up Zammad on :ref:`backup-and-restore`.
+.. note:: Please backup your Zammad instance before update! You can learn how to back up Zammad on :doc:`/appendix/backup-and-restore`.
 
 Source update
 =============
@@ -11,29 +11,33 @@ Source update
 
 You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
 
-::
+.. code-block:: sh
 
- root@shell> cd /opt
- root@shell> wget https://ftp.zammad.com/zammad-latest.tar.gz
- root@shell> tar -C zammad -xzf zammad-latest.tar.gz
- root@shell> chown -R zammad /opt/zammad
- root@shell> su - zammad
+   $ cd /opt
+   $ sudo wget https://ftp.zammad.com/zammad-latest.tar.gz
+   $ sudo tar -C zammad -xzf zammad-latest.tar.gz
+   $ sudo chown -R zammad /opt/zammad
+   $ sudo su - zammad
 
 2. Install all dependencies
 ---------------------------
 
-::
+.. code-block:: sh
 
- zammad@shell> cd zammad
- zammad@shell> gem install bundler
+   zammad@host $ cd zammad
+   zammad@host $ gem install bundler
 
-* For PostgreSQL (note, the option says "without ... mysql")::
-  
-   zammad@shell> bundle install --without test development mysql
+* For PostgreSQL (note, the option says "without ... mysql"):
 
-* For MySQL (note, the option says "without ... postgres")::
-  
-   zammad@shell> bundle install --without test development postgres
+.. code-block:: sh
+
+   zammad@host $ bundle install --without test development mysql
+
+* For MySQL (note, the option says "without ... postgres"):
+
+.. code-block:: sh
+
+   zammad@host $ bundle install --without test development postgres
 
 
 3. Stop Zammad services
@@ -44,12 +48,12 @@ Stop the application server, websocket server and scheduler.
 4. Upgrade your database
 ------------------------
 
-::
+.. code-block:: sh
 
- zammad@shell> export RAILS_ENV=production
- zammad@shell> export RAILS_SERVE_STATIC_FILES=true # only if you use no HTTP reverse proxy
- zammad@shell> rake db:migrate
- zammad@shell> rake assets:precompile
+   zammad@host $ export RAILS_ENV=production
+   zammad@host $ export RAILS_SERVE_STATIC_FILES=true # only if you use no HTTP reverse proxy
+   zammad@host $ rake db:migrate
+   zammad@host $ rake assets:precompile
 
 5. Start Zammad services
 ------------------------
@@ -67,17 +71,17 @@ Update with RPM
 1. Stop Zammad
 ----------------
 
-::
+.. code-block:: sh
 
-  shell> sudo systemctl stop zammad
+   $ sudo systemctl stop zammad
 
 
 3. Update Zammad
 ----------------
 
-::
+.. code-block:: sh
 
- shell> sudo yum update zammad
+   $ sudo yum update zammad
 
 **Note: The package will automatically execute maintenance tasks like database changes and will restart Zammad for you.**
 
@@ -85,9 +89,9 @@ Update with RPM
 4. Start Zammad
 ----------------
 
-::
+.. code-block:: sh
 
-  shell> sudo systemctl start zammad
+   $ sudo systemctl start zammad
 
 
 5. Go and log in to Zammad
@@ -105,27 +109,27 @@ Update with DEB
 1. Stop Zammad
 ----------------
 
-::
+.. code-block:: sh
 
-  shell> sudo systemctl stop zammad
+   $ sudo systemctl stop zammad
 
 
 3. Update Zammad
 ----------------
 
-::
+.. code-block:: sh
 
-  shell> apt-get update
-  shell> apt-get upgrade
+   $ apt-get update
+   $ apt-get upgrade
 
 **Note: The package will automatically execute maintenance tasks like database changes and will restart Zammad for you.**
 
 4. Start Zammad
 ----------------
 
-::
+.. code-block:: sh
 
-  shell> sudo systemctl start zammad
+  $ sudo systemctl start zammad
 
 
 5. Go and log in to Zammad
@@ -134,10 +138,10 @@ Update with DEB
 Updating elasticsearch
 ======================
 
-If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_ 
+If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.
 
-.. Note:: If your Zammad-Installation is quite busy or your ``zammad run rake searchindex:rebuild`` fails, you might want to stop the Zammad-Service: ``systemctl stop zammad``.
+.. note:: If your Zammad-Installation is quite busy or your ``zammad run rake searchindex:rebuild`` fails, you might want to stop the Zammad-Service: ``systemctl stop zammad``.
   
   The Reason behind this is that elasticsearch locks the indexes from deletion if you're pumbing in new data (like receiving a new ticket).
   This only affects elasticsearch single nodes and should not affect clusters.
