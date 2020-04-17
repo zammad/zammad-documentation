@@ -6,8 +6,9 @@ Working with ticket articles
 Count Public “Notes” toward SLAs
 --------------------------------
 
-In some cases you might want to count note articles to your `service level agreements <https://admin-docs.zammad.org/en/latest/manage-slas.html>`_. 
-By default, Zammad ignores notes with SLA activated. You might also want to ensure that public notes will be sent to the customer by a `Trigger <https://admin-docs.zammad.org/en/latest/manage-trigger.html>`_, because Zammad does not check for this!
+Normally, `notes <https://user-docs.zammad.org/en/latest/basics/service-ticket/follow-up.html#adding-new-messages-notes>`_ don't count toward `service-level agreements <https://admin-docs.zammad.org/en/latest/manage-slas.html>`_.
+Use the following command to include publicly-visible notes when tracking SLA compliance.
+(Internal notes cannot be made to apply toward SLAs.)
 
 .. note:: By default, customers are not notified when public notes are added to a ticket. Set up a `trigger <https://admin-docs.zammad.org/en/latest/manage-trigger.html>`_ if you wish to change this behavior. 
 
