@@ -9,7 +9,7 @@ Count Public “Notes” toward SLAs
 In some cases you might want to count note articles to your `service level agreements <https://admin-docs.zammad.org/en/latest/manage-slas.html>`_. 
 By default, Zammad ignores notes with SLA activated. You might also want to ensure that public notes will be sent to the customer by a `Trigger <https://admin-docs.zammad.org/en/latest/manage-trigger.html>`_, because Zammad does not check for this!
 
-.. note:: The command below will only affect public notes, Zammad will still ignore private notes for SLA calculation!
+.. note:: By default, customers are not notified when public notes are added to a ticket. Set up a `trigger <https://admin-docs.zammad.org/en/latest/manage-trigger.html>`_ if you wish to change this behavior. 
 
 .. warning:: Changing this setting will disable the option to delete public notes.
 
