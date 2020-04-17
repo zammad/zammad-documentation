@@ -141,7 +141,6 @@ Updating elasticsearch
 If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.
 
-.. note:: If your Zammad-Installation is quite busy or your ``zammad run rake searchindex:rebuild`` fails, you might want to stop the Zammad-Service: ``systemctl stop zammad``.
+.. note:: If your Zammad installation is quite busy or your ``zammad run rake searchindex:rebuild`` fails, you might want to stop the Zammad-Service: ``systemctl stop zammad``.
   
-  The Reason behind this is that elasticsearch locks the indexes from deletion if you're pumbing in new data (like receiving a new ticket).
-  This only affects elasticsearch single nodes and should not affect clusters.
+  The Reason behind this is that elasticsearch locks the indexes from deletion if you're pumping in new data (like receiving a new ticket). This only affects elasticsearch single nodes and should not affect clusters.
