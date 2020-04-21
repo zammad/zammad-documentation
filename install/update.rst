@@ -140,3 +140,17 @@ Updating elasticsearch
 
 If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.
+
+If, for whatever reason, you need to rebuild your search index after upgrading, use::
+
+   $ zammad run rake searchindex:rebuild
+   
+.. warning:: This step may fail if Zammad is under heavy load:
+   Elasticsearch locks the indices from deletion if you're pumping in new data, like receiving a new ticket.
+   (This only applies to single-node deployments, not clusters.)
+   
+   If it does, try killing Zammad first::
+   
+      $ systemctl stop zammad
+      $ zammad run rake searchindex:rebuild
+      $ systemctl start zammad
