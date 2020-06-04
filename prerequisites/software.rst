@@ -11,7 +11,13 @@ The following Ruby version is supported:
 
 * Ruby 2.6.5
 
-.. warning:: We changed our Ruby dependency with Zammad 3.4. Zammad 3.1 to 3.3 requires Ruby 2.5.5 - earlier versions require ruby 2.4.4.
+.. csv-table:: Ruby version requirenment for Zammad
+   :header: "Zammad version", "Ruby version required"
+   :widths: 20, 20
+
+   "3.4+", "2.6.5"
+   "3.1 - 3.3", "2.5.5"
+   "2.5 - 3.0", "2.4.4"
 
 2. Package Dependencies
 =======================
