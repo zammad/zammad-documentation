@@ -10,7 +10,7 @@ Source update
 ---------------------------------
 
 You can directly download Zammad from https://ftp.zammad.com/. If you want to ensure you have the latest stable version, 
-you can also get Zammad directly from `Github <https://github.com/zammad/zammad/archive/stable.zip>`.
+you can also get Zammad directly from `Github <https://github.com/zammad/zammad/archive/stable.zip>`_.
 
 .. code-block:: sh
 

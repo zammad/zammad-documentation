@@ -8,14 +8,14 @@ Setup Elasticsearch
 -------------------
 
 Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
-Please take a look at the following page: :doc:`/install/elasticsearch` .
+Please take a look at the following page: :doc:`/install/elasticsearch`.
 
 
 1. Install Zammad on your system
 --------------------------------
 
 You can directly download Zammad from https://ftp.zammad.com/. If you want to ensure you have the latest stable version, 
-you can also get Zammad directly from `Github <https://github.com/zammad/zammad/archive/stable.zip>`.
+you can also get Zammad directly from `Github <https://github.com/zammad/zammad/archive/stable.zip>`_.
 
 .. code-block:: sh
 
