@@ -87,7 +87,7 @@ The Elasticsearch support differs on the Elasticsearch and Zammad version you're
    "3.3", "2.4 up to 7.6.x"
    "3.2", "2.4 up to 7.5.x"
    "3.1", "2.4 up to 7.4.x"
-   "3.0 - 3.0", "2.4 up to 5.6.x"
+   "2.0 - 3.0", "2.4 up to 5.6.x"
 
 As Zammad indexes attachments, you'll need a plugin to do so - the names differ in between Elasticsearch versions:
 
