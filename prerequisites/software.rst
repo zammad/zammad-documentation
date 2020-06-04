@@ -19,11 +19,6 @@ The following Ruby version is supported:
 The below dependencies need to be installed on your system.
 If you're using the package install, the packages below will automatically installed with the Zammad-Package.
 
-.. note:: The below package dependency was added with Zammad 2.9 which improves image previews.
-
-.. warning:: Please note that upgrading from Zammad 2.8 and earlier might fail, because your system does not satisfy the new dependencies.
-   Below installation commands will help you out (you can update normally afterwards)
-
 .. code-block:: sh
 
    # Debian 8 & 9, Ubuntu 16.04 & 18.04
