@@ -14,7 +14,8 @@ Please take a look at the following page: :doc:`/install/elasticsearch` .
 1. Install Zammad on your system
 --------------------------------
 
-You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
+You can directly download Zammad from https://ftp.zammad.com/. If you want to ensure you have the latest stable version, 
+you can also get Zammad directly from `Github <https://github.com/zammad/zammad/archive/stable.zip>`.
 
 .. code-block:: sh
 
