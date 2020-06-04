@@ -70,18 +70,26 @@ The following reverse proxies are supported:
 5. Elasticsearch (optional)
 ===========================
 
-.. note:: Package install will insist on installing elasticsearch, you can break dependencies during install if needed.
+For excellent search performance we use Elasticsearch. 
+While package install will insist on installing Elasticsearch, you can break those dependencies if needed.
 
 .. warning:: Please note that if you do not install and use Elasticsearch, the search will be very limited!
    We recommend using Elasticsearch, as it will boost the usuage of Zammad greatly!
 
-For excellent search performance we use Elasticsearch.
-The following Elasticsearch versions are supported:
+
+The Elasticsearch support differs on the Elasticsearch and Zammad version you're using:
+
+.. csv-table:: Compatibility to Elasticsearch
+   :header: "Zammad version", "Supported Elasticsearch version"
+   :widths: 20, 20
+
+   "3.4+", "5.5 up to 7.6.x"
+   "3.3", "2.4 up to 7.6.x"
+   "3.2", "2.4 up to 7.5.x"
+   "3.1", "2.4 up to 7.4.x"
+   "3.0 - 3.0", "2.4 up to 5.6.x"
+
+As Zammad indexes attachments, you'll need a plugin to do so - the names differ in between Elasticsearch versions:
 
 * Elasticsearch 5.5 with ``mapper-attachments`` plugin
-* Elasticsearch 5.6, 6.x & 7.x with ``ingest-attachment`` plugin
-
-.. warning:: Please note that Elasticsearch 6.x and 7.x support came with Zammad 3.1.
-   If you try to use Elasticsearch newer than 5.6.x on Zammad 3.0 and earlier, your search index will **not work**.
-
-.. warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.
+* Elasticsearch 5.6 up to 7.x with ``ingest-attachment`` plugin
