@@ -6,7 +6,13 @@ Updating Zammad
 Source update
 =============
 
-1. Download Zammad to your system
+1. Ensure your System meets the requirenments
+---------------------------------------------
+
+Before updating your installation, please ensure that your system  meets Zammads current 
+:doc:`Software requirenments </prerequisites/software>`.
+
+2. Download Zammad to your system
 ---------------------------------
 
 You can directly download Zammad from https://ftp.zammad.com/. If you want to ensure you have the latest stable version, 
@@ -20,7 +26,7 @@ you can also get Zammad directly from `Github <https://github.com/zammad/zammad/
    $ sudo chown -R zammad /opt/zammad
    $ sudo su - zammad
 
-2. Install all dependencies
+3. Install all dependencies
 ---------------------------
 
 .. code-block:: sh
@@ -41,12 +47,12 @@ you can also get Zammad directly from `Github <https://github.com/zammad/zammad/
    zammad@host $ bundle install --without test development postgres
 
 
-3. Stop Zammad services
+4. Stop Zammad services
 -----------------------
 
 Stop the application server, websocket server and scheduler.
 
-4. Upgrade your database
+5. Upgrade your database
 ------------------------
 
 .. code-block:: sh
@@ -56,12 +62,12 @@ Stop the application server, websocket server and scheduler.
    zammad@host $ rake db:migrate
    zammad@host $ rake assets:precompile
 
-5. Start Zammad services
+6. Start Zammad services
 ------------------------
 
 Start the application server, websocket server and scheduler.
 
-6. Go and login to Zammad
+7. Go and login to Zammad
 -------------------------
 
 
