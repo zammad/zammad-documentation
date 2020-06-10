@@ -11,8 +11,8 @@ The following Ruby version is supported:
 
 * Ruby 2.6.5
 
-.. csv-table:: Ruby version requirenment for Zammad
-   :header: "Zammad version", "Ruby version required"
+.. csv-table:: Zammad/Ruby version compatibility
+   :header: "Zammad", "Ruby"
    :widths: 20, 20
 
    "3.4+", "2.6.5"
@@ -79,17 +79,17 @@ While package install will insist on installing Elasticsearch, you can break tho
 
 The Elasticsearch support differs on the Elasticsearch and Zammad version you're using:
 
-.. csv-table:: Compatibility to Elasticsearch
-   :header: "Zammad version", "Supported Elasticsearch version"
+.. csv-table:: Zammad/Elasticsearch version compatibility
+   :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "3.4+", "5.5 up to 7.6.x"
-   "3.3", "2.4 up to 7.6.x"
-   "3.2", "2.4 up to 7.5.x"
-   "3.1", "2.4 up to 7.4.x"
-   "2.0 - 3.0", "2.4 up to 5.6.x"
+   "3.4+", "5.5–7.6"
+   "3.3", "2.4–7.6"
+   "3.2", "2.4–7.5"
+   "3.1", "2.4–7.4"
+   "2.0–3.0", "2.4–5.6"
 
-As Zammad indexes attachments, you'll need a plugin to do so - the names differ in between Elasticsearch versions:
+An Elasticsearch plugin is required to index the contents of email attachments:
 
-* Elasticsearch 5.5 with ``mapper-attachments`` plugin
-* Elasticsearch 5.6 up to 7.x with ``ingest-attachment`` plugin
+* ``mapper-attachments`` for Elasticsearch 5.5
+* ``ingest-attachment`` for Elasticsearch 5.6–7

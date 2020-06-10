@@ -6,17 +6,17 @@ Updating Zammad
 Source update
 =============
 
-1. Ensure your System meets the requirenments
----------------------------------------------
+1. Check your dependencies
+--------------------------
 
-Before updating your installation, please ensure that your system  meets Zammads current 
-:doc:`Software requirenments </prerequisites/software>`.
+Before proceeding, double-check that your system environment
+matches :doc:`Zammad’s requirements </prerequisites/software>`.
 
 2. Download Zammad to your system
 ---------------------------------
 
-You can directly download Zammad from https://ftp.zammad.com/. If you want to ensure you have the latest stable version, 
-you can also get Zammad directly from `Github <https://github.com/zammad/zammad/archive/stable.zip>`_.
+Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
+or find an older version at https://ftp.zammad.com.
 
 .. code-block:: sh
 

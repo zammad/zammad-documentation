@@ -64,9 +64,10 @@ Maintenance
 Updating Zammad
 ---------------
 
-Before updating, please always check the `readme of the docker-compose repository 
-<https://github.com/zammad/zammad-docker-compose#upgrading>`_.
-This ensures that you won't fall into some unexpected traps!
+.. warning:: ⚠️ **Updates may require extra steps or introduce breaking changes.**
+
+   Always check the `upgrade notes
+   <https://github.com/zammad/zammad-docker-compose#upgrading>`_ first.
 
 * docker-compose stop
 * git pull
