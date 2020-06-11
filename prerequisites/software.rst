@@ -70,8 +70,23 @@ The following reverse proxies are supported:
 5. Elasticsearch (optional)
 ===========================
 
-For excellent search performance we use Elasticsearch. 
-While package install will insist on installing Elasticsearch, you can break those dependencies if needed.
+Zammad uses Elasticsearch to
+1) make search faster and
+2) support advanced features like reports
+or searching by email attachment contents.
+This becomes increasingly important
+as the number of tickets in your system gets larger and larger.
+
+This dependency is optional but strongly recommended;
+Zammad will work without it,
+but search performance will be degraded, and some features will be disabled.
+
+.. hint:: 📦 **If you install Zammad via package manager...**
+
+   It’s perfectly safe to manually override the Elasticsearch dependency.
+   The appropriate command line flag will depend on your platform
+   (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
+   check your package manager’s manpage to find out.
 
 .. warning:: Please note that if you do not install and use Elasticsearch, the search will be very limited!
    We recommend using Elasticsearch, as it will boost the usuage of Zammad greatly!
