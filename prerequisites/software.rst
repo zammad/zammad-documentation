@@ -77,8 +77,6 @@ While package install will insist on installing Elasticsearch, you can break tho
    We recommend using Elasticsearch, as it will boost the usuage of Zammad greatly!
 
 
-The Elasticsearch support differs on the Elasticsearch and Zammad version you're using:
-
 .. csv-table:: Zammad/Elasticsearch version compatibility
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
