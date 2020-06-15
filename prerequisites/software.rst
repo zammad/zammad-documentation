@@ -9,20 +9,21 @@ If you want to install Zammad, you need the following software.
 Zammad requires Ruby. All required rubygems like ruby on rails are listed in the Gemfile.
 The following Ruby version is supported:
 
-* Ruby 2.5.5
+* Ruby 2.6.5
 
-.. warning:: We changed our Ruby dependency with Zammad 3.1. Earlier Zammad-Versions require Ruby 2.4.4.
+.. csv-table:: Zammad/Ruby version compatibility
+   :header: "Zammad", "Ruby"
+   :widths: 20, 20
+
+   "3.4+", "2.6.5"
+   "3.1 - 3.3", "2.5.5"
+   "2.5 - 3.0", "2.4.4"
 
 2. Package Dependencies
 =======================
 
 The below dependencies need to be installed on your system.
 If you're using the package install, the packages below will automatically installed with the Zammad-Package.
-
-.. note:: The below package dependency was added with Zammad 2.9 which improves image previews.
-
-.. warning:: Please note that upgrading from Zammad 2.8 and earlier might fail, because your system does not satisfy the new dependencies.
-   Below installation commands will help you out (you can update normally afterwards)
 
 .. code-block:: sh
 
@@ -69,18 +70,39 @@ The following reverse proxies are supported:
 5. Elasticsearch (optional)
 ===========================
 
-.. note:: Package install will insist on installing elasticsearch, you can break dependencies during install if needed.
+Zammad uses Elasticsearch to
+1) make search faster and
+2) support advanced features like reports
+or searching by email attachment contents.
+This becomes increasingly important
+as the number of tickets in your system gets larger and larger.
+
+This dependency is optional but strongly recommended;
+Zammad will work without it,
+but search performance will be degraded, and some features will be disabled.
+
+.. hint:: 📦 **If you install Zammad via package manager...**
+
+   It’s perfectly safe to manually override the Elasticsearch dependency.
+   The appropriate command line flag will depend on your platform
+   (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
+   check your package manager’s manpage to find out.
 
 .. warning:: Please note that if you do not install and use Elasticsearch, the search will be very limited!
    We recommend using Elasticsearch, as it will boost the usuage of Zammad greatly!
 
-For excellent search performance we use Elasticsearch.
-The following Elasticsearch versions are supported:
 
-* Elasticsearch 5.5 with ``mapper-attachments`` plugin
-* Elasticsearch 5.6, 6.x & 7.x with ``ingest-attachment`` plugin
+.. csv-table:: Zammad/Elasticsearch version compatibility
+   :header: "Zammad", "Elasticsearch"
+   :widths: 20, 20
 
-.. warning:: Please note that Elasticsearch 6.x and 7.x support came with Zammad 3.1.
-   If you try to use Elasticsearch newer than 5.6.x on Zammad 3.0 and earlier, your search index will **not work**.
+   "3.4+", "5.5–7.6"
+   "3.3", "2.4–7.6"
+   "3.2", "2.4–7.5"
+   "3.1", "2.4–7.4"
+   "2.0–3.0", "2.4–5.6"
 
-.. warning:: Please note that we will be dropping Elasticsearch support prior 5.5.x on future releases.
+An Elasticsearch plugin is required to index the contents of email attachments:
+
+* ``mapper-attachments`` for Elasticsearch 5.5
+* ``ingest-attachment`` for Elasticsearch 5.6–7

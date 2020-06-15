@@ -8,13 +8,14 @@ Setup Elasticsearch
 -------------------
 
 Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
-Please take a look at the following page: :doc:`/install/elasticsearch` .
+Please take a look at the following page: :doc:`/install/elasticsearch`.
 
 
 1. Install Zammad on your system
 --------------------------------
 
-You can directly download Zammad from https://ftp.zammad.com/ or use the direct URL to get the latest stable release via https://ftp.zammad.com/zammad-latest.tar.gz
+Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
+or find an older version at https://ftp.zammad.com.
 
 .. code-block:: sh
 
@@ -28,7 +29,7 @@ You can directly download Zammad from https://ftp.zammad.com/ or use the direct 
 2. Install all dependencies
 ---------------------------
 
-Please note that a working ruby 2.5.5 environment is needed.
+Please note that a working ruby 2.6.5 environment is needed.
 
 .. code-block:: sh
 
@@ -168,8 +169,8 @@ Install environnment
    $ curl -L https://get.rvm.io | bash -s stable
    $ source /opt/zammad/.rvm/scripts/rvm
    $ echo "source /opt/zammad/.rvm/scripts/rvm" >> /opt/zammad/.bashrc
-   $ echo "rvm --default use 2.5.5" >> /opt/zammad/.bashrc
-   $ rvm install 2.5.5
+   $ echo "rvm --default use 2.6.5" >> /opt/zammad/.bashrc
+   $ rvm install 2.6.5
    $ gem install bundler
 
 Install Zammad
