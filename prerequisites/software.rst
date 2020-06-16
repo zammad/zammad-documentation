@@ -96,7 +96,7 @@ but search performance will be degraded, and some features will be disabled.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "3.4+", "5.5–7.6"
+   "3.4+", "5.5–7.7"
    "3.3", "2.4–7.6"
    "3.2", "2.4–7.5"
    "3.1", "2.4–7.4"
