@@ -84,11 +84,13 @@ concurrent agents.
    A session worker can potentially utualize the whole CPU core to 100% on it's own. **Be careful.**
 
 .. code-block:: sh
+
    $ # Launch 2 concurrent session workers
    $ zammad config:set ZAMMAD_SESSION_JOBS_CONCURRENT=2
    $ systemctl restart zammad
 
 .. code-block:: sh
+
    $ # Reset session workers back to default
    $ zammad config:set ZAMMAD_SESSION_JOBS_CONCURRENT=
    $ systemctl restart zammad
