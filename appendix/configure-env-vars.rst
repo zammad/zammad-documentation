@@ -64,3 +64,29 @@ To reset this back to logfile logging run:
 
 .. note:: **This applies to package installations:** Do not set it to ``enabled``, because we'll then unset the variable upon Update!
    Using ``true`` is **update safe**.
+
+Spawn multiple Session Workers
+==============================
+
+.. note:: This is a potential performance tuning option, but can also worsen performance.
+
+Spawning multiple session workers usually only is required if you have a lot of concurrent agents working on Zammad. 
+The moment this option is needed highly depends on your configuration (e.g. number and complexity of overviews) and 
+thus can't be set to a fixed number. From what we've seen it usually isn't necessary to do so with less than 40 
+concurrent agents.
+
+   .. tip:: Not sure how much concurrent agents you currently have? Run ``zammad run rails r "p Sessions.list.count"`` 
+      to get the number of currently active agents.
+
+.. warning:: While launching several session workers can be handy, this also means that you might need more CPU cores! 
+   A session worker can potentially utualize the whole CPU core to 100% on it's own. **Be careful.**
+
+.. code-block:: sh
+   $ # Launch 2 concurrent session workers
+   $ zammad config:set ZAMMAD_SESSION_JOBS_CONCURRENT=2
+   $ systemctl restart zammad
+
+.. code-block:: sh
+   $ # Reset session workers back to default
+   $ zammad config:set ZAMMAD_SESSION_JOBS_CONCURRENT=
+   $ systemctl restart zammad
