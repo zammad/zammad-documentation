@@ -18,3 +18,17 @@ For optimal performance up to 40 agents:
 Of course at the end it depends on acutal load of concurent agents and data traffic.
 
 .. note:: We can't suggest any disk space recommendations, as this highly depends on how you work. Zammad will always try to recognize the same attachments and store it just once.
+
+Potential performance tuning
+============================
+
+Please keep in mind that raising concurrent agent numbers can, at some point, cause performance issues. 
+This may lead to:
+
+   * delayed sending out of mails
+   * poor responses during ticket viewing and creation
+   * temporarily not up to date search index
+   * delayed or no refresh of overviews
+
+In those situations, you may need to adjust above suggested hardware configurations and may want to 
+have a look into :doc:`/appendix/configure-env-vars`.
