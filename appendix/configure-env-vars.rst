@@ -26,6 +26,8 @@ Please note that you also have to reconfigure Nginx when changing the ports!
 Application Servers
 ===================
 
+.. note:: This is a potential performance tuning option, but can also worsen performance.
+
 Per default one application server will get started. If you have more http requests (user sessions) you need to increase the amount of your application server. The typical problem is long waiting times in the web interface for opening or editing tickets.
 
 .. code-block:: sh
