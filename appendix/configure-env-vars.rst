@@ -68,7 +68,7 @@ ZAMMAD_WEBSOCKET_PORT
 
    Default: ``6042``
 
-.. note:: Remember to update your nginx config to reflect any changes you make here.
+.. note:: Remember to update your webserver config to reflect any changes you make here.
 
 🎛️ Performance Tuning
 =====================
