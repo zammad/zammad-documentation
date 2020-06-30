@@ -89,7 +89,7 @@ WEB_CONCURRENCY
    Increasing this can reduce loading times
    when too many users are on Zammad at once.
 
-   Default: ``1``
+   Default: **unset**
 
 ZAMMAD_SESSION_JOBS_CONCURRENT
    How many instances of the session worker to run at a time.
@@ -105,7 +105,7 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
       In some cases, they can reach 100% CPU utilization on their own.
       Increasing this setting is safer on systems with more cores.
 
-   Default: ``1``
+   Default: **unset**
 
 .. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
 
