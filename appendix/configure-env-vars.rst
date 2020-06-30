@@ -1,66 +1,114 @@
-Configure environment variables
-*******************************
+Configuration via Environment Variables
+***************************************
 
-If you're using the DEB or RPM packages you can change Zammads environment variables by the following commands.
+Use these environment variables to configure Zammad’s behavior at runtime.
 
-Configure IP
-============
+.. note:: 🙋 **What’s an environment variable, and how do I “use” it?**
 
-.. code-block:: sh
+   Unfortunately, that question has a very long answer
+   that goes beyond the scope of this article.
+   How you set environment variables will depend on how you installed Zammad
+   (*e.g.,* source, package, or Docker).
 
-   $ zammad config:set ZAMMAD_BIND_IP=0.0.0.0
-   $ systemctl restart zammad
+   But for package installations, here’s a short answer:
 
+   .. code-block:: sh
 
-Configure ports
+      # set OPTION to "value"
+      $ zammad config:set OPTION=value
+      $ systemctl restart zammad
+
+      # unset OPTION
+      $ zammad config:set OPTION=
+      $ systemctl restart zammad
+
+   To learn more, do some googling on environment variables
+   and the shell environment (or execution environment) in Unix.
+
+General Options
 ===============
 
-Please note that you also have to reconfigure Nginx when changing the ports!
+APP_RESTART_CMD
+   The command Zammad will use to automatically restart the server
+   after `changes have been made in the Object Manager
+   <https://admin-docs.zammad.org/en/latest/system/objects.html>`_.
+   (*E.g.,* ``"systemctl restart zammad"``)
 
-.. code-block:: sh
+   If this is undefined, you will have to restart manually
+   after making changes in the Object Manager.
 
-   $ zammad config:set ZAMMAD_RAILS_PORT=3000
-   $ zammad config:set ZAMMAD_WEBSOCKET_PORT=6042
-   $ systemctl restart zammad
+   Default: **unset**
 
-Application Servers
-===================
+RAILS_LOG_TO_STDOUT
+   Print output directly to standard output
+   instead of ``/var/log/zammad/production.log``.
 
-Per default one application server will get started. If you have more http requests (user sessions) you need to increase the amount of your application server. The typical problem is long waiting times in the web interface for opening or editing tickets.
+   .. warning:: On package installations, ⏫ **this setting can be overwritten during update.**
 
-.. code-block:: sh
+      Use ``enabled`` to turn this option on only until the next update.
+      Use ``true`` to turn it on permanently.
 
-   $ zammad config:set WEB_CONCURRENCY=3
-   $ systemctl restart zammad
+   Default: **unset**
 
-Configure Restart Command
-=========================
+🖧 Network Options
+=================
 
-If you need to make changes (creating objects) to Zammad, it can be necessary to restart the service.
-This can be done manually or automatic. If you like to use the automatic way you need to set an special environment variable.
+ZAMMAD_BIND_IP
+   The IP address that the web server is bound to.
 
-Note: you might need to adjust the value for APP_RESTART_CMD if you have / need a different command to restart your Zammad on your installation.
+   Default: ``0.0.0.0``
 
-.. code-block:: sh
+ZAMMAD_RAILS_PORT
+   The port that the web server is exposed on.
 
-   $ zammad config:set APP_RESTART_CMD="systemctl restart zammad"
+   Default: ``3000``
 
+ZAMMAD_WEBSOCKET_PORT
+   The port that the websocket server is exposed on.
 
-Configure Zammad to log to STDOUT
-=================================
+   Default: ``6042``
 
-If you want to log to STDOUT instead of the production-logfile (``/var/log/zammad/production.log``) you can set it:
+.. note:: Remember to update your webserver config to reflect any changes you make here.
 
-.. code-block:: sh
+🎛️ Performance Tuning
+=====================
 
-   $ zammad config:set RAILS_LOG_TO_STDOUT=true
+.. warning:: ⚖️ **Each of these settings comes with its own tradeoffs.**
 
-To reset this back to logfile logging run:
+   There are no “recommended values” here;
+   the optimal configuration will depend on
+   your system’s resources and typical application load.
 
-.. code-block:: sh
+   Proceed with caution; when adjusting any of these settings,
+   there is a point at which performance will begin to degrade rather than improve,
+   or other problems will begin to crop up.
 
-   $ zammad config:set RAILS_LOG_TO_STDOUT=
+WEB_CONCURRENCY
+   How many instances of the application server to keep open at a time.
 
+   Increasing this can reduce loading times
+   when too many users are on Zammad at once.
 
-.. note:: **This applies to package installations:** Do not set it to ``enabled``, because we'll then unset the variable upon Update!
-   Using ``true`` is **update safe**.
+   Default: **unset**
+
+ZAMMAD_SESSION_JOBS_CONCURRENT
+   How many instances of the session worker to run at a time.
+
+   Increasing this can speed up background jobs (like the scheduler)
+   when too many users are on Zammad at once.
+
+   Generally speaking, it should only be useful to adjust this setting
+   if you have more than 40 active users at a time.
+
+   .. warning:: 🥵 **Session workers can be extremely CPU-intensive.**
+
+      In some cases, they can reach 100% CPU utilization on their own.
+      Increasing this setting is safer on systems with more cores.
+
+   Default: **unset**
+
+.. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
+
+   .. code-block:: sh
+
+      $ zammad run rails r "p Sessions.list.count" 

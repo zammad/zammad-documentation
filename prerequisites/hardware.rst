@@ -18,3 +18,19 @@ For optimal performance up to 40 agents:
 Of course at the end it depends on acutal load of concurent agents and data traffic.
 
 .. note:: We can't suggest any disk space recommendations, as this highly depends on how you work. Zammad will always try to recognize the same attachments and store it just once.
+
+Performance Tuning
+==================
+
+As the number of active users on your system grows,
+performance will eventually degrade, leading to:
+
+   * delays for outgoing email,
+   * long loading times when viewing or creating tickets,
+   * stale or out-of-sync search results, or
+   * stale or out-of-sync ticket overviews.
+
+If upgrading your hardware configuration is not an option,
+you may see modest improvements by
+:doc:`setting certain environment variables </appendix/configure-env-vars>`,
+such as ``$WEB_CONCURRENCY`` or ``$ZAMMAD_SESSION_JOBS_CONCURRENT``.
