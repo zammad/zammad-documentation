@@ -45,8 +45,8 @@ RAILS_LOG_TO_STDOUT
 
    .. warning:: On package installations, ⏫ **this setting can be overwritten during update.**
 
-      Use ``"enabled"`` to turn this option on only until the next update.
-      Use ``"true"`` to turn it on permanently.
+      Use ``enabled`` to turn this option on only until the next update.
+      Use ``true`` to turn it on permanently.
 
    Default: **unset**
 
