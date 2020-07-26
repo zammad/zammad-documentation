@@ -94,7 +94,7 @@ Required permission:
 
 Request::
 
-   PUT /api/v1/user_access_token/:id
+   DELETE /api/v1/user_access_token/{id}
 
 Response::
 
