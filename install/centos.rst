@@ -98,7 +98,7 @@ Only worker process
 
    $ sudo systemctl status zammad-worker
    $ sudo systemctl stop zammad-worker
-   $ sudo systemctl zammad-worker
+   $ sudo systemctl start zammad-worker
    $ sudo systemctl restart zammad-worker
 
 Only websocket server
