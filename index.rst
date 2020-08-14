@@ -122,3 +122,4 @@ The Zammad documentation consists of three parts:
    /appendix/configure-env-vars
    /appendix/repo-file
    /appendix/privacy
+   /appendix/single-sign-on

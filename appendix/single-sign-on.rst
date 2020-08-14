@@ -1,0 +1,247 @@
+Single Sign On
+**************
+
+Zammad provides many ways for authentication. Most of these options don't require any 
+further configuration on your host. However, if you want to use Kerberos based SSO, this 
+guide will help you through!
+
+.. figure:: /
+   :alt: Login screen showing SSO buttons
+   :align: center
+
+.. warning:: 🤓 **Please note the following limitations**
+
+   **Kerberos Single Sign On is limited to self hosted setups only - Hosted Users can't user this option!**
+   
+   This guide expects a Windows Active Directory environment which supports AES 256bit encryption. 
+   As on most things in these environments, you may need to adjust some commands and configurations to 
+   your own environment! Some Linux commands and usernames mentioned may greatly differ on your OS! 
+
+   **Proof of Concept System:**
+   To help you to see the scope of this Guide, the following systems and software versions were used 
+   during testing and writing this guide.
+
+   * Active Directory Version 2016 (on a Windows Server 2016)
+   * Debian 10
+   * Zammad 3.4
+
+.. note:: 🤔 **Don't want to use Kerberos but still use the SSO endpoint?!**
+   
+   As it's impossible to cover all possible use cases (out of scope of this documentation), 
+   here's the minimum information that Zammad does require to use the SSO endpoint.
+
+   *Endpoint*: ``/auth/sso``
+   *Accepted Header*: ``X-Forwarded-User``
+   *Accepted ENV*: ``REMOTE_USER`` OR ``HTTP_REMOTE_USER``
+   Zammad expects either one of the above ENV or Header. You can choose what's the best in your use case.
+
+   The header or ENV does have to contain the ``login`` attribute of the user. 
+   The user has to be present in Zammad!
+
+   **Important:** 
+   Above does not apply to existing third party authentications. 
+   Please check our `third party authentication page <https://admin-docs.zammad.org/en/latest/settings/security.html#third-party-applications>`_ before! This may safe time for you.
+
+.. hint:: 😵 **Still puzzled and got lost?**
+   
+   No worries, we got you covered. If you require, we'll gleadly provide commercial support on this topic. 
+   Our Consultants will gladly tailor a custom workshop for you - 
+   `just drop us a line <https://zammad.com/contact>`_.
+
+Requirenments
+=============
+
+Please ensure that the following points apply to you and your environment:
+
+   * you'll need root access to your Zammad host
+   * you'll need administrative access to your Active Directory
+      * your Active Directory has to be fully functional
+   * you need basic understand on how to configure your apache webserver
+
+.. tip:: For best experience with kerberos based authentication, we suggest 
+   using the Zammad `LDAP integration<https://admin-docs.zammad.org/en/latest/system/integrations/ldap.html>`_. 
+   Even if you don't want to use it for authentication directly, it will automatically sync your users to 
+   Zammad.
+
+Prerequisites
+=============
+
+First of all we'll need an service account in your active directory. 
+This user does not need any specific or administrative rights - a normal user will do! 
+
+Open the accounts properties, change to the "Account" tab and enable the account option 
+"This account supports Kerberos AES 256bit encryption.". Apply your changes.
+
+If you have your user configured, open an administrative CMD and run the following commands. 
+Note that we're using placeholders put in ``{}`` - adjust them to your environment!
+
+::
+   $ setspn -s HTTP/{Zammad-FQDN} {Zammad-Service-Account}
+   $ ktpass /princ {Zammad-Service-Account}@{DOMAIN.TLD} /mapuser {Zammad-Service-Account} /crypto AES256-SHA1 /ptype KRB5_NT_PRINCIPAL /pass {Password-of-Service-Account} -SetPass +DUmpSalt /target {Master-DC} /out zammad.keytab
+
+Above command will return something like below - note down **vno** (the number) and the key (starts with ``(0x``)). 
+
+::
+   Using legacy password setting method
+   Failed to set property 'servicePrincipalName' to 'zammadsrv' on Dn 'CN=Zammad Service,DC=tha,DC=dev': 0x13.
+   WARNING: Unable to set SPN mapping data.
+   If zammadsrv already has an SPN mapping installed for zammadsrv, this is no cause for concern.
+   Building salt with principalname zammadsrv and domain THA.DEV (encryption type 18)...
+   Hashing password with salt "THA.DEVzammadsrv".
+   Key created.
+   Output keytab to zammad.keytab:
+   Keytab version: 0x502
+   keysize 67 zammadsrv@THA.DEV ptype 1 (KRB5_NT_PRINCIPAL) vno 3 etype 0x12 (AES256-SHA1) keylength 32 (0x5ee827c30c736dd4095c9cbe146eabc216415b1ddb134db6aabd61be8fdf7fb1)
+
+Son based on above sample out, you'd note ``3`` for vno and 
+``0x5ee827c30c736dd4095c9cbe146eabc216415b1ddb134db6aabd61be8fdf7fb1`` for the key. 
+We'll need these information in the next step on our Zammad host.
+
+Configure your Zammad-Host to allow Kerberos authentication
+===========================================================
+
+On this step we'll configure your Zammad host to support kerberos authentication and will, 
+if needed, switch from nginx to apache2. The following steps have to be run as administrative (root) 
+user and, if not stated differently, expect the base directory ``/root``.
+
+   .. Note:: Apache2 is a fixed requirenment for this approach, as nginx does not support kerberos authentication 
+   out of the box. Compiling sources would exceed the possibilities of this documentation.
+
+Stop & Disable nginx (if applicable)
+   .. note:: This temporary draws your Zammad installation not reachable. 
+      You can run below step as last step as well, however, there will be 
+      error messages regarding used ports apache2 will try to use.
+
+   ::
+      $ systemctl disable nginx; systemctl stop nginx
+
+Install dependencies
+   ::
+      # Ubuntu & Debian
+      $ apt update
+      $ apt install apache2 krb5-user libapache2-mod-auth-kerb
+
+      # CentOS
+      $ yum install httpd krb5-workstation mod_auth_kerb
+
+      # openSUSE
+      $ zypper ref
+      $ zypper install apache2 krb5-client apache2-mod_auth_kerb
+
+Enable required apache modules
+   ::
+      # This step should work for all systems, on some systems ``a2enmod`` may not be available
+      $ a2enmod auth_kerb headers rewrite proxy proxy_html proxy_http proxy_wstunnel
+
+Configure KRB5 for your Realm
+   This step will tell your system which server to contact for any realm it may need to handle. 
+   The file you want to adjust here is ``/etc/krb5.conf``. You can use below version and adjust it.
+
+   ::
+      [libdefaults]
+        default_realm = THA.DEV
+        default_tkt_enctypes = aes256-cts-hmac-sha1-96
+        default_tgs_enctypes = aes256-cts-hmac-sha1-96
+        permitted_enctypes = aes256-cts-hmac-sha1-96
+
+        kdc_timesync = 1
+        ccache_type = 4
+        forwardable = true
+        proxiable = true
+        fcc-mit-ticketflags = true
+
+      [realms]
+              THA.DEV = {
+                      # you can use kdc more of
+                      kdc = 172.16.16.65
+                      admin_server = 172.16.16.65
+                      default_domain = tha.dev
+              }
+
+      [domain_realm]
+              .tha.dev = THA.DEV
+              tha.dev = THA.DEV
+
+Create keytab file (requires secret from Windows Server)
+   ::
+      #
+      $ ktutil
+      ktutil: $ addent -key -p HTTP/172.16.16.3 -k 3 -e aes256-cts
+      Key for HTTP/172.16.16.3@THA.DEV (hex):  $ 3075d462da5d23351ac2bbf327c5b43555d5d5feb5665b5c7de55c118c4d6b3b
+
+      # 
+      ktutil: $ list
+
+      #
+      ktutil: $ wkt zammad.keytab
+      ktutil: $ quit
+
+   .. hint:: A listing of your keytab looks similar to the following.
+      :: 
+         ktutil:  list
+         slot KVNO Principal
+         ---- ----       ---------------------------------------------------------------------
+            1    3                 HTTP/172.16.16.3@THA.DEV
+
+Move and prepare keytab file
+   ::
+      $ mv /root/zammad.keytab /etc/apache2/
+      
+      # Adjust ownership to webserver user (depends on your system)
+      # the directory of your webserver might also depend on your OS!
+      $ chown www-data:www-data /etc/apache2/zammad.keytab
+      $ chmod 400 /etc/apache2/zammad.keytab
+
+Extend your vHost configuration
+   .. hint:: If you didn't use apache up to now, you'll find a generic 
+      sample vHost file here: ``/opt/zammad/contrib/apache2/zammad_ssl.conf``. 
+
+      Configuration of said vHost file is out of scope of this documentation.
+
+   Adjust the vHost file of your Zammad-vHost (usually in ``/etc/apache2/sites-available/``) 
+   and add the following.
+
+   ::
+      # SSO magic against Kerberos happens here
+      <LocationMatch "/auth/sso">
+         SSLRequireSSL
+         AuthType Kerberos
+         AuthName "Your Zammad"
+         KrbMethodNegotiate On
+         KrbMethodK5Passwd On
+         KrbAuthRealms THA.DEV
+         KrbLocalUserMapping on     # set to off if you don't
+                                    # want to strip away your REALM
+         KrbServiceName HTTP/172.16.16.3@THA.DEV
+         Krb5KeyTab /etc/apache2/zammad.keytab
+         require valid-user
+
+         RewriteEngine On
+         RewriteCond %{LA-U:REMOTE_USER} (.+)
+         RewriteRule . - [E=RU:%1,NS]
+         RequestHeader set X-Forwarded-User "%{RU}e" env=RU        
+      </LocationMatch>
+
+Restart apache to apply your changes
+   ::
+      $ systemctl restart apache2
+
+With this your system technically is able to authenticate against a Kerberos source. 
+In order to trigger it, you have to open ``https://{zammadFQDN}/auth/sso`` in your Browser.
+
+Adjusting client configuration
+==============================
+
+Troubleshooting
+===============
+
+- an unspported mechanism was requested (unsupported etype - server might not support AES256)
+    enable account supporting Kerberos AES256 bit encryption
+    ( https://ldapwiki.com/wiki/MsDS-SupportedEncryptionTypes )
+- failed to verify krb5 credentials: Key version is not available
+    vno {number} must have the same number for -k {number}
+    This number is unique for the user in question.
+- Unspecified GSS failure.  Minor code may provide more information (, No key table entry found for HTTP/172.16.16.68@THA.DEV)
+    Indicates your provided a wrong service name - either on your active directory controller or while using ktutil.
+- still broken
+     ensure correct DNS names & time synchronization (less than 5 minute drift)
