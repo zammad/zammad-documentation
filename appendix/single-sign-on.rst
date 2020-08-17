@@ -30,9 +30,10 @@ guide will help you through!
    As it's impossible to cover all possible use cases here's the minimum information 
    that Zammad does require to use the SSO endpoint.
 
-   *Endpoint*: ``/auth/sso``
-   *Accepted Header*: ``X-Forwarded-User``
-   *Accepted ENV*: ``REMOTE_USER`` OR ``HTTP_REMOTE_USER``
+   | *Endpoint*: ``/auth/sso``
+   | *Accepted Header*: ``X-Forwarded-User``
+   | *Accepted ENV*: ``REMOTE_USER`` OR ``HTTP_REMOTE_USER``
+   
    Zammad expects either one of the above ENV or Header. You can choose what's the best in your use case.
 
    The header or ENV does have to contain the ``login`` attribute of the user. 
