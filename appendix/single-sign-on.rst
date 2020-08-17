@@ -150,16 +150,19 @@ Configure KRB5 for your Realm
         fcc-mit-ticketflags = true
 
       [realms]
-              THA.DEV = {
-                      # you can use kdc more of
-                      kdc = 172.16.16.65
-                      admin_server = 172.16.16.65
-                      default_domain = tha.dev
+              {DOMAIN.TLD} = {
+                      # you can define more than one kdc (each on it's own line)
+                      # this allows you to provide secondaries if needed
+                      kdc = {IP / FQDN of domain controller}
+                      # admin_server can be the same as kdc if it's not read only
+                      admin_server = {IP / FQDN of master domain controller}
+                      default_domain = {DOMAIN.TLD}
               }
 
       [domain_realm]
-              .tha.dev = THA.DEV
-              tha.dev = THA.DEV
+               # the point in front of domain.tld on the next line is no error!
+              .{DOMAIN.TLD} = {DOMAIN.TLD}
+              {DOMAIN.TLD} = {DOMAIN.TLD}
 
 Create keytab file (requires secret from Windows Server)
    ::
@@ -208,10 +211,10 @@ Extend your vHost configuration
          AuthName "Your Zammad"
          KrbMethodNegotiate On
          KrbMethodK5Passwd On
-         KrbAuthRealms THA.DEV
+         KrbAuthRealms {DOMAIN.TLD}
          KrbLocalUserMapping on     # set to off if you don't
                                     # want to strip away your REALM
-         KrbServiceName HTTP/172.16.16.3@THA.DEV
+         KrbServiceName HTTP/{Zammad-FQDN}@{DOMAIN.TLD}
          Krb5KeyTab /etc/apache2/zammad.keytab
          require valid-user
 
@@ -234,13 +237,26 @@ Adjusting client configuration
 Troubleshooting
 ===============
 
-- an unspported mechanism was requested (unsupported etype - server might not support AES256)
-    enable account supporting Kerberos AES256 bit encryption
-    ( https://ldapwiki.com/wiki/MsDS-SupportedEncryptionTypes )
-- failed to verify krb5 credentials: Key version is not available
-    vno {number} must have the same number for -k {number}
-    This number is unique for the user in question.
-- Unspecified GSS failure.  Minor code may provide more information (, No key table entry found for HTTP/172.16.16.68@THA.DEV)
-    Indicates your provided a wrong service name - either on your active directory controller or while using ktutil.
-- still broken
-     ensure correct DNS names & time synchronization (less than 5 minute drift)
+You may stumble upon issues in some situations. The above guide should avoid them, but we thought 
+they still may help. These error messages can be found within your apaches webserver log.
+
+an unspported mechanism was requested (unsupported etype - server might not support AES256)
+   Ensure that the service account you're using has the correct kerberos encryption enabled. 
+   In the guide we expect to use AES256 bit encryption, but you may have adjusted if needed. 
+   The `LDAP-Wiki <https://ldapwiki.com/wiki/MsDS-SupportedEncryptionTypes>`_ page is a great 
+   source of further hints for encryption types for kerberos.
+
+failed to verify krb5 credentials: Key version is not available
+   This inidicates that you provided a wrong vno number during keytab 
+   creation. Repeat the keytab creation. 
+   ( ``vno {number}`` must have the same number for ``-k {number}`` (keytab))
+
+unspecified GSS failure. Minor code may provide more information (, No key table entry found for HTTP/FQDN@DOMAIN)
+   Indicates your provided a wrong service name - either on your active directory controller 
+   or while using ktutil.
+
+still broken?!
+   * Ensure that both your Active Directory controller and Zammad can lookup all affected 
+     hostnames. This included the Active Directory domain and especially the FQDN of Zammad.
+   * Make sure that the time between the Zammad host and Active Directory server does not drift 
+     more than 5 minutes. Kerberos is very time sensitive.
