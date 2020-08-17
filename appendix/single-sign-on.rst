@@ -55,11 +55,10 @@ Please ensure that the following points apply to you and your environment:
 
    * you'll need root access to your Zammad host
    * you'll need administrative access to your Active Directory
-      * your Active Directory has to be fully functional
-   * you need basic understand on how to configure your apache webserver
+   * you know how to configure a basic apache installation
 
 .. tip:: For best experience with kerberos based authentication, we suggest 
-   using the Zammad `LDAP integration<https://admin-docs.zammad.org/en/latest/system/integrations/ldap.html>`_. 
+   using the Zammad `LDAP integration <https://admin-docs.zammad.org/en/latest/system/integrations/ldap.html>`_. 
    Even if you don't want to use it for authentication directly, it will automatically sync your users to 
    Zammad.
 
@@ -93,7 +92,7 @@ Above command will return something like below - note down **vno** (the number) 
    Keytab version: 0x502
    keysize 67 zammadsrv@THA.DEV ptype 1 (KRB5_NT_PRINCIPAL) vno 3 etype 0x12 (AES256-SHA1) keylength 32 (0x5ee827c30c736dd4095c9cbe146eabc216415b1ddb134db6aabd61be8fdf7fb1)
 
-Son based on above sample out, you'd note ``3`` for vno and 
+So based on above sample out, you'd note ``3`` for vno and 
 ``0x5ee827c30c736dd4095c9cbe146eabc216415b1ddb134db6aabd61be8fdf7fb1`` for the key. 
 We'll need these information in the next step on our Zammad host.
 
