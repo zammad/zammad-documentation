@@ -173,19 +173,19 @@ Configure KRB5 for your Realm
 
 Create keytab file (requires secret from Windows Server)
    During keytab creation, you'll be asked for the secret key you noted earlier. 
-   Provide ktutil with your key **without ``0x``**.
+   Provide ktutil with your key **without** ``0x``.
 
    .. code-block:: sh
 
-      #
+      # add your windows principal
       $ ktutil
       ktutil: $ addent -key -p HTTP/{Zammad-FQDN} -k {vno-number} -e aes256-cts
       Key for HTTP/{Zammad-FQDN}@{DOMAIN.TLD} (hex):  $ {secret-key-without-0x}
 
-      # 
+      # list your principals to verify you're good to go
       ktutil: $ list
 
-      #
+      # write your keytab file and quit ktutil
       ktutil: $ wkt zammad.keytab
       ktutil: $ quit
 
@@ -196,7 +196,7 @@ Create keytab file (requires secret from Windows Server)
          ktutil:  list
          slot KVNO Principal
          ---- ----       ---------------------------------------------------------------------
-            1    3                 HTTP/{Zammad-FQDN}@{DOMAIN.TLD}
+            1    3       HTTP/172.16.16.3@THA.DEV
 
 Move and prepare keytab file
    .. code-block:: sh
