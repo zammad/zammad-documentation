@@ -11,7 +11,7 @@ guide will help you through!
 
 .. warning:: 🤓 **Please note the following limitations**
 
-   **Kerberos Single Sign On is limited to self hosted setups only - Hosted Users can't user this option!**
+   **Kerberos Single Sign On is limited to self hosted setups only - Hosted Users can't use this option!**
    
    This guide expects a Windows Active Directory environment which supports AES 256bit encryption. 
    As on most things in these environments, you may need to adjust some commands and configurations to 
@@ -21,14 +21,14 @@ guide will help you through!
    To help you to see the scope of this Guide, the following systems and software versions were used 
    during testing and writing this guide.
 
-   * Active Directory Version 2016 (on a Windows Server 2016)
+   * Active Directory version 2016 (on a Windows Server 2016)
    * Debian 10
    * Zammad 3.4
 
 .. note:: 🤔 **Don't want to use Kerberos but still use the SSO endpoint?!**
    
-   As it's impossible to cover all possible use cases (out of scope of this documentation), 
-   here's the minimum information that Zammad does require to use the SSO endpoint.
+   As it's impossible to cover all possible use cases here's the minimum information 
+   that Zammad does require to use the SSO endpoint.
 
    *Endpoint*: ``/auth/sso``
    *Accepted Header*: ``X-Forwarded-User``
@@ -40,15 +40,15 @@ guide will help you through!
 
    **Important:** 
    Above does not apply to existing third party authentications. 
-   Please check our `third party authentication page <https://admin-docs.zammad.org/en/latest/settings/security.html#third-party-applications>`_ before! This may safe time for you.
+   Please check our `third party authentication page <https://admin-docs.zammad.org/en/latest/settings/security.html#third-party-applications>`_ before! This may save your time.
 
 .. hint:: 😵 **Still puzzled and got lost?**
    
-   No worries, we got you covered. If you require, we'll gleadly provide commercial support on this topic. 
-   Our Consultants will gladly tailor a custom workshop for you - 
+   No worries, we got you covered. If you require, we'll gladly provide commercial support on this topic. 
+   Our consultants will gladly tailor a custom workshop for you - 
    `just drop us a line <https://zammad.com/contact>`_.
 
-Requirenments
+Requirements
 =============
 
 Please ensure that the following points apply to you and your environment:
@@ -65,7 +65,7 @@ Please ensure that the following points apply to you and your environment:
 Prerequisites
 =============
 
-First of all we'll need an service account in your active directory. 
+First of all we'll need a service account in your Active Directory. 
 This user does not need any specific or administrative rights - a normal user will do! 
 
 Open the accounts properties, change to the "Account" tab and enable the account option 
@@ -94,18 +94,18 @@ Above command will return something like below - note down **vno** (the number) 
    Keytab version: 0x502
    keysize 67 zammadsrv@THA.DEV ptype 1 (KRB5_NT_PRINCIPAL) vno 3 etype 0x12 (AES256-SHA1) keylength 32 (0x5ee827c30c736dd4095c9cbe146eabc216415b1ddb134db6aabd61be8fdf7fb1)
 
-So based on above sample out, you'd note ``3`` for vno and 
+So based on above sample, you'd note ``3`` for vno and 
 ``0x5ee827c30c736dd4095c9cbe146eabc216415b1ddb134db6aabd61be8fdf7fb1`` for the key. 
 We'll need these information in the next step on our Zammad host.
 
 Configure your Zammad-Host to allow Kerberos authentication
 ===========================================================
 
-On this step we'll configure your Zammad host to support kerberos authentication and will, 
-if needed, switch from nginx to apache2. The following steps have to be run as administrative (root) 
-user and, if not stated differently, expect the base directory ``/root``.
+On this step we'll configure your Zammad host to support kerberos authentication and will 
+switch from nginx to apache2. The following steps have to be run as administrative (root) 
+user and expect the base directory ``/root``.
 
-   .. note:: Apache2 is a fixed requirenment for this approach, as nginx does not support kerberos authentication 
+   .. note:: Apache2 is a fixed requirement for this approach, as nginx does not support kerberos authentication 
       out of the box. Compiling sources would exceed the possibilities of this documentation.
 
 Stop & Disable nginx (if applicable)
@@ -199,8 +199,8 @@ Move and prepare keytab file
 
       $ mv /root/zammad.keytab /etc/apache2/
       
-      # Adjust ownership to webserver user (depends on your system)
-      # the directory of your webserver might also depend on your OS!
+      # Adjust ownership to webserver user #
+      # webserver user and directory may depend on your OS
       $ chown www-data:www-data /etc/apache2/zammad.keytab
       $ chmod 400 /etc/apache2/zammad.keytab
 
@@ -250,7 +250,7 @@ Troubleshooting
 ===============
 
 You may stumble upon issues in some situations. The above guide should avoid them, but we thought 
-they still may help. These error messages can be found within your apaches webserver log.
+below may still help. These error messages can be found within your apaches webserver log.
 
 an unspported mechanism was requested (unsupported etype - server might not support AES256)
    Ensure that the service account you're using has the correct kerberos encryption enabled. 
@@ -264,7 +264,7 @@ failed to verify krb5 credentials: Key version is not available
    ( ``vno {number}`` must have the same number for ``-k {number}`` (keytab))
 
 unspecified GSS failure. Minor code may provide more information (, No key table entry found for HTTP/FQDN@DOMAIN)
-   Indicates your provided a wrong service name - either on your active directory controller 
+   Indicates your provided a wrong service name - either on your Active Directory controller 
    or while using ktutil.
 
 still broken?!
