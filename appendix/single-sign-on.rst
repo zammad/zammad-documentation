@@ -74,13 +74,15 @@ Open the accounts properties, change to the "Account" tab and enable the account
 If you have your user configured, open an administrative CMD and run the following commands. 
 Note that we're using placeholders put in ``{}`` - adjust them to your environment!
 
-::
+.. code-block:: sh
+
    $ setspn -s HTTP/{Zammad-FQDN} {Zammad-Service-Account}
    $ ktpass /princ {Zammad-Service-Account}@{DOMAIN.TLD} /mapuser {Zammad-Service-Account} /crypto AES256-SHA1 /ptype KRB5_NT_PRINCIPAL /pass {Password-of-Service-Account} -SetPass +DUmpSalt /target {Master-DC} /out zammad.keytab
 
 Above command will return something like below - note down **vno** (the number) and the key (starts with ``(0x``)). 
 
-::
+.. code-block:: sh
+   
    Using legacy password setting method
    Failed to set property 'servicePrincipalName' to 'zammadsrv' on Dn 'CN=Zammad Service,DC=tha,DC=dev': 0x13.
    WARNING: Unable to set SPN mapping data.
@@ -103,19 +105,21 @@ On this step we'll configure your Zammad host to support kerberos authentication
 if needed, switch from nginx to apache2. The following steps have to be run as administrative (root) 
 user and, if not stated differently, expect the base directory ``/root``.
 
-   .. Note:: Apache2 is a fixed requirenment for this approach, as nginx does not support kerberos authentication 
-   out of the box. Compiling sources would exceed the possibilities of this documentation.
+   .. note:: Apache2 is a fixed requirenment for this approach, as nginx does not support kerberos authentication 
+      out of the box. Compiling sources would exceed the possibilities of this documentation.
 
 Stop & Disable nginx (if applicable)
    .. note:: This temporary draws your Zammad installation not reachable. 
       You can run below step as last step as well, however, there will be 
       error messages regarding used ports apache2 will try to use.
 
-   ::
+   .. code-block:: sh
+
       $ systemctl disable nginx; systemctl stop nginx
 
 Install dependencies
-   ::
+   .. code-block:: sh
+
       # Ubuntu & Debian
       $ apt update
       $ apt install apache2 krb5-user libapache2-mod-auth-kerb
@@ -128,7 +132,8 @@ Install dependencies
       $ zypper install apache2 krb5-client apache2-mod_auth_kerb
 
 Enable required apache modules
-   ::
+   .. code-block:: sh
+
       # This step should work for all systems, on some systems ``a2enmod`` may not be available
       $ a2enmod auth_kerb headers rewrite proxy proxy_html proxy_http proxy_wstunnel
 
@@ -136,9 +141,10 @@ Configure KRB5 for your Realm
    This step will tell your system which server to contact for any realm it may need to handle. 
    The file you want to adjust here is ``/etc/krb5.conf``. You can use below version and adjust it.
 
-   ::
+   .. code-block:: sh
+
       [libdefaults]
-        default_realm = THA.DEV
+        default_realm = {DOMAIN.TLD}
         default_tkt_enctypes = aes256-cts-hmac-sha1-96
         default_tgs_enctypes = aes256-cts-hmac-sha1-96
         permitted_enctypes = aes256-cts-hmac-sha1-96
@@ -165,7 +171,8 @@ Configure KRB5 for your Realm
               {DOMAIN.TLD} = {DOMAIN.TLD}
 
 Create keytab file (requires secret from Windows Server)
-   ::
+   .. code-block:: sh
+
       #
       $ ktutil
       ktutil: $ addent -key -p HTTP/172.16.16.3 -k 3 -e aes256-cts
@@ -179,14 +186,17 @@ Create keytab file (requires secret from Windows Server)
       ktutil: $ quit
 
    .. hint:: A listing of your keytab looks similar to the following.
-      :: 
+
+      .. code-block:: sh
+         
          ktutil:  list
          slot KVNO Principal
          ---- ----       ---------------------------------------------------------------------
             1    3                 HTTP/172.16.16.3@THA.DEV
 
 Move and prepare keytab file
-   ::
+   .. code-block:: sh
+
       $ mv /root/zammad.keytab /etc/apache2/
       
       # Adjust ownership to webserver user (depends on your system)
@@ -203,7 +213,8 @@ Extend your vHost configuration
    Adjust the vHost file of your Zammad-vHost (usually in ``/etc/apache2/sites-available/``) 
    and add the following.
 
-   ::
+   .. code-block:: sh
+
       # SSO magic against Kerberos happens here
       <LocationMatch "/auth/sso">
          SSLRequireSSL
@@ -225,7 +236,8 @@ Extend your vHost configuration
       </LocationMatch>
 
 Restart apache to apply your changes
-   ::
+   .. code-block:: sh
+
       $ systemctl restart apache2
 
 With this your system technically is able to authenticate against a Kerberos source. 
