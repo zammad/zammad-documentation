@@ -33,7 +33,7 @@ guide will help you through!
    | *Endpoint*: ``/auth/sso``
    | *Accepted Header*: ``X-Forwarded-User``
    | *Accepted ENV*: ``REMOTE_USER`` OR ``HTTP_REMOTE_USER``
-   
+
    Zammad expects either one of the above ENV or Header. You can choose what's the best in your use case.
 
    The header or ENV does have to contain the ``login`` attribute of the user. 
@@ -172,12 +172,15 @@ Configure KRB5 for your Realm
               {DOMAIN.TLD} = {DOMAIN.TLD}
 
 Create keytab file (requires secret from Windows Server)
+   During keytab creation, you'll be asked for the secret key you noted earlier. 
+   Provide ktutil with your key **without ``0x``**.
+
    .. code-block:: sh
 
       #
       $ ktutil
-      ktutil: $ addent -key -p HTTP/172.16.16.3 -k 3 -e aes256-cts
-      Key for HTTP/172.16.16.3@THA.DEV (hex):  $ 3075d462da5d23351ac2bbf327c5b43555d5d5feb5665b5c7de55c118c4d6b3b
+      ktutil: $ addent -key -p HTTP/{Zammad-FQDN} -k {vno-number} -e aes256-cts
+      Key for HTTP/{Zammad-FQDN}@{DOMAIN.TLD} (hex):  $ {secret-key-without-0x}
 
       # 
       ktutil: $ list
@@ -193,7 +196,7 @@ Create keytab file (requires secret from Windows Server)
          ktutil:  list
          slot KVNO Principal
          ---- ----       ---------------------------------------------------------------------
-            1    3                 HTTP/172.16.16.3@THA.DEV
+            1    3                 HTTP/{Zammad-FQDN}@{DOMAIN.TLD}
 
 Move and prepare keytab file
    .. code-block:: sh
