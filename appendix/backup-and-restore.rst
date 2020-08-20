@@ -55,7 +55,9 @@ Before you migrate, please ensure the following requirenments are met:
 If above requirenments are met, you can continue with restoring.
 
 .. hint:: Source code installations have to supply the old ruby version that has been used earlier.
-   This is because the restore script partly uses Zammad commands which will fail if you don't!
+   This is because the restore script partly uses Zammad commands which will fail if you don't! 
+
+   You can find a version list on the :doc:`/prerequisites/software` page.
 
 Restore everything
 ==================
