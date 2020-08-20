@@ -15,8 +15,8 @@ The following Ruby version is supported:
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
-   "3.5+", "2.6.6"
-   "3.4", "2.6.5"
+   "3.4.1+", "2.6.6"
+   "3.4.0", "2.6.5"
    "3.1 - 3.3", "2.5.5"
    "2.5 - 3.0", "2.4.4"
 
