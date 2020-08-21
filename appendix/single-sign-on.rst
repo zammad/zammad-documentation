@@ -250,6 +250,20 @@ In order to trigger it, you have to open ``https://{zammadFQDN}/auth/sso`` in yo
 Adjusting client configuration
 ==============================
 
+.. note:: This step only works on machines that are member of your Active Directory!
+   If you ignore below steps or the machine is not an AD member, you'll get a login prompt.
+
+   .. figure:: /images/appendix/single-sign-on/password-prompt-non-ad-member.png
+
+Internet Explorer
+
+Edge
+
+Firefox
+
+Google Chrome
+
+
 Troubleshooting
 ===============
 
