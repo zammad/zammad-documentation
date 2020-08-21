@@ -47,11 +47,17 @@ Before you migrate, please ensure the following requirenments are met:
 
 * The Zammad-Version on the destination system has to be the same or newer
 * You can't mix database types (postgresql or MySQL), as this needs conversion of your dump (which the script does not perform)
-  * We can offer you Dump-Migrations from MySQL to postgresql and postgresql to MySQL if need to change the databae for whatever reason, as a commercial service.
+   * We can offer you Dump-Migrations from MySQL to postgresql and postgresql to MySQL if need to change the 
+     database for whatever reason, as a commercial service.
 * Ensure you have enough free space on your drive (at least double as the size of your Dump!)
+* **If not source code installation:** You need a fresh Zammad installation
 
 If above requirenments are met, you can continue with restoring.
 
+.. hint:: Source code installations have to supply the old ruby version that has been used earlier.
+   This is because the restore script partly uses Zammad commands which will fail if you don't! 
+
+   You can find a version list on the :doc:`/prerequisites/software` page.
 
 Restore everything
 ==================
