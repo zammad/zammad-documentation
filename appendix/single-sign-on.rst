@@ -215,7 +215,7 @@ Extend your vHost configuration
       Configuration of said vHost file is out of scope of this documentation.
 
    Adjust the vHost file of your Zammad-vHost (usually in ``/etc/apache2/sites-available/``) 
-   and add the following.
+   and add the following. Ensure to add below **to the end** of the configuration.
 
    .. code-block:: sh
 
