@@ -247,6 +247,15 @@ Restart apache to apply your changes
 With this your system technically is able to authenticate against a Kerberos source. 
 In order to trigger it, you have to open ``https://{zammadFQDN}/auth/sso`` in your Browser.
 
+Enable SSO authentication within Zammad
+=======================================
+
+Starting with Zammad 3.5 you're provided a sso button within the login interface. 
+To enable SSO authentication and it's button, go to Security and activate "Authentication via SSO" 
+within "Third-party Applications" tab.
+
+.. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
+
 Adjusting client configuration
 ==============================
 
