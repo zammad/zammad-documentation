@@ -26,7 +26,7 @@ Get the current FQDN-Setting of Zammad and, if needed, adjust it.
    >> Setting.set('fqdn', 'new.domain.tld')  # Set a new FQDN
 
 
-Find storage_provide setting
+Find storage_provider setting
 ----------------------------
 
 The following command returns a list of available settings for `storage_provider` (for attachments).
@@ -36,7 +36,7 @@ The following command returns a list of available settings for `storage_provider
    >> Setting.find_by(name: 'storage_provider')
 
 
-Set storage_rpovider Setting
+Set storage_provider Setting
 ----------------------------
 
 Change the storage_provider if needed.
