@@ -33,7 +33,7 @@ The following command returns a list of available settings for `storage_provider
  Setting.find_by(name: 'storage_provider')
 
 
-Set storage_rpovider Setting
+Set storage_provider Setting
 ----------------------------
 
 Change the storage_provider if needed.
