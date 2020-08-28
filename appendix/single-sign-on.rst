@@ -8,6 +8,7 @@ guide will help you through!
 .. figure:: /images/appendix/single-sign-on/using-sso-for-logging-into-zammad.gif
    :alt: Login screen showing SSO buttons and automatic login upon press.
    :align: center
+   :width: 80%
 
 .. warning:: 🤓 **Please note the following limitations**
 
@@ -15,7 +16,7 @@ guide will help you through!
    
    This guide expects a Windows Active Directory environment which supports AES 256bit encryption. 
    As on most things in these environments, you may need to adjust some commands and configurations to 
-   your own environment! Some Linux commands and usernames mentioned may greatly differ on your OS! 
+   your own environment! Some Linux commands and usernames mentioned may be different on your OS! 
 
    **Proof of Concept System:**
    To help you to see the scope of this Guide, the following systems and software versions were used 
@@ -25,10 +26,10 @@ guide will help you through!
    * Debian 10
    * Zammad 3.4
 
-.. note:: 🤔 **Don't want to use Kerberos but still use the SSO endpoint?!**
+.. note:: 🤔 **Don't want to use Kerberos but the SSO endpoint?!**
    
    As it's impossible to cover all possible use cases here's the minimum information 
-   that Zammad does require to use the SSO endpoint.
+   that Zammad requires to use the SSO endpoint.
 
    | *Endpoint*: ``/auth/sso``
    | *Accepted Header*: ``X-Forwarded-User``
@@ -54,15 +55,15 @@ Requirements
 
 Please ensure that the following points apply to you and your environment:
 
-   * you'll need root access to your Zammad host
-   * you'll need administrative access to your Active Directory
+   * you'll need root access to 
+      * your Zammad host
+      * your Active Directory
    * you know how to configure a basic apache installation
    * Zammad must have a domain name and must not be accessed via IP address
 
 .. tip:: For best experience with kerberos based authentication, we suggest 
    using the Zammad `LDAP integration <https://admin-docs.zammad.org/en/latest/system/integrations/ldap.html>`_. 
-   Even if you don't want to use it for authentication directly, it will automatically sync your users to 
-   Zammad.
+   Even if you don't want to use it for authentication directly, it will automatically sync your users to Zammad. 🙌
 
 Prerequisites
 =============
@@ -272,7 +273,7 @@ Internet Explorer, Microsoft Edge and Chromium based Browsers (Windows)
    Open "Internet Options" and navigate to the Security tab. 
    Select the "Local Intranet" zone and click on "Sites".
    Within advanced you can now add Zammads FQDN to the list.
-   After that make sure that "User authentication" is set to "Automatic logon only in Intranet Zone".
+   After that make sure that "User authentication" is set to ``Automatic logon only in Intranet Zone``.
 
    .. hint:: You can and should enforce the option "Server verification (https:) for all sites in this zone".
 
