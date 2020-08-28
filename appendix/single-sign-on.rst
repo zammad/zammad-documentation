@@ -274,13 +274,20 @@ Internet Explorer, Microsoft Edge and Chromium based Browsers (Windows)
    Within advanced you can now add Zammads FQDN to the list.
    After that make sure that "User authentication" is set to "Automatic logon only in Intranet Zone".
 
-   .. hint:: You can and should enforce the option "Server veri´fication (https:) for all sites in this zone".
+   .. hint:: You can and should enforce the option "Server verification (https:) for all sites in this zone".
 
    .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_internet-options.gif
       :align: center
       :alt: How to configure your internet options for Zammads Single-Sign-On via Kerberos.
 
 Firefox
+   In order to use Kerberos based authentication, navigate to ``about:config`` within your Firefox. 
+   Search for "negotiate" and add your FQDN to ``network.negotiate-auth.trusted-uris``. 
+   Ensure to restart your browser afterwards.
+
+   .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_firefox.gif
+      :align: center
+      :alt: How to configure your Firefox for Zammads Single-Sign-On via Kerberos.
 
 
 Troubleshooting
