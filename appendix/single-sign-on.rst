@@ -57,6 +57,7 @@ Please ensure that the following points apply to you and your environment:
    * you'll need root access to your Zammad host
    * you'll need administrative access to your Active Directory
    * you know how to configure a basic apache installation
+   * Zammad must have a domain name and must not be accessed via IP address
 
 .. tip:: For best experience with kerberos based authentication, we suggest 
    using the Zammad `LDAP integration <https://admin-docs.zammad.org/en/latest/system/integrations/ldap.html>`_. 
@@ -299,3 +300,16 @@ still broken?!
      hostnames. This included the Active Directory domain and especially the FQDN of Zammad.
    * Make sure that the time between the Zammad host and Active Directory server does not drift 
      more than 5 minutes. Kerberos is very time sensitive.
+   * You can raise your apache log level temporary by adding ``LogLevel debug`` to your vhost configuration 
+     followed by restarting your apache.
+
+     Warning: received token seems to be NTLM, which isn't supported by the Kerberos module. Check your IE configuration
+        This issue appears if you're not using a FQDN but IP instead.
+
+     No key table entry found for HTTP/FQDN@DOMAIN
+        Ensure that your ``KrbServiceName`` value matches the actual keytab FQDN@DOMAIN. 
+        This value is *case-sensitive*.
+
+     Cannot decrypt ticket for HTTP/FQDN@DOMAIN
+        * Ensure that you changed the password of your service account **after** enabling 256bit AES encryption.
+        * If the password of the service account has changed, you'll need to repeat the ``ktpass`` and ``ktutil`` steps.
