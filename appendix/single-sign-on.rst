@@ -5,8 +5,8 @@ Zammad provides many ways for authentication. Most of these options don't requir
 further configuration on your host. However, if you want to use Kerberos based SSO, this 
 guide will help you through!
 
-.. figure:: /
-   :alt: Login screen showing SSO buttons
+.. figure:: /images/appendix/single-sign-on/using-sso-for-logging-into-zammad.gif
+   :alt: Login screen showing SSO buttons and automatic login upon press.
    :align: center
 
 .. warning:: 🤓 **Please note the following limitations**
@@ -265,13 +265,22 @@ Adjusting client configuration
 
    .. figure:: /images/appendix/single-sign-on/password-prompt-non-ad-member.png
 
-Internet Explorer
+Internet Explorer, Microsoft Edge and Chromium based Browsers (Windows)
+   .. note:: Because Chromium based Browsers use Windows "Internet Options" you just need to 
+      configure everything there. This also allows you to push these options via GPO if needed.
 
-Edge
+   Open "Internet Options" and navigate to the Security tab. 
+   Select the "Local Intranet" zone and click on "Sites".
+   Within advanced you can now add Zammads FQDN to the list.
+   After that make sure that "User authentication" is set to "Automatic logon only in Intranet Zone".
+
+   .. hint:: You can and should enforce the option "Server veri´fication (https:) for all sites in this zone".
+
+   .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_internet-options.gif
+      :align: center
+      :alt: How to configure your internet options for Zammads Single-Sign-On via Kerberos.
 
 Firefox
-
-Google Chrome
 
 
 Troubleshooting
