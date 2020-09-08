@@ -13,6 +13,8 @@ guide will help you through!
 .. warning:: 🤓 **Please note the following limitations**
 
    **Kerberos Single Sign On is limited to self hosted setups only - Hosted Users can't use this option!**
+   The support scope of this topic is application level (header & environmental variables) only. 
+   We can't provide Windows level support.
    
    This guide expects a Windows Active Directory environment which supports AES 256bit encryption. 
    As on most things in these environments, you may need to adjust some commands and configurations to 
