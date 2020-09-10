@@ -54,7 +54,7 @@ Step 1: Installation
       enabled=1
       autorefresh=1
       type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
-      yum install -y java-1.8.0-openjdk elasticsearch
+      yum install -y elasticsearch
       sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
       systemctl start elasticsearch
       systemctl enable elasticsearch
@@ -65,13 +65,10 @@ Step 1: Installation
    ::
 
       apt-get install apt-transport-https sudo wget
-      echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
       echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
       wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
       apt-get update
-      apt-get install -t jessie-backports openjdk-8-jre
       apt-get install elasticsearch
-      sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
       sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
       systemctl restart elasticsearch
       systemctl enable elasticsearch
@@ -85,7 +82,7 @@ Step 1: Installation
       echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
       wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
       apt-get update
-      apt-get install openjdk-8-jre-headless elasticsearch
+      apt-get install elasticsearch
       sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
       systemctl restart elasticsearch
       systemctl enable elasticsearch
@@ -99,7 +96,7 @@ Step 1: Installation
       echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
       wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
       apt-get update
-      apt-get install openjdk-11-jre-headless elasticsearch
+      apt-get install elasticsearch
       sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
       systemctl restart elasticsearch
       systemctl enable elasticsearch
@@ -113,7 +110,7 @@ Step 1: Installation
       echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
       wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
       apt-get update
-      apt-get install openjdk-8-jre elasticsearch
+      apt-get install elasticsearch
       sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
       systemctl restart elasticsearch
       systemctl enable elasticsearch
