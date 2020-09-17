@@ -1,75 +1,79 @@
 Tags
 ****
 
+.. warning:: 🛠 API-Endpoints for Tags  have changed with Zammad 3.5!
+
 List
 ====
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-* ticket.agent or admin.tag
+``GET``-Request sent: ``/api/v1/tags?object=Ticket&o_id={ticket-id}``
 
-Request::
+Sample response:
 
-   GET /api/v1/tags?object=Ticket&o_id=10
+.. code-block:: json
 
-Response::
-
-   Status: 200 Ok
-
+   # HTTP-Code 200 OK
    {
-     "tags": [
-       "tag 1",
-       "tag 2",
-       "tag 3"
-     ]
+       "tags": [
+           "americano",
+           "complaint"
+       ]
    }
 
 
 Search
 ======
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-* ticket.agent or admin.tag
+``GET``-Request sent: ``/api/v1/tag_search?term={tag-name}``
 
-Request::
+   .. hint:: Zammad will return all tags that contain your search phrase.
 
-   GET /api/v1/tag_search?term=tag
+Sample response:
 
-Response::
+.. code-block:: json
 
-   Status: 200 Ok
-
+   # HTTP-Code 200 OK
    [
-     {
-       "id": 7,
-       "value": "tag 1"
-     },
-     {
-       "id": 8,
-       "value": "tag 2"
-     },
-     {
-       "id": 9,
-       "value": "tag 3"
-     }
+       {
+           "id": 1,
+           "value": "americano"
+       },
+       {
+           "id": 2,
+           "value": "complaint"
+       },
+       {
+           "id": 3,
+           "value": "viennese melange"
+       }
    ]
 
 Add
 ===
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-* ticket.agent or admin.tag
+``POST``-Request sent: ``/api/v1/tags/add``
 
-Request::
+.. code-block:: json
 
-   GET /api/v1/tags/add?object=Ticket&o_id=10&item=tag+4
+   {
+       "item": "{tag-name}",
+       "object": "Ticket",
+       "o_id": {ticket-id}
+   }
 
-Response::
+.. hint:: This will create the tag if it doesn't exist and the user has permission to do so.
 
-   Status: 200 Ok
+Response:
 
+.. code-block:: json
+
+   # HTTP-Code 201 Created
    true
 
 Remove
@@ -79,115 +83,103 @@ Required permission:
 
 * ticket.agent or admin.tag
 
-Request::
+``DELETE``-Request sent: ``/api/v1/tags/remove``
 
-   GET /api/v1/tags/remove?object=Ticket&o_id=10&item=tag+4
+.. code-block:: json
 
-Response::
+   {
+       "item": "{tag-name}",
+       "object": "Ticket",
+       "o_id": "{ticket-id}"
+   }
 
-   Status: 200 Ok
+Response:
 
+.. code-block:: json
+
+   # HTTP-Code 201 Created
    true
 
 Admin - List
 ============
 
-Required permission:
+Required permission: ``admin.tag``
 
-* admin.tag
+``GET``-Request sent: ``/api/v1/tag_list``
 
-Request::
+Sample response:
 
-   GET /api/v1/tag_list
+.. code-block:: json
 
-Response::
-
-   Status: 200 Ok
-
+   # HTTP-Code 200 OK
    [
-     {
-       "id": 7,
-       "name": "tag 1",
-       "count": 1
-     },
-     {
-       "id": 8,
-       "name": "tag 2",
-       "count": 1
-     },
-     {
-       "id": 9,
-       "name": "tag 3",
-       "count": 1
-     },
-     {
-       "id": 11,
-       "name": "tag 4",
-       "count": 0
-     },
-     {
-       "id": 6,
-       "name": "test",
-       "count": 0
-     }
+       {
+           "id": 1,
+           "name": "americano",
+           "count": 0
+       },
+       {
+           "id": 2,
+           "name": "complaint",
+           "count": 0
+       },
+       {
+           "id": 3,
+           "name": "viennese melange",
+           "count": 0
+       }
    ]
 
 Admin - Create
 ==============
 
-Required permission:
+Required permission: ``admin.tag``
 
-* admin.tag
+``POST``-Request sent: ``/api/v1/tag_list``
 
-Request::
-
-   POST /api/v1/tag_list
+.. code-block:: json
 
    {
-     name: "tag 5"
+     "name": "tag 5"
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
 
+   # HTTP-Code 200 OK
    {}
 
 Admin - Rename
 ==============
 
-Required permission:
+Required permission: ``admin.tag``
 
-* admin.tag
+``PUT``-Request sent: ``/api/v1/tag_list/{tag-id}``
 
-Request::
-
-   PUT /api/v1/tag_list/{id}
+.. code-block:: json
 
    {
-     id: 6,
-     name: "tag 5"
+     "name": "order"
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
 
+   # HTTP-Code 200 OK
    {}
 
 Admin - Delete
 ==============
 
-Required permission:
+Required permission: ``admin.tag``
 
-* admin.tag
+``DELETE``-Request sent: ``/api/v1/tag_list/{tag-id}``
 
-Request::
+Response:
 
-   DELETE /api/v1/tag_list/{id}
+.. code-block:: json
 
-Response::
-
-   Status: 200 Ok
-
+   # HTTP-Code 200 OK
    {}
