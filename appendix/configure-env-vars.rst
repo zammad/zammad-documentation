@@ -113,4 +113,4 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
 
    .. code-block:: sh
 
-      $ zammad run rails r "p Sessions.list.count" 
+      $ zammad run rails r "p Sessions.list.uniq.count" 
