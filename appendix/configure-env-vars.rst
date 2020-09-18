@@ -70,6 +70,8 @@ ZAMMAD_WEBSOCKET_PORT
 
 .. note:: Remember to update your webserver config to reflect any changes you make here.
 
+.. _performance_tuning:
+
 🎛️ Performance Tuning
 =====================
 

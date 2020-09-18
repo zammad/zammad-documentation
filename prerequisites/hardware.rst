@@ -31,5 +31,5 @@ performance will eventually degrade, leading to:
    * stale or out-of-sync ticket overviews.
 
 You may see modest improvements by
-:doc:`setting certain environment variables > Performance Tuning </appendix/configure-env-vars#performance-tuning>`,
+:ref:`setting certain environment variables for Performance Tuning <performance_tuning>`,
 such as ``$WEB_CONCURRENCY`` or ``$ZAMMAD_SESSION_JOBS_CONCURRENT``.
