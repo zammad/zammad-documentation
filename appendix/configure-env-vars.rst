@@ -70,6 +70,8 @@ ZAMMAD_WEBSOCKET_PORT
 
 .. note:: Remember to update your webserver config to reflect any changes you make here.
 
+.. _performance_tuning:
+
 🎛️ Performance Tuning
 =====================
 
@@ -111,4 +113,4 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
 
    .. code-block:: sh
 
-      $ zammad run rails r "p Sessions.list.count" 
+      $ zammad run rails r "p Sessions.list.uniq.count" 

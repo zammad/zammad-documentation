@@ -30,7 +30,6 @@ performance will eventually degrade, leading to:
    * stale or out-of-sync search results, or
    * stale or out-of-sync ticket overviews.
 
-If upgrading your hardware configuration is not an option,
-you may see modest improvements by
-:doc:`setting certain environment variables </appendix/configure-env-vars>`,
+You may see modest improvements by
+:ref:`setting certain environment variables for Performance Tuning <performance_tuning>`,
 such as ``$WEB_CONCURRENCY`` or ``$ZAMMAD_SESSION_JOBS_CONCURRENT``.
