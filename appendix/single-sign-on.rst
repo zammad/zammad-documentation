@@ -431,13 +431,14 @@ For the full SSO experience (*i.e.,* for passwordless, one-click sign-in),
 Zammad users must:
 
 1. be on the Active Directory server’s local intranet; and
-2. configure their computers to treat the Zammad host as if it were, too.
+2. modify their network settings for the Zammad host
+   to be treated as a local intranet server.
 
 .. figure:: /images/appendix/single-sign-on/password-prompt-non-ad-member.png
    :align: center
    :alt: In-browser login prompt for single sign-on
 
-   Without this step, users must enter their Active Directory credentials to sign in.
+   Without this step, users must enter their Active Directory credentials during SSO.
 
 IE / Edge / Chromium
    .. tip:: This setting can be centrally managed across the entire intranet
