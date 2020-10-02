@@ -117,8 +117,12 @@ for Zammad on Active Directory.
 You may use an existing service account if you have one.
 Admin privileges are not required; a normal user account will do.
 
-Select “This account supports Kerberos AES 256 bit encryption” under
-**Properties > Account > Account options**.
+.. figure:: /images/appendix/single-sign-on/active-directory-service-account-settings.png
+   :alt: Login screen with SSO button for one-click login.
+   :align: center
+
+   Select “This account supports Kerberos AES 256 bit encryption” under
+   **Properties > Account > Account options**.
 
 1b. Register an SPN for Zammad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
