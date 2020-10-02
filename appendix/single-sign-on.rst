@@ -251,7 +251,7 @@ in your Apache config:
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Kerberos realm configuration is how you tell the Zammad server
-about the *domain controller* (Active Directory server).
+how to reach the *domain controller* (Active Directory server).
 
 .. note:: Replace the following placeholders in the sample config below:
 
@@ -279,7 +279,7 @@ about the *domain controller* (Active Directory server).
      fcc-mit-ticketflags = true
 
    [realms]
-           # multiple KDCs ok (one per line)
+           # multiple KDCs ok (one `kdc = ...` definition per line)
            <domain> = {
                    kdc = <domain-controller>
                    admin_server = <master-domain-controller>
@@ -427,9 +427,11 @@ Next, enable “Authencation via SSO” in Zammad’s Admin Panel under **Settin
 Step 4: Configure Client System (Windows Only)
 ----------------------------------------------
 
-Finally, Zammad users on the Active Directory server’s local intranet
-must configure their network settings to get the full SSO experience
-and skip the sign-in prompt altogether:
+For the full SSO experience (*i.e.,* for passwordless, one-click sign-in),
+Zammad users must:
+
+1. be on the Active Directory server’s local intranet; and
+2. configure their computers to treat the Zammad host as if it were, too.
 
 .. figure:: /images/appendix/single-sign-on/password-prompt-non-ad-member.png
    :align: center
