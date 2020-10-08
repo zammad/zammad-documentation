@@ -60,20 +60,6 @@ Step 1: Installation
       systemctl enable elasticsearch
 
 
-:Debian 8:
-
-   ::
-
-      apt-get install apt-transport-https sudo wget
-      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-      apt-get update
-      apt-get install elasticsearch
-      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-      systemctl restart elasticsearch
-      systemctl enable elasticsearch
-
-
 :Debian 9:
 
    ::

@@ -28,7 +28,7 @@ If you're using the package install, the packages below will automatically insta
 
 .. code-block:: sh
 
-   # Debian 8 & 9, Ubuntu 16.04 & 18.04
+   # Debian 9 & 10, Ubuntu 16.04 & 18.04
    $ apt-get install libimlib2 libimlib2-dev
 
    # openSUSE

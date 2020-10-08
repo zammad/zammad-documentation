@@ -122,7 +122,7 @@ Please note: this actions will delete all existing data! Dont use it on a produc
 
 
 
-on Debian 7, 8 / Ubuntu 16.04 / Ubuntu 18.04 (with Nginx & MySQL)
+on Debian 9, 10 / Ubuntu 16.04 / Ubuntu 18.04 (with Nginx & MySQL)
 =================================================================
 
 Prerequisites
