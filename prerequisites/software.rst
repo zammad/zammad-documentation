@@ -28,13 +28,13 @@ If you're using the package install, the packages below will automatically insta
 
 .. code-block:: sh
 
-   # Debian 9 & 10, Ubuntu 16.04 & 18.04
+   # Debian 9 & 10, Ubuntu 16.04, 18.04 & 20.04
    $ apt-get install libimlib2 libimlib2-dev
 
    # openSUSE
    $ zypper install imlib2 imlib2-devel
 
-   # CentOS 7
+   # CentOS 7 & 8
    $ yum install imlib2 imlib2-devel
 
 
@@ -97,7 +97,7 @@ but search performance will be degraded, and some features will be disabled.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "3.4+", "5.5–7.7"
+   "3.4+", "5.5–7.9"
    "3.3", "2.4–7.6"
    "3.2", "2.4–7.5"
    "3.1", "2.4–7.4"
