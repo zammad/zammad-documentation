@@ -1,7 +1,13 @@
-Go to http://localhost and you'll see:
+Configure the webserver of your choice
 ======================================
 
-* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
+You can find current configuration files for your webserver within ``contrib/`` of 
+your Zammad installation.
+
+If you're using the package installation, Zammad attempts to automatically install 
+a configuration file fo you (``/etc/nginx/sites-enabled/zammad.conf``).
+
+.. note:: The Zammad installation will not automatically set any host- or server name for you.
 
 
 Change your webserver configuration (non localhost connections):
