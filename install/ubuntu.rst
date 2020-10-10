@@ -60,7 +60,18 @@ Ubuntu 18.04
      https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
 
 
-Install on Ubuntu (16.04 and 18.04)
+Ubuntu 20.04
+------------
+
+.. code-block:: sh
+
+   $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+   $ sudo wget -O /etc/apt/sources.list.d/zammad.list \
+     https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/20.04.repo
+
+
+
+Install on Ubuntu (16.04 and 18.04 and 20.04)
 -----------------------------------
 
 .. code-block:: sh
