@@ -36,6 +36,7 @@ The Zammad documentation consists of three parts:
    /install/docker-compose
    /install/kubernetes
    /install/univention
+   /install/ssl-certificates
    /install/update
 
 

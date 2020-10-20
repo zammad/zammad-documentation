@@ -50,6 +50,8 @@ RAILS_LOG_TO_STDOUT
 
    Default: **unset**
 
+.. _network_options:
+
 🖧 Network Options
 =================
 
