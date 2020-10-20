@@ -8,7 +8,7 @@ Use the following command and look for ``LANG=``.
 
    $ locale
 
-.. tip:: You can correct the locate like so:
+.. tip:: You can correct the locale like so:
 
    .. code-block:: sh
 
