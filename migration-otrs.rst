@@ -188,3 +188,107 @@ If you installed from source
  rake db:seed
 
 After that your DB is reset and you can start the import right over.
+
+
+Debug
+=======================
+
+In case of fail/error during import process or network error that stop import process in the middle of big OTRS instance this debug script can be used.
+
+
+1.) Create a file called `debug_1349.rb` in your Zammad directory (usually `/opt/zammad`)
+
+.. code-block:: ruby
+
+  otrs_url = 'http://your.domain.tld'
+  key      = '*YourKeyHere*'
+
+  require 'import/otrs'
+  require 'import/otrs/article'
+  require 'import/otrs/article/attachment_factory'
+
+
+  module Import
+    module OTRS
+      class Article
+        module AttachmentFactory
+
+      def import_single(local_article, attachment)
+            decoded_filename = Base64.decode64(attachment['Filename'])
+            decoded_content  = Base64.decode64(attachment['Content'])
+            # TODO: should be done by a/the Storage object
+            # to handle fingerprinting
+            sha = Digest::SHA256.hexdigest(decoded_content)
+
+            retries = 3
+            begin
+              queueing(sha, decoded_filename)
+
+              log "Ticket #{local_article.ticket_id}, Article #{local_article.id} - Starting import for fingerprint #{sha} (#{decoded_filename})... Queue: #{@sha_queue[sha]}."
+              ActiveRecord::Base.transaction do
+                Store.add(
+                  object:        'Ticket::Article',
+                  o_id:          local_article.id,
+                  filename:      decoded_filename.force_encoding('utf-8'),
+                  data:          decoded_content,
+                  preferences:   {
+                    'Mime-Type'           => attachment['ContentType'],
+                    'Content-ID'          => attachment['ContentID'],
+                    'content-alternative' => attachment['ContentAlternative'],
+                  },
+                  created_by_id: 1,
+                )
+              end
+              log "Ticket #{local_article.ticket_id}, Article #{local_article.id} - Finished import for fingerprint #{sha} (#{decoded_filename})... Queue: #{@sha_queue[sha]}."
+            rescue ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid => e
+              log "Ticket #{local_article.ticket_id} - #{sha} - #{e.class}: #{e}"
+              sleep rand 3
+              retry if !(retries -= 1).zero?
+              raise
+            rescue => e
+              log "Ticket #{local_article.ticket_id} - #{sha} - #{e}: #{attachment.inspect}"
+              raise
+            ensure
+              queue_cleanup(sha)
+            end
+          end
+        end
+      end
+    end
+  end
+
+  endpoint = "#{otrs_url}/otrs/public.pl?Action=ZammadMigrator"
+
+  Setting.set('import_otrs_endpoint', endpoint)
+  Setting.set('import_otrs_endpoint_key', key)
+  Setting.set('import_mode', true)
+  Setting.set('system_init_done', false)
+
+  Import::OTRS.start({threads: 1, limit:50, offset: 7500})
+
+You can easy modify:
+
+- `threads` - How many threads to use during import. (This is not limited to CPU threads)
+
+- `limit` - How many tickets to get with one request from OTRS (Keep this relevantly small to not overkill your OTRS server)
+- `offset` - From what offset to start import. This is very usefully in case of fail of last import. To found right offset just execute:
+
+::
+
+  `tail -500 /var/log/zammad/production.log | grep PARAMS` 
+  
+and determinate point around your last improt stop. Because of multi thread default behavior it is good to remove ~500 offset so to be sure that you will not miss anything. (Tickets will not get dublicated in Zammad!)
+
+
+2.) Run the file from your Zammad directory via:
+
+::
+
+ $ zammad run rails r debug_1349.rb 
+ 
+ # or (as zammad user, depending on your installation source (package/source))
+ $ rails r debug_1349.rb 
+
+
+
+.. Note:: You can overwrite origin functions (we give example with import_single()) and modify behavior. May be you want/need more debug info - go edit the script and add what you need!
