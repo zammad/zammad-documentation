@@ -224,7 +224,7 @@ In case of fail/error during import process or network error that stop import pr
             begin
               queueing(sha, decoded_filename)
 
-              log "Ticket #{local_article.ticket_id}, Article #{local_article.id} - Starting import for fingerprint #{sha} (#{decoded_filename})... Queue: #{@sha_queue[sha]}."
+              log "Ticket #{local_article.ticket_id}, Article #{local_article.id}, Attachment ContentType #{attachment['ContentType']} - Starting import for fingerprint #{sha} (#{decoded_filename})... Queue: #{@sha_queue[sha]}."
               ActiveRecord::Base.transaction do
                 Store.add(
                   object:        'Ticket::Article',
@@ -291,4 +291,4 @@ and determinate point around your last improt stop. Because of multi thread defa
 
 
 
-.. Note:: You can overwrite origin functions (we give example with import_single()) and modify behavior. May be you want/need more debug info - go edit the script and add what you need!
+.. Note:: You can overwrite origin functions (we give example with import_single() where we add `Attachment ContentType #{attachment['ContentType']}`) and modify behavior. May be you want/need more debug info - go edit the script and add what you need!
