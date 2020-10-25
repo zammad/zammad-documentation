@@ -89,16 +89,38 @@ and `acme.sh <https://github.com/acmesh-official/acme.sh>`_.
 Option 2: Obtaining a certificate from a public CA
 --------------------------------------------------
 
+If you prefer to use certificates from other official CAs than letsencrypt, you can do so as well. 
+Just get your certificate bundle from the source you prefer and continue with :ref:`use_sample_ssl_config` below.
+
 Option 3: Creating a self signed certificate (discouraged)
 ----------------------------------------------------------
 
-openssl req -newkey rsa:4096 -nodes -keyout key.pem -x509 -days 1825 -out certificate.pem
---> Common Name (e.g. server FQDN or YOUR name) 
+Another way is to use self signed certificates from your own CA. 
+In general you shouldn't use this option when you have users accessing Zammad that can't verify your certificates.
 
-review certificate 
-openssl x509 -text -noout -in certificate.pem
+Beside creating own certificates via e.g. XCA or Microsoft CA, you can also generate a certificate really quick like so:
+
+On any system with ``openssl`` installed, you can run below command. 
+Provide the requested information and ensure to provide the fqdn of Zammad when being asked for 
+``Common Name (e.g. server FQDN or YOUR name)``.
+
+.. code-block:: sh
+   
+   openssl req -newkey rsa:4096 -nodes -x509 -days 1825 -keyout key.pem -out certificate.pem 
+
+Above command creates a certificate that's valid for 5 years. It will write the certificate and private key 
+to the current directory you're in. If you want to check your certificate you just created, you can use the 
+following command.
+
+.. code-block:: sh
+
+   openssl x509 -text -noout -in certificate.pem
 
 
+   .. hint:: **👀 Not good enough for you?**
+
+      If above command is not good enough for you, the `openSSL documentation <>`_ 
+      is a good place to learn more.
 
 .. _use_sample_ssl_config:
 
