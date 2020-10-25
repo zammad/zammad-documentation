@@ -55,7 +55,7 @@ Adjusting the webserver configuration
    Have a look on the :ref:`getting SSL certificates <getting_ssl>` section.
 
 
-**If you just installed Zammad, you'll be greeted by our installation wizard. 🙌**
+**If you just installed Zammad, you'll be greeted by our getting started wizard. 🙌**
 
    .. figure:: /images/install/getting-started-wizard.png
       :alt: Getting started wizard after installing Zammad
