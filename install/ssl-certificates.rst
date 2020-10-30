@@ -104,18 +104,17 @@ On any system with ``openssl`` installed, you can run below command.
 Provide the requested information and ensure to provide the fqdn of Zammad when being asked for 
 ``Common Name (e.g. server FQDN or YOUR name)``.
 
-.. code-block:: sh
-   
-   openssl req -newkey rsa:4096 -nodes -x509 -days 1825 -keyout key.pem -out certificate.pem 
+   .. code-block:: sh
+      
+      openssl req -newkey rsa:4096 -nodes -x509 -days 1825 -keyout key.pem -out certificate.pem 
 
 Above command creates a certificate that's valid for 5 years. It will write the certificate and private key 
 to the current directory you're in. If you want to check your certificate you just created, you can use the 
 following command.
 
-.. code-block:: sh
+   .. code-block:: sh
 
-   openssl x509 -text -noout -in certificate.pem
-
+      openssl x509 -text -noout -in certificate.pem
 
    .. hint:: **👀 Not good enough for you?**
 
