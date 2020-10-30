@@ -29,14 +29,16 @@ If you're using the package install, the packages below will automatically insta
 .. code-block:: sh
 
    # Debian 9 & 10, Ubuntu 16.04, 18.04 & 20.04
-   $ apt-get install libimlib2 libimlib2-dev
+   $ apt-get install libimlib2
 
    # openSUSE
-   $ zypper install imlib2 imlib2-devel
+   $ zypper install imlib2
 
    # CentOS 7 & 8
-   $ yum install imlib2 imlib2-devel
+   $ yum install imlib2
 
+.. note:: ``libimlib2-dev`` **or** ``imlib2-dev`` are no longer required. 
+   *Hoever* if you have to use ``bundle install`` for e.g. custom Gems or development, you'll need to install it!
 
 3. Database Server
 ==================
