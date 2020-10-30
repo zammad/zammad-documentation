@@ -38,7 +38,7 @@ If you're using the package install, the packages below will automatically insta
    $ yum install imlib2
 
 .. note:: ``libimlib2-dev`` **or** ``imlib2-dev`` are no longer required. 
-   *Hoever* if you have to use ``bundle install`` for e.g. custom Gems or development, you'll need to install it!
+   *However:* If you have to use ``bundle install`` for e.g. custom Gems or development, you'll need to install it!
 
 3. Database Server
 ==================
