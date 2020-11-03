@@ -6,6 +6,13 @@ If you want to contribute to the Zammad documentation, just create pull requests
 
 Zammad hosts a searchable version of this documentation at https://docs.zammad.org
 
+## Notes on Documentation Branches and Pull Requests
+
+Please note that this repository uses protected branches, which is why the default branch is ``develop``.
+The most current version is **always** ``master`` - if you create Pull Requests, please define ``master`` as destination Branch.
+
+This will ensure that your changes are available upon merge.
+
 ## ReStructuredText markup
 
 If you like to edit the docs use the ReStructuredText markup language. Information about this language can be found at:
