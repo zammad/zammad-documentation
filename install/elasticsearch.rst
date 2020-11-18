@@ -20,86 +20,89 @@ Zammad's search function is powered by Elasticsearch, and requires one of:
 Step 1: Installation
 ====================
 
-:Direct Download:
+.. tabs::
 
-   Find the latest release on the `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
-   or see the `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
-   for in-depth instructions. Then,
+   .. tab:: Ubuntu
 
-   .. code-block:: sh
+      ::
 
-      # Install the attachment plugin
-      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
-      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
+         $ apt-get install apt-transport-https sudo wget
+         $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+         $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+         $ apt-get update
+         $ apt-get install elasticsearch
+         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-      # Increase the virtual memory map limit
-      $ sudo sysctl -w vm.max_map_count=262144
+   .. tab:: Debian
 
-   and start Elasticsearch.
+      ::
 
-   .. note:: 🐋 **Docker installations on macOS/Windows:**
+         $ apt-get install apt-transport-https sudo wget
+         $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+         $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+         $ apt-get update
+         $ apt-get install elasticsearch
+         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-      Setting the ``vm.max_map_count`` kernel parameter requires `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites>`_.
+   .. tab:: CentOS
 
-:CentOS 7:
+      ::
 
-   ::
+         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ echo "[elasticsearch-7.x]
+         name=Elasticsearch repository for 7.x packages
+         baseurl=https://artifacts.elastic.co/packages/7.x/yum
+         gpgcheck=1
+         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         enabled=1
+         autorefresh=1
+         type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
+         $ sudo yum install -y elasticsearch
+         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-      rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-      echo "[elasticsearch-7.x]
-      name=Elasticsearch repository for 7.x packages
-      baseurl=https://artifacts.elastic.co/packages/7.x/yum
-      gpgcheck=1
-      gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-      enabled=1
-      autorefresh=1
-      type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
-      yum install -y elasticsearch
-      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-      systemctl start elasticsearch
-      systemctl enable elasticsearch
+   .. tab:: OpenSUSE
 
+      ::
 
-:Debian 9:
+         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ echo "[elasticsearch-7.x]
+         name=Elasticsearch repository for 7.x packages
+         baseurl=https://artifacts.elastic.co/packages/7.x/yum
+         gpgcheck=1
+         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         enabled=1
+         autorefresh=1
+         type=rpm-md"| sudo tee /etc/zypp/repos.d/elasticsearch-7.x.repo
+         $ sudo zypper install elasticsearch
+         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-   ::
+   .. tab:: Direct Download
 
-      apt-get install apt-transport-https sudo wget
-      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-      apt-get update
-      apt-get install elasticsearch
-      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-      systemctl restart elasticsearch
-      systemctl enable elasticsearch
+      Find the latest release on the `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
+      or see the `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
+      for in-depth instructions. 
+      Ensure to also install the fitting (and mandatory!) attachment plugin for elasticsearch.
 
+      .. code-block:: sh
 
-:Debian 10:
+         # Install the attachment plugin
+         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
+         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
 
-   ::
+         # Increase the virtual memory map limit
+         $ sudo sysctl -w vm.max_map_count=262144
 
-      apt-get install apt-transport-https sudo wget
-      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-      apt-get update
-      apt-get install elasticsearch
-      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-      systemctl restart elasticsearch
-      systemctl enable elasticsearch
+After you installed Elasticsearch and its attachment plugin, ensure to enable it by default and start it.
 
+.. code-block:: sh
+   
+   $ systemctl start elasticsearch
+   $ systemctl enable elasticsearch
 
-:Ubuntu 16.04 & 18.04:
+.. note:: 🐋 **Docker installations on macOS/Windows:**
 
-   ::
-
-      apt-get install apt-transport-https sudo wget
-      echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-      apt-get update
-      apt-get install elasticsearch
-      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-      systemctl restart elasticsearch
-      systemctl enable elasticsearch
+   Setting the ``vm.max_map_count`` kernel parameter requires 
+   `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
 
 Step 2: Suggested Configuration
 ===============================
@@ -134,6 +137,13 @@ We use the following settings to optimize the performance of our Elasticsearch s
 Step 3: Connect Zammad
 ======================
 
+.. hint:: **🤓 Before proceeding here...**
+
+   Make sure to install Zammad before running below commands, as this will fail other wise.
+
+      * install from :doc:`package <package>`
+      * install from :doc:`source <source>`
+
 .. code-block:: sh
 
    # Set the Elasticsearch server address
@@ -145,43 +155,46 @@ Step 3: Connect Zammad
 Optional settings
 -----------------
 
-:Authentication:
+.. tabs::
 
-   .. code-block:: sh
+   .. tab:: Authentication
 
-      # HTTP Basic
-      $ zammad run rails r "Setting.set('es_user', '<username>')"
-      $ zammad run rails r "Setting.set('es_password', '<password>')"
+      .. code-block:: sh
 
-   .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
+         # HTTP Basic
+         $ zammad run rails r "Setting.set('es_user', '<username>')"
+         $ zammad run rails r "Setting.set('es_password', '<password>')"
 
-      For HTTP Basic auth, try `this nginx reverse proxy config <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
+      .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
 
-      Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
-      Consult the official Elasticsearch guides for more details.
+         For HTTP Basic auth, try `this nginx reverse proxy config <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
 
-:Index namespacing:
+         Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
+         Consult the official Elasticsearch guides for more details.
 
-   .. code-block:: sh
+   .. tab:: Index namespacing
 
-      # Useful when connecting multiple services or Zammad instances
-      # to a single Elasticsearch server (to prevent name collisions during indexing).
-      $ zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
+      Useful when connecting multiple services or Zammad instances
+      to a single Elasticsearch server (to prevent name collisions during indexing).
 
-:File-attachment indexing rules:
+      .. code-block:: sh
 
-   .. code-block:: sh
+         $ zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
-      # Zammad supports searching by the contents of file attachments,
-      # which means Elasticsearch has to index those, too.
-      #
-      # Limiting such indexing can help conserve system resources.
+   .. tab:: File-attachment indexing rules
 
-      # Files with these extensions will not be indexed
-      $ zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
+      Zammad supports searching by the contents of file attachments,
+      which means Elasticsearch has to index those, too.
+      
+      Limiting such indexing can help conserve system resources.
 
-      # Files larger than this size (in MB) will not be indexed
-      $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
+      .. code-block:: sh
+
+         # Files with these extensions will not be indexed
+         $ zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
+
+         # Files larger than this size (in MB) will not be indexed
+         $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
 Appendix
 ========

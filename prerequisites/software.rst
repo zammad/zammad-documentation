@@ -20,7 +20,23 @@ The following Ruby version is supported:
    "3.1 - 3.3", "2.5.5"
    "2.5 - 3.0", "2.4.4"
 
-2. Package Dependencies
+2. Supported distributions
+==========================
+
+Below you can find all distributions Zammad provides packages for.
+
+.. note:: **🤓 What about my specific distribution?! It's so cool!**
+   
+   If you distribution is not listed, you can still install Zammad. 
+   For this you can either use :doc:`Docker-Compose </install/docker-compose>` 
+   or :doc:`Source </install/source>` installation.
+
+   We try to provide all current distributions that are supported by `Packager.io <https://packager.io/>`_. 
+   This means that we can't always provide support for your favorite system.
+
+.. _package_dependencies:
+
+3. Package Dependencies
 =======================
 
 The below dependencies need to be installed on your system.
@@ -40,7 +56,7 @@ If you're using the package install, the packages below will automatically insta
 .. note:: ``libimlib2-dev`` **or** ``imlib2-dev`` are no longer required. 
    *However:* If you have to use ``bundle install`` for e.g. custom Gems or development, you'll need to install it!
 
-3. Database Server
+4. Database Server
 ==================
 
 Zammad will store all content in an RDBMS.
@@ -58,7 +74,7 @@ You can choose between the following products:
    * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 
 
-4. Reverse Proxy
+5. Reverse Proxy
 ================
 
 In a typical web environment today, you use a reverse proxy to deliver the static content of your application.
@@ -70,7 +86,7 @@ The following reverse proxies are supported:
 * Apache 2.2+
 
 
-5. Elasticsearch (optional)
+6. Elasticsearch (optional)
 ===========================
 
 Zammad uses Elasticsearch to

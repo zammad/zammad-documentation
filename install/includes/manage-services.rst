@@ -1,42 +1,18 @@
 Manage services of Zammad
 =========================
 
-Zammad
-------
+In general Zammad uses three services - these can be (re)started & stopped with the parent ``zammad``.
 
 .. code-block:: sh
 
-   $ sudo systemctl status zammad
-   $ sudo systemctl stop zammad
-   $ sudo systemctl start zammad
-   $ sudo systemctl restart zammad
+   $ # Zammad service to start all services at once
+   $ sudo systemctl (status|start|stop|restart) zammad
 
-Only web application server
----------------------------
+   $ # Zammads internal railsserver
+   $ sudo systemctl (status|start|stop|restart) zammad-web
 
-.. code-block:: sh
-
-   $ sudo systemctl status zammad-web
-   $ sudo systemctl stop zammad-web
-   $ sudo systemctl start zammad-web
-   $ sudo systemctl restart zammad-web
-
-Only worker process
--------------------
-
-.. code-block:: sh
-
-   $ sudo systemctl status zammad-worker
-   $ sudo systemctl stop zammad-worker
-   $ sudo systemctl start zammad-worker
-   $ sudo systemctl restart zammad-worker
-
-Only websocket server
----------------------
-
-.. code-block:: sh
-
-   $ sudo systemctl status zammad-websocket
-   $ sudo systemctl stop zammad-websocket
-   $ sudo systemctl start zammad-websocket
-   $ sudo systemctl restart zammad-websocket
+   $ # Zammads scheduler - relevant for all delayed- and background jobs
+   $ sudo systemctl (status|start|stop|restart) zammad-worker
+   
+   $ # Zammads websocket server for session related information
+   $ sudo systemctl (status|start|stop|restart) zammad-websocket
