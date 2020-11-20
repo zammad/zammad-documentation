@@ -6,7 +6,8 @@
 }
 
 /* Provide a button and shortened pres to reduce page heights */
-.shorten-pre {
+.collapsing-code-block {
+    position: relative; /* support `position: absolute` in child button */
     max-height: 250px;
     overflow-y: hidden !important;
     transition: all 0.5s ease-out;
@@ -15,23 +16,21 @@
     -moz-box-shadow: 0px -40px 20px -10px rgba(206,206,206,1) inset;
 }
 
-.release-shorten-pre {
+.collapsing-code-block--open {
     max-height: 5000px;
     transition: all 0.5s ease-in;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
 }
 
 @media (max-width: 600px) {
-    .shorten-pre, .release-shorten-pre {
+    .collapsing-code-block {
         padding-top: 40px !important;
     }
 }
 
-.highlight {
-    /* ensure our pre button is working */
-    position: relative;
-}
-
-.shorten-pre-button {
+.collapsing-code-block__toggle {
     position: absolute;
     top: .25rem;
     right: .25rem;
@@ -45,4 +44,12 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.collapsing-code-block > .collapsing-code-block__toggle::after {
+    content: "More";
+}
+
+.collapsing-code-block--open > .collapsing-code-block__toggle::after {
+    content: "Less";
 }

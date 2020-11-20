@@ -1,76 +1,29 @@
 /* Custom overrides */
-/* No oversized <pre>, please - Thanks to @TJemxx */
-function shortPre(i) {
-   var attr = 'pre-' + i
-   var pre = document.getElementById(attr);
-   var button = document.getElementById('button-' + attr);
+// No oversized <pre>, please - Thanks to @TJemxx
+function collapseLongCodeBlocks() {
+  const maxHeight = 250;
 
-   if ( pre.classList.contains('shorten-pre')) {
-      pre.classList.remove('shorten-pre');
-      pre.classList.add('release-shorten-pre');
+  document.querySelectorAll('pre').forEach((el, i) => {
+    if (el.clientHeight <= maxHeight) return;
 
-      $(button).html('Reduce to smaller size ...')
-   } else {
-      pre.classList.remove('release-shorten-pre');
-      pre.classList.add('shorten-pre');
+    el.classList.add('collapsing-code-block');
+    if (el.querySelector(`.collapsing-code-block__toggle`)) return;
 
-      $(button).html('Expand to full size ...')
-   }
+    const button = document.createElement('button');
+    button.classList.add('collapsing-code-block__toggle');
+    button.onclick = (event) => {
+      event.target.parentElement.classList.toggle('collapsing-code-block--open')
+    };
+    el.appendChild(button);
+  });
 }
 
-// Update <pre> elements
-function WorkPres(item, index) {
-   var size = 250;
+window.addEventListener('load', () => {
+  collapseLongCodeBlocks();
 
-   if ( !document.getElementById(item) ){
-      item.setAttribute('id', 'pre-' + index);
-   }
-
-   if( item.clientHeight > size ){
-      
-      if ( !document.getElementById('button-' + item) ){
-         var button = document.createElement('button');
-         button.setAttribute('onclick', 'shortPre(' + index + ')');
-         button.setAttribute('id', 'button-pre-' + index);
-         $(button).html('Expand to full size ...').addClass('shorten-pre-button');      
-         item.appendChild(button);
-
-         console.log("added button for big <pre> (pre-" + index + ")")
-      }
-      
-      item.classList.add('shorten-pre');
-   }
-};
-
-// Provide all tabs with onClick action
-function WorkTabs(item) {
-   item.setAttribute('onclick', 'CalculatePres()');
-}
-
-// Function to fire (re)-calculation for <pre> elements
-function CalculatePres(){
-   pres = document.getElementsByTagName('pre');
-   for(var i = 0; i < pres.length; i++){ 
-      WorkPres(pres[i], i);
-   };
-   console.log("<pre> elements reviewed ...")
-}
-
-function AddOnClick(){
-   // Find all possible tabs to add onClick actions
-   console.log("Add onClick actions for <a>-data-tabs (if any) ...")
-   tabs = document.getElementsByTagName('a');
-   for(var i = 0; i < tabs.length; i++){ 
-      if ( tabs[i].hasAttribute('data-tab') ){
-         WorkTabs(tabs[i]);
-      }
-   };
-}
-
-function OnLoadRunner(){
-   CalculatePres();
-   AddOnClick();
-}
-
-// onLoad run through all pres and add shorten classes to those that are quite long
-window.addEventListener('load', OnLoadRunner, false);
+  // click any <a data-tab="..."></a> link
+  // to manually re-compute if any code blocks need to be collapsed
+  document.querySelectorAll('a').forEach((el) => {
+    if ('tab' in el.dataset) el.onclick = collapseLongCodeBlocks;
+  });
+}, false);
