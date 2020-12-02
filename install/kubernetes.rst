@@ -22,7 +22,7 @@ You need the Helm binary installed / initialized and at least 4 GB of free RAM i
 .. code-block:: sh
 
    # Add Helm repo
-   $ helm repo add zammad https://zammad.github.io
+   $ helm repo add zammad https://zammad.github.io/zammad-helm
 
    # Install / Upgrade Zammad
    $ helm upgrade --install zammad zammad/zammad --namespace=zammad
