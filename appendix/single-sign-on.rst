@@ -1,5 +1,5 @@
-Single Sign-On
-==============
+Single Sign-On for Kerberos
+===========================
 
 This guide will discuss how to set up single sign-on
 using Microsoft Active Directory.
