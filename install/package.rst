@@ -6,6 +6,26 @@ Install from package
 Prerequisites
 =============
 
+Additional software dependencies
+--------------------------------
+
+In addition to already mentioned :ref:`Package dependencies <package_dependencies>`, 
+some operating systems may require additional packages if not already installed.
+
+.. tabs::
+
+   .. tab:: Ubuntu / Debian
+
+      .. code-block:: sh
+      
+         $ apt install wget apt-transport-https gnupg
+
+   .. tab:: CentOS
+
+      .. code-block:: sh
+
+         $ yum install wget epel-release
+
 .. include:: /install/includes/prerequisites.rst
 
 Add Repository and install Zammad
