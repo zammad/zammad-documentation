@@ -1,9 +1,3 @@
-Setup Elasticsearch
--------------------
-
-Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
-Please take a look at the following page: :doc:`/install/elasticsearch`.
-
 Additional software dependencies
 --------------------------------
 
@@ -24,6 +18,11 @@ some operating systems may require additional packages if not already installed.
 
          $ yum install wget epel-release
 
+Setup Elasticsearch
+-------------------
+
+Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
+Please take a look at the following page: :doc:`/install/elasticsearch`.
 
 Ensure correct locale
 ---------------------

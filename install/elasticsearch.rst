@@ -134,6 +134,8 @@ We use the following settings to optimize the performance of our Elasticsearch s
 .. note:: For more information on the ``indices.query.bool.max_clause_count`` setting,
    see the `Elasticsearch 6.6 release notes <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/breaking-changes-6.6.html#_literal_query_string_literal_literal_multi_match_literal_and_literal_simple_query_string_literal_query>`_.
 
+.. _configure_zammad_with_elasticsearch:
+
 Step 3: Connect Zammad
 ======================
 
