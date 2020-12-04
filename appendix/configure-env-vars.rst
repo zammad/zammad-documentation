@@ -116,3 +116,9 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
    .. code-block:: sh
 
       $ zammad run rails r "p Sessions.list.uniq.count" 
+
+.. hint::
+
+   Above settings *may* consume all available database connections. Please consider the 
+   :doc:`database server configuration </appendix/configure-database-server>` 
+   section for more.

@@ -138,3 +138,9 @@ and getting started with it.
 
    * :doc:`/getting-started/configure-webserver`
    * :doc:`/getting-started/first-steps`
+
+If you expect usuage with 5 agents or more you may also want to consider the 
+following pages.
+
+   * :ref:`Performance Tuning <performance_tuning>`
+   * :doc:`/appendix/configure-database-server`

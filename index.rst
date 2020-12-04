@@ -111,5 +111,6 @@ The Zammad documentation consists of three parts:
 
    /appendix/backup-and-restore
    /appendix/configure-env-vars
+   /appendix/configure-database-server
    /appendix/privacy
    /appendix/single-sign-on
