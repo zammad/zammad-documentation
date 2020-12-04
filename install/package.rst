@@ -139,6 +139,7 @@ and getting started with it.
    * :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
    * :doc:`/getting-started/configure-webserver`
    * :doc:`/getting-started/first-steps`
+   * You may also find Zammads :doc:`/admin/console` commands useful
 
 If you expect usuage with 5 agents or more you may also want to consider the 
 following pages.
