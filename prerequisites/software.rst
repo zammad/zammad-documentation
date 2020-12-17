@@ -6,10 +6,9 @@ If you want to install Zammad, you need the following software.
 1. Ruby Programming Language
 ============================
 
-Zammad requires Ruby. All required rubygems like ruby on rails are listed in the Gemfile.
-The following Ruby version is supported:
-
-* Ruby 2.6.6
+| Zammad requires Ruby. All required rubygems like ruby on rails are listed in the Gemfile.
+| The following Ruby version is supported:
+| ``Ruby 2.6.6``
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
@@ -24,6 +23,15 @@ The following Ruby version is supported:
 ==========================
 
 Below you can find all distributions Zammad provides packages for.
+
+.. csv-table:: Supported operating system matrix
+   :header: "Distribution", "Versions"
+   :widths: 20, 20
+
+   "CentOS", "7 & 8"
+   "Debian", "9 & 19"
+   "OpenSuSE / SLES", "Leap 42.3; 12"
+   "Ubuntu", "16.04, 18.04 & 20.04"
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
    
