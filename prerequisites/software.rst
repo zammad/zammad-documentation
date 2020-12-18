@@ -59,11 +59,12 @@ If you're using the package install, the packages below will automatically insta
    $ zypper install imlib2
 
    # CentOS 7 & 8
+   $ yum install epel-release
    $ yum install imlib2
 
 .. note:: 
 
-   | ``libimlib2-dev`` **or** ``imlib2-dev`` are no longer required. 
+   | ``libimlib2-dev`` **or** ``imlib2-devel`` are no longer required. 
    | *However:* If you have to use ``bundle install`` for e.g. custom Gems or development, you'll need to install it!
 
 4. Database Server
