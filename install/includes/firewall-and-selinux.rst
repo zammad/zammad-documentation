@@ -8,7 +8,7 @@ SELinux
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian / Ubuntu
+   .. tab:: CentOS / Debian / Ubuntu
 
       .. code-block:: sh
 
