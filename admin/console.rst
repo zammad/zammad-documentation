@@ -27,6 +27,7 @@ The following command will allow you to run a single command, without running a 
    # source installation
    $ rails r '{COMMAND}'
 
+.. _rails_shell:
 
 Running several commands in a shell
 -----------------------------------

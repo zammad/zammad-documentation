@@ -124,6 +124,8 @@ Deleting System Records
    # Remove all history information from tickets, users and organizations (dangerous!)
    >> History.destroy_all
 
+.. _dangerzone_reset_zammad:
+
 Reset Zammad installation
 -------------------------
 
@@ -133,6 +135,8 @@ Reset Zammad installation
    The following operations will cause data loss and for development / testing only.
 
    Package installations will require you to add ``zammad run`` before the command itself.
+
+   Don't forget to stop Zammad before trying to drop the database!
 
 .. code-block:: sh
 

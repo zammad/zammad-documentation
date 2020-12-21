@@ -45,11 +45,10 @@ The Zammad documentation consists of three parts:
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Migration
 
-   /migration/otrs
-   /migration/zendesk
+   /migration/index
 
 
 .. toctree::
