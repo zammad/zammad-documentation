@@ -28,7 +28,6 @@ Get Zammad
    $ cd ~/zammad/
    $ curl -L -O https://ftp.zammad.com/zammad-latest.tar.bz2 | tar -xj
 
-
 Install Zammad
 --------------
 
@@ -40,7 +39,6 @@ Install Zammad
    $ rake db:create
    $ rake db:migrate
    $ rake db:seed
-
 
 Database connect
 ----------------

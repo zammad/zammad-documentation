@@ -127,7 +127,6 @@ Importing OTRS data
             >> Setting.set('import_mode', true)
             >> Import::OTRS.start
 
-
       Finish the migration
          .. code-block:: ruby
 

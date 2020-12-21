@@ -88,7 +88,6 @@ You can choose between the following database servers:
    * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
    * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 
-
 5. Reverse Proxy
 ================
 
@@ -99,7 +98,6 @@ The following reverse proxies are supported:
 
 * Nginx 1.3+
 * Apache 2.2+
-
 
 6. Elasticsearch (optional)
 ===========================

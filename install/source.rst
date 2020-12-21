@@ -307,8 +307,6 @@ Step 5: Pre compile all Zammad assets
 
    $ rake assets:precompile
 
-
-
 Step 6: Start Zammad or install as service
 ------------------------------------------
 

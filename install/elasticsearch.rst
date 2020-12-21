@@ -16,7 +16,6 @@ Zammad's search function is powered by Elasticsearch, and requires one of:
    If you installed from source, be sure to omit this prefix
    and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
-
 Step 1: Installation
 ====================
 
