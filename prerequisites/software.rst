@@ -71,17 +71,21 @@ If you're using the package install, the packages below will automatically insta
 ==================
 
 Zammad will store all content in an RDBMS.
-You can choose between the following products:
+You can choose between the following database servers:
 
 * MySQL 5.6+
 * MariaDB 10.0+
 * PostgreSQL 9.1+
 
-.. note:: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
+.. note:: 
+
+   We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
+
+   **Zammad requires ``UTF-8`` for its database.**
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 
-   * Use UTF8 encoding. utf8mb4 for example will fail.
+   * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
    * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 
 
