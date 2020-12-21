@@ -38,6 +38,7 @@ You can also run this as a cronjob to have a regular backup:
 
       $ systemctl disable zammad && systemctl stop zammad
 
+.. _restore_zammad:
 
 Migrating from another Zammad-Host
 ==================================
