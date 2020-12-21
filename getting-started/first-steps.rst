@@ -64,6 +64,13 @@ Step 4: Your first email channel (optional)
    Learn more about the email channel within the documentation for
    `email channels <https://admin-docs.zammad.org/en/latest/channels/email/index.html>`_.
 
+After finishing the wizard you'll be automatically logged in to the just created account. 
+
+.. figure:: /images/getting-started/dashboard-with-clues.png
+   :alt: First time on the dashboard will provide a small clue intro
+   :align: center
+   :width: 80%
+
 Further Steps
 -------------
 
