@@ -81,7 +81,7 @@ You can choose between the following database servers:
 
    We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
 
-   **Zammad requires ``UTF-8`` for its database.**
+   **Zammad requires UTF-8 for its database.**
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 
@@ -121,7 +121,7 @@ but search performance will be degraded, and some features will be disabled.
    check your package manager’s manpage to find out.
 
 .. warning:: Please note that if you do not install and use Elasticsearch, the search will be very limited!
-   We recommend using Elasticsearch, as it will boost the usuage of Zammad greatly!
+   We recommend using Elasticsearch, as it will boost the usage of Zammad greatly!
 
 
 .. csv-table:: Zammad/Elasticsearch version compatibility

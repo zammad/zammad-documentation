@@ -168,7 +168,7 @@ A list of required versions can be found on the :doc:`Software requirements </pr
       After that install the specific required ruby version.
 
 | After installing bundler, rake and rails we'll need to install all required gems. 
-| The command is dependent on the database server you are using.
+| The command depends on the database server you are using.
 
 .. tabs::
 
@@ -236,7 +236,7 @@ Step 3: Configure database settings
 
 .. tip::
 
-   **🤓 For easiest usuage ...**
+   **🤓 For easiest usage ...**
 
    If you provide your Zammad user with database creation permission, you can run the 
    step 4 without adjustment. If you don't want that, you'll have to create the database manually.

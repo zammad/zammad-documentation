@@ -10,7 +10,7 @@ and getting started with it.
    #. :doc:`/getting-started/first-steps`
    #. You may also find Zammads :doc:`/admin/console` commands useful
 
-If you expect usuage with 5 agents or more you may also want to consider the 
+If you expect usage with 5 agents or more you may also want to consider the 
 following pages.
 
    * :ref:`Performance Tuning <performance_tuning>`
