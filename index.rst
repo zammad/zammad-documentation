@@ -27,8 +27,8 @@ The Zammad documentation consists of three parts:
    :maxdepth: 1
    :caption: Installation & Update
 
-   /install/source
    /install/package
+   /install/source
    /install/elasticsearch
    /install/docker-compose
    /install/kubernetes
