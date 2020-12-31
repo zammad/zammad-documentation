@@ -145,6 +145,12 @@ Update with DEB
 Updating elasticsearch
 ======================
 
+.. warning::
+
+   Updating Elasticsearch **does not** automatically update it's plugins! 
+   This usually isn't an issue if Zammad is being updated right after 
+   Elasticsearch.
+
 If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.
 
