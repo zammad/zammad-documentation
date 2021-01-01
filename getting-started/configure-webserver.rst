@@ -288,8 +288,6 @@ Adjusting the webserver configuration
                * ``/etc/apache2/conf.d/``
                * ``/etc/httpd/vhosts.d/``
                * ``/etc/apache2/sites-available/`` 
-                 (if you choose ``sites-available`` you'll need to use 
-                 ``a2ensite zammad.conf`` to enable the page)
 
       Step 3 - Adjust the config file
          Adjust the just copied file with a text editor of your choice (e.g. 
@@ -314,6 +312,36 @@ Adjusting the webserver configuration
 
       (Optional) - Adjust HTTPs configuration
          .. include:: /getting-started/include-ssl-config-generator-webserver.rst
+
+      (Optiona) - Enable the site
+         .. hint:: 
+
+            This step mostly depends on your selected folders and most often 
+            only affects ``sites-available`` folders.
+
+         .. tabs::
+
+            .. tab:: Ubuntu / Debian / openSUSE
+
+               .. code-block:: sh
+
+                  $ a2ensite zammad
+
+            .. tab:: CentOS
+
+               .. code-block:: sh
+
+                  $ ln -s /etc/httpd/sites-available/zammad_ssl.conf /etc/httpd/sites-enabled/
+
+         Also, make sure the following line is present in your Apache 
+         configuration:
+
+         .. code-block::
+
+            # /etc/apache2/apache2.conf (Ubuntu, Debian, & openSUSE)
+            # /etc/httpd/conf/httpd.conf (CentOS)
+
+            IncludeOptional sites-enabled/*.conf
 
       Step 4 - Save & reload
          Reload your apache ``systemctl reload apache2`` to apply your 
