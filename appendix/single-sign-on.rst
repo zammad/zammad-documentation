@@ -207,47 +207,65 @@ which offers Kerberos support through a plug-in module instead.
       $ systemctl enable nginx
       $ systemctl start nginx
 
-2b. Install Apache
-^^^^^^^^^^^^^^^^^^
+2b. Pre-Configure Apache
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+This documentation expects a already working Apache configuration. 
+Please see :doc:`/getting-started/configure-webserver` before continuing.
 
-   # Ubuntu & Debian
-   $ apt update
-   $ apt install apache2 krb5-user libapache2-mod-auth-kerb
+2c. Install further Apache dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   # CentOS
-   $ yum install httpd krb5-workstation mod_auth_kerb
+.. tabs::
 
-   # openSUSE
-   $ zypper ref
-   $ zypper install apache2 krb5-client apache2-mod_auth_kerb
+   .. tab:: Ubuntu / Debian
 
-2c. Enable Apache modules
+      .. code-block:: sh
+
+         $ apt update
+         $ apt install krb5-user libapache2-mod-auth-kerb
+
+   .. tab:: CentOS
+   
+      .. code-block:: sh
+
+         $ yum install krb5-workstation mod_auth_kerb
+
+   .. tab:: OpenSUSE
+   
+      .. code-block:: sh
+
+         $ zypper ref
+         $ zypper install krb5-client apache2-mod_auth_kerb
+
+2d. Enable Apache modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+SSO requires modules that are not enabled by default. By default you can use 
+``a2enmod`` to do so.
 
-   # Ubuntu, Debian, & openSUSE
-   $ a2enmod auth_kerb headers rewrite proxy proxy_html proxy_http proxy_wstunnel
+.. tabs::
 
-On systems without ``a2enmod`` (*e.g.,* CentOS),
-add/uncomment the appropriate ``LoadModule`` statements
-in your Apache config:
+   .. tab:: a2enmod
 
-.. code-block::
+      .. code-block:: sh
 
-   # /etc/httpd/conf/httpd.conf
+         $ a2enmod auth_kerb rewrite
+         $ systemctl restart apache2
 
-   LoadModule auth_kerb_module /usr/lib/apache2/modules/mod_auth_kerb.so
-   LoadModule headers_module modules/mod_headers.so
-   LoadModule rewrite_module modules/mod_rewrite.so
-   LoadModule proxy_module modules/mod_proxy.so
-   LoadModule proxy_html_module modules/mod_proxy_html.so
-   LoadModule proxy_http_module modules/mod_proxy_http.so
-   LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so
+   .. tab:: via configuration file (CentOS)
 
-2d. Configure Kerberos
+      add/uncomment the appropriate ``LoadModule`` statements
+      in your Apache config:
+
+      .. code-block::
+
+         # /etc/httpd/conf/httpd.conf
+
+         LoadModule auth_kerb_module /usr/lib/apache2/modules/mod_auth_kerb.so
+         LoadModule rewrite_module modules/mod_rewrite.so
+
+2e. Configure Kerberos
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Kerberos realm configuration is how you tell the Zammad server
@@ -292,7 +310,7 @@ how to reach the *domain controller* (Active Directory server).
 
 .. _sso-generate-keytab:
 
-2e. Generate keytab
+2f. Generate keytab
 ^^^^^^^^^^^^^^^^^^^
 
 Apache needs a Kerberos *keytab* (key table)
@@ -327,49 +345,29 @@ to manage its shared secrets with the domain controller.
 Then, place the keytab in the Apache config directory
 and set the appropriate permissions:
 
-.. code-block:: sh
+.. tabs::
 
-   # Ubuntu, Debian, openSUSE
-   $ mv /root/zammad.keytab /etc/apache2/
-   $ chown www-data:www-data /etc/apache2/zammad.keytab
-   $ chmod 400 /etc/apache2/zammad.keytab
+   .. tab:: Ubuntu, Debian, openSUSE
 
-   # CentOS
-   $ mv /root/zammad.keytab /etc/httpd/
-   $ chown apache:apache /etc/httpd/zammad.keytab
-   $ chmod 400 /etc/httpd/zammad.keytab
+      .. code-block:: sh
 
-2f. Configure Apache
+         $ mv /root/zammad.keytab /etc/apache2/
+         $ chown www-data:www-data /etc/apache2/zammad.keytab
+         $ chmod 400 /etc/apache2/zammad.keytab
+
+   .. tab:: CentOS
+
+      .. code-block:: sh
+
+         $ mv /root/zammad.keytab /etc/httpd/
+         $ chown apache:apache /etc/httpd/zammad.keytab
+         $ chmod 400 /etc/httpd/zammad.keytab
+
+2g. Configure Apache
 ^^^^^^^^^^^^^^^^^^^^
 
-Zammad provides a sample virtual host configuration file for Apache.
-Add it to your ``sites-available`` directory and enable it:
 
-.. code-block:: sh
-
-   # Ubuntu, Debian, openSUSE
-   $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-available/
-   $ chown www-data:www-data /etc/apache2/sites-available/zammad_ssl.conf
-   $ a2ensite zammad_ssl
-
-   # CentOS
-   $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/httpd/sites-available/
-   $ chown apache:apache /etc/httpd/sites-available/zammad_ssl.conf
-   $ ln -s /etc/httpd/sites-available/zammad_ssl.conf /etc/httpd/sites-enabled/
-
-Also, make sure the following line is present in your Apache configuration:
-
-.. code-block::
-
-   # /etc/apache2/apache2.conf (Ubuntu, Debian, & openSUSE)
-   # /etc/httpd/conf/httpd.conf (CentOS)
-
-   IncludeOptional sites-enabled/*.conf
-
-Now that ``zammad_ssl.conf`` is in place,
-it must be modified for your server.
-Replace all instances of ``example.com`` with your Zammad FQDN,
-and add the following directive to the end of the file
+Add the following directive to the end of the virtual host configuration file 
 to create your Kerberos SSO endpoint at ``/auth/sso``:
 
 .. note:: Replace the following placeholders in the command below:
@@ -411,7 +409,8 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
 Step 3: Enable SSO in Zammad
 ----------------------------
 
-Next, enable “Authencation via SSO” in Zammad’s Admin Panel under **Settings > Security > Third-Party Applications**:
+Next, enable “Authencation via SSO” in Zammad’s Admin Panel under 
+**Settings > Security > Third-Party Applications**:
 
 .. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
    :align: center
@@ -440,36 +439,41 @@ Zammad users must:
 
    Without this step, users must enter their Active Directory credentials during SSO.
 
-IE / Edge / Chromium
-   .. tip:: This setting can be centrally managed across the entire intranet
-      using a **group policy object** (GPO).
+.. tabs::
 
-   1. Add your Zammad FQDN in Internet Options
-      under **Security > Local Intranet > Sites > Advanced**.
-   2. Select “Require server verification (https:) for all sites in this zone”.
-   3. Under **Security level for this zone > Custom level... > Settings >
-      User Authentication > Logon**,
-      select “Automatic logon only in Intranet Zone”.
+   .. tab:: IE / Edge / Chromium
 
-   .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_internet-options.gif
-      :align: center
-      :alt: Adding Zammad as a single sign-on site in Windows Internet options
+      .. tip:: This setting can be centrally managed across the entire intranet
+         using a **group policy object** (GPO).
 
-Firefox
-   .. note:: This option cannot be centrally managed
-      because it is set in the browser rather than Windows Settings.
+      1. Add your Zammad FQDN in Internet Options
+         under **Security > Local Intranet > Sites > Advanced**.
+      2. Select “Require server verification (https:) for all sites in this zone”.
+      3. Under **Security level for this zone > Custom level... > Settings >
+         User Authentication > Logon**,
+         select “Automatic logon only in Intranet Zone”.
 
-   1. Enter ``about:config`` in the address bar.
-      Click **Accept the risk and continue**.
-   2. Search for the ``network.negotiate-auth.trusted-uris`` option.
-   3. Double-click to edit, then add your Zammad FQDN.
-   4. Restart Firefox to apply your changes.
+      .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_internet-options.gif
+         :align: center
+         :alt: Adding Zammad as a single sign-on site in Windows Internet options
 
-   .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_firefox.gif
-      :align: center
-      :alt: Adding Zammad as a single sign-on site in the Firefox about:config menu
+   .. tab:: Firefox
+   
+      .. note:: This option cannot be centrally managed
+         because it is set in the browser rather than Windows Settings.
 
-      Enter ``about:config`` in the address bar to access advanced settings in Firefox.
+      1. Enter ``about:config`` in the address bar.
+         Click **Accept the risk and continue**.
+      2. Search for the ``network.negotiate-auth.trusted-uris`` option.
+      3. Double-click to edit, then add your Zammad FQDN.
+      4. Restart Firefox to apply your changes.
+
+      .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_firefox.gif
+         :align: center
+         :alt: Adding Zammad as a single sign-on site in the Firefox about:config menu
+
+         Enter ``about:config`` in the address bar to access advanced 
+         settings in Firefox.
 
 Troubleshooting
 ---------------
