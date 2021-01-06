@@ -2,8 +2,8 @@ Next steps
 ==========
 
 With this Zammad technically is ready to go. 
-However, you'll need to follow the following further steps to access Zammads Web-UI 
-and getting started with it.
+However, you'll need to follow the following further steps to access 
+Zammads Web-UI and getting started with it.
 
    #. :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
    #. :doc:`/getting-started/configure-webserver`

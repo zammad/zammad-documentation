@@ -1,8 +1,9 @@
 Setup Elasticsearch
 -------------------
 
-Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
-Please take a look at the following page: :doc:`/install/elasticsearch`.
+Elasticsearch is a dependency of Zammad and needs to be provided before 
+installing Zammad. Please take a look at the following page: 
+:doc:`/install/elasticsearch`.
 
 Ensure correct locale
 ---------------------
@@ -19,7 +20,7 @@ For Zammad to function correctly, your system has to use the correct locales.
 
          $ locale |grep "LANG="
 
-      If above does not return ``<lang_code>.UTF-8`` you can correct this issue as follows.
+      .. include:: /install/includes/include-utf-8-clause.rst
 
       .. code-block:: sh
 
@@ -35,7 +36,7 @@ For Zammad to function correctly, your system has to use the correct locales.
 
          $ locale |grep "LANG="
 
-      If above does not return ``<lang_code>.utf8`` you can correct this issue as follows.
+      .. include:: /install/includes/include-utf-8-clause.rst
 
       .. code-block:: sh
 
@@ -49,14 +50,16 @@ For Zammad to function correctly, your system has to use the correct locales.
 
          $ localectl status |grep "LC_CTYPE"
 
-      If above does not return ``<lang_code>.UTF-8`` you can correct this issue as follows.
+      .. include:: /install/includes/include-utf-8-clause.rst
 
       .. code-block:: sh
 
          $ localectl set-locale LC_CTYPE=en_US.UTF-8
 
-      .. hint:: By default OpenSUSE uses ``POSIX`` as ``LANG`` value for the root user. Learn more about this 
-         within the `OpenSUSE documentation 
+      .. hint:: 
+
+         By default OpenSUSE uses ``POSIX`` as ``LANG`` value for the root 
+         user. Learn more about this within the `OpenSUSE documentation 
          <https://doc.opensuse.org/documentation/leap/startup/html/book-opensuse-startup/cha-yast-lang.html#pro-yast-lang-additional>`_.
 
          This does not affect other users and thus can be ignored.

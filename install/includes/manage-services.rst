@@ -1,7 +1,8 @@
 Manage services of Zammad
 =========================
 
-In general Zammad uses three services - these can be (re)started & stopped with the parent ``zammad``.
+In general Zammad uses three services - these can be (re)started & stopped 
+with the parent ``zammad``.
 
 .. code-block:: sh
 
