@@ -6,7 +6,8 @@ If you want to install Zammad, you need the following software.
 1. Ruby Programming Language
 ============================
 
-| Zammad requires Ruby. All required rubygems like ruby on rails are listed in the Gemfile.
+| Zammad requires Ruby. All required rubygems like ruby on rails are listed in 
+  the Gemfile.
 | The following Ruby version is supported:
 | ``Ruby 2.6.6``
 
@@ -29,8 +30,8 @@ Below you can find all distributions Zammad provides packages for.
    :widths: 20, 20
 
    "CentOS", "7 & 8"
-   "Debian", "9 & 19"
-   "OpenSuSE / SLES", "Leap 42.3; 12"
+   "Debian", "9 & 10"
+   "OpenSuSE / SLES", "Leap 42.3 / 12"
    "Ubuntu", "16.04, 18.04 & 20.04"
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
@@ -39,8 +40,9 @@ Below you can find all distributions Zammad provides packages for.
    For this you can either use :doc:`Docker-Compose </install/docker-compose>` 
    or :doc:`Source </install/source>` installation.
 
-   We try to provide all current distributions that are supported by `Packager.io <https://packager.io/>`_. 
-   This means that we can't always provide support for your favorite system.
+   We try to provide all current distributions that are supported by 
+   `Packager.io <https://packager.io/>`_. This means that we can't always 
+   provide support for your favorite system.
 
 .. _package_dependencies:
 
@@ -48,7 +50,8 @@ Below you can find all distributions Zammad provides packages for.
 =======================
 
 The below dependencies need to be installed on your system.
-If you're using the package install, the packages below will automatically installed with the Zammad-Package.
+If you're using the package install, the packages below will automatically 
+installed with the Zammad-Package.
 
 .. code-block:: sh
 
@@ -65,12 +68,13 @@ If you're using the package install, the packages below will automatically insta
 .. note:: 
 
    | ``libimlib2-dev`` **or** ``imlib2-devel`` are no longer required. 
-   | *However:* If you have to use ``bundle install`` for e.g. custom Gems or development, you'll need to install it!
+   | *However:* If you have to use ``bundle install`` for e.g. custom Gems or 
+     development, you'll need to install it!
 
 4. Database Server
 ==================
 
-Zammad will store all content in an RDBMS.
+Zammad will store all content in a Database.
 You can choose between the following database servers:
 
 * MySQL 5.6+
@@ -79,20 +83,23 @@ You can choose between the following database servers:
 
 .. note:: 
 
-   We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
+   We tend to recommend PostgreSQL. For the last 10 years we had the best 
+   experience with it.
 
    **Zammad requires UTF-8 for its database.**
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 
    * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
-   * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
+   * Set ``max_allowed_packet`` to a value larger than the default of 4 MB 
+     (64 MB+ recommended).
 
 5. Reverse Proxy
 ================
 
-In a typical web environment today, you use a reverse proxy to deliver the static content of your application.
-Only the "expensive" app required HTTP requests are forwarded to the application server.
+In a typical web environment today, you use a reverse proxy to deliver the 
+static content of your application. Only the "expensive" app required HTTP 
+requests are forwarded to the application server.
 
 The following reverse proxies are supported:
 
@@ -103,14 +110,16 @@ The following reverse proxies are supported:
 ===========================
 
 Zammad uses Elasticsearch to
-1) make search faster and
-2) support advanced features like reports
-or searching by email attachment contents.
-This becomes increasingly important
-as the number of tickets in your system gets larger and larger.
+
+   1) make search faster
+   2) support advanced features like reports
+   3) searching by email attachment contents
+
+This becomes increasingly important as the number of tickets in your system 
+gets larger and larger.
 
 This dependency is optional but strongly recommended;
-Zammad will work without it,
+Zammad will work without it, 
 but search performance will be degraded, and some features will be disabled.
 
 .. hint:: 📦 **If you install Zammad via package manager...**
@@ -120,8 +129,11 @@ but search performance will be degraded, and some features will be disabled.
    (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
    check your package manager’s manpage to find out.
 
-.. warning:: Please note that if you do not install and use Elasticsearch, the search will be very limited!
-   We recommend using Elasticsearch, as it will boost the usage of Zammad greatly!
+.. warning:: 
+
+   Please note that if you do not install and use Elasticsearch, the search 
+   will be very limited! We recommend using Elasticsearch, as it will boost the 
+   usage of Zammad greatly!
 
 
 .. csv-table:: Zammad/Elasticsearch version compatibility
