@@ -3,13 +3,19 @@ Set up Elasticsearch
 
 Zammad's search function is powered by Elasticsearch, and requires one of:
 
-* Elasticsearch 5.5 (with the `mapper attachments plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/mapper-attachments.html>`_)
-* Elasticsearch 5.6 or above (with the `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/ingest-attachment.html>`_)
+* Elasticsearch 5.5 (with the 
+  `mapper attachments plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/mapper-attachments.html>`_)
+* Elasticsearch 5.6 or above (with the 
+  `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/ingest-attachment.html>`_)
 
-.. warning:: Versions below 5.5 may continue to work for the time being,
+.. warning:: 
+
+   Versions below 5.5 may continue to work for the time being,
    but are officially deprecated. Support will be dropped in upcoming releases.
 
-.. note:: This guide uses the ``zammad run`` command prefix in command line examples.
+.. note:: 
+
+   This guide uses the ``zammad run`` command prefix in command line examples.
    This prefix is only applicable to package installations
    (*i.e.,* via apt/yum/zypper, or ``.deb``/``.rpm`` files).
 
@@ -77,10 +83,12 @@ Step 1: Installation
 
    .. tab:: Direct Download
 
-      Find the latest release on the `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
-      or see the `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
-      for in-depth instructions. 
-      Ensure to also install the fitting (and mandatory!) attachment plugin for elasticsearch.
+      Find the latest release on the 
+      `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
+      or see the 
+      `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
+      for in-depth instructions. Ensure to also install the fitting 
+      (and mandatory!) attachment plugin for elasticsearch.
 
       .. code-block:: sh
 
@@ -91,7 +99,8 @@ Step 1: Installation
          # Increase the virtual memory map limit
          $ sudo sysctl -w vm.max_map_count=262144
 
-After you installed Elasticsearch and its attachment plugin, ensure to enable it by default and start it.
+After you installed Elasticsearch and its attachment plugin, 
+ensure to enable it by default and start it.
 
 .. code-block:: sh
    
@@ -106,7 +115,8 @@ After you installed Elasticsearch and its attachment plugin, ensure to enable it
 Step 2: Suggested Configuration
 ===============================
 
-We use the following settings to optimize the performance of our Elasticsearch servers. Your mileage may vary.
+We use the following settings to optimize the performance of our Elasticsearch 
+servers. Your mileage may vary.
 
 .. code-block:: sh
 
@@ -140,7 +150,8 @@ Step 3: Connect Zammad
 
 .. hint:: **🤓 Before proceeding here...**
 
-   Make sure to install Zammad before running below commands, as this will fail other wise.
+   Make sure to install Zammad before running below commands, as this will 
+   fail other wise.
 
       * install from :doc:`package <package>`
       * install from :doc:`source <source>`
@@ -170,7 +181,8 @@ Optional settings
 
          For HTTP Basic auth, try `this nginx reverse proxy config <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
 
-         Elasticsearch also supports authentication via its `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
+         Elasticsearch also supports authentication via its 
+         `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
          Consult the official Elasticsearch guides for more details.
 
    .. tab:: Index namespacing
@@ -192,7 +204,8 @@ Optional settings
       .. code-block:: sh
 
          # Files with these extensions will not be indexed
-         $ zammad run rails r "Setting.set('es_attachment_ignore', [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
+         $ zammad run rails r "Setting.set('es_attachment_ignore',\ 
+           [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
          # Files larger than this size (in MB) will not be indexed
          $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
