@@ -8,8 +8,9 @@ Install from source
 
 .. note::
 
-   The source installation is the most difficult installation type of Zammad. If you're 
-   not too experienced with Linux and all that, you may want to use another installation type:
+   The source installation is the most difficult installation type of Zammad. 
+   If you're not too experienced with Linux and all that, you may want to use 
+   another installation type:
 
       * :doc:`/install/package`
       * :doc:`/install/docker-compose`
@@ -48,7 +49,8 @@ Step 1: Get the source
 
 .. note::
 
-   Not all distributions ship ``wget`` by default, you may need to install it manually.
+   Not all distributions ship ``wget`` by default, you may need to 
+   install it manually.
 
 Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
 or find the initial version at https://ftp.zammad.com.
@@ -65,8 +67,8 @@ Step 2: Install dependencies
 ----------------------------
 
 ..
-   About this section: The RCM installation part uses definition list instead of field lists 
-   intentionally. It's supposed to safe width for better readability.
+   About this section: The RCM installation part uses definition list instead 
+   of field lists intentionally. It's supposed to safe width for better readability.
 
 .. note:: 
 
@@ -74,8 +76,9 @@ Step 2: Install dependencies
    | We do cover important web server related stuff within :doc:`/getting-started/configure-webserver`.
 
 
-Zammad requires specific ruby versions. Adapt the commands below if you install older versions. 
-A list of required versions can be found on the :doc:`Software requirements </prerequisites/software>` page.
+Zammad requires specific ruby versions. Adapt the commands below if you install 
+older versions. A list of required versions can be found on the 
+:doc:`Software requirements </prerequisites/software>` page.
 
 .. note::
 
@@ -163,7 +166,8 @@ A list of required versions can be found on the :doc:`Software requirements </pr
    .. tab:: other
 
       Other systems than above mentioned are out of scope of this documentation. 
-      Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how to install rvm on your system. 
+      Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how 
+      to install rvm on your system. 
 
       After that install the specific required ruby version.
 
@@ -238,16 +242,18 @@ Step 3: Configure database settings
 
    **🤓 For easiest usage ...**
 
-   If you provide your Zammad user with database creation permission, you can run the 
-   step 4 without adjustment. If you don't want that, you'll have to create the database manually.
+   If you provide your Zammad user with database creation permission, you can 
+   run the step 4 without adjustment. If you don't want that, you'll have to 
+   create the database manually.
 
 .. code-block:: sh
 
    $ cp config/database/database.yml config/database.yml
    $ vi config/database.yml
 
-Here's a sample configuration to give you an idea on how your configuration file could look like. 
-Please also have a look at :doc:`/appendix/configure-database-server` for deeper details.
+Here's a sample configuration to give you an idea on how your configuration 
+file could look like. Please also have a look at 
+:doc:`/appendix/configure-database-server` for deeper details.
 
 .. tabs::
 
@@ -266,7 +272,8 @@ Please also have a look at :doc:`/appendix/configure-database-server` for deeper
 
       .. hint:: 
 
-         You can remove the ``password`` line if you enable socket based authentication!
+         You can remove the ``password`` line if you enable socket based 
+         authentication!
 
    .. tab:: MySQL / MariaDB
 
@@ -283,8 +290,8 @@ Please also have a look at :doc:`/appendix/configure-database-server` for deeper
 
    .. hint:: 
 
-      If you want to use an existing database server that's not on the same machine, you 
-      can also use ``host`` and ``port`` to set that up.
+      If you want to use an existing database server that's not on the same 
+      machine, you can also use ``host`` and ``port`` to set that up.
 
 Step 4: Initialize your database
 --------------------------------
@@ -296,7 +303,7 @@ Step 4: Initialize your database
 .. code-block:: sh
 
    $ su - zammad
-   $ rake db:create         # SKIP IF you already created zammads database (see tip of step 3)
+   $ rake db:create      # SKIP IF you already created zammads database (see tip of step 3)
    $ rake db:migrate
    $ rake db:seed
 
@@ -323,7 +330,9 @@ You can start all services by hand or use systemd to start / stop Zammad.
 
    .. tab:: the manual way
 
-      .. note:: This method is not suitable for production use - you should avoid it.
+      .. note:: 
+
+        This method is not suitable for production use - you should avoid it.
 
       .. code-block:: sh
 

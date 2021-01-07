@@ -31,9 +31,12 @@ some operating systems may require additional packages if not already installed.
 Add Repository and install Zammad
 =================================
 
-.. hint:: If you want to use MySQL instead of PostgreSQL, it's usually enough to have the MySQL server 
-   installed on your system already. Some installation managers can't differentiate and still install Zammad 
-   with PostgreSQL. In that case, you'll have to adapt manually (out of scope of this documentation).
+.. hint:: 
+
+   If you want to use MySQL instead of PostgreSQL, it's usually enough to have 
+   the MySQL server installed on your system already. Some installation 
+   managers can't differentiate and still install Zammad with PostgreSQL. In 
+   that case, you'll have to adapt manually (out of scope of this documentation).
 
 Add Repository
    .. tabs::
@@ -130,8 +133,9 @@ Install Zammad
 
             $ sudo yum install zammad
 
-         Due to a `issue <https://github.com/crohr/pkgr/issues/165>`_ with packager.io 
-         on CentOS 8 you'll need to correct file permissions for public files.
+         Due to a `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
+         packager.io on CentOS 8 you'll need to correct file permissions for 
+         public files.
 
          .. code-block:: sh
 
