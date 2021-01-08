@@ -370,6 +370,16 @@ Adjusting the webserver configuration
 **If you just installed Zammad, you'll be greeted by our getting started 
 wizard. 🙌** You now can continue with :doc:`first-steps`.
 
+   .. hint::
+
+      **You're not seeing Zammads page but a default landing page of your OS?**
+
+      Ensure that you did restart your webserver - also check if 
+      ``000-default.conf`` or ``default.conf`` in your vhost directory 
+      possibly overrules your configuration.
+
+      Sometimes this is also a DNS resolving issue.
+
 .. figure:: /images/install/getting-started-wizard.png
    :alt: Getting started wizard after installing Zammad
    :width: 80%
