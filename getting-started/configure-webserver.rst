@@ -12,6 +12,10 @@ install a configuration file to your nginx for you.
    The Zammad installation will not automatically set any host- or server name
    for you.
 
+   | **Docker Compose / Kubernetes users**
+   | Please also note the environment information on 
+     :doc:`this page </install/docker-compose/environment>`
+
 Get a ssl certificate (recommended)
 -----------------------------------
 
@@ -379,6 +383,8 @@ wizard. 🙌** You now can continue with :doc:`first-steps`.
       possibly overrules your configuration.
 
       Sometimes this is also a DNS resolving issue.
+
+   .. include:: /getting-started/include-csrf-hints.rst
 
 .. figure:: /images/install/getting-started-wizard.png
    :alt: Getting started wizard after installing Zammad

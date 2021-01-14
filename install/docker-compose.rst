@@ -1,97 +1,90 @@
-Install with Docker-Compose
+Install with Docker Compose
 ***************************
 
-.. warning:: We currently do not support Docker environments in productive use. If you run Zammad on docker, it is fine. But we just support the application!
+.. warning:: 
 
-Docker is a container-based software framework for automating deployment of applications. Compose is a tool for defining and running multi-container Docker applications.
-This repo is meant to be the starting point for somebody who likes to use dockerized multi-container Zammad in production.
-The Zammad Docker image uses the stable branch of Zammad's Git repo.
+   We currently do not support Docker environments in productive use. 
+   If you run Zammad on docker, it is fine. But we just support the application!
+
+.. note::
+
+   Docker Compose environments require deeper system know how. 
+   If you're not too familiar with Docker and the way it works, you may want 
+   to stick with :doc:`the package installation </install/package/>` instead.
+
+Docker is a container-based software framework for automating deployment of 
+applications. Compose is a tool for defining and running multi-container Docker 
+applications.
+
+This repo is meant to be the starting point for somebody who likes to use 
+dockerized multi-container Zammad in production. The Zammad Docker image uses 
+the stable branch of Zammad's Git repo.
 
 The Docker images are hosted on `Dockerhub <https://hub.docker.com/r/zammad/zammad-docker-compose/>`_.
 
-.. tip:: Never use the "latest" tag. Use a tag which has a version attached.
+.. warning:: 
 
-You need at least 4 GB of RAM to run the containers.
+   Never use the ``latest`` tag. Use a tag which has a version attached.
+
+   You need at least 4 GB of RAM to run the containers.
 
 Install Docker Environment
 ==========================
 
-Your Docker environment needs to be up and running and you need to have docker-compose installed.
+This documentation expects you already have a working Docker Compose 
+environment. You can find the required documentations for these steps below:
 
-Docker
-------
-
-* https://docs.docker.com/engine/installation/
-
-Docker-Compose
---------------
-
-* https://docs.docker.com/compose/install/
-
+   * `Docker Engine <https://docs.docker.com/engine/installation/>`_
+   * `Docker Compose <https://docs.docker.com/compose/install/>`_
 
 Getting started with zammad-docker-compose
 ==========================================
 
-Clone GitHub repo
------------------
+.. toctree::
+   :hidden:
+   :maxdepth: 1
 
-* git clone https://github.com/zammad/zammad-docker-compose.git
-* cd zammad-docker-compose
+   /install/docker-compose/environment
 
-Setting vm.max_map_count for Elasticsearch
-------------------------------------------
+Step 1: Clone GitHub repo
+-------------------------
 
-* sysctl -w vm.max_map_count=262144
+.. code-block:: sh
 
-.. tip:: For Mac OS: https://github.com/zammad/zammad-docker/issues/27#issuecomment-455171752
+   $ git clone https://github.com/zammad/zammad-docker-compose.git
+   $ cd zammad-docker-compose
 
+Step 2: Setting vm.max_map_count for Elasticsearch
+--------------------------------------------------
 
-Start Zammad using DockerHub images
------------------------------------
+.. code-block:: sh
 
-* docker-compose up
+   $ sysctl -w vm.max_map_count=262144
 
+.. tip:: 
 
-Go to http://localhost and you'll see:
-======================================
+   Mac OS users please also have a look on 
+   `Issue 27 <https://github.com/zammad/zammad-docker/issues/27#issuecomment-455171752>`_
 
-* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
+Step 3: Adjust Environment as needed
+------------------------------------
 
+In some cases our default environment is not what a docker-compose user is 
+looking for. To remove complexity from this page, we outsourced information on 
+this topic.
 
-Maintenance
-===========
+See :doc:`/install/docker-compose/environment`
 
-Updating Zammad
----------------
+Step 4: Start Zammad using DockerHub images
+-------------------------------------------
 
-.. warning:: ⚠️ **Updates may require extra steps or introduce breaking changes.**
+.. warning::
+   
+   Before starting your containers ensure to not use default login data for 
+   your Zammad database! See Step 3!
 
-   Always check the `upgrade notes
-   <https://github.com/zammad/zammad-docker-compose#upgrading>`_ first.
+.. code-block:: sh
 
-* docker-compose stop
-* git pull
-* docker-compose pull
-* docker-compose up
+   $ docker-compose up
 
-
-Start Zammad building Docker images locally with development branch
--------------------------------------------------------------------
-
-* GIT_BRANCH=develop docker-compose -f docker-compose-build.yml up
-
-Recreate locally built images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-* GIT_BRANCH=develop docker-compose -f docker-compose-build.yml build --no-cache
-
-
-Open shell in running Zammad image
-----------------------------------
-
-* docker-compose exec zammad /bin/bash
-
-Port compatibility error
-------------------------
-
-* The nginx container may have compatibility problems with other machines or services pointing to port 0.0.0.0:80. So to fix this, we'll just have to modify the file `docker-compose.override.yml` and select different ports
+.. include:: /install/includes/next-steps.rst

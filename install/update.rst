@@ -167,3 +167,45 @@ If, for whatever reason, you need to rebuild your search index after upgrading, 
       $ systemctl stop zammad
       $ zammad run rake searchindex:rebuild
       $ systemctl start zammad
+
+Docker-Compose
+==============
+
+Updating Zammad
+---------------
+
+.. warning:: 
+
+   ⚠️ **Updates may require extra steps or introduce breaking changes.**
+
+   Always check the `upgrade notes
+   <https://github.com/zammad/zammad-docker-compose#upgrading>`_ first.
+
+.. code-block:: sh
+
+   $ docker-compose stop
+   $ git pull
+   $ docker-compose pull
+   $ docker-compose up
+
+
+Start Zammad building Docker images locally with development branch
+-------------------------------------------------------------------
+
+* GIT_BRANCH=develop docker-compose -f docker-compose-build.yml up
+
+Recreate locally built images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* GIT_BRANCH=develop docker-compose -f docker-compose-build.yml build --no-cache
+
+
+Open shell in running Zammad image
+----------------------------------
+
+* docker-compose exec zammad /bin/bash
+
+Port compatibility error
+------------------------
+
+* The nginx container may have compatibility problems with other machines or services pointing to port 0.0.0.0:80. So to fix this, we'll just have to modify the file `docker-compose.override.yml` and select different ports
