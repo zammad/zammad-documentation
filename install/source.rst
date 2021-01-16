@@ -79,6 +79,26 @@ older versions. A list of required versions can be found on the
 
 .. tabs::
 
+   .. tab:: Ubuntu
+
+      Install RVM
+         .. code-block:: sh
+
+            $ apt-get update
+            $ apt-get install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
+              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
+              pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3 software-properties-common
+
+            $ sudo apt-add-repository -y ppa:rael-gc/rvm
+            $ sudo apt-get update
+            $ sudo apt-get install rvm
+
+      Set relevant Environment variables
+         .. include:: source/include-environment.rst
+
+      Install Ruby Environment
+         .. include:: source/include-rvm-install-ruby.rst
+  
    .. tab:: Debian
 
       Install RVM
@@ -99,38 +119,18 @@ older versions. A list of required versions can be found on the
       Install Ruby Environment
          .. include:: source/include-rvm-install-ruby.rst
 
-   .. tab:: Ubuntu
+   .. tab:: CentOS
 
       Install RVM
          .. code-block:: sh
 
-            $ apt-get update
-            $ apt-get install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
-              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
-              pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3 software-properties-common
+            $ yum install epel-release
+            $ yum install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel ruby sqlite-devel\
+              zlib-devel glibc-headers glibc-devel openssl-devel git imlib2 imlib2-devel
 
-            $ sudo apt-add-repository -y ppa:rael-gc/rvm
-            $ sudo apt-get update
-            $ sudo apt-get install rvm
-
-      Set relevant Environment variables
-         .. include:: source/include-environment.rst
-
-      Install Ruby Environment
-         .. include:: source/include-rvm-install-ruby.rst
-
-   .. tab:: CentOS
-
-      Install RVM
-        .. code-block:: sh
-
-          $ yum install epel-release
-          $ yum install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel ruby sqlite-devel\
-            zlib-devel glibc-headers glibc-devel openssl-devel git imlib2 imlib2-devel
-
-          $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
-            409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-          $ curl -L https://get.rvm.io | bash -s stable
+            $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
+              409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+            $ curl -L https://get.rvm.io | bash -s stable
 
       Set relevant Environment variables
          .. include:: source/include-environment.rst
@@ -141,14 +141,14 @@ older versions. A list of required versions can be found on the
    .. tab:: OpenSuSE
 
       Install RVM
-        .. code-block:: sh
+         .. code-block:: sh
 
-          $ zypper install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel sqlite3-devel\ 
-            sqlite3 zlib-devel glibc-devel openssl-devel git imlib2 imlib2-devel gdbm-devel libyaml-devel
+            $ zypper install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel sqlite3-devel\ 
+              sqlite3 zlib-devel glibc-devel openssl-devel git imlib2 imlib2-devel gdbm-devel libyaml-devel
 
-          $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
-            409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-          $ curl -L https://get.rvm.io | bash -s stable
+            $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
+              409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+            $ curl -L https://get.rvm.io | bash -s stable
 
       Set relevant Environment variables
          .. include:: source/include-environment.rst
@@ -174,7 +174,7 @@ older versions. A list of required versions can be found on the
       Install PostgreSQL Dependencies
          .. tabs::
 
-            .. tab:: Debian / Ubuntu
+            .. tab:: Ubuntu / Debian
 
                .. code-block:: sh
 
@@ -203,7 +203,7 @@ older versions. A list of required versions can be found on the
       Install MySQL/MariaDB Dependencies
          .. tabs::
 
-            .. tab:: Debian / Ubuntu
+            .. tab:: Ubuntu / Debian
 
                .. code-block:: sh
 
