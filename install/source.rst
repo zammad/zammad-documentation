@@ -52,16 +52,9 @@ Step 1: Get the source
    Not all distributions ship ``wget`` by default, you may need to 
    install it manually.
 
-Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
-or find the initial version at https://ftp.zammad.com.
+.. include:: /install/source/include-get-the-source.rst
 
-.. code-block:: sh
-
-   $ cd /opt
-   $ sudo wget https://ftp.zammad.com/zammad-latest.tar.gz
-   $ sudo tar -xzf zammad-latest.tar.gz -C zammad
-   $ chown -R zammad:zammad zammad/
-   $ rm -f zammad-latest.tar.gz
+.. _source_dependency_installation:
 
 Step 2: Install dependencies
 ----------------------------
