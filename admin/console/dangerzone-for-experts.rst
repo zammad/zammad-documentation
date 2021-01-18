@@ -134,8 +134,6 @@ Reset Zammad installation
    Below commands are incomplete intentionally, error outputs will hint you through! 
    The following operations will cause data loss and for development / testing only.
 
-   Package installations will require you to add ``zammad run`` before the command itself.
-
    Don't forget to stop Zammad before trying to drop the database!
 
 .. code-block:: sh
