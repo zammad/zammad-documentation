@@ -13,6 +13,22 @@ The below command will do a manual fetch of mail channels. This will also show e
    >> Channel.fetch
 
 
+Reprocess unprocessable mails
+-----------------------------
+
+When Zammad encounters a mail it cannot parse (e.g. due to a parser bug or a malformed message), it will store the mail in ``tmp/unprocessable_mail/<ID>.eml``,  give up on attempting to parse the mail, and will warn on the monitoring page that there are unprocessed mails.
+
+To force Zammad to reattempt to parse those mails, run the following command:
+
+.. code-block:: ruby
+
+   >> Channel::EmailParser.process_unprocessable_mails
+
+In case of a malformed message (e.g. an invalid email address in one of the header fields), you may need to manually edit the mail before Zammad can process it.
+
+If Zammad fails to process the message, it will remain in the ``tmp/unprocessable_mail`` folder; otherwise it will be removed after it has been parsed successfully.
+
+
 Add translation
 ---------------
 
