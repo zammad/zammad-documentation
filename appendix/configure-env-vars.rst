@@ -19,7 +19,7 @@ Use these environment variables to configure Zammad’s behavior at runtime.
       $ systemctl restart zammad
 
       # unset OPTION
-      $ zammad config:set OPTION=
+      $ zammad config:unset OPTION
       $ systemctl restart zammad
 
    To learn more, do some googling on environment variables
