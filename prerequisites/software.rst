@@ -56,7 +56,7 @@ installed with the Zammad-Package.
 .. code-block:: sh
 
    # Debian 9 & 10, Ubuntu 16.04, 18.04 & 20.04
-   $ apt-get install libimlib2
+   $ apt install libimlib2
 
    # openSUSE
    $ zypper install imlib2

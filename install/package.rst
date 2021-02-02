@@ -1,7 +1,12 @@
 Install from package
 ********************
 
-.. note:: Please ensure to meet Zammads :doc:`/prerequisites/software` requirements before hand.
+.. note:: 
+
+   | Please ensure to meet Zammads :doc:`/prerequisites/software` requirements 
+     before hand.
+   | This page expects administrative permissions, this is why ``sudo`` is 
+     not used.
 
 Prerequisites
 =============
@@ -46,44 +51,44 @@ Add Repository
          Install Repository Key
             .. code-block:: sh
 
-               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | apt-key add -
 
-         Ubuntu 16.04
-            .. code-block:: sh
+            Ubuntu 16.04
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/apt/sources.list.d/zammad.list \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
+                  $ wget -O /etc/apt/sources.list.d/zammad.list \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
 
-         Ubuntu 18.04
-            .. code-block:: sh
+            Ubuntu 18.04
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/apt/sources.list.d/zammad.list \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
+                  $ wget -O /etc/apt/sources.list.d/zammad.list \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
 
-         Ubuntu 20.04
-            .. code-block:: sh
+            Ubuntu 20.04
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/apt/sources.list.d/zammad.list \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/20.04.repo
+                  $ wget -O /etc/apt/sources.list.d/zammad.list \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/20.04.repo
 
       .. tab:: Debian
 
          Install Repository Key
             .. code-block:: sh
 
-               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | sudo apt-key add -
+               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | apt-key add -
 
-         Debian 9
-            .. code-block:: sh
+            Debian 9
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/apt/sources.list.d/zammad.list \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
+                  $ wget -O /etc/apt/sources.list.d/zammad.list \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
 
-         Debian 10
-            .. code-block:: sh
+            Debian 10
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/apt/sources.list.d/zammad.list \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/10.repo
+                  $ wget -O /etc/apt/sources.list.d/zammad.list \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/10.repo
 
       .. tab:: CentOS
 
@@ -92,17 +97,17 @@ Add Repository
 
                $ rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
-         RHEL 7 / CentOS 7
-            .. code-block:: sh
+            RHEL 7 / CentOS 7
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/yum.repos.d/zammad.repo \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
+                  $ wget -O /etc/yum.repos.d/zammad.repo \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
 
-         RHEL 8 / CentOS 8
-            .. code-block:: sh
+            RHEL 8 / CentOS 8
+               .. code-block:: sh
 
-               $ sudo wget -O /etc/yum.repos.d/zammad.repo \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
+                  $ wget -O /etc/yum.repos.d/zammad.repo \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
 
       .. tab:: OpenSUSE / SLES
 
@@ -114,7 +119,7 @@ Add Repository
          SLES 12 / openSUSE 42.x
             .. code-block:: sh
 
-               $ sudo wget -O /etc/zypp/repos.d/zammad.repo \
+               $ wget -O /etc/zypp/repos.d/zammad.repo \
                https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/12.repo
 
 Install Zammad
@@ -124,14 +129,14 @@ Install Zammad
 
          .. code-block:: sh
 
-            $ sudo apt-get update
-            $ sudo apt-get install zammad
+            $ apt update
+            $ apt install zammad
 
       .. tab:: CentOS
 
          .. code-block:: sh
 
-            $ sudo yum install zammad
+            $ yum install zammad
 
          Due to a `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
          packager.io on CentOS 8 you'll need to correct file permissions for 
@@ -146,8 +151,8 @@ Install Zammad
 
          .. code-block:: sh
          
-            $ sudo zypper ref
-            $ sudo zypper install zammad
+            $ zypper ref
+            $ zypper install zammad
 
 .. include:: /install/includes/firewall-and-selinux.rst
 

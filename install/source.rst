@@ -15,6 +15,10 @@ Install from source
       * :doc:`/install/package`
       * :doc:`/install/docker-compose`
 
+   | **Administrative note**
+   | Please note that we only use ``sudo`` after direct user changes. 
+     In all other situations you can expect ``root`` being in charge.
+
 .. hint::
 
    **🔎 Looking for MacOS hints?**
@@ -38,8 +42,8 @@ Add user
 
 .. code-block:: sh
 
-   $ sudo useradd zammad -m -d /opt/zammad -s /bin/bash
-   $ sudo groupadd zammad
+   $ useradd zammad -m -d /opt/zammad -s /bin/bash
+   $ groupadd zammad
 
 Installation
 ============
@@ -73,10 +77,6 @@ Zammad requires specific ruby versions. Adapt the commands below if you install
 older versions. A list of required versions can be found on the 
 :doc:`Software requirements </prerequisites/software>` page.
 
-.. note::
-
-   Run below commands as ``root``.
-
 .. tabs::
 
    .. tab:: Ubuntu
@@ -84,14 +84,14 @@ older versions. A list of required versions can be found on the
       Install RVM
          .. code-block:: sh
 
-            $ apt-get update
-            $ apt-get install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
+            $ apt update
+            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3 software-properties-common
 
-            $ sudo apt-add-repository -y ppa:rael-gc/rvm
-            $ sudo apt-get update
-            $ sudo apt-get install rvm
+            $ apt-add-repository -y ppa:rael-gc/rvm
+            $ apt update
+            $ apt install rvm
 
       Set relevant Environment variables
          .. include:: source/include-environment.rst
@@ -104,8 +104,8 @@ older versions. A list of required versions can be found on the
       Install RVM
          .. code-block:: sh
 
-            $ apt-get update
-            $ apt-get install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
+            $ apt update
+            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3
 
@@ -178,19 +178,19 @@ older versions. A list of required versions can be found on the
 
                .. code-block:: sh
 
-                  $ sudo apt install libpq-dev
+                  $ apt install libpq-dev
 
             .. tab:: CentOS
 
                .. code-block:: sh
 
-                  $ sudo yum install postgresql-libs postgresql-devel
+                  $ yum install postgresql-libs postgresql-devel
 
             .. tab:: OpenSuSE
 
                .. code-block:: sh
 
-                  $ sudo zypper install postgresql-devel
+                  $ zypper install postgresql-devel
 
       Install Gems for Zammad
          .. code-block:: sh
@@ -207,19 +207,19 @@ older versions. A list of required versions can be found on the
 
                .. code-block:: sh
 
-                  $ sudo apt install libmariadb-dev
+                  $ apt install libmariadb-dev
 
             .. tab:: CentOS
 
                .. code-block:: sh
 
-                  $ sudo yum install mariadb-devel
+                  $ yum install mariadb-devel
 
             .. tab:: OpenSuSE
 
                .. code-block:: sh
 
-                  $ sudo zypper install libmariadb-devel
+                  $ zypper install libmariadb-devel
 
 
       Install Gems for Zammad
@@ -310,6 +310,10 @@ Step 5: Pre compile all Zammad assets
 Step 6: Start Zammad or install as service
 ------------------------------------------
 
+.. note::
+
+   Run the following commands as ``root``.
+
 You can start all services by hand or use systemd to start / stop Zammad.
 
 .. tabs::
@@ -319,7 +323,7 @@ You can start all services by hand or use systemd to start / stop Zammad.
       .. code-block:: sh
 
          $ cd /opt/zammad/script/systemd
-         $ sudo ./install-zammad-systemd-services.sh
+         $ ./install-zammad-systemd-services.sh
 
    .. tab:: the manual way
 

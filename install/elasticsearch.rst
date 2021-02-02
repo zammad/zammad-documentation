@@ -31,23 +31,23 @@ Step 1: Installation
 
       ::
 
-         $ apt-get install apt-transport-https sudo wget
-         $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-         $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-         $ apt-get update
-         $ apt-get install elasticsearch
-         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+         $ apt install apt-transport-https sudo wget
+         $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
+         $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+         $ apt update
+         $ apt install elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: Debian
 
       ::
 
-         $ apt-get install apt-transport-https sudo wget
-         $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-         $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-         $ apt-get update
-         $ apt-get install elasticsearch
-         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+         $ apt install apt-transport-https sudo wget
+         $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
+         $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+         $ apt update
+         $ apt install elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: CentOS
 
@@ -61,9 +61,9 @@ Step 1: Installation
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
          enabled=1
          autorefresh=1
-         type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
-         $ sudo yum install -y elasticsearch
-         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+         type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
+         $ yum install -y elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: OpenSUSE
 
@@ -77,9 +77,9 @@ Step 1: Installation
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
          enabled=1
          autorefresh=1
-         type=rpm-md"| sudo tee /etc/zypp/repos.d/elasticsearch-7.x.repo
-         $ sudo zypper install elasticsearch
-         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+         type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
+         $ zypper install elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: Direct Download
 
@@ -93,11 +93,11 @@ Step 1: Installation
       .. code-block:: sh
 
          # Install the attachment plugin
-         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
-         $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
 
          # Increase the virtual memory map limit
-         $ sudo sysctl -w vm.max_map_count=262144
+         $ sysctl -w vm.max_map_count=262144
 
 After you installed Elasticsearch and its attachment plugin, 
 ensure to enable it by default and start it.

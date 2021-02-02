@@ -27,14 +27,14 @@ Updating Zammad
 
                .. code-block:: sh
 
-                  $ apt-get update
-                  $ apt-get upgrade
+                  $ apt update
+                  $ apt upgrade
 
             .. tab:: CentOS
 
                .. code-block:: sh
 
-                  $ sudo yum update zammad
+                  $ yum update zammad
 
             .. tab:: OpenSUSE / SLES
 

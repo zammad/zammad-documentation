@@ -24,9 +24,9 @@ For Zammad to function correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ sudo apt-get install locales
-         $ sudo locale-gen en_US.UTF-8
-         $ sudo echo "LANG=en_US.UTF-8" > /etc/default/locale
+         $ apt install locales
+         $ locale-gen en_US.UTF-8
+         $ echo "LANG=en_US.UTF-8" > /etc/default/locale
 
    .. tab:: CentOS
 

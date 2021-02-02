@@ -1,7 +1,7 @@
 .. code-block:: sh
 
    # Add zammad user to RVM group
-   $ sudo usermod -a -G rvm zammad
+   $ usermod -a -G rvm zammad
    
    # Install Ruby 2.6.6
    $ su - zammad
