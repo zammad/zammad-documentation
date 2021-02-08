@@ -37,7 +37,8 @@ Zammad supports the following three events (newCall, hangup and answer) in versi
 | user[]      | The user(s) realname involved. It is the name of the calling user when direction is      |
 |             | "out", or of the users receiving the call when direction is "in". Group calls may be     |
 |             | received by multiple users. In that case a "user[]" parameter is set for each of these   |
-|             | users. It is always "user[]" (not "user"), even if only one user is involved.            |
+|             | users. It is always "user[]" (not "user") when using mutlipart/form-data, even if only   |
+|             | one user is involved. For application/json requests, one should use "user".              |
 +-------------+------------------------------------------------------------------------------------------+
 | queue       | The queue name (e. g. helpdesk). This field is optional.                                 |
 +-------------+------------------------------------------------------------------------------------------+
