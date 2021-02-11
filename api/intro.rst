@@ -32,7 +32,7 @@ Zammad supports three different authentication methods for API.
 HTTP Basic Authentication (username/password)
 ---------------------------------------------
 
-The username/password must be provided as HTTP header in the HTTP call. The Zammad admin can enable/disable the authentication method in the admin interface. Read more about HTTP basic authentication [here](https://en.wikipedia.org/wiki/Basic_access_authentication).
+The username/password must be provided as HTTP header in the HTTP call. The Zammad admin can enable/disable the authentication method in the admin interface. Read more about `HTTP basic authentication on Wikipedia <https://en.wikipedia.org/wiki/Basic_access_authentication>`_.
 
 .. code-block:: sh
 
