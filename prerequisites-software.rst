@@ -28,7 +28,7 @@ Debian 8 & 9, Ubuntu 16.04 & 18.04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
-  
+
   apt-get install libimlib2 libimlib2-dev
 
 
@@ -36,7 +36,7 @@ OpenSuSe
 ^^^^^^^^
 
 ::
-  
+
   zypper install imlib2 imlib2-devel
 
 
@@ -44,8 +44,19 @@ CentOS 7
 ^^^^^^^^
 
 ::
-  
+
   yum install imlib2 imlib2-devel
+
+
+MacOS
+^^^^^
+
+* Install via Homebrew
+
+::
+
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ brew install imlib2
 
 
 3. Database Server
@@ -61,7 +72,7 @@ You can choose between the following products:
 .. Note:: We tend to recommend PostgreSQL. For the last 10 years we had the best experience with it.
 
 .. Warning:: **Required configuration for MySQL/MariaDB:**
-  
+
   * Use UTF8 encoding. utf8mb4 for example will fail.
   * Set ``max_allowed_packet`` to a value larger than the default of 4 MB (64 MB+ recommended).
 

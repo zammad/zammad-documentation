@@ -236,19 +236,22 @@ Go to http://localhost and you'll see:
 
 
 
-Install from source (Mac OS 10.8)
-*********************************
+Install from source (Mac OS 10.8+)
+**********************************
 
 Prerequisites
 =============
 
 * Install Xcode from the App Store, open it -> Xcode menu > Preferences > Downloads -> install command line tools
+* Install Ruby Version Manager (RVM) and the required version of Ruby
 
 ::
 
+ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
  curl -L https://get.rvm.io | bash -s stable --ruby
  source ~/.rvm/scripts/rvm
- start new shell -> ruby -v
+ rvm install ruby-2.6.6
+ rvm alias create default 2.6.6
 
 Get Zammad
 ==========
@@ -266,23 +269,12 @@ Install Zammad
 ::
 
  cd zammad-latest
+ cp config/database/database.yml config/database.yml # set your database configuration and credentials
  bundle install
- sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib # if needed!
  rake db:create
  rake db:migrate
  rake db:seed
 
-
-Database connect
-================
-
-::
-
- cd zammad-latest
- cp config/database/database.yml config/database.yml
- rake db:create
- rake db:migrate
- rake db:seed
 
 Start Zammad
 ============
