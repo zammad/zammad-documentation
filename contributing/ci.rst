@@ -22,3 +22,36 @@ Travis-CI
 
 .. image:: https://travis-ci.org/zammad/zammad.svg?branch=develop
    :target: https://travis-ci.org/zammad/zammad
+
+Local
+=====
+
+RSpec
+-----
+
+To run tests locally in the test environment, you need to first ensure the test DB is in the expected state:
+
+::
+
+  RAILS_ENV=test bundle exec rake db:drop db:create zammad:ci:test:prepare
+
+
+For tests that use compiled front end assets, make sure the latest state of the code is considered:
+
+::
+
+  RAILS_ENV=test bundle exec rake assets:precompile
+
+
+Finally, running a single test can be done via the following command:
+
+::
+
+  bundle exec rspec spec/system/ticket/zoom_spec.rb
+
+
+Note that it's also possible to run a specific test case by including the line number in the command:
+
+::
+
+  bundle exec rspec spec/system/ticket/zoom_spec.rb:1070
