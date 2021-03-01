@@ -1,11 +1,19 @@
 List of Indexed Attributes
 **************************
 
-Below is a comprehensive list of all object attributes indexed by Elasticsearch.
-In other words, if you wish to find a ticket, article, or user via the Zammad search box,
-Elasticsearch can match on any (or all) of the fields below.
+Below is a comprehensive list of all object attributes indexed by 
+Elasticsearch. In other words, if you wish to find a ticket, article, or user 
+via the Zammad search box, Elasticsearch can match on any (or all) of the 
+fields below.
 
-.. note:: These fields may vary if you created custom fields (objects) in the admin interface.
+.. note:: 
+
+   These fields may vary if you created custom fields (objects) in the admin interface.
+
+.. warning::
+
+   Zammad 4.0 introduced breaking changes on the Elasticsearch index. 
+   We've prepared a detailed listing for you
 
 Ticket
 ======
