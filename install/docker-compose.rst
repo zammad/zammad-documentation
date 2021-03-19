@@ -52,8 +52,8 @@ Start Zammad using DockerHub images
 * docker-compose up
 
 
-Go to http://localhost and you'll see:
-======================================
+Go to http://localhost:8080 and you'll see:
+===========================================
 
 * "Welcome to Zammad!", there you need to create your admin user and invite other agents.
 
