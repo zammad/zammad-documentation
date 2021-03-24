@@ -12,8 +12,7 @@ fields below.
 
 .. warning::
 
-   Zammad 4.0 introduced breaking changes on the Elasticsearch index. 
-   We've prepared a detailed listing for you
+   Zammad 4.0 introduced breaking changes on the Elasticsearch index.
 
 Ticket
 ======
