@@ -1,293 +1,342 @@
 Install from source
 *******************
 
-Generic
-=======
+.. toctree::
+   :hidden:
 
-Setup Elasticsearch
--------------------
+   source/macos
 
-Elasticsearch is a dependency of Zammad and needs to be provided before installing Zammad.
-Please take a look at the following page: :doc:`/install/elasticsearch`.
+.. note::
 
+   The source installation is the most difficult installation type of Zammad. 
+   If you're not too experienced with Linux and all that, you may want to use 
+   another installation type:
 
-1. Install Zammad on your system
---------------------------------
+      * :doc:`/install/package`
+      * :doc:`/install/docker-compose`
 
-Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
-or find an older version at https://ftp.zammad.com.
+   | **Administrative note**
+   | Please note that we only use ``sudo`` after direct user changes. 
+     In all other situations you can expect ``root`` being in charge.
 
-.. code-block:: sh
+.. hint::
 
-   $ sudo useradd zammad -m -d /opt/zammad -s /bin/bash
-   $ cd /opt
-   $ sudo wget https://ftp.zammad.com/zammad-latest.tar.gz
-   $ sudo tar -xzf zammad-latest.tar.gz -C zammad
-   $ sudo su - zammad
-
-
-2. Install all dependencies
----------------------------
-
-Please note that a working ruby 2.6.5 environment is needed.
-
-.. code-block:: sh
-
-   zammad@host $ gem install bundler rake rails
-
-For PostgreSQL (note, the option says "without ... mysql")
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: sh
-
-   zammad@host $ bundle install --without test development mysql
-
-For MySQL (note, the option says "without ... postgres")
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: sh
-
-   zammad@host $ bundle install --without test development postgres
-
-
-3. Configure your databases
----------------------------
-
-.. code-block:: sh
-
-   zammad@host $ cp config/database/database.yml config/database.yml
-   zammad@host $ vi config/database.yml
-
-
-4. Initialize your database
----------------------------
-
-.. code-block:: sh
-
-   zammad@host $ export RAILS_ENV=production
-   zammad@host $ export RAILS_SERVE_STATIC_FILES=true
-   zammad@host $ rake db:create
-   zammad@host $ rake db:migrate
-   zammad@host $ rake db:seed
-
-
-5. Change directory to zammad (if needed) and start services:
--------------------------------------------------------------
-
-.. code-block:: sh
-
-   zammad@host $ rake assets:precompile
-
-You can start all services by hand or use systemd to start / stop Zammad.
-
-Starting all servers manually
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: sh
-
-   zammad@host $ rails s -p 3000 # application web server
-   zammad@host $ script/websocket-server.rb start # non blocking websocket server
-   zammad@host $ script/scheduler.rb start # generate overviews on demand, just send changed data to browser
-
-
-Starting servers with Systemd
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: sh
-
-    zammad@host $ cd scripts/systemd
-    zammad@host $ sudo ./install-zammad-systemd-services.sh
-
-
-6. Go to http://localhost:3000 and you'll see:
-----------------------------------------------
-
-* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
-
-
-Reset a Zammad installation (for a fresh start after testing)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Please note: this actions will delete all existing data! Dont use it on a production system.
-
-.. code-block:: sh
-
-   zammad@host $ sudo systemctl stop zammad
-   zammad@host $ rake db:drop
-   zammad@host $ rake db:create
-   zammad@host $ rake db:migrate
-   zammad@host $ rake db:seed
-   zammad@host $ sudo systemctl start zammad
-
-
-
-
-on Debian 7, 8 / Ubuntu 16.04 / Ubuntu 18.04 (with Nginx & MySQL)
-=================================================================
+   **🔎 Looking for MacOS hints?**
+   You can find outdated documentation :doc:`here </install/source/macos>`.
 
 Prerequisites
--------------
+=============
 
-.. code-block:: sh
+Software dependencies
+---------------------
 
-   $ apt-get update
-   $ apt-get install curl git-core patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev sqlite3 libsqlite3-dev autotools-dev libxslt1-dev libyaml-0-2 autoconf automake libreadline6-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev pkg-config libffi-dev libmysqlclient-dev mysql-server nginx gawk libimlib2-dev
+Please ensure that you already provided mentioned 
+:doc:`Software requirements </prerequisites/software>`.
 
-Add User
+Also ensure to provide your database server and web server at this point.
+
+.. include:: /install/includes/prerequisites.rst
+
+Add user
 --------
 
 .. code-block:: sh
 
    $ useradd zammad -m -d /opt/zammad -s /bin/bash
-   $ echo "export RAILS_ENV=production" >> /opt/zammad/.bashrc
+   $ groupadd zammad
+
+Installation
+============
+
+Step 1: Get the source
+----------------------
+
+.. note::
+
+   Not all distributions ship ``wget`` by default, you may need to 
+   install it manually.
+
+.. include:: /install/source/include-get-the-source.rst
+
+.. _source_dependency_installation:
+
+Step 2: Install dependencies
+----------------------------
+
+..
+   About this section: The RCM installation part uses definition list instead 
+   of field lists intentionally. It's supposed to safe width for better readability.
+
+.. note:: 
+
+   | **Below commands do neither include the database server nor the web server.** 
+   | We do cover important web server related stuff within :doc:`/getting-started/configure-webserver`.
 
 
-Create MySQL user zammad (for Debian: upgrade MySQL to v5.6+ before, see: http://dev.mysql.com/downloads/repo/apt/)
--------------------------------------------------------------------------------------------------------------------
+Zammad requires specific ruby versions. Adapt the commands below if you install 
+older versions. A list of required versions can be found on the 
+:doc:`Software requirements </prerequisites/software>` page.
+
+.. tabs::
+
+   .. tab:: Ubuntu
+
+      Install RVM
+         .. code-block:: sh
+
+            $ apt update
+            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
+              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
+              pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3 software-properties-common
+
+            $ apt-add-repository -y ppa:rael-gc/rvm
+            $ apt update
+            $ apt install rvm
+
+      Set relevant Environment variables
+         .. include:: source/include-environment.rst
+
+      Install Ruby Environment
+         .. include:: source/include-rvm-install-ruby.rst
+  
+   .. tab:: Debian
+
+      Install RVM
+         .. code-block:: sh
+
+            $ apt update
+            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
+              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
+              pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3
+
+            $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
+              409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+            $ curl -L https://get.rvm.io | bash -s stable
+
+      Set relevant Environment variables
+         .. include:: source/include-environment.rst
+
+      Install Ruby Environment
+         .. include:: source/include-rvm-install-ruby.rst
+
+   .. tab:: CentOS
+
+      Install RVM
+         .. code-block:: sh
+
+            $ yum install epel-release
+            $ yum install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel ruby sqlite-devel\
+              zlib-devel glibc-headers glibc-devel openssl-devel git imlib2 imlib2-devel
+
+            $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
+              409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+            $ curl -L https://get.rvm.io | bash -s stable
+
+      Set relevant Environment variables
+         .. include:: source/include-environment.rst
+
+      Install Ruby Environment
+         .. include:: source/include-rvm-install-ruby.rst
+
+   .. tab:: OpenSuSE
+
+      Install RVM
+         .. code-block:: sh
+
+            $ zypper install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel sqlite3-devel\ 
+              sqlite3 zlib-devel glibc-devel openssl-devel git imlib2 imlib2-devel gdbm-devel libyaml-devel
+
+            $ gpg --keyserver hkp://keys.gnupg.net --recv-keys\ 
+              409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+            $ curl -L https://get.rvm.io | bash -s stable
+
+      Set relevant Environment variables
+         .. include:: source/include-environment.rst
+
+      Install Ruby Environment
+         .. include:: source/include-rvm-install-ruby.rst
+
+   .. tab:: other
+
+      Other systems than above mentioned are out of scope of this documentation. 
+      Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how 
+      to install rvm on your system. 
+
+      After that install the specific required ruby version.
+
+| After installing bundler, rake and rails we'll need to install all required gems. 
+| The command depends on the database server you are using.
+
+.. tabs::
+
+   .. tab:: PostgreSQL (recommended)
+
+      Install PostgreSQL Dependencies
+         .. tabs::
+
+            .. tab:: Ubuntu / Debian
+
+               .. code-block:: sh
+
+                  $ apt install libpq-dev
+
+            .. tab:: CentOS
+
+               .. code-block:: sh
+
+                  $ yum install postgresql-libs postgresql-devel
+
+            .. tab:: OpenSuSE
+
+               .. code-block:: sh
+
+                  $ zypper install postgresql-devel
+
+      Install Gems for Zammad
+         .. code-block:: sh
+
+            $ su - zammad
+            $ bundle install --without test development mysql
+
+   .. tab:: MySQL / MariaDB
+
+      Install MySQL/MariaDB Dependencies
+         .. tabs::
+
+            .. tab:: Ubuntu / Debian
+
+               .. code-block:: sh
+
+                  $ apt install libmariadb-dev
+
+            .. tab:: CentOS
+
+               .. code-block:: sh
+
+                  $ yum install mariadb-devel
+
+            .. tab:: OpenSuSE
+
+               .. code-block:: sh
+
+                  $ zypper install libmariadb-devel
+
+
+      Install Gems for Zammad
+         .. code-block:: sh
+
+            $ su - zammad
+            $ bundle install --without test development postgres
+
+Step 3: Configure database settings
+-----------------------------------
+
+.. tip::
+
+   **🤓 For easiest usage ...**
+
+   If you provide your Zammad user with database creation permission, you can 
+   run the step 4 without adjustment. If you don't want that, you'll have to 
+   create the database manually.
 
 .. code-block:: sh
 
-   $ mysql --defaults-extra-file=/etc/mysql/debian.cnf -e "CREATE USER 'zammad'@'localhost' IDENTIFIED BY 'Your_Pass_Word'; GRANT ALL PRIVILEGES ON zammad_prod.* TO 'zammad'@'localhost'; FLUSH PRIVILEGES;"
+   $ cp config/database/database.yml config/database.yml
+   $ vi config/database.yml
 
-Get Zammad
-----------
+Here's a sample configuration to give you an idea on how your configuration 
+file could look like. Please also have a look at 
+:doc:`/appendix/configure-database-server` for deeper details.
+
+.. tabs::
+
+   .. tab:: PostgreSQL
+
+      .. code-block::
+
+         production:
+           adapter: postgresql
+           database: zammad
+           pool: 50
+           timeout: 5000
+           encoding: utf8
+           username: zammad
+           password: changeme
+
+      .. hint:: 
+
+         You can remove the ``password`` line if you enable socket based 
+         authentication!
+
+   .. tab:: MySQL / MariaDB
+
+      .. code-block::
+
+         production:
+           adapter: mysql2
+           database: zammad
+           pool: 50
+           timeout: 5000
+           encoding: utf8
+           username: zammad
+           password: changeme
+
+   .. hint:: 
+
+      If you want to use an existing database server that's not on the same 
+      machine, you can also use ``host`` and ``port`` to set that up.
+
+Step 4: Initialize your database
+--------------------------------
+
+.. warning::
+
+   Ensure to do this as ``zammad`` user in your Zammad directory!
 
 .. code-block:: sh
 
    $ su - zammad
-   $ curl -O https://ftp.zammad.com/zammad-latest.tar.gz
-   $ tar -xzf zammad-latest.tar.gz
-   $ rm zammad-latest.tar.gz
-
-
-Install environnment
---------------------
-
-.. code-block:: sh
-
-   $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-   $ curl -L https://get.rvm.io | bash -s stable
-   $ source /opt/zammad/.rvm/scripts/rvm
-   $ echo "source /opt/zammad/.rvm/scripts/rvm" >> /opt/zammad/.bashrc
-   $ echo "rvm --default use 2.6.5" >> /opt/zammad/.bashrc
-   $ rvm install 2.6.5
-   $ gem install bundler
-
-Install Zammad
---------------
-
-.. code-block:: sh
-
-   $ bundle install --without test development postgres
-   $ cp config/database/database.yml config/database.yml
-
-* insert mysql user, pass & change adapter to mysql2 & change database to zammad_prod
-
-.. code-block:: sh
-
-   $ vi config/database.yml
-
-.. code-block:: sh
-
-   $ rake db:create
+   $ rake db:create      # SKIP IF you already created zammads database (see tip of step 3)
    $ rake db:migrate
    $ rake db:seed
+
+Step 5: Pre compile all Zammad assets
+-------------------------------------
+
+.. code-block:: sh
+
    $ rake assets:precompile
 
-Start Zammad
-------------
+Step 6: Start Zammad or install as service
+------------------------------------------
 
-.. code-block:: sh
+.. note::
 
-   $ rails s -p 3000 &>> log/zammad.log &
-   $ script/websocket-server.rb start &>> log/zammad.log &
-   $ script/scheduler.rb start &>> log/zammad.log &
+   Run the following commands as ``root``.
 
+You can start all services by hand or use systemd to start / stop Zammad.
 
+.. tabs::
 
-Create Nginx Config & restart Nginx
------------------------------------
+   .. tab:: systemd (recommended)
 
-.. code-block:: sh
+      .. code-block:: sh
 
-   $ exit
-   $ cp /opt/zammad/contrib/nginx/zammad.conf /etc/nginx/sites-available/zammad.conf
+         $ cd /opt/zammad/script/systemd
+         $ ./install-zammad-systemd-services.sh
 
-* change servername "localhost" to your domain if your're not testing localy
+   .. tab:: the manual way
 
-.. code-block:: sh
+      .. note:: 
 
-   $ vi /etc/nginx/sites-available/zammad.conf
-   $ ln -s /etc/nginx/sites-available/zammad.conf /etc/nginx/sites-enabled/zammad.conf
-   $ systemctl restart nginx
+        This method is not suitable for production use - you should avoid it.
 
+      .. code-block:: sh
 
-Go to http://localhost and you'll see:
---------------------------------------
+         $ rails s -p 3000 # application web server
+         $ script/websocket-server.rb start # non blocking websocket server
+         $ script/scheduler.rb start # generate overviews on demand, just send changed data to browser
 
-* "Welcome to Zammad!", there you need to create your admin user and invite other agents.
+.. include:: /install/includes/firewall-and-selinux.rst
 
-
-
-on Mac OS 10.8
-==============
-
-Prerequisites
--------------
-
-* Install Xcode from the App Store, open it -> Xcode menu > Preferences > Downloads -> install command line tools
-
-.. code-block:: sh
-
-   $ curl -L https://get.rvm.io | bash -s stable --ruby
-   $ source ~/.rvm/scripts/rvm
-   $ start new shell -> ruby -v
-
-Get Zammad
-----------
-
-.. code-block:: sh
-
-   $ test -d ~/zammad/ || mkdir ~/zammad
-   $ cd ~/zammad/
-   $ curl -L -O https://ftp.zammad.com/zammad-latest.tar.bz2 | tar -xj
-
-
-Install Zammad
---------------
-
-.. code-block:: sh
-
-   $ cd zammad-latest
-   $ bundle install
-   $ sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib # if needed!
-   $ rake db:create
-   $ rake db:migrate
-   $ rake db:seed
-
-
-Database connect
-----------------
-
-.. code-block:: sh
-
-   $ cd zammad-latest
-   $ cp config/database/database.yml config/database.yml
-   $ rake db:create
-   $ rake db:migrate
-   $ rake db:seed
-
-Start Zammad
-------------
-
-.. code-block:: sh
-
-   $ puma -p 3000 # application web server
-   $ script/websocket-server.rb start # non blocking websocket server
-   $ script/scheduler.rb start # generate overviews on demand, just send changed data to browser
-
-
-Visit Zammad in your browser
-----------------------------
-
-* http://localhost:3000/#getting_started
+.. include:: /install/includes/next-steps.rst

@@ -1,160 +1,186 @@
 Updating Zammad
 ***************
 
-.. note:: Please backup your Zammad instance before update! You can learn how to back up Zammad on :doc:`/appendix/backup-and-restore`.
+.. note:: 
 
-Source update
-=============
+   Before updating to a new version, you may want to have a look into the 
+   official `release notes <https://zammad.com/en/releases>`_. These will 
+   provide further information on new feature and fixes, but also technical 
+   remarks that may be relevant during an upgrade!
 
-1. Check your dependencies
---------------------------
+.. tabs::
 
-Before proceeding, double-check that your system environment
-matches :doc:`Zammad’s requirements </prerequisites/software>`.
+   .. tab:: Package
 
-2. Download Zammad to your system
----------------------------------
+      Step 1: Stop Zammad
+         .. code-block:: sh
 
-Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
-or find an older version at https://ftp.zammad.com.
+            $ systemctl stop zammad
 
-.. code-block:: sh
+      Step 2: Backup Zammad
+         See :doc:`/appendix/backup-and-restore` for more information.
 
-   $ cd /opt
-   $ sudo wget https://ftp.zammad.com/zammad-latest.tar.gz
-   $ sudo tar -C zammad -xzf zammad-latest.tar.gz
-   $ sudo chown -R zammad /opt/zammad
-   $ sudo su - zammad
+      Step 3: Update Zammad
+         .. tabs::
 
-3. Install all dependencies
----------------------------
+            .. tab:: Ubuntu / Debian
 
-.. code-block:: sh
+               .. code-block:: sh
 
-   zammad@host $ cd zammad
-   zammad@host $ gem install bundler
+                  $ apt update
+                  $ apt upgrade
 
-* For PostgreSQL (note, the option says "without ... mysql"):
+            .. tab:: CentOS
 
-.. code-block:: sh
+               .. code-block:: sh
 
-   zammad@host $ bundle install --without test development mysql
+                  $ yum update zammad
 
-* For MySQL (note, the option says "without ... postgres"):
+            .. tab:: OpenSUSE / SLES
 
-.. code-block:: sh
+               .. code-block:: sh
 
-   zammad@host $ bundle install --without test development postgres
+                  $ zypper ref
+                  $ zypper up
 
+         .. warning::
 
-4. Stop Zammad services
------------------------
+            The package comes with maintenance scripts that will run regular 
+            tasks during updates for you.
 
-Stop the application server, websocket server and scheduler.
+            | **However**
+            | Do not run Zammad updates unattended and **always** have a look 
+              on the outputs these helper scripts generate. Ignoring said 
+              output may lead to incomplete updates that may corrupt data or 
+              lead to issues you find *way too late*.
 
-5. Upgrade your database
-------------------------
+      Step 4: Run required extra steps
+         Extra steps needed for updates are mentioned in our release news.
 
-.. code-block:: sh
+         `Updating Elasticsearch`_ may be relevant in this step.
 
-   zammad@host $ export RAILS_ENV=production
-   zammad@host $ export RAILS_SERVE_STATIC_FILES=true # only if you use no HTTP reverse proxy
-   zammad@host $ rake db:migrate
-   zammad@host $ rake assets:precompile
+      Step 5: Log into Zammad
+         Yes, that's it!
 
-6. Start Zammad services
-------------------------
+   .. tab:: Source
 
-Start the application server, websocket server and scheduler.
+      Step 1: Ensure dependencies
+         Before proceeding, double-check that your system environment matches 
+         :doc:`Zammad’s requirements </prerequisites/software>`.
 
-7. Go and login to Zammad
--------------------------
+         .. tip:: **🤓 Ruby version changed?**
 
+            Please see 
+            :ref:`Installation part of source code installation <source_dependency_installation>`
 
-Update with RPM
-===============
+      Step 2: Download Zammad to your system
+         .. include:: /install/source/include-get-the-source.rst
 
+      Step 3: Install Gems
+         .. code-block:: sh
 
-1. Stop Zammad
-----------------
+            $ su - zammad
+            $ cd /opt/zammad
+            $ gem install bundler
 
-.. code-block:: sh
+         .. tabs::
 
-   $ sudo systemctl stop zammad
+            .. tab:: PostgreSQL
 
+               .. code-block:: sh
 
-3. Update Zammad
-----------------
+                  $ bundle install --without test development mysql
 
-.. code-block:: sh
+            .. tab:: MySQL / MariaDB
 
-   $ sudo yum update zammad
+               .. code-block:: sh
 
-**Note: The package will automatically execute maintenance tasks like database changes and will restart Zammad for you.**
+                  $ bundle install --without test development postgres
 
+      Step 4: Stop Zammad services
+         Stop the application server, websocket server and scheduler.
 
-4. Start Zammad
-----------------
+      Step 5: Upgrade your database
+         .. code-block:: sh
 
-.. code-block:: sh
+            $ su - zammad
+            $ rake db:migrate
+            $ rake assets:precompile
 
-   $ sudo systemctl start zammad
+      Step 6: Start Zammad services
+         Start the application server, websocket server and scheduler.
 
+      Step 7: Log into Zammad
+         Yes, that's it!
 
-5. Go and log in to Zammad
---------------------------
+   .. tab:: Docker Compose
 
+      .. warning:: 
 
+         ⚠️ **Updates may require extra steps or introduce breaking changes.**
 
-Update with DEB
-===============
+         Always check the 
+         `upgrade notes <https://github.com/zammad/zammad-docker-compose#upgrading>`_ 
+         first.
 
+      .. note:: **🙀 Incomplete documentation**
 
-**Note: Please backup your Zammad instance before update!**
+         Sorry, but this documentation part is outdated. 
+         We will rework this part later, but can't tell when yet.
 
+         Please feel welcome to provide a pull request if you find spare time!
 
-1. Stop Zammad
-----------------
+      .. code-block:: sh
 
-.. code-block:: sh
-
-   $ sudo systemctl stop zammad
-
-
-3. Update Zammad
-----------------
-
-.. code-block:: sh
-
-   $ apt-get update
-   $ apt-get upgrade
-
-**Note: The package will automatically execute maintenance tasks like database changes and will restart Zammad for you.**
-
-4. Start Zammad
-----------------
-
-.. code-block:: sh
-
-  $ sudo systemctl start zammad
+         $ docker-compose stop
+         $ git pull
+         $ docker-compose pull
+         $ docker-compose up
 
 
-5. Go and log in to Zammad
---------------------------
+      Start Zammad building Docker images locally with development branch
 
-Updating elasticsearch
+      * GIT_BRANCH=develop docker-compose -f docker-compose-build.yml up
+
+      Recreate locally built images
+
+      * GIT_BRANCH=develop docker-compose -f docker-compose-build.yml build --no-cache
+
+
+      Open shell in running Zammad image
+
+      * docker-compose exec zammad /bin/bash
+
+      Port compatibility error
+
+      * The nginx container may have compatibility problems with other machines or services pointing to port 0.0.0.0:80. So to fix this, we'll just have to modify the file `docker-compose.override.yml` and select different ports
+
+
+Updating Elasticsearch
 ======================
 
-If you want to upgrade your elasticsearch installation, please take a look at the `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
+.. warning::
+
+   Updating Elasticsearch **does not** automatically update it's plugins! 
+   This usually isn't an issue if Zammad is being updated right after 
+   Elasticsearch.
+
+If you want to upgrade your elasticsearch installation, please take a look at the 
+`elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.
 
-If, for whatever reason, you need to rebuild your search index after upgrading, use::
+If, for whatever reason, you need to rebuild your search index after upgrading, 
+use:
+
+.. code-block:: sh
 
    $ zammad run rake searchindex:rebuild
-   
-.. warning:: This step may fail if Zammad is under heavy load:
-   Elasticsearch locks the indices from deletion if you're pumping in new data, like receiving a new ticket.
-   (This only applies to single-node deployments, not clusters.)
+
+.. warning:: 
+
+   This step may fail if Zammad is under heavy load: Elasticsearch locks the 
+   indices from deletion if you're pumping in new data, like receiving a new 
+   ticket. (This only applies to single-node deployments, not clusters.)
    
    If it does, try killing Zammad first::
    

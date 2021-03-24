@@ -27,11 +27,8 @@ The Zammad documentation consists of three parts:
    :maxdepth: 1
    :caption: Installation & Update
 
+   /install/package
    /install/source
-   /install/centos
-   /install/debian
-   /install/ubuntu
-   /install/suse
    /install/elasticsearch
    /install/docker-compose
    /install/kubernetes
@@ -43,31 +40,24 @@ The Zammad documentation consists of three parts:
    :maxdepth: 2
    :caption: Getting started
 
+   /getting-started/configure-webserver
    /getting-started/first-steps
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Migration
 
-   /migration/otrs
-   /migration/zendesk
-
-
-.. toctree::
-   :maxdepth: 3
-   :glob:
-   :caption: Administration via webfrontend
-
-   Admin-Documentation <https://admin-docs.zammad.org/>
+   /migration/index
 
 
 .. toctree::
    :maxdepth: 2
    :glob:
-   :caption: Administration via console
+   :caption: Administration via ...
 
-   /admin/console
+   Web-UI <https://admin-docs.zammad.org/>
+   Console </admin/console>
 
 
 .. toctree::
@@ -120,6 +110,6 @@ The Zammad documentation consists of three parts:
 
    /appendix/backup-and-restore
    /appendix/configure-env-vars
-   /appendix/repo-file
+   /appendix/configure-database-server
    /appendix/privacy
    /appendix/single-sign-on

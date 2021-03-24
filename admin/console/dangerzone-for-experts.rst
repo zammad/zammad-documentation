@@ -123,3 +123,22 @@ Deleting System Records
 
    # Remove all history information from tickets, users and organizations (dangerous!)
    >> History.destroy_all
+
+.. _dangerzone_reset_zammad:
+
+Reset Zammad installation
+-------------------------
+
+.. hint:: 
+
+   Below commands are incomplete intentionally, error outputs will hint you through! 
+   The following operations will cause data loss and for development / testing only.
+
+   Don't forget to stop Zammad before trying to drop the database!
+
+.. code-block:: sh
+
+   $ rake db:drop
+   $ rake db:create
+   $ rake db:migrate
+   $ rake db:seed

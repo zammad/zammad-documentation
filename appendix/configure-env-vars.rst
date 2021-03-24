@@ -19,7 +19,7 @@ Use these environment variables to configure Zammad’s behavior at runtime.
       $ systemctl restart zammad
 
       # unset OPTION
-      $ zammad config:set OPTION=
+      $ zammad config:unset OPTION
       $ systemctl restart zammad
 
    To learn more, do some googling on environment variables
@@ -49,6 +49,8 @@ RAILS_LOG_TO_STDOUT
       Use ``true`` to turn it on permanently.
 
    Default: **unset**
+
+.. _network_options:
 
 🖧 Network Options
 =================
@@ -114,3 +116,9 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
    .. code-block:: sh
 
       $ zammad run rails r "p Sessions.list.uniq.count" 
+
+.. hint::
+
+   Above settings *may* consume all available database connections. Please consider the 
+   :doc:`database server configuration </appendix/configure-database-server>` 
+   section for more.

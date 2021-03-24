@@ -1,192 +1,171 @@
-from OTRS
-*********
+Migration from OTRS
+********************
 
-Install plugins on OTRS
-=======================
+Limitations
+===========
 
-.. note:: Currently only passwords of OTRS >= 3.3 can be reused in Zammad! Passwords that were stored in another format than the default SHA2 are not possible to use. Users then have to use the password reset procedure.
+Please note below OTRS specific limitations. 
+These are additional limitations to the :ref:`general ones listed <migration_limitations>`.
 
-Install Znuny4OTRS-Repo
------------------------
+   * | Password migration works for OTRS >= 3.3 only
+     | (on older instances a password reset within Zammad will be required)
+   * If you plan to import a differential migration after, 
+     do not change any data in Zammad!
+   * Only customers of tickets are imported
+   * Zammad expects your OTRS timestamps to be UTC and won't adjust them
+   * If you plan to import a differential after, **do not** change any data in Zammad!
 
-This is a dependency of the OTRS migration plugin
+Prerequisites
+=============
 
-* On OTRS 6:
+Step 1: Install Znuny4OTRS-Repo
+--------------------------------
 
-  *  https://addons.znuny.com/api/addon_repos/public/1029/latest
+This is a dependency of the OTRS migration plugin.
 
-* On OTRS 5:
+.. tabs::
 
-  *  https://addons.znuny.com/api/addon_repos/public/615/latest
+   .. tab:: OTRS 6
 
-* On OTRS 4:
+      .. code-block::
 
-  *  https://addons.znuny.com/api/addon_repos/public/309/latest
+         https://addons.znuny.com/api/addon_repos/public/1029/latest
 
-* On OTRS 3:
+   .. tab:: OTRS 5
 
-  *  https://addons.znuny.com/api/addon_repos/public/142/latest
+      .. code-block::
 
+         https://addons.znuny.com/api/addon_repos/public/615/latest
 
-Install OTRS migration plugin
------------------------------
+   .. tab:: OTRS 4
 
-* OTRS 6:
+      .. code-block::
 
-  * https://addons.znuny.com/api/addon_repos/public/1085/latest
+         https://addons.znuny.com/api/addon_repos/public/309/latest
 
-* OTRS 5:
+   .. tab:: OTRS 3
 
-  * https://addons.znuny.com/api/addon_repos/public/617/latest
+      .. code-block::
 
-* OTRS 4:
+         https://addons.znuny.com/api/addon_repos/public/142/latest
 
-  * https://addons.znuny.com/api/addon_repos/public/383/latest
+Step 2: Install OTRS migration plugin
+--------------------------------------
 
-* OTRS 3.1 - 3.3:
+.. tabs::
 
-  * https://addons.znuny.com/api/addon_repos/public/287/latest
+   .. tab:: OTRS 6
 
+      .. code-block::
 
-Import via Browser
-==================
+         https://addons.znuny.com/api/addon_repos/public/1085/latest
 
-.. note:: If your OTRS installation is rather huge, you might want to consider using the command line version of this feature.
+   .. tab:: OTRS 5
 
-After installing Zammad, open http://localhost:3000 with your browser and follow the installation wizard.
-From there you're able to start the migration from OTRS.
+      .. code-block::
 
-See the Video at `this site <https://days.zammad.org/features/migrator>`_ .
+         https://addons.znuny.com/api/addon_repos/public/617/latest
 
+   .. tab:: OTRS 4
 
-Import via command line
-=======================
+      .. code-block::
 
-If you miss this at the beginning or you want to re-import again you have to use the command line at the moment.
+         https://addons.znuny.com/api/addon_repos/public/383/latest
 
-Stop all Zammad processes and switch Zammad to import mode (no events are fired - e. g. notifications, sending emails, ...)
+   .. tab:: OTRS 3
 
+      .. code-block::
 
-If you installed the Zammad DEB or RPM package
-----------------------------------------------
+         https://addons.znuny.com/api/addon_repos/public/287/latest
 
-.. code-block:: sh
+.. hint::
 
-   $ zammad run rails c
+   In some cases restarting your webserver may help to solve internal server errors.
 
+Importing OTRS data
+===================
 
-If you installed from source
-----------------------------
+.. tabs::
 
-.. code-block:: sh
+   .. tab:: via Browser
 
-   $ su zammad
-   $ cd /opt/zammad
-   $ rails c
+      .. note:: 
 
+         If your OTRS installation is rather huge, you might want to consider using 
+         the command line version of this feature. This also applies if you 
+         experience Timeouts during the migration.
 
-Extending import time for big installations (optional)
-------------------------------------------------------
+      After installing Zammad and configuring your 
+      :doc:`webserver </getting-started/configure-webserver>`, navigate to your 
+      Zammads FQDN in your Browser and follow the migration wizard.
 
-Optional, if you're having a bigger installation or running in timeouts like:
-``Delayed::Worker.max_run_time is only 14400 seconds (4 hours)`` you need to do the following:
+      Depending on the size of your OTRS installation this may take a while. 
 
-For importing via console
-^^^^^^^^^^^^^^^^^^^^^^^^^
+      You can get an idea of this process in the 
+      `migrator video on vimeo <https://vimeo.com/187752786>`_ .
 
-* open the file ``config/initializers/delayed_jobs_settings_reset.rb`` and add the following at the end of it:
+   .. tab:: via Console
 
-  .. code-block:: ruby
+      .. hint::
 
-     >> Delayed::Worker.max_run_time = 7.days
+         We have a dedicated page for :ref:`Zammads rails console <rails_shell>` 
+         to reduce this pages complexity.
 
-* Restart the Zammad-Service (``systemctl restart zammad``)
+      If you miss this at the beginning or you want to re-import again you have 
+      to use the command line at the moment.
 
-For importing via browser (not recommended on big installations)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      Stop all Zammad processes and switch Zammad to import mode (no events are 
+      fired - e. g. notifications, sending emails, ...)
 
-Run below in a Zammad console and ensure to not close it during import:
+      Start the migration
+         Ensure to replace `xxx` with your values.
 
-  .. code-block:: ruby
+         .. code-block:: ruby
 
-     >> Delayed::Worker.max_run_time = 7.days
+            >> Setting.set('import_otrs_endpoint', 'https://xxx/otrs/public.pl?Action=ZammadMigrator')
+            >> Setting.set('import_otrs_endpoint_key', 'xxx')
+            >> Setting.set('import_mode', true)
+            >> Import::OTRS.start
 
+      Finish the migration
+         .. code-block:: ruby
 
-.. note:: The above setting is only valid for the lifetime of the Zammad rails console.
-   If you close the console, the change is reset to the default value.
+            >> Setting.set('import_mode', false)
+            >> Setting.set('system_init_done', true)
 
-Enter the following commands in the rails console
--------------------------------------------------
+After successfully migrating your OTRS installation, continue with :doc:`/getting-started/first-steps`.
 
-.. code-block:: ruby
+Importing a differential
+========================
 
-   >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
-   >> Setting.set('import_otrs_endpoint_key', 'xxx')
-   >> Setting.set('import_mode', true)
-   >> Import::OTRS.start
+.. note:: 
 
+   This is only possible after finishing an earlier OTRS import **successful**. 
 
-After the import is done switch Zammad back to non-import mode and mark the system initialization as done.
+In some cases it might be desirable to update the already imported data from OTRS. 
+This is possible with the following commands.
 
-.. code-block:: ruby
+Run a differential import
+   .. code-block:: ruby
 
-   >> Setting.set('import_mode', false)
-   >> Setting.set('system_init_done', true)
+      >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
+      >> Setting.set('import_otrs_endpoint_key', 'xxx')
+      >> Setting.set('import_mode', true)
+      >> Setting.set('system_init_done', false)
+      >> Import::OTRS.diff_worker
 
-Start all Zammad processes again. Done.
+Set Zammad back into normal working mode
+   .. code-block:: ruby
 
-Importing a diff
-================
+      >> Setting.set('import_mode', false)
+      >> Setting.set('system_init_done', true)
 
-.. note:: This is only possible after finishing an earlier OTRS import **successful**.
-
-In some cases it might be desirable to update the already imported data from OTRS. This is possible with the following commands.
-
-Enter the following commands in the rails console
--------------------------------------------------
-
-.. code-block:: ruby
-
-   >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
-   >> Setting.set('import_otrs_endpoint_key', 'xxx')
-   >> Setting.set('import_mode', true)
-   >> Setting.set('system_init_done', false)
-   >> Import::OTRS.diff_worker
-
-After the import is done switch Zammad back to non-import mode and mark the system initialization as done.
-
-.. code-block:: ruby
-
-   >> Setting.set('import_mode', false)
-   >> Setting.set('system_init_done', true)
-
-Start all Zammad processes again. Done.
-
+All changes that occurred after your first migration should now also be available 
+within your Zammad installation.
 
 Restarting from scratch
 =======================
 
-First make sure all Zammad processes are stopped. After that reset your database.
-
-If you installed the Zammad DEB or RPM package
-----------------------------------------------
-
-.. code-block:: sh
-
-   $ zammad run rake db:drop
-   $ zammad run rake db:create
-   $ zammad run rake db:migrate
-   $ zammad run rake db:seed
-
-
-If you installed from source
-----------------------------
-
-.. code-block:: sh
-
-   $ rake db:drop
-   $ rake db:create
-   $ rake db:migrate
-   $ rake db:seed
-
-After that your DB is reset and you can start the import right over.
+Turned wrong at some point? 
+You can find the required commands to reset Zammad in our 
+:ref:`Dangerzone <dangerzone_reset_zammad>`.
