@@ -80,7 +80,6 @@ Ticket
      - ID of the user that created the article
    * - create_article_type
      - Contains these attributes:
-
           * note: ``null``
           * updated_at: ``2021-03-03T14:50:20.812Z``
           * name: ``phone``, ``email``, ``web``
@@ -238,8 +237,110 @@ Ticket
 Ticket Priority
 ===============
 
+.. list-table:: Ticket Priority-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - active
+     - ``true``, ``false``
+     - Defines if the priority is active (available)
+   * - created_at
+     - ``2021-03-03T14:50:20.724Z``
+     - Creation date of priority
+   * - created_by_id
+     - ``1``
+     - User that created priority
+   * - default_create
+     - ``false``, ``true``
+     - Defines if priority is default priority upon ticket creation
+   * - id
+     - ``3``
+     - ID of priority
+   * - name
+     - ``3 high``
+     - Priority name
+   * - note
+     - ``null``
+     - Note for priority that has been set via console or API
+   * - ui_color
+     - ``null``, ``high-priority``
+     - CSS class for tickets of priority
+   * - ui_icon
+     - ``null``, ``important``
+     - CSS class for ticket icons of priority
+   * - updated_at
+     - ``2021-03-03T14:50:20.724Z``
+     - Date of last change
+   * - updated_by_id
+     - ``1``
+     - User ID of user last updating the priority
+
 Ticket State
 ============
+
+.. list-table:: Ticket State-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - active
+     - ``true``, ``false``
+     - Defines if state is active (available)
+   * - created_at
+     - ``2021-03-03T14:50:20.694Z``
+     - Creation date
+   * - created_by_id
+     - ``1``
+     - User ID that created state
+   * - default_create
+     - ``false``, ``true``
+     - Defines if the state is the default state upon ticket creation
+   * - default_follow_up
+     - ``false``, ``true``
+     - Defines if the state is the default follow up state on ticket follow ups
+   * - id
+     - ``7``
+     - State ID
+   * - ignore_escalation
+     - ``false``, ``true``
+     - Defines if SLA calculation is generally ignored for this state
+   * - name
+     - ``pending close``
+     - State name
+   * - next_state
+     - ``n/a``, #{state object}
+     - Contains all follow up state information if applicable, 
+       may not be available depending on the state type
+   * - next_state_id
+     - ``null``, ``4``
+     - State ID of follow up state
+   * - note
+     - ``null``
+     - Note that has been set via console or API
+   * - state_type
+     - Contains these attributes: 
+          * created_at: ``2021-03-03T14:50:20.582Z``
+          * created_by_id: ``1``
+          * id: ``4``
+          * name: ``pending action``
+          * note: ``null``
+          * updated_at: ``2021-03-03T14:50:20.582Z``
+          * updated_by_id: ``1``
+     - Contains all available information of the states type
+   * - state_type_id
+     - ``4``
+     - ID of the state type
+   * - updated_at
+     - ``2021-03-03T14:50:20.694Z``
+     - Last update of state
+   * - updated_by_id
+     - ``1``
+     - User ID that updated state last
 
 Article
 =======
