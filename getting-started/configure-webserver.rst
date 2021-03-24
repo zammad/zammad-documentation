@@ -281,7 +281,7 @@ Adjusting the webserver configuration
 
          .. code-block:: sh
          
-            $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/apache2/sites-enabled/zammad.conf
+            $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-enabled/zammad.conf
 
          .. note::
 
@@ -317,7 +317,7 @@ Adjusting the webserver configuration
       (Optional) - Adjust HTTPs configuration
          .. include:: /getting-started/include-ssl-config-generator-webserver.rst
 
-      (Optiona) - Enable the site
+      (Optional) - Enable the site
          .. hint:: 
 
             This step mostly depends on your selected folders and most often 
