@@ -416,61 +416,114 @@ Article
 User
 ====
 
-+-----------------+--------------------------+-----------------------------------------+
-| Field           | Sample Value             | Description                             |
-+-----------------+--------------------------+-----------------------------------------+
-| active          | TRUE                     | is activ (boolean)                      |
-+-----------------+--------------------------+-----------------------------------------+
-| address         |                          | User Adress                             |
-+-----------------+--------------------------+-----------------------------------------+
-| city            |                          | User City                               |
-+-----------------+--------------------------+-----------------------------------------+
-| country         |                          | User Country                            |
-+-----------------+--------------------------+-----------------------------------------+
-| created_at      | 2017-07-26T21:21:28.000Z | User creation date (DateTime, UTC)      |
-+-----------------+--------------------------+-----------------------------------------+
-| created_by_id   | 1                        | ID of user who created the current user |
-+-----------------+--------------------------+-----------------------------------------+
-| department      |                          | User Department                         |
-+-----------------+--------------------------+-----------------------------------------+
-| email           | chris@chrispresso.com    | User E-Mail                             |
-+-----------------+--------------------------+-----------------------------------------+
-| fax             |                          | User Fax                                |
-+-----------------+--------------------------+-----------------------------------------+
-| firstname       | Christopher              | User Firstname                          |
-+-----------------+--------------------------+-----------------------------------------+
-| id              | 3                        | Internal id (database, autincrement)    |
-+-----------------+--------------------------+-----------------------------------------+
-| last_login      | 2017-07-26T21:23:15.019Z | User last login (DateTime, UTC)         |
-+-----------------+--------------------------+-----------------------------------------+
-| lastname        | Miller                   | User Lastname                           |
-+-----------------+--------------------------+-----------------------------------------+
-| login           | chris@chrispresso.com    | User Login                              |
-+-----------------+--------------------------+-----------------------------------------+
-| mobile          |                          | User Mobile                             |
-+-----------------+--------------------------+-----------------------------------------+
-| note            |                          | internal note                           |
-+-----------------+--------------------------+-----------------------------------------+
-| organization    | Chrispresso Inc          | Orgnaization name of the current user   |
-+-----------------+--------------------------+-----------------------------------------+
-| organization_id | 2                        | ID which links to the organization name |
-+-----------------+--------------------------+-----------------------------------------+
-| phone           |                          | User Phone                              |
-+-----------------+--------------------------+-----------------------------------------+
-| street          |                          | User Street                             |
-+-----------------+--------------------------+-----------------------------------------+
-| updated_at      | 2017-07-27T15:04:47.270Z | Last update date (DateTime, UTC)        |
-+-----------------+--------------------------+-----------------------------------------+
-| updated_by_id   | 3                        | ID of user who updated the current user |
-+-----------------+--------------------------+-----------------------------------------+
-| verified        | FALSE                    | is verified (boolean)                   |
-+-----------------+--------------------------+-----------------------------------------+
-| vip             | FALSE                    | Is VIP (boolean)                        |
-+-----------------+--------------------------+-----------------------------------------+
-| web             |                          | User Web Url                            |
-+-----------------+--------------------------+-----------------------------------------+
-| zip             |                          | User ZIP                                |
-+-----------------+--------------------------+-----------------------------------------+
+.. list-table:: User-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - active
+     - ``true``, ``false``
+     - Defines if user is active
+   * - address
+     - ``""``, ``Bennelong Point\nSydney NSW 2000``
+     - Address string
+   * - city
+     - ``""``, ``Berlin``
+     - City string
+   * - country
+     - ``""``, ``Germany``
+     - Country string
+   * - created_at
+     - ``2021-03-22T12:47:56.460Z``
+     - Creation date of user
+   * - created_by_id
+     - ``1``
+     - User ID that created the user
+   * - department
+     - ``""``, ``IT``
+     - Department string
+   * - email
+     - ``""``, ``alias@domain.tld``
+     - EMail Address of user, if applicable
+   * - fax
+     - ``""``, ``1234``
+     - Fax number
+   * - firstname
+     - ``null``, ``John``
+     - Users first name
+   * - id
+     - ``8``
+     - Internal User ID
+   * - last_login
+     - ``null``, ``2021-03-23T12:47:56.460Z``
+     - Updated upon every user login
+   * - lastname
+     - ``null``, ``Doe``
+     - Users last name
+   * - login
+     - ``auto-1234567``, ``jdoe``
+     - Login name, always set and unique, can differ from ``email``
+   * - mobile
+     - ``""``, ``1232``
+     - Mobile phone number
+   * - note
+     - ``""``
+     - Note being available via web, console and API
+   * - organization
+     - #{organization object}
+     - | Complete Payload of the organization the user is member of
+       | Please see `Organization`_ for more
+   * - organization_id
+     - ``3``
+     - ID of organization the user is member of
+   * - out_of_office
+     - ``false``, ``true``
+     - Defines if user has activated out of office function
+   * - out_of_office_end_at
+     - ``null``, ``2021-03-26``
+     - Ending date out of office
+   * - out_of_office_replacement_id
+     - ``null``, ``3``
+     - User ID that replaces this user during out of office period
+   * - out_of_office_start_at
+     - ``null``, ``2021-03-24``
+     - Begin date out of office
+   * - permissions
+     - ``(Array)``
+     - Array with all permissions of the user
+   * - phone
+     - ``""``, ``0061 2 1234 7777``
+     - Phone number of user
+   * - preferences
+     - ``{}``, #{several preference attributes}
+     - Depends on user and situation, may contain ``notification_config``, 
+       ``locale`` and other internal system information
+   * - role_ids
+     - ``(Array)``, ``[1, 2]``
+     - Contains array with role IDs assigned to the user
+   * - street
+     - ``""``
+     - Street
+   * - updated_at
+     - ``2021-03-25T00:27:52.308Z``
+     - Time stamp of last update
+   * - updated_by_id
+     - ``3``
+     - User ID that updated this entry
+   * - verified
+     - ``false``, ``true``
+     - Defines if the user has verified the account
+   * - vip
+     - ``false``, ``true``
+     - Defines if user has VIP state
+   * - web
+     - ``""``, ``https://zammad.org``
+     - Web URL of User
+   * - zip
+     - ``""``, ``10123``
+     - ZIP code
 
 Organization
 ============
