@@ -739,3 +739,85 @@ CTI Log
    * - updated_at
      - ``2021-03-25T08:49:40.647Z``
      - Last update of entry
+
+Chat Session
+============
+
+.. list-table:: Chat Session-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - chat
+     - Contains these attributes:
+          * active: ``true``
+          * block_country: ``null``
+          * block_ip: ``null``
+          * created_at: ``2021-03-03T14:50:22.607Z``
+          * created_by_id: ``1``
+          * id: ``1``
+          * max_queue: ``5``
+          * name: ``default``
+          * note: ``""``
+          * preferences: ``{}``
+          * public: ``false``
+          * updated_at: ``2021-03-03T14:50:22.607Z``
+          * updated_by_id: ``1``
+          * whitelisted_websites: ``null``
+     - Contains various preferences of the chat topic in charge
+   * - chat_id
+     - ``1``
+     - ID of Chat topic
+   * - created_at
+     - ``2021-03-25T10:26:24.376Z``
+     - Time stamp of chat creation
+   * - created_by_id
+     - ``null``
+     - User that created the chat, place holder, currently always ``null``
+   * - id
+     - ``1``
+     - ID of Chat Session
+   * - messages
+     - ``(Array)`` - Array entries contain these attributes:
+          * chat_session_id: ``1``
+          * content: ``Hello dear customer``
+          * created_at: ``2021-03-25T10:26:35.977Z``
+          * created_by_id: ``null``, ``3``
+          * id: ``1``
+          * updated_at: ``2021-03-25T10:26:35.977Z``
+     - Array with all messages of chat
+   * - name
+     - ``null``, ``John Doe``
+     - Name agent set for chat user, if applicable
+   * - preferences
+     - Contains these attributes:
+          * dns_name: ``host.domain.tld``
+          * geo_ip: ``{}``
+          * participants: ``Array``, ``["47118371175780", "47118371850300"]``
+          * remote_ip: ``192.168.2.19``
+          * url: ``https://zammad.com/en/company/contact``
+     - Various internal Meta data of the session_id
+   * - session_id
+     - ``92f2909631f1ad5ff4d5d1e046952be8``
+     - Unique Session ID
+   * - state
+     - ``closed``
+     -  Current state of chat session
+   * - tags
+     - ``(Array)``, ``["order"]``
+     - Tags applied to Chat Session by agent, if applicable
+   * - updated_at
+     - ``2021-03-25T10:27:03.341Z``
+     - Last update
+   * - updated_by_id
+     - ``null``, ``3``
+     - User ID that last updated session, may be ``null``
+   * - user
+     - #{user object}
+     - | Complete Payload of the chat agemt
+       | Please see `User`_ for more
+   * - user_id
+     - ``3``
+     - User ID of chat agent
