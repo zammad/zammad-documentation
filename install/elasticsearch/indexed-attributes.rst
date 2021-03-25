@@ -137,7 +137,7 @@ Ticket
    * - group
      - #{group object}
      - | Complete payload of the current tickets group
-       | Please see `Group` for more
+       | Please see `Group`_ for more
    * - group_id
      - ``1``
      - ID of the current group
@@ -477,3 +477,76 @@ Organization
 
 Group
 =====
+
+.. list-table:: Group-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - active
+     - ``true``, ``false``
+     - Defines if group is active (available)
+   * - assignment_timeout
+     - ``null``, ``30``
+     - Time in minutes an agent can be inactive until the owner ship is removed
+   * - created_at
+     - ``2021-03-24T23:55:06.980Z``
+     - Time stamp of group creation
+   * - created_by_id
+     - ``1``
+     - User ID that created the group
+   * - email_address
+     - Contains these attributes: 
+          * active: ``true``
+          * channel_id: ``3``
+          * created_at: ``2021-03-24T23:54:58.187Z``
+          * created_by_id: ``3``
+          * email: ``alias@domain.tld``
+          * id: ``1``
+          * note: ``null``
+          * realname: ``Zammad GmbH``
+          * updated_at: ``2021-03-24T23:54:58.187Z``
+          * updated_by_id: ``3``
+          * preferences: ``null``
+     - Contains all available information of the groups email address
+   * - email_address_id
+     - ``3``
+     - ID of email address
+   * - follow_up_assignment
+     - ``true``, ``false``
+     - Defines if owners are still assigned after follow ups
+   * - follow_up_possible
+     - ``yes``, ``no``
+     - Defines if following up on a closed ticket is possible
+   * - id
+     - ``1``
+     - Group ID
+   * - name
+     - ``Users``, ``Sales``
+     - Group name
+   * - note
+     - ``null``
+     - Notes for the group available via web, console and API
+   * - signature
+     - Contains these attributes: 
+          * active: ``true``
+          * body: ``<br>  #{user.firstname} #{user.lastname}<br>--<br>That Inc``
+          * created_at: ``2021-03-03T14:50:19.775Z``
+          * created_by_id: ``1``
+          * id: ``1``
+          * name: ``default``
+          * note: ``null``
+          * updated_at: ``2021-03-03T14:50:19.775Z``
+          * updated_by_id: ``1``
+     - Contains all available information of the groups signature
+   * - signature_id
+     - ``1``
+     - Signature ID
+   * - updated_at
+     - ``2021-03-24T23:55:06.980Z``
+     - Time stamp of last group update
+   * - updated_by_id
+     - ``3``
+     - User ID that updated group
