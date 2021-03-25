@@ -604,3 +604,77 @@ Group
    * - updated_by_id
      - ``3``
      - User ID that updated group
+
+CTI Log
+=======
+
+.. list-table:: CTI Log-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - call_id
+     - ``00006``
+     - Unique Call ID
+   * - comment
+     - ``""``
+     - Optional comment
+   * - created_at
+     - ``2021-03-22T11:48:01.703Z``
+     - Creation date of Call
+   * - direction
+     - ``in``, ``out``
+     - Call direction
+   * - done
+     - ``true``, ``false``
+     - Defines if call is finished
+   * - duration_talking_time
+     - ``27``
+     - Call duration in seconds
+   * - duration_waiting_time
+     - ``77``
+     - Duration in seconds the caller was waiting for answer
+   * - end_at
+     - ``2021-03-25T08:49:40.647Z``
+     - Time stamp of call end
+   * - from
+     - ``493055571600``
+     - Calling number
+   * - from_comment
+     - ``null``, ``John, Doe``
+     - Display name of calling number if applicable
+   * - from_pretty
+     - ``+49 30 55571600``
+     - Pretty version of ``from``
+   * - id
+     - ``8``
+     - Internal ID of entry
+   * - initialized_at
+     - 2021-03-25T08:47:56.753Z
+     - Time stamp of call initialization, usually matches ``created_at``
+   * - preferences
+     - ``(Array)``
+     - Contains internal information if required
+   * - queue
+     - ``null``, ``491711234567890``
+     - Queue the call was answered in
+   * - start_at
+     - ``2021-03-25T08:49:13.050Z``
+     - Time stamp the call was answered
+   * - state
+     - ``hangup``, ``voicemail``
+     - Last state of call
+   * - to
+     - ``491711234567890``
+     - Dialed number
+   * - to_comment
+     - ``null``, ``John, Doe``
+     - Display name of called number if applicable
+   * - to_pretty
+     - ``+491711234567890``
+     - Pretty version of ``to``
+   * - updated_at
+     - ``2021-03-25T08:49:40.647Z``
+     - Last update of entry
