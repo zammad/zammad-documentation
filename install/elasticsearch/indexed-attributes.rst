@@ -345,73 +345,81 @@ Ticket State
 Article
 =======
 
-+---------------------+--------------------------+----------------------------------------------+
-| Field               | Sample Value             | Description                                  |
-+=====================+==========================+==============================================+
-| attachment.title    | file1.txt                | File name                                    |
-+---------------------+--------------------------+----------------------------------------------+
-| attachment.content  | Hello world              | File Content                                 |
-+---------------------+--------------------------+----------------------------------------------+
-| attachment.keywords | keyword                  | File Keywords                                |
-+---------------------+--------------------------+----------------------------------------------+
-| attachment.content  | Max                      | File Author                                  |
-+---------------------+--------------------------+----------------------------------------------+
-| body                | :)                       | Content of the article                       |
-+---------------------+--------------------------+----------------------------------------------+
-| cc                  | null                     | Content of the optional cc field             |
-+---------------------+--------------------------+----------------------------------------------+
-| content_type        | text/plain               | Content type                                 |
-+---------------------+--------------------------+----------------------------------------------+
-| created_at          | 2017-08-03T14:21:38.000Z | Article create date (DateTime, UTC)          |
-+---------------------+--------------------------+----------------------------------------------+
-| created_by          | See User                 | Who has created the article                  |
-+---------------------+--------------------------+----------------------------------------------+
-| created_by_id       | 13                       | Who (UserID) has created the article         |
-+---------------------+--------------------------+----------------------------------------------+
-| from                | Christopher Miller via   | Sender address of the article                |
-|                     | <order@chrispresso.com>  | Sender address of the article                |
-+---------------------+--------------------------+----------------------------------------------+
-| id                  | 19                       | internal (DB) article id                     |
-+---------------------+--------------------------+----------------------------------------------+
-| in_reply_to         | null                     | Content of reply to field                    |
-+---------------------+--------------------------+----------------------------------------------+
-| internal            | FALSE                    | Is article visible for customer              |
-+---------------------+--------------------------+----------------------------------------------+
-| message_id          | null                     | Message ID (if article was an email)         |
-+---------------------+--------------------------+----------------------------------------------+
-| message_id_md5      | null                     | internal message id MD5 Checksum             |
-+---------------------+--------------------------+----------------------------------------------+
-| origin_by_id        | null                     | For which real user (UserID) the article     |
-|                     |                          | creation has been done. For example the      |
-|                     |                          | customer which was calling on the phone done |
-+---------------------+--------------------------+----------------------------------------------+
-| preferences         | { }                      | Hash for additional information              |
-+---------------------+--------------------------+----------------------------------------------+
-| references          | null                     | Email references header                      |
-+---------------------+--------------------------+----------------------------------------------+
-| reply_to            | null                     | Content of the reply to field                |
-+---------------------+--------------------------+----------------------------------------------+
-| sender              | Customer                 | Who is the sender (Customer, Agent)          |
-+---------------------+--------------------------+----------------------------------------------+
-| sender_id           | 2                        | Which type of user has created the article   |
-|                     |                          | (Agent, Customer)                            |
-+---------------------+--------------------------+----------------------------------------------+
-| subject             | Feedback Form            | Article subject                              |
-+---------------------+--------------------------+----------------------------------------------+
-| ticket_id           | 19                       | referencing ticket ID                        |
-+---------------------+--------------------------+----------------------------------------------+
-| to                  | null                     | Content of the to field                      |
-+---------------------+--------------------------+----------------------------------------------+
-| type                | web                      | Article type (phone, email, web...)          |
-+---------------------+--------------------------+----------------------------------------------+
-| type_id             | 11                       | Article type id (phone, email, web...)       |
-+---------------------+--------------------------+----------------------------------------------+
-| updated_at          | 2017-08-03T14:21:38.701Z | Update time of the article (DateTime, UTC)   |
-+---------------------+--------------------------+----------------------------------------------+
-| updated_by          | See User                 | Who has updated the article                  |
-+---------------------+--------------------------+----------------------------------------------+
-| updated_by_id       | 13                       | Who (UserID) has updated the article         |
-+---------------------+--------------------------+----------------------------------------------+
+.. note:: 
+
+   Articles are part of the ticket index. 
+   To reduce complexity we decided to provide it in its own table. 🙏
+
+.. list-table:: Article-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - body
+     - ``Hi,\n\nplease send me:\n1 [...] \n75007 Paris\n\nDavid Bell``
+     - Article body in plain text
+   * - cc
+     - ``null``, ``alias@domain.tld``
+     - EMail-Addresses set as CC (String)
+   * - content_type
+     - ``text/html``
+     - Content type of article
+   * - created_at
+     - ``2021-03-22T03:47:59.290Z``
+     - Time stamp of article creation
+   * - created_by_id
+     - ``10``
+     - User ID that created the article
+   * - from
+     - ``David Bell <david@example.com>``
+     - From field of article creator
+   * - id
+     - ``16``
+     - Internal article ID
+   * - in_reply_to
+     - ``null``
+     - In-Reply-To Header from emails if applicable
+   * - internal
+     - ``false``, ``true``
+     - Defines if article is internal
+   * - message_id
+     - ``null``
+     - Message ID of Email if applicable
+   * - origin_by_id
+     - ``null``
+     - User ID or original creator if created on behalf another user
+   * - preferences
+     - ``{}``
+     - Internal preferences, may be empty, mainly for delivery states
+   * - references
+     - ``null``
+     - Contains message references
+   * - reply_to
+     - ``null``
+     - Contains reply to header if applicable
+   * - sender_id
+     - ``2``
+     - ID of sender type (Customer, System, Agent)
+   * - subject
+     - ``My amazing subject``
+     - Article subject
+   * - ticket_id
+     - ``9``
+     - Ticket ID the article belongs to
+   * - to
+     - ``support@example.com``
+     - EMail address from TO-Header
+   * - type_id
+     - ``1``
+     - ID of articles Type (phone, email, web, ...)
+   * - updated_at
+     - ``2021-03-22T03:47:59.290Z``
+     - Last update
+   * - updated_by_id
+     - ``10``
+     - User that updated article
 
 User
 ====
