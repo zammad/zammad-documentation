@@ -475,6 +475,60 @@ User
 Organization
 ============
 
+.. list-table:: Organization-Index
+   :widths: 10 15 15
+   :header-rows: 1
+
+   * - Field
+     - Sample Value
+     - Description
+   * - active
+     - ``true``, ``false``
+     - Defines if organization is active
+   * - created_at
+     - 2021-03-22T12:47:54.807Z
+     - Creation date
+   * - created_by
+     - #{user object}
+     - | Complete Payload of the user that created the organzation
+       | Please see `User`_ for more
+   * - created_by_id
+     - ``1``
+     - User ID that created the organization
+   * - domain
+     - ``null``, ``example.com``
+     - Organizations domain
+   * - domain_assignment
+     - ``false``, ``true``
+     - Domain assignment depends on ``domain``
+   * - id
+     - ``1``
+     - Organization ID
+   * - members
+     - #{array of user objects}
+     - | Array with complete Payload of the users being member of the 
+         organization
+       | Please see `User`_ for more
+   * - name
+     - ``Chrispresso Inc.``
+     - Organization name
+   * - note
+     - ``Manufacturer of individual coffee products.``
+     - Note being available via web, console and API
+   * - shared
+     - ``true``, ``false``
+     - Defines if the organization is a sharing one
+   * - updated_at
+     - ``2021-03-22T12:47:54.807Z``
+     - Last update time
+   * - updated_by
+     - #{user object}
+     - | Complete Payload of the user that updated the organization
+       | Please see `User`_ for more
+   * - updated_by_id
+     - ``1``
+     - User ID that updated the organization
+
 Group
 =====
 
