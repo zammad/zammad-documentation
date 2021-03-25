@@ -6,6 +6,10 @@ Elasticsearch. In other words, if you wish to find a ticket, article, or user
 via the Zammad search box, Elasticsearch can match on any (or all) of the 
 fields below.
 
+.. contents:: Table of content
+   :local:
+   :depth: 1
+
 .. note:: 
 
    These fields may vary if you created custom fields (objects) in the admin interface.
@@ -35,6 +39,11 @@ fields below.
 
 Ticket
 ======
+
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_ticket``
 
 .. list-table:: Ticket-Index
    :widths: 10 15 15
@@ -237,6 +246,11 @@ Ticket
 Ticket Priority
 ===============
 
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_ticket_priority``
+
 .. list-table:: Ticket Priority-Index
    :widths: 10 15 15
    :header-rows: 1
@@ -280,6 +294,11 @@ Ticket Priority
 
 Ticket State
 ============
+
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_ticket_state``
 
 .. list-table:: Ticket State-Index
    :widths: 10 15 15
@@ -344,6 +363,11 @@ Ticket State
 
 Article
 =======
+
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_ticket``
 
 .. note:: 
 
@@ -423,6 +447,11 @@ Article
 
 User
 ====
+
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_user``
 
 .. list-table:: User-Index
    :widths: 10 15 15
@@ -536,6 +565,11 @@ User
 Organization
 ============
 
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_organization``
+
 .. list-table:: Organization-Index
    :widths: 10 15 15
    :header-rows: 1
@@ -592,6 +626,11 @@ Organization
 
 Group
 =====
+
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_group``
 
 .. list-table:: Group-Index
    :widths: 10 15 15
@@ -669,6 +708,11 @@ Group
 CTI Log
 =======
 
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_cti_log``
+
 .. list-table:: CTI Log-Index
    :widths: 10 15 15
    :header-rows: 1
@@ -742,6 +786,11 @@ CTI Log
 
 Chat Session
 ============
+
+.. tip:: 
+
+   🤓 The following indice contains below mentioned information: 
+   ``*_chat_session``
 
 .. list-table:: Chat Session-Index
    :widths: 10 15 15
