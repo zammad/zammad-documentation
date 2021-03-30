@@ -135,18 +135,23 @@ but search performance will be degraded, and some features will be disabled.
    will be very limited! We recommend using Elasticsearch, as it will boost the 
    usage of Zammad greatly!
 
+.. note::
+
+   Starting with Zammad 4.0 you can decide if you want to use 
+   ``elasticsearch`` or ``elasticsearch-oss``. Please note that CentOS 
+   **requires** ``elasticsearch``.
+
 
 .. csv-table:: Zammad/Elasticsearch version compatibility
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "3.4+", "5.5–7.9"
+   "4.0+", "6.5-7.12"
+   "3.4-3.6", "5.5–7.9"
    "3.3", "2.4–7.6"
    "3.2", "2.4–7.5"
    "3.1", "2.4–7.4"
    "2.0–3.0", "2.4–5.6"
 
 An Elasticsearch plugin is required to index the contents of email attachments:
-
-* ``mapper-attachments`` for Elasticsearch 5.5
-* ``ingest-attachment`` for Elasticsearch 5.6–7
+``ingest-attachment``.

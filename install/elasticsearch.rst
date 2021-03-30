@@ -1,17 +1,8 @@
 Set up Elasticsearch
 ********************
 
-Zammad's search function is powered by Elasticsearch, and requires one of:
-
-* Elasticsearch 5.5 (with the 
-  `mapper attachments plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/mapper-attachments.html>`_)
-* Elasticsearch 5.6 or above (with the 
-  `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/5.0/ingest-attachment.html>`_)
-
-.. warning:: 
-
-   Versions below 5.5 may continue to work for the time being,
-   but are officially deprecated. Support will be dropped in upcoming releases.
+Zammad's search function is powered by Elasticsearch, and requires the
+`ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html>`_.
 
 .. note:: 
 
@@ -24,6 +15,18 @@ Zammad's search function is powered by Elasticsearch, and requires one of:
 
 Step 1: Installation
 ====================
+
+   .. note:: **🧐 To use OSS or not to use...**
+
+      Starting with Zammad 4.0 our packages allow you to decide whether to use 
+      ``elasticsearch`` or ``elasticsearch-oss``.
+
+      ``elasticsearch-oss`` users please use below "direct download" tab for 
+      further installation steps.
+
+      .. warning::
+
+         Above does not apply to CentOS because of compatibility reasons.
 
 .. tabs::
 
@@ -90,11 +93,14 @@ Step 1: Installation
       for in-depth instructions. Ensure to also install the fitting 
       (and mandatory!) attachment plugin for elasticsearch.
 
+      If you prefer the Open Source version of Elasticsearch, please use the 
+      `Elasticsearch-OSS <https://www.elastic.co/downloads/past-releases#elasticsearch-oss>`_ 
+      download page.
+
       .. code-block:: sh
 
          # Install the attachment plugin
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment  # for 5.6+
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-attachments # for 5.5
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
          # Increase the virtual memory map limit
          $ sysctl -w vm.max_map_count=262144
