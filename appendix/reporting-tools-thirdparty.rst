@@ -1,0 +1,46 @@
+Reporting Tools (Third party)
+=============================
+
+This guide will discuss how to set up third party reporting tools with Zammad.
+
+.. figure:: /images/appendix/reporting-tools/grafana-sample-dashboard-with-graphs.png
+   :alt: Screenshot showing a Grafana dashboard fed from Zammad data.
+   :align: center
+   :width: 80%
+
+   Use third party reporting tools to boost your reporting capabilities.
+
+.. IGNORE THE NEXT BLOCK - This functionality is not yet available.
+   .. note:: **💰 Availability**
+
+      The following information require either a self-hosted installation or 
+      a hosted instance with **PLUS** package. If you're a Hosted user, please 
+      also check `the Elasticsearch integration 
+      <https://admin-docs.zammad.org/en/latest/system/integrations/hosted/elasticsearch.html>`_ 
+      page for information on how to hook your tool to the index.
+
+Getting Started
+---------------
+
+You will need
+
+   * A instance of the reporting tool of your choice (hosted or self-hosted)
+
+.. include:: reporting-tools-thirdparty/include-requirements.rst
+
+.. include:: reporting-tools-thirdparty/include-limitations.rst
+
+Third Party Reporting Tools known to be working
+-----------------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   /appendix/reporting-tools-thirdparty/grafana
+
+.. note::
+
+   **😖 Your favorite tool is not available?**
+
+   Worry not, if it does support Elasticsearch Indexes, you may be good to go! 
+   See :doc:`/install/elasticsearch/indexed-attributes` for available indexes.

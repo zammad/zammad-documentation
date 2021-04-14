@@ -113,3 +113,4 @@ The Zammad documentation consists of three parts:
    /appendix/configure-database-server
    /appendix/privacy
    /appendix/single-sign-on
+   /appendix/reporting-tools-thirdparty
