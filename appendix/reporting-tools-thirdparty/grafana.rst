@@ -17,7 +17,8 @@ Overview
    * `The Dashboards`_
 
 You will need
-   * A Grafana 7+ instance (hosted or self hosted)
+   * A Grafana 7.5+ instance (hosted or self hosted)
+   * `Worldmap panel plugin <https://grafana.com/grafana/plugins/grafana-worldmap-panel/>`_ 
 
 .. include:: include-requirements.rst
 
