@@ -27,7 +27,7 @@ Get the current FQDN-Setting of Zammad and, if needed, adjust it.
 
 
 Find storage_provider setting
-----------------------------
+-----------------------------
 
 The following command returns a list of available settings for `storage_provider` (for attachments).
 
