@@ -8,8 +8,9 @@ Zammad will migrate the following information:
    * Organizations
    * Agents and Customers (if applicable)
 
-After migrating to Zammad you'll want to continue with the :doc:` /getting-started/first-steps` 
-to configure Zammad. This has to be done *after migration*.
+After migrating to Zammad you'll want to continue with the 
+:doc:`/getting-started/first-steps` to configure Zammad. This has to be 
+done *after migration*.
 
 .. _migration_limitations:
 
