@@ -15,13 +15,13 @@ matches :doc:`Zammad’s requirements </prerequisites/software>`.
 2. Download Zammad to your system
 ---------------------------------
 
-Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.zip>`_,
+Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.tar.gz>`_,
 or find an older version at https://ftp.zammad.com.
 
 .. code-block:: sh
 
    $ cd /opt
-   $ sudo wget https://ftp.zammad.com/zammad-latest.tar.gz
+   $ sudo wget https://github.com/zammad/zammad/archive/stable.tar.gz
    $ sudo tar -C zammad -xzf zammad-latest.tar.gz
    $ sudo chown -R zammad /opt/zammad
    $ sudo su - zammad
