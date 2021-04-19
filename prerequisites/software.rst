@@ -77,8 +77,8 @@ installed with the Zammad-Package.
 Zammad will store all content in a Database.
 You can choose between the following database servers:
 
-* MySQL 5.6+
-* MariaDB 10.0+
+* MySQL 5.7+
+* MariaDB 10.3+
 * PostgreSQL 9.1+
 
 .. note:: 
