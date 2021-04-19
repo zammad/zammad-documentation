@@ -5,6 +5,6 @@ or find the initial version at https://ftp.zammad.com.
 
    $ cd /opt
    $ wget https://github.com/zammad/zammad/archive/stable.tar.gz
-   $ tar -xzf zammad-latest.tar.gz -C zammad
+   $ tar -xzf stable.tar.gz -C zammad
    $ chown -R zammad:zammad zammad/
-   $ rm -f zammad-latest.tar.gz
+   $ rm -f stable.tar.gz
