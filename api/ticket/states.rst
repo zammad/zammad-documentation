@@ -1,5 +1,5 @@
-Ticket Priority
-***************
+States
+******
 
 List
 ====
@@ -12,7 +12,7 @@ Required permission:
 
 Request::
 
-   GET /api/v1/ticket_priorities
+   GET /api/v1/ticket_states
 
 Response::
 
@@ -21,7 +21,10 @@ Response::
    [
      {
        "id": 123,
-       "name": "Ticket Priority 1",
+       "name": "Ticket State 1",
+       "state_type_id": 1,
+       "next_state_id": null,
+       "ignore_escalation": true,
        "active": true,
        "note": "some note",
        "updated_at": "2016-08-16T07:55:42.119Z",
@@ -29,14 +32,16 @@ Response::
      },
      {
        "id": 124,
-       "name": "Ticket Priority 2",
+       "name": "Ticket State 2",
+       "state_type_id": 2,
+       "next_state_id": 4,
+       "ignore_escalation": false,
        "active": true,
        "note": "some note",
        "updated_at": "2016-08-16T07:55:42.119Z",
        "created_at": "2016-08-16T07:55:42.119Z"
      },
    ]
-
 
 Show
 ====
@@ -49,7 +54,7 @@ Required permission:
 
 Request::
 
-   GET /api/v1/ticket_priorities/{id}
+   GET /api/v1/ticket_states/{id}
 
 Response::
 
@@ -57,7 +62,10 @@ Response::
 
    {
      "id": 123,
-     "name": "Ticket Priority 1",
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
      "active": true,
      "note": "some note",
      "updated_at": "2016-08-16T07:55:42.119Z",
@@ -74,13 +82,17 @@ Required permission:
 
 Request::
 
-   POST /api/v1/ticket_priorities
+   POST /api/v1/ticket_states
 
    {
-     "name": "Ticket Priority 1",
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
      "active": true,
      "note": "some note"
    }
+
 
 Response::
 
@@ -88,12 +100,16 @@ Response::
 
    {
      "id": 123,
-     "name": "Ticket Priority 1",
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
      "active": true,
      "note": "some note",
      "updated_at": "2016-08-16T07:55:42.119Z",
      "created_at": "2016-08-16T07:55:42.119Z"
    }
+
 
 Update
 ======
@@ -104,11 +120,14 @@ Required permission:
 
 Request::
 
-   PUT /api/v1/ticket_priorities/{id}
+   PUT /api/v1/ticket_states/{id}
 
    {
      "id": 123,
-     "name": "Ticket Priority 1",
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
      "active": true,
      "note": "some note"
    }
@@ -119,7 +138,10 @@ Response::
 
    {
      "id": 123,
-     "name": "Ticket Priority 1",
+     "name": "Ticket State 1",
+     "state_type_id": 1,
+     "next_state_id": null,
+     "ignore_escalation": true,
      "active": true,
      "note": "some note",
      "updated_at": "2016-08-16T07:55:42.119Z",
@@ -136,7 +158,7 @@ Required permission:
 
 Request::
 
-   DELETE /api/v1/ticket_priorities/{id}
+   DELETE /api/v1/ticket_states/{id}
 
 Response::
 
