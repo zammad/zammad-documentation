@@ -117,7 +117,6 @@ Response::
      ...
    }
 
-
 Create
 ======
 
@@ -221,6 +220,21 @@ Request::
      "group": "Users",
      "customer_id": "guess:customer@example.com",
      "note": "some note",
+     ...
+   }
+
+If you want to use or create a ticket with mentions then use the ids of the related agents which should get mentioned:
+
+Request::
+
+   POST /api/v1/tickets
+
+   {
+     "title": "Help me!",
+     "group": "Users",
+     "customer_id": "guess:customer@example.com",
+     "note": "some note",
+     "mentions": [1,5,7,8],
      ...
    }
 
