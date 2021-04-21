@@ -210,7 +210,6 @@ In order to retrieve attachments, use this ``GET``-Request:
 
 Zammad supports inline images in article bodies, use data URIs in your HTML 
 markup like so:
-If you want to add inline images, just use data URIs in HTML markup:
 
 ``POST``-Request sent: ``/api/v1/ticket_articles``
 
