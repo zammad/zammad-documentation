@@ -81,6 +81,9 @@ MEMCACHED_PORT: ``11211``
 Nginx
 -----
 
+NGINX_PORT:  ``8080``
+   Port of Zammads webserver
+
 NGINX_SERVER_NAME: ``_``
    By default the Nginx container of Zammad will respond to all request. 
    You can provide your IP / FQDN if you want to.
