@@ -195,7 +195,8 @@ Install Zammad
 
          .. code-block:: sh
 
-            chmod -R 755 /opt/zammad/public/
+            chown -R zammad /opt/zammad/public/
+            find /opt/zammad/public/ -type d -exec chmod +x {} \;
 
       .. tab:: OpenSUSE / SLES
 
