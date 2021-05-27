@@ -185,11 +185,10 @@ Optional settings
 
       .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
 
-         For HTTP Basic auth, try `this nginx reverse proxy config <https://github.com/zammad/zammad/blob/develop/contrib/nginx/elasticsearch.conf>`_.
-
-         Elasticsearch also supports authentication via its 
-         `X-Pack paid subscription service <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html>`_
-         Consult the official Elasticsearch guides for more details.
+         Elasticsearch provides many different authentication methods. 
+         Some of them may require paid X-Pack, please check the 
+         `elastic documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html>`_
+         for more information.
 
    .. tab:: Index namespacing
 
