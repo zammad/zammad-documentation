@@ -82,7 +82,7 @@ Nginx
 -----
 
 NGINX_PORT:  ``8080``
-   Port of Zammads webserver
+   The port nginx will listen on.
 
 NGINX_SERVER_NAME: ``_``
    By default the Nginx container of Zammad will respond to all request. 
