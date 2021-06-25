@@ -94,7 +94,12 @@ You can choose between the following database servers:
    * Set ``max_allowed_packet`` to a value larger than the default of 4 MB
      (64 MB+ recommended).
 
-5. Reverse Proxy
+5. Node.js
+================
+
+Node.js 10+ is required for asset transpilation. On most distributions, you can simply install the ``nodejs`` package to that end.
+
+6. Reverse Proxy
 ================
 
 In a typical web environment today, you use a reverse proxy to deliver the
@@ -106,7 +111,7 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-6. Elasticsearch (optional)
+7. Elasticsearch (optional)
 ===========================
 
 Zammad uses Elasticsearch to
