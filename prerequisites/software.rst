@@ -15,6 +15,7 @@ If you want to install Zammad, you need the following software.
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
+   "5.0+", "2.7.3"
    "3.4.1 - 4.1", "2.6.6"
    "3.4.0", "2.6.5"
    "3.1 - 3.3", "2.5.5"
