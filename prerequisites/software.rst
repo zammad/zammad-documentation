@@ -161,3 +161,15 @@ but search performance will be degraded, and some features will be disabled.
 
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
+
+8. Redis (optional)
+===================
+
+By default, Zammad's web socket server stores its state in the file system.
+You can provide a `Redis <https://redis.io/>`_ instance to Zammad as an alternative
+web socket server storage back end.
+
+To achieve this, you can:
+
+* provide a dedicated Redis instance
+* specify `REDIS_URL=redis://your.redis.server:6379` as environment variable
