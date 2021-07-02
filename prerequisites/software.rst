@@ -167,9 +167,21 @@ An Elasticsearch plugin is required to index the contents of email attachments:
 
 By default, Zammad's web socket server stores its state in the file system.
 You can provide a `Redis <https://redis.io/>`_ instance to Zammad as an alternative
-web socket server storage back end.
+web socket server store.
 
 To achieve this, you can:
 
 * provide a dedicated Redis instance
 * specify `REDIS_URL=redis://your.redis.server:6379` as environment variable
+
+8. Memcached (optional)
+=======================
+
+By default, Zammad's Rails cache files are stored in the file system.
+You can provide a `Memcached <https://memcached.org//>`_ instance to Zammad as an alternative
+Rails cache store.
+
+To achieve this, you can:
+
+* provide a dedicated Memcached instance
+* specify `MEMCACHE_SERVERS=your.memcached.server:11211` as environment variable
