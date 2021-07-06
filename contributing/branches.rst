@@ -35,7 +35,6 @@ Stable
 Stable-X.x
 ==========
 
-* Each minor and major version will have a stable branch (stable-x.x).
-* We are supporting the current develop and stable branch for security fixes and minor bugfixes
-* The latest downloadble version on https://zammad.org/ is based on the stable branch
-* If your version is older and e.g. equals version 1.2.0 then the name of the branch is stable-1.2 and there also would be stable-1.1 and stable-1.0
+* We're supporting the current stable branch for security fixes and minor bugfixes.
+* Let's say you're on version `1.2.0` and the next release will be `1.3.0`. In that case we'd provide a stable backport of mayor bug fixes that won't interfere with the old code base to `stable-1.2.1` - this also applies for security fixes *if the code base supports it*. The old stable version will be switched to `stable-1.2.0` (from `stable`) and stable version `1.3.0` will be the new `stable` branch.
+
