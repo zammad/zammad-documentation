@@ -20,8 +20,7 @@ Stable
 
 * Current stable release
 * Can be used for production
-* Stable bug fixes will be merged from develop when new stable minor version
-  will be released
+* Stable bug fixes will be merged from develop after evaluation of the developers
 * Supported with minor- and security bug fixes.
 
 Stable-X.x
