@@ -3,6 +3,12 @@ Software
 
 If you want to install Zammad, you need the following software.
 
+.. note::
+
+   Most of below software versions (unless stated as specific version) 
+   are minimum requirements of Zammad. We strongly encourage you to use 
+   most current possible versions that *are not end of life*.
+
 1. Ruby Programming Language
 ============================
 
