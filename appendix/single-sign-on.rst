@@ -131,18 +131,19 @@ Admin privileges are not required; a normal user account will do.
 
    :``<zammad-host>``:              Zammad FQDN
    :``<service-acct>``:             Service account logon name
-   :``<service-acct-pwd>``:         Service account password
    :``<domain>``:                   Windows domain
-   :``<master-domain-controller>``: Master domain controller IP/FQDN
+   :``<master-domain-controller>``: Master domain controller IP/FQD
+
+   Below command will prompt for the users password.
 
 .. code-block:: sh
 
    $ setspn -s HTTP/<zammad-host> <service-acct>
-   $ ktpass /princ <service-acct>@<domain> \
+   $ ktpass /princ HTTP/<zammad-host>@<domain> \
             /mapuser <service-acct> \
             /crypto AES256-SHA1 \
             /ptype KRB5_NT_PRINCIPAL \
-            /pass <service-acct-pwd> -SetPass +DumpSalt \
+            /pass * -SetPass +DumpSalt \
             /target <master-domain-controller> \
             /out zammad.keytab
 
@@ -385,6 +386,7 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
       AuthType Kerberos
       AuthName "Your Zammad"
       KrbMethodNegotiate On
+      KrbVerifyKDC On
       KrbMethodK5Passwd On
       KrbAuthRealms <domain>
       KrbLocalUserMapping on                 # strips @REALM suffix from REMOTE_USER variable
@@ -530,3 +532,12 @@ Errors in Apache Logs
    And did you make sure to register the SPN (with ``ktpass``)
    and generate your keytab (with ``ktutil``)
    *after changing your password?*
+
+“failed when verifying KDC” and “failed to verify krb5 credentials: Decrypt integrity check failed”
+   Ensure ``KrbServiceName`` is the correct ServiceName provided via setspn.
+
+   Ensure your Active Directory supports the encryption method configured. 
+
+   If all above is correct and the rest of FAQ also is ensured, make sure your 
+   client does not cache the results. 
+   ``klist purge`` clears the clients cache - a reboot of your client would do too.
