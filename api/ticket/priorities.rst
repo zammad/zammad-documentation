@@ -64,7 +64,7 @@ Create
 
 Required permission: ``admin.object``
 
-``POST``-Request sent:/api/v1/ticket_priorities
+``POST``-Request sent: ``/api/v1/ticket_priorities``
 
 .. code-block:: json
    
