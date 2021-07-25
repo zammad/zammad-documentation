@@ -1,22 +1,21 @@
 Mentions
 ********
 
+   .. warning::
+
+      Mention endpoints depend on on group permissions if the user you're 
+      using is an agent. Because of this tickets may or may not be available.
+
 List
 ====
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-* ticket.agent (access to all ticket in allocated groups)
-* ticket.customer (access to all ticket with customer_id ** current_user.id || organization_id ** current_user.organization_id)
+``GET``-Request sent: ``/api/v1/mentions``
 
-Request::
-
-   GET /api/v1/mentions
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   
+   # HTTP-Code 200 Ok
    {
      mentions: [
        {
@@ -45,23 +44,22 @@ Response::
 Create
 ======
 
-Required permission:
+Required permission: ``ticket.agent``
 
-* ticket.agent (create in all allocated groups)
+``POST``-Request sent: ``/api/v1/mentions``
 
-Request::
-
-   POST /api/v1/mentions
+.. code-block:: json
 
    {
      "mentionable_type": "Ticket",
      "mentionable_id": 12,
    }
 
-Response::
+Response:
 
-   Status: 201 Created
+.. code-block:: json
 
+   # HTTP-Code 201 Created
    {
      "id":2,
      "mentionable_type":"Ticket",
@@ -78,18 +76,15 @@ The mention will be created for the user of the current session.
 Delete
 ======
 
-Required permission:
+Required permission: ``ticket.agent``
 
-* ticket.agent (access to all ticket in allocated groups)
+``DELETE``-Request sent: ``/api/v1/mentions/{id}``
 
-Request::
+Response:
 
-   DELETE /api/v1/mentions/{id}
+.. code-block:: json
 
-Response::
-
-   Status: 200 Ok
-
+   # HTTP-Code 200 Ok
    {
      "id":2,
      "mentionable_type":"Ticket",
