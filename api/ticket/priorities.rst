@@ -1,23 +1,20 @@
-Ticket Priority
-***************
+Priorities
+**********
 
 List
 ====
 
 Required permission:
+``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
 
-* admin.object (can read all ticket states)
-* ticket.agent (can read all ticket states)
-* ticket.customer (can read all ticket states)
+``GET``-Request sent: ``/api/v1/ticket_priorities``
 
-Request::
+Response:
 
-   GET /api/v1/ticket_priorities
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    [
      {
        "id": 123,
@@ -42,19 +39,16 @@ Show
 ====
 
 Required permission:
+``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
 
-* admin.object (can read all ticket states)
-* ticket.agent (can read all ticket states)
-* ticket.customer (can read all ticket states)
+``GET``-Request sent: ``/api/v1/ticket_priorities/{id}``
 
-Request::
+Response:
 
-   GET /api/v1/ticket_priorities/{id}
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    {
      "id": 123,
      "name": "Ticket Priority 1",
@@ -68,24 +62,24 @@ Response::
 Create
 ======
 
-Required permission:
+Required permission: ``admin.object``
 
-* admin.object
+``POST``-Request sent: ``/api/v1/ticket_priorities``
 
-Request::
-
-   POST /api/v1/ticket_priorities
-
+.. code-block:: json
+   
    {
      "name": "Ticket Priority 1",
      "active": true,
      "note": "some note"
    }
 
-Response::
+Response:
 
-   Status: 201 Created
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 201 Created
    {
      "id": 123,
      "name": "Ticket Priority 1",
@@ -98,14 +92,12 @@ Response::
 Update
 ======
 
-Required permission:
+Required permission: ``admin.object``
 
-* admin.object
+``PUT``-Request sent: ``/api/v1/ticket_priorities/{id}``
 
-Request::
-
-   PUT /api/v1/ticket_priorities/{id}
-
+.. code-block:: json
+   
    {
      "id": 123,
      "name": "Ticket Priority 1",
@@ -113,10 +105,12 @@ Request::
      "note": "some note"
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    {
      "id": 123,
      "name": "Ticket Priority 1",
@@ -130,16 +124,14 @@ Response::
 Delete
 ======
 
-Required permission:
+Required permission: ``admin.object``
 
-* admin.object (only if no references in history tables and tickets exist)
+``DELETE``-Request sent: ``/api/v1/ticket_priorities/{id}``
 
-Request::
+Response:
 
-   DELETE /api/v1/ticket_priorities/{id}
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    {}

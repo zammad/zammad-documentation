@@ -1,8 +1,6 @@
 Tags
 ****
 
-.. warning:: 🛠 API-Endpoints for Tags  have changed with Zammad 3.5!
-
 List
 ====
 
@@ -13,6 +11,7 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
 Sample response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    {
@@ -35,6 +34,7 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
 Sample response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    [
@@ -60,6 +60,7 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
 ``POST``-Request sent: ``/api/v1/tags/add``
 
 .. code-block:: json
+   :force:
 
    {
        "item": "{tag-name}",
@@ -72,6 +73,7 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 201 Created
    true
@@ -96,6 +98,7 @@ Required permission:
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 201 Created
    true
@@ -110,6 +113,7 @@ Required permission: ``admin.tag``
 Sample response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    [
@@ -146,6 +150,7 @@ Required permission: ``admin.tag``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    {}
@@ -166,6 +171,7 @@ Required permission: ``admin.tag``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    {}
@@ -180,6 +186,7 @@ Required permission: ``admin.tag``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    {}

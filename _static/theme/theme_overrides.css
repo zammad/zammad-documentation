@@ -53,3 +53,8 @@
 .collapsing-code-block--open > .collapsing-code-block__toggle::after {
     content: "Less";
 }
+
+.highlight span.err {
+    border: inherit;
+    box-sizing: inherit;
+}

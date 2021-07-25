@@ -1,23 +1,25 @@
-Ticket State
-************
+States
+******
+
+   .. warning::
+
+      Creating, changing or removing states via below endpoints require further
+      steps via console. See :doc:`/admin/console/working-on-tickets`
 
 List
 ====
 
 Required permission:
+``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
 
-* admin.object (can read all ticket states)
-* ticket.agent (can read all ticket states)
-* ticket.customer (can read all ticket states)
+``GET``-Request sent: /api/v1/ticket_states
 
-Request::
+Response:
 
-   GET /api/v1/ticket_states
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    [
      {
        "id": 123,
@@ -47,19 +49,16 @@ Show
 ====
 
 Required permission:
+``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
 
-* admin.object (can read all ticket states)
-* ticket.agent (can read all ticket states)
-* ticket.customer (can read all ticket states)
+``GET``-Request sent: ``/api/v1/ticket_states/{id}``
 
-Request::
+Response:
 
-   GET /api/v1/ticket_states/{id}
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    {
      "id": 123,
      "name": "Ticket State 1",
@@ -76,13 +75,11 @@ Response::
 Create
 ======
 
-Required permission:
+Required permission: ``admin.object``
 
-* admin.object
+``POST``-Request sent: ``/api/v1/ticket_states``
 
-Request::
-
-   POST /api/v1/ticket_states
+.. code-block:: json
 
    {
      "name": "Ticket State 1",
@@ -94,10 +91,12 @@ Request::
    }
 
 
-Response::
+Response:
 
-   Status: 201 Created
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 201 Created
    {
      "id": 123,
      "name": "Ticket State 1",
@@ -114,14 +113,12 @@ Response::
 Update
 ======
 
-Required permission:
+Required permission: ``admin.object``
 
-* admin.object
+``PUT``-Request sent: ``/api/v1/ticket_states/{id}``
 
-Request::
-
-   PUT /api/v1/ticket_states/{id}
-
+.. code-block:: json
+   
    {
      "id": 123,
      "name": "Ticket State 1",
@@ -132,10 +129,12 @@ Request::
      "note": "some note"
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    {
      "id": 123,
      "name": "Ticket State 1",
@@ -152,16 +151,14 @@ Response::
 Delete
 ======
 
-Required permission:
+Required permission: ``admin.object``
 
-* admin.object (only if no references in history tables and tickets exist)
+``DELETE``-Request sent: ``/api/v1/ticket_states/{id}``
 
-Request::
+Response:
 
-   DELETE /api/v1/ticket_states/{id}
-
-Response::
-
-   Status: 200 Ok
-
+.. code-block:: json
+   :force:
+   
+   # HTTP-Code 200 Ok
    {}
