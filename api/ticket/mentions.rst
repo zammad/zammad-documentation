@@ -14,6 +14,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 ``GET``-Request sent: ``/api/v1/mentions``
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 200 Ok
    {
@@ -58,6 +59,7 @@ Required permission: ``ticket.agent``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 201 Created
    {
@@ -83,6 +85,7 @@ Required permission: ``ticket.agent``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 Ok
    {

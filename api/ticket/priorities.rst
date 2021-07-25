@@ -12,6 +12,7 @@ Required permission:
 Response:
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 200 Ok
    [
@@ -45,6 +46,7 @@ Required permission:
 Response:
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 200 Ok
    {
@@ -75,6 +77,7 @@ Required permission: ``admin.object``
 Response:
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 201 Created
    {
@@ -105,6 +108,7 @@ Required permission: ``admin.object``
 Response:
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 200 Ok
    {
@@ -127,6 +131,7 @@ Required permission: ``admin.object``
 Response:
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 200 Ok
    {}

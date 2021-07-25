@@ -11,6 +11,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Sample response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    [
@@ -54,6 +55,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 ``GET``-Request sent: ``/api/v1/ticket_articles/{article-id}``
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 OK
    {
@@ -119,6 +121,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 201 Created
    {
@@ -132,7 +135,7 @@ Response:
       "content_type": "text/html",
       "type": "note",
       "internal": false,
-      "time_unit": "12.0"
+      "time_unit": "12.0",
       "created_at": "2016-10-19T10:07:12.011Z",
       "updated_at": "2017-01-18T12:45:53.420Z",
       ...
@@ -171,6 +174,7 @@ If you want to create articles with attachments, use:
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 201 Created
    {
@@ -183,7 +187,7 @@ Response:
       "content_type": "text/html",
       "type": "note",
       "internal": false,
-      "time_unit": "12.0"
+      "time_unit": "12.0",
       "attachments": [
          {
             "id": 123,
@@ -230,6 +234,7 @@ markup like so:
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP Code 201 Created
    {
@@ -243,7 +248,7 @@ Response:
       "content_type": "text/html",
       "type": "note",
       "internal": false,
-      "time_unit": "12.0"
+      "time_unit": "12.0",
       "attachments": [
          {
             "id": 123,

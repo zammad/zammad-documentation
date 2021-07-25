@@ -5,7 +5,7 @@ Zammad comes with many ticket related endpoints.
 For better overview the grouped those up:
 
    .. toctree::
-      :maxdepth: 2
+      :maxdepth: 1
       :glob:
 
       /api/ticket/index

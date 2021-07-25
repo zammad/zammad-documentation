@@ -16,6 +16,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Response:
 
 .. code-block:: json
+   :force:
    
    # HTTP-Code 200 Ok
    [
@@ -62,6 +63,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 Ok
    [
@@ -101,6 +103,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 Ok
    {
@@ -140,6 +143,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 ``POST``-Request sent: ``/api/v1/tickets``
 
 .. code-block:: json
+   :force:
    
    {
       "title": "Help me!",
@@ -158,6 +162,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 201 Created
    {
@@ -180,6 +185,7 @@ If you want to include attachments of the first article, the payload looks like:
 ``POST``-Request sent: ``/api/v1/tickets``
 
 .. code-block:: json
+   :force:
 
    {
       "title": "Help me!",
@@ -210,6 +216,7 @@ markup like so:
 ``POST``-Request sent: ``/api/v1/tickets``
 
 .. code-block:: json
+   :force:
 
    {
       "title": "Help me!",
@@ -231,6 +238,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 ``PUT``-Request sent: ``/api/v1/tickets/{ticket-id}``
 
 .. code-block:: json
+   :force:
    
    {
       "id": 123,
@@ -248,6 +256,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 Ok
    {
@@ -281,6 +290,7 @@ Required permission: ``admin``
 Response:
 
 .. code-block:: json
+   :force:
 
    # HTTP-Code 200 Ok
    {}
