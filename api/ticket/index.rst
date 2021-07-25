@@ -139,6 +139,8 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 ``POST``-Request sent: ``/api/v1/tickets``
 
+.. code-block:: json
+   
    {
       "title": "Help me!",
       "group": "Users",
@@ -228,6 +230,8 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 ``PUT``-Request sent: ``/api/v1/tickets/{ticket-id}``
 
+.. code-block:: json
+   
    {
       "id": 123,
       "title": "Help me!",
