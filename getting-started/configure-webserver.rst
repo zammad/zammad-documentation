@@ -74,15 +74,18 @@ The guide within the tabs below can help you jumping in.
 
             .. hint:: 
 
-               The most reliable way is to use the standalone method.
+               The most reliable way is to use the method for your webserver.
 
             First of all you'll need to issue your certificate.
             acme.sh will save this certificate to 
             ``/root/.acme.sh/<your-domain>/``
+            
+            Replace ``<webserver>`` in below command by either
+            ``apache`` or ``nginx`` and to match your setup, use ``standalone`` for other webservers.
 
             .. code-block:: sh
 
-               acme.sh --issue --standalone -d zammad.example.com
+               acme.sh --issue --<webserver> -d zammad.example.com
 
             It's not recommended to use the just stored certificates directly.
             Instead you should install the certificate to a directory of your 
