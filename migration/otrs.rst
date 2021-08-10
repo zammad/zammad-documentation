@@ -15,6 +15,10 @@ These are additional limitations to the :ref:`general ones listed <migration_lim
    * Zammad expects your OTRS timestamps to be UTC and won't adjust them
    * If you plan to import a differential after, **do not** change any data in Zammad!
 
+   .. note::
+
+      Supported OTRS version: **3.1** up to **6.x**
+
 Prerequisites
 =============
 
