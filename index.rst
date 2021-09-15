@@ -84,12 +84,8 @@ The Zammad documentation consists of three parts:
    /api/organization
    /api/group
    /api/ticket
-   /api/ticket-state
-   /api/ticket-priority
-   /api/ticket-article
    /api/notification
    /api/object
-   /api/tags
    /api/user-access-token
 
 
