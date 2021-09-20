@@ -102,7 +102,7 @@ Example CURL Requests (for tickets and users)
    $ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=some+message&limit=10&expand=true'
 
    # Search for tickets (for tickets with state new and open )::
-   $ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=state:new%20OR%20state:open&limit=10&expand=true'
+   $ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=state.name:new%20OR%20state.name:open&limit=10&expand=true'
 
    # Create a new user
    curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"firstname":"Bob","lastname":"Smith","email":"email_of_customer@example.com","roles":["Customer"],"password":"some_password"}' https://xxx.zammad.com/api/v1/users
