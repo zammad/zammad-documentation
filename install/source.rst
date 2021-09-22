@@ -221,6 +221,21 @@ older versions. A list of required versions can be found on the
 
                   $ zypper install libmariadb-devel
 
+      Create database
+         While that's basically an easy step, you may want to create your
+         database as follows to minimize potential issues.
+
+         Below commands need adjustments to fit your environment.
+         Choose a safe password.
+
+         .. code-block:: sh
+
+            $ mysql
+            > create user 'zammad'@'localhost' identified by 'changeme';
+            > CREATE DATABASE zammad DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+            > GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, INDEX, DROP, ALTER, CREATE TEMPORARY TABLES,\ 
+              LOCK TABLES ON zammad.* TO 'zammad'@'localhost';
+
 
       Install Gems for Zammad
          .. code-block:: sh
