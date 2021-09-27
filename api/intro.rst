@@ -524,3 +524,14 @@ The value of this header can be one of the following:
    * user email
 
 On behalf of is available for all endpoints.
+
+Encoding
+========
+
+The API expects UTF-8 encoding.
+Keep in mind that especially when using URLs with get options
+(e.g. ``?query=this``) you may need to encode your URL accordingly.
+
+If you want to learn more about URL encoding,
+`this Wikipedia article <https://en.wikipedia.org/wiki/Percent-encoding>`_
+may be of help
