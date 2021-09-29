@@ -483,6 +483,14 @@ and user each.
                    "create_article_sender": "Customer"
                }
 
+.. warning::
+
+   Please note that Core Workflows may restrict access to attributes or values.
+   see `Core Workflows limitations`_ to learn more.
+
+.. _Core Workflows limitations:
+   https://admin-docs.zammad.org/en/latest/system/core-workflows/limitations.html
+
 Pagination
 ==========
 
