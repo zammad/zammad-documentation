@@ -12,15 +12,19 @@ Updating Zammad
 
    .. tab:: Package
 
-      Step 1: Stop Zammad
+      Step 1: Ensure dependencies
+         Before proceeding, double-check that your system environment matches 
+         :doc:`Zammad’s requirements </prerequisites/software>`.
+
+      Step 2: Stop Zammad
          .. code-block:: sh
 
             $ systemctl stop zammad
 
-      Step 2: Backup Zammad
+      Step 3: Backup Zammad
          See :doc:`/appendix/backup-and-restore` for more information.
 
-      Step 3: Update Zammad
+      Step 4: Update Zammad
          .. tabs::
 
             .. tab:: Ubuntu / Debian
@@ -54,12 +58,12 @@ Updating Zammad
               output may lead to incomplete updates that may corrupt data or 
               lead to issues you find *way too late*.
 
-      Step 4: Run required extra steps
+      Step 5: Run required extra steps
          Extra steps needed for updates are mentioned in our release news.
 
          `Updating Elasticsearch`_ may be relevant in this step.
 
-      Step 5: Log into Zammad
+      Step 6: Log into Zammad
          Yes, that's it!
 
    .. tab:: Source
