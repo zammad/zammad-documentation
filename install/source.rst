@@ -196,6 +196,11 @@ older versions. A list of required versions can be found on the
 
                .. code-block:: sh
 
+                  # CentOS 7
+                  $ yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+                  $ yum install postgresql13-libs postgresql13-devel
+
+                  # CentOS 8
                   $ yum install postgresql-libs postgresql-devel
 
             .. tab:: OpenSuSE
