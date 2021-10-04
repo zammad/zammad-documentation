@@ -132,9 +132,9 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
 
 .. note::
 
-   Below options allow you to distribute Zammad processes over several
-   application nodes. Even if that's not your goal, they may provide great
-   benefits on bigger installations.
+   The options listed below allow you to distribute Zammad processes
+   over several application nodes. Even if that's not your goal, they may
+   provide great benefits on bigger installations.
 
    Please note that distribution of processes on several nodes is out of
    the scope of this documentation for various reasons.

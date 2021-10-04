@@ -5,9 +5,9 @@ If you want to install Zammad, you need the following software.
 
 .. note::
 
-   Most of below software versions (unless stated as specific version) 
-   are minimum requirements of Zammad. We strongly encourage you to use 
-   most current possible versions that *are not end of life*.
+   Most of the software versions listed below (unless stated as specific
+   version)  are minimum requirements of Zammad. We strongly encourage you to
+   use most current possible versions that *are not end of life*.
 
 1. Ruby Programming Language
 ============================
@@ -204,7 +204,7 @@ An Elasticsearch plugin is required to index the contents of email attachments:
 8. Optional tools of improved caching and distribution
 ======================================================
 
-.. note:: **Below support was introduced by Zammad 5.0**
+.. note:: **The features / integrations below were introduced by Zammad 5.0**
 
    These tools are optional and may make a lot of sense in big
    environments even if you decide against distributed use cases.

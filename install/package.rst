@@ -37,10 +37,10 @@ some operating systems may require additional packages if not already installed.
 (optional) Node.js
 ~~~~~~~~~~~~~~~~~~
 
-Zammad requires Node.js for compiling it's assets.
+Zammad requires Node.js for compiling its assets.
 Package installations by default come shipped with assets compiled already.
 
-You'll only have to install this package in case you're going to change
+You'll only have to install ``Node.js`` in case you're going to change
 ``CSS`` or ``JS`` files.
 
 .. tabs::
@@ -181,7 +181,7 @@ Install Zammad
             # general
             $ yum install zammad
 
-         Due to a `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
+         Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
          packager.io on CentOS 8 you'll need to correct file permissions for 
          public files.
 
