@@ -53,7 +53,7 @@ Step 1: Get the source
 
 .. note::
 
-   Not all distributions ship ``wget`` by default, you may need to 
+   Not all distributions ship ``wget`` and ``tar`` by default, you may need to 
    install it manually.
 
 .. include:: /install/source/include-get-the-source.rst
@@ -64,7 +64,7 @@ Step 2: Install dependencies
 ----------------------------
 
 ..
-   About this section: The RCM installation part uses definition list instead 
+   About this section: The RVM installation part uses definition list instead 
    of field lists intentionally. It's supposed to safe width for better readability.
 
 .. note:: 
@@ -214,6 +214,11 @@ older versions. A list of required versions can be found on the
 
             $ su - zammad
             $ bundle install --without test development mysql
+
+            # CentOS 7 users - above command might fail, run the following
+            # command and repeat above bundle install.
+            # Adjust pg_config path according to your environment
+            $ gem install pg -v '0.21.0' -- --with-pg-config=/usr/pgsql-13/bin/pg_config
 
    .. tab:: MySQL / MariaDB
 
