@@ -43,7 +43,8 @@ RAILS_LOG_TO_STDOUT
    Print output directly to standard output
    instead of ``/var/log/zammad/production.log``.
 
-   .. warning:: On package installations, ⏫ **this setting can be overwritten during update.**
+   .. warning:: On package installations, 
+      ⏫ **this setting can be overwritten during update.**
 
       Use ``enabled`` to turn this option on only until the next update.
       Use ``true`` to turn it on permanently.
@@ -66,11 +67,14 @@ ZAMMAD_RAILS_PORT
    Default: ``3000``
 
 ZAMMAD_WEBSOCKET_PORT
-   The port that the websocket server is exposed on.
+   The port that the web socket server is exposed on.
 
    Default: ``6042``
 
-.. note:: Remember to update your webserver config to reflect any changes you make here.
+.. note:: 
+
+   Remember to update your web server config to reflect any changes you
+   make here.
 
 .. _performance_tuning:
 
@@ -84,8 +88,8 @@ ZAMMAD_WEBSOCKET_PORT
    your system’s resources and typical application load.
 
    Proceed with caution; when adjusting any of these settings,
-   there is a point at which performance will begin to degrade rather than improve,
-   or other problems will begin to crop up.
+   there is a point at which performance will begin to degrade rather than
+   improve, or other problems will begin to crop up.
 
 WEB_CONCURRENCY
    How many instances of the application server to keep open at a time.
