@@ -193,26 +193,38 @@ but search performance will be degraded, and some features will be disabled.
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
 
-8. Redis (optional)
-===================
+8. Optional tools of improved caching and distribution
+======================================================
 
-By default, Zammad's web socket server stores its state in the file system.
-You can provide a `Redis <https://redis.io/>`_ instance to Zammad as an alternative
-web socket server store.
+.. note:: **Below support was introduced by Zammad 5.0**
 
-To achieve this, you can:
+   These tools are optional and may make a lot of sense in big
+   environments even if you decide against distributed use cases.
 
-* provide a dedicated Redis instance
-* specify `REDIS_URL=redis://your.redis.server:6379` as environment variable
+   We consider this topic as :ref:`performance_tuning`.
 
-8. Memcached (optional)
-=======================
 
-By default, Zammad's Rails cache files are stored in the file system.
-You can provide a `Memcached <https://memcached.org//>`_ instance to Zammad as an alternative
-Rails cache store.
+8.1 Redis
+~~~~~~~~~
 
-To achieve this, you can:
+   Using `Redis <https://redis.io/>`_ allows you to store all web socket
+   information in Redis instead of your file system.
 
-* provide a dedicated Memcached instance
-* specify `MEMCACHE_SERVERS=your.memcached.server:11211` as environment variable
+      .. note::
+
+         Configuration and installation is out of our scope.
+         Please follow the official vendor guides and ensure to have a
+         tight security on your installation.
+
+8.2 Memcached
+~~~~~~~~~~~~~
+
+   Instead of storing Zammads cache files within your filesystem, you can also
+   do so in `Memcached <https://memcached.org/>`_. This can allow you to restrict
+   the size of your cache directories to improve performance.
+
+      .. note::
+
+         Configuration and installation is out of our scope.
+         Please follow the official vendor guides and ensure to have a
+         tight security on your installation.
