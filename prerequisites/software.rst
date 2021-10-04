@@ -131,6 +131,15 @@ Node.js 10+ is required for asset compiling.
    "5.0+", "10.0+"
 
 6. Reverse Proxy
+   You may also want to consider the following settings for your MySQL server::
+
+      innodb_file_format = Barracuda
+      innodb_file_per_table = on
+      innodb_default_row_format = dynamic
+      innodb_large_prefix = 1
+      innodb_file_format_max = Barracuda
+
+5. Reverse Proxy
 ================
 
 In a typical web environment today, you use a reverse proxy to deliver the
