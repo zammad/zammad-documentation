@@ -38,8 +38,16 @@ Below you can find all distributions Zammad provides packages for.
 
    "CentOS", "7 & 8"
    "Debian", "9 & 10"
-   "OpenSuSE / SLES", "Leap 42.3 / 12"
+   "⚠ OpenSuSE / SLES", "Leap 42.3 / 12"
    "Ubuntu", "16.04, 18.04 & 20.04"
+
+.. warning:: **⚠ SuSE users be aware**
+
+   Due to the age of SLES12 / Leap 42.3 you may no longer be able to satisfy
+   all (soft) dependencies of Zammad.
+
+   If you're not running a docker-compose or package installation please
+   consider changing to a different distribution that's supported.
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 
@@ -102,9 +110,25 @@ You can choose between the following database servers:
      (64 MB+ recommended).
 
 5. Node.js
-================
+==========
 
-Node.js 10+ is required for asset transpilation. On most distributions, you can simply install the ``nodejs`` package to that end.
+.. note:: This soft dependency was introduced with Zammad 5.0.
+
+Node.js 10+ is required for asset compiling.
+
+.. hint:: **🔨 No changes to JS or CSS files?**
+
+   If you don't require to change any javascript or stylesheed files you'll
+   be fine without this package. It's only required if you have to run
+   ``rake assets:precompile`` on your system.
+
+   .. warning:: Node.js **is** required on source code installations.
+
+.. csv-table:: Zammad/Node.js version compatibility
+   :header: "Zammad", "Node.js"
+   :widths: 20, 20
+
+   "5.0+", "10.0+"
 
 6. Reverse Proxy
 ================

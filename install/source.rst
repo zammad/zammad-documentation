@@ -81,10 +81,12 @@ older versions. A list of required versions can be found on the
 
    .. tab:: Ubuntu
 
+      Install Node.js
+         .. include:: /install/includes/nodejs/ubuntu.rst
+
       Install RVM
          .. code-block:: sh
 
-            $ apt update
             $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3 software-properties-common
@@ -101,10 +103,12 @@ older versions. A list of required versions can be found on the
   
    .. tab:: Debian
 
+      Install Node.js
+         .. include:: /install/includes/nodejs/debian.rst
+
       Install RVM
          .. code-block:: sh
 
-            $ apt update
             $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3
@@ -120,6 +124,9 @@ older versions. A list of required versions can be found on the
          .. include:: source/include-rvm-install-ruby.rst
 
    .. tab:: CentOS
+
+      Install Node.js
+         .. include:: /install/includes/nodejs/centos.rst
 
       Install RVM
          .. code-block:: sh
@@ -139,6 +146,9 @@ older versions. A list of required versions can be found on the
          .. include:: source/include-rvm-install-ruby.rst
 
    .. tab:: OpenSuSE
+
+      Install Node.js
+         .. include:: /install/includes/nodejs/suse.rst
 
       Install RVM
          .. code-block:: sh
@@ -161,6 +171,8 @@ older versions. A list of required versions can be found on the
       Other systems than above mentioned are out of scope of this documentation. 
       Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how 
       to install rvm on your system. 
+
+      Please also ensure to install ``nodejs``.
 
       After that install the specific required ruby version.
 

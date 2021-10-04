@@ -31,6 +31,33 @@ some operating systems may require additional packages if not already installed.
 
          $ yum install wget epel-release
 
+(optional) Node.js
+~~~~~~~~~~~~~~~~~~
+
+Zammad requires Node.js for compiling it's assets.
+Package installations by default come shipped with assets compiled already.
+
+You'll only have to install this package in case you're going to change
+``CSS`` or ``JS`` files.
+
+.. tabs::
+
+   .. tab:: Ubuntu
+
+      .. include:: /install/includes/nodejs/ubuntu.rst
+
+   .. tab:: Debian
+
+      .. include:: /install/includes/nodejs/debian.rst
+
+   .. tab:: CentOS
+
+      .. include:: /install/includes/nodejs/centos.rst
+
+   .. tab:: OpenSUSE / SLES
+
+      .. include:: /install/includes/nodejs/suse.rst
+
 .. include:: /install/includes/prerequisites.rst
 
 Add Repository and install Zammad
