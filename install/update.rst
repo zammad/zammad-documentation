@@ -24,7 +24,12 @@ Updating Zammad
       Step 3: Backup Zammad
          See :doc:`/appendix/backup-and-restore` for more information.
 
-      Step 4: Update Zammad
+      Step 3: Clear Zammad cache
+         .. code-block:: sh
+
+            $ zammad run railsr "Cache.clear"
+
+      Step 5: Update Zammad
          .. tabs::
 
             .. tab:: Ubuntu / Debian
@@ -58,12 +63,12 @@ Updating Zammad
               output may lead to incomplete updates that may corrupt data or 
               lead to issues you find *way too late*.
 
-      Step 5: Run required extra steps
+      Step 6: Run required extra steps
          Extra steps needed for updates are mentioned in our release news.
 
          `Updating Elasticsearch`_ may be relevant in this step.
 
-      Step 6: Log into Zammad
+      Step 7: Log into Zammad
          Yes, that's it!
 
    .. tab:: Source
@@ -77,10 +82,17 @@ Updating Zammad
             Please see 
             :ref:`Installation part of source code installation <source_dependency_installation>`
 
-      Step 2: Download Zammad to your system
+      Step 2: Stop Zammad and Clear Zammad cache
+         Before you continue, stop your Zammad processes.
+
+         .. code-block:: sh
+
+            $ rails r "Cache.clear"
+
+      Step 3: Download Zammad to your system
          .. include:: /install/source/include-get-the-source.rst
 
-      Step 3: Install Gems
+      Step 4: Install Gems
          .. code-block:: sh
 
             $ su - zammad
@@ -101,20 +113,20 @@ Updating Zammad
 
                   $ bundle install --without test development postgres
 
-      Step 4: Stop Zammad services
+      Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.
 
-      Step 5: Upgrade your database
+      Step 6: Upgrade your database
          .. code-block:: sh
 
             $ su - zammad
             $ rake db:migrate
             $ rake assets:precompile
 
-      Step 6: Start Zammad services
-         Start the application server, websocket server and scheduler.
+      Step 7: Start Zammad services
+         Start the application server, web socket server and scheduler.
 
-      Step 7: Log into Zammad
+      Step 8: Log into Zammad
          Yes, that's it!
 
    .. tab:: Docker Compose
