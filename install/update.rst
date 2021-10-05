@@ -27,7 +27,7 @@ Updating Zammad
       Step 4: Clear Zammad cache
          .. code-block:: sh
 
-            $ zammad run railsr "Cache.clear"
+            $ zammad run rails r "Cache.clear"
 
       Step 5: Update Zammad
          .. tabs::
