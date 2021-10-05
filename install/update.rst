@@ -24,7 +24,7 @@ Updating Zammad
       Step 3: Backup Zammad
          See :doc:`/appendix/backup-and-restore` for more information.
 
-      Step 3: Clear Zammad cache
+      Step 4: Clear Zammad cache
          .. code-block:: sh
 
             $ zammad run railsr "Cache.clear"
