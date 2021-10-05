@@ -72,4 +72,4 @@ You can always use ``0`` to not create specific items. Zammad will create random
 
 .. code-block:: ruby
 
-   >> FillDB.load(agents: 50,customers: 1000,groups: 20,organizations: 40,overviews: 5,tickets: 100,)
+   >> FillDb.load(agents: 50,customers: 1000,groups: 20,organizations: 40,overviews: 5,tickets: 100,)

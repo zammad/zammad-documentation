@@ -53,7 +53,7 @@ Step 1: Get the source
 
 .. note::
 
-   Not all distributions ship ``wget`` by default, you may need to 
+   Not all distributions ship ``wget`` and ``tar`` by default, you may need to 
    install it manually.
 
 .. include:: /install/source/include-get-the-source.rst
@@ -64,7 +64,7 @@ Step 2: Install dependencies
 ----------------------------
 
 ..
-   About this section: The RCM installation part uses definition list instead 
+   About this section: The RVM installation part uses definition list instead 
    of field lists intentionally. It's supposed to safe width for better readability.
 
 .. note:: 
@@ -81,10 +81,12 @@ older versions. A list of required versions can be found on the
 
    .. tab:: Ubuntu
 
+      Install Node.js
+         .. include:: /install/includes/nodejs/ubuntu.rst
+
       Install RVM
          .. code-block:: sh
 
-            $ apt update
             $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3 software-properties-common
@@ -101,10 +103,12 @@ older versions. A list of required versions can be found on the
   
    .. tab:: Debian
 
+      Install Node.js
+         .. include:: /install/includes/nodejs/debian.rst
+
       Install RVM
          .. code-block:: sh
 
-            $ apt update
             $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk libsqlite3-dev sqlite3
@@ -120,6 +124,9 @@ older versions. A list of required versions can be found on the
          .. include:: source/include-rvm-install-ruby.rst
 
    .. tab:: CentOS
+
+      Install Node.js
+         .. include:: /install/includes/nodejs/centos.rst
 
       Install RVM
          .. code-block:: sh
@@ -139,6 +146,9 @@ older versions. A list of required versions can be found on the
          .. include:: source/include-rvm-install-ruby.rst
 
    .. tab:: OpenSuSE
+
+      Install Node.js
+         .. include:: /install/includes/nodejs/suse.rst
 
       Install RVM
          .. code-block:: sh
@@ -162,6 +172,8 @@ older versions. A list of required versions can be found on the
       Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how 
       to install rvm on your system. 
 
+      Please also ensure to install ``nodejs``.
+
       After that install the specific required ruby version.
 
 | After installing bundler, rake and rails we'll need to install all required gems. 
@@ -184,6 +196,11 @@ older versions. A list of required versions can be found on the
 
                .. code-block:: sh
 
+                  # CentOS 7
+                  $ yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+                  $ yum install postgresql13-libs postgresql13-devel
+
+                  # CentOS 8
                   $ yum install postgresql-libs postgresql-devel
 
             .. tab:: OpenSuSE
@@ -197,6 +214,11 @@ older versions. A list of required versions can be found on the
 
             $ su - zammad
             $ bundle install --without test development mysql
+
+            # CentOS 7 users - above command might fail, run the following
+            # command and repeat above bundle install.
+            # Adjust pg_config path according to your environment
+            $ gem install pg -v '0.21.0' -- --with-pg-config=/usr/pgsql-13/bin/pg_config
 
    .. tab:: MySQL / MariaDB
 

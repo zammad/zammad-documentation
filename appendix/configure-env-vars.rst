@@ -43,7 +43,8 @@ RAILS_LOG_TO_STDOUT
    Print output directly to standard output
    instead of ``/var/log/zammad/production.log``.
 
-   .. warning:: On package installations, ⏫ **this setting can be overwritten during update.**
+   .. warning:: On package installations, 
+      ⏫ **this setting can be overwritten during update.**
 
       Use ``enabled`` to turn this option on only until the next update.
       Use ``true`` to turn it on permanently.
@@ -66,11 +67,14 @@ ZAMMAD_RAILS_PORT
    Default: ``3000``
 
 ZAMMAD_WEBSOCKET_PORT
-   The port that the websocket server is exposed on.
+   The port that the web socket server is exposed on.
 
    Default: ``6042``
 
-.. note:: Remember to update your webserver config to reflect any changes you make here.
+.. note:: 
+
+   Remember to update your web server config to reflect any changes you
+   make here.
 
 .. _performance_tuning:
 
@@ -84,8 +88,14 @@ ZAMMAD_WEBSOCKET_PORT
    your system’s resources and typical application load.
 
    Proceed with caution; when adjusting any of these settings,
-   there is a point at which performance will begin to degrade rather than improve,
-   or other problems will begin to crop up.
+   there is a point at which performance will begin to degrade rather than
+   improve, or other problems will begin to crop up.
+
+.. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
+
+   .. code-block:: sh
+
+      $ zammad run rails r "p Sessions.list.uniq.count" 
 
 WEB_CONCURRENCY
    How many instances of the application server to keep open at a time.
@@ -111,14 +121,44 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
 
    Default: **unset**
 
-.. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
+.. warning::
 
-   .. code-block:: sh
-
-      $ zammad run rails r "p Sessions.list.uniq.count" 
-
-.. hint::
-
-   Above settings *may* consume all available database connections. Please consider the 
+   Above settings *may* consume all available database connections.
+   Please consider the 
    :doc:`database server configuration </appendix/configure-database-server>` 
    section for more.
+
+--------------------------------------------------------------------------------
+
+.. note::
+
+   The options listed below allow you to distribute Zammad processes
+   over several application nodes. Even if that's not your goal, they may
+   provide great benefits on bigger installations.
+
+   Please note that distribution of processes on several nodes is out of
+   the scope of this documentation for various reasons.
+
+REDIS_URL
+   | Store your web socket connection information within Redis.
+   | To do so, tell Zammad where to find your Redis instance:
+     ``redis://your.redis.server:6379``
+
+   If not provided, Zammad falls back to file system
+   (``/opt/zammad/tmp/websocket_*``).
+
+   Default: **unset**
+
+MEMCACHE_SERVERS
+   | Store your application cache files within Memcached.
+   | To do so, tell Zammad where to find your Memcached instance:
+     ``your.memcached.server:11211``
+
+   If not provided, Zammad falls back to file system
+   (``/opt/zammad/tmp/cache*``).
+
+      .. tip:: **🤓 Size may be important**
+
+         Memcached allows you to restrict the maximum size Zammad may store
+         as cache. This comes in handy in terms of performance and keeping
+         caching files small. ``1 GB`` should be a reasonable size.

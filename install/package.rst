@@ -31,6 +31,36 @@ some operating systems may require additional packages if not already installed.
 
          $ yum install wget epel-release
 
+         # CentOS 7
+         $ yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+(optional) Node.js
+~~~~~~~~~~~~~~~~~~
+
+Zammad requires Node.js for compiling its assets.
+Package installations by default come shipped with assets compiled already.
+
+You'll only have to install ``Node.js`` in case you're going to change
+``CSS`` or ``JS`` files.
+
+.. tabs::
+
+   .. tab:: Ubuntu
+
+      .. include:: /install/includes/nodejs/ubuntu.rst
+
+   .. tab:: Debian
+
+      .. include:: /install/includes/nodejs/debian.rst
+
+   .. tab:: CentOS
+
+      .. include:: /install/includes/nodejs/centos.rst
+
+   .. tab:: OpenSUSE / SLES
+
+      .. include:: /install/includes/nodejs/suse.rst
+
 .. include:: /install/includes/prerequisites.rst
 
 Add Repository and install Zammad
@@ -111,6 +141,12 @@ Add Repository
 
       .. tab:: OpenSUSE / SLES
 
+         Remove obsolete Let's Encrypt CA
+            .. code-block:: sh
+
+               $ rm /usr/share/pki/trust/DST_Root_CA_X3.pem
+               $ update-ca-certificates
+
          Install Repository Key
             .. code-block:: sh
 
@@ -136,9 +172,16 @@ Install Zammad
 
          .. code-block:: sh
 
+            # CentOS 7
+            $ yum install postgresql14-server
+            $ postgresql-14-setup initdb
+            $ systemctl start postgresql-14
+            $ systemctl enable postgresql-14
+
+            # general
             $ yum install zammad
 
-         Due to a `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
+         Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
          packager.io on CentOS 8 you'll need to correct file permissions for 
          public files.
 
