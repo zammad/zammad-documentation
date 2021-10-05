@@ -120,6 +120,12 @@ Add Repository
                   $ wget -O /etc/apt/sources.list.d/zammad.list \
                   https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/10.repo
 
+            Debian 11
+               .. code-block:: sh
+
+                  $ wget -O /etc/apt/sources.list.d/zammad.list \
+                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/11.repo
+
       .. tab:: CentOS
 
          Install Repository Key
