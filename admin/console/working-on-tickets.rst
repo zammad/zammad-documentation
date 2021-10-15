@@ -126,7 +126,7 @@ Replace ``pending customer feedback`` with the pending state of your choice.
          name:               'remove pending till on state "pending customer feedback"',
          object:             'Ticket',
          condition_selected: { 'ticket.state_id'=>{ 'operator' => 'is', 'value' => Ticket::State.find_by(name: 'pending customer feedback').id.to_s } },
-         perform:            { 'ticket.pending_time'=> { 'operator' => 'remove', 'remove' => 'true' } } )
+         perform:            { 'ticket.pending_time'=> { 'operator' => 'remove', 'remove' => 'true' } },
          created_by_id:      1,
          updated_by_id:      1,
       )
