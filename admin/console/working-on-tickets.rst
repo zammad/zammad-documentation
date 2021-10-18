@@ -111,25 +111,25 @@ A pending action that will change to another state if "pending till" has been re
         updated_by_id: 1,
       )
 
-Add a date and time picker (pending till) for pending states
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(optional) Disable date and time picker (pending till) for pending states
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add the time picker (pending till) to the new pending state, you'll need to execute the following code:
+Starting with Zammad 5.0, `Core Workflows`_ automatically handles displaying the
+"pending till" field for pending states. Below snippet *is not required* and is
+only relevant if you don't want to create a workflow within the UI of Zammad.
+
+Replace ``pending customer feedback`` with the pending state of your choice.
 
 .. code-block:: ruby
 
-   >> attribute = ObjectManager::Attribute.get(
-        object: 'Ticket',
-        name: 'pending_time',
+   >> CoreWorkflow.create_if_not_exists(
+         name:               'remove pending till on state "pending customer feedback"',
+         object:             'Ticket',
+         condition_selected: { 'ticket.state_id'=>{ 'operator' => 'is', 'value' => Ticket::State.find_by(name: 'pending customer feedback').id.to_s } },
+         perform:            { 'ticket.pending_time'=> { 'operator' => 'remove', 'remove' => 'true' } },
+         created_by_id:      1,
+         updated_by_id:      1,
       )
-   >> attribute.data_option[:required_if][:state_id] = Ticket::State.by_category(:pending).pluck(:id)
-   >> attribute.data_option[:shown_if][:state_id] = Ticket::State.by_category(:pending).pluck(:id)
-   >> attribute.save!
-
-
-.. note:: In enhanced cases you might want do define the ``state_id`` on your own. In this case just pick the returned ``state_id`` from ``Ticket::State.by_category(:pending).pluck(:id)`` and use them with ``attribute.data_option[:required_if][:state_id] = {state_id(s)}`` and ``attribute.data_option[:shown_if][:state_id] = {state_id(s)}`` directly. Don't forget to save!
-
-
 
 Make new states available to UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,6 +154,11 @@ Before being able to use the new states within the WebApp, you need to run the f
 
 Limit available states for customers
 ------------------------------------
+
+.. tip::
+
+   `Core Workflows`_ allows you to achieve below described behavior any time
+   without any issues. No need to use the console if you don't want to!
 
 By default Zammad allows customers to change Ticket states to ``open`` and ``closed``.
 If this does not meet your requirenments, you can adjust this at anytime.
@@ -185,3 +190,5 @@ The above will return one or more IDs - if you're not sure which state they belo
 .. code-block:: ruby
 
    >> Ticket::State.find({ID}).name
+
+.. _Core Workflows: https://admin-docs.zammad.org/en/latest/system/core-workflows.html
