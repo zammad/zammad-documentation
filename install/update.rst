@@ -92,6 +92,8 @@ Updating Zammad
       Step 3: Download Zammad to your system
          .. include:: /install/source/include-get-the-source.rst
 
+         .. include:: /install/source/include-chmod-database-yml.rst
+
       Step 4: Install Gems
          .. code-block:: sh
 

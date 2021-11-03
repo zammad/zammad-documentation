@@ -323,6 +323,8 @@ file could look like. Please also have a look at
       If you want to use an existing database server that's not on the same 
       machine, you can also use ``host`` and ``port`` to set that up.
 
+   .. include:: /install/source/include-chmod-database-yml.rst
+
 Step 4: Initialize your database
 --------------------------------
 
