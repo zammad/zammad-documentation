@@ -18,7 +18,7 @@ Request::
 
    GET /api/v1/links
 
-with following parameters:
+   with following parameters:
 
    {
       "link_object": "Ticket", 
@@ -410,12 +410,29 @@ Request::
 
    POST /api/v1/links/add
 
-Response::
-
-   Status: 200 Ok
+   with following parameters:
 
    {
+      "link_type": "normal",
+      "link_object_target": "Ticket",
+      "link_object_target_value": "147469",
+      "link_object_source": "Ticket",
+      "link_object_source_number": "34147471"
+   }
 
+Response::
+
+   Status: 201 Created
+
+   {
+      "id": 5,
+      "link_type_id": 1,
+      "link_object_source_id": 1,
+      "link_object_source_value": 147471,
+      "link_object_target_id": 1,
+      "link_object_target_value": 147469,
+      "created_at": "2021-11-03T10:40:14.528Z",
+      "updated_at": "2021-11-03T10:40:14.528Z"
    }
 
 Delete
@@ -427,11 +444,16 @@ Request::
 
    DELETE /api/v1/links/remove
 
-Response::
-
-   Status: 200 Ok
-
    {
-   
+      "link_type": "normal",
+      "link_object_source": "Ticket",
+      "link_object_source_value": 147471,
+      "link_object_target": "Ticket",
+      "link_object_target_value": 147469
    }
 
+Response::
+
+   Status: 201 Created
+
+   { }
