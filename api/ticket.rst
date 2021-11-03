@@ -13,5 +13,5 @@ For better overview the grouped those up:
       /api/ticket/priorities
       /api/ticket/states
       /api/ticket/tags
+      /api/ticket/links
       /api/ticket/mentions
-      /api/ticket/tags
