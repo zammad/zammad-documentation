@@ -14,20 +14,22 @@ Available endpoints:
 Get
 ===
 
-Request::
+``GET``-Request sent: ``/api/v1/links``
 
-   GET /api/v1/links
-
-   with following parameters:
+.. code-block:: json
+   :force:
 
    {
       "link_object": "Ticket", 
       "link_object_value": "147469"
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    {
       "links": [
@@ -406,11 +408,10 @@ Add
 
 Required permission: ``ticket.agent`` **or** ``admin``
 
-Request::
+``POST``-Request sent: ``/api/v1/links/add``
 
-   POST /api/v1/links/add
-
-   with following parameters:
+.. code-block:: json
+   :force:
 
    {
       "link_type": "normal",
@@ -420,9 +421,12 @@ Request::
       "link_object_source_number": "34147471"
    }
 
-Response::
+Response:
 
-   Status: 201 Created
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 201 Created
 
    {
       "id": 5,
@@ -440,9 +444,10 @@ Delete
 
 Required permission: ``ticket.agent`` **or** ``admin``
 
-Request::
+``DELETE``-Request sent: ``/api/v1/links/remove``
 
-   DELETE /api/v1/links/remove
+.. code-block:: json
+   :force:
 
    {
       "link_type": "normal",
@@ -452,8 +457,11 @@ Request::
       "link_object_target_value": 147469
    }
 
-Response::
+Response:
 
-   Status: 201 Created
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 201 Created
 
    { }
