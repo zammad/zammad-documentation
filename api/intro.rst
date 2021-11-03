@@ -108,125 +108,150 @@ and user each.
             .. code-block:: json
 
                {
-                   "active": true,
-                   "login_failed": 0,
-                   "verified": false,
-                   "source": null,
-                   "login": "chris@chrispresso.com",
-                   "last_login": "2021-09-23T13:17:24.817Z",
-                   "id": 3,
-                   "updated_by_id": 1,
-                   "organization_id": 2,
-                   "firstname": "Christopher",
-                   "lastname": "Miller",
-                   "email": "chris@chrispresso.com",
-                   "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
-                   "image_source": null,
-                   "web": "",
-                   "phone": "",
-                   "fax": "",
-                   "mobile": "",
-                   "department": "",
-                   "street": "",
-                   "zip": "",
-                   "city": "",
-                   "country": "",
-                   "address": "",
-                   "vip": false,
-                   "note": "",
-                   "out_of_office": false,
-                   "out_of_office_start_at": null,
-                   "out_of_office_end_at": null,
-                   "out_of_office_replacement_id": null,
-                   "preferences": {
-                       "notification_config": {
-                           "matrix": {
-                               "create": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": true,
-                                       "subscribed": true,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               },
-                               "update": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": true,
-                                       "subscribed": true,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               },
-                               "reminder_reached": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": false,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               },
-                               "escalation": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": false,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               }
+                  "active": true,
+                  "login_failed": 0,
+                  "verified": false,
+                  "source": null,
+                  "login": "chris@chrispresso.com",
+                  "last_login": "2021-09-23T13:17:24.817Z",
+                  "id": 3,
+                  "updated_by_id": 1,
+                  "organization_id": 2,
+                  "firstname": "Christopher",
+                  "lastname": "Miller",
+                  "email": "chris@chrispresso.com",
+                  "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
+                  "image_source": null,
+                  "web": "",
+                  "phone": "",
+                  "fax": "",
+                  "mobile": "",
+                  "department": "",
+                  "street": "",
+                  "zip": "",
+                  "city": "",
+                  "country": "",
+                  "address": "",
+                  "vip": false,
+                  "note": "",
+                  "out_of_office": false,
+                  "out_of_office_start_at": null,
+                  "out_of_office_end_at": null,
+                  "out_of_office_replacement_id": null,
+                  "preferences":
+                  {
+                     "notification_config":
+                     {
+                        "matrix":
+                        {
+                           "create":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
                            },
-                           "group_ids": [
-                               "2",
-                               "1",
-                               "3"
-                           ]
-                       },
-                       "locale": "de-de",
-                       "intro": true,
-                       "notification_sound": {
-                           "file": "Xylo.mp3",
-                           "enabled": true
-                       },
-                       "cti": true,
-                       "tickets_closed": 0,
-                       "tickets_open": 1
-                   },
-                   "created_by_id": 1,
-                   "created_at": "2021-07-26T14:44:41.066Z",
-                   "updated_at": "2021-09-23T13:17:24.825Z",
-                   "role_ids": [
-                       1,
-                       2
-                   ],
-                   "organization_ids": [],
-                   "authorization_ids": [],
-                   "karma_user_ids": [
-                       1
-                   ],
-                   "group_ids": {
-                       "1": [
-                           "full"
-                       ],
-                       "2": [
-                           "full"
-                       ],
-                       "3": [
-                           "full"
-                       ]
-                   }
+                           "update":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "reminder_reached":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "escalation":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           }
+                        },
+                        "group_ids":
+                        [
+                           "2",
+                           "1",
+                           "3"
+                        ]
+                     },
+                     "locale": "de-de",
+                     "intro": true,
+                     "notification_sound":
+                     {
+                        "file": "Xylo.mp3",
+                        "enabled": true
+                     },
+                     "cti": true,
+                     "tickets_closed": 0,
+                     "tickets_open": 1
+                  },
+                  "created_by_id": 1,
+                  "created_at": "2021-07-26T14:44:41.066Z",
+                  "updated_at": "2021-09-23T13:17:24.825Z",
+                  "role_ids":
+                  [
+                     1,
+                     2
+                  ],
+                  "organization_ids":
+                  [],
+                  "authorization_ids":
+                  [],
+                  "karma_user_ids":
+                  [
+                     1
+                  ],
+                  "group_ids":
+                  {
+                     "1":
+                     [
+                        "full"
+                     ],
+                     "2":
+                     [
+                        "full"
+                     ],
+                     "3":
+                     [
+                        "full"
+                     ]
+                  }
                }
 
          .. tab:: ``?expand=true``
@@ -234,145 +259,177 @@ and user each.
             .. code-block:: json
 
                {
-                   "active": true,
-                   "login_failed": 0,
-                   "verified": false,
-                   "source": null,
-                   "login": "chris@chrispresso.com",
-                   "last_login": "2021-09-23T13:17:24.817Z",
-                   "id": 3,
-                   "updated_by_id": 1,
-                   "organization_id": 2,
-                   "firstname": "Christopher",
-                   "lastname": "Miller",
-                   "email": "chris@chrispresso.com",
-                   "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
-                   "image_source": null,
-                   "web": "",
-                   "phone": "",
-                   "fax": "",
-                   "mobile": "",
-                   "department": "",
-                   "street": "",
-                   "zip": "",
-                   "city": "",
-                   "country": "",
-                   "address": "",
-                   "vip": false,
-                   "note": "",
-                   "out_of_office": false,
-                   "out_of_office_start_at": null,
-                   "out_of_office_end_at": null,
-                   "out_of_office_replacement_id": null,
-                   "preferences": {
-                       "notification_config": {
-                           "matrix": {
-                               "create": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": true,
-                                       "subscribed": true,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               },
-                               "update": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": true,
-                                       "subscribed": true,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               },
-                               "reminder_reached": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": false,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               },
-                               "escalation": {
-                                   "criteria": {
-                                       "owned_by_me": true,
-                                       "owned_by_nobody": false,
-                                       "no": true
-                                   },
-                                   "channel": {
-                                       "email": true,
-                                       "online": true
-                                   }
-                               }
+                  "active": true,
+                  "login_failed": 0,
+                  "verified": false,
+                  "source": null,
+                  "login": "chris@chrispresso.com",
+                  "last_login": "2021-09-23T13:17:24.817Z",
+                  "id": 3,
+                  "updated_by_id": 1,
+                  "organization_id": 2,
+                  "firstname": "Christopher",
+                  "lastname": "Miller",
+                  "email": "chris@chrispresso.com",
+                  "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
+                  "image_source": null,
+                  "web": "",
+                  "phone": "",
+                  "fax": "",
+                  "mobile": "",
+                  "department": "",
+                  "street": "",
+                  "zip": "",
+                  "city": "",
+                  "country": "",
+                  "address": "",
+                  "vip": false,
+                  "note": "",
+                  "out_of_office": false,
+                  "out_of_office_start_at": null,
+                  "out_of_office_end_at": null,
+                  "out_of_office_replacement_id": null,
+                  "preferences":
+                  {
+                     "notification_config":
+                     {
+                        "matrix":
+                        {
+                           "create":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
                            },
-                           "group_ids": [
-                               "2",
-                               "1",
-                               "3"
-                           ]
-                       },
-                       "locale": "de-de",
-                       "intro": true,
-                       "notification_sound": {
-                           "file": "Xylo.mp3",
-                           "enabled": true
-                       },
-                       "cti": true,
-                       "tickets_closed": 0,
-                       "tickets_open": 1
-                   },
-                   "created_by_id": 1,
-                   "created_at": "2021-07-26T14:44:41.066Z",
-                   "updated_at": "2021-09-23T13:17:24.825Z",
-                   "role_ids": [
-                       1,
-                       2
-                   ],
-                   "organization_ids": [],
-                   "authorization_ids": [],
-                   "karma_user_ids": [
-                       1
-                   ],
-                   "group_ids": {
-                       "1": [
-                           "full"
-                       ],
-                       "2": [
-                           "full"
-                       ],
-                       "3": [
-                           "full"
-                       ]
-                   },
-                   "roles": [
-                       "Admin",
-                       "Agent"
-                   ],
-                   "organizations": [],
-                   "authorizations": [],
-                   "organization": "Chrispresso Inc.",
-                   "groups": {
-                       "Sales": [
-                           "full"
-                       ],
-                       "2nd Level": [
-                           "full"
-                       ],
-                       "Service/Desk": [
-                           "full"
-                       ]
-                   },
-                   "created_by": "-",
-                   "updated_by": "-"
+                           "update":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "reminder_reached":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "escalation":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           }
+                        },
+                        "group_ids":
+                        [
+                           "2",
+                           "1",
+                           "3"
+                        ]
+                     },
+                     "locale": "de-de",
+                     "intro": true,
+                     "notification_sound":
+                     {
+                        "file": "Xylo.mp3",
+                        "enabled": true
+                     },
+                     "cti": true,
+                     "tickets_closed": 0,
+                     "tickets_open": 1
+                  },
+                  "created_by_id": 1,
+                  "created_at": "2021-07-26T14:44:41.066Z",
+                  "updated_at": "2021-09-23T13:17:24.825Z",
+                  "role_ids":
+                  [
+                     1,
+                     2
+                  ],
+                  "organization_ids":
+                  [],
+                  "authorization_ids":
+                  [],
+                  "karma_user_ids":
+                  [
+                     1
+                  ],
+                  "group_ids":
+                  {
+                     "1":
+                     [
+                        "full"
+                     ],
+                     "2":
+                     [
+                        "full"
+                     ],
+                     "3":
+                     [
+                        "full"
+                     ]
+                  },
+                  "roles":
+                  [
+                     "Admin",
+                     "Agent"
+                  ],
+                  "organizations":
+                  [],
+                  "authorizations":
+                  [],
+                  "organization": "Chrispresso Inc.",
+                  "groups":
+                  {
+                     "Sales":
+                     [
+                        "full"
+                     ],
+                     "2nd Level":
+                     [
+                        "full"
+                     ],
+                     "Service/Desk":
+                     [
+                        "full"
+                     ]
+                  },
+                  "created_by": "-",
+                  "updated_by": "-"
                }
 
    .. tab:: Ticket payload
@@ -384,43 +441,44 @@ and user each.
             .. code-block:: json
 
                {
-                   "id": 3,
-                   "group_id": 1,
-                   "priority_id": 2,
-                   "state_id": 4,
-                   "organization_id": 3,
-                   "number": "71003",
-                   "title": "Order 787556",
-                   "owner_id": 3,
-                   "customer_id": 7,
-                   "note": null,
-                   "first_response_at": null,
-                   "first_response_escalation_at": null,
-                   "first_response_in_min": null,
-                   "first_response_diff_in_min": null,
-                   "close_at": null,
-                   "close_escalation_at": null,
-                   "close_in_min": null,
-                   "close_diff_in_min": null,
-                   "update_escalation_at": null,
-                   "update_in_min": null,
-                   "update_diff_in_min": null,
-                   "last_contact_at": "2021-02-26T12:44:43.888Z",
-                   "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
-                   "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
-                   "last_owner_update_at": null,
-                   "create_article_type_id": 1,
-                   "create_article_sender_id": 2,
-                   "article_count": 2,
-                   "escalation_at": null,
-                   "pending_time": null,
-                   "type": null,
-                   "time_unit": null,
-                   "preferences": {},
-                   "updated_by_id": 4,
-                   "created_by_id": 7,
-                   "created_at": "2021-02-24T14:44:43.828Z",
-                   "updated_at": "2021-07-26T14:44:43.906Z",
+                  "id": 3,
+                  "group_id": 1,
+                  "priority_id": 2,
+                  "state_id": 4,
+                  "organization_id": 3,
+                  "number": "71003",
+                  "title": "Order 787556",
+                  "owner_id": 3,
+                  "customer_id": 7,
+                  "note": null,
+                  "first_response_at": null,
+                  "first_response_escalation_at": null,
+                  "first_response_in_min": null,
+                  "first_response_diff_in_min": null,
+                  "close_at": null,
+                  "close_escalation_at": null,
+                  "close_in_min": null,
+                  "close_diff_in_min": null,
+                  "update_escalation_at": null,
+                  "update_in_min": null,
+                  "update_diff_in_min": null,
+                  "last_contact_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
+                  "last_owner_update_at": null,
+                  "create_article_type_id": 1,
+                  "create_article_sender_id": 2,
+                  "article_count": 2,
+                  "escalation_at": null,
+                  "pending_time": null,
+                  "type": null,
+                  "time_unit": null,
+                  "preferences":
+                  {},
+                  "updated_by_id": 4,
+                  "created_by_id": 7,
+                  "created_at": "2021-02-24T14:44:43.828Z",
+                  "updated_at": "2021-07-26T14:44:43.906Z"
                }
 
          .. tab:: ``?expand=true``
@@ -428,59 +486,63 @@ and user each.
             .. code-block:: json
 
                {
-                   "id": 3,
-                   "group_id": 1,
-                   "priority_id": 2,
-                   "state_id": 4,
-                   "organization_id": 3,
-                   "number": "71003",
-                   "title": "Order 787556",
-                   "owner_id": 3,
-                   "customer_id": 7,
-                   "note": null,
-                   "first_response_at": null,
-                   "first_response_escalation_at": null,
-                   "first_response_in_min": null,
-                   "first_response_diff_in_min": null,
-                   "close_at": null,
-                   "close_escalation_at": null,
-                   "close_in_min": null,
-                   "close_diff_in_min": null,
-                   "update_escalation_at": null,
-                   "update_in_min": null,
-                   "update_diff_in_min": null,
-                   "last_contact_at": "2021-02-26T12:44:43.888Z",
-                   "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
-                   "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
-                   "last_owner_update_at": null,
-                   "create_article_type_id": 1,
-                   "create_article_sender_id": 2,
-                   "article_count": 2,
-                   "escalation_at": null,
-                   "pending_time": null,
-                   "type": null,
-                   "time_unit": null,
-                   "preferences": {},
-                   "updated_by_id": 4,
-                   "created_by_id": 7,
-                   "created_at": "2021-02-24T14:44:43.828Z",
-                   "updated_at": "2021-07-26T14:44:43.906Z",
-                   "article_ids": [
-                       5,
-                       6
-                   ],
-                   "ticket_time_accounting_ids": [],
-                   "group": "Sales",
-                   "organization": "Awesome Customer Inc.",
-                   "ticket_time_accounting": [],
-                   "state": "closed",
-                   "priority": "2 normal",
-                   "owner": "chris@chrispresso.com",
-                   "customer": "samuel@example.com",
-                   "created_by": "samuel@example.com",
-                   "updated_by": "jacob@chrispresso.com",
-                   "create_article_type": "email",
-                   "create_article_sender": "Customer"
+                  "id": 3,
+                  "group_id": 1,
+                  "priority_id": 2,
+                  "state_id": 4,
+                  "organization_id": 3,
+                  "number": "71003",
+                  "title": "Order 787556",
+                  "owner_id": 3,
+                  "customer_id": 7,
+                  "note": null,
+                  "first_response_at": null,
+                  "first_response_escalation_at": null,
+                  "first_response_in_min": null,
+                  "first_response_diff_in_min": null,
+                  "close_at": null,
+                  "close_escalation_at": null,
+                  "close_in_min": null,
+                  "close_diff_in_min": null,
+                  "update_escalation_at": null,
+                  "update_in_min": null,
+                  "update_diff_in_min": null,
+                  "last_contact_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
+                  "last_owner_update_at": null,
+                  "create_article_type_id": 1,
+                  "create_article_sender_id": 2,
+                  "article_count": 2,
+                  "escalation_at": null,
+                  "pending_time": null,
+                  "type": null,
+                  "time_unit": null,
+                  "preferences":
+                  {},
+                  "updated_by_id": 4,
+                  "created_by_id": 7,
+                  "created_at": "2021-02-24T14:44:43.828Z",
+                  "updated_at": "2021-07-26T14:44:43.906Z",
+                  "article_ids":
+                  [
+                     5,
+                     6
+                  ],
+                  "ticket_time_accounting_ids":
+                  [],
+                  "group": "Sales",
+                  "organization": "Awesome Customer Inc.",
+                  "ticket_time_accounting":
+                  [],
+                  "state": "closed",
+                  "priority": "2 normal",
+                  "owner": "chris@chrispresso.com",
+                  "customer": "samuel@example.com",
+                  "created_by": "samuel@example.com",
+                  "updated_by": "jacob@chrispresso.com",
+                  "create_article_type": "email",
+                  "create_article_sender": "Customer"
                }
 
 .. warning::
