@@ -18,7 +18,7 @@ Request::
 
    GET /api/v1/links
 
-   with following parameters:
+with following parameters:
 
    {
       "link_object": "Ticket", 
