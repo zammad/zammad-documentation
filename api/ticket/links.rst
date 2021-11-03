@@ -1,18 +1,10 @@
 Linking Tickets
 *******************
 
-Required permission: ``ticket.agent`` **or** ``admin``
-
-Available endpoints:
-
-``GET      /api/v1/links``
-
-``POST     /api/v1/links/add``
-
-``DELETE   /api/v1/links/remove``
-
 Get
 ===
+
+Required permission: ``ticket.agent`` **or** ``admin``
 
 ``GET``-Request sent: ``/api/v1/links``
 
