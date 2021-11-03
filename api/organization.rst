@@ -4,186 +4,335 @@ Organization
 List
 ====
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``admin.organization``
 
-* ticket.agent or admin.organization (can read all organizations)
-* any (can only read its own organization if exists)
+   .. note:: 
 
-Request::
+      Technically any, customers can only see their own organization
+      if applicable.
 
-   GET /api/v1/organizations
+``GET``-Request sent: ``/api/v1/organizations``
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    [
-     {
-       "id": 123,
-       "name": "Org 1",
-       "shared": true,
-       "active": true,
-       "note": "some note",
-       "updated_at": "2016-08-16T07:55:42.119Z",
-       "created_at": "2016-08-16T07:55:42.119Z"
-     },
-     {
-       "id": 124,
-       "name": "Org 2",
-       "shared": false,
-       "active": true,
-       "note": "some note",
-       "updated_at": "2016-08-16T07:55:42.119Z",
-       "created_at": "2016-08-16T07:55:42.119Z"
-     },
+      {
+         "id": 1,
+         "name": "Zammad Foundation",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:51:13.683Z",
+         "updated_at": "2021-11-03T11:51:13.822Z",
+         "member_ids": [
+            2
+         ]
+      },
+      {
+         "id": 2,
+         "name": "Chrispresso Inc.",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "Manufacturer of individual coffee products.",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:57:15.817Z",
+         "updated_at": "2021-11-03T11:57:15.817Z",
+         "member_ids": [
+            5,
+            4,
+            3
+         ]
+      },
+      {
+         "id": 3,
+         "name": "Awesome Customer Inc.",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "Global distributor of communication and security products, electrical and electronic wire &amp; cable.",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:57:15.825Z",
+         "updated_at": "2021-11-03T11:57:15.825Z",
+         "member_ids": [
+            8,
+            7,
+            6
+         ]
+      },
+      {
+         "id": 4,
+         "name": "Good Customer Inc.",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "Search the world's information, including webpages, images, videos and more. Good Customer has many special features to help you find exactly what you're looking for.",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:57:15.839Z",
+         "updated_at": "2021-11-03T11:57:15.839Z",
+         "member_ids": [
+            9
+         ]
+      },
+      {
+         "id": 5,
+         "name": "Test",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "",
+         "updated_by_id": 3,
+         "created_by_id": 3,
+         "created_at": "2021-11-03T14:42:28.555Z",
+         "updated_at": "2021-11-03T15:04:03.149Z",
+         "member_ids": []
+      }
    ]
-
 
 Search
 ======
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``admin.organization``
 
-* ticket.agent or admin.organization (can read all organization)
+``GET``-Request sent:
+``/api/v1/organizations/search?query=inc&limit=10``
 
-Request::
+Response:
 
-   GET /api/v1/organizations/search?query=what&limit=10
+.. code-block:: json
+   :force:
 
-Note: As of Zammad 2.6 parameters (sort_by=some_row and order_by=asc or desc) can also be used for sorting.
-
-Response::
-
-   Status: 200 Ok
+   # HTTP-Code 200 Ok
 
    [
-     {
-       "id": 123,
-       "name": "Org 1",
-       "shared": true,
-       "active": true,
-       "note": "some note",
-       "updated_at": "2016-08-16T07:55:42.119Z",
-       "created_at": "2016-08-16T07:55:42.119Z"
-     },
-     {
-       "id": 124,
-       "name": "Org 2",
-       "shared": false,
-       "active": true,
-       "note": "some note",
-       "updated_at": "2016-08-16T07:55:42.119Z",
-       "created_at": "2016-08-16T07:55:42.119Z"
-     },
+      {
+         "id": 4,
+         "name": "Good Customer Inc.",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "Search the world's information, including webpages, images, videos and more. Good Customer has many special features to help you find exactly what you're looking for.",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:57:15.839Z",
+         "updated_at": "2021-11-03T11:57:15.839Z",
+         "member_ids": [
+            9
+         ]
+      },
+      {
+         "id": 3,
+         "name": "Awesome Customer Inc.",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "Global distributor of communication and security products, electrical and electronic wire &amp; cable.",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:57:15.825Z",
+         "updated_at": "2021-11-03T11:57:15.825Z",
+         "member_ids": [
+            8,
+            7,
+            6
+         ]
+      },
+      {
+         "id": 2,
+         "name": "Chrispresso Inc.",
+         "shared": true,
+         "domain": "",
+         "domain_assignment": false,
+         "active": true,
+         "note": "Manufacturer of individual coffee products.",
+         "updated_by_id": 1,
+         "created_by_id": 1,
+         "created_at": "2021-11-03T11:57:15.817Z",
+         "updated_at": "2021-11-03T11:57:15.817Z",
+         "member_ids": [
+            5,
+            4,
+            3
+         ]
+      }
    ]
-
-
 
 Show
 ====
 
-Required permission:
+Required permission: ``ticket.agent`` **or** ``admin.organization``
 
-* ticket.agent or admin.organization (can read all organizations)
-* any (can only read its own user if exists)
+   .. note:: 
 
-Request::
+      Technically any - users in question can only see their own organization.
 
-   GET /api/v1/organizations/{id}
+``GET``-Request sent: ``/api/v1/organizations/{id}``
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    {
-     "id": 123,
-     "name": "Org 1",
-     "shared": true,
-     "active": true,
-     "note": "some note",
-     "updated_at": "2016-08-16T07:55:42.119Z",
-     "created_at": "2016-08-16T07:55:42.119Z"
+      "id": 2,
+      "name": "Chrispresso Inc.",
+      "shared": true,
+      "domain": "",
+      "domain_assignment": false,
+      "active": true,
+      "note": "Manufacturer of individual coffee products.",
+      "updated_by_id": 1,
+      "created_by_id": 1,
+      "created_at": "2021-11-03T11:57:15.817Z",
+      "updated_at": "2021-11-03T11:57:15.817Z",
+      "member_ids": [
+         5,
+         4,
+         3
+      ]
    }
 
 Create
 ======
 
-Required permission:
+Required permission: ``admin.organization``
 
-* admin.organization
+``POST``-Request sent: ``/api/v1/organizations``
 
-Request::
-
-   POST /api/v1/organizations
+.. code-block:: json
 
    {
-    "name": "Org 1",
-    "shared": true,
-    "active": true,
-    "note": "some note"
+      "name": "Sample Corp.",
+      "shared": false,
+      "domain": "example.com",
+      "domain_assignment": true,
+      "active": true,
+      "note": "Just a sample, aint that nice?",
+      "members": [
+         "olivia@example.com",
+         "jdoe",
+         "david@example.com"
+      ]
    }
 
-Response::
+Response:
 
-   Status: 201 Created
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 201 Created
 
    {
-     "id": 123,
-     "name": "Org 1",
-     "shared": true,
-     "active": true,
-     "note": "some note",
-     "updated_at": "2016-08-16T07:55:42.119Z",
-     "created_at": "2016-08-16T07:55:42.119Z"
+      "id": 6,
+      "name": "Sample Corp.",
+      "shared": false,
+      "domain": "example.com",
+      "domain_assignment": true,
+      "active": true,
+      "note": "Just a sample, aint that nice?",
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "created_at": "2021-11-03T17:38:39.527Z",
+      "updated_at": "2021-11-03T17:38:39.768Z",
+      "member_ids": [
+         10,
+         16,
+         11
+      ]
    }
-
 
 Update
 ======
 
-Required permission:
+Required permission: ``admin.organization``
 
-* admin.organization
+``PUT``-Request sent: ``/api/v1/organizations/{id}``
 
-Request::
-
-   PUT /api/v1/organizations/{id}
+.. code-block:: json
 
    {
-     "id": 123,
-     "name": "Org 1",
-     "shared": true,
-     "active": true,
-     "note": "some note"
+      "name": "Sample Corp.",
+      "shared": false,
+      "domain": "",
+      "domain_assignment": false,
+      "active": true,
+      "note": "This was a triump - I'm making a note here - H-U-G-E success!",
+      "members": [
+         "olivia@example.com",
+         "david@example.com"
+      ]
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    {
-     "id": 123,
-     "name": "Org 1",
-     "shared": true,
-     "active": true,
-     "note": "some note",
-     "updated_at": "2016-08-16T07:55:42.119Z",
-     "created_at": "2016-08-16T07:55:42.119Z"
+      "id": 6,
+      "name": "Sample Corp.",
+      "shared": false,
+      "domain": "",
+      "domain_assignment": false,
+      "active": true,
+      "note": "This was a triump - I'm making a note here - H-U-G-E success!",
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "created_at": "2021-11-03T17:38:39.527Z",
+      "updated_at": "2021-11-03T17:40:59.740Z",
+      "member_ids": [
+         11,
+         10
+      ]
    }
 
 Delete
 ======
 
-Required permission:
+Required permission: ``admin.organization``
 
-* admin.organization (only if no references in history tables and tickets exist)
+.. danger:: **⚠ This is a permanent removal**
 
-Request::
+   Please note that removing organizations cannot be undone.
 
-   DELETE /api/v1/organization/{id}
+   Removing organizations with references in e.g. activity streams or users
+   is not possible via API - this will be indicated by
+   ``"error": "Can't delete, object has references."``. This is *not* a bug.
 
-Response::
+   Consider using `Data Privacy`_ via UI for more control instead.
 
-   Status: 200 Ok
+.. _Data Privacy:
+   https://admin-docs.zammad.org/en/latest/system/data-privacy.html
+
+``DELETE``-Request sent: ``/api/v1/organization/{id}``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    {}
