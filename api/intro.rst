@@ -513,6 +513,26 @@ In order to use pagination you'll need two get options:
 the first result page: ``?page=1&per_page=5`` - count page up to get
 more results.
 
+Sorting search results
+======================
+
+Zammad allows you to sort your search results by field if needed.
+
+sort_by
+   Append ``?sort_by={row-name}`` to your query to sort by a specific row
+   that appears in the search result.
+
+order_by
+   Append ``?order_by={direction}`` to your query to switch in between ascending
+   and descending order.
+
+   Directions are: ``asc`` and ``desc``.
+
+.. note::
+
+   Usually you'll want to combine both parameters in your searches - e.g.:
+   ``?query={search-string}&sort_by={row-name}&order_by={direction}``
+
 Actions on behalf of other users
 ================================
 
