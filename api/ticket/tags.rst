@@ -1,8 +1,11 @@
 Tags
 ****
 
+Ticket scope
+============
+
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -14,6 +17,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {
        "tags": [
            "americano",
@@ -23,7 +27,7 @@ Sample response:
 
 
 Search
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -37,6 +41,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
+   
    [
        {
            "id": 1,
@@ -53,7 +58,7 @@ Sample response:
    ]
 
 Add
-===
+---
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -68,7 +73,10 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
        "o_id": {ticket-id}
    }
 
-.. hint:: This will create the tag if it doesn't exist and the user has permission to do so.
+.. hint:: 
+
+   This will create the tag if it doesn't exist and
+   the user has permission to do so.
 
 Response:
 
@@ -76,14 +84,13 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
+   
    true
 
 Remove
-======
+------
 
-Required permission:
-
-* ticket.agent or admin.tag
+Required permission: ``ticket.agent`` **or** ``admin.tag``
 
 ``DELETE``-Request sent: ``/api/v1/tags/remove``
 
@@ -101,10 +108,14 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
+   
    true
 
+Administration scope
+====================
+
 Admin - List
-============
+------------
 
 Required permission: ``admin.tag``
 
@@ -116,6 +127,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
+   
    [
        {
            "id": 1,
@@ -135,7 +147,7 @@ Sample response:
    ]
 
 Admin - Create
-==============
+--------------
 
 Required permission: ``admin.tag``
 
@@ -153,10 +165,11 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {}
 
 Admin - Rename
-==============
+--------------
 
 Required permission: ``admin.tag``
 
@@ -174,10 +187,11 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {}
 
 Admin - Delete
-==============
+--------------
 
 Required permission: ``admin.tag``
 
@@ -189,4 +203,5 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {}
