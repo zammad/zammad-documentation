@@ -1,6 +1,10 @@
 Calendar
 ********
 
+.. note::
+
+   🤓 Calendars belong to Zammads :doc:`SLA calculation </api/sla>`.
+
 List
 ====
 
@@ -299,6 +303,8 @@ Required permission: ``admin.calendar``
       "id":"c-1"
    }
 
+Response:
+
 .. code-block:: json
    :force:
 
@@ -487,6 +493,8 @@ Required permission: ``admin.calendar``
       "id":2
    }
 
+Response:
+
 .. code-block:: json
    :force:
 
@@ -590,6 +598,18 @@ Required permission: ``admin.calendar``
 .. danger:: **⚠ This is a permanent removal**
 
    Please note that removing Calendar configurations cannot be undone.
+
+   Removing calendars with references in SLA configurations
+   is not possible via API - this will be indicated by
+   ``"error": "Can't delete, object has references."``. This is *not* a bug.
+
+      .. note::
+
+         Due to `Issue 3845`_ above statement currently is invalid.
+         Right now Zammad just removes said configuration and thus may
+         break SLAs.
+
+.. _Issue 3845: https://github.com/zammad/zammad/issues/3845
 
 ``DELETE``-Request sent: ``/api/v1/calendars/{id}``
 
