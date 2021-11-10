@@ -1,20 +1,19 @@
-Sla
-*****
+Service-Level Agreements (SLA)
+******************************
 
 List
 ====
 
-Required permission:
+Required permission: ``admin.sla``
 
-* admin.sla (can read all slas)
+``GET``-Request sent: ``/api/v1/slas``
 
-Request::
+Response:
 
-   GET /api/v1/slas
+.. code-block:: json
+   :force:
 
-Response::
-
-   Status: 200 Ok
+   # HTTP-Code 200 Ok
 
    [
       {
@@ -42,17 +41,16 @@ Response::
 Show
 ====
 
-Required permission:
+Required permission: ``admin.sla``
 
-* admin.sla (can read all slas)
+``GET``-Request sent: ``/api/v1/slas/{id}``
 
-Request::
+Response:
 
-   GET /api/v1/slas/{id}
+.. code-block:: json
+   :force:
 
-Response::
-
-   Status: 200 Ok
+   # HTTP-Code 200 Ok
 
    {
       "id":2,
@@ -77,14 +75,11 @@ Response::
 Create
 ======
 
-Required permission:
+Required permission: ``admin.sla``
 
-* admin.sla
+``POST``-Request sent: ``/api/v1/slas``
 
-Request::
-
-   POST /api/v1/slas
-
+.. code-block:: json
 
    {
       "name":"new sla",
@@ -101,9 +96,12 @@ Request::
       "calendar_id":"1",
    }
 
-Response::
+Response:
 
-   Status: 201 Created
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 201 Created
 
    {
       "id":2,
@@ -129,13 +127,11 @@ Response::
 Update
 ======
 
-Required permission:
+Required permission: ``admin.sla``
 
-* admin.sla
+``PUT``-Request sent: ``/api/v1/slas/{id}``
 
-Request::
-
-   PUT /api/v1/slas/{id}
+.. code-block:: json
 
    {
       "name":"update sla",
@@ -153,9 +149,12 @@ Request::
       "id":2
    }
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    {
       "id":2,
@@ -181,16 +180,19 @@ Response::
 Delete
 ======
 
-Required permission:
+Required permission: ``admin.sla``
 
-* admin.sla
+.. danger:: **⚠ This is a permanent removal**
 
-Request::
+   Please note that removing SLA configurations cannot be undone.
 
-   DELETE /api/v1/slas/{id}
+``DELETE``-Request sent: ``/api/v1/slas/{id}``
 
-Response::
+Response:
 
-   Status: 200 Ok
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
 
    {}
