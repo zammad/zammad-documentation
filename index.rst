@@ -83,6 +83,7 @@ The Zammad documentation consists of three parts:
    /api/user
    /api/organization
    /api/group
+   /api/calendar
    /api/sla
    /api/ticket
    /api/notification

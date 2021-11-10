@@ -1,6 +1,10 @@
 Service-Level Agreements (SLA)
 ******************************
 
+.. note::
+
+   🤓 SLAs depend on Zammads :doc:`Calendars </api/calendar>`.
+
 List
 ====
 
