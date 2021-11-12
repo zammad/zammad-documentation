@@ -154,6 +154,8 @@ Replace ``pending customer feedback`` with the pending state of your choice.
          updated_by_id:      1,
       )
 
+.. _states_to_ui:
+
 Make new states available to UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
