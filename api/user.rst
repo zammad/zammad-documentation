@@ -975,6 +975,8 @@ Required permission: ``ticket.agent`` **or** ``admin.user``
 ``GET``-Request sent:
 ``/api/v1/users/search?query=organization.name:"Awesome Customer Inc."&limit=10``
 
+.. include:: /api/includes/sort_and_order.rst
+
 Response:
 
 .. code-block:: json

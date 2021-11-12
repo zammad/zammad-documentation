@@ -113,6 +113,8 @@ Required permission: ``ticket.agent`` **or** ``admin.organization``
 ``GET``-Request sent:
 ``/api/v1/organizations/search?query=inc&limit=10``
 
+.. include:: /api/includes/sort_and_order.rst
+
 Response:
 
 .. code-block:: json

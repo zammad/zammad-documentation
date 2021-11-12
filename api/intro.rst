@@ -575,6 +575,8 @@ In order to use pagination you'll need two get options:
 the first result page: ``?page=1&per_page=5`` - count page up to get
 more results.
 
+.. _sort_search_results:
+
 Sorting search results
 ======================
 

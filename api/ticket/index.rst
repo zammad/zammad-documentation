@@ -110,13 +110,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 ``GET``-Request sent: ``/api/v1/tickets/search?query={search-term}&limit=10``
 
-.. 
-   TODO: Introduce sort-area to reference to
-
-.. note:: **Sorting ↕**
-
-   As of Zammad 2.6 parameters (sort_by=some_row and order_by=asc or desc) 
-   can also be used.
+.. include:: /api/includes/sort_and_order.rst
 
 Response:
 
