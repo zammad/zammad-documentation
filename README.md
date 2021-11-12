@@ -10,17 +10,9 @@ https://docs.zammad.org
 
 ## Notes on Documentation Branches and Pull Requests
 
-Please note that this repository uses protected branches, which is why the 
-default branch is ``develop``. The most current version is **always** 
-``master`` - if you create Pull Requests, please define ``master`` as 
-destination Branch.
-
-This will ensure that your changes are available upon merge.
-
-## Notes on Documentation Branches and Pull Requests
-
-Please note that this repository uses protected branches, which is why the default branch is ``develop``.
-The most current version is **always** ``master`` - if you create Pull Requests, please define ``master`` as destination Branch.
+Please note that this repository uses protected branches.
+The most current version is **always**  ``main`` - if you create Pull Requests,
+please use ``main`` as destination Branch.
 
 This will ensure that your changes are available upon merge.
 

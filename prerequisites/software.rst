@@ -3,20 +3,26 @@ Software
 
 If you want to install Zammad, you need the following software.
 
+.. note::
+
+   Most of the software versions listed below (unless stated as specific
+   version)  are minimum requirements of Zammad. We strongly encourage you to
+   use most current possible versions that *are not end of life*.
+
 1. Ruby Programming Language
 ============================
 
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
 | The following Ruby version is supported:
-| ``Ruby 2.6.8``
+| ``Ruby 2.7.4``
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
-   "4.1+", "2.6.8"
-   "3.4.1+", "2.6.6"
+   "5.0+", "2.7.4"
+   "3.4.1 - 4.1", "2.6.6"
    "3.4.0", "2.6.5"
    "3.1 - 3.3", "2.5.5"
    "2.5 - 3.0", "2.4.4"
@@ -32,8 +38,16 @@ Below you can find all distributions Zammad provides packages for.
 
    "CentOS", "7 & 8"
    "Debian", "9 & 10"
-   "OpenSuSE / SLES", "Leap 42.3 / 12"
+   "⚠ OpenSuSE / SLES", "Leap 42.3 / 12"
    "Ubuntu", "16.04, 18.04 & 20.04"
+
+.. warning:: **⚠ SuSE users be aware**
+
+   Due to the age of SLES12 / Leap 42.3 you may no longer be able to satisfy
+   all (soft) dependencies of Zammad.
+
+   If you're not running a docker-compose or package installation please
+   consider changing to a different distribution that's supported.
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 
@@ -103,7 +117,28 @@ You can choose between the following database servers:
       innodb_large_prefix = 1
       innodb_file_format_max = Barracuda
 
-5. Reverse Proxy
+5. Node.js
+==========
+
+.. note:: This soft dependency was introduced with Zammad 5.0.
+
+Node.js is required for asset compiling.
+
+.. hint:: **🔨 No changes to JS or CSS files?**
+
+   If you don't require to change any javascript or stylesheed files you'll
+   be fine without this package. It's only required if you have to run
+   ``rake assets:precompile`` on your system.
+
+   .. warning:: Node.js **is** required on source code installations.
+
+.. csv-table:: Zammad/Node.js version compatibility
+   :header: "Zammad", "Node.js"
+   :widths: 20, 20
+
+   "5.0+", "10.0+"
+
+6. Reverse Proxy
 ================
 
 In a typical web environment today, you use a reverse proxy to deliver the
@@ -115,7 +150,7 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-6. Elasticsearch (optional)
+7. Elasticsearch (optional)
 ===========================
 
 Zammad uses Elasticsearch to
@@ -155,7 +190,8 @@ but search performance will be degraded, and some features will be disabled.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "4.0+", "6.5-7.12"
+   "5.0+", "7.8+"
+   "4.0-4.1", "6.5-7.12"
    "3.4-3.6", "5.5–7.9"
    "3.3", "2.4–7.6"
    "3.2", "2.4–7.5"
@@ -164,3 +200,39 @@ but search performance will be degraded, and some features will be disabled.
 
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
+
+8. Optional tools of improved caching and distribution
+======================================================
+
+.. note:: **The features / integrations below were introduced by Zammad 5.0**
+
+   These tools are optional and may make a lot of sense in big
+   environments even if you decide against distributed use cases.
+
+   We consider this topic as :ref:`performance_tuning`.
+
+
+8.1 Redis
+~~~~~~~~~
+
+   Using `Redis <https://redis.io/>`_ allows you to store all web socket
+   information in Redis instead of your file system.
+
+      .. note::
+
+         Configuration and installation is out of our scope.
+         Please follow the official vendor guides and ensure to have a
+         tight security on your installation.
+
+8.2 Memcached
+~~~~~~~~~~~~~
+
+   Instead of storing Zammads cache files within your filesystem, you can also
+   do so in `Memcached <https://memcached.org/>`_. This can allow you to restrict
+   the size of your cache directories to improve performance.
+
+      .. note::
+
+         Configuration and installation is out of our scope.
+         Please follow the official vendor guides and ensure to have a
+         tight security on your installation.
