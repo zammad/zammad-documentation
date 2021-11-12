@@ -73,7 +73,7 @@ For simplicity we'll not provide specific commands on the next pages, but
 instead tell the possible call method (e.g. ``GET``) and the endpoint to use
 (e.g. ``/api/v1/users``). In case Zammad expects information within these
 endpoint urls, we'll put them into curly braces like so:
-``/api/v1/users/{{user-id}}``
+``/api/v1/users/{user id}``
 
 The response format will be a complete JSON response from a default Zammad
 instance. Please keep in mind that you may see more fields or general
@@ -583,7 +583,7 @@ Sorting search results
 Zammad allows you to sort your search results by field if needed.
 
 sort_by
-   Append ``?sort_by={row-name}`` to your query to sort by a specific row
+   Append ``?sort_by={row name}`` to your query to sort by a specific row
    that appears in the search result.
 
 order_by
@@ -595,7 +595,7 @@ order_by
 .. note::
 
    Usually you'll want to combine both parameters in your searches - e.g.:
-   ``?query={search-string}&sort_by={row-name}&order_by={direction}``
+   ``?query={search string}&sort_by={row name}&order_by={direction}``
 
 Actions on behalf of other users
 ================================

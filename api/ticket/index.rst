@@ -108,7 +108,7 @@ Search
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-``GET``-Request sent: ``/api/v1/tickets/search?query={search-term}&limit=10``
+``GET``-Request sent: ``/api/v1/tickets/search?query={search string}&limit=10``
 
 .. include:: /api/includes/sort_and_order.rst
 
@@ -1157,7 +1157,7 @@ Show
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-``GET``-Request sent: ``/api/v1/tickets/{ticket-id}``
+``GET``-Request sent: ``/api/v1/tickets/{ticket id}``
 
 Response:
 
@@ -1217,7 +1217,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
       If you want to create tickets on behalf other users, use 
       the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this. 
-      Use ``guess:{email-address}`` to save an API call if you don't know the 
+      Use ``guess:{email address}`` to save an API call if you don't know the 
       users ID or want to create the user in question.
 
       **📣 Add mention subscription right away**
@@ -1303,7 +1303,7 @@ Update
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-``PUT``-Request sent: ``/api/v1/tickets/{ticket-id}``
+``PUT``-Request sent: ``/api/v1/tickets/{ticket id}``
 
 .. code-block:: json
    :force:
@@ -1392,7 +1392,7 @@ Required permission: ``admin``
    Please note that removing tickets cannot be undone.
    All data (e.g.: articles & attachments) will be lost.
 
-``DELETE``-Request sent: ``/api/v1/tickets/{ticket-id}``
+``DELETE``-Request sent: ``/api/v1/tickets/{ticket id}``
 
 Response:
 

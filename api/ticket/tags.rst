@@ -9,7 +9,7 @@ List
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-``GET``-Request sent: ``/api/v1/tags?object=Ticket&o_id={ticket-id}``
+``GET``-Request sent: ``/api/v1/tags?object=Ticket&o_id={ticket id}``
 
 Sample response:
 
@@ -31,7 +31,7 @@ Search
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-``GET``-Request sent: ``/api/v1/tag_search?term={tag-name}``
+``GET``-Request sent: ``/api/v1/tag_search?term={tag name}``
 
    .. hint:: Zammad will return all tags that contain your search phrase.
 
@@ -68,9 +68,9 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
    :force:
 
    {
-       "item": "{tag-name}",
+       "item": "{tag name}",
        "object": "Ticket",
-       "o_id": {ticket-id}
+       "o_id": {ticket id}
    }
 
 .. hint:: 
@@ -97,9 +97,9 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
 .. code-block:: json
 
    {
-       "item": "{tag-name}",
+       "item": "{tag name}",
        "object": "Ticket",
-       "o_id": "{ticket-id}"
+       "o_id": "{ticket id}"
    }
 
 Response:
@@ -173,7 +173,7 @@ Admin - Rename
 
 Required permission: ``admin.tag``
 
-``PUT``-Request sent: ``/api/v1/tag_list/{tag-id}``
+``PUT``-Request sent: ``/api/v1/tag_list/{tag id}``
 
 .. code-block:: json
 
@@ -195,7 +195,7 @@ Admin - Delete
 
 Required permission: ``admin.tag``
 
-``DELETE``-Request sent: ``/api/v1/tag_list/{tag-id}``
+``DELETE``-Request sent: ``/api/v1/tag_list/{tag id}``
 
 Response:
 
