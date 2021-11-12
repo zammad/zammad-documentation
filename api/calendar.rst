@@ -603,14 +603,6 @@ Required permission: ``admin.calendar``
    is not possible via API - this will be indicated by
    ``"error": "Can't delete, object has references."``. This is *not* a bug.
 
-      .. note::
-
-         Due to `Issue 3845`_ above statement currently is invalid.
-         Right now Zammad just removes said configuration and thus may
-         break SLAs.
-
-.. _Issue 3845: https://github.com/zammad/zammad/issues/3845
-
 ``DELETE``-Request sent: ``/api/v1/calendars/{id}``
 
 .. code-block:: json

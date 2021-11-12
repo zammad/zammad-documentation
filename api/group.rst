@@ -222,16 +222,8 @@ Required permission: ``admin.group``
    is not possible via API - this will be indicated by
    ``"error": "Can't delete, object has references."``. This is *not* a bug.
 
-      .. note::
-
-         Due to `Issue 3841`_ above statement currently is invalid.
-         Right now Zammad returns detailed technical errors, this is subject
-         to change.
-
    Consider setting affected groups to inactive instead or ensure to move all
    existing tickets to new groups.
-
-.. _Issue 3841: https://github.com/zammad/zammad/issues/3841
 
 ``DELETE``-Request sent: ``/api/v1/groups/{id}``
 
