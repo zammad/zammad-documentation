@@ -17,6 +17,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
    :force:
    
    # HTTP-Code 200 Ok
+
    {
      mentions: [
        {
@@ -62,6 +63,7 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
+   
    {
      "id":2,
      "mentionable_type":"Ticket",
@@ -88,6 +90,7 @@ Response:
    :force:
 
    # HTTP-Code 200 Ok
+   
    {
      "id":2,
      "mentionable_type":"Ticket",

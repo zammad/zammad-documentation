@@ -48,23 +48,46 @@ The following commands will enable you to change the naming of priorities. If yo
    >> priority2.default_create = true
    >> priority2.save!
 
+.. _state_types:
 
 Get ticket state types
 ----------------------
 
-This will show all Ticket States needed for creating new states.
 
-.. note:: Missing States you just created? You might want to use ``Ticket.State.all``  to display all states for Tickets.
+This will show all state types needed for creating new ticket states.
+
+.. tip:: **😖 What are state types?**
+
+   Zammad uses state types to know what it should do with your state.
+   This allows you to have different types like *pending actions*,
+   *pending reminders* or *closed* states.
+
+   State types also indicate the color scheme to be used.
+   You can learn more about that `in our user documentation`_.
+
+.. _in our user documentation:
+   https://user-docs.zammad.org/en/latest/basics/service-ticket/settings/state.html
 
 .. code-block:: ruby
 
-   >> Ticket::StateType.all
+   >> Ticket::StateType.pluck(:id, :name)
+
+Above will return both, the type ID and name - e.g.:
+``[[1, "new"], [2, "open"], ...``.
 
 
 Add new ticket state
 --------------------
 
-.. note:: You can use ``ignore_escalation: true,`` to ignore possible SLA escalations (pending reminder and pending close use that by default).
+   .. note:: **🤓 Missing States you just created?**
+
+      You might want to use ``Ticket.State.pluck(:id, :name)``
+      to get a listing of all available ticket states.
+
+   .. tip:: **🙈 ignoring escalations**
+
+      You can use ``ignore_escalation: true,`` to ignore possible SLA
+      calculations (pending reminder and pending close do this by default).
 
 Non-Pending states
 ^^^^^^^^^^^^^^^^^^
@@ -130,6 +153,8 @@ Replace ``pending customer feedback`` with the pending state of your choice.
          created_by_id:      1,
          updated_by_id:      1,
       )
+
+.. _states_to_ui:
 
 Make new states available to UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
