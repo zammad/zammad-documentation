@@ -1367,6 +1367,7 @@ Required permission: ``admin.object``
       .. tab:: Ticket
 
          .. code-block:: json
+            :force:
 
             "screens": {
                "create_middle": {
@@ -1396,6 +1397,7 @@ Required permission: ``admin.object``
       .. tab:: User
 
          .. code-block:: json
+            :force:
 
             "screens": {
                "create": {
@@ -1460,6 +1462,7 @@ Required permission: ``admin.object``
       .. tab:: Organization
 
          .. code-block:: json
+            :force:
 
             "screens": {
                "view": {
@@ -1498,6 +1501,7 @@ Required permission: ``admin.object``
       .. tab:: Group
 
          .. code-block:: json
+            :force:
 
             "screens": {
                "create": {
