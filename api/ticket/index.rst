@@ -1320,10 +1320,10 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
       }
    }
 
-   .. note::
+.. note::
 
-      Above example provides an article. This article is a *new article* and
-      does not affect any existing ones.
+   Above example provides an article. This article is a *new article* and
+   does not affect any existing ones.
 
 Response:
 
