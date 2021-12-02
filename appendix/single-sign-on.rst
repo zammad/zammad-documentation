@@ -131,6 +131,8 @@ Admin privileges are not required; a normal user account will do.
 
    :``<zammad-host>``:              Zammad FQDN
    :``<service-acct>``:             Service account logon name
+   :``<password>``:                 Password of the service account
+                                    (Option ``/pass *`` did prove to not work)
    :``<domain>``:                   Windows domain
    :``<master-domain-controller>``: Master domain controller IP/FQD
 
@@ -139,11 +141,11 @@ Admin privileges are not required; a normal user account will do.
 .. code-block:: sh
 
    $ setspn -s HTTP/<zammad-host> <service-acct>
-   $ ktpass /princ HTTP/<zammad-host>@<domain> \
+   $ ktpass /princ HTTP/<zammad-host>@<DOMAIN> \
             /mapuser <service-acct> \
             /crypto AES256-SHA1 \
             /ptype KRB5_NT_PRINCIPAL \
-            /pass * -SetPass +DumpSalt \
+            /pass <password> -SetPass +DumpSalt \
             /target <master-domain-controller> \
             /out zammad.keytab
 
@@ -286,28 +288,28 @@ how to reach the *domain controller* (Active Directory server).
    # /etc/krb5.conf
 
    [libdefaults]
-     default_realm = <domain>
+     default_realm = <DOMAIN>
      default_tkt_enctypes = aes256-cts-hmac-sha1-96
      default_tgs_enctypes = aes256-cts-hmac-sha1-96
      permitted_enctypes = aes256-cts-hmac-sha1-96
 
      kdc_timesync = 1
      ccache_type = 4
-     forwardable = true
-     proxiable = true
-     fcc-mit-ticketflags = true
+     forwardable = false
+     proxiable = false
+     fcc-mit-ticketflags = false
 
    [realms]
            # multiple KDCs ok (one `kdc = ...` definition per line)
-           <domain> = {
+           <DOMAIN> = {
                    kdc = <domain-controller>
                    admin_server = <master-domain-controller>
                    default_domain = <domain>
            }
 
    [domain_realm]
-           .<domain> = <domain>
-           <domain> = <domain>
+           .<domain> = <DOMAIN>
+           <domain> = <DOMAIN>
 
 .. _sso-generate-keytab:
 
@@ -331,13 +333,13 @@ to manage its shared secrets with the domain controller.
 
    $ ktutil
 
-   ktutil: addent -key -p HTTP/<zammad-host> -k <vno> -e aes256-cts
+   ktutil: addent -key -p HTTP/<zammad-host>@<DOMAIN> -k <vno> -e aes256-cts
    Key for HTTP/<zammad-host>@<domain> (hex): <secret-key>
 
    ktutil: list  # confirm the entry was added successfully
    slot KVNO Principal
    ---- ---- ---------------------------------------------------------------
-      1    3 HTTP/<zammad-host>@<domain>
+      1    3 HTTP/<zammad-host>@<DOMAIN>
 
    ktutil: wkt /root/zammad.keytab  # write keytab to disk
 
@@ -388,9 +390,9 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
       KrbMethodNegotiate On
       KrbVerifyKDC On
       KrbMethodK5Passwd On
-      KrbAuthRealms <domain>
+      KrbAuthRealms <DOMAIN>
       KrbLocalUserMapping on                 # strips @REALM suffix from REMOTE_USER variable
-      KrbServiceName HTTP/<zammad-host>@<domain>
+      KrbServiceName HTTP/<zammad-host>@<DOMAIN>
       Krb5KeyTab /etc/apache2/zammad.keytab  # Ubuntu, Debian, & openSUSE
       Krb5KeyTab /etc/httpd/zammad.keytab    # CentOS
       require valid-user
@@ -532,6 +534,12 @@ Errors in Apache Logs
    And did you make sure to register the SPN (with ``ktpass``)
    and generate your keytab (with ``ktutil``)
    *after changing your password?*
+
+   Try running ``kinit -k -t <path to keytab> HTTP/<zammad-host>@<DOMAIN>``.
+   If no output is returned, you're good - if you see
+   “kinit: Preauthentication failed while getting initial credentials”
+   your credentials provided were wrong or you used ``/pass *`` during ktpass
+   command.
 
 “failed when verifying KDC” and “failed to verify krb5 credentials: Decrypt integrity check failed”
    Ensure ``KrbServiceName`` is the correct ServiceName provided via setspn.
