@@ -187,8 +187,7 @@ Install Zammad
 
          .. code-block:: sh
 
-            chown -R 644 /opt/zammad/public/
-            chmod -R +x /opt/zammad/public/
+            chmod -R 755 /opt/zammad/public/
 
       .. tab:: OpenSUSE / SLES
 
