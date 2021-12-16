@@ -23,7 +23,7 @@ some operating systems may require additional packages if not already installed.
 
       .. code-block:: sh
       
-         $ apt install wget apt-transport-https gnupg
+         $ apt install curl apt-transport-https gnupg
 
    .. tab:: CentOS
 
@@ -81,44 +81,52 @@ Add Repository
          Install Repository Key
             .. code-block:: sh
 
-               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | apt-key add -
+               $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
+                 gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
             Ubuntu 16.04
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 16.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
             Ubuntu 18.04
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 18.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
             Ubuntu 20.04
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/20.04.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       .. tab:: Debian
 
          Install Repository Key
             .. code-block:: sh
 
-               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | apt-key add -
+               $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
+                 gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
             Debian 9
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 9 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
             Debian 10
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/10.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 10 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+
+            Debian 11
+               .. code-block:: sh
+
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       .. tab:: CentOS
 
