@@ -37,7 +37,7 @@ Below you can find all distributions Zammad provides packages for.
    :widths: 20, 20
 
    "CentOS", "7 & 8"
-   "Debian", "9 & 10"
+   "Debian", "9, 10 & 11"
    "⚠ OpenSuSE / SLES", "Leap 42.3 / 12"
    "Ubuntu", "16.04, 18.04 & 20.04"
 
@@ -70,7 +70,7 @@ installed with the Zammad-Package.
 
 .. code-block:: sh
 
-   # Debian 9 & 10, Ubuntu 16.04, 18.04 & 20.04
+   # Debian 9, 10 & 11, Ubuntu 16.04, 18.04 & 20.04
    $ apt install libimlib2
 
    # openSUSE
