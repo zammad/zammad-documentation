@@ -34,7 +34,7 @@ Step 1: Installation
 
       ::
 
-         $ apt install apt-transport-https sudo wget
+         $ apt install apt-transport-https sudo wget curl gnupg
          $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
            tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
@@ -47,7 +47,7 @@ Step 1: Installation
 
       ::
 
-         $ apt install apt-transport-https sudo wget
+         $ apt install apt-transport-https sudo wget curl gnupg
          $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
            tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
