@@ -1,6 +1,8 @@
 Issues you might encounter
 ==========================
 
+.. include:: /install/univention/deprecation-warning.rst
+
 Below we have gathered information to problems that might occur in combination with Univention.
 
 Zammad can't communicate with external systems

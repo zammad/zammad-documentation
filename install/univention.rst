@@ -1,6 +1,8 @@
 Installation on Univention Corporate Server via App Center
 **********************************************************
 
+.. include:: /install/univention/deprecation-warning.rst
+
 .. note:: As Zammad is using Docker Compose for Univention Corporate Server, the minimum requirement is UCS 4.3-2 errata 345.
 
 Univention Corporate Server (UCS) is an enterprise server with focus on identity and infrastructure management. With its marketplace called App Center it can easily extended by solutions like Zammad that benefit from integrations with the LDAP directory service and the mail infrastructure.
