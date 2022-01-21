@@ -30,23 +30,23 @@ Getting Started
 Before you continue, please also note the listed limitations to save your
 precious time.
 
-:doc:`🔨 Adjust script settings </appendix/backup-and-restore/configuration>`
-   Learn more about configuration options for backup and restore to see
-   scopes better.
+   :doc:`🔨 Adjust script settings </appendix/backup-and-restore/configuration>`
+      Learn more about configuration options for backup and restore to see
+      scopes better.
 
-:doc:`🗃️ Create Backups </appendix/backup-and-restore/backup>`
-   How to create full dumps of your Zammad installation.
+   :doc:`🗃️ Create Backups </appendix/backup-and-restore/backup>`
+      How to create full dumps of your Zammad installation.
 
-:doc:`🗄️ Restore Backups </appendix/backup-and-restore/restore>`
-   Update went berserk and you need to go back? How to restore your instance on
-   a new or the same host.
+   :doc:`🗄️ Restore Backups </appendix/backup-and-restore/restore>`
+      Update went berserk and you need to go back? How to restore your instance on
+      a new or the same host.
 
-:doc:`🔥 Troubleshooting </appendix/backup-and-restore/troubleshooting>`
-   Things hit the fan? This page might help you out of that pit.
+   :doc:`🔥 Troubleshooting </appendix/backup-and-restore/troubleshooting>`
+      Things hit the fan? This page might help you out of that pit.
 
-:doc:`🤝 Helper scripts </appendix/backup-and-restore/little-helpers>`
-   These scripts may be helpful if Backup & Restore does not work as expected.
-   However note that these are potentially destructive.
+   :doc:`🤝 Helper scripts </appendix/backup-and-restore/little-helpers>`
+      These scripts may be helpful if Backup & Restore does not work as expected.
+      However note that these are potentially destructive.
 
 Limitations
 ===========
