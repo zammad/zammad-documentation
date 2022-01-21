@@ -22,7 +22,7 @@ Updating Zammad
             $ systemctl stop zammad
 
       Step 3: Backup Zammad
-         See :doc:`/appendix/backup-and-restore` for more information.
+         See :doc:`/appendix/backup-and-restore/index` for more information.
 
       Step 4: Clear Zammad cache
          .. code-block:: sh
