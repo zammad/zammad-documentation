@@ -38,9 +38,6 @@ Here's some classics you may encounter.
 
    Please consult the `Zammad Community`_ for technical assistance.
 
-.. _Zammad Community:
-   https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5
-
 ``password authentication failed`` -or- ``peer authentication failed``
    This indicates that the password of your Zammad DB user is either different
    from your ``database.yml`` or the wrong database server may be contacted.
@@ -74,3 +71,19 @@ Here's some classics you may encounter.
       is out of our documentation scope.
 
 .. _PostgreSQL documentation: https://www.postgresql.org/docs/
+
+``WARNING: You don't seem to have any attachments in the file system!``
+   This indicate you've set ``FULL_FS_DUMP`` to ``no`` but your instance
+   currently does not save attachments to file system.
+
+   This warning will be shown once before creating an empty directory to allow
+   the backup process to continue successfully.
+
+   If you believe that this is an error, please see `Storage Settings`_.
+   In case the issue posts, please consult the `Zammad Community`_.
+
+.. _Storage Settings:
+   https://admin-docs.zammad.org/en/latest/settings/system/storage.html
+
+.. _Zammad Community:
+   https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5

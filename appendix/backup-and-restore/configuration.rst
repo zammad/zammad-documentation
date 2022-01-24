@@ -21,7 +21,7 @@ After this you'll be ready to continue with either
 
 ``BACKUP_DIR``
    Default: ``/var/tmp/zammad_backup``
-   
+
    Tell the backup script where to write your backup files to.
 
       .. warning::
@@ -49,8 +49,22 @@ After this you'll be ready to continue with either
 
    Old backups are removed *before* creating the actual (current) backup.
 
+``FULL_FS_DUMP``
+   Default: ``yes`` (accepts: ``yes`` or ``no``)
+
+   Setting this option to ``no`` allows you to only backup usage data without
+   any environmental files from your old host. This allows you to backup your
+   Zammad database together with the attachments you've stored within the file
+   system.
+
+   Please refer `Storage Settings`_ to learn how to change the
+   storage location of your attachments.
+
+.. _Storage Settings:
+   https://admin-docs.zammad.org/en/latest/settings/system/storage.html
+
 ``DEBUG``
-   Default: ``no``
+   Default: ``no`` (accepts: ``yes`` or ``no``)
 
    Having issues and want to fiddle around? Setting this option to ``yes`` may
    help you with this. It contains useful debug messages at strategic points.
