@@ -49,6 +49,12 @@ After this you'll be ready to continue with either
 
    Old backups are removed *before* creating the actual (current) backup.
 
+      .. note::
+
+         | ``0`` will keep the last 25 hours worth of backup
+         | ``-1`` will always remove all available backups
+           (aka only keep current backup)
+
 ``FULL_FS_DUMP``
    Default: ``yes`` (accepts: ``yes`` or ``no``)
 
