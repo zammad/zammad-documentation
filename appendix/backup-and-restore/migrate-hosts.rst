@@ -102,6 +102,8 @@ Step 8: Restore your backup
          If you don't want that, you can find a version list on the
          :doc:`/prerequisites/software` page.
 
+      .. include:: /appendix/backup-and-restore/restore-warning-old-dumps.include.rst
+
    Important
       Stop Zammad after the restoration has finished.
 

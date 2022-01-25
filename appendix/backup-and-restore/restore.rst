@@ -102,6 +102,8 @@ Step 3: Run the restore
    Restoration works via two possible ways, depending on how interactive
    you want to go.
 
+      .. include:: /appendix/backup-and-restore/restore-warning-old-dumps.include.rst
+
    .. tabs::
 
       .. tab:: Interactive restoration (recommended)
