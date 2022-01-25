@@ -72,8 +72,6 @@ Before restoring your backup, please note the following:
 
    * PostgreSQL based installations will drop and re-create the database!
      MySQL / MariaDB based installations restore on the existing database.
-   * The restoration process requires an existing Zammad installation.
-   * If you can, do not mix the versions of backup and restoration destination!
    * You require at least twice the backed up Zammad instance size of free
      storage. If you have the dump only, factor 3 *could* be a good number.
 
@@ -112,6 +110,10 @@ Step 3: Run the restore
 
             $ /opt/zammad/contrib/backup/zammad_restore.sh
 
+         Provide the requested information to the script wait for the
+         restoration to finish. Depending on the size of your backup and
+         host performance this may take some time.
+
       .. tab:: Non-interactive restoration
 
          .. warning::
@@ -125,6 +127,14 @@ Step 3: Run the restore
             # When called with a timestamp argument (matching the backups filename),
             # Zammad will proceed immediately to restoring the specified backup.
             $ /opt/zammad/contrib/backup/zammad_restore.sh 20170507121848
+
+   .. hint::
+
+      **😖 Having trouble restoring?**
+
+      Have a look at the
+      :doc:`troubleshooting section </appendix/backup-and-restore/troubleshooting>`
+      to address your issues.
 
 Step 4: Re-install Zammad if restoring a full filesystem restore
    Zammads backup scripts backup the whole filesystem of Zammad.
