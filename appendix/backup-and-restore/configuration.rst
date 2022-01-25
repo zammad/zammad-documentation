@@ -58,6 +58,10 @@ After this you'll be ready to continue with either
 ``FULL_FS_DUMP``
    Default: ``yes`` (accepts: ``yes`` or ``no``)
 
+      .. note::
+
+         If you can't decide, our clear suggestion is setting this to ``no``.
+
    Setting this option to ``no`` allows you to only backup usage data without
    any environmental files from your old host. This allows you to backup your
    Zammad database together with the attachments you've stored within the file

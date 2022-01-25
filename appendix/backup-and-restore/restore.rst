@@ -143,7 +143,8 @@ Step 4: Re-install Zammad if restoring a full filesystem restore
    If your filesystem dump contains attachments only (the tar will contain
    a ``storage`` folder *only*) skip this step!
 
-   For a better overview, please see: **XXXXX**.
+   For a better overview, please see:
+   :doc:`step 9 of our migration path </appendix/backup-and-restore/migrate-hosts>`.
 
 Step 5: Apply missing environmental settings
    .. note::
@@ -151,14 +152,4 @@ Step 5: Apply missing environmental settings
       This does not apply to Docker images, as the following settings should
       be applied upon every start automatically.
 
-   If you've set any environmental settings like higher web concurrency
-   due to required :ref:`performance_tuning`, please re-apply your settings now.
-
-   If not already done, please install Elasticsearch now (if you want to use it).
-   Follow :ref:`configure_zammad_with_elasticsearch` to reconfigure your
-   installation for Elasticsearch use and rebuild the search index.
-
-You are now ready to continue your work.
-The rebuild of your search index can safely run during your work, but will
-cause a degraded search performance and may lead to temporarily not found
-data.
+.. include:: /appendix/backup-and-restore/add-missing-environment.include.rst

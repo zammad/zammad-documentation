@@ -24,6 +24,7 @@ Getting Started
    configuration
    backup
    restore
+   migrate-hosts
    troubleshooting
    little-helpers
 
@@ -40,6 +41,10 @@ precious time.
    :doc:`🗄️ Restore Backups </appendix/backup-and-restore/restore>`
       Update went berserk and you need to go back? How to restore your instance on
       a new or the same host.
+
+   :doc:`🔀 Migrating to new hosts </appendix/backup-and-restore/migrate-hosts>`
+      This is a general summary on how to best migrate Zammad from host to host.
+      We'll reference to backup creation and restoration as needed.
 
    :doc:`🔥 Troubleshooting </appendix/backup-and-restore/troubleshooting>`
       Things hit the fan? This page might help you out of that pit.
