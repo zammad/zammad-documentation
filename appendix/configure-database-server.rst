@@ -29,7 +29,7 @@ Keep in mind that versions may differ from your setup - adapt where needed.
 
          /etc/postgresql/(10|11|12)/main/postgresql.conf
 
-   .. tab:: CentOS / openSuSE
+   .. tab:: CentOS / OpenSUSE
 
       .. code-block::
 

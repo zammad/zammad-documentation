@@ -1,6 +1,8 @@
 Univention App-Settings
 ***********************
 
+.. include:: /install/univention/deprecation-warning.rst
+
 .. note:: The App-Settings part is only valid starting with App version 3.1.0-7.
 
 Within the managment interface of Univention, you can change some access related settings:
