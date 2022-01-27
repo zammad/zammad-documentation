@@ -156,7 +156,7 @@ Step 9: Run required maintenance tasks after restoring
                   $ dpkg -r --force-depends zammad
                   $ apt install zammad
 
-            openSuSe
+            OpenSUSE
                .. code-block:: sh
 
                   $ zypper remove -R zammad

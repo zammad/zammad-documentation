@@ -18,7 +18,7 @@ Database Helper: (re)set password
 ---------------------------------
 
    Limitations
-      * This script is working for PostGreSQL installations only.
+      * This script is working for PostgreSQL installations only.
       * Only local database servers are supported (script changes user).
       * This script requires to be run as ``root`` or similar privileged user!
 
