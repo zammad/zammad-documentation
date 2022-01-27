@@ -59,8 +59,8 @@ Limitations
 Please note the following limitations which may affect script functionality
 or availability.
 
-   * Restoration via script on docker based installations may not work and
-     is out of scope of this documentation as of now
+   * Restoration via script on docker and source code based installations may
+     not work and is out of scope of this documentation as of now
    * Backup & Restore is only available for PostgreSQL and MySQL / MariaDB like
      installations
    * Switching / Converting database installations *is not* possible

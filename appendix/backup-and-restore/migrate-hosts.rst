@@ -1,7 +1,7 @@
 Migrate Zammad to new host
 **************************
 
-🙅‍♀️ This is a proof of concept, not a full how to
+🙅‍♀️ This is a proof of concept, not a full how to. Your environment may be different.
    Please note that the steps described on this page are an addition to
    :doc:`backing up </appendix/backup-and-restore/backup>` and
    :doc:`restoration </appendix/backup-and-restore/restore>`.

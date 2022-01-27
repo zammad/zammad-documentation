@@ -34,8 +34,9 @@ is running as expected.
 
 Remarks
    | The backup script can be either run as ``zammad`` or ``root`` user.
-   | Stopping Zammad is not required technically, but may be in your use case!
-     (Keep in mind that a running Zammad instance keeps changing data which may
+   | Stopping Zammad is not required (but suggested) technically, but may be in
+     your use case!
+   | (Keep in mind that a running Zammad instance keeps changing data which may
      be an issue during long backup runs)
 
 
