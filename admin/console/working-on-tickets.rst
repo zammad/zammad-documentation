@@ -81,7 +81,7 @@ Add new ticket state
 
    .. note:: **🤓 Missing States you just created?**
 
-      You might want to use ``Ticket.State.pluck(:id, :name)``
+      You might want to use ``Ticket::State.pluck(:id, :name)``
       to get a listing of all available ticket states.
 
    .. tip:: **🙈 ignoring escalations**
