@@ -22,7 +22,7 @@ Migrate Zammad to new host
 
 .. hint::
 
-   Migrating from Zammad SaaS? Skip to *step 6*.
+   Migrating from Zammad SaaS? Skip to *step 7*.
 
 Step 1: Note down your environmental adjustments
    This mainly affects :ref:`performance tuning settings <performance_tuning>`.
