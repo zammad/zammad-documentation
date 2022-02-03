@@ -17,7 +17,7 @@
 }
 
 .collapsing-code-block--open {
-    max-height: 5000px;
+    max-height: 15000px;
     transition: all 0.5s ease-in;
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -57,4 +57,12 @@
 .highlight span.err {
     border: inherit;
     box-sizing: inherit;
+}
+
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+.rst-content table.docutils td {
+    vertical-align: top;
 }

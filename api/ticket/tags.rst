@@ -1,12 +1,15 @@
 Tags
 ****
 
+Ticket scope
+============
+
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-``GET``-Request sent: ``/api/v1/tags?object=Ticket&o_id={ticket-id}``
+``GET``-Request sent: ``/api/v1/tags?object=Ticket&o_id={ticket id}``
 
 Sample response:
 
@@ -14,6 +17,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {
        "tags": [
            "americano",
@@ -23,11 +27,11 @@ Sample response:
 
 
 Search
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
-``GET``-Request sent: ``/api/v1/tag_search?term={tag-name}``
+``GET``-Request sent: ``/api/v1/tag_search?term={tag name}``
 
    .. hint:: Zammad will return all tags that contain your search phrase.
 
@@ -37,6 +41,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
+   
    [
        {
            "id": 1,
@@ -53,7 +58,7 @@ Sample response:
    ]
 
 Add
-===
+---
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -63,12 +68,15 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
    :force:
 
    {
-       "item": "{tag-name}",
+       "item": "{tag name}",
        "object": "Ticket",
-       "o_id": {ticket-id}
+       "o_id": {ticket id}
    }
 
-.. hint:: This will create the tag if it doesn't exist and the user has permission to do so.
+.. hint:: 
+
+   This will create the tag if it doesn't exist and
+   the user has permission to do so.
 
 Response:
 
@@ -76,23 +84,22 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
+   
    true
 
 Remove
-======
+------
 
-Required permission:
-
-* ticket.agent or admin.tag
+Required permission: ``ticket.agent`` **or** ``admin.tag``
 
 ``DELETE``-Request sent: ``/api/v1/tags/remove``
 
 .. code-block:: json
 
    {
-       "item": "{tag-name}",
+       "item": "{tag name}",
        "object": "Ticket",
-       "o_id": "{ticket-id}"
+       "o_id": "{ticket id}"
    }
 
 Response:
@@ -101,10 +108,14 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
+   
    true
 
+Administration scope
+====================
+
 Admin - List
-============
+------------
 
 Required permission: ``admin.tag``
 
@@ -116,6 +127,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
+   
    [
        {
            "id": 1,
@@ -135,7 +147,7 @@ Sample response:
    ]
 
 Admin - Create
-==============
+--------------
 
 Required permission: ``admin.tag``
 
@@ -153,14 +165,15 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {}
 
 Admin - Rename
-==============
+--------------
 
 Required permission: ``admin.tag``
 
-``PUT``-Request sent: ``/api/v1/tag_list/{tag-id}``
+``PUT``-Request sent: ``/api/v1/tag_list/{tag id}``
 
 .. code-block:: json
 
@@ -174,14 +187,15 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {}
 
 Admin - Delete
-==============
+--------------
 
 Required permission: ``admin.tag``
 
-``DELETE``-Request sent: ``/api/v1/tag_list/{tag-id}``
+``DELETE``-Request sent: ``/api/v1/tag_list/{tag id}``
 
 Response:
 
@@ -189,4 +203,5 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
+   
    {}

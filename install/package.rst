@@ -23,13 +23,43 @@ some operating systems may require additional packages if not already installed.
 
       .. code-block:: sh
       
-         $ apt install wget apt-transport-https gnupg
+         $ apt install curl apt-transport-https gnupg
 
    .. tab:: CentOS
 
       .. code-block:: sh
 
          $ yum install wget epel-release
+
+         # CentOS 7
+         $ yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+(optional) Node.js
+~~~~~~~~~~~~~~~~~~
+
+Zammad requires Node.js for compiling its assets.
+Package installations by default come shipped with assets compiled already.
+
+You'll only have to install ``Node.js`` in case you're going to change
+``CSS`` or ``JS`` files.
+
+.. tabs::
+
+   .. tab:: Ubuntu
+
+      .. include:: /install/includes/nodejs/ubuntu.rst
+
+   .. tab:: Debian
+
+      .. include:: /install/includes/nodejs/debian.rst
+
+   .. tab:: CentOS
+
+      .. include:: /install/includes/nodejs/centos.rst
+
+   .. tab:: OpenSUSE / SLES
+
+      .. include:: /install/includes/nodejs/suse.rst
 
 .. include:: /install/includes/prerequisites.rst
 
@@ -51,44 +81,52 @@ Add Repository
          Install Repository Key
             .. code-block:: sh
 
-               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | apt-key add -
+               $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
+                 gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
             Ubuntu 16.04
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/16.04.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 16.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
             Ubuntu 18.04
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/18.04.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 18.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
             Ubuntu 20.04
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/ubuntu/20.04.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       .. tab:: Debian
 
          Install Repository Key
             .. code-block:: sh
 
-               $ wget -qO- https://dl.packager.io/srv/zammad/zammad/key | apt-key add -
+               $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
+                 gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
             Debian 9
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/9.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 9 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
             Debian 10
                .. code-block:: sh
 
-                  $ wget -O /etc/apt/sources.list.d/zammad.list \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/debian/10.repo
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 10 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+
+            Debian 11
+               .. code-block:: sh
+
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       .. tab:: CentOS
 
@@ -110,6 +148,12 @@ Add Repository
                   https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
 
       .. tab:: OpenSUSE / SLES
+
+         Remove obsolete Let's Encrypt CA
+            .. code-block:: sh
+
+               $ rm /usr/share/pki/trust/DST_Root_CA_X3.pem
+               $ update-ca-certificates
 
          Install Repository Key
             .. code-block:: sh
@@ -136,16 +180,22 @@ Install Zammad
 
          .. code-block:: sh
 
+            # CentOS 7
+            $ yum install postgresql14-server
+            $ postgresql-14-setup initdb
+            $ systemctl start postgresql-14
+            $ systemctl enable postgresql-14
+
+            # general
             $ yum install zammad
 
-         Due to a `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
+         Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
          packager.io on CentOS 8 you'll need to correct file permissions for 
          public files.
 
          .. code-block:: sh
 
-            chown -R 644 /opt/zammad/public/
-            chmod -R +x /opt/zammad/public/
+            chmod -R 755 /opt/zammad/public/
 
       .. tab:: OpenSUSE / SLES
 

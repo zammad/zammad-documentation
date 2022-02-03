@@ -1,228 +1,629 @@
 Introduction
 ************
 
-Zammad is a web based open source helpdesk/ticket system with many features
-to manage customer communication via several channels like telephone, facebook,
-twitter, chat and e-mails.
-
-This chapter describes the Zammad API v1.
-
-The API
-=======
-
-Zammad provides a REST/JSON API. Its endpoints are documented with the HTTP method for the request and a partial resource::
-
-   GET /api/v1/users
-
-The full URL looks like::
-
-   https://your_zammad/api/v1/users
-
-Curly braces {} indicate values you have to supply for the URL::
-
-   GET /api/v1/users/{id}
-
-
-Authentication
-==============
-
-Zammad supports three different authentication methods for API.
-
-
-HTTP Basic Authentication (username/password)
----------------------------------------------
-
-The username/password must be provided as HTTP header in the HTTP call. The Zammad admin can enable/disable the authentication method in the admin interface. Read more about `HTTP basic authentication on Wikipedia <https://en.wikipedia.org/wiki/Basic_access_authentication>`_.
-
-.. code-block:: sh
-
-   $ curl -u {username}:{password} https://your_zammad/api/v1/users
-
-
-HTTP Token Authentication (access token)
-----------------------------------------
-
-The access token must be provided as HTTP header in the HTTP call. Each user needs to create its own access token in the user preferences. The Zammad admin can enable/disable the authentication method in the admin interface.
-
-.. code-block:: sh
-
-   $ curl -H "Authorization: Token token={your_token}" https://your_zammad/api/v1/users
-
-
-OAuth2 (token access)
----------------------
-
-The Zammad API supports OAuth2 authorization. In order to create OAuth2 tokens for an external application, the Zammad user needs to create an application in the admin interface. The access token then has to be given within the HTTP header:
-
-.. code-block:: sh
-
-   $ curl -H "Authorization: Bearer {your_token}" https://your_zammad/api/v1/users
-
-
-Request Format
-==============
-
-Zammad uses JSON for its API, so you need to set a "Content-Type: application/json" in each HTTP call. Otherwise the response will be text/html.
-
-::
-
-   POST /api/v1/users/{id} HTTP/1.1
-   Content-Type: application/json
-
-   {
-     "name":"some name",
-     "organization_id": 123,
-     "note":"some note"
-   }
-
-Example CURL Requests
-=====================
-
-.. code-block:: sh
-
-   # Get information
-   $ curl -u test@zammad.com:test123 https://xxx.zammad.com/api/v1/tickets/3
-
-   # Put information
-   $ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X PUT -d '{ json: "data" }' https://xxx.zammad.com/api/v1/tickets/3
-
-   # Post information
-   $ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{ json: "data" }' https://xxx.zammad.com/api/v1/tickets/3
-
-
-Example CURL Requests (for tickets and users)
-=============================================
-
-.. code-block:: sh
-
-   # Create a new ticket
-   $ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}' https://xxx.zammad.com/api/v1/tickets
-
-   # Search for tickets (with contains "some message")::
-   $ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=some+message&limit=10&expand=true'
-
-   # Search for tickets (for tickets with state new and open )::
-   $ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/tickets/search?query=state:new%20OR%20state:open&limit=10&expand=true'
-
-   # Create a new user
-   curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"firstname":"Bob","lastname":"Smith","email":"email_of_customer@example.com","roles":["Customer"],"password":"some_password"}' https://xxx.zammad.com/api/v1/users
-
-   # Create a new user (with welcome email)
-   $ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -X POST -d '{"firstname":"Bob","lastname":"Smith","email":"email_of_customer@example.com","roles":["Customer"],"password":"some_password","invite":true}' https://xxx.zammad.com/api/v1/users
-
-   # Search for users
-   $ curl -u test@zammad.com:test123 'https://xxx.zammad.com/api/v1/users/search?query=smith&limit=10&expand=true'
-
-.. hint:: For more search examples regarding searching, please see `this page <https://user-docs.zammad.org/en/latest/advanced/search.html>`_ .
-
-Example CURL Request on behalf of a different user
-==================================================
-
-It is possible to do a request on behalf of a different user. If you have your own application and you want to create a ticket for the customer
-without the information that the api user has created this ticket then you can transfer the target user with the request to create the ticket on behalf of the customer user:
-
-.. code-block:: sh
-
-   $ curl -u test@zammad.com:test123 -H "Content-Type: application/json" -H "X-On-Behalf-Of: user-login" -X POST -d '{"title":"Help me!","group": "Users","article":{"subject":"some subject","body":"some message","type":"note","internal":false},"customer":"email_of_existing_customer@example.com","note": "some note"}' https://xxx.zammad.com/api/v1/tickets
-
-The value of the header has to contain one of the following values:
-
-* user id
-* user login
-* user email
-
-The value types will be checked in a cascade and the first detected user by id, login or email will be used for the request action.
-
-This functionality can be used for any type of action.
-
-Requirements for the feature:
-
-* Authenticated user must have **admin.user** permissions
-* Feature is available since Zammad version 2.4
-
-Response Format
-===============
-
-If a response is successful, an HTTP status code in the 200 or 300 range will be returned. If an item has been created or updated, all new attributes will be returned (also server side generated attributes like created_at and updated_at)::
-
-   Status: 201 Created
-   Content-Type:application/json; charset=utf-8
-
-   {
-     "id": 123,
-     "name":"some name",
-     "organization_id": 123,
-     "note":"some note",
-     "updated_at": "2016-08-16T07:55:42.119Z",
-     "created_at": "2016-08-16T07:55:42.119Z"
-   }
-
-
-Response Format (expanded)
-==========================
-
-If you want to retrieve expanded information for a request (e. g. the organization attribute), you just need to add an ``expand=true`` to the request URL::
-
-   GET /api/v1/users/{id}?expand=true HTTP/1.1
-
-will return the following structure, expanded by "organization"::
-
-   Status: 200 Ok
-   Content-Type:application/json; charset=utf-8
-
-   {
-     "id": 123,
-     "name":"some name",
-     "organization_id": 123,
-     "organization": "Some Organization Name",
-     "note":"some note",
-     "updated_at": "2016-08-16T07:55:42.119Z",
-     "created_at": "2016-08-16T07:55:42.119Z"
-   }
-
-
-Pagination
-==========
-
-All resources support pagination::
-
-   GET /api/v1/users?expand=true&page=1&per_page=5 HTTP/1.1
-
-will return five records beginning with first record of all::
-
-   Status: 200 Ok
-   Content-Type:application/json; charset=utf-8
-
-   [
-     {
-       "id": 1,
-       "name":"some name 1",
-       "organization_id": 123,
-       "organization": "Some Organization Name",
-       "note":"some note",
-       "updated_at": "2016-08-16T07:55:42.119Z",
-       "created_at": "2016-08-16T07:55:42.119Z"
-     },
-     {
-       "id": 2,
-       "name":"some name 2",
-       "organization_id": 345,
-       "organization": "Some Other Organization Name",
-       "note":"some note",
-       "updated_at": "2016-08-17T07:55:42.221Z",
-       "created_at": "2016-08-16T09:112:42.221Z"
-     },
-     ...
-   ]
-
+Zammad provides a powerful REST-API which allows all operations that
+are available via UI as well.
+
+This page gives you a first impression for things that generally count for
+all endpoints and how to adapt.
 
 API clients
 ===========
 
-* Ruby Client - https://github.com/zammad/zammad-api-client-ruby
-* PHP Client - https://github.com/zammad/zammad-api-client-php
-* Python Client - https://pypi.org/project/zammad-py/
-* .NET Client - https://github.com/Asesjix/Zammad-Client
-* Android API-Client - https://github.com/KirkBushman/zammad-android
+There are API clients available.
+Please note that these clients may not provide access to all available
+endpoints listed here.
 
-   .. note:: Please note that this is a API client only, it's no "ready to use" App.
+   * `Ruby Client <https://github.com/zammad/zammad-api-client-ruby>`_
+     *(Official)*
+   * `PHP Client <https://github.com/zammad/zammad-api-client-php>`_
+     *(Official)*
+   * `Python Client <https://pypi.org/project/zammad-py/>`_ *(Third-Party)*
+   * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(Third-Party)*
+   * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_ 
+     *(Third-Party)*
+
+      .. note:: 
+
+         Please note that this is a API client only, it's no "ready to use" App.
+
+Authentication
+==============
+
+Zammad supports three different authentication methods for its API.
+
+
+HTTP Basic Authentication (username/password)
+   | The username / password must be provided as HTTP header in the HTTP call.
+   | This authentication method can be disabled and may not be available in your
+     system.
+
+   .. code-block:: sh
+
+      $ curl -u {username}:{password} https://{fqdn}/{endpoint}
+
+   .. note::
+
+      We strongly suggest against using basic authentication.
+      Use access tokens when ever possible!
+
+HTTP Token Authentication (access token)
+   | The access token must be provided as HTTP header in the HTTP call.
+   | Each user can create several access tokens in their user preferences.
+   | This authentication method can be disabled and may not be available in your
+     system. 
+
+   .. code-block:: sh
+
+      $ curl -H "Authorization: Token token={your_token}" https://{fqdn}/{endpoint}
+
+
+OAuth2 (token access)
+   | The token must be provided as HTTP header in your calls.
+   | This allows 3rd party applications to authenticate against Zammad.
+
+   .. code-block:: sh
+
+      $ curl -H "Authorization: Bearer {your_token}" https://{fqdn}/{endpoint}
+
+Endpoints and example data
+==========================
+
+For simplicity we'll not provide specific commands on the next pages, but
+instead tell the possible call method (e.g. ``GET``) and the endpoint to use
+(e.g. ``/api/v1/users``). In case Zammad expects information within these
+endpoint urls, we'll put them into curly braces like so:
+``/api/v1/users/{user id}``
+
+The response format will be a complete JSON response from a default Zammad
+instance. Please keep in mind that you may see more fields or general
+information in case you added objects or other information.
+
+Content Type
+============
+
+Zammad returns JSON payloads whenever you retrieve data.
+If you're going to provide data, no matter of the general request type,
+don't forget to provide the content type ``application/json`` as well.
+
+Response Payloads (expand)
+==========================
+
+Zammad always returns information including hints to all relations.
+If you need more information than that (because IDs may not be enough) you
+can also extend your endpoint calls with ``?expand=true``.
+
+This switch will provide even more information — at least named relations on
+top of the ID ones. Below you can find two examples to compare - one for ticket
+and user each.
+
+.. tabs::
+
+   .. tab:: User payload
+
+      .. tabs::
+
+         .. tab:: ``?expand=false``
+
+            .. code-block:: json
+
+               {
+                  "active": true,
+                  "login_failed": 0,
+                  "verified": false,
+                  "source": null,
+                  "login": "chris@chrispresso.com",
+                  "last_login": "2021-09-23T13:17:24.817Z",
+                  "id": 3,
+                  "updated_by_id": 1,
+                  "organization_id": 2,
+                  "firstname": "Christopher",
+                  "lastname": "Miller",
+                  "email": "chris@chrispresso.com",
+                  "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
+                  "image_source": null,
+                  "web": "",
+                  "phone": "",
+                  "fax": "",
+                  "mobile": "",
+                  "department": "",
+                  "street": "",
+                  "zip": "",
+                  "city": "",
+                  "country": "",
+                  "address": "",
+                  "vip": false,
+                  "note": "",
+                  "out_of_office": false,
+                  "out_of_office_start_at": null,
+                  "out_of_office_end_at": null,
+                  "out_of_office_replacement_id": null,
+                  "preferences":
+                  {
+                     "notification_config":
+                     {
+                        "matrix":
+                        {
+                           "create":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "update":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "reminder_reached":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "escalation":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           }
+                        },
+                        "group_ids":
+                        [
+                           "2",
+                           "1",
+                           "3"
+                        ]
+                     },
+                     "locale": "de-de",
+                     "intro": true,
+                     "notification_sound":
+                     {
+                        "file": "Xylo.mp3",
+                        "enabled": true
+                     },
+                     "cti": true,
+                     "tickets_closed": 0,
+                     "tickets_open": 1
+                  },
+                  "created_by_id": 1,
+                  "created_at": "2021-07-26T14:44:41.066Z",
+                  "updated_at": "2021-09-23T13:17:24.825Z",
+                  "role_ids":
+                  [
+                     1,
+                     2
+                  ],
+                  "organization_ids":
+                  [],
+                  "authorization_ids":
+                  [],
+                  "karma_user_ids":
+                  [
+                     1
+                  ],
+                  "group_ids":
+                  {
+                     "1":
+                     [
+                        "full"
+                     ],
+                     "2":
+                     [
+                        "full"
+                     ],
+                     "3":
+                     [
+                        "full"
+                     ]
+                  }
+               }
+
+         .. tab:: ``?expand=true``
+
+            .. code-block:: json
+
+               {
+                  "active": true,
+                  "login_failed": 0,
+                  "verified": false,
+                  "source": null,
+                  "login": "chris@chrispresso.com",
+                  "last_login": "2021-09-23T13:17:24.817Z",
+                  "id": 3,
+                  "updated_by_id": 1,
+                  "organization_id": 2,
+                  "firstname": "Christopher",
+                  "lastname": "Miller",
+                  "email": "chris@chrispresso.com",
+                  "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
+                  "image_source": null,
+                  "web": "",
+                  "phone": "",
+                  "fax": "",
+                  "mobile": "",
+                  "department": "",
+                  "street": "",
+                  "zip": "",
+                  "city": "",
+                  "country": "",
+                  "address": "",
+                  "vip": false,
+                  "note": "",
+                  "out_of_office": false,
+                  "out_of_office_start_at": null,
+                  "out_of_office_end_at": null,
+                  "out_of_office_replacement_id": null,
+                  "preferences":
+                  {
+                     "notification_config":
+                     {
+                        "matrix":
+                        {
+                           "create":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "update":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": true,
+                                 "subscribed": true,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "reminder_reached":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           },
+                           "escalation":
+                           {
+                              "criteria":
+                              {
+                                 "owned_by_me": true,
+                                 "owned_by_nobody": false,
+                                 "no": true
+                              },
+                              "channel":
+                              {
+                                 "email": true,
+                                 "online": true
+                              }
+                           }
+                        },
+                        "group_ids":
+                        [
+                           "2",
+                           "1",
+                           "3"
+                        ]
+                     },
+                     "locale": "de-de",
+                     "intro": true,
+                     "notification_sound":
+                     {
+                        "file": "Xylo.mp3",
+                        "enabled": true
+                     },
+                     "cti": true,
+                     "tickets_closed": 0,
+                     "tickets_open": 1
+                  },
+                  "created_by_id": 1,
+                  "created_at": "2021-07-26T14:44:41.066Z",
+                  "updated_at": "2021-09-23T13:17:24.825Z",
+                  "role_ids":
+                  [
+                     1,
+                     2
+                  ],
+                  "organization_ids":
+                  [],
+                  "authorization_ids":
+                  [],
+                  "karma_user_ids":
+                  [
+                     1
+                  ],
+                  "group_ids":
+                  {
+                     "1":
+                     [
+                        "full"
+                     ],
+                     "2":
+                     [
+                        "full"
+                     ],
+                     "3":
+                     [
+                        "full"
+                     ]
+                  },
+                  "roles":
+                  [
+                     "Admin",
+                     "Agent"
+                  ],
+                  "organizations":
+                  [],
+                  "authorizations":
+                  [],
+                  "organization": "Chrispresso Inc.",
+                  "groups":
+                  {
+                     "Sales":
+                     [
+                        "full"
+                     ],
+                     "2nd Level":
+                     [
+                        "full"
+                     ],
+                     "Service/Desk":
+                     [
+                        "full"
+                     ]
+                  },
+                  "created_by": "-",
+                  "updated_by": "-"
+               }
+
+   .. tab:: Ticket payload
+
+      .. tabs::
+
+         .. tab:: ``?expand=false``
+
+            .. code-block:: json
+
+               {
+                  "id": 3,
+                  "group_id": 1,
+                  "priority_id": 2,
+                  "state_id": 4,
+                  "organization_id": 3,
+                  "number": "71003",
+                  "title": "Order 787556",
+                  "owner_id": 3,
+                  "customer_id": 7,
+                  "note": null,
+                  "first_response_at": null,
+                  "first_response_escalation_at": null,
+                  "first_response_in_min": null,
+                  "first_response_diff_in_min": null,
+                  "close_at": null,
+                  "close_escalation_at": null,
+                  "close_in_min": null,
+                  "close_diff_in_min": null,
+                  "update_escalation_at": null,
+                  "update_in_min": null,
+                  "update_diff_in_min": null,
+                  "last_contact_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
+                  "last_owner_update_at": null,
+                  "create_article_type_id": 1,
+                  "create_article_sender_id": 2,
+                  "article_count": 2,
+                  "escalation_at": null,
+                  "pending_time": null,
+                  "type": null,
+                  "time_unit": null,
+                  "preferences":
+                  {},
+                  "updated_by_id": 4,
+                  "created_by_id": 7,
+                  "created_at": "2021-02-24T14:44:43.828Z",
+                  "updated_at": "2021-07-26T14:44:43.906Z"
+               }
+
+         .. tab:: ``?expand=true``
+
+            .. code-block:: json
+
+               {
+                  "id": 3,
+                  "group_id": 1,
+                  "priority_id": 2,
+                  "state_id": 4,
+                  "organization_id": 3,
+                  "number": "71003",
+                  "title": "Order 787556",
+                  "owner_id": 3,
+                  "customer_id": 7,
+                  "note": null,
+                  "first_response_at": null,
+                  "first_response_escalation_at": null,
+                  "first_response_in_min": null,
+                  "first_response_diff_in_min": null,
+                  "close_at": null,
+                  "close_escalation_at": null,
+                  "close_in_min": null,
+                  "close_diff_in_min": null,
+                  "update_escalation_at": null,
+                  "update_in_min": null,
+                  "update_diff_in_min": null,
+                  "last_contact_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
+                  "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
+                  "last_owner_update_at": null,
+                  "create_article_type_id": 1,
+                  "create_article_sender_id": 2,
+                  "article_count": 2,
+                  "escalation_at": null,
+                  "pending_time": null,
+                  "type": null,
+                  "time_unit": null,
+                  "preferences":
+                  {},
+                  "updated_by_id": 4,
+                  "created_by_id": 7,
+                  "created_at": "2021-02-24T14:44:43.828Z",
+                  "updated_at": "2021-07-26T14:44:43.906Z",
+                  "article_ids":
+                  [
+                     5,
+                     6
+                  ],
+                  "ticket_time_accounting_ids":
+                  [],
+                  "group": "Sales",
+                  "organization": "Awesome Customer Inc.",
+                  "ticket_time_accounting":
+                  [],
+                  "state": "closed",
+                  "priority": "2 normal",
+                  "owner": "chris@chrispresso.com",
+                  "customer": "samuel@example.com",
+                  "created_by": "samuel@example.com",
+                  "updated_by": "jacob@chrispresso.com",
+                  "create_article_type": "email",
+                  "create_article_sender": "Customer"
+               }
+
+.. warning::
+
+   Please note that Core Workflows may restrict access to attributes or values.
+   see `Core Workflows limitations`_ to learn more.
+
+.. _Core Workflows limitations:
+   https://admin-docs.zammad.org/en/latest/system/core-workflows/limitations.html
+
+Pagination
+==========
+
+As Zammad limits the number of returned objects for performance reasons, you
+may have to use pagination at some points.
+
+   .. note::
+
+      Number of returned objects
+         Zammad has hard limits for the maximum returned objects.
+         You can't raise these limits.
+
+      Number of total to return objects
+         Zammad does not provide a total count of objects available for your
+         query. This forces you to cycle through the pages until Zammad no
+         longer returns further objects.
+
+In order to use pagination you'll need two get options:
+``per_page`` and ``page``. Combine them like so to receive 5 results from
+the first result page: ``?page=1&per_page=5`` - count page up to get
+more results.
+
+.. _sort_search_results:
+
+Sorting search results
+======================
+
+Zammad allows you to sort your search results by field if needed.
+
+sort_by
+   Append ``?sort_by={row name}`` to your query to sort by a specific row
+   that appears in the search result.
+
+order_by
+   Append ``?order_by={direction}`` to your query to switch in between ascending
+   and descending order.
+
+   Directions are: ``asc`` and ``desc``.
+
+.. note::
+
+   Usually you'll want to combine both parameters in your searches - e.g.:
+   ``?query={search string}&sort_by={row name}&order_by={direction}``
+
+Actions on behalf of other users
+================================
+
+.. note::
+
+   The user used for running the on behalf query requires ``admin.user``
+   permission.
+
+Running API queries on behalf of other users allows you to e.g. create tickets
+on behalf of the user. The UI will display these kind of operations much better.
+
+To do so, add a new HTTP header named ``X-On-Behalf-Of`` to your request.
+The value of this header can be one of the following:
+
+   * user ID
+   * user login
+   * user email
+
+On behalf of is available for all endpoints.
+
+Encoding
+========
+
+The API expects UTF-8 encoding.
+Keep in mind that especially when using URLs with get options
+(e.g. ``?query=this``) you may need to encode your URL accordingly.
+
+If you want to learn more about URL encoding,
+`this Wikipedia article <https://en.wikipedia.org/wiki/Percent-encoding>`_
+may be of help

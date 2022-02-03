@@ -83,6 +83,8 @@ The Zammad documentation consists of three parts:
    /api/user
    /api/organization
    /api/group
+   /api/calendar
+   /api/sla
    /api/ticket
    /api/notification
    /api/object
@@ -104,7 +106,7 @@ The Zammad documentation consists of three parts:
    :caption: Appendix
 
 
-   /appendix/backup-and-restore
+   /appendix/backup-and-restore/index
    /appendix/configure-env-vars
    /appendix/configure-database-server
    /appendix/privacy

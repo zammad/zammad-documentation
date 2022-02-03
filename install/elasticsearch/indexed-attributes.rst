@@ -734,7 +734,7 @@ CTI Log
      - Call direction
    * - done
      - ``true``, ``false``
-     - Defines if call is finished
+     - Defines if call displays as "to do" within UI
    * - duration_talking_time
      - ``27``
      - Call duration in seconds

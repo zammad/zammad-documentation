@@ -89,7 +89,8 @@ You can skip parts you don't need or adapt. All parts are described within
    #. Configure roles if needed
    #. Consider Third Party logins or LDAP integration for easier logins
    #. Add agent accounts (users)
-   #. Consider backup strategies for Zammad. See :doc:`/appendix/backup-and-restore`
+   #. Consider backup strategies for Zammad.
+      See :doc:`/appendix/backup-and-restore/index`
 
 From point 5 on you'll be able to work productive in theory. 🙌
 
