@@ -167,9 +167,4 @@ Set Zammad back into normal working mode
 All changes that occurred after your first migration should now also be available 
 within your Zammad installation.
 
-Restarting from scratch
-=======================
-
-Turned wrong at some point? 
-You can find the required commands to reset Zammad in our 
-:ref:`Dangerzone <dangerzone_reset_zammad>`.
+.. include:: /migration/restarting-from-scratch.include.rst
