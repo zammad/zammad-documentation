@@ -71,13 +71,7 @@ consider using the console over the browser version.
 
    .. tab:: via Console
 
-      .. hint::
-
-         Here's how to open a console.
-      
-         .. include:: /admin/console-rails-shell.include.rst
-
-         Learn more about the :doc:`Zammad console </admin/console>`.
+      .. include:: /migration/rails-console-migrator-hint.include.rst
 
       To prepare the migration, run the following commands
          .. code-block:: ruby

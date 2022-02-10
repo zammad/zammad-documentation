@@ -110,10 +110,7 @@ Importing OTRS data
 
    .. tab:: via Console
 
-      .. hint::
-
-         We have a dedicated page for :ref:`Zammads rails console <rails_shell>` 
-         to reduce this pages complexity.
+      .. include:: /migration/rails-console-migrator-hint.include.rst
 
       If you miss this at the beginning or you want to re-import again you have 
       to use the command line at the moment.
