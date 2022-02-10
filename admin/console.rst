@@ -1,9 +1,16 @@
 Console
 *******
 
-Zammad uses Ruby on Rails so you can make use of the `rails console <http://guides.rubyonrails.org/command_line.html>`_.
+Zammad uses Ruby on Rails so you can make use of the `rails console`_.
 
-.. warning:: Please double check your commands before running, as some of those commands might cause data loss or damaged tickets! If you're unsure, **use a test system first**!
+.. _rails console:
+   http://guides.rubyonrails.org/command_line.html
+
+.. warning:: 
+
+   Please double check your commands before running, as some of those commands
+   might cause data loss or damaged tickets! If you're unsure,
+   **use a test system first**!
 
 To open the rails console on the shell you have to enter the following commands.
 
@@ -13,11 +20,16 @@ Start Zammad's Rails console
 Running a single command
 ------------------------
 
-The following command will allow you to run a single command, without running a shell (e.g. for automation).
+The following command will allow you to run a single command, without running
+a shell (e.g. for automation).
 
 .. note:: Replace ``{COMMAND}`` with your command you want to run.
 
-.. tip:: If you enter a ``p`` in front of your command (e.g. like ``rails r 'p Delayed::Job.count'``), you'll actually receive a printed output (without you won't!).
+.. tip::
+
+   If you enter a ``p`` in front of your command
+   (e.g. like ``rails r 'p Delayed::Job.count'``),
+   you'll actually receive a printed output (without you won't!).
 
 .. code-block:: sh
 
@@ -32,16 +44,12 @@ The following command will allow you to run a single command, without running a 
 Running several commands in a shell
 -----------------------------------
 
-The following command will provide you a rails console, you can run several commands inside it.
+The following command will provide you a rails console.
+It allows you to run several commands inside it.
 
-.. code-block:: sh
+This reduces loading times greatly.
 
-   # package installation
-   $ zammad run rails c
-
-   # source installation
-   $ rails c
-
+.. include:: /admin/console-rails-shell.include.rst
 
 Working on the console
 ======================

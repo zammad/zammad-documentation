@@ -71,6 +71,14 @@ consider using the console over the browser version.
 
    .. tab:: via Console
 
+      .. hint::
+
+         Here's how to open a console.
+      
+         .. include:: /admin/console-rails-shell.include.rst
+
+         Learn more about the :doc:`Zammad console </admin/console>`.
+
       To prepare the migration, run the following commands
          .. code-block:: ruby
             :force:
@@ -259,7 +267,7 @@ After migration
 ===============
 
 As the migration technically skips the getting started wizard, please
-note that you want to adjust your `FQDN settings` (FQDN & HTTP-Type).
+note that you want to adjust your `FQDN settings`_ (FQDN & HTTP-Type).
 
 .. include:: /migration/how-to-login.include.rst
    
