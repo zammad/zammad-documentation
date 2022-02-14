@@ -1,23 +1,39 @@
 Generic CTI
 ***********
 
-How it works
-============
+This page describes the generic CTI API scopes and functionalities.
+Unlike the rest of Zammads API *this endpoint behaves differently from the
+others* - for this endpoint forget everything you've learned in the API intro.
 
-Events can be transferred in realtime from the telephone system to the Zammad CTI Push API (REST API) via a generic interface.
+.. hint::
 
-Depending on the event, Zammad offers various functions to quickly and easily identify callers and the corresponding tickets, for example, or to provide a caller log. Or to modify the incoming or outgoing call.
+   Generic CTI configuration and the correct endpoint can be found in your
+   Zammad integration settings and are documented in our `admin documentation`_.
+
+   Please also note the there listed requirements and limitations.
+
+.. _admin documentation:
+   https://admin-docs.zammad.org/en/latest/system/integrations/generic-cti.html
 
 Endpoint
-============
+========
 
-The endpoint of your Zammad CTI Push API looks like http://localhost:3000/api/v1/cti/:token and can be found in Zammad -> Admin -> Integrations -> CTI (generic) -> Endpoint
-
+The endpoint can be found in the generic CTI integration and contains a unique
+token which acts as authentication. Make sure to keep this endpoint URL safe.
 
 Events
-============
+======
 
-Zammad supports the following three events (newCall, hangup and answer) in version 2.x.
+There are several events in terms of a ongoing call.
+These actions always come from your PBX system and may be:
+
+   * a new call (initiation of a call)
+   * hangup (call ending)
+   * answer (aka picking up the phone)
+
+In some situations Zammad may provide a return on your PBX calls (e.g. a reject)
+if you blocked a specific caller. Zammad will never initiate specific actions
+with your PBX. Zammad is a passive component in all following cases.
 
 **Event: newCall**
 
