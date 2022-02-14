@@ -1,5 +1,5 @@
-Push API
-************
+Generic CTI
+***********
 
 How it works
 ============
