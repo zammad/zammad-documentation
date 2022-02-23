@@ -86,7 +86,7 @@ The Zammad documentation consists of three parts:
    /api/calendar
    /api/sla
    /api/ticket
-   /api/generic-cti
+   /api/generic-cti/index
    /api/notification
    /api/object
    /api/user-access-token
