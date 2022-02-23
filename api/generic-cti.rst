@@ -243,6 +243,12 @@ configured one or both options, the return will be empty.
 
             {}
 
+      .. warning::
+
+         Your PBX still needs to end the call (hangup event).
+         Other wise the call will not just appear within Zammads caller log
+         but also appear as ringing call.
+
    .. tab:: Set specific outgoing caller ID
 
       In case your instance has a matching overwriting caller ID configured,
