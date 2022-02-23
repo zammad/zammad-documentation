@@ -80,7 +80,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   "to": "492214710334",
                   "direction": "out",
                   "callId": "f4ebd2be-7b9a-4d58-94c2-eb06a3c2ce76",
-                  "user": "Christopher Miller",
                   "cause": "cancel"
                }
 
@@ -102,7 +101,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                      "to": "492214710334",
                      "direction": "out",
                      "callId": "f4ebd2be-7b9a-4d58-94c2-eb06a3c2ce76",
-                     "user": "Christopher Miller",
                      "cause": "cancel"
                   }'
 
@@ -117,7 +115,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   "to": "492214710334",
                   "direction": "in",
                   "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
-                  "user": "Emma Taylor",
                   "answeringNumber": "emma@chrispresso.com",
                   "cause": "normalClearing"
                }
@@ -140,7 +137,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                      "to": "492214710334",
                      "direction": "in",
                      "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
-                     "user": "Emma Taylor",
                      "answeringNumber": "emma@chrispresso.com",
                      "cause": "normalClearing"
                   }'
@@ -160,7 +156,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                to:"492214710334"
                direction:"out"
                callId:"da7cf8b8-2de2-4120-93c8-7db1f55225dc"
-               user:"Christopher Miller"
                cause:"cancel"
 
          Returns:
@@ -179,7 +174,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'to="492214710334"' \
                   --form 'direction="out"' \
                   --form 'callId="da7cf8b8-2de2-4120-93c8-7db1f55225dc"' \
-                  --form 'user[]="Christopher Miller"' \
                   --form 'cause="cancel"'
 
       Inbound
@@ -192,7 +186,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                to:"492214710334"
                direction:"in"
                callId:"2d77882f-68df-40f0-8c62-b642589c00bc"
-               user:"Emma Taylor"
                answeringNumber:"emma@chrispresso.com",
                cause:"normalClearing"
 
@@ -212,8 +205,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'to="492214710334"' \
                   --form 'direction="in"' \
                   --form 'callId="2d77882f-68df-40f0-8c62-b642589c00bc"' \
-                  --form 'user[]="Christopher Miller"' \
-                  --form 'user[]="Emma Taylor"' \
                   --form 'answeringNumber="emma@chrispresso.com"' \
                   --form 'cause="normalClearing"'
 

@@ -34,6 +34,14 @@ Call answered
           * ``user.id``
 
        This value is optional.
+   * - ``user``
+     - e.g. ``[John Doe]``, ``[Alice, Bob]``
+     - The user(s) real name involved.
+
+       | If the direction is ``out``, this is the name of the calling person(s).
+       | If the direction is ``in``, this is the name of the called person(s).
+
+       This value is optional.
 
 There's two options on how to ``POST`` the relevant data to Zammad.
 
@@ -56,7 +64,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   "from": "493023125741",
                   "to": "492214710334",
                   "direction": "out",
-                  "callId": "9f1840cb-8be9-4d3a-8200-3da2937085f0"
+                  "callId": "9f1840cb-8be9-4d3a-8200-3da2937085f0".
+                  "caller": "Christopher Miller"
                }
 
 
@@ -77,7 +86,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                      "from": "493023125741",
                      "to": "492214710334",
                      "direction": "out",
-                     "callId": "9f1840cb-8be9-4d3a-8200-3da2937085f0"
+                     "callId": "9f1840cb-8be9-4d3a-8200-3da2937085f0",
+                     "caller": "Christopher Miller"
                   }'
 
       Inbound
@@ -91,8 +101,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   "to": "492214710334",
                   "direction": "in",
                   "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
-                  "user": "Emma Taylor",
-                  "answeringNumber": "emma@chrispresso.com"
+                  "answeringNumber": "emma@chrispresso.com",
+                  "caller": ["Christopher Miller", "Emma Taylor"]
                }
 
          Response:
@@ -113,8 +123,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                      "to": "492214710334",
                      "direction": "in",
                      "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
-                     "user": "Emma Taylor",
-                     "answeringNumber": "emma@chrispresso.com"
+                     "answeringNumber": "emma@chrispresso.com",
+                     "caller": ["Christopher Miller", "Emma Taylor"]
                   }'
 
    .. tab:: form-data
@@ -132,6 +142,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                to:"492214710334"
                direction:"out"
                callId:"371e2cd7-67ff-4fd9-892b-030c8d128fb1"
+               caller[]:"Christopher Miller"
+               caller[]:"Emma Taylor"
 
          Returns:
 
@@ -148,7 +160,9 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'from="493023125741"' \
                   --form 'to="492214710334"' \
                   --form 'direction="out"' \
-                  --form 'callId="371e2cd7-67ff-4fd9-892b-030c8d128fb1"'
+                  --form 'callId="371e2cd7-67ff-4fd9-892b-030c8d128fb1"' \
+                  --form 'caller[]="Christopher Miller"' \
+                  --form 'caller[]="Emma Taylor"'
 
       Inbound
          Payload:
@@ -160,8 +174,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                to:"492214710334"
                direction:"in"
                callId:"61868f1e-2171-4313-970b-25982f0c5ce1"
-               user:"Emma Taylor"
                answeringNumber:"emma@chrispresso.com"
+               caller="Emma Taylor"
 
          Returns:
 
@@ -179,9 +193,8 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'to="492214710334"' \
                   --form 'direction="in"' \
                   --form 'callId="61868f1e-2171-4313-970b-25982f0c5ce1"' \
-                  --form 'user[]="Christopher Miller"' \
-                  --form 'user[]="Emma Taylor"' \
-                  --form 'answeringNumber="emma@chrispresso.com"'
+                  --form 'answeringNumber="emma@chrispresso.com"' \
+                  --form 'caller="Emma Taylor"'
 
    .. tab:: URL variables
 

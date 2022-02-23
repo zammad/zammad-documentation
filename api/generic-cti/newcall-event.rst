@@ -35,7 +35,6 @@ New Call
        | If the direction is ``out``, this is the name of the calling person(s).
        | If the direction is ``in``, this is the name of the called person(s).
 
-       This is always an array except if you're using JSON payloads.
        This value is optional.
    * - ``queue``
      - e.g. ``support``, ``sales``
@@ -168,7 +167,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'to="492214710334"' \
                   --form 'direction="out"' \
                   --form 'callId="f0871278-0600-4f5c-a746-bec3acf04f41"' \
-                  --form 'user[]="Christopher Miller"'
+                  --form 'user="Christopher Miller"'
 
       Inbound
          Payload:
