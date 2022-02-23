@@ -59,76 +59,76 @@ There's two options on how to ``POST`` the relevant data to Zammad.
       Outbound
          Payload:
 
-         .. code-block:: json
+            .. code-block:: json
 
-            {
-               "event": "newCall",
-               "from": "493023125741",
-               "to": "492214710334",
-               "direction": "out",
-               "callId": "f4ebd2be-7b9a-4d58-94c2-eb06a3c2ce76",
-               "user": "Christopher Miller"
-            }
-
-         Returns:
-
-         .. code-block:: json
-
-            {
-               "action": "dial",
-               "caller_id": "496990009111",
-               "number": "492214710334"
-            }
-
-         Sample curl command:
-
-         .. code-block:: sh
-
-            $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
-               --header 'Content-Type: application/json' \
-               --data-raw '{
+               {
                   "event": "newCall",
                   "from": "493023125741",
                   "to": "492214710334",
                   "direction": "out",
                   "callId": "f4ebd2be-7b9a-4d58-94c2-eb06a3c2ce76",
                   "user": "Christopher Miller"
-               }'
+               }
+
+         Returns:
+
+            .. code-block:: json
+
+               {
+                  "action": "dial",
+                  "caller_id": "496990009111",
+                  "number": "492214710334"
+               }
+
+         Sample curl command:
+
+            .. code-block:: sh
+
+               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+                  --header 'Content-Type: application/json' \
+                  --data-raw '{
+                     "event": "newCall",
+                     "from": "493023125741",
+                     "to": "492214710334",
+                     "direction": "out",
+                     "callId": "f4ebd2be-7b9a-4d58-94c2-eb06a3c2ce76",
+                     "user": "Christopher Miller"
+                  }'
 
       Inbound
          Payload:
 
-         .. code-block:: json
+            .. code-block:: json
 
-            {
-               "event": "newCall",
-               "from": "493023125741",
-               "to": "492214710334",
-               "direction": "in",
-               "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
-               "user": ["Christopher Miller", "Emma Taylor"]
-            }
-
-         Response:
-
-         .. code-block:: json
-
-            {}
-
-         Sample curl command:
-
-         .. code-block:: sh
-
-            $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
-               --header 'Content-Type: application/json' \
-               --data-raw '{
+               {
                   "event": "newCall",
                   "from": "493023125741",
                   "to": "492214710334",
                   "direction": "in",
                   "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
                   "user": ["Christopher Miller", "Emma Taylor"]
-               }'
+               }
+
+         Response:
+
+            .. code-block:: json
+
+               {}
+
+         Sample curl command:
+
+            .. code-block:: sh
+
+               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+                  --header 'Content-Type: application/json' \
+                  --data-raw '{
+                     "event": "newCall",
+                     "from": "493023125741",
+                     "to": "492214710334",
+                     "direction": "in",
+                     "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
+                     "user": ["Christopher Miller", "Emma Taylor"]
+                  }'
 
 
    .. tab:: form-data
@@ -139,68 +139,68 @@ There's two options on how to ``POST`` the relevant data to Zammad.
       Outbound
          Payload:
 
-         .. code-block::
+            .. code-block::
 
-            event:"newCall"
-            from:"493023125741"
-            to:"492214710334"
-            direction:"out"
-            callId:"f0871278-0600-4f5c-a746-bec3acf04f41"
-            user:"Christopher Miller"
+               event:"newCall"
+               from:"493023125741"
+               to:"492214710334"
+               direction:"out"
+               callId:"f0871278-0600-4f5c-a746-bec3acf04f41"
+               user:"Christopher Miller"
 
          Returns:
 
-         .. code-block:: json
+            .. code-block:: json
 
-            {
-               "action": "dial",
-               "caller_id": "496990009111",
-               "number": "492214710334"
-            }
+               {
+                  "action": "dial",
+                  "caller_id": "496990009111",
+                  "number": "492214710334"
+               }
 
          Sample curl command:
          
-         .. code-block:: sh
+            .. code-block:: sh
 
-            $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
-               --form 'event="newCall"' \
-               --form 'from="493023125741"' \
-               --form 'to="492214710334"' \
-               --form 'direction="out"' \
-               --form 'callId="f0871278-0600-4f5c-a746-bec3acf04f41"' \
-               --form 'user[]="Christopher Miller"'
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
+                  --form 'event="newCall"' \
+                  --form 'from="493023125741"' \
+                  --form 'to="492214710334"' \
+                  --form 'direction="out"' \
+                  --form 'callId="f0871278-0600-4f5c-a746-bec3acf04f41"' \
+                  --form 'user[]="Christopher Miller"'
 
       Inbound
          Payload:
 
-         .. code-block::
+            .. code-block::
 
-            event:"newCall"
-            from:"493023125741"
-            to:"492214710334"
-            direction:"in"
-            callId:"25641e3f-3317-4c48-80b3-fc573c7ffe2b"
-            user[]:"Christopher Miller"
-            user[]:"Emma Taylor"
+               event:"newCall"
+               from:"493023125741"
+               to:"492214710334"
+               direction:"in"
+               callId:"25641e3f-3317-4c48-80b3-fc573c7ffe2b"
+               user[]:"Christopher Miller"
+               user[]:"Emma Taylor"
 
          Returns:
 
-         .. code-block:: json
+            .. code-block:: json
 
-            {}
+               {}
 
          Sample curl command:
          
-         .. code-block:: sh
+            .. code-block:: sh
 
-            $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
-               --form 'event="newCall"' \
-               --form 'from="493023125741"' \
-               --form 'to="492214710334"' \
-               --form 'direction="in"' \
-               --form 'callId="25641e3f-3317-4c48-80b3-fc573c7ffe2b"' \
-               --form 'user[]="Christopher Miller"' \
-               --form 'user[]="Emma Taylor"'
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
+                  --form 'event="newCall"' \
+                  --form 'from="493023125741"' \
+                  --form 'to="492214710334"' \
+                  --form 'direction="in"' \
+                  --form 'callId="25641e3f-3317-4c48-80b3-fc573c7ffe2b"' \
+                  --form 'user[]="Christopher Miller"' \
+                  --form 'user[]="Emma Taylor"'
 
    .. tab:: URL variables
 
