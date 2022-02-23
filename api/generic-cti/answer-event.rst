@@ -186,3 +186,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
    .. tab:: URL variables
 
       .. include:: /api/generic-cti/generic-cti_no-more-url-varibales.include.rst
+
+The next logical step within call session context would be:
+   * :doc:`hangup <hangup-event>` (call ending)

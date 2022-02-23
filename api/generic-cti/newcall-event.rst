@@ -259,3 +259,7 @@ configured one or both options, the return will be empty.
          .. code-block:: json
 
             {}
+
+The next logical steps within call session context would be:
+   * :doc:`hangup <hangup-event>` (call ending)
+   * :doc:`answer <answer-event>` (aka picking up the phone)
