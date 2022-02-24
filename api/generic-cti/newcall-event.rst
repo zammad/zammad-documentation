@@ -1,4 +1,4 @@
-New Call
+New call
 ========
 
 .. list-table:: Available attributes and sample data for newCall events

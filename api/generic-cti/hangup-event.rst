@@ -1,4 +1,4 @@
-Call Hangup
+Call hangup
 ===========
 
 .. list-table:: Available attributes and sample data for hangup events

@@ -3,9 +3,6 @@
    Below calls have been sent with the following configuration.
    This is important for *you* to understand the returns we're showing here.
 
-      Inbound
-         * Caller ID to block ``911`` with note "nobody wants police to call"
-
       Outbound
          * Destination caller ID ``4989*`` set outbound caller ID
            ``498999998145`` with note "All from munich"
