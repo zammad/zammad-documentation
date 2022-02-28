@@ -64,7 +64,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   "from": "493023125741",
                   "to": "492214710334",
                   "direction": "out",
-                  "callId": "9f1840cb-8be9-4d3a-8200-3da2937085f0".
+                  "callId": "9f1840cb-8be9-4d3a-8200-3da2937085f0",
                   "caller": "Christopher Miller"
                }
 
