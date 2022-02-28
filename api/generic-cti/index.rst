@@ -28,9 +28,9 @@ Events
    There are several events in terms of an ongoing call.
    These actions always come from your PBX system and may be:
 
-      * :doc:`a new call <newcall-event>` (initiation of a call)
-      * :doc:`hangup <hangup-event>` (call ending)
-      * :doc:`answer <answer-event>` (aka picking up the phone)
+      * :doc:`"newCall" event <newcall-event>` (initiation of a call)
+      * :doc:`"hangup" event <hangup-event>` (call ending)
+      * :doc:`"answer" event <answer-event>` (aka picking up the phone)
 
    In some situations Zammad may provide a return on your PBX calls
    (e.g. a reject) if you blocked a specific caller. Zammad will never initiate
