@@ -1,4 +1,4 @@
-from Freshdesk
+From Freshdesk
 **************
 
 Limitations
@@ -12,7 +12,7 @@ These are additional limitations to the
      | The general suggestion is to run a test import before to learn
        how long the migration is going to take.
    * **Important:** Please note that migration speed highly depends on your
-     Freshdesk plan (API rate limits apply)
+     Freshdesk plan (API rate limits apply).
    * Due to API limitations Zammad will not show the total number of objects
      to import, but instead correct them in steps of ``100``.
    * User passwords are not migrated and will require password resets.
@@ -31,7 +31,7 @@ API key.
 
 .. warning:: **🥸 To be or not to be**
 
-  Ensure to retrieve the API key with an **full administrator** account.
+  Ensure to retrieve the API key with a **full administrator** account.
   Less privileged users will end in a broken migration.
 
 .. _create an API key:
@@ -46,11 +46,11 @@ consider using the console over the browser version.
 
 .. tabs::
 
-   .. tab:: via Browser
+   .. tab:: Via browser
 
       After installing Zammad and configuring your 
       :doc:`webserver </getting-started/configure-webserver>`, navigate to your 
-      Zammads FQDN in your Browser and follow the migration wizard.
+      Zammads FQDN in your browser and follow the migration wizard.
 
       Depending on the number of users, tickets and Freshdesk plan this may take
       some while.
@@ -69,7 +69,7 @@ consider using the console over the browser version.
          consider using the console approach instead and reset the
          installation.
 
-   .. tab:: via Console
+   .. tab:: Via console
 
       .. include:: /migration/rails-console-migrator-hint.include.rst
 
