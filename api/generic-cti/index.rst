@@ -2,8 +2,8 @@ Generic CTI
 ***********
 
 This page describes the generic CTI API scopes and functionalities.
-Authentication on this endpoint works fundamentally different compared to the
-rest of the API.
+
+.. include:: /api/generic-cti/cti-endpoint-limitations.include.rst
 
 Endpoint
    The endpoint can be found in the generic CTI integration and contains a

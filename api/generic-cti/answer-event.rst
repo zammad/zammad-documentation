@@ -1,6 +1,8 @@
 Call answered
 =============
 
+.. include:: /api/generic-cti/cti-endpoint-limitations.include.rst
+
 .. list-table:: Available attributes and sample data for answered events
    :widths: 20, 40, 40
    :header-rows: 1
