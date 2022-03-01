@@ -207,6 +207,9 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
       .. include:: /api/generic-cti/generic-cti_no-more-url-varibales.include.rst
 
+Situation specific responses
+----------------------------
+
 Depending on the chosen call direction, Zammad will return either a (optionally)
 configured call ID or (optionally) block a caller. If your Zammad hasn't
 configured one or both options, the return will be empty.
