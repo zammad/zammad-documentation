@@ -15,7 +15,11 @@ These are additional limitations to the
      Freshdesk plan (API rate limits apply).
    * Due to API limitations Zammad will not show the total number of objects
      to import, but instead correct them in steps of ``100``.
-   * User passwords are not migrated and will require password resets.
+   * User passwords are not migrated and will require the user to use the
+     `password reset link`_ on the login page.
+
+.. _password reset link:
+   https://admin-docs.zammad.org/en/latest/settings/security/base.html#lost-password
 
    .. note::
 
