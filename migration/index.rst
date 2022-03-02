@@ -34,6 +34,7 @@ Available Migration Options
 
    OTRS </migration/otrs>
    Zendesk </migration/zendesk>
+   Freshdesk </migration/freshdesk>
 
 .. note::
 

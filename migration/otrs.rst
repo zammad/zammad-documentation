@@ -110,10 +110,7 @@ Importing OTRS data
 
    .. tab:: via Console
 
-      .. hint::
-
-         We have a dedicated page for :ref:`Zammads rails console <rails_shell>` 
-         to reduce this pages complexity.
+      .. include:: /migration/rails-console-migrator-hint.include.rst
 
       If you miss this at the beginning or you want to re-import again you have 
       to use the command line at the moment.
@@ -167,9 +164,4 @@ Set Zammad back into normal working mode
 All changes that occurred after your first migration should now also be available 
 within your Zammad installation.
 
-Restarting from scratch
-=======================
-
-Turned wrong at some point? 
-You can find the required commands to reset Zammad in our 
-:ref:`Dangerzone <dangerzone_reset_zammad>`.
+.. include:: /migration/restarting-from-scratch.include.rst
