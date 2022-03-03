@@ -85,7 +85,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
             .. code-block:: sh
 
-               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "newCall",
@@ -120,7 +120,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
             .. code-block:: sh
 
-               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "newCall",
@@ -130,7 +130,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                      "callId": "307fa962-de8d-4ffc-817b-7f6993204159",
                      "user": ["Christopher Miller", "Emma Taylor"]
                   }'
-
 
    .. tab:: form-data
 
@@ -202,10 +201,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'callId="25641e3f-3317-4c48-80b3-fc573c7ffe2b"' \
                   --form 'user[]="Christopher Miller"' \
                   --form 'user[]="Emma Taylor"'
-
-   .. tab:: URL variables
-
-      .. include:: /api/generic-cti/generic-cti_no-more-url-varibales.include.rst
 
 Situation specific responses
 ----------------------------

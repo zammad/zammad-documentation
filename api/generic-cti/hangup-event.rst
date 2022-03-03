@@ -12,7 +12,7 @@ Call hangup
      - Description
    * - ``event``
      - ``hangup``
-     - Tell Zammad there's a new call
+     - Tell Zammad that somebody hung up the call.
    * - ``from``
      - e.g. ``493055571600``, ``02214710334``, ``anonymous``
      - Number that initiated the call
@@ -25,7 +25,11 @@ Call hangup
    * - ``callId``
      - e.g. ``53ba82e2bd6d12d9fb2d3838f0cfb070``, ``5fb9532f40da834a``,
        ``123456789``
-     - This is the CallID from the ``newCall`` event.
+     - An ID that is unique for the call. Zammad will use this ID to identify
+       an existing call with following actions
+       (e.g. like answering or hanging up)
+
+       *This ID must be unique per call session*.
    * - ``cause``
      - .. list-table::
           :widths: 10, 30
@@ -95,7 +99,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
             .. code-block:: sh
 
-               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "hangup",
@@ -131,7 +135,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
             .. code-block:: sh
 
-               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "hangup",
@@ -209,7 +213,3 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'callId="2d77882f-68df-40f0-8c62-b642589c00bc"' \
                   --form 'answeringNumber="emma@chrispresso.com"' \
                   --form 'cause="normalClearing"'
-
-   .. tab:: URL variables
-
-      .. include:: /api/generic-cti/generic-cti_no-more-url-varibales.include.rst

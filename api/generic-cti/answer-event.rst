@@ -12,7 +12,7 @@ Call answered
      - Description
    * - ``event``
      - ``answer``
-     - Tell Zammad there's a new call
+     - Tell Zammad that someone answered the call.
    * - ``from``
      - e.g. ``493055571600``, ``02214710334``, ``anonymous``
      - Number that initiated the call
@@ -25,9 +25,14 @@ Call answered
    * - ``callId``
      - e.g. ``53ba82e2bd6d12d9fb2d3838f0cfb070``, ``5fb9532f40da834a``,
        ``123456789``
-     - This is the CallID from the ``newCall`` event.
+     - An ID that is unique for the call. Zammad will use this ID to identify
+       an existing call with following actions
+       (e.g. like answering or hanging up)
+
+       *This ID must be unique per call session*.
    * - ``answeringNumber``
-     - e.g. ``42``, ``jdoe``, ``jdoe@example.com``, ``3``
+     - e.g. ``42``, ``jdoe``, ``jdoe@example.com``, ``49221470351``,
+       ``03023125184``
      - Zammad will look up for a user with given value, the following
        attributes will be evaluated in given order:
 
@@ -81,7 +86,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
             .. code-block:: sh
 
-               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "answer",
@@ -117,7 +122,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
             .. code-block:: sh
 
-               $ curl --request POST 'https://mh-docs-dev.zammad.com/api/v1/cti/PhXp3ZG63QyJfcb1pVOnBKJWIbI' \
+               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "answer",
@@ -197,10 +202,6 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'callId="61868f1e-2171-4313-970b-25982f0c5ce1"' \
                   --form 'answeringNumber="emma@chrispresso.com"' \
                   --form 'caller="Emma Taylor"'
-
-   .. tab:: URL variables
-
-      .. include:: /api/generic-cti/generic-cti_no-more-url-varibales.include.rst
 
 The next logical step within call session context would be:
    * :doc:`hangup <hangup-event>` (call ending)
