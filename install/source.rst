@@ -213,7 +213,8 @@ older versions. A list of required versions can be found on the
          .. code-block:: sh
 
             $ su - zammad
-            $ bundle install --without test development mysql
+            $ bundle config set without "test development mysql"
+            $ bundle install
 
             # CentOS 7 users - above command might fail, run the following
             # command and repeat above bundle install.
@@ -263,7 +264,8 @@ older versions. A list of required versions can be found on the
          .. code-block:: sh
 
             $ su - zammad
-            $ bundle install --without test development postgres
+            $ bundle set config without "test development postgres"
+            $ bundle install
 
 Step 3: Configure database settings
 -----------------------------------
