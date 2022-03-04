@@ -66,6 +66,10 @@ If you want to install Zammad, you need the following software.
 2.1. Ruby Programming Language
 ------------------------------
 
+.. hint:: **🤓 Only relevant for source code installations**
+
+   Docker and package installations provide the required ruby dependencies!
+
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
 | The following Ruby version is supported:
