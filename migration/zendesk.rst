@@ -13,8 +13,6 @@ These are additional limitations to the
        how long the migration is going to take.
    * **Important:** Please note that migration speed highly depends on your
      Zendesk plan (API rate limits apply).
-   * Due to API limitations Zammad will not show the total number of objects
-     to import, but instead correct them in steps of ``100``.
    * User passwords are not migrated and will require the user to use the
      `password reset link`_ on the login page.
 
