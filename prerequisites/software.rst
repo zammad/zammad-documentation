@@ -29,7 +29,7 @@ requirements for your clients. This ensures that Zammad works as expected.
 
    | Zammad heavily uses Javascript which makes it a hard requirement.
    |
-   | Addons that hook into page content may interfere with Zammads function
+   | Browser addons that hook into page content may interfere with Zammads function
      which is not a bug. 
    | Google Chromes translation module is known to do
      odd things to especially state names. Use Zammads internal translations
@@ -46,8 +46,9 @@ and thus should be avoided.
 
    .. note::
 
-      Core workflows comes with an `Ajax Mode`_ which can be activated
-      separately in case you're having issues with field selections.
+      The "Core workflows" feature of Zammad comes with an `Ajax Mode`_ which
+      can be activated separately in case you're having issues with field
+      selections.
 
 .. _Ajax Mode:
    https://admin-docs.zammad.org/en/latest/settings/system/frontend.html
