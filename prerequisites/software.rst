@@ -1,6 +1,60 @@
 Software
 ********
 
+1. Client requirements
+======================
+
+Please note that, while Zammad being a web application, there's some
+requirements for your clients. This ensures that Zammad works as expected.
+
+1.1. Supported Browsers
+-----------------------
+
+.. list-table:: Zammad/Browser version compatibility
+   :header-rows: 1
+   :widths: 20, 30
+
+   * - Firefox 78+
+     - (ESR)
+   * - (Google) Chrome 83+
+     - This also applies for all Chromium based Browsers like Microsoft Edge
+   * - Opera 69+
+     - (based on Chromium 83)
+   * - Microsoft Internet Explorer 11
+     - 
+   * - Safari 11
+     - 
+
+.. note::
+
+   | Zammad heavily uses Javascript which makes it a hard requirement.
+   |
+   | Addons that hook into page content may interfere with Zammads function
+     which is not a bug. 
+   | Google Chromes translation module is known to do
+     odd things to especially state names. Use Zammads internal translations
+     instead.
+
+1.2. Network requirements
+-------------------------
+
+Zammad uses web sockets. Some application firewalls may filter these
+connections. This may lead to decreased browser performance.
+
+There's a fallback to Ajax which  causes a higher application server load
+and thus should be avoided.
+
+   .. note::
+
+      Core workflows comes with an `Ajax Mode`_ which can be activated
+      separately in case you're having issues with field selections.
+
+.. _Ajax Mode:
+   https://admin-docs.zammad.org/en/latest/settings/system/frontend.html
+
+2. Server requirements
+======================
+
 If you want to install Zammad, you need the following software.
 
 .. note::
@@ -9,8 +63,8 @@ If you want to install Zammad, you need the following software.
    version)  are minimum requirements of Zammad. We strongly encourage you to
    use most current possible versions that *are not end of life*.
 
-1. Ruby Programming Language
-============================
+2.1. Ruby Programming Language
+------------------------------
 
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
@@ -27,8 +81,8 @@ If you want to install Zammad, you need the following software.
    "3.1 - 3.3", "2.5.5"
    "2.5 - 3.0", "2.4.4"
 
-2. Supported distributions
-==========================
+2.2. Supported distributions
+----------------------------
 
 Below you can find all distributions Zammad provides packages for.
 
@@ -61,8 +115,8 @@ Below you can find all distributions Zammad provides packages for.
 
 .. _package_dependencies:
 
-3. Package Dependencies
-=======================
+2.3. Package Dependencies
+-------------------------
 
 The below dependencies need to be installed on your system.
 If you're using the package install, the packages below will automatically
@@ -86,8 +140,8 @@ installed with the Zammad-Package.
    | *However:* If you have to use ``bundle install`` for e.g. custom Gems or
      development, you'll need to install it!
 
-4. Database Server
-==================
+2.4. Database Server
+--------------------
 
 Zammad will store all content in a Database.
 You can choose between the following database servers:
@@ -117,8 +171,8 @@ You can choose between the following database servers:
       innodb_large_prefix = 1
       innodb_file_format_max = Barracuda
 
-5. Node.js
-==========
+2.5. Node.js
+------------
 
 .. note:: This soft dependency was introduced with Zammad 5.0.
 
@@ -138,8 +192,8 @@ Node.js is required for asset compiling.
 
    "5.0+", "10.0+"
 
-6. Reverse Proxy
-================
+2.6. Reverse Proxy
+------------------
 
 In a typical web environment today, you use a reverse proxy to deliver the
 static content of your application. Only the "expensive" app required HTTP
@@ -150,8 +204,8 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-7. Elasticsearch (optional)
-===========================
+2.7. Elasticsearch (optional)
+-----------------------------
 
 Zammad uses Elasticsearch to
 
@@ -201,8 +255,8 @@ but search performance will be degraded, and some features will be disabled.
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
 
-8. Optional tools of improved caching and distribution
-======================================================
+2.8. Optional tools of improved caching and distribution
+--------------------------------------------------------
 
 .. note:: **The features / integrations below were introduced by Zammad 5.0**
 
@@ -212,8 +266,8 @@ An Elasticsearch plugin is required to index the contents of email attachments:
    We consider this topic as :ref:`performance_tuning`.
 
 
-8.1 Redis
-~~~~~~~~~
+2.8.1 Redis
+~~~~~~~~~~~
 
    Using `Redis <https://redis.io/>`_ allows you to store all web socket
    information in Redis instead of your file system.
@@ -224,8 +278,8 @@ An Elasticsearch plugin is required to index the contents of email attachments:
          Please follow the official vendor guides and ensure to have a
          tight security on your installation.
 
-8.2 Memcached
-~~~~~~~~~~~~~
+2.8.2 Memcached
+~~~~~~~~~~~~~~~
 
    Instead of storing Zammads cache files within your filesystem, you can also
    do so in `Memcached <https://memcached.org/>`_. This can allow you to restrict
