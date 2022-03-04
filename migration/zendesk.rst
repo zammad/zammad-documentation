@@ -255,13 +255,7 @@ consider using the console over the browser version.
                       created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
                       updated_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00>
 
-      After the import has finished, run the following commands
-         .. code-block:: ruby
-            :force:
-
-            $ Setting.set('import_mode', false)
-            $ Setting.set('system_init_done', true)
-            $ Cache.clear
+      .. include:: /migration/includes/commands-after-migration.include.rst
 
 After migration
 ===============

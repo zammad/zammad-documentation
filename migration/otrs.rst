@@ -128,11 +128,7 @@ Importing OTRS data
             >> Setting.set('import_mode', true)
             >> Import::OTRS.start
 
-      Finish the migration
-         .. code-block:: ruby
-
-            >> Setting.set('import_mode', false)
-            >> Setting.set('system_init_done', true)
+      .. include:: /migration/includes/commands-after-migration.include.rst
 
 After successfully migrating your OTRS installation, continue with :doc:`/getting-started/first-steps`.
 
@@ -155,11 +151,7 @@ Run a differential import
       >> Setting.set('system_init_done', false)
       >> Import::OTRS.diff_worker
 
-Set Zammad back into normal working mode
-   .. code-block:: ruby
-
-      >> Setting.set('import_mode', false)
-      >> Setting.set('system_init_done', true)
+.. include:: /migration/includes/commands-after-migration.include.rst
 
 All changes that occurred after your first migration should now also be available 
 within your Zammad installation.
