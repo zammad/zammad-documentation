@@ -3,6 +3,20 @@ Generic CTI
 
 This page describes the generic CTI API scopes and functionalities.
 
+Features
+   Here's a small condensed list of the possibilities this CTI API provides.
+
+   Inbound
+      * `Caller log functions`_ for your agents.
+      * Blocking of CallerIDs during signaling. *
+   
+   Outbound
+      * `Caller log functions`_ for your agents.
+      * Set outbound caller IDs depending on the caller ID target.
+
+.. _Caller log functions:
+   https://user-docs.zammad.org/en/latest/extras/caller-log.html
+
 .. include:: /api/generic-cti/cti-endpoint-limitations.include.rst
 
 Endpoint
