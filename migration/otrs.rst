@@ -110,7 +110,7 @@ Importing OTRS data
 
    .. tab:: via Console
 
-      .. include:: /migration/rails-console-migrator-hint.include.rst
+      .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
       If you miss this at the beginning or you want to re-import again you have 
       to use the command line at the moment.
@@ -156,4 +156,4 @@ Run a differential import
 All changes that occurred after your first migration should now also be available 
 within your Zammad installation.
 
-.. include:: /migration/restarting-from-scratch.include.rst
+.. include:: /migration/includes/restarting-from-scratch.include.rst

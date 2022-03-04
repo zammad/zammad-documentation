@@ -75,7 +75,7 @@ consider using the console over the browser version.
 
    .. tab:: Via console
 
-      .. include:: /migration/rails-console-migrator-hint.include.rst
+      .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
       To prepare the migration, run the following commands
          .. code-block:: ruby
@@ -261,7 +261,7 @@ After migration
 As the migration technically skips the getting started wizard, please
 note that you want to adjust your `FQDN settings`_ (FQDN & HTTP-Type).
 
-.. include:: /migration/how-to-login.include.rst
+.. include:: /migration/includes/how-to-login.include.rst
    
 .. _FQDN settings:
    https://admin-docs.zammad.org/en/latest/settings/system/base.html
@@ -269,4 +269,4 @@ note that you want to adjust your `FQDN settings`_ (FQDN & HTTP-Type).
 After successfully migrating your Freshdesk instance, 
 continue with :doc:`/getting-started/first-steps`.
 
-.. include:: /migration/restarting-from-scratch.include.rst
+.. include:: /migration/includes/restarting-from-scratch.include.rst
