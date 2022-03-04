@@ -42,8 +42,9 @@ Call answered
 
        This value is optional.
    * - ``user``
-     - e.g. ``[John Doe]``, ``[Alice, Bob]``
-     - The user(s) real name involved.
+     - e.g. ``John Doe``, ``[Alice, Bob]``
+     - The user(s) real name involved. You may have to provide array style
+       (``[]``) params depending on the call method you choose.
 
        | If the direction is ``out``, this is the name of the calling person(s).
        | If the direction is ``in``, this is the name of the called person(s).
