@@ -86,18 +86,10 @@ The Zammad documentation consists of three parts:
    /api/calendar
    /api/sla
    /api/ticket
+   /api/generic-cti/index
    /api/notification
    /api/object
    /api/user-access-token
-
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: CTI API
-
-   /cti/api-intro
-   /cti/api-push
 
 
 .. toctree::
