@@ -12,6 +12,13 @@ These are additional limitations to the
      | The general suggestion is to run a test import before to learn
        how long the migration is going to take.
    * Selfhosted installations (Kayako classic) *are not* supported.
+   * The following ticket field customizations are being ignored
+     (affects "Scale" plan):
+
+        * Custom ticket states,
+        * Custom ticket priorities, and
+        * Custom ticket types.
+
    * **Important:** Please note that migration speed highly depends on your
      Kayako plan (API rate limits apply).
    * User passwords are not migrated and will require the user to use the
