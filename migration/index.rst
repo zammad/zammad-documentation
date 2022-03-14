@@ -32,9 +32,10 @@ Available Migration Options
 .. toctree::
    :maxdepth: 1
 
+   Freshdesk </migration/freshdesk>
+   Kayako </migration/kayako>
    OTRS </migration/otrs>
    Zendesk </migration/zendesk>
-   Freshdesk </migration/freshdesk>
 
 .. note::
 
