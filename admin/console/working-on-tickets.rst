@@ -6,9 +6,9 @@ Working with ticket information
 Get the RAW mail that Zammad fetched
 ------------------------------------
 
-The following command will help you to check on received EML-files Zammad fetched.
-This comes in handy if you delete Mails upon fetching and you need to check the
-EML-file itself.
+The following command will help you to check on received EML-files Zammad
+fetched. This comes in handy if you delete Mails upon fetching and you need to
+check the EML-file itself.
 
 To get the first articles EML-file, you can use the following command.
 In our example the ticket number in question is ``101234``.
@@ -45,20 +45,61 @@ Update all tickets of a specific customer
 
    >> Ticket.where(customer_id: 4).update_all(customer_id: 1)
 
+Priorities
+----------
 
-Change priority
----------------
+Ticket priorities help your agent to see how important a customer request is.
+Priorities are not available to customers and, Core wise, have no impact
+on how Zammad handles a ticket. You can however adjust Zammads behavior
+with e.g. triggers, SLAs and schedulers.
 
-The following commands will enable you to change the naming of priorities.
-If you set ``.default_create`` to ``true`` you can manipulate what Zammad will
-use as default priority.
+Not sure what priorities are available in the system? Either have a look
+in any ticket or run the following command.
 
 .. code-block:: ruby
 
-   >> priority2 = Ticket::Priority.find(2)
-   >> priority2.name = '2-high'
-   >> priority2.default_create = true
-   >> priority2.save!
+   >> Ticket::Priority.pluck(:name)
+
+Adding priorities for tickets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ticket priorities come with several attributes, however, the most relevant
+as of now are: ``name``, ``default_create`` and ``ui_color``.
+
+   .. warning::
+
+      ``default_create`` allows you to define the default priority Zammad should
+      use during ticket creation. **However** - on default installations this is
+      the priority ``2 normal``.
+
+      *You cannot have more than one priority as the default_create priority!*
+
+   .. note::
+
+      ``ui_color`` defines the CSS class to use. On default installations
+      you can either use ``low-priority`` (light blueish) or ``important``
+      (redish). This affects how Zammad displays the ticket titles
+      *in overviews*.
+
+.. code-block:: ruby
+
+   >> Ticket::Priority.create(
+         name: '4 super high',
+         default_create: false,
+         ui_color: 'important',
+         created_by_id: 1,
+         updated_by_id: 1
+      )
+
+Change priority
+~~~~~~~~~~~~~~~
+
+If needed you can also set priorities to inactive or rename them if they
+don't fit your desired scheme. Renaming would look like so:
+
+.. code-block:: ruby
+
+   >> Ticket::Priority.update(name: '1 high')
 
 .. _state_types:
 
@@ -102,7 +143,7 @@ Add new ticket state
       calculations (pending reminder and pending close do this by default).
 
 Non-Pending states
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 A state that's not a pending state (e.g. open, closed). Just replace ``'open'``
 by whatever you need (like closed).
@@ -117,7 +158,7 @@ by whatever you need (like closed).
       )
 
 Pending reminders
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 A pending reminder state that will send a reminder notification to the agent if
 the time has been reached.
@@ -133,7 +174,7 @@ the time has been reached.
       )
 
 Pending Action
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 A pending action that will change to another state if "pending till" has been
 reached.
@@ -150,7 +191,7 @@ reached.
       )
 
 (optional) Disable date and time picker (pending till) for pending states
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Starting with Zammad 5.0, `Core Workflows`_ automatically handles displaying the
 "pending till" field for pending states. Below snippet *is not required* and is
@@ -172,7 +213,7 @@ Replace ``pending customer feedback`` with the pending state of your choice.
 .. _states_to_ui:
 
 Make new states available to UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before being able to use the new states within the WebApp, you need to run the
 following commands to make them available.
