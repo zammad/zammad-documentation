@@ -1,8 +1,7 @@
 Getting and Updating Zammad-Settings
 ************************************
 
-.. note:: Please note that this is not a full setting list, if you're missing settings, feel free to ask over at the `Community <https://community.zammad.org>`_.
-
+.. include:: /admin/console/missing-commands-ask-community.include.rst
 
 Get ticket_hook setting
 -----------------------

@@ -3,8 +3,9 @@ Deleting Records
 
 .. danger:: ☠️ The commands listed here cause **irrecoverable data loss**! Only proceed if you know what you're doing **and you have a backup**!
 
-.. note:: The list of commands below is not exhaustive. If you can't find what you're looking for here, you are encouraged to `ask the community <https://community.zammad.org>`_.
+   ☠️ The commands listed here cause **irrecoverable data loss**!
 
+.. include:: /admin/console/missing-commands-ask-community.include.rst
 
 Deleting Tickets (and their articles)
 -------------------------------------

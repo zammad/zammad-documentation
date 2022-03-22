@@ -1,8 +1,7 @@
 Working with chat logs
 **********************
 
-.. hint:: To find out how to do something not listed below,
-   post your question on the `community boards <https://community.zammad.org>`_.
+.. include:: /admin/console/missing-commands-ask-community.include.rst
 
 Removing IP address logs
 ------------------------

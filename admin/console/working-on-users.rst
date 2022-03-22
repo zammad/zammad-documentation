@@ -1,7 +1,7 @@
 Working on user information
 ***************************
 
-.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at the `Community <https://community.zammad.org>`_.
+.. include:: /admin/console/missing-commands-ask-community.include.rst
 
 Find user
 ---------
