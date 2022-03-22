@@ -66,5 +66,5 @@ Here's a topic list for quick jumping and better overview.
    console/working-on-ticket-articles
    console/working-on-groups
    console/working-on-chat
-   console/other-usefull-commands
+   console/other-useful-commands
    console/dangerzone-for-experts
