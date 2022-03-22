@@ -6,16 +6,21 @@ Working with ticket information
 Get the RAW mail that Zammad fetched
 ------------------------------------
 
-The following command will help you to check on received emls Zamamd fetched. This comes in handy if you delete Mails upon fetching and you need to check the eml itself.
+The following command will help you to check on received EML-files Zammad fetched.
+This comes in handy if you delete Mails upon fetching and you need to check the
+EML-file itself.
 
-To get the first articles eml, you can use the following command. In our example the ticket number in question is ``101234``
+To get the first articles EML-file, you can use the following command.
+In our example the ticket number in question is ``101234``.
 
 .. code-block:: ruby
 
   >> Ticket.find_by(number:'101234').articles.first.as_raw.content
 
-If needed, you can also get the raw content of later articles (you'll need to find the correct article though). Again, we expect ``101234`` to be our ticket number.
-In the first step we get all article IDs of the ticket, from the list we get, we can then get the articles content.
+If needed, you can also get the raw content of later articles (you'll need to
+find the correct article though). Again, we expect ``101234`` to be our ticket
+number. In the first step we get all article IDs of the ticket, from the list
+we get, we can then get the articles content.
 
 .. code-block:: ruby
 
@@ -23,13 +28,18 @@ In the first step we get all article IDs of the ticket, from the list we get, we
   => [4, 3, 2]
   >> Ticket::Article.find(3).as_raw.content
 
-.. note:: If you just use ``Ticket::Article.find(3)`` you can see further information (like who sent the mail, when we fetched it, ...).
+.. note::
 
+   If you just use ``Ticket::Article.find(3)`` you can see further information
+   (like who sent the mail, when we fetched it, ...).
 
 Update all tickets of a specific customer
 -----------------------------------------
 
-.. warning:: Please note that this action can be expensive in ressource terms, if you have many tickets, this might slow down Zammad.
+.. warning::
+
+   Please note that this action can be expensive resource wise, if you have many
+   tickets, this might slow down Zammad.
 
 .. code-block:: ruby
 
@@ -39,7 +49,9 @@ Update all tickets of a specific customer
 Change priority
 ---------------
 
-The following commands will enable you to change the naming of priorities. If you set ``.default_create`` to ``true`` you can manipulate what Zammad will use as default priority.
+The following commands will enable you to change the naming of priorities.
+If you set ``.default_create`` to ``true`` you can manipulate what Zammad will
+use as default priority.
 
 .. code-block:: ruby
 
@@ -92,7 +104,8 @@ Add new ticket state
 Non-Pending states
 ^^^^^^^^^^^^^^^^^^
 
-A state that's not a pending state (e.g. open, closed). Just replace ``'open'`` by whatever you need (like closed).
+A state that's not a pending state (e.g. open, closed). Just replace ``'open'``
+by whatever you need (like closed).
 
 .. code-block:: ruby
 
@@ -106,7 +119,8 @@ A state that's not a pending state (e.g. open, closed). Just replace ``'open'`` 
 Pending reminders
 ^^^^^^^^^^^^^^^^^^
 
-A pending reminder state that will send a reminder notification to the agent if the time has been reached.
+A pending reminder state that will send a reminder notification to the agent if
+the time has been reached.
 
 .. code-block:: ruby
 
@@ -121,7 +135,8 @@ A pending reminder state that will send a reminder notification to the agent if 
 Pending Action
 ^^^^^^^^^^^^^^
 
-A pending action that will change to another state if "pending till" has been reached.
+A pending action that will change to another state if "pending till" has been
+reached.
 
 .. code-block:: ruby
 
@@ -159,9 +174,13 @@ Replace ``pending customer feedback`` with the pending state of your choice.
 Make new states available to UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before being able to use the new states within the WebApp, you need to run the following commands to make them available.
+Before being able to use the new states within the WebApp, you need to run the
+following commands to make them available.
 
-.. warning:: Please **do not replace** anything below, state_id is a named attribute which is correct and shall not be replaced!
+.. warning::
+
+   Please **do not replace** anything below, state_id is a named attribute which
+   is correct and shall not be replaced!
 
 .. code-block:: ruby
 
@@ -185,9 +204,13 @@ Limit available states for customers
    `Core Workflows`_ allows you to achieve below described behavior any time
    without any issues. No need to use the console if you don't want to!
 
-By default Zammad allows customers to change Ticket states to ``open`` and ``closed``.
-If this does not meet your requirenments, you can adjust this at anytime.
-The below example shows how to restrict your customer to only close tickets if needed:
+.. _Core Workflows:
+   https://admin-docs.zammad.org/en/latest/system/core-workflows.html
+
+By default Zammad allows customers to change Ticket states to ``open`` and
+``closed``. If this does not meet your requirenments, you can adjust this at
+anytime. The below example shows how to restrict your customer to only close
+tickets if needed:
 
 .. code-block:: ruby
 
@@ -199,7 +222,11 @@ The below example shows how to restrict your customer to only close tickets if n
    >> attribute.save!
 
 
-.. hint:: If you want to allow several different states for customers, you need to provide the state names as array - like so: ``['closed', 'open', 'my-amazing-state']`` (instead of ``['closed']``).
+.. hint::
+
+   If you want to allow several different states for customers, you need to
+   provide the state names as array - like so:
+   ``['closed', 'open', 'my-amazing-state']`` (instead of ``['closed']``).
 
 You can check the current active states that customers can set like so:
 
@@ -210,10 +237,10 @@ You can check the current active states that customers can set like so:
         name: 'state_id',
       ).screens['edit']['ticket.customer']['filter']
 
-The above will return one or more IDs - if you're not sure which state they belong to, you can check the state name with the following command. (Ensure to replace ``{ID}`` with your returned ID(s))
+The above will return one or more IDs - if you're not sure which state they
+belong to, you can check the state name with the following command.
+(Ensure to replace ``{ID}`` with your returned ID(s))
 
 .. code-block:: ruby
 
    >> Ticket::State.find({ID}).name
-
-.. _Core Workflows: https://admin-docs.zammad.org/en/latest/system/core-workflows.html

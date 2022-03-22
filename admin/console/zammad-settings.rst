@@ -1,55 +1,82 @@
-Getting and Updating Zammad-Settings
-************************************
+Query and set / update Zammad settings
+**************************************
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Get ticket_hook setting
------------------------
+ticket_hook setting
+-------------------
 
-This will give you the Ticket hook that you'll find inside the `[]` in front of the ticket number.
-By default this will be `Ticket#` - you shouldn't change this setting in a productive system.
+This will give you the ticket hook that you'll find inside the ``[]`` in front
+of the ticket number. By default this will be `Ticket#` - you shouldn't change
+this setting in a productive system.
 
 .. code-block:: ruby
 
    >> Setting.get('ticket_hook')
 
+FQDN setting
+------------
 
-Get fqdn setting
-----------------
+Get the current FQDN setting of Zammad and, if needed, adjust it.
 
-Get the current FQDN-Setting of Zammad and, if needed, adjust it.
+   .. note::
+
+      This setting has no effect on SSL certificates or any web server
+      configurations.
 
 .. code-block:: ruby
 
-   >> Setting.get('fqdn')                    # Get FQDN
+   >> Setting.get('fqdn')                    # Get current FQDN
    >> Setting.set('fqdn', 'new.domain.tld')  # Set a new FQDN
 
+HTTP(s) setting
+---------------
 
-Find storage_provider setting
------------------------------
+This setting indirectly belongs to your FQDN setting and is relevant for
+variable based URLs (e.g. in notifications) Zammad generated.
 
-The following command returns a list of available settings for `storage_provider` (for attachments).
+   .. warning::
+
+      This setting also affects Zammads CSRF token behavior.
+      If you set this setting to e.g. HTTPs but you're using HTTP,
+      *logging in will fail*!
+
+      .. note::
+
+         This setting has no effect on SSL certificates or any web server
+         configurations.
 
 .. code-block:: ruby
 
-   >> Setting.find_by(name: 'storage_provider')
+   >> Setting.get('http_type')            # Get the current http type
+   >> Setting.set('http_type', 'https')   # Change the http type to HTTPs
 
+Storage provider setting
+------------------------
 
-Set storage_provider Setting
-----------------------------
+The storage provider setting is set to ``DB`` on default installations.
+However, if you receive a lot of attachments or have a fairly busy installation,
+using the database to store attachments is not the best approach.
 
-Change the storage_provider if needed.
+Use the following command
 
 .. code-block:: ruby
 
-   >> Setting.set('storage_provider', 'DB')  # Change Attachment-Storage to database
    >> Setting.get('storage_provider')        # get the current Attachment-Storage
+   >> Setting.set('storage_provider', 'DB')  # Change Attachment-Storage to database
 
+.. tip::
+
+   The following settings are available in a default installation:
+
+      * ``DB`` (database)
+      * ``File`` (Filesystem (``/opt/zammad/storage/``))
 
 Configuring Elasticsearch
 -------------------------
 
-If your elasticsearch installation changes, you can use the following commands to ensure that Zammad still can access elasticsearch.
+If your Elasticsearch installation changes, you can use the following commands
+to ensure that Zammad still can access Elasticsearch.
 
 .. code-block:: ruby
 
@@ -59,20 +86,6 @@ If your elasticsearch installation changes, you can use the following commands t
    >> Setting.set('es_index', Socket.gethostname + '_zammad')  # Change the index name
    >> Setting.set('es_attachment_ignore', %w[.png .jpg .jpeg .mpeg .mpg .mov .bin .exe .box .mbox])  # A list of ignored file extensions (they will not be indexed)
    >> Setting.set('es_attachment_max_size_in_mb', 50)          # Limit the Attachment-Size to push to your elasticsearch index
-
-
-Use the OTRS importer from the shell
-------------------------------------
-
-If needed, you can configure and run the OTRS-Import from console.
-
-.. code-block:: ruby
-
-   >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
-   >> Setting.set('import_otrs_endpoint_key', 'xxx')
-   >> Setting.set('import_mode', true)
-   >> Import::OTRS.start
-
 
 Enable proxy
 ------------

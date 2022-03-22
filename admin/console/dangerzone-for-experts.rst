@@ -1,9 +1,11 @@
 Deleting Records
 ****************
 
-.. danger:: ☠️ The commands listed here cause **irrecoverable data loss**! Only proceed if you know what you're doing **and you have a backup**!
+.. danger::
 
    ☠️ The commands listed here cause **irrecoverable data loss**!
+   Only proceed if you know what you're doing and you
+   :doc:`have a backup </appendix/backup-and-restore/index>`!
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
@@ -22,13 +24,16 @@ Deleting Tickets (and their articles)
    >> tickets_to_keep = [1, 2, 3]
    >> Ticket.where.not(id: tickets_to_keep).destroy_all
 
-
 Deleting Customers
 ------------------
 
-.. warning:: Customers **may not** be deleted while they have tickets remaining in the system.
+.. warning::
 
-   As such, the examples below will delete not only the specified customers, but **all tickets associated with them**, as well.
+   Customers **may not** be deleted while they have tickets remaining in the
+   system.
+
+   As such, the examples below will delete not only the specified customers,
+   but **all tickets associated with them**, as well.
 
 Step 1: Select customers by email address
    .. code-block:: ruby
@@ -69,7 +74,6 @@ Step 3: Proceed with deletion
            user.destroy
          end
 
-
 Deleting Organizations
 ----------------------
 
@@ -107,7 +111,6 @@ Step 3: Proceed with deletion
            org.destroy
          end
 
-
 Deleting System Records
 -----------------------
 
@@ -119,10 +122,12 @@ Deleting System Records
    # Remove all entries from the Activity Stream (dashboard)
    >> ActivityStream.destroy_all
 
-   # Remove entries for all recently viewed objects (tickets, users, organizations)
+   # Remove entries for all recently viewed objects
+   # (tickets, users, organizations)
    >> RecentView.destroy_all
 
-   # Remove all history information from tickets, users and organizations (dangerous!)
+   # Remove all history information from tickets, users and organizations
+   # (dangerous!)
    >> History.destroy_all
 
 .. _dangerzone_reset_zammad:
@@ -132,8 +137,9 @@ Reset Zammad installation
 
 .. hint:: 
 
-   Below commands are incomplete intentionally, error outputs will hint you through! 
-   The following operations will cause data loss and for development / testing only.
+   Below commands are incomplete intentionally, error outputs will hint you
+   through! The following operations will cause data loss and for
+   development / testing only.
 
    Don't forget to stop Zammad before trying to drop the database!
 
