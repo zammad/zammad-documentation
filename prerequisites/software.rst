@@ -249,13 +249,13 @@ but search performance will be degraded, and some features will be disabled.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "5.0+", "7.8+"
-   "4.0-4.1", "6.5-7.12"
-   "3.4-3.6", "5.5–7.9"
-   "3.3", "2.4–7.6"
-   "3.2", "2.4–7.5"
-   "3.1", "2.4–7.4"
-   "2.0–3.0", "2.4–5.6"
+   "5.0+", ">= 7.8, < 8"
+   "4.0-4.1", ">= 6.5, <= 7.12"
+   "3.4-3.6", ">= 5.5, <= 7.9"
+   "3.3", ">= 2.4, <=7.6"
+   "3.2", ">= 2.4, <=7.5"
+   "3.1", ">= 2.4, <=7.4"
+   "2.0–3.0", ">= 2.4, <=5.6"
 
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
