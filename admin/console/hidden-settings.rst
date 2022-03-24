@@ -38,10 +38,10 @@ elements.
 
 .. image:: /images/console/ui_table_group_by_show_count-example.png
 
-Default Ticket type on creation
+Default ticket type on creation
 -------------------------------
 
-Zammad allows you to define the default article type upon Ticket creation.
+Zammad allows you to define the default article type upon ticket creation.
 By default this will be a incoming phone call.
 
 You can choose between
