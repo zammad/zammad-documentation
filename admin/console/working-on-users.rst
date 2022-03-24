@@ -12,7 +12,7 @@ you'll need to find it first.
 .. code-block:: ruby
 
    >> User.find(4)                       # We already know the ID of the user
-   >> User.find_by(email: 'your@email')  # Searching for the user by his E-Mail-Address
+   >> User.find_by(email: 'your@email')  # Searching for the user by his Email address
    >> User.find_by(login: 'john.doe')    # Searching for the user by his login
 
 Unlock a locked user account
@@ -20,7 +20,7 @@ Unlock a locked user account
 
 .. tip::
 
-   Unlocking a locked user account is also supported by Zammads web UI.
+   Unlocking a locked user account is also supported by Zammad's web UI.
    Please refer the `admin documentation`_ for more information.
 
 .. _admin documentation:
@@ -47,10 +47,10 @@ logins)
 
    >> User.find(**USERID**).login_failed
 
-Change / Update Email-Address of User
+Change / Update Email address of user
 -------------------------------------
 
-If needed, you can simply change the E-Mail-Address of the user.
+If needed, you can simply change the Email address of the user.
 
 .. note::
 
@@ -64,9 +64,9 @@ If needed, you can simply change the E-Mail-Address of the user.
       >> u.save!
 
 
-You need to find the User-ID of the user first for this.
+You need to find the user ID of the user first for this.
 
-Change / Update Login name of User
+Change / Update Login name of user
 ----------------------------------
 
 Change the user name of the user (e.g. if you want to login with a shorter
@@ -79,7 +79,7 @@ username instead of a mail address)
    >> u.save!
 
 
-You need to find the User-ID of the user first for this.
+You need to find the user ID of the user first for this.
 
 Set admin rights for user
 -------------------------

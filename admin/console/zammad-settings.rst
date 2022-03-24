@@ -37,7 +37,7 @@ variable based URLs (e.g. in notifications) Zammad generated.
 
    .. warning::
 
-      This setting also affects Zammads CSRF token behavior.
+      This setting also affects Zammad's CSRF token behavior.
       If you set this setting to e.g. HTTPs but you're using HTTP,
       *logging in will fail*!
 

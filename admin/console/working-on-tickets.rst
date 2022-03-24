@@ -50,7 +50,7 @@ Priorities
 
 Ticket priorities help your agent to see how important a customer request is.
 Priorities are not available to customers and, Core wise, have no impact
-on how Zammad handles a ticket. You can however adjust Zammads behavior
+on how Zammad handles a ticket. You can however adjust Zammad's behavior
 with e.g. triggers, SLAs and schedulers.
 
 Not sure what priorities are available in the system? Either have a look

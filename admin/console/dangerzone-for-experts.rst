@@ -1,4 +1,4 @@
-Deleting Records
+Deleting records
 ****************
 
 .. danger::
@@ -9,7 +9,7 @@ Deleting Records
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Removing Tickets (and their articles)
+Removing tickets (and their articles)
 -------------------------------------
 
 .. code-block:: ruby
@@ -24,7 +24,7 @@ Removing Tickets (and their articles)
    >> tickets_to_keep = [1, 2, 3]
    >> Ticket.where.not(id: tickets_to_keep).destroy_all
 
-Removing Users
+Removing users
 --------------
 
 .. warning::
@@ -39,7 +39,7 @@ Removing Users
 .. hint::
 
    If you're not sure what to do and need to learn more about what Zammad does
-   upon removing users, please consider using Zammads UI options in stead.
+   upon removing users, please consider using Zammad's UI options in stead.
 
    Our documentation for the `data privacy`_ function will help you a lot!
 
@@ -64,7 +64,7 @@ Removing users is possible in 2 ways: A single user and in bulk.
                email: ['<email address 1>', '<email address 2>']
             ).destroy_all
 
-Removing Organizations
+Removing organizations
 ----------------------
 
 .. note:: Removing an organization does **not** delete associated customers.
@@ -101,7 +101,7 @@ Step 3: Proceed with deletion
            org.destroy
          end
 
-Removing System Records
+Removing system records
 -----------------------
 
 .. code-block:: ruby
@@ -128,7 +128,7 @@ Reset Zammad installation
 .. hint:: 
 
    Below commands are incomplete intentionally, error outputs will hint you
-   through! The following operations will cause data loss and for
+   through! The following operations will cause data loss and are for
    development / testing only.
 
    Don't forget to stop Zammad before trying to drop the database!

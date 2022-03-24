@@ -2,7 +2,7 @@ Advanced customization settings
 *******************************
 
 On this page you can find some settings that you won't find within the Zammad
-UI. Those settings might come in handy as it can change Zammads behavior.
+UI. Those settings might come in handy as it can change Zammad's behavior.
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
@@ -97,8 +97,8 @@ Sample of the above setting:
 
 .. image:: /images/console/ui_ticket_create_notes.gif
 
-Show E-Mail-Address of customer on customer selection (Ticket-Creation)
------------------------------------------------------------------------
+Show Email address of customer on customer selection (ticket creation)
+----------------------------------------------------------------------
 
 By default Zammad will not display the E-Mail-Addresses of customers.
 The below option allows you to change this behavior.
@@ -113,15 +113,15 @@ Get the current state of this setting with:
 
    >> Setting.get('ui_user_organization_selector_with_email')
 
-Change Font-Settings for outgoing HTML-Mails
+Change font settings for outgoing HTML mails
 --------------------------------------------
 
 .. note::
 
-   Some Clients (like Outlook) might fallback to other Settings while it might
-   work for other Clients.
+   Some clients (like Outlook) might fallback to other settings while it might
+   work for other clients.
 
-The below setting allows you to adjust Zammads email font setting.
+The below setting allows you to adjust Zammad's email font setting.
 This setting does not require a service restart.
 
 .. code-block:: ruby
