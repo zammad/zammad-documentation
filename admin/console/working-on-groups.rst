@@ -1,8 +1,7 @@
 Working with groups
 *******************
 
-.. note:: Please note that this is not a full command list, if you're missing commands, feel free to ask over at our `Community <https://community.zammad.org>`_.
-
+.. include:: /admin/console/missing-commands-ask-community.include.rst
 
 To open the rails console on the shell you have to enter the following commands.
 

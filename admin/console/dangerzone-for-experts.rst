@@ -1,12 +1,15 @@
-Deleting Records
+Deleting records
 ****************
 
-.. danger:: ☠️ The commands listed here cause **irrecoverable data loss**! Only proceed if you know what you're doing **and you have a backup**!
+.. danger::
 
-.. note:: The list of commands below is not exhaustive. If you can't find what you're looking for here, you are encouraged to `ask the community <https://community.zammad.org>`_.
+   ☠️ The commands listed here cause **irrecoverable data loss**!
+   Only proceed if you know what you're doing and you
+   :doc:`have a backup </appendix/backup-and-restore/index>`!
 
+.. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Deleting Tickets (and their articles)
+Removing tickets (and their articles)
 -------------------------------------
 
 .. code-block:: ruby
@@ -21,58 +24,50 @@ Deleting Tickets (and their articles)
    >> tickets_to_keep = [1, 2, 3]
    >> Ticket.where.not(id: tickets_to_keep).destroy_all
 
+Removing users
+--------------
 
-Deleting Customers
-------------------
+.. warning::
 
-.. warning:: Customers **may not** be deleted while they have tickets remaining in the system.
+   Customers **may not** be deleted while they have tickets remaining in the
+   system.
 
-   As such, the examples below will delete not only the specified customers, but **all tickets associated with them**, as well.
+   As such, the examples below will delete not only the specified customers,
+   but **all tickets associated with them**, as well. Below commands remove
+   upon executing without any further warnings.
 
-Step 1: Select customers by email address
-   .. code-block:: ruby
+.. hint::
 
-      >> customer_emails = %w[customer@example.com customer@example.org]
+   If you're not sure what to do and need to learn more about what Zammad does
+   upon removing users, please consider using Zammad's UI options in stead.
 
-      >> customers = User.joins(roles: :permissions).where(email: customer_emails, roles: { active: true }, permissions: { name: 'ticket.customer', active: true }).where.not(id: 1)
+   Our documentation for the `data privacy`_ function will help you a lot!
 
-Step 2: Preview affected users & tickets
-   .. code-block:: ruby
+.. _data privacy:
+   https://admin-docs.zammad.org/en/latest/system/data-privacy.html
 
-      >> puts customers.map { |user| <<~PREVIEW }.join("\n")
-           Customer #{user.fullname}/#{user.id}/#{user.email} has #{Ticket.where(customer_id: user.id).count} tickets #{Ticket.where(customer_id: user.id).pluck(:number)}
-         PREVIEW
+Removing users is possible in 2 ways: A single user and in bulk.
 
-Step 3: Proceed with deletion
-   .. code-block:: ruby
+.. tabs::
 
-      >> customers.find_each do |user|
-           puts %{Preparing deletion of customer "#{user.fullname}" (and #{Ticket.where(customer_id: user.id).count} associated tickets)}
+   .. tab:: Remove a single user
 
-           Ticket.where(customer: user).find_each do |ticket|
-             puts "  Deleting ticket ##{ticket.number}..."
-             ticket.destroy
-           end
+      .. code-block:: ruby
 
-           puts "  Removing references for user with email #{user.email}..."
-           ActivityStream.where(created_by_id: user.id).update_all(created_by_id: 1)
-           History.where(created_by_id: user.id).update_all(created_by_id: 1)
-           Ticket::Article.where(created_by_id: user.id).update_all(created_by_id: 1)
-           Ticket::Article.where(updated_by_id: user.id).update_all(updated_by_id: 1)
-           Store.where(created_by_id: user.id).update_all(created_by_id: 1)
-           StatsStore.where(created_by_id: user.id).update_all(created_by_id: 1)
-           Tag.where(created_by_id: user.id).update_all(created_by_id: 1)
-           OnlineNotification.find_by(user_id: user.id)&.destroy!
+         >> User.find_by(email: '<email address>').destroy
 
-           puts "  Deleting #{user.fullname}..."
-           user.destroy
-         end
+   .. tab:: Remove several users
 
+      .. code-block:: ruby
 
-Deleting Organizations
+         >> User.where(
+               email: ['<email address 1>', '<email address 2>']
+            ).destroy_all
+
+Removing organizations
 ----------------------
 
-.. note:: Deleting an organization does **not** delete associated customers.
+.. note:: Removing an organization does **not** delete associated customers.
 
 Step 1: Select organizations
    .. code-block:: ruby
@@ -106,8 +101,7 @@ Step 3: Proceed with deletion
            org.destroy
          end
 
-
-Deleting System Records
+Removing system records
 -----------------------
 
 .. code-block:: ruby
@@ -118,10 +112,12 @@ Deleting System Records
    # Remove all entries from the Activity Stream (dashboard)
    >> ActivityStream.destroy_all
 
-   # Remove entries for all recently viewed objects (tickets, users, organizations)
+   # Remove entries for all recently viewed objects
+   # (tickets, users, organizations)
    >> RecentView.destroy_all
 
-   # Remove all history information from tickets, users and organizations (dangerous!)
+   # Remove all history information from tickets, users and organizations
+   # (dangerous!)
    >> History.destroy_all
 
 .. _dangerzone_reset_zammad:
@@ -131,8 +127,9 @@ Reset Zammad installation
 
 .. hint:: 
 
-   Below commands are incomplete intentionally, error outputs will hint you through! 
-   The following operations will cause data loss and for development / testing only.
+   Below commands are incomplete intentionally, error outputs will hint you
+   through! The following operations will cause data loss and are for
+   development / testing only.
 
    Don't forget to stop Zammad before trying to drop the database!
 
