@@ -21,16 +21,16 @@ requirements for your clients. This ensures that Zammad works as expected.
    * - Opera 69+
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
-     - 
+     -
    * - Safari 11
-     - 
+     -
 
 .. note::
 
    | Zammad heavily uses Javascript which makes it a hard requirement.
    |
    | Browser addons that hook into page content may interfere with Zammads function
-     which is not a bug. 
+     which is not a bug.
    | Google Chromes translation module is known to do
      odd things to especially state names. Use Zammads internal translations
      instead.
@@ -74,13 +74,14 @@ If you want to install Zammad, you need the following software.
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
 | The following Ruby version is supported:
-| ``Ruby 2.7.4``
+| ``Ruby 3.0.3``
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
-   "5.0+", "2.7.4"
+   "5.2+", "3.0.3"
+   "5.0 - 5.1", "2.7.4"
    "3.4.1 - 4.1", "2.6.6"
    "3.4.0", "2.6.5"
    "3.1 - 3.3", "2.5.5"

@@ -3,10 +3,10 @@
    # Add zammad user to RVM group
    $ usermod -a -G rvm zammad
 
-   # Install Ruby 2.7.4
+   # Install Ruby 3.0.3
    $ su - zammad
-   $ rvm install ruby-2.7.4
+   $ rvm install ruby-3.0.3
 
    # Install bundler, rake and rails
-   $ rvm use 2.7.4
+   $ rvm use 3.0.3
    $ gem install bundler rake rails
