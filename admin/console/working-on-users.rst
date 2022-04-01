@@ -108,7 +108,7 @@ Remove password for user
 
 If you added a second authentication method (e.g. LDAP) after launch, there
 still may be a password in Zammad's own user management. In cases like that
-users will be able to login with their (old) Zammad password in addition to
+users will be able to login with their (local) Zammad password in addition to
 the credentials stored on the external authentication provider. Simply remove
 the password stored by Zammad.
 
