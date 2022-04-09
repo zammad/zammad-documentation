@@ -207,7 +207,7 @@ older versions. A list of required versions can be found on the
 
                .. code-block:: sh
 
-                  $ zypper install postgresql-devel
+                  $ zypper install postgresql-devel postgresql-server-devel
 
       Install Gems for Zammad
          .. code-block:: sh
