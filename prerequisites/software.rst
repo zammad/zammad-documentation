@@ -21,16 +21,16 @@ requirements for your clients. This ensures that Zammad works as expected.
    * - Opera 69+
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
-     - 
+     -
    * - Safari 11
-     - 
+     -
 
 .. note::
 
    | Zammad heavily uses Javascript which makes it a hard requirement.
    |
    | Browser addons that hook into page content may interfere with Zammads function
-     which is not a bug. 
+     which is not a bug.
    | Google Chromes translation module is known to do
      odd things to especially state names. Use Zammads internal translations
      instead.
@@ -195,7 +195,8 @@ Node.js is required for asset compiling.
    :header: "Zammad", "Node.js"
    :widths: 20, 20
 
-   "5.0+", "10.0+"
+   "5.2+", "16.0+"
+   "5.0 - 5.1", "10.0+"
 
 2.6. Reverse Proxy
 ------------------
