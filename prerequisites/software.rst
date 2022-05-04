@@ -23,16 +23,16 @@ requirements for your clients. This ensures that Zammad works as expected.
    * - Opera 69+
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
-     - 
+     -
    * - Safari 11
-     - 
+     -
 
 .. note::
 
    | Zammad heavily uses Javascript which makes it a hard requirement.
    |
    | Browser addons that hook into page content may interfere with Zammads function
-     which is not a bug. 
+     which is not a bug.
    | Google Chromes translation module is known to do
      odd things to especially state names. Use Zammads internal translations
      instead.
@@ -251,7 +251,8 @@ but search performance will be degraded, and some features will be disabled.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "5.0+", ">= 7.8, < 8"
+   "5.2+", ">= 7.8, < 9"
+   "5.0 - 5.1", ">= 7.8, < 8"
    "4.0-4.1", ">= 6.5, <= 7.12"
    "3.4-3.6", ">= 5.5, <= 7.9"
    "3.3", ">= 2.4, <=7.6"
