@@ -95,7 +95,7 @@ Below you can find all distributions Zammad provides packages for.
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
-   "CentOS", "7 & 8"
+   "CentOS / RHEL", "7 & 8"
    "Debian", "9, 10 & 11"
    "⚠ OpenSuSE / SLES", "Leap 42.3 / 12"
    "Ubuntu", "16.04, 18.04 & 20.04"
