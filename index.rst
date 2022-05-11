@@ -102,6 +102,6 @@ The Zammad documentation consists of three parts:
    /appendix/configure-env-vars
    /appendix/configure-database-server
    /appendix/privacy
+   /appendix/troubleshooting/index
    /appendix/single-sign-on
-   /appendix/troubleshooting
    /appendix/reporting-tools-thirdparty
