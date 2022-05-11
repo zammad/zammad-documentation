@@ -115,6 +115,12 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
          | Make sure you followed the complete Elasticsearch set up and
            integration procedure according to :doc:`/install/elasticsearch`.
 
+.. tip::
+
+   In many situations where you're not successful with above steps,
+   you may want to check Elasticsearch's log file:
+   ``/var/log/elasticsearch/elasticsearch.log``.
+
 | After completing these steps, you should have verified your Elasticsearch
   installation is running and rebuilt the indexes.
 | If this does not resolve your issue, please `ask the community`_.
