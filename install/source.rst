@@ -340,6 +340,9 @@ Step 4: Initialize your database
    $ rake db:create      # SKIP IF you already created zammads database (see tip of step 3)
    $ rake db:migrate
    $ rake db:seed
+   # Synchronize translations
+   $ rails r "Locale.sync"
+   $ rails r "Translation.sync"
 
 Step 5: Pre compile all Zammad assets
 -------------------------------------

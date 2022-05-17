@@ -145,10 +145,17 @@ Updating Zammad
             $ rake db:migrate
             $ rake assets:precompile
 
-      Step 7: Start Zammad services
+      Step 7: Synchronize Zammads translation files
+         .. code-block:: sh
+
+            $ su - zammad # ignore if you haven't exited the Zammad user
+            $ rails r "Locale.sync"
+            $ rails r "Translation.sync"
+
+      Step 8: Start Zammad services
          Start the application server, web socket server and scheduler.
 
-      Step 8: Log into Zammad
+      Step 9: Log into Zammad
          Yes, that's it!
 
    .. tab:: Docker Compose
