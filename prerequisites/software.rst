@@ -14,6 +14,8 @@ requirements for your clients. This ensures that Zammad works as expected.
    :header-rows: 1
    :widths: 20, 30
 
+   * - Browser
+     - Remarks
    * - Firefox 78+
      - (ESR)
    * - (Google) Chrome 83+
