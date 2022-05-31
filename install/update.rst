@@ -219,7 +219,13 @@ use:
 
 .. code-block:: sh
 
-   $ zammad run rake searchindex:rebuild
+   $ zammad run rake zammad:searchindex:rebuild
+
+.. hint:: **🤓 Zammad 5.2 comes with changes**
+
+   As of Zammad 5.2 the reindex command has changed!
+   You will still be able to use the old method until Zammad 6, however, will
+   receive a deprecation warning.
 
 .. warning:: 
 
@@ -230,5 +236,5 @@ use:
    If it does, try killing Zammad first::
    
       $ systemctl stop zammad
-      $ zammad run rake searchindex:rebuild
+      $ zammad run rake zammad:searchindex:rebuild
       $ systemctl start zammad

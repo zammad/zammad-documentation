@@ -85,7 +85,7 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
    .. code-block:: sh
 
       # force zammad to drop and rebuild the elasticsearch indexes
-      $ zammad run rake searchindex:rebuild
+      $ zammad run rake zammad:searchindex:rebuild
 
    .. note:: 
       
