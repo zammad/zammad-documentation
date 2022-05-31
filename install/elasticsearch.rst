@@ -172,7 +172,7 @@ Step 3: Connect Zammad
    $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
    # Build the search index
-   $ zammad run rake searchindex:rebuild
+   $ zammad run rake zammad:searchindex:rebuild
 
 Optional settings
 -----------------
