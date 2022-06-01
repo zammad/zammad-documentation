@@ -98,8 +98,10 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
          Creating indexes... done.
          Creating pipeline... done.
          Reloading data...
-           - Chat::Session... done in 0 seconds.
-           - Cti::Log... 7/7 done in 0 seconds.
+           - Chat::Session...
+             done in 0 seconds.
+           - Cti::Log...
+             done in 0 seconds.
 
          [...]
 
