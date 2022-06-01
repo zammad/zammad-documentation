@@ -145,7 +145,7 @@ Updating Zammad
             $ rake db:migrate
             $ rake assets:precompile
 
-      Step 7: Synchronize Zammads translation files
+      Step 7: Synchronize Zammad's translation files
          .. code-block:: sh
 
             $ su - zammad # ignore if you haven't exited the Zammad user
