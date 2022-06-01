@@ -93,13 +93,13 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
 
       .. code-block:: sh
 
-         drop indexes...done
-         delete pipeline (pipeline)... done
-         create indexes...done
-         create pipeline (pipeline)... done
-         reload data...
-            reload User
-               - started at 2021-07-20 11:18:12 UTC
+         Dropping indexes... done.
+         Deleting pipeline... done.
+         Creating indexes... done.
+         Creating pipeline... done.
+         Reloading data...
+           - Chat::Session... done in 0 seconds.
+           - Cti::Log... 7/7 done in 0 seconds.
 
          [...]
 
