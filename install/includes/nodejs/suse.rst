@@ -1,3 +1,3 @@
 .. code-block:: sh
 
-   $ zypper install nodejs
+   $ zypper install nodejs16
