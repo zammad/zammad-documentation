@@ -72,11 +72,23 @@ ELASTICSEARCH_SSL_VERIFY: ``true``
 Memcached
 ---------
 
-MEMCACHED_HOST: ``zammad-memcached``
+MEMCACHED_SERVERS: ``zammad-memcached``
    Provide your own Memcached instance if you already have one existing.
+
+   .. warning:: Was ``MEMCACHED_HOST`` before 5.1.x!
 
 MEMCACHED_PORT: ``11211``
    Memcacheds default port.
+
+Redis
+-----
+
+REDIS_URL: ``redis://zammad-redis:6379``
+   Provide your own Redis instance if you already have one.
+
+   .. warning::
+
+      This method currently does not allow authentication.
 
 Nginx
 -----
