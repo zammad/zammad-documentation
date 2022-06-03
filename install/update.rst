@@ -93,6 +93,11 @@ Updating Zammad
 
    .. tab:: Source
 
+      .. danger::
+
+         Zammads scheduler script has changed! Please ensure to reinstall
+         the service - see :ref:`source-install-systemd-reference`!
+
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches 
          :doc:`Zammad’s requirements </prerequisites/software>`.
