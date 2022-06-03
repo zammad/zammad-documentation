@@ -124,6 +124,42 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
 
    Default: **unset**
 
+ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
+   Allows spawning an independent process just for processing scheduled jobs
+   like LDAP syncs. This can free up Zammads scheduler for other tasks when
+   running tasks that require fairly long.
+
+   | Default: **unset**
+   | Maximum number of workers: ``1``
+
+   .. danger::
+
+      You can disable scheduler task by setting
+      ``ZAMMAD_PROCESS_SCHEDULED_JOBS_DISABLE``.
+
+      Doing so on productive instances will draw important parts of your
+      instance not working. **WE STRONGLY** encourage against using this flag.
+
+ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
+   How many processes should work on delayed jobs?
+
+   Increasing this *can* improve issues with delayed jobs stacking up in your
+   system. You may want to try to use ``ZAMMAD_SESSION_JOBS_CONCURRENT`` before
+   though.
+
+   | Default: **unset**
+   | Maximum number of workers: ``16``
+
+   .. warning:: 🥵 **This option can be *very* CPU-intensive.**
+
+   .. danger::
+
+      You can disable scheduler task by setting
+      ``ZAMMAD_PROCESS_DELAYED_JOBS_DISABLE``.
+
+      Doing so on productive instances will draw important parts of your
+      instance not working. **WE STRONGLY** encourage against using this flag.
+
 .. warning::
 
    Above settings *may* consume all available database connections.
