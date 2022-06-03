@@ -351,6 +351,8 @@ Step 5: Pre compile all Zammad assets
 
    $ rake assets:precompile
 
+.. _source-install-systemd-reference:
+
 Step 6: Start Zammad or install as service
 ------------------------------------------
 
