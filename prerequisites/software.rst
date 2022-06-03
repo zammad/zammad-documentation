@@ -179,7 +179,12 @@ You can choose between the following database servers:
 2.5. Node.js
 ------------
 
-.. note:: This soft dependency was introduced with Zammad 5.0.
+.. note::
+
+   | This soft dependency was introduced with Zammad 5.0.
+   | Package installations come pre-bundled with the correct NodeJS version.
+     Unless you require NodeJS on your machine for other projects, a manual
+     installation *is not* required.
 
 Node.js is required for asset compiling.
 
