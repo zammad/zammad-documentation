@@ -75,7 +75,7 @@ Memcached
 MEMCACHED_SERVERS: ``zammad-memcached``
    Provide your own Memcached instance if you already have one existing.
 
-   .. warning:: Was ``MEMCACHED_HOST`` before 5.1.x!
+   .. warning:: Was ``MEMCACHED_HOST`` before 5.0.x!
 
 MEMCACHED_PORT: ``11211``
    Memcacheds default port.
