@@ -381,11 +381,13 @@ You can start all services by hand or use systemd to start / stop Zammad.
 
          $ rails s -p 3000 # application web server
          $ script/websocket-server.rb start # non blocking websocket server
-         $ script/background-services.rb start # generate overviews on demand, just send changed data to browser
+         $ script/background-worker.rb start # generate overviews on demand, just send changed data to browser
 
       .. warning::
 
-         ⚠️ Zammads background service *cannot* run in daemon mode!
+         ⚠️ Zammads background worker *cannot* run in daemon mode!
+
+.. include:: /install/includes/manage-services.rst
 
 .. include:: /install/includes/firewall-and-selinux.rst
 
