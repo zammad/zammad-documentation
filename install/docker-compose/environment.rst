@@ -72,13 +72,10 @@ ELASTICSEARCH_SSL_VERIFY: ``true``
 Memcached
 ---------
 
-MEMCACHE_SERVERS: ``zammad-memcached``
+MEMCACHE_SERVERS: ``zammad-memcached:11211``
    Provide your own Memcached instance if you already have one existing.
 
    .. warning:: Was ``MEMCACHED_HOST`` before 5.0.x!
-
-MEMCACHE_PORT: ``11211``
-   Memcacheds default port.
 
 Redis
 -----
