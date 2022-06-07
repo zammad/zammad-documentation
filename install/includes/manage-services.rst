@@ -9,11 +9,11 @@ with the parent ``zammad``.
    $ # Zammad service to start all services at once
    $ systemctl (status|start|stop|restart) zammad
 
-   $ # Zammads internal railsserver
+   $ # Zammads internal puma server (relevant for display the web app)
    $ systemctl (status|start|stop|restart) zammad-web
 
-   $ # Zammads scheduler - relevant for all delayed- and background jobs
-   $ systemctl (status|start|stop|restart) zammad-worker
+   $ # Zammads background worker - relevant for all delayed- and background jobs
+   $ systemctl (status|start|stop|restart) zammad-background-worker
    
    $ # Zammads websocket server for session related information
    $ systemctl (status|start|stop|restart) zammad-websocket
