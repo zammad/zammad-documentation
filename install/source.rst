@@ -373,7 +373,7 @@ You can start all services by hand or use systemd to start / stop Zammad.
 
    .. tab:: the manual way
 
-      .. note:: 
+      .. warning:: 
 
         This method is not suitable for production use - you should avoid it.
 
@@ -383,7 +383,7 @@ You can start all services by hand or use systemd to start / stop Zammad.
          $ script/websocket-server.rb start # non blocking websocket server
          $ script/background-worker.rb start # generate overviews on demand, just send changed data to browser
 
-      .. warning::
+      .. danger::
 
          ⚠️ Zammads background worker *cannot* run in daemon mode!
 
