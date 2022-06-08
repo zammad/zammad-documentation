@@ -95,8 +95,9 @@ Updating Zammad
 
       .. danger::
 
-         Zammads scheduler script has changed! Please ensure to reinstall
-         the service - see :ref:`source-install-systemd-reference`!
+         Zammad's former ``scheduler.rb`` script has changed and is now called
+         ``background-worker.rb``. Please ensure to reinstall the service - see
+         :ref:`source-install-systemd-reference`!
 
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches 
