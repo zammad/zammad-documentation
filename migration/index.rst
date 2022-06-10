@@ -21,10 +21,12 @@ There might be source dependent limitations which we will be covering on the dir
 
 However, these limitations count for all migrations:
 
-   * Migrations are only possible on new instances
+   * Migrations are only possible on new instances.
    * Migrations are only possible from **one sources**.
      Several migration sources on one instance are *not* supported.
-   * Zammad can't migrate object types it doesn't know, migrations will fail
+   * Zammad can't migrate object types it doesn't know, migrations will fail.
+   * Zammad migrates **all or nothing**. This means that you can't deselect
+     specific information specific groups, tickets or users.
 
 Available Migration Options
 ===========================
