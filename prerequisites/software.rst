@@ -111,6 +111,12 @@ Below you can find all distributions Zammad provides packages for.
    If you're not running a docker-compose or package installation please
    consider changing to a different distribution that's supported.
 
+.. danger:: **☠️ Incompatibility warning for Ubuntu 22.04 LTS ☠️**
+
+   Please note that due to Ubuntu's dependencies, Zammad currently **is not**
+   compatible to Ubuntu 22. This affects *all installation types* except
+   for docker style installations!
+
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 
    If you distribution is not listed, you can still install Zammad.
