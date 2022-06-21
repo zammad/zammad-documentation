@@ -351,6 +351,8 @@ Step 5: Pre compile all Zammad assets
 
    $ rake assets:precompile
 
+.. _source-install-systemd-reference:
+
 Step 6: Start Zammad or install as service
 ------------------------------------------
 
@@ -371,7 +373,7 @@ You can start all services by hand or use systemd to start / stop Zammad.
 
    .. tab:: the manual way
 
-      .. note:: 
+      .. warning:: 
 
         This method is not suitable for production use - you should avoid it.
 
@@ -379,7 +381,13 @@ You can start all services by hand or use systemd to start / stop Zammad.
 
          $ rails s -p 3000 # application web server
          $ script/websocket-server.rb start # non blocking websocket server
-         $ script/scheduler.rb start # generate overviews on demand, just send changed data to browser
+         $ script/background-worker.rb start # generate overviews on demand, just send changed data to browser
+
+      .. danger::
+
+         ⚠️ Zammads background worker *cannot* run in daemon mode!
+
+.. include:: /install/includes/manage-services.rst
 
 .. include:: /install/includes/firewall-and-selinux.rst
 

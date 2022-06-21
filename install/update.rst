@@ -93,6 +93,12 @@ Updating Zammad
 
    .. tab:: Source
 
+      .. danger::
+
+         Zammad's former ``scheduler.rb`` script has changed and is now called
+         ``background-worker.rb``. Please ensure to reinstall the service - see
+         :ref:`source-install-systemd-reference`!
+
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches 
          :doc:`Zammad’s requirements </prerequisites/software>`.
@@ -145,7 +151,7 @@ Updating Zammad
             $ rake db:migrate
             $ rake assets:precompile
 
-      Step 7: Synchronize Zammads translation files
+      Step 7: Synchronize Zammad's translation files
          .. code-block:: sh
 
             $ su - zammad # ignore if you haven't exited the Zammad user
@@ -219,7 +225,13 @@ use:
 
 .. code-block:: sh
 
-   $ zammad run rake searchindex:rebuild
+   $ zammad run rake zammad:searchindex:rebuild
+
+.. hint:: **🤓 Zammad 5.2 comes with changes**
+
+   As of Zammad 5.2 the reindex command has changed!
+   You will still be able to use the old method until Zammad 6, however, will
+   receive a deprecation warning.
 
 .. warning:: 
 
@@ -230,5 +242,5 @@ use:
    If it does, try killing Zammad first::
    
       $ systemctl stop zammad
-      $ zammad run rake searchindex:rebuild
+      $ zammad run rake zammad:searchindex:rebuild
       $ systemctl start zammad

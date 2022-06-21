@@ -23,16 +23,16 @@ requirements for your clients. This ensures that Zammad works as expected.
    * - Opera 69+
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
-     - 
+     -
    * - Safari 11
-     - 
+     -
 
 .. note::
 
    | Zammad heavily uses Javascript which makes it a hard requirement.
    |
    | Browser addons that hook into page content may interfere with Zammads function
-     which is not a bug. 
+     which is not a bug.
    | Google Chromes translation module is known to do
      odd things to especially state names. Use Zammads internal translations
      instead.
@@ -76,13 +76,14 @@ If you want to install Zammad, you need the following software.
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
 | The following Ruby version is supported:
-| ``Ruby 2.7.4``
+| ``Ruby 3.0.4``
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
-   "5.0+", "2.7.4"
+   "5.2+", "3.0.4"
+   "5.0 - 5.1", "2.7.4"
    "3.4.1 - 4.1", "2.6.6"
    "3.4.0", "2.6.5"
    "3.1 - 3.3", "2.5.5"
@@ -109,6 +110,12 @@ Below you can find all distributions Zammad provides packages for.
 
    If you're not running a docker-compose or package installation please
    consider changing to a different distribution that's supported.
+
+.. danger:: **☠️ Incompatibility warning for Ubuntu 22.04 LTS ☠️**
+
+   Please note that due to Ubuntu's dependencies, Zammad currently **is not**
+   compatible to Ubuntu 22. This affects *all installation types* except
+   for docker style installations!
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 
@@ -181,7 +188,12 @@ You can choose between the following database servers:
 2.5. Node.js
 ------------
 
-.. note:: This soft dependency was introduced with Zammad 5.0.
+.. note::
+
+   | This soft dependency was introduced with Zammad 5.0.
+   | Package installations come pre-bundled with the correct NodeJS version.
+     Unless you require NodeJS on your machine for other projects, a manual
+     installation *is not* required.
 
 Node.js is required for asset compiling.
 
@@ -197,7 +209,8 @@ Node.js is required for asset compiling.
    :header: "Zammad", "Node.js"
    :widths: 20, 20
 
-   "5.0+", "10.0+"
+   "5.2+", "16.0+"
+   "5.0 - 5.1", "10.0+"
 
 2.6. Reverse Proxy
 ------------------
@@ -251,7 +264,8 @@ but search performance will be degraded, and some features will be disabled.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "5.0+", ">= 7.8, < 8"
+   "5.2+", ">= 7.8, < 9"
+   "5.0 - 5.1", ">= 7.8, < 8"
    "4.0-4.1", ">= 6.5, <= 7.12"
    "3.4-3.6", ">= 5.5, <= 7.9"
    "3.3", ">= 2.4, <=7.6"
