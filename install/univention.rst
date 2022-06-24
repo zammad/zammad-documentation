@@ -159,6 +159,7 @@ app works or on how to solve an issue.
 .. toctree::
    :maxdepth: 1
 
+   univention/export-zammad-ucs
    univention/app-settings
    univention/running-console-commands-on-univention
    univention/issues-you-might-encounter

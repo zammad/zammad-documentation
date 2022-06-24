@@ -4,8 +4,8 @@
    for Univention! Users where already alarmed by Email late 2021 about this
    upcoming change.
 
-   There will be a last update to Zammad 5.0 (ETA unknown) together with
-   migration paths. Please stay tuned. 
+   We're providing an export guide, please see:
+   :doc:`/install/univention/export-zammad-ucs`.
 
    If you're planning to install Zammad on Univention right now, please consider
    using either :doc:`package </install/package>`,
