@@ -10,8 +10,8 @@
 
 Univention Corporate Server (UCS) is an enterprise server with focus on identity
 and infrastructure management. With its marketplace called App Center it can
-easily extended by solutions like Zammad that benefit from integrations with the
-LDAP directory service and the mail infrastructure.
+easily be extended by solutions like Zammad that benefit from integrations with
+the LDAP directory service and the mail infrastructure.
 
 `Click here to learn more about Univention and what it can do for you`_.
 

@@ -22,7 +22,7 @@ related settings:
    to trick the scripts, it might cause outages.
 
 If you're using the default settings, we'll empty the values of the text fields
-to reduce confusion. This is not a Bug, but a "Feature".
+to reduce confusion. This is not a bug, but a "feature".
 
 
 Using another FQDN
