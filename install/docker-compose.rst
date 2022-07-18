@@ -94,6 +94,6 @@ Step 4: Start Zammad using DockerHub images
 
 .. code-block:: sh
 
-   $ docker-compose up
+   $ docker compose up -d
 
 .. include:: /install/includes/next-steps.rst
