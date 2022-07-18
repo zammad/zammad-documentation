@@ -28,6 +28,13 @@ Use these environment variables to configure Zammad’s behavior at runtime.
    To learn more, do some googling on environment variables
    and the shell environment (or execution environment) in Unix.
 
+.. important::
+
+   While below options and remarks affect all installation types of Zammad,
+   please note that environment variables mentioned may be named different for
+   installations based on :doc:`docker-compose </install/docker-compose>` and
+   :doc:`kubernetes </install/kubernetes>`.
+
 General Options
 ===============
 
