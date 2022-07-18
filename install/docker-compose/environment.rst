@@ -8,6 +8,12 @@ set by default. The best way to provide these is within the file
 In case our default ``docker-compose.yml`` is not good enough, please use
 ``docker-compose.override.yml`` to provide own changes.
 
+.. note::
+
+   Unless stated other wise, below environment variables count for the whole
+   Zammad stack and not single containers. Below grouping is to help you find
+   them better, but do not reflect their container.
+
 Docker Compose specific
 -----------------------
 
@@ -28,13 +34,21 @@ Zammad
 AUTOWIZARD_JSON: ``''``
    This variable allows you to provide initial configuration data for your 
    instance. Autowizard JSON is out of scope of this documentation, however 
-   `this example file <https://github.com/zammad/zammad/blob/stable/contrib/auto_wizard_example.json>`_ 
-   should help you.
+   `this example file`_ should help you.
+
+   .. include:: /install/docker-compose/init-specific.include.rst
+
+.. _this example file:
+   https://github.com/zammad/zammad/blob/stable/contrib/auto_wizard_example.json
 
 RAILS_TRUSTED_PROXIES: ``['127.0.0.1', '::1']``
    By default Zammad trusts localhost proxies only. 
 
-   **⚠ Only change this option if you know what you're doing! ⚠**
+   .. danger::
+
+      **⚠ Only change this option if you know what you're doing! ⚠** 
+
+   .. include:: /install/docker-compose/init-specific.include.rst
 
 Elasticsearch
 -------------
@@ -43,18 +57,28 @@ ELASTICSEARCH_ENABLED: ``true``
    Setting this variable to false will allow you to run your Zammad without 
    Elasticsearch. Please note that we strongly advise **against** doing so.
 
+   .. include:: /install/docker-compose/init-specific.include.rst
+
 ELASTICSEARCH_HOST: ``zammad-elasticsearch``
    Provide a host name or address to your external Elasticsearch cluster.
+
+   .. include:: /install/docker-compose/init-specific.include.rst
 
 ELASTICSEARCH_PORT: ``9200``
    Provide a different port for Elasticsearch if needed.
 
+   .. include:: /install/docker-compose/init-specific.include.rst
+
 ELASTICSEARCH_SCHEMA: ``http``
-   By default Elasticsearch is reachable via HTTP. 
+   By default Elasticsearch is reachable via HTTP.
+
+   .. include:: /install/docker-compose/init-specific.include.rst 
 
 ELASTICSEARCH_NAMESPACE: ``zammad``
    With this name space all Zammad related indexes will be created. 
    Change this if you're using external clusters.
+
+   .. include:: /install/docker-compose/init-specific.include.rst
 
 ELASTICSEARCH_REINDEX: ``true``
    By default the docker-compose will *always re-index* upon a restart. 
@@ -65,9 +89,13 @@ ELASTICSEARCH_REINDEX: ``true``
       Disabling this setting requires you to re-index your search index 
       manually whenever that's needed by upgrading to a new Zammad version!
 
+   .. include:: /install/docker-compose/init-specific.include.rst
+
 ELASTICSEARCH_SSL_VERIFY: ``true``
    Allows you to let the compose scripts ignore self signed SSL certificates 
    for your Elasticsearch installation if needed.
+
+   .. include:: /install/docker-compose/init-specific.include.rst
 
 Memcached
 ---------
@@ -93,9 +121,13 @@ Nginx
 NGINX_PORT:  ``8080``
    The port Nginx will listen on.
 
+   .. include:: /install/docker-compose/nginx-specific.include.rst 
+
 NGINX_SERVER_NAME: ``_``
    By default the Nginx container of Zammad will respond to all request. 
    You can provide your IP / FQDN if you want to.
+
+   .. include:: /install/docker-compose/nginx-specific.include.rst 
 
 NGINX_SERVER_SCHEME: ``\$scheme``
    If the Nginx container for Zammad **is not** the upstream server 
@@ -103,6 +135,8 @@ NGINX_SERVER_SCHEME: ``\$scheme``
    You can set the correct scheme ``http`` or ``https`` if needed.
 
    .. include:: /getting-started/include-csrf-hints.rst
+
+   .. include:: /install/docker-compose/nginx-specific.include.rst 
 
 ZAMMAD_RAILSSERVER_HOST: ``zammad-railsserver``
    Host name of the rails server container. 
@@ -114,6 +148,8 @@ ZAMMAD_RAILSSERVER_PORT: ``3000``
 
 ZAMMAD_WEBSOCKET_HOST: ``zammad-websocket``
    Host name of Zammads websocket server.
+
+   .. include:: /install/docker-compose/nginx-specific.include.rst 
 
 ZAMMAD_WEBSOCKET_PORT: ``6042``
    Port of Zammads websocket server.
@@ -146,6 +182,10 @@ POSTGRESQL_DB_CREATE: ``true``
 
       On own database servers this setting might be troublesome.
 
+   .. include:: /install/docker-compose/init-specific.include.rst 
+
 RSYNC_ADDITIONAL_PARAMS: ``--no-perms --no-owner``
    By default the compose will copy data without permissions and owners. 
    This may not fit for your storage driver.
+
+   .. include:: /install/docker-compose/init-specific.include.rst 
