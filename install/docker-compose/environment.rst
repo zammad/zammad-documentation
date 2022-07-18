@@ -41,6 +41,40 @@ AUTOWIZARD_JSON: ``''``
 .. _this example file:
    https://github.com/zammad/zammad/blob/stable/contrib/auto_wizard_example.json
 
+ZAMMAD_WEB_CONCURRENCY: ``(unset)``
+   Allows spawning ``n`` workers to allow more simultaneous connections for
+   Zammads web UI.
+
+   .. include:: /install/docker-compose/include-env-var-note.rst
+
+   .. tip::
+
+      This variable is specific to the ``railsserver`` container.
+
+ZAMMAD_SESSION_JOBS_CONCURRENT: ``(unset)``
+   Allows spawning ``n`` session job workers to release pressure from Zammads
+   background worker.
+
+   .. include:: /install/docker-compose/include-env-var-note.rst
+
+   .. include:: /install/docker-compose/scheduler-specific.include.rst
+
+ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS: ``(unset)``
+   Allows spawning ``1`` independent scheduled job worker to release pressure
+   from Zammads background worker.
+
+   .. include:: /install/docker-compose/include-env-var-note.rst
+
+   .. include:: /install/docker-compose/scheduler-specific.include.rst
+
+ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS: ``(unset)``
+   Allows spawning ``n`` delayed job workers to release pressure from Zammads
+   background worker.
+
+   .. include:: /install/docker-compose/include-env-var-note.rst
+
+   .. include:: /install/docker-compose/scheduler-specific.include.rst
+
 RAILS_TRUSTED_PROXIES: ``['127.0.0.1', '::1']``
    By default Zammad trusts localhost proxies only. 
 
