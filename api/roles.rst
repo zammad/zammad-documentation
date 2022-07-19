@@ -1,5 +1,5 @@
-roles
-====
+Roles
+*****
 
 .. note:: **🤓 To see or not to see**
 
@@ -13,8 +13,8 @@ roles
    https://admin-docs.zammad.org/en/latest/manage/roles/index.html#reference-guide-permissions
 
 
-roles
-======
+List
+====
 
 Required permission: ``ticket.agent`` **or** ``admin.user``
 
@@ -224,7 +224,8 @@ Response:
 	"group_ids":{}}
 
 
-**Create role**
+Create
+======
 
 ``POST`` -Request sent: ``https://endpointdocu.zammad.com/api/v1/roles``
 
@@ -259,7 +260,8 @@ Response:
 	}
 
 
-**Update role**
+Update
+======
 
 ``PUT`` -Request sent: ``https://endpointdocu.zammad.com/api/v1/roles/:id``
 
@@ -277,3 +279,8 @@ Response:
 		"permission_ids":[],"knowledge_base_permission_ids":[],
 		"group_ids":{}}
 	}
+
+Delete
+======
+
+.. missing / not supplied
