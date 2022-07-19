@@ -20,7 +20,7 @@ Required permission: ``ticket.agent`` **or** ``admin.user``
 
 **All roles**
 
-``GET`` -Request sent: ``https://endpointdocu.zammad.com/api/v1/roles/?full=true&_={userid}``
+``GET`` -Request sent: ``/api/v1/roles/?full=true&_={userid}``
 
 Response: 
 
@@ -203,7 +203,7 @@ Response:
 
 **Specific role**
 
-``GET`` -Request sent: ``https://endpointdocu.zammad.com/api/v1/roles/:id``
+``GET`` -Request sent: ``/api/v1/roles/:id``
 
 Response: 
 
@@ -227,7 +227,7 @@ Response:
 Create
 ======
 
-``POST`` -Request sent: ``https://endpointdocu.zammad.com/api/v1/roles``
+``POST`` -Request sent: ``/api/v1/roles``
 
 Response: 
 
@@ -263,7 +263,7 @@ Response:
 Update
 ======
 
-``PUT`` -Request sent: ``https://endpointdocu.zammad.com/api/v1/roles/:id``
+``PUT`` -Request sent: ``/api/v1/roles/:id``
 
 .. code-block:: json
 	
