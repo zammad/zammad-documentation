@@ -279,8 +279,3 @@ Update
 		"permission_ids":[],"knowledge_base_permission_ids":[],
 		"group_ids":{}}
 	}
-
-Delete
-======
-
-.. missing / not supplied
