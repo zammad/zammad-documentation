@@ -5,3 +5,6 @@
 
    # source installation
    $ rails c
+
+   # docker & docker-compose installation
+   docker run -it $NAME_OF_RAILS_CONTAINER rails r '{COMMAND}'
