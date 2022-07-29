@@ -1,32 +1,25 @@
-Supported Branches/Versions
-***************************
+Supported Branches / Versions
+*****************************
 
-The Zammad main repository at https://github.com/zammad/zammad has several branches.
+The main Zammad repository at https://github.com/zammad/zammad has several branches.
 
 `develop`
-*********
-
-* Current unreleased development state of next major release (this will become the new `stable` branch)
-* Not usable for production due to unstable state
-* Supported with minor and security bug fixes
+=========
+* This is the current (unreleased) development state of next major release (this will become the new `stable` branch).
+* Don't use it for production!
+* Supported with bug and `security`_ fixes - see also our `Security Policy`_.
 
 `stable`
-********
+========
 
-* Current stable release, e.g. Zammad 5.2
-* Usable for production
-* Bug fixes will be merged from `develop` after evaluation of the developers
-* Supported with minor and security bug fixes
+* This is the current stable release, e.g. Zammad 5.2.
+* Use this branch for production installations.
+* Supported with bug and `security`_ fixes - see also our `Security Policy`_.
 
 `stable-x.y`
-************
+============
 
-* Branches for old versions of Zammad, e.g. Zammad 5.1.0 results in branch `stable-5.1`
-* No support for minor and security bug fixes
-
-Security
-********
-
-Please also have a look in our `Security Policy`_.
+* These are the branches of old versions of Zammad like `stable-5.1` for Zammad 5.1.
+* No support for bug or security issues is provided.
 
 .. _`Security Policy`: https://github.com/zammad/zammad/blob/develop/SECURITY.md
