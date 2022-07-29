@@ -10,6 +10,7 @@ Source Code
 
 The Zammad source code can be found on GitHub at https://github.com/zammad/zammad
 
+For more information on how to contribute to Zammad, please have a look at https://zammad.org/participate and at the `Developer Manual`_.
 
 Documentation
 =============
@@ -32,3 +33,5 @@ If you like to edit the docs use the ReStructuredText markup language. Informati
 Thanks! ❤ ❤ ❤
 
   Zammad Team
+
+.. _Developer Manual: https://github.com/zammad/zammad/blob/develop/doc/developer_manual/index.md
