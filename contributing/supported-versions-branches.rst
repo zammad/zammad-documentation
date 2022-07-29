@@ -22,4 +22,4 @@ The main Zammad repository at https://github.com/zammad/zammad has several branc
 * These are the branches of old versions of Zammad like ``stable-5.1`` for Zammad 5.1.
 * No support for bug or security issues is provided.
 
-.. _`Security Policy`: https://github.com/zammad/zammad/blob/develop/SECURITY.md
+.. _Security Policy: https://github.com/zammad/zammad/blob/develop/SECURITY.md
