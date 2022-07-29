@@ -67,7 +67,6 @@ The Zammad documentation consists of three parts:
 
    /contributing/start
    /contributing/supported-versions-branches
-   /contributing/install-docker
 
 
 .. toctree::
