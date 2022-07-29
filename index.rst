@@ -66,12 +66,8 @@ The Zammad documentation consists of three parts:
    :caption: Contributing / Development
 
    /contributing/start
-   /contributing/branches
-   /contributing/packages
-   /contributing/ci
-   /contributing/code-quality
+   /contributing/supported-versions-branches
    /contributing/install-docker
-   /contributing/install-vagrant
 
 
 .. toctree::
