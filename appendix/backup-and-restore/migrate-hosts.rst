@@ -207,6 +207,18 @@ Step 11: Re-enable Channels and deactivate maintenance mode
 
    `Learn more about the maintenance mode in Zammad`_.
 
+   .. hint:: *Migrated from Zammad SaaS or switching providers?*
+
+      Please make sure that your `notification`_ and `FQDN`_ configuration
+      is still correct. Other wise you may have unexpected issues like not
+      receiving notifications or non functional authentications (3rd party).
+
+.. _notification:
+   https://admin-docs.zammad.org/en/latest/channels/email/accounts/email-notification.html
+
+.. _FQDN:
+   https://admin-docs.zammad.org/en/latest/settings/system/base.html
+
 Step 12 (optional): Update Zammad to latest possible version
    In case the backup source was not on the latest possible version, please
    update your Zammad installation now.
