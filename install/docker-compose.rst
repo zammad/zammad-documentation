@@ -4,7 +4,7 @@ Install with Docker Compose
 .. warning:: 
 
    We currently do not support Docker environments in productive use. 
-   If's no problem if you run Zammad on docker, however, support is only
+   It's no problem if you run Zammad on docker, however, support is only
    provided for Zammad as application!
 
 .. note::
@@ -62,14 +62,14 @@ Step 1: Clone GitHub repo
 
 .. hint::
 
-   If cloning is too much for you, it's also enough to get the files
+   If cloning is too much of a hassle, it's also enough to get the files
    ``docker-compose.yml`` and ``.env``.
 
 Step 2: Setting vm.max_map_count for Elasticsearch
 --------------------------------------------------
 
 Even with running Elasticsearch in a container, you're required to adjust your
-hosts settings to ensure a clean runtime.
+host's settings to ensure a clean runtime.
 
 .. code-block:: sh
 

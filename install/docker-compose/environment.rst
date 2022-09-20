@@ -33,7 +33,7 @@ Zammad
 AUTOWIZARD_JSON: ``''``
    This variable allows you to provide initial configuration data for your 
    instance. Autowizard JSON is out of scope of this documentation, however 
-   `this example file`_ should help you.
+   `this example file`_ should help.
 
    .. include:: /install/docker-compose/init-specific.include.rst
 
