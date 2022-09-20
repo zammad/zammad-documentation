@@ -4,7 +4,8 @@ Install with Docker Compose
 .. warning:: 
 
    We currently do not support Docker environments in productive use. 
-   If you run Zammad on docker, it is fine. But we just support the application!
+   It's no problem if you run Zammad on docker, however, support is only
+   provided for Zammad as application!
 
 .. note::
 
@@ -16,11 +17,10 @@ Docker is a container-based software framework for automating deployment of
 applications. Compose is a tool for defining and running multi-container Docker 
 applications.
 
-This repo is meant to be the starting point for somebody who likes to use 
-dockerized multi-container Zammad in production. The Zammad Docker image uses 
-the stable branch of Zammad's Git repo.
+Zammads docker images are hosted on `Dockerhub`_.
 
-The Docker images are hosted on `Dockerhub <https://hub.docker.com/r/zammad/zammad-docker-compose/>`_.
+.. _Dockerhub:
+   https://hub.docker.com/r/zammad/zammad-docker-compose/
 
 .. warning:: 
 
@@ -49,22 +49,31 @@ Getting started with zammad-docker-compose
 Step 1: Clone GitHub repo
 -------------------------
 
+.. warning::
+
+   If you're updating Zammad, below commands will cause values set in ``.env``
+   and ``docker-compose.override.yml`` to be lost. You're expected to check
+   if the ``docker-compose.yml`` has changed and if so to adjust it accordingly.
+
 .. code-block:: sh
 
    $ git clone https://github.com/zammad/zammad-docker-compose.git
    $ cd zammad-docker-compose
 
+.. hint::
+
+   If cloning is too much of a hassle, it's also enough to get the files
+   ``docker-compose.yml`` and ``.env``.
+
 Step 2: Setting vm.max_map_count for Elasticsearch
 --------------------------------------------------
+
+Even with running Elasticsearch in a container, you're required to adjust your
+host's settings to ensure a clean runtime.
 
 .. code-block:: sh
 
    $ sysctl -w vm.max_map_count=262144
-
-.. tip:: 
-
-   Mac OS users please also have a look on 
-   `Issue 27 <https://github.com/zammad/zammad-docker/issues/27#issuecomment-455171752>`_
 
 Step 3: Adjust Environment as needed
 ------------------------------------
@@ -85,6 +94,6 @@ Step 4: Start Zammad using DockerHub images
 
 .. code-block:: sh
 
-   $ docker-compose up
+   $ docker compose up -d
 
 .. include:: /install/includes/next-steps.rst
