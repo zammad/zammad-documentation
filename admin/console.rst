@@ -39,6 +39,9 @@ a shell (e.g. for automation).
    # source installation
    $ rails r '{COMMAND}'
 
+   # docker & docker-compose installation
+   docker run -it $NAME_OF_RAILS_CONTAINER rails r '{COMMAND}'
+
 .. _rails_shell:
 
 Running several commands in a shell
