@@ -22,6 +22,8 @@ endpoints listed here.
    * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(Third-Party)*
    * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_ 
      *(Third-Party)*
+   * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
+     *(Third-Party)*
 
       .. note:: 
 
