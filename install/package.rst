@@ -4,7 +4,7 @@ Install from package
 .. note::
 
    | Please ensure to meet Zammads :doc:`/prerequisites/software` requirements
-     before hand.
+     beforehand.
    | This page expects administrative permissions, this is why ``sudo`` is
      not used.
 
