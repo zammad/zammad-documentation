@@ -49,6 +49,12 @@ APP_RESTART_CMD
 
    Default: **unset**
 
+   .. note::
+
+      Please keep in mind that Zammad runs as unprivileged user. This means
+      that you have to allow the Zammad user via e.g. ``sudoers`` to run
+      the required restart command.
+
 RAILS_LOG_TO_STDOUT
    Print output directly to standard output
    instead of ``/var/log/zammad/production.log``.
