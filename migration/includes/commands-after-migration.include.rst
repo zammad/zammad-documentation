@@ -4,4 +4,4 @@ After the import has finished, run the following commands
 
       $ Setting.set('import_mode', false)
       $ Setting.set('system_init_done', true)
-      $ Cache.clear
+      $ Rails.cache.clear
