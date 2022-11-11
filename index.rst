@@ -96,6 +96,7 @@ The Zammad documentation consists of three parts:
    /appendix/backup-and-restore/index
    /appendix/configure-env-vars
    /appendix/configure-database-server
+   /appendix/migrate-to-postgresql
    /appendix/privacy
    /appendix/troubleshooting/index
    /appendix/single-sign-on
