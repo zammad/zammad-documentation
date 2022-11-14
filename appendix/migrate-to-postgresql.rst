@@ -30,6 +30,8 @@ Preperation
 Install PostgreSQL
 ------------------
 
+Install PostgreSQL itself. TODO.
+
 ..
   TODO: This is duplicated content
 
