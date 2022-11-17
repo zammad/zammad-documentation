@@ -49,6 +49,12 @@ APP_RESTART_CMD
 
    Default: **unset**
 
+   .. note::
+
+      Please keep in mind that Zammad runs as unprivileged user. This means
+      that you have to allow the Zammad user via e.g. ``sudoers`` to run
+      the required restart command.
+
 RAILS_LOG_TO_STDOUT
    Print output directly to standard output
    instead of ``/var/log/zammad/production.log``.
@@ -100,6 +106,13 @@ ZAMMAD_WEBSOCKET_PORT
    Proceed with caution; when adjusting any of these settings,
    there is a point at which performance will begin to degrade rather than
    improve, or other problems will begin to crop up.
+
+.. danger::
+
+   Below settings *may* consume all available database connections.
+   Please consider the 
+   :doc:`database server configuration </appendix/configure-database-server>` 
+   section for more.
 
 .. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
 
@@ -166,13 +179,6 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
 
       Doing so on productive instances will draw important parts of your
       instance not working. **WE STRONGLY** encourage against using this flag.
-
-.. warning::
-
-   Above settings *may* consume all available database connections.
-   Please consider the 
-   :doc:`database server configuration </appendix/configure-database-server>` 
-   section for more.
 
 --------------------------------------------------------------------------------
 
