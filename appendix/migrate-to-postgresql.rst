@@ -26,14 +26,18 @@ Install PostgreSQL
 
 .. include:: /install/includes/postgres-installation.rst
 
-Only for Zammad source installations
-   The following steps are only relevant if you installed Zammad from source:
-
-   .. include:: /install/includes/postgres-dependencies.rst
-
 Please also have a look at :doc:`/appendix/configure-database-server`.
 
-  
+.. tabs::
+
+   .. tab:: Package installation
+
+      Nothing to do, continue with the next step. 🎉
+
+   .. tab:: Source code installations
+
+      .. include:: /install/includes/postgres-dependencies.rst
+
 Database Credentials
 --------------------
 
