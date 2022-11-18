@@ -39,13 +39,6 @@ some operating systems may require additional packages if not already installed.
 Add Repository and install Zammad
 =================================
 
-.. hint::
-
-   If you want to use MySQL instead of PostgreSQL, it's usually enough to have
-   the MySQL server installed on your system already. Some installation
-   managers can't differentiate and still install Zammad with PostgreSQL. In
-   that case, you'll have to adapt manually (out of scope of this documentation).
-
 Add Repository
    .. tabs::
 

@@ -195,45 +195,29 @@ Here's a sample configuration to give you an idea on how your configuration
 file could look like. Please also have a look at 
 :doc:`/appendix/configure-database-server` for deeper details.
 
-.. tabs::
+PostgreSQL
+   .. code-block::
 
-   .. tab:: PostgreSQL
+      production:
+         adapter: postgresql
+         database: zammad
+         pool: 50
+         timeout: 5000
+         encoding: utf8
+         username: zammad
+         password: changeme
 
-      .. code-block::
+.. hint:: 
 
-         production:
-           adapter: postgresql
-           database: zammad
-           pool: 50
-           timeout: 5000
-           encoding: utf8
-           username: zammad
-           password: changeme
+   You can remove the ``password`` line if you enable socket based 
+   authentication!
 
-      .. hint:: 
+.. hint:: 
 
-         You can remove the ``password`` line if you enable socket based 
-         authentication!
+   If you want to use an existing database server that's not on the same 
+   machine, you can also use ``host`` and ``port`` to set that up.
 
-   .. tab:: MySQL / MariaDB
-
-      .. code-block::
-
-         production:
-           adapter: mysql2
-           database: zammad
-           pool: 50
-           timeout: 5000
-           encoding: utf8
-           username: zammad
-           password: changeme
-
-   .. hint:: 
-
-      If you want to use an existing database server that's not on the same 
-      machine, you can also use ``host`` and ``port`` to set that up.
-
-   .. include:: /install/source/include-chmod-database-yml.rst
+.. include:: /install/source/include-chmod-database-yml.rst
 
 Step 4: Initialize your database
 --------------------------------

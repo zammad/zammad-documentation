@@ -141,6 +141,14 @@ Updating Zammad
 
                   $ bundle install --without test development postgres
 
+               .. danger::
+
+                  Support for MySQL/MariaDB will be dopped in Zammad 7.0 upwards. Make sure to
+                  migrate your existing instance of Zammad to PostgreSQL before that update.
+
+                  Please have a look at our guide on how to migrate an existing MySQL/MariaDB
+                  instance to PostgreSQL: :doc:`/appendix/migrate-to-postgresql`.
+
       Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.
 
