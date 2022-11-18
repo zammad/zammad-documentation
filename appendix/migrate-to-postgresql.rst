@@ -39,21 +39,24 @@ Install PostgreSQL
             $ apt update
             $ apt install postgresql postgresql-contrib
             $ systemctl start postgresql
+            $ systemctl enable postgresql
 
       .. tab:: CentOS
 
          .. code-block:: sh
 
             # CentOS 7
-            $ yum install postgresql13-server
-            $ postgresql-13-setup initdb
-            $ systemctl start postgresql-13
-            $ systemctl enable postgresql-13
+            $ yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+            $ yum install postgresql13-server postgresql13-contrib
+            $ postgresql13-setup initdb
+            $ systemctl start postgresql13
+            $ systemctl enable postgresql13
 
             # CentOS 8
-            $ yum install postgresql-server
-            $ systemctl start postgresql-server
-            $ systemctl enable postgresql-server
+            $ yum install postgresql-server postgresql-contrib
+            $ postgresql-setup initdb
+            $ systemctl start postgresql
+            $ systemctl enable postgresql
 
       .. tab:: OpenSUSE / SLES
 
@@ -62,9 +65,10 @@ Install PostgreSQL
             $ zypper refresh
             $ zypper install postgresql postgresql-server postgresql-contrib
             $ systemctl start postgresql
+            $ systemctl enable postgresql
 
 Only for Zammad source installations
-   The following section is only relevant if you installed Zammad from source:
+   The following steps are only relevant if you installed Zammad from source:
 
    .. include:: /install/includes/postgres-dependencies.rst
 
@@ -119,8 +123,10 @@ Install pgloader
 
    .. tab:: CentOS
 
-      Pgloader is part of yum's postgresql-package and should already
-      be available on your system.
+      .. code-block:: sh
+
+         $ yum install -y https://download.postgresql.org/pub/repos/yum/common/redhat/rhel-7-x86_64/pgloader-3.6.2-1.rhel7.x86_64.rpm
+      
 
    .. tab:: OpenSUSE / SLES
 
