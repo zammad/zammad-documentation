@@ -17,7 +17,12 @@ migration process.
 Preparation
 ===========
 
-#. Stop Zammad: ``systemctl stop zammad``
+#. Stop Zammad: 
+
+   .. code-block:: sh
+
+      $ systemctl stop zammad
+
 #. Create a backup of your instance.
 
 
