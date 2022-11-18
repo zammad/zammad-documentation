@@ -77,6 +77,8 @@ Zammad requires specific ruby versions. Adapt the commands below if you install
 older versions. A list of required versions can be found on the 
 :doc:`Software requirements </prerequisites/software>` page.
 
+.. include:: /install/includes/postgres-installation.rst
+
 .. tabs::
 
    .. tab:: Ubuntu
