@@ -197,8 +197,7 @@ Here's a sample configuration to give you an idea on how your configuration
 file could look like. Please also have a look at 
 :doc:`/appendix/configure-database-server` for deeper details.
 
-PostgreSQL
-   .. code-block::
+   .. code-block:: yaml
 
       production:
          adapter: postgresql
