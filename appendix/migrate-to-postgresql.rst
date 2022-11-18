@@ -175,8 +175,7 @@ Actual run
 Finishing
 =========
 
-After the migration has completed, you'll better clear some cache files
-and reindex elasticsearch:
+After the migration has completed, you'll better clear some cache files:
 
 .. tabs::
 
