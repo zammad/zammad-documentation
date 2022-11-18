@@ -77,8 +77,8 @@ Now you need to create an empty database in PostgreSQL.
 	  	 $ zammad run rake db:create
 
 
-Install pgloader
-================
+Install pgloader and migrate
+============================
 
 .. tabs::
 
@@ -94,6 +94,8 @@ Install pgloader
       .. code-block:: sh
 
          $ yum install -y https://download.postgresql.org/pub/repos/yum/common/redhat/rhel-7-x86_64/pgloader-3.6.2-1.rhel7.x86_64.rpm
+
+      .. TODO Something went wrong here ...
       
 
    .. tab:: OpenSUSE / SLES
@@ -126,23 +128,26 @@ adjust accordingly. And don't forget to replace ``mysql_password`` and
 ``psql_password``.
    
    
-Migration with pgloader
-=======================
+Migrate
+-------
 
-Dry run
-  You can check your configuration by running pgloader in a dry run first:
+.. tabs::
 
-  .. code-block:: sh
+   .. tab:: Dry run
+  
+      You can check your configuration by running pgloader in a dry run first:
 
-     $ pgloader --dry-run /tmp/pgloader-command
+      .. code-block:: sh
 
-Actual run
-   Once you are ready and setup you can start the migration from MySQL/MariaDB
-   to PostgreSQL:
+         $ pgloader --dry-run /tmp/pgloader-command
 
-   .. code-block:: sh
+   .. tab:: Actual run
+   
+      Once you are ready and setup you can start the actual migration:
 
-      $ pgloader --verbose /tmp/pgloader-command
+      .. code-block:: sh
+
+         $ pgloader --verbose /tmp/pgloader-command
    
    
 Finishing
