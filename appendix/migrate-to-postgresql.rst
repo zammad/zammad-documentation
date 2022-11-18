@@ -22,7 +22,6 @@ migration process.
 Preparation
 ===========
 
-#. Zammad should be updated to the latest version.
 #. Stop Zammad: ``systemctl stop zammad``
 #. Create a backup of your instance.
 
@@ -30,56 +29,50 @@ Preparation
 Install PostgreSQL
 ------------------
 
-Install PostgreSQL itself. TODO.
-
-..
-  TODO: This is duplicated content
-
-Install PostgreSQL Dependencies
-
+Install PostgreSQL
    .. tabs::
 
       .. tab:: Ubuntu / Debian
 
          .. code-block:: sh
 
-            $ apt install libpq-dev
+            $ apt update
+            $ apt install postgresql postgresql-contrib
+            $ systemctl start postgresql
 
       .. tab:: CentOS
 
          .. code-block:: sh
 
             # CentOS 7
-            $ yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-            $ yum install postgresql13-libs postgresql13-devel
+            $ yum install postgresql13-server
+            $ postgresql-13-setup initdb
+            $ systemctl start postgresql-13
+            $ systemctl enable postgresql-13
 
             # CentOS 8
-            $ yum install postgresql-libs postgresql-devel
+            $ yum install postgresql-server
+            $ systemctl start postgresql-server
+            $ systemctl enable postgresql-server
 
-      .. tab:: OpenSuSE
+      .. tab:: OpenSUSE / SLES
 
          .. code-block:: sh
 
-            $ zypper install postgresql-devel
-			
+            $ zypper refresh
+            $ zypper install postgresql postgresql-server postgresql-contrib
+            $ systemctl start postgresql
 
-Install Gems for Zammad
+Only for Zammad source installations
+   The following section is only relevant if you installed Zammad from source:
 
-  .. code-block:: sh
+   .. include:: /install/includes/postgres-dependencies.rst
 
-     $ su - zammad
-     $ bundle config set without "test development mysql"
-     $ bundle install
-
-     # CentOS 7 users - above command might fail, run the following
-     # command and repeat above bundle install.
-     # Adjust pg_config path according to your environment
-     $ gem install pg -v '0.21.0' -- --with-pg-config=/usr/pgsql-13/bin/pg_config
-
+Please also have a look at :doc:`/appendix/configure-database-server`.
 
   
 Database Credentials
-====================
+--------------------
 
 Get the credentials Zammad is currently using to access your MySQL/MariaDB
 database from ``config/database.yml``. You will need them later.
@@ -88,19 +81,7 @@ Now adjust the configuration file to fill in the credentials for your new
 PostgreSQL server. Use ``postgresql`` as ``adapter``.
 
 
-Grant user permissions for PostgreSQL
--------------------------------------
-
-If you want to use the ``db:create`` command to create an empty Zammad
-database (see further down), you should grant the system user "zammad"
-permission to do so. Otherwise you'll need to create the database yourself.
-
-.. code-block:: sh
-   
-   $ sudo -u postgres psql
-   
-   $ ALTER USER zammad CREATEDB;
-   $ EXIT;
+.. include:: /install/includes/postgres-permissions.rst
 
 
 Create empty database
@@ -127,20 +108,27 @@ Now you need to create an empty database in PostgreSQL.
 Install pgloader
 ================
 
-The easiest way is with a Debian-style package manager.
+.. tabs::
 
-   .. tabs::
+   .. tab:: Ubuntu / Debian
 
-      .. tab:: Debian-style packages
+      .. code-block:: sh
 
-         .. code-block:: sh
+         $ apt update
+         $ apt install pgloader
 
-            $ apt-get install pgloader
+   .. tab:: CentOS
 
-      .. tab:: Other
-	  	 
-		 Please refer to the official documentation:
-		 https://pgloader.readthedocs.io/en/latest/install.html
+      Pgloader is part of yum's postgresql-package and should already
+      be available on your system.
+
+   .. tab:: OpenSUSE / SLES
+
+      .. code-block:: sh
+
+         $ zypper refresh
+         $ zypper install pgloader
+
 
 
 Create command file
