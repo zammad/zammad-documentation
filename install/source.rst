@@ -147,7 +147,7 @@ older versions. A list of required versions can be found on the
       Install Ruby Environment
          .. include:: source/include-rvm-install-ruby.rst
 
-   .. tab:: OpenSuSE
+   .. tab:: OpenSUSE
 
       Install Node.js
          .. include:: /install/includes/nodejs/suse.rst
