@@ -19,7 +19,7 @@ migration process.
    please refer to the documentation of the tools used.
    
 
-Preperation
+Preparation
 ===========
 
 #. Zammad should be updated to the latest version.
