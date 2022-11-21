@@ -165,16 +165,14 @@ installed with the Zammad-Package.
 Zammad will store all content in a Database.
 You can choose between the following database servers:
 
-* MySQL 5.7+
-* MariaDB 10.3+
 * PostgreSQL 9.3+
+* MySQL 5.7+ / MariaDB 10.3+ (⚠️ deprecated with Zammad 7.0+)
 
-.. note::
+.. danger::
 
-   We tend to recommend PostgreSQL. For the last 10 years we had the best
-   experience with it.
+   .. include:: /tmp/mysql-deprication-note.rst
 
-   **Zammad requires UTF-8 for its database.**
+   .. include:: /tmp/mysql-deprication-link.rst
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 

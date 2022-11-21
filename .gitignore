@@ -1,1 +1,9 @@
-_build/*
+*.swp
+*~
+/_build
+/.vscode
+.transifexrc
+.tx
+.DS_Store
+locale/.doctrees
+

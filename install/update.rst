@@ -141,6 +141,12 @@ Updating Zammad
 
                   $ bundle install --without test development postgres
 
+               .. danger::
+
+                  .. include:: /tmp/mysql-deprication-note.rst
+
+                  .. include:: /tmp/mysql-deprication-link.rst
+
       Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.
 

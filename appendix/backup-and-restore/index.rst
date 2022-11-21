@@ -63,14 +63,6 @@ or availability.
      not work and is out of scope of this documentation as of now
    * Backup & Restore is only available for PostgreSQL and MySQL / MariaDB like
      installations
-   * Switching / Converting database installations *is not* possible
-
-        .. note::
-
-           If you require support with migrating your MySQL / MariaDB installation
-           into a PostgreSQL installation, you can contact `Zammads sales team`_
-           for commercial support.
-
    * Starting with Zammad 5.0 the scripts *require* user & password
      authentication. This is supported by most of our installation types
    * Backup & Restore is always a full dump of everything (no incrementals)
