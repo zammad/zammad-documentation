@@ -165,12 +165,9 @@ You can choose between the following database servers:
 
 .. danger::
 
-   Support for MySQL/MariaDB will be dropped in Zammad 7.0 upwards. Make sure to
-   migrate your existing instance of Zammad to PostgreSQL before that update.
+   .. include:: /tmp/mysql-deprication-note.rst
 
-   Please have a look at our guide on how to migrate an existing MySQL/MariaDB
-   instance to PostgreSQL:
-   :doc:`Proof of concept </appendix/migrate-to-postgresql>`.
+   .. include:: /tmp/mysql-deprication-link.rst
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 

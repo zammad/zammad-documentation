@@ -143,11 +143,9 @@ Updating Zammad
 
                .. danger::
 
-                  Support for MySQL/MariaDB will be dopped in Zammad 7.0 upwards. Make sure to
-                  migrate your existing instance of Zammad to PostgreSQL before that update.
+                  .. include:: /tmp/mysql-deprication-note.rst
 
-                  Please have a look at our guide on how to migrate an existing MySQL/MariaDB
-                  instance to PostgreSQL: :doc:`/appendix/migrate-to-postgresql`.
+                  .. include:: /tmp/mysql-deprication-link.rst
 
       Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.
