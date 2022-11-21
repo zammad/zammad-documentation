@@ -170,9 +170,9 @@ You can choose between the following database servers:
 
 .. danger::
 
-   .. include:: /tmp/mysql-deprication-note.rst
+   .. include:: /appendix/includes/mysql-deprication-note.rst
 
-   .. include:: /tmp/mysql-deprication-link.rst
+   .. include:: /appendix/includes/mysql-deprication-link.rst
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 
