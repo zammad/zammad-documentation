@@ -74,5 +74,3 @@ or availability.
    * *Do not* attempt to restore backup files from custom scripts with the
      provided scripts by Zammad. This is most likely subject to fail or bring
      issues you may discover too late.
-
-.. _Zammads sales team: https://zammad.com/en/company/contact
