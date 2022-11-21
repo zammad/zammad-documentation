@@ -1,8 +1,7 @@
 Migrate to PostgreSQL server
 ****************************
 
-Support for MySQL/MariaDB will be dropped in Zammad 7.0 upwards. Make sure to
-migrate your existing instance of Zammad to PostgreSQL before that update.
+.. include:: /appendix/includes/mysql-deprication-note.rst
 
 The following guide will provide you with a rough direction through that
 migration process.

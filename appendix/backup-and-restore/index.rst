@@ -68,6 +68,9 @@ or availability.
    * Backup & Restore is always a full dump of everything (no incrementals)
    * Restoring or backing up specific information (e.g. Tickets, Users, ...)
      is not supported
+   * | Switching / Converting database installations *is not* possible
+     | Refer this guide to manually switch databases:
+       :doc:`/appendix/migrate-to-postgresql`
    * Environmental settings (like e.g. :doc:`/appendix/configure-env-vars`) are
      not backed up and thus require you to manually set them on a new host
    * Restoration into a *older* Zammad version is not possible nor supported
