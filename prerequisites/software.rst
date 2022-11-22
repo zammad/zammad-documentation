@@ -23,9 +23,14 @@ requirements for your clients. This ensures that Zammad works as expected.
    * - Opera 69+
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
-     -
+     - ⚠️ Deprecated, will be removed with Zammad 7
    * - Safari 11
      -
+
+.. danger:: ⚠️ Deprecation warning ⚠️
+
+   Zammad 7 will no longer support Internet Explorer 11 environments.
+   Users using IE will be forced to use a different browser.
 
 .. note::
 
@@ -160,16 +165,14 @@ installed with the Zammad-Package.
 Zammad will store all content in a Database.
 You can choose between the following database servers:
 
-* MySQL 5.7+
-* MariaDB 10.3+
 * PostgreSQL 9.3+
+* MySQL 5.7+ / MariaDB 10.3+ (⚠️ deprecated with Zammad 7.0+)
 
-.. note::
+.. danger::
 
-   We tend to recommend PostgreSQL. For the last 10 years we had the best
-   experience with it.
+   .. include:: /appendix/includes/mysql-deprication-note.rst
 
-   **Zammad requires UTF-8 for its database.**
+   .. include:: /appendix/includes/mysql-deprication-link.rst
 
 .. warning:: **Required configuration for MySQL/MariaDB:**
 

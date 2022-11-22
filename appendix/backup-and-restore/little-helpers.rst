@@ -25,7 +25,7 @@ Database Helper: (re)set password
    Scopes
       Mostly the following installation types will be affected / relevant:
 
-         * package installations (especially CentOS & SuSe)
+         * package installations (especially CentOS & SUSE)
          * possibly source code installations
 
    Functionalities

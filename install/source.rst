@@ -77,6 +77,8 @@ Zammad requires specific ruby versions. Adapt the commands below if you install
 older versions. A list of required versions can be found on the 
 :doc:`Software requirements </prerequisites/software>` page.
 
+.. include:: /install/includes/postgres-installation.rst
+
 .. tabs::
 
    .. tab:: Ubuntu
@@ -145,7 +147,7 @@ older versions. A list of required versions can be found on the
       Install Ruby Environment
          .. include:: source/include-rvm-install-ruby.rst
 
-   .. tab:: OpenSuSE
+   .. tab:: OpenSUSE
 
       Install Node.js
          .. include:: /install/includes/nodejs/suse.rst
@@ -179,104 +181,12 @@ older versions. A list of required versions can be found on the
 | After installing bundler, rake and rails we'll need to install all required gems. 
 | The command depends on the database server you are using.
 
-.. tabs::
-
-   .. tab:: PostgreSQL (recommended)
-
-      Install PostgreSQL Dependencies
-         .. tabs::
-
-            .. tab:: Ubuntu / Debian
-
-               .. code-block:: sh
-
-                  $ apt install libpq-dev
-
-            .. tab:: CentOS
-
-               .. code-block:: sh
-
-                  # CentOS 7
-                  $ yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-                  $ yum install postgresql13-libs postgresql13-devel
-
-                  # CentOS 8
-                  $ yum install postgresql-libs postgresql-devel
-
-            .. tab:: OpenSuSE
-
-               .. code-block:: sh
-
-                  $ zypper install postgresql-devel
-
-      Install Gems for Zammad
-         .. code-block:: sh
-
-            $ su - zammad
-            $ bundle config set without "test development mysql"
-            $ bundle install
-
-            # CentOS 7 users - above command might fail, run the following
-            # command and repeat above bundle install.
-            # Adjust pg_config path according to your environment
-            $ gem install pg -v '0.21.0' -- --with-pg-config=/usr/pgsql-13/bin/pg_config
-
-   .. tab:: MySQL / MariaDB
-
-      Install MySQL/MariaDB Dependencies
-         .. tabs::
-
-            .. tab:: Ubuntu / Debian
-
-               .. code-block:: sh
-
-                  $ apt install libmariadb-dev
-
-            .. tab:: CentOS
-
-               .. code-block:: sh
-
-                  $ yum install mariadb-devel
-
-            .. tab:: OpenSuSE
-
-               .. code-block:: sh
-
-                  $ zypper install libmariadb-devel
-
-      Create database
-         While that's basically an easy step, you may want to create your
-         database as follows to minimize potential issues.
-
-         Below commands need adjustments to fit your environment.
-         Choose a safe password.
-
-         .. code-block:: sh
-
-            $ mysql
-            > create user 'zammad'@'localhost' identified by 'changeme';
-            > CREATE DATABASE zammad DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-            > GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, INDEX, DROP, ALTER, CREATE TEMPORARY TABLES,\ 
-              LOCK TABLES ON zammad.* TO 'zammad'@'localhost';
-
-
-      Install Gems for Zammad
-         .. code-block:: sh
-
-            $ su - zammad
-            $ bundle set config without "test development postgres"
-            $ bundle install
+.. include:: /install/includes/postgres-dependencies.rst
 
 Step 3: Configure database settings
 -----------------------------------
 
-.. tip::
-
-   **🤓 For easiest usage ...**
-
-   If you provide your Zammad user with database creation permission, you can 
-   run the step 4 without adjustment. If you don't want that, you'll have to 
-   create the database manually.
+.. include:: /install/includes/postgres-permissions.rst
 
 .. code-block:: sh
 
@@ -287,45 +197,28 @@ Here's a sample configuration to give you an idea on how your configuration
 file could look like. Please also have a look at 
 :doc:`/appendix/configure-database-server` for deeper details.
 
-.. tabs::
+   .. code-block:: yaml
 
-   .. tab:: PostgreSQL
+      production:
+         adapter: postgresql
+         database: zammad
+         pool: 50
+         timeout: 5000
+         encoding: utf8
+         username: zammad
+         password: changeme
 
-      .. code-block::
+.. hint:: 
 
-         production:
-           adapter: postgresql
-           database: zammad
-           pool: 50
-           timeout: 5000
-           encoding: utf8
-           username: zammad
-           password: changeme
+   You can remove the ``password`` line if you enable socket based 
+   authentication!
 
-      .. hint:: 
+.. hint:: 
 
-         You can remove the ``password`` line if you enable socket based 
-         authentication!
+   If you want to use an existing database server that's not on the same 
+   machine, you can also use ``host`` and ``port`` to set that up.
 
-   .. tab:: MySQL / MariaDB
-
-      .. code-block::
-
-         production:
-           adapter: mysql2
-           database: zammad
-           pool: 50
-           timeout: 5000
-           encoding: utf8
-           username: zammad
-           password: changeme
-
-   .. hint:: 
-
-      If you want to use an existing database server that's not on the same 
-      machine, you can also use ``host`` and ``port`` to set that up.
-
-   .. include:: /install/source/include-chmod-database-yml.rst
+.. include:: /install/source/include-chmod-database-yml.rst
 
 Step 4: Initialize your database
 --------------------------------
