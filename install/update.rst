@@ -143,9 +143,9 @@ Updating Zammad
 
                .. danger::
 
-                  .. include:: /appendix/includes/mysql-deprication-note.rst
+                  .. include:: /appendix/includes/mysql-deprecation-note.rst
 
-                  .. include:: /appendix/includes/mysql-deprication-link.rst
+                  .. include:: /appendix/includes/mysql-deprecation-link.rst
 
       Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.

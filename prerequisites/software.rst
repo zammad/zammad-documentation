@@ -163,30 +163,14 @@ installed with the Zammad-Package.
 --------------------
 
 Zammad will store all content in a Database.
-You can choose between the following database servers:
 
 * PostgreSQL 9.3+
-* MySQL 5.7+ / MariaDB 10.3+ (⚠️ deprecated with Zammad 7.0+)
 
 .. danger::
 
-   .. include:: /appendix/includes/mysql-deprication-note.rst
+   .. include:: /appendix/includes/mysql-deprecation-note.rst
 
-   .. include:: /appendix/includes/mysql-deprication-link.rst
-
-.. warning:: **Required configuration for MySQL/MariaDB:**
-
-   * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
-   * Set ``max_allowed_packet`` to a value larger than the default of 4 MB
-     (64 MB+ recommended).
-
-   You may also want to consider the following settings for your MySQL server::
-
-      innodb_file_format = Barracuda
-      innodb_file_per_table = on
-      innodb_default_row_format = dynamic
-      innodb_large_prefix = 1
-      innodb_file_format_max = Barracuda
+   .. include:: /appendix/includes/mysql-deprecation-link.rst
 
 2.5. Node.js
 ------------
