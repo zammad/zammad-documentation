@@ -11,12 +11,12 @@ migration process.
    As the technical details may differ from system to system, this guide
    comes without any warranty. Please proceed at your own risk. In doubt
    please refer to the documentation of the tools used.
-
+   
 
 Preparation
 ===========
 
-#. Stop Zammad:
+#. Stop Zammad: 
 
    .. code-block:: sh
 
@@ -63,16 +63,16 @@ Now you need to create an empty database in PostgreSQL.
 .. tabs::
 
    .. tab:: Source installation
-
+      
 	  .. code-block:: sh
-
+	     
 		 $ su - zammad
 		 $ rake db:create
-
+		 
    .. tab:: Package installation
-
+  
       .. code-block:: sh
-
+	     
 	  	 $ zammad run rake db:create
 
 
@@ -122,15 +122,15 @@ Create a command file for pgloader for example in ``/tmp/pgloader-command``:
 If your database names and/or database usernames are different from ``zammad``
 adjust accordingly. And don't forget to replace ``mysql_password`` and
 ``psql_password``.
-
-
+   
+   
 Migrate
 -------
 
 .. tabs::
 
    .. tab:: Dry run
-
+  
       You can check your configuration by running pgloader in a dry run first:
 
       .. code-block:: sh
@@ -138,14 +138,14 @@ Migrate
          $ pgloader --dry-run /tmp/pgloader-command
 
    .. tab:: Actual run
-
+   
       Once you are ready and setup you can start the actual migration:
 
       .. code-block:: sh
 
          $ pgloader --verbose /tmp/pgloader-command
-
-
+   
+   
 Finishing
 =========
 
@@ -154,18 +154,18 @@ After the migration has completed, you'll better clear some cache files:
 .. tabs::
 
    .. tab:: Source installation
-
+      
 	  .. code-block:: sh
-
+	     
 		 $ su - zammad
 		 $ rails r 'Rails.cache.clear'
-
+		 
 		 # Run as root
 		 $ systemctl start zammad
-
+		 
    .. tab:: Package installation
-
+  
       .. code-block:: sh
-
+	     
 	  	 $ zammad run rails r 'Rails.cache.clear'
 		 $ systemctl start zammad

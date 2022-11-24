@@ -61,7 +61,8 @@ or availability.
 
    * Restoration via script on docker and source code based installations may
      not work and is out of scope of this documentation as of now
-   * Backup & Restore is only available for PostgreSQL installations
+   * Backup & Restore is only available for PostgreSQL and MySQL / MariaDB like
+     installations
    * Starting with Zammad 5.0 the scripts *require* user & password
      authentication. This is supported by most of our installation types
    * Backup & Restore is always a full dump of everything (no incrementals)

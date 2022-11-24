@@ -1,18 +1,19 @@
 Configure Database server
 *************************
 
-.. note::
+.. note:: 
 
+   Parts of this page also applies to both supported database servers. 
    We can't provide a complete how to and will only enlighten the relevant parts for Zammad.
 
-Within ``database.yml`` (``config/`` directory) you can define the allowed pool size.
+Within ``database.yml`` (``config/`` directory) you can define the allowed pool size. 
 By default each Zammad process takes up to ``50`` connections (``pool: 50``).
 
-This should be fairly enough for *every* use case.
-If you experience database connection timeouts or similar pool errors, this usually
+This should be fairly enough for *every* use case. 
+If you experience database connection timeouts or similar pool errors, this usually 
 indicates to other issues that are relevant to your PostgreSQL.
 
-Below you can find the locations of the relevant PostgreSQL configuration files to adjust.
+Below you can find the locations of the relevant PostgreSQL configuration files to adjust. 
 Keep in mind that versions may differ from your setup - adapt where needed.
 
 .. tabs::
@@ -31,7 +32,7 @@ Keep in mind that versions may differ from your setup - adapt where needed.
 
    .. tab:: other
 
-      Can't find your configuration files?
+      Can't find your configuration files? 
       You can run the following command to get the path:
 
       .. code-block:: sh
@@ -50,9 +51,9 @@ Adjust ``max_connections`` (mandatory)
       $ systemctl restart postgresql zammad
 
 Adjust PostgreSQL for bigger instances (optional)
-   .. warning::
+   .. warning:: 
 
-      Check below settings first and ensure your system is able to provide the requirements!
+      Check below settings first and ensure your system is able to provide the requirements! 
       Below settings are what we found to be useful, everything else is out of scope of this documentation!
 
    .. code-block:: sh
