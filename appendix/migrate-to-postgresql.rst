@@ -11,7 +11,22 @@ migration process.
    As the technical details may differ from system to system, this guide
    comes without any warranty. Please proceed at your own risk. In doubt
    please refer to the documentation of the tools used.
-   
+
+.. danger:: **☠️ This path is broken for specific fields ☠️**
+
+   Please note that this migration path potentially breaks the following things
+   in Zammad 5.x:
+
+   * public links
+   * ticket / user / organization / group attributes of the type:
+
+      * multiple tree selection field
+      * multiple selection field
+
+   Please see `Issue 4431`_ for further information. If you can wait, consider
+   avoiding to migrate right now.
+
+.. _Issue 4431: https://github.com/zammad/zammad/issues/4431
 
 Preparation
 ===========
