@@ -81,8 +81,8 @@ Step 6: Backup!
       :doc:`configuration page </appendix/backup-and-restore/configuration>`.
 
 Step 7: Transfer your backup files
-   You'll find the backup location within the ``config`` file on the backup
-   directory (`/opt/zammad/contrib/backup`). Make sure to adjust the backup configuration on the destination
+   You'll find the backup location within the ``config`` file in the backup
+   directory. Make sure to adjust the backup configuration on the destination
    host according to our
    :doc:`configuration page </appendix/backup-and-restore/configuration>`
    to provide the correct backup file directory.
