@@ -90,9 +90,20 @@ Create a command file for pgloader with:
          $ rake zammad:db:pgloader > /tmp/pgloader-command
 
 
-Afterwards you need to align the created file with the needed information.
-If your database names and/or database usernames are different from ``zammad``
-adjust accordingly. And don't forget to replace ``psql_password``.
+Afterwards, you need to tweak the created file with the correct URL
+of the target PostgreSQL server.
+
+.. code-block:: cfg
+
+   -- Adjust the PostgreSQL URL below to correct value before executing this command file.
+   INTO pgsql://zammad:pgsql_password@localhost/zammad
+
+
+You will at least need to replace ``psql_password`` placeholder in the provided
+example.
+
+Verify the rest of the MySQL credentials in the command file, they should reflect the
+configuration of your current environment.
 
 
 Database Credentials
