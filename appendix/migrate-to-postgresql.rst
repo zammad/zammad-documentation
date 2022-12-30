@@ -78,9 +78,9 @@ Create a command file for pgloader with:
 
    .. tab:: Package installation
 
-   .. code-block:: sh
+      .. code-block:: sh
 
-      $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
+         $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
    .. tab:: Source installation
 
@@ -123,11 +123,11 @@ Now you need to create an empty database in PostgreSQL.
 
 .. tabs::
 
-    .. tab:: Package installation
+   .. tab:: Package installation
 
-    .. code-block:: sh
+      .. code-block:: sh
 
-      $ zammad run rake db:create
+         $ zammad run rake db:create
 
    .. tab:: Source installation
 
