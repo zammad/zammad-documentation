@@ -12,26 +12,11 @@ migration process.
    comes without any warranty. Please proceed at your own risk. In doubt
    please refer to the documentation of the tools used.
 
-.. danger:: **☠️ This path is broken for specific fields ☠️**
-
-   Please note that this migration path potentially breaks the following things
-   in Zammad 5.x:
-
-   * public links
-   * ticket / user / organization / group attributes of the type:
-
-      * multiple tree selection field
-      * multiple selection field
-
-   Please see `Issue 4431`_ for further information. If you can wait, consider
-   avoiding to migrate right now.
-
-.. _Issue 4431: https://github.com/zammad/zammad/issues/4431
 
 Preparation
 ===========
 
-#. Stop Zammad: 
+#. Stop Zammad:
 
    .. code-block:: sh
 
@@ -57,42 +42,9 @@ Please also have a look at :doc:`/appendix/configure-database-server`.
 
       .. include:: /install/includes/postgres-dependencies.rst
 
-Database Credentials
---------------------
 
-Get the credentials Zammad is currently using to access your MySQL/MariaDB
-database from ``config/database.yml``. You will need them later.
-
-Now adjust the configuration file to fill in the credentials for your new
-PostgreSQL server. Use ``postgresql`` as ``adapter``.
-
-
-.. include:: /install/includes/postgres-permissions.rst
-
-
-Create empty database
----------------------
-
-Now you need to create an empty database in PostgreSQL.
-
-.. tabs::
-
-   .. tab:: Source installation
-      
-	  .. code-block:: sh
-	     
-		 $ su - zammad
-		 $ rake db:create
-		 
-   .. tab:: Package installation
-  
-      .. code-block:: sh
-	     
-	  	 $ zammad run rake db:create
-
-
-Install pgloader and migrate
-============================
+Install pgloader
+----------------
 
 .. tabs::
 
@@ -117,35 +69,81 @@ Install pgloader and migrate
          $ zypper install pgloader
 
 
+Create pgloader command file
+----------------------------
 
-Create command file
--------------------
+Create a command file for pgloader with:
 
-Create a command file for pgloader for example in ``/tmp/pgloader-command``:
+.. tabs::
+
+   .. tab:: Package installation
+
+      .. code-block:: sh
+
+         $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
+
+   .. tab:: Source installation
+
+      .. code-block:: sh
+
+         $ su - zammad
+         $ rake zammad:db:pgloader > /tmp/pgloader-command
+
+
+Afterwards, you need to tweak the created file with the correct URL
+of the target PostgreSQL server.
 
 .. code-block:: cfg
 
+   -- Adjust the PostgreSQL URL below to correct value before executing this command file.
+   INTO pgsql://zammad:pgsql_password@localhost/zammad
 
-   LOAD DATABASE
-		FROM mysql://zammad:mysql_password@localhost/zammad
-		INTO pgsql://zammad:pgsql_password@localhost/zammad
 
-   ALTER SCHEMA 'zammad' RENAME TO 'public'
+You will at least need to replace ``psql_password`` placeholder in the provided
+example.
 
-   WITH BATCH CONCURRENCY = 1;
+Verify the rest of the MySQL credentials in the command file, they should reflect the
+configuration of your current environment.
 
-If your database names and/or database usernames are different from ``zammad``
-adjust accordingly. And don't forget to replace ``mysql_password`` and
-``psql_password``.
-   
-   
+
+Database Credentials
+--------------------
+
+Adjust the configuration file to fill in the credentials for your new
+PostgreSQL server. Use ``postgresql`` as ``adapter``.
+
+
+.. include:: /install/includes/postgres-permissions.rst
+
+
+Create empty database
+---------------------
+
+Now you need to create an empty database in PostgreSQL.
+
+.. tabs::
+
+   .. tab:: Package installation
+
+      .. code-block:: sh
+
+         $ zammad run rake db:create
+
+   .. tab:: Source installation
+
+      .. code-block:: sh
+
+         $ su - zammad
+         $ rake db:create
+
+
 Migrate
--------
+=======
 
 .. tabs::
 
    .. tab:: Dry run
-  
+
       You can check your configuration by running pgloader in a dry run first:
 
       .. code-block:: sh
@@ -153,14 +151,14 @@ Migrate
          $ pgloader --dry-run /tmp/pgloader-command
 
    .. tab:: Actual run
-   
+
       Once you are ready and setup you can start the actual migration:
 
       .. code-block:: sh
 
          $ pgloader --verbose /tmp/pgloader-command
-   
-   
+
+
 Finishing
 =========
 
@@ -168,19 +166,19 @@ After the migration has completed, you'll better clear some cache files:
 
 .. tabs::
 
-   .. tab:: Source installation
-      
-	  .. code-block:: sh
-	     
-		 $ su - zammad
-		 $ rails r 'Rails.cache.clear'
-		 
-		 # Run as root
-		 $ systemctl start zammad
-		 
    .. tab:: Package installation
-  
+
       .. code-block:: sh
-	     
-	  	 $ zammad run rails r 'Rails.cache.clear'
-		 $ systemctl start zammad
+
+         $ zammad run rails r 'Rails.cache.clear'
+         $ systemctl start zammad
+
+   .. tab:: Source installation
+
+      .. code-block:: sh
+
+         $ su - zammad
+         $ rails r 'Rails.cache.clear'
+
+         # Run as root
+         $ systemctl start zammad
