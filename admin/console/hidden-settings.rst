@@ -133,3 +133,16 @@ If you want to check the current setting, you can simply run the below code.
 .. code-block:: ruby
 
    >> Setting.get('html_email_css_font')
+
+Highlight customer's open ticket count
+--------------------------------------
+
+This option enhances the selected customer's open tickets count. It highlights the count in different colors if they hit a threshold.
+
+.. code-block:: ruby
+
+   >> Setting.set('ui_sidebar_open_ticket_indicator_colored', true)
+
+Sample of the above setting:
+
+.. image:: /images/console/ui_sidebar_open_ticket_indicator_colored.png
