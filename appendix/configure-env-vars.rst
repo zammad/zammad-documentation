@@ -18,12 +18,22 @@ Use these environment variables to configure Zammad’s behavior at runtime.
       $ zammad config:set OPTION=value
       $ systemctl restart zammad
 
+      # get OPTION
+      $ zammad config:get OPTION
+
       # unset OPTION
       $ zammad config:unset OPTION
       $ systemctl restart zammad
 
    To learn more, do some googling on environment variables
    and the shell environment (or execution environment) in Unix.
+
+.. important::
+
+   While below options and remarks affect all installation types of Zammad,
+   please note that environment variables mentioned may be named different for
+   installations based on :doc:`docker-compose </install/docker-compose>` and
+   :doc:`kubernetes </install/kubernetes>`.
 
 General Options
 ===============
@@ -38,6 +48,12 @@ APP_RESTART_CMD
    after making changes in the Object Manager.
 
    Default: **unset**
+
+   .. note::
+
+      Please keep in mind that Zammad runs as unprivileged user. This means
+      that you have to allow the Zammad user via e.g. ``sudoers`` to run
+      the required restart command.
 
 RAILS_LOG_TO_STDOUT
    Print output directly to standard output
@@ -91,6 +107,13 @@ ZAMMAD_WEBSOCKET_PORT
    there is a point at which performance will begin to degrade rather than
    improve, or other problems will begin to crop up.
 
+.. danger::
+
+   Below settings *may* consume all available database connections.
+   Please consider the 
+   :doc:`database server configuration </appendix/configure-database-server>` 
+   section for more.
+
 .. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
 
    .. code-block:: sh
@@ -121,12 +144,41 @@ ZAMMAD_SESSION_JOBS_CONCURRENT
 
    Default: **unset**
 
-.. warning::
+ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
+   Allows spawning an independent process just for processing scheduled jobs
+   like LDAP syncs. This can free up Zammads background worker for other tasks
+   when running tasks that require fairly long.
 
-   Above settings *may* consume all available database connections.
-   Please consider the 
-   :doc:`database server configuration </appendix/configure-database-server>` 
-   section for more.
+   | Default: **unset**
+   | Maximum number of workers: ``1``
+
+   .. danger::
+
+      Disable processing of scheduled jobs by setting
+      ``ZAMMAD_PROCESS_SCHEDULED_JOBS_DISABLE``.
+
+      Doing so on productive instances will draw important parts of your
+      instance not working. **WE STRONGLY** encourage against using this flag.
+
+ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
+   How many processes should work on delayed jobs?
+
+   Increasing this *can* improve issues with delayed jobs stacking up in your
+   system. You may want to try to use ``ZAMMAD_SESSION_JOBS_CONCURRENT`` before
+   though.
+
+   | Default: **unset**
+   | Maximum number of workers: ``16``
+
+   .. warning:: 🥵 **This option can be *very* CPU-intensive.**
+
+   .. danger::
+
+      Disable processing of delayed jobs by setting
+      ``ZAMMAD_PROCESS_DELAYED_JOBS_DISABLE``.
+
+      Doing so on productive instances will draw important parts of your
+      instance not working. **WE STRONGLY** encourage against using this flag.
 
 --------------------------------------------------------------------------------
 

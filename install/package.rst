@@ -1,11 +1,11 @@
 Install from package
 ********************
 
-.. note:: 
+.. note::
 
-   | Please ensure to meet Zammads :doc:`/prerequisites/software` requirements 
-     before hand.
-   | This page expects administrative permissions, this is why ``sudo`` is 
+   | Please ensure to meet Zammads :doc:`/prerequisites/software` requirements
+     beforehand.
+   | This page expects administrative permissions, this is why ``sudo`` is
      not used.
 
 Prerequisites
@@ -14,7 +14,7 @@ Prerequisites
 Additional software dependencies
 --------------------------------
 
-In addition to already mentioned :ref:`Package dependencies <package_dependencies>`, 
+In addition to already mentioned :ref:`Package dependencies <package_dependencies>`,
 some operating systems may require additional packages if not already installed.
 
 .. tabs::
@@ -22,7 +22,7 @@ some operating systems may require additional packages if not already installed.
    .. tab:: Ubuntu / Debian
 
       .. code-block:: sh
-      
+
          $ apt install curl apt-transport-https gnupg
 
    .. tab:: CentOS
@@ -34,44 +34,10 @@ some operating systems may require additional packages if not already installed.
          # CentOS 7
          $ yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 
-(optional) Node.js
-~~~~~~~~~~~~~~~~~~
-
-Zammad requires Node.js for compiling its assets.
-Package installations by default come shipped with assets compiled already.
-
-You'll only have to install ``Node.js`` in case you're going to change
-``CSS`` or ``JS`` files.
-
-.. tabs::
-
-   .. tab:: Ubuntu
-
-      .. include:: /install/includes/nodejs/ubuntu.rst
-
-   .. tab:: Debian
-
-      .. include:: /install/includes/nodejs/debian.rst
-
-   .. tab:: CentOS
-
-      .. include:: /install/includes/nodejs/centos.rst
-
-   .. tab:: OpenSUSE / SLES
-
-      .. include:: /install/includes/nodejs/suse.rst
-
 .. include:: /install/includes/prerequisites.rst
 
 Add Repository and install Zammad
 =================================
-
-.. hint:: 
-
-   If you want to use MySQL instead of PostgreSQL, it's usually enough to have 
-   the MySQL server installed on your system already. Some installation 
-   managers can't differentiate and still install Zammad with PostgreSQL. In 
-   that case, you'll have to adapt manually (out of scope of this documentation).
 
 Add Repository
    .. tabs::
@@ -189,8 +155,8 @@ Install Zammad
             # general
             $ yum install zammad
 
-         Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with 
-         packager.io on CentOS 8 you'll need to correct file permissions for 
+         Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
+         packager.io on CentOS 8 you'll need to correct file permissions for
          public files.
 
          .. code-block:: sh
@@ -200,7 +166,7 @@ Install Zammad
       .. tab:: OpenSUSE / SLES
 
          .. code-block:: sh
-         
+
             $ zypper ref
             $ zypper install zammad
 

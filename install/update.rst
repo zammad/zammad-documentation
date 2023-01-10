@@ -1,7 +1,7 @@
 Updating Zammad
 ***************
 
-.. note:: 
+.. note::
 
    🙈 Better safe than sorry
       Before updating to a new version, please have a look into the
@@ -24,7 +24,7 @@ Updating Zammad
       version of Zammad being 5.1 and your instance being on Zammad 2.4, your
       path would look like so:
       ``2.4`` → ``3.0`` → ``4.0`` → ``5.0`` → ``latest stable (5.1)``
- 
+
 .. _release notes: https://zammad.com/en/releases
 .. _Zammad hosting: https://zammad.com/en/pricing
 
@@ -33,7 +33,7 @@ Updating Zammad
    .. tab:: Package
 
       Step 1: Ensure dependencies
-         Before proceeding, double-check that your system environment matches 
+         Before proceeding, double-check that your system environment matches
          :doc:`Zammad’s requirements </prerequisites/software>`.
 
       Step 2: Stop Zammad
@@ -47,7 +47,7 @@ Updating Zammad
       Step 4: Clear Zammad cache
          .. code-block:: sh
 
-            $ zammad run rails r "Cache.clear"
+            $ zammad run rails r "Rails.cache.clear"
 
       Step 5: Update Zammad
          .. tabs::
@@ -74,13 +74,13 @@ Updating Zammad
 
          .. warning::
 
-            The package comes with maintenance scripts that will run regular 
+            The package comes with maintenance scripts that will run regular
             tasks during updates for you.
 
             | **However**
-            | Do not run Zammad updates unattended and **always** have a look 
-              on the outputs these helper scripts generate. Ignoring said 
-              output may lead to incomplete updates that may corrupt data or 
+            | Do not run Zammad updates unattended and **always** have a look
+              on the outputs these helper scripts generate. Ignoring said
+              output may lead to incomplete updates that may corrupt data or
               lead to issues you find *way too late*.
 
       Step 6: Run required extra steps
@@ -93,13 +93,19 @@ Updating Zammad
 
    .. tab:: Source
 
+      .. danger::
+
+         Zammad's former ``scheduler.rb`` script has changed and is now called
+         ``background-worker.rb``. Please ensure to reinstall the service - see
+         :ref:`source-install-systemd-reference`!
+
       Step 1: Ensure dependencies
-         Before proceeding, double-check that your system environment matches 
+         Before proceeding, double-check that your system environment matches
          :doc:`Zammad’s requirements </prerequisites/software>`.
 
          .. tip:: **🤓 Ruby version changed?**
 
-            Please see 
+            Please see
             :ref:`Installation part of source code installation <source_dependency_installation>`
 
       Step 2: Stop Zammad and Clear Zammad cache
@@ -107,7 +113,7 @@ Updating Zammad
 
          .. code-block:: sh
 
-            $ rails r "Cache.clear"
+            $ rails r "Rails.cache.clear"
 
       Step 3: Download Zammad to your system
          .. include:: /install/source/include-get-the-source.rst
@@ -135,6 +141,12 @@ Updating Zammad
 
                   $ bundle install --without test development postgres
 
+               .. danger::
+
+                  .. include:: /appendix/includes/mysql-deprication-note.rst
+
+                  .. include:: /appendix/includes/mysql-deprication-link.rst
+
       Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.
 
@@ -145,25 +157,32 @@ Updating Zammad
             $ rake db:migrate
             $ rake assets:precompile
 
-      Step 7: Start Zammad services
+      Step 7: Synchronize Zammad's translation files
+         .. code-block:: sh
+
+            $ su - zammad # ignore if you haven't exited the Zammad user
+            $ rails r "Locale.sync"
+            $ rails r "Translation.sync"
+
+      Step 8: Start Zammad services
          Start the application server, web socket server and scheduler.
 
-      Step 8: Log into Zammad
+      Step 9: Log into Zammad
          Yes, that's it!
 
    .. tab:: Docker Compose
 
-      .. warning:: 
+      .. warning::
 
          ⚠️ **Updates may require extra steps or introduce breaking changes.**
 
-         Always check the 
-         `upgrade notes <https://github.com/zammad/zammad-docker-compose#upgrading>`_ 
+         Always check the
+         `upgrade notes <https://github.com/zammad/zammad-docker-compose#upgrading>`_
          first.
 
       .. note:: **🙀 Incomplete documentation**
 
-         Sorry, but this documentation part is outdated. 
+         Sorry, but this documentation part is outdated.
          We will rework this part later, but can't tell when yet.
 
          Please feel welcome to provide a pull request if you find spare time!
@@ -199,29 +218,35 @@ Updating Elasticsearch
 
 .. warning::
 
-   Updating Elasticsearch **does not** automatically update it's plugins! 
-   This usually isn't an issue if Zammad is being updated right after 
+   Updating Elasticsearch **does not** automatically update it's plugins!
+   This usually isn't an issue if Zammad is being updated right after
    Elasticsearch.
 
-If you want to upgrade your elasticsearch installation, please take a look at the 
+If you want to upgrade your elasticsearch installation, please take a look at the
 `elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
 as it will have the most current information for you.
 
-If, for whatever reason, you need to rebuild your search index after upgrading, 
+If, for whatever reason, you need to rebuild your search index after upgrading,
 use:
 
 .. code-block:: sh
 
-   $ zammad run rake searchindex:rebuild
+   $ zammad run rake zammad:searchindex:rebuild
 
-.. warning:: 
+.. hint:: **🤓 Zammad 5.2 comes with changes**
 
-   This step may fail if Zammad is under heavy load: Elasticsearch locks the 
-   indices from deletion if you're pumping in new data, like receiving a new 
+   As of Zammad 5.2 the reindex command has changed!
+   You will still be able to use the old method until Zammad 6, however, will
+   receive a deprecation warning.
+
+.. warning::
+
+   This step may fail if Zammad is under heavy load: Elasticsearch locks the
+   indices from deletion if you're pumping in new data, like receiving a new
    ticket. (This only applies to single-node deployments, not clusters.)
-   
+
    If it does, try killing Zammad first::
-   
+
       $ systemctl stop zammad
-      $ zammad run rake searchindex:rebuild
+      $ zammad run rake zammad:searchindex:rebuild
       $ systemctl start zammad

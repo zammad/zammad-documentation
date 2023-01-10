@@ -63,24 +63,17 @@ or availability.
      not work and is out of scope of this documentation as of now
    * Backup & Restore is only available for PostgreSQL and MySQL / MariaDB like
      installations
-   * Switching / Converting database installations *is not* possible
-
-        .. note::
-
-           If you require support with migrating your MySQL / MariaDB installation
-           into a PostgreSQL installation, you can contact `Zammads sales team`_
-           for commercial support.
-
    * Starting with Zammad 5.0 the scripts *require* user & password
      authentication. This is supported by most of our installation types
    * Backup & Restore is always a full dump of everything (no incrementals)
    * Restoring or backing up specific information (e.g. Tickets, Users, ...)
      is not supported
+   * | Switching / Converting database installations *is not* possible
+     | Refer this guide to manually switch databases:
+       :doc:`/appendix/migrate-to-postgresql`
    * Environmental settings (like e.g. :doc:`/appendix/configure-env-vars`) are
      not backed up and thus require you to manually set them on a new host
    * Restoration into a *older* Zammad version is not possible nor supported
    * *Do not* attempt to restore backup files from custom scripts with the
      provided scripts by Zammad. This is most likely subject to fail or bring
      issues you may discover too late.
-
-.. _Zammads sales team: https://zammad.com/en/company/contact

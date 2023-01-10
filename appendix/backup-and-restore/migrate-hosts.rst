@@ -22,7 +22,7 @@ Migrate Zammad to new host
 
 .. hint::
 
-   Migrating from Zammad SaaS? Skip to *step 6*.
+   Migrating from Zammad SaaS? Skip to *step 7*.
 
 Step 1: Note down your environmental adjustments
    This mainly affects :ref:`performance tuning settings <performance_tuning>`.
@@ -81,7 +81,7 @@ Step 6: Backup!
       :doc:`configuration page </appendix/backup-and-restore/configuration>`.
 
 Step 7: Transfer your backup files
-   You'll find the backup location within the ``conf`` file on the backup
+   You'll find the backup location within the ``config`` file in the backup
    directory. Make sure to adjust the backup configuration on the destination
    host according to our
    :doc:`configuration page </appendix/backup-and-restore/configuration>`
@@ -206,6 +206,18 @@ Step 11: Re-enable Channels and deactivate maintenance mode
    customers back in by disabling the maintenance mode.
 
    `Learn more about the maintenance mode in Zammad`_.
+
+   .. hint:: *Migrated from Zammad SaaS or switching providers?*
+
+      Please make sure that your `notification`_ and `FQDN`_ configuration
+      is still correct. Other wise you may have unexpected issues like not
+      receiving notifications or non functional authentications (3rd party).
+
+.. _notification:
+   https://admin-docs.zammad.org/en/latest/channels/email/accounts/email-notification.html
+
+.. _FQDN:
+   https://admin-docs.zammad.org/en/latest/settings/system/base.html
 
 Step 12 (optional): Update Zammad to latest possible version
    In case the backup source was not on the latest possible version, please

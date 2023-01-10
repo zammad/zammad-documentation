@@ -66,12 +66,7 @@ The Zammad documentation consists of three parts:
    :caption: Contributing / Development
 
    /contributing/start
-   /contributing/branches
-   /contributing/packages
-   /contributing/ci
-   /contributing/code-quality
-   /contributing/install-docker
-   /contributing/install-vagrant
+   /contributing/supported-versions-branches
 
 
 .. toctree::
@@ -86,18 +81,10 @@ The Zammad documentation consists of three parts:
    /api/calendar
    /api/sla
    /api/ticket
+   /api/generic-cti/index
    /api/notification
    /api/object
    /api/user-access-token
-
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: CTI API
-
-   /cti/api-intro
-   /cti/api-push
 
 
 .. toctree::
@@ -109,6 +96,8 @@ The Zammad documentation consists of three parts:
    /appendix/backup-and-restore/index
    /appendix/configure-env-vars
    /appendix/configure-database-server
+   /appendix/migrate-to-postgresql
    /appendix/privacy
+   /appendix/troubleshooting/index
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
