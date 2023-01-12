@@ -1,5 +1,5 @@
-Get the latest stable release of Zammad `here <https://github.com/zammad/zammad/archive/stable.tar.gz>`_,
-or find the initial version at https://ftp.zammad.com.
+Get the latest stable release of Zammad `here <https://ftp.zammad.com/zammad-latest.tar.gz>`_.
+This file will be updated whenever new bug-fixes are applied, so you can update from this URL regularly.
 
 .. code-block:: sh
 
