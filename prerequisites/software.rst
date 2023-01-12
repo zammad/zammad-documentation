@@ -81,13 +81,14 @@ If you want to install Zammad, you need the following software.
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
 | The following Ruby version is supported:
-| ``Ruby 3.0.4``
+| ``Ruby 3.1.3``
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
-   "5.2+", "3.0.4"
+   "5.4+", "3.1.3"
+   "5.2 - 5.3", "3.0.4"
    "5.0 - 5.1", "2.7.4"
    "3.4.1 - 4.1", "2.6.6"
    "3.4.0", "2.6.5"
@@ -106,7 +107,7 @@ Below you can find all distributions Zammad provides packages for.
    "CentOS / RHEL", "7 & 8"
    "Debian", "9, 10 & 11"
    "⚠ OpenSuSE / SLES", "Leap 42.3 / 12"
-   "Ubuntu", "16.04, 18.04 & 20.04"
+   "Ubuntu", "16.04, 18.04, 20.04 & 22.04"
 
 .. warning:: **⚠ SuSE users be aware**
 
@@ -115,12 +116,6 @@ Below you can find all distributions Zammad provides packages for.
 
    If you're not running a docker-compose or package installation please
    consider changing to a different distribution that's supported.
-
-.. danger:: **☠️ Incompatibility warning for Ubuntu 22.04 LTS ☠️**
-
-   Please note that due to Ubuntu's dependencies, Zammad currently **is not**
-   compatible to Ubuntu 22. This affects *all installation types* except
-   for docker style installations!
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 
