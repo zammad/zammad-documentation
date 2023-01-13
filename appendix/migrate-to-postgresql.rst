@@ -6,6 +6,11 @@ Migrate to PostgreSQL server
 The following guide will provide you with a rough direction through that
 migration process.
 
+.. note:: **🤓 Zammad version requirement ahead**
+
+   Below commands will only work with Zammad 5.3.0 or higher.
+   Please make sure to update the latest (MySQL supported) version first.
+
 .. warning:: **Proof of concept ahead**
 
    As the technical details may differ from system to system, this guide
