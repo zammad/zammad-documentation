@@ -619,6 +619,22 @@ The value of this header can be one of the following:
 
 On behalf of is available for all endpoints.
 
+Advanced search queries
+=======================
+
+For searching for multiple parameter:value pairs with restriction to match all parameters, they can be AND-cascaded by using ``%20AND%20``
+
+So a query would look like this:
+
+``users/search?query=name:Smith%20AND%20organization.id:1234``
+
+Also Elastic search normaly uses the index for search.
+This can result in strange behaviour on email-addresses or multipart names.
+To prevent this you can use the ``.keyword`` modifier on the parameter.
+
+E.g.
+``users/search?query=email.keyword:peter.smith@example.com``
+
 Encoding
 ========
 
