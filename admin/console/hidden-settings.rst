@@ -137,7 +137,8 @@ If you want to check the current setting, you can simply run the below code.
 Highlight customer's open ticket count
 --------------------------------------
 
-This option enhances the selected customer's open tickets count. It highlights the count in different colors if they hit a threshold.
+This option enhances the selected customer's open tickets count. It highlights
+the count in different colors if they hit a threshold.
 
 .. code-block:: ruby
 
