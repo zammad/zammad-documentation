@@ -199,7 +199,7 @@ Adjusting the webserver configuration
 
          .. code-block:: sh
          
-            $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/nginx/sites-enabled/zammad.conf
+            $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/nginx/sites-available/zammad.conf
 
          .. note::
 
@@ -209,7 +209,7 @@ Adjusting the webserver configuration
 
                * ``/etc/nginx/conf.d/``
                * ``/etc/nginx/vhosts.d/``
-               * ``/etc/nginx/sites-enabled/``
+               * ``/etc/nginx/sites-available/``
 
       Step 2 - Adjust the config file
          Adjust the just copied file with a text editor of your choice (e.g. 
@@ -281,7 +281,7 @@ Adjusting the webserver configuration
 
          .. code-block:: sh
          
-            $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-enabled/zammad.conf
+            $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-available/zammad.conf
 
          .. note::
 
