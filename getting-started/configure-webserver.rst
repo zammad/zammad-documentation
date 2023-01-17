@@ -76,6 +76,18 @@ The guide within the tabs below can help you jumping in.
 
                The most reliable way is to use the method for your webserver.
 
+            .. note::
+
+               acme.sh by default no longer uses letsencrypt.
+               For this reason you'll have to change the default CA.
+
+               .. code-block:: sh
+
+                  acme.sh --set-default-ca  --server letsencrypt
+
+               If you want to use any other CA with acme.sh, consult their
+               documentation on how to.
+
             First of all you'll need to issue your certificate.
             acme.sh will save this certificate to 
             ``/root/.acme.sh/<your-domain>/``
