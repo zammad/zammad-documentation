@@ -81,7 +81,7 @@ Step 6: Backup!
       :doc:`configuration page </appendix/backup-and-restore/configuration>`.
 
 Step 7: Transfer your backup files
-   You'll find the backup location within the ``conf`` file on the backup
+   You'll find the backup location within the ``config`` file in the backup
    directory. Make sure to adjust the backup configuration on the destination
    host according to our
    :doc:`configuration page </appendix/backup-and-restore/configuration>`
