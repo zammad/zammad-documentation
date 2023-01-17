@@ -147,3 +147,23 @@ the count in different colors if they hit a threshold.
 Sample of the above setting:
 
 .. image:: /images/console/ui_sidebar_open_ticket_indicator_colored.png
+
+Above settings has specific thresholds as follows. You cannot adjust these
+thresholds.
+
+   .. list-table:: Situational threshold list for open ticket indication
+      :widths: 30, 20, 20, 20
+      :header-rows: 1
+
+      * - Situation / View
+        - no indication
+        - warning (orange)
+        - danger (red)
+      * - **Ticket Zoom**
+        - < 2
+        - 2
+        - >= 3
+      * - **New Ticket dialog**
+        - 0
+        - 1
+        - >= 2
