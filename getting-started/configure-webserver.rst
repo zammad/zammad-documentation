@@ -54,7 +54,7 @@ The guide within the tabs below can help you jumping in.
 
             .. code-block:: sh
 
-               certbot --<webserver> -d zammad.example.com
+               $ certbot --<webserver> -d zammad.example.com
 
             Certbot will now attempt to issue a certificate for you.
             If successful, certbot will ask you if you want to
@@ -83,7 +83,7 @@ The guide within the tabs below can help you jumping in.
 
                .. code-block:: sh
 
-                  acme.sh --set-default-ca  --server letsencrypt
+                  $ acme.sh --set-default-ca  --server letsencrypt
 
                If you want to use any other CA with acme.sh, consult their
                documentation on how to.
@@ -97,7 +97,7 @@ The guide within the tabs below can help you jumping in.
 
             .. code-block:: sh
 
-               acme.sh --issue --<webserver> -d zammad.example.com
+               $ acme.sh --issue --<webserver> -d zammad.example.com
 
             It's not recommended to use the just stored certificates directly.
             Instead you should install the certificate to a directory of your 
@@ -115,11 +115,11 @@ The guide within the tabs below can help you jumping in.
 
             .. code-block:: sh
 
-               acme.sh --install-cert -d zammad.example.com \
-               --cert-file      /etc/ssl/private/zammad.example.com.pem  \
-               --key-file       /etc/ssl/private/zammad.example.com.key  \
-               --fullchain-file /etc/ssl/private/zammad.example.com.full.pem \
-               --reloadcmd     "systemctl force-reload <webserver>"
+               $ acme.sh --install-cert -d zammad.example.com \
+                   --cert-file      /etc/ssl/private/zammad.example.com.pem  \
+                   --key-file       /etc/ssl/private/zammad.example.com.key  \
+                   --fullchain-file /etc/ssl/private/zammad.example.com.full.pem \
+                   --reloadcmd     "systemctl force-reload <webserver>"
 
             From this moment on, acme.sh will automatically renew your 
             installed certificates if they're valid for another 30 days or less.
@@ -167,8 +167,8 @@ The guide within the tabs below can help you jumping in.
 
          .. code-block:: sh
 
-            openssl req -newkey rsa:4096 -nodes -x509 -days 1825\ 
-            -keyout key.pem -out certificate.pem
+            $ openssl req -newkey rsa:4096 -nodes -x509 -days 1825\ 
+                -keyout key.pem -out certificate.pem
 
       Above command creates a certificate that's valid for 5 years. It will 
       write the certificate and private key to the current directory you're in. 
@@ -177,7 +177,7 @@ The guide within the tabs below can help you jumping in.
 
          .. code-block:: sh
 
-            openssl x509 -text -noout -in certificate.pem
+            $ openssl x509 -text -noout -in certificate.pem
 
          .. hint:: 
 
