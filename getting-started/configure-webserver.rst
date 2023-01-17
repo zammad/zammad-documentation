@@ -231,7 +231,7 @@ Adjusting the webserver configuration
 
          .. code-block:: sh
          
-            $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/nginx/sites-enabled/zammad.conf
+            $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/nginx/sites-available/zammad.conf
 
          .. note::
 
@@ -311,7 +311,7 @@ Adjusting the webserver configuration
 
          .. code-block:: sh
          
-            $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-enabled/zammad.conf
+            $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-available/zammad.conf
 
          .. note::
 

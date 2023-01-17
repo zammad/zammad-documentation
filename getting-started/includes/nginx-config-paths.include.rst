@@ -1,3 +1,3 @@
 * ``/etc/nginx/conf.d/``
 * ``/etc/nginx/vhosts.d/``
-* ``/etc/nginx/sites-enabled/``
+* ``/etc/nginx/sites-available/``
