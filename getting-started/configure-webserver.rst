@@ -22,6 +22,23 @@ Get a ssl certificate (recommended)
 Don't know how to get SSL certificates and install them on a webserver yet?
 The guide within the tabs below can help you jumping in.
 
+.. attention::
+
+   Make sure to used named configuration. The default sample configuration
+   for both nginx and apache are *not* named.
+
+   To fix this, open the ``zammad.conf`` in your webservers configuration
+   directory and make sure to replace ``server_name localhost;`` (nginx) or
+   ``ServerName localhost`` (Apache 2) with Zammads actual subdomain.
+
+   *Where?*
+      * nginx
+
+        .. include:: includes/nginx-config-paths.include.rst
+      * Apache 2
+
+        .. include:: includes/apache-config-paths.include.rst
+
 .. tabs::
 
    .. tab:: I don't need that
@@ -222,9 +239,7 @@ Adjusting the webserver configuration
               needed. 
             | Most common:
 
-               * ``/etc/nginx/conf.d/``
-               * ``/etc/nginx/vhosts.d/``
-               * ``/etc/nginx/sites-enabled/``
+               .. include:: includes/nginx-config-paths.include.rst
 
       Step 2 - Adjust the config file
          Adjust the just copied file with a text editor of your choice (e.g. 
@@ -304,9 +319,7 @@ Adjusting the webserver configuration
               if needed.
             | Most common:
 
-               * ``/etc/apache2/conf.d/``
-               * ``/etc/httpd/vhosts.d/``
-               * ``/etc/apache2/sites-available/`` 
+               .. include:: includes/apache-config-paths.include.rst
 
       Step 3 - Adjust the config file
          Adjust the just copied file with a text editor of your choice (e.g. 
