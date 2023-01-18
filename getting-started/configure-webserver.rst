@@ -29,7 +29,7 @@ The guide within the tabs below can help you jumping in.
 
    To fix this, open the ``zammad.conf`` in your webservers configuration
    directory and make sure to replace ``server_name localhost;`` (nginx) or
-   ``ServerName localhost`` (Apache 2) with Zammads actual subdomain.
+   ``ServerName localhost`` (Apache 2) with Zammad's actual subdomain.
 
    *Where?*
       * nginx
@@ -109,7 +109,7 @@ The guide within the tabs below can help you jumping in.
             acme.sh will save this certificate to 
             ``/root/.acme.sh/<your-domain>/``
             
-            Replace ``<webserver>`` in below command by either
+            Replace ``<webserver>`` in the following command by either
             ``apache`` or ``nginx`` and to match your setup, use ``standalone`` for other webservers.
 
             .. code-block:: sh
