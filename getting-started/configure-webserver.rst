@@ -22,6 +22,23 @@ Get a ssl certificate (recommended)
 Don't know how to get SSL certificates and install them on a webserver yet?
 The guide within the tabs below can help you jumping in.
 
+.. attention::
+
+   Make sure to used named configuration. The default sample configuration
+   for both nginx and apache are *not* named.
+
+   To fix this, open the ``zammad.conf`` in your webservers configuration
+   directory and make sure to replace ``server_name localhost;`` (nginx) or
+   ``ServerName localhost`` (Apache 2) with Zammad's actual subdomain.
+
+   *Where?*
+      * nginx
+
+        .. include:: includes/nginx-config-paths.include.rst
+      * Apache 2
+
+        .. include:: includes/apache-config-paths.include.rst
+
 .. tabs::
 
    .. tab:: I don't need that
@@ -54,7 +71,7 @@ The guide within the tabs below can help you jumping in.
 
             .. code-block:: sh
 
-               certbot --<webserver> -d zammad.example.com
+               $ certbot --<webserver> -d zammad.example.com
 
             Certbot will now attempt to issue a certificate for you.
             If successful, certbot will ask you if you want to
@@ -74,15 +91,30 @@ The guide within the tabs below can help you jumping in.
 
             .. hint:: 
 
-               The most reliable way is to use the standalone method.
+               The most reliable way is to use the method for your webserver.
+
+            .. note::
+
+               acme.sh by default no longer uses letsencrypt.
+               For this reason you'll have to change the default CA.
+
+               .. code-block:: sh
+
+                  $ acme.sh --set-default-ca  --server letsencrypt
+
+               If you want to use any other CA with acme.sh, consult their
+               documentation on how to.
 
             First of all you'll need to issue your certificate.
             acme.sh will save this certificate to 
             ``/root/.acme.sh/<your-domain>/``
+            
+            Replace ``<webserver>`` in the following command by either
+            ``apache`` or ``nginx`` and to match your setup, use ``standalone`` for other webservers.
 
             .. code-block:: sh
 
-               acme.sh --issue --standalone -d zammad.example.com
+               $ acme.sh --issue --<webserver> -d zammad.example.com
 
             It's not recommended to use the just stored certificates directly.
             Instead you should install the certificate to a directory of your 
@@ -100,11 +132,11 @@ The guide within the tabs below can help you jumping in.
 
             .. code-block:: sh
 
-               acme.sh --install-cert -d zammad.example.com \
-               --cert-file      /etc/ssl/private/zammad.example.com.pem  \
-               --key-file       /etc/ssl/private/zammad.example.com.key  \
-               --fullchain-file /etc/ssl/private/zammad.example.com.full.pem \
-               --reloadcmd     "systemctl force-reload <webserver>"
+               $ acme.sh --install-cert -d zammad.example.com \
+                   --cert-file      /etc/ssl/private/zammad.example.com.pem  \
+                   --key-file       /etc/ssl/private/zammad.example.com.key  \
+                   --fullchain-file /etc/ssl/private/zammad.example.com.full.pem \
+                   --reloadcmd     "systemctl force-reload <webserver>"
 
             From this moment on, acme.sh will automatically renew your 
             installed certificates if they're valid for another 30 days or less.
@@ -152,8 +184,8 @@ The guide within the tabs below can help you jumping in.
 
          .. code-block:: sh
 
-            openssl req -newkey rsa:4096 -nodes -x509 -days 1825\ 
-            -keyout key.pem -out certificate.pem
+            $ openssl req -newkey rsa:4096 -nodes -x509 -days 1825\ 
+                -keyout key.pem -out certificate.pem
 
       Above command creates a certificate that's valid for 5 years. It will 
       write the certificate and private key to the current directory you're in. 
@@ -162,7 +194,7 @@ The guide within the tabs below can help you jumping in.
 
          .. code-block:: sh
 
-            openssl x509 -text -noout -in certificate.pem
+            $ openssl x509 -text -noout -in certificate.pem
 
          .. hint:: 
 
@@ -207,9 +239,7 @@ Adjusting the webserver configuration
               needed. 
             | Most common:
 
-               * ``/etc/nginx/conf.d/``
-               * ``/etc/nginx/vhosts.d/``
-               * ``/etc/nginx/sites-available/``
+               .. include:: includes/nginx-config-paths.include.rst
 
       Step 2 - Adjust the config file
          Adjust the just copied file with a text editor of your choice (e.g. 
@@ -289,9 +319,7 @@ Adjusting the webserver configuration
               if needed.
             | Most common:
 
-               * ``/etc/apache2/conf.d/``
-               * ``/etc/httpd/vhosts.d/``
-               * ``/etc/apache2/sites-available/`` 
+               .. include:: includes/apache-config-paths.include.rst
 
       Step 3 - Adjust the config file
          Adjust the just copied file with a text editor of your choice (e.g. 
