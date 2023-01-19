@@ -4,7 +4,7 @@ This file will be updated whenever new bug-fixes are applied, so you can update 
 .. code-block:: sh
 
    $ cd /opt
-   $ wget https://github.com/zammad/zammad/archive/stable.tar.gz
-   $ tar -xzf stable.tar.gz --strip-components 1 -C zammad
+   $ wget https://ftp.zammad.com/zammad-latest.tar.gz
+   $ tar -xzf zammad-latest.tar.gz --strip-components 1 -C zammad
    $ chown -R zammad:zammad zammad/
-   $ rm -f stable.tar.gz
+   $ rm -f zammad-latest.tar.gz
