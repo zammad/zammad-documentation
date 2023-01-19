@@ -155,6 +155,12 @@ installed with the Zammad-Package.
 
 .. note::
 
+   | Currently LTS Linux distributions include an outdated version of imlib2.
+   | If you installed imlib2 1.9 or newer from other sources, please set ``ZAMMAD_RSZR_NO_AUTOROTATE`` environment variable to true.
+     Otherwise there may be issues with orientation of photos.
+
+.. note::
+
    | ``libimlib2-dev`` **or** ``imlib2-devel`` are no longer required.
    | *However:* If you have to use ``bundle install`` for e.g. custom Gems or
      development, you'll need to install it!
