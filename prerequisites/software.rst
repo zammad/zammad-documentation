@@ -289,6 +289,10 @@ An Elasticsearch plugin is required to index the contents of email attachments:
 
    We consider this topic as :ref:`performance_tuning`.
 
+.. hint:: **Redis will become a regular dependency in Zammad 6**
+
+   Starting with Zammad 6.0, Redis will be required to operate Zammad,
+   not just as a performance optimization.
 
 2.8.1 Redis
 ~~~~~~~~~~~
