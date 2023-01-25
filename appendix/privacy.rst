@@ -52,6 +52,9 @@ User sessions
    Session information includes IP address (and possibly geographic location), browser,
    time of original login, and time of last visit.
 
+Data Privacy Tasks
+   Each entry in the data privacy task list is automatically deleted after 6 months.
+
 External Services
 =================
 
