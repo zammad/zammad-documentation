@@ -75,7 +75,7 @@ RAILS_LOG_TO_STDOUT
 ZAMMAD_BIND_IP
    The IP address that the web server is bound to.
 
-   Default: ``0.0.0.0``
+   Default: ``127.0.0.1``
 
 ZAMMAD_RAILS_PORT
    The port that the web server is exposed on.
