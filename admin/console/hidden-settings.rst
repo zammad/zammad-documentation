@@ -97,6 +97,46 @@ Sample of the above setting:
 
 .. image:: /images/console/ui_ticket_create_notes.gif
 
+Adding a warning to the article reply process
+---------------------------------------------
+
+In case you need to give your agent a warning during the ticket article reply,
+you can do that with the command below.
+
+You can provide different warnings for different channels and article visibility
+
+   * Internal Notes ``:"note-internal"=>""``,
+   * Public Notes ``:"note-public"=>""``,
+   * Internal Calls ``:"phone-internal"=>""``,
+   * Outgoing Calls ``:"phone-public"=>""`` and
+   * similar combinations.
+
+.. code-block:: ruby
+
+   >> Setting.set('ui_ticket_add_article_hint', {
+         :"note-internal"=>"You are writing an |internal note|, only people of your organization will see it.",
+         :"note-public"=>"You are writing a |public note|.",
+         :"phone-internal" => "You are writing an |internal phone note|, only people of your organization will see it.",
+         :"phone-public"=>"You are writing a |public phone note|."
+      })
+
+.. note::
+
+   You can use example sub-settings above independently, if you e.g. don't need
+   a warning on internal calls, simply leave out ``:"phone-internal"=>""`` out
+   of the setting. The setting itself is in a form of an array ( ``{}`` ).
+
+
+To check what's currently set, you can use:
+
+.. code-block:: ruby
+
+   >> Setting.get('ui_ticket_add_article_hint')
+
+Sample of the above setting:
+
+.. image:: /images/console/ui_ticket_add_article_hint-example.png
+
 Show Email address of customer on customer selection (ticket creation)
 ----------------------------------------------------------------------
 
