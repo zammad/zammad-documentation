@@ -108,7 +108,9 @@ You can provide different warnings for different channels and article visibility
    * Internal Notes ``:"note-internal"=>""``,
    * Public Notes ``:"note-public"=>""``,
    * Internal Calls ``:"phone-internal"=>""``,
-   * Outgoing Calls ``:"phone-public"=>""`` and
+   * Public Calls ``:"phone-public"=>""``,
+   * Internal Emails ``:"email-internal"=>""`` and
+   * Public Emails ``:"email-public"=>""``
    * similar combinations.
 
 .. code-block:: ruby
@@ -117,7 +119,9 @@ You can provide different warnings for different channels and article visibility
          :"note-internal"=>"You are writing an |internal note|, only people of your organization will see it.",
          :"note-public"=>"You are writing a |public note|.",
          :"phone-internal" => "You are writing an |internal phone note|, only people of your organization will see it.",
-         :"phone-public"=>"You are writing a |public phone note|."
+         :"phone-public"=>"You are writing a |public phone note|.",
+         :"email-internal" => "You are writing an |internal Email|, only people of your organization will see it.",
+         :"email-public"=>"You are writing a |public Email|."
       })
 
 .. note::
@@ -135,7 +139,7 @@ To check what's currently set, you can use:
 
 Sample of the above setting:
 
-.. image:: /images/console/ui_ticket_add_article_hint-example.png
+.. image:: /images/console/ui_ticket_add_article_hint-example.gif
 
 Show Email address of customer on customer selection (ticket creation)
 ----------------------------------------------------------------------
