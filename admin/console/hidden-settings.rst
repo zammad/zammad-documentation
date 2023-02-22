@@ -110,8 +110,7 @@ You can provide different warnings for different channels and article visibility
    * Internal Calls ``:"phone-internal"=>""``,
    * Public Calls ``:"phone-public"=>""``,
    * Internal Emails ``:"email-internal"=>""`` and
-   * Public Emails ``:"email-public"=>""``
-   * similar combinations.
+   * Public Emails ``:"email-public"=>""``.
 
 .. code-block:: ruby
 
