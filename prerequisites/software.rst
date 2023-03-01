@@ -106,7 +106,7 @@ Below you can find all distributions Zammad provides packages for.
 
    "CentOS / RHEL", "7 & 8"
    "Debian", "9, 10 & 11"
-   "⚠ OpenSuSE / SLES", "Leap 42.3 / 12"
+   "OpenSuSE / SLES", "Leap 42.3 / 12; Leap 15.x / 15"
    "Ubuntu", "16.04, 18.04, 20.04 & 22.04"
 
 .. warning:: **⚠ SuSE users be aware**
@@ -114,8 +114,8 @@ Below you can find all distributions Zammad provides packages for.
    Due to the age of SLES12 / Leap 42.3 you may no longer be able to satisfy
    all (soft) dependencies of Zammad.
 
-   If you're not running a docker-compose or package installation please
-   consider changing to a different distribution that's supported.
+   Note that SuSE Tumbleweed *does not* meet Zammad requirements and thus
+   *is not* supported!
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 

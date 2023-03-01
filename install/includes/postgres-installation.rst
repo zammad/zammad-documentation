@@ -32,5 +32,7 @@
 
          $ zypper refresh
          $ zypper install postgresql postgresql-server postgresql-contrib
+         # openSuSE 15 also requires:
+         $ zypper install postgresql-server-devel
          $ systemctl start postgresql
          $ systemctl enable postgresql
