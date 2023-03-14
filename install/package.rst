@@ -25,6 +25,16 @@ some operating systems may require additional packages if not already installed.
 
          $ apt install curl apt-transport-https gnupg
 
+   .. tab:: SLES 15
+
+      The openSUSE Enterprise 15 variant requires additional repositories to be
+      activated. To do so, run the following commands.
+
+      .. code-block:: sh
+
+         $ SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
+         $ SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
+
    .. tab:: CentOS
 
       .. code-block:: sh
@@ -115,7 +125,7 @@ Add Repository
 
       .. tab:: OpenSUSE / SLES
 
-         Remove obsolete Let's Encrypt CA
+         Remove obsolete Let's Encrypt CA (SLES12 and openSUSE 42.x only)
             .. code-block:: sh
 
                $ rm /usr/share/pki/trust/DST_Root_CA_X3.pem
@@ -131,6 +141,12 @@ Add Repository
 
                $ wget -O /etc/zypp/repos.d/zammad.repo \
                https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/12.repo
+
+         SLES 15 / openSUSE 15.x
+            .. code-block:: sh
+
+               $ wget -O /etc/zypp/repos.d/zammad.repo \
+               https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
 
 Install Zammad
    .. tabs::

@@ -33,4 +33,4 @@ Install Gems for Zammad
         # CentOS 7 users - above command might fail, run the following
         # command and repeat above bundle install.
         # Adjust pg_config path according to your environment
-        $ gem install pg -v '0.21.0' -- --with-pg-config=/usr/pgsql-14/bin/pg_config
+        $ gem install pg -v '1.2.3' -- --with-pg-config=/usr/pgsql-14/bin/pg_config
