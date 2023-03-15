@@ -328,7 +328,7 @@ Required permission: ``admin.organization``
 .. _Data Privacy:
    https://admin-docs.zammad.org/en/latest/system/data-privacy.html
 
-``DELETE``-Request sent: ``/api/v1/organization/{id}``
+``DELETE``-Request sent: ``/api/v1/organizations/{id}``
 
 Response:
 
