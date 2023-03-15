@@ -78,6 +78,12 @@ Add Repository
                   $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
                     tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
+            Ubuntu 22.04
+               .. code-block:: sh
+
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+
       .. tab:: Debian
 
          Install Repository Key
