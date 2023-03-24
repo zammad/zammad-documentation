@@ -45,7 +45,7 @@ requirements for your clients. This ensures that Zammad works as expected.
 1.2. Network requirements
 -------------------------
 
-Zammad uses web sockets. Some application firewalls may filter these
+Zammad uses web sockets (listening on port ``6042``). Some application firewalls may filter these
 connections. This may lead to decreased browser performance.
 
 There's a fallback to Ajax which  causes a higher application server load
