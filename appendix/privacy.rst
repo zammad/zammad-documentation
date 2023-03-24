@@ -22,7 +22,7 @@ Tickets and users
 
 Chat sessions
    Once a chat session has been marked **closed**,
-   it is scheduled for automatic deletion 3 months later.
+   it is scheduled for automatic deletion 12 months later.
 
    IP address logs for chat sessions can be manually deleted
    by :doc:`following the directions here </admin/console/working-on-chat>`.
