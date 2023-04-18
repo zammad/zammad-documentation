@@ -222,7 +222,20 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-2.7. Elasticsearch (optional)
+2.7 Redis
+~~~~~~~~~~~
+
+Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for realtime communication
+via web socket.
+
+   .. note::
+
+      Configuration and installation is out of our scope.
+      Please follow the official vendor guides and ensure to have a
+      tight security on your installation.
+
+
+2.8. Elasticsearch (optional)
 -----------------------------
 
 Zammad uses Elasticsearch to
@@ -274,7 +287,7 @@ but search performance will be degraded, and some features will be disabled.
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
 
-2.8. Optional tools of improved caching and distribution
+2.9. Optional tools of improved caching and distribution
 --------------------------------------------------------
 
 .. note:: **The features / integrations below were introduced by Zammad 5.0**
@@ -284,24 +297,7 @@ An Elasticsearch plugin is required to index the contents of email attachments:
 
    We consider this topic as :ref:`performance_tuning`.
 
-2.8.1 Redis
-~~~~~~~~~~~
-
-   Using `Redis <https://redis.io/>`_ allows you to store all web socket
-   information in Redis instead of your file system.
-
-      .. note::
-
-         Configuration and installation is out of our scope.
-         Please follow the official vendor guides and ensure to have a
-         tight security on your installation.
-
-      .. hint:: **Redis will become a regular dependency in Zammad 6**
-
-         Starting with Zammad 6.0, Redis will be required to operate Zammad,
-         not just as a performance optimization.
-
-2.8.2 Memcached
+2.9.1 Memcached
 ~~~~~~~~~~~~~~~
 
    Instead of storing Zammads cache files within your filesystem, you can also
