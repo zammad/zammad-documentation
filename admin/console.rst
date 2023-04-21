@@ -51,28 +51,42 @@ This reduces loading times greatly.
 
 .. include:: /admin/console-rails-shell.include.rst
 
-.. warning:: **Safe Mode**
+.. hint:: **Starting Rails Console in Safe Mode**
 
-   Normally, starting rails console requires certain `third-party services`_ to
-   be up and running. You may receive errors and console will refuse to start
-   in case they are not available.
+   Normally, starting rails console requires certain
+   :doc:`third-party services </prerequisites/software>` to be up and running.
+   You may receive errors and console will refuse to start in case they are not
+   available.
 
    However, it's possible to start rails console in safe mode by setting a
    special environment variable. With ``ZAMMAD_SAFE_MODE=1`` set, availability
-   of these services will be ignored:
+   of these services will be ignored.
 
-   .. code-block:: console
+   .. tabs::
 
-      $ ZAMMAD_SAFE_MODE=1 rails c
-      Zammad app is running in safe mode. Any third-party service is ignored.
+      .. code-tab:: console Package Installation
 
-      There was an error trying to connect to Redis via redis://localhost:6379.
-      Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
-      ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
-      Loading production environment (Rails 6.1.7.3)
-      3.1.3 :001 >
+         $ ZAMMAD_SAFE_MODE=1 zammad run rails c
 
-.. _`third-party services`: Server requirements
+         Zammad app is running in safe mode. Any third-party service is ignored.
+
+         There was an error trying to connect to Redis via redis://localhost:6379.
+         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
+         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
+         Loading production environment (Rails 6.1.7.3)
+         3.1.3 :001 >
+
+      .. code-tab:: console Source Installation
+
+         $ ZAMMAD_SAFE_MODE=1 rails c
+
+         Zammad app is running in safe mode. Any third-party service is ignored.
+
+         There was an error trying to connect to Redis via redis://localhost:6379.
+         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
+         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
+         Loading production environment (Rails 6.1.7.3)
+         3.1.3 :001 >
 
 Working on the console
 ======================
