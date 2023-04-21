@@ -64,7 +64,7 @@ Install pgloader
 
       .. code-block:: sh
 
-         $ yum install -y https://download.postgresql.org/pub/repos/yum/common/redhat/rhel-7-x86_64/pgloader-3.6.2-1.rhel7.x86_64.rpm
+         $ yum install -y pgloader
 
    .. tab:: OpenSUSE / SLES
 
