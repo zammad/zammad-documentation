@@ -92,12 +92,6 @@ Add Repository
                $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                  gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
-            Debian 9
-               .. code-block:: sh
-
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 9 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
-
             Debian 10
                .. code-block:: sh
 
