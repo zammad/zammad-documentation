@@ -58,17 +58,16 @@ This reduces loading times greatly.
    You may receive errors and console will refuse to start in case they are not
    available.
 
-   However, it's possible to start rails console in safe mode by setting a
-   special environment variable. With ``ZAMMAD_SAFE_MODE=1`` set, availability
-   of these services will be ignored.
+   However, it's possible to start rails console in safe mode by setting
+   :ref:`a special environment variable <safe_mode>`. With
+   ``ZAMMAD_SAFE_MODE=1`` set, availability of these services will be ignored.
 
    .. tabs::
 
       .. code-tab:: console Package Installation
 
          $ ZAMMAD_SAFE_MODE=1 zammad run rails c
-
-         Zammad app is running in safe mode. Any third-party service is ignored.
+         Zammad is running in safe mode. Any third-party services like Redis are ignored.
 
          There was an error trying to connect to Redis via redis://localhost:6379.
          Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
@@ -79,8 +78,7 @@ This reduces loading times greatly.
       .. code-tab:: console Source Installation
 
          $ ZAMMAD_SAFE_MODE=1 rails c
-
-         Zammad app is running in safe mode. Any third-party service is ignored.
+         Zammad is running in safe mode. Any third-party services like Redis are ignored.
 
          There was an error trying to connect to Redis via redis://localhost:6379.
          Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
