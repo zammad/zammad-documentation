@@ -67,6 +67,22 @@ RAILS_LOG_TO_STDOUT
 
    Default: **unset**
 
+.. _safe_mode:
+
+ZAMMAD_SAFE_MODE
+   Ignore availability of third-party services when running Zammad commands.
+   Possible values: ``1`` or ``true``
+
+   .. warning::
+
+      **Be careful** when running Zammad commands on production systems in
+      safe mode.
+
+      While it may allow an escape hatch for certain commands, it has a
+      potential to break regular Zammad operations.
+
+   Default: **unset**
+
 .. _network_options:
 
 🖧 Network Options
