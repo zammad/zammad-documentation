@@ -51,6 +51,41 @@ This reduces loading times greatly.
 
 .. include:: /admin/console-rails-shell.include.rst
 
+.. hint:: **Starting Rails Console in Safe Mode**
+
+   Normally, starting rails console requires certain
+   :doc:`third-party services </prerequisites/software>` to be up and running.
+   You may receive errors and console will refuse to start in case they are not
+   available.
+
+   However, it's possible to start rails console in safe mode by setting
+   :ref:`a special environment variable <safe_mode>`. With
+   ``ZAMMAD_SAFE_MODE=1`` set, availability of these services will be ignored.
+
+   .. tabs::
+
+      .. code-tab:: console Package Installation
+
+         $ ZAMMAD_SAFE_MODE=1 zammad run rails c
+         Zammad is running in safe mode. Any third-party services like Redis are ignored.
+
+         There was an error trying to connect to Redis via redis://localhost:6379.
+         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
+         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
+         Loading production environment (Rails 6.1.7.3)
+         3.1.3 :001 >
+
+      .. code-tab:: console Source Installation
+
+         $ ZAMMAD_SAFE_MODE=1 rails c
+         Zammad is running in safe mode. Any third-party services like Redis are ignored.
+
+         There was an error trying to connect to Redis via redis://localhost:6379.
+         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
+         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
+         Loading production environment (Rails 6.1.7.3)
+         3.1.3 :001 >
+
 Working on the console
 ======================
 
