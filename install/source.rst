@@ -232,8 +232,8 @@ Step 4: Initialize your database
    **🤓 Avoid a restart ...**
 
    You can set the base URL of your Zammad installation by setting the
-   ``ZAMMAD_HTTP_TYPE`` and ``ZAMMAD_FQDN`` environment variables before
-   initializing the database (see below).
+   :ref:`ZAMMAD_HTTP_TYPE <http_type>` and :ref:`ZAMMAD_FQDN <fqdn>` environment
+   variables before initializing the database (see below).
 
    .. code-block:: sh
 

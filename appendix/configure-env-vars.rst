@@ -83,6 +83,21 @@ ZAMMAD_SAFE_MODE
 
    Default: **unset**
 
+.. _http_type:
+
+ZAMMAD_HTTP_TYPE
+   Defines the HTTP protocol of your instance.
+   Possible values: ``http`` or ``https``
+
+   Default: ``http``
+
+.. _fqdn:
+
+ZAMMAD_FQDN
+   Defines the fully qualified domain name of the system.
+
+   Default: ``zammad.example.com``
+
 .. _network_options:
 
 🖧 Network Options
