@@ -227,6 +227,8 @@ Step 4: Initialize your database
 
    Ensure to do this as ``zammad`` user in your Zammad directory!
 
+.. include:: /install/includes/db-seed-base_url.rst
+
 .. code-block:: sh
 
    $ su - zammad
