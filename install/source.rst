@@ -227,6 +227,21 @@ Step 4: Initialize your database
 
    Ensure to do this as ``zammad`` user in your Zammad directory!
 
+.. tip::
+
+   **🤓 Avoid a restart ...**
+
+   You can set the base URL of your Zammad installation by setting the
+   :ref:`ZAMMAD_HTTP_TYPE <http_type>` and :ref:`ZAMMAD_FQDN <fqdn>` environment
+   variables before initializing the database (see below).
+
+   .. code-block:: sh
+
+      # Example for a base URL of https://zammad.example.com
+      $ su - zammad
+      $ export ZAMMAD_HTTP_TYPE=https
+      $ export ZAMMAD_FQDN=zammad.example.com
+
 .. code-block:: sh
 
    $ su - zammad
