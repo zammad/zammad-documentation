@@ -104,6 +104,12 @@ Add Repository
                   $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
                     tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
+            Debian 12
+               .. code-block:: sh
+
+                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
+                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+
       .. tab:: CentOS
 
          Install Repository Key
