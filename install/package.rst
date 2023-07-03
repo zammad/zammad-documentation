@@ -60,29 +60,29 @@ Add Repository
                $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                  gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
-            Ubuntu 16.04
-               .. code-block:: sh
+         Ubuntu 16.04
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 16.04 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 16.04 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-            Ubuntu 18.04
-               .. code-block:: sh
+         Ubuntu 18.04
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 18.04 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 18.04 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-            Ubuntu 20.04
-               .. code-block:: sh
+         Ubuntu 20.04
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-            Ubuntu 22.04
-               .. code-block:: sh
+         Ubuntu 22.04
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       .. tab:: Debian
 
@@ -92,23 +92,23 @@ Add Repository
                $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                  gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
-            Debian 10
-               .. code-block:: sh
+         Debian 10
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 10 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 10 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-            Debian 11
-               .. code-block:: sh
+         Debian 11
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-            Debian 12
-               .. code-block:: sh
+         Debian 12
+            .. code-block:: sh
 
-                  $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
-                    tee /etc/apt/sources.list.d/zammad.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
+                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       .. tab:: CentOS
 
@@ -117,17 +117,17 @@ Add Repository
 
                $ rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
-            RHEL 7 / CentOS 7
-               .. code-block:: sh
+         RHEL 7 / CentOS 7
+            .. code-block:: sh
 
-                  $ wget -O /etc/yum.repos.d/zammad.repo \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
+               $ wget -O /etc/yum.repos.d/zammad.repo \
+               https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
 
-            RHEL 8 / CentOS 8
-               .. code-block:: sh
+         RHEL 8 / CentOS 8
+            .. code-block:: sh
 
-                  $ wget -O /etc/yum.repos.d/zammad.repo \
-                  https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
+               $ wget -O /etc/yum.repos.d/zammad.repo \
+               https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
 
       .. tab:: OpenSUSE / SLES
 
