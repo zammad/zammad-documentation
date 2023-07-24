@@ -1,0 +1,78 @@
+name: zammad-docs
+
+# Controls when the workflow will run.
+on:
+
+  # Allow the workflow to be reusable.
+  workflow_call:
+    inputs:
+      requirements_path:
+        description: Path to the `requirements.txt`, relative to the repository root.
+        required: false
+        default: requirements.txt
+        type: string
+      docs_path:
+        description: Path to the documentation directory, relative to the repository root.
+        required: false
+        default: .
+        type: string
+      system_dependencies:
+        description: Optional list of system dependencies to install via `apt` command, separated by spaces.
+        required: false
+        default: 'gettext'
+        type: string
+      python_version:
+        description: The version of Python binary to use.
+        required: false
+        default: '3.x'
+        type: string
+      repository:
+        description: The source repository name, in case it differs from the current one.
+        required: false
+        default: ${{ github.repository }}
+        type: string
+      ref:
+        description: The source repository reference, in case it differs from the current one.
+        required: false
+        default: ${{ github.ref }}
+        type: string
+
+jobs:
+  build:
+    name: Build Documentation
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
+
+    - name: Install System Dependencies
+      shell: bash -eux {0}
+      run: |
+        sudo apt-get -q -y update
+        sudo apt-get -q -y install ${{ inputs.system_dependencies }}
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.python_version }}
+
+    - name: Install Python Dependencies
+      shell: bash -eux {0}
+      run: python -m pip install -r ${{ inputs.requirements_path }}
+
+    - name: Build Documentation
+      shell: bash -eux {0}
+      run: |
+        cd ${{ inputs.docs_path }}
+        rm -rf _build
+        sphinx-build -b html . _build/html -W --keep-going
+        test -f _build/html/index.html
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: html
+        path: ${{ inputs.docs_path }}/_build/html/
