@@ -38,7 +38,7 @@ on:
         type: string
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout Repository
@@ -63,7 +63,7 @@ jobs:
       shell: bash -eux {0}
       run: |
         python -m pip install --upgrade --no-cache-dir pip setuptools
-        python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 alabaster>=0.7,<0.8,!=0.7.5 commonmark==0.9.1 recommonmark==0.5.0 sphinx<2 sphinx-rtd-theme<0.5 readthedocs-sphinx-ext<2.3 jinja2<3.1.0
+        python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 'alabaster>=0.7,<0.8,!=0.7.5' commonmark==0.9.1 recommonmark==0.5.0 'sphinx<2' 'sphinx-rtd-theme<0.5' 'readthedocs-sphinx-ext<2.3' 'jinja2<3.1.0'
         python -m pip install --exists-action=w --no-cache-dir -r ${{ inputs.requirements_path }}
 
     - name: Debug Configuration
@@ -75,8 +75,8 @@ jobs:
       run: |
         cd ${{ inputs.docs_path }}
         python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
-        python -m sphinx -T -E -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
-        python -m sphinx -T -E -b epub -d _build/doctrees -D language=en . _buikd/epub
+        # python -m sphinx -T -E -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
+        python -m sphinx -T -E -b epub -d _build/doctrees -D language=en . _build/epub
 
     - name: Upload html Artifact
       uses: actions/upload-artifact@v3
@@ -84,11 +84,11 @@ jobs:
         name: html
         path: ${{ inputs.docs_path }}/_build/html/
 
-    - name: Upload htmlzip Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: htmlzip
-        path: ${{ inputs.docs_path }}/_build/htmlzip/
+    # - name: Upload htmlzip Artifact
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: htmlzip
+    #     path: ${{ inputs.docs_path }}/_build/htmlzip/
 
     - name: Upload epub Artifact
       uses: actions/upload-artifact@v3
