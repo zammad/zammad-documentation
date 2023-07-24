@@ -309,3 +309,10 @@ An Elasticsearch plugin is required to index the contents of email attachments:
          Configuration and installation is out of our scope.
          Please follow the official vendor guides and ensure to have a
          tight security on your installation.
+
+2.10 Optional GnuPG for generating keys
+---------------------------------------------
+If you want to *generate* keys on your machine (for signing or encrypting mails), you need to install the GnuPG-Tools. 
+Please have a look at the official `GnuPG website`_. For the usage of keys, you don't have to install GnuPG (if you already have keys).
+
+.. _GnuPG website: https://www.gnupg.org/index.html
