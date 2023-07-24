@@ -24,7 +24,7 @@ on:
       python_version:
         description: The version of Python binary to use.
         required: false
-        default: '3.x'
+        default: '3.7'
         type: string
       repository:
         description: The source repository name, in case it differs from the current one.
@@ -39,7 +39,6 @@ on:
 
 jobs:
   build:
-    name: Build Documentation
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout Repository
@@ -47,6 +46,7 @@ jobs:
       with:
         repository: ${{ inputs.repository }}
         ref: ${{ inputs.ref }}
+        fetch-depth: 50
 
     - name: Install System Dependencies
       shell: bash -eux {0}
@@ -61,18 +61,37 @@ jobs:
 
     - name: Install Python Dependencies
       shell: bash -eux {0}
-      run: python -m pip install -r ${{ inputs.requirements_path }}
+      run: |
+        python -m pip install --upgrade --no-cache-dir pip setuptools
+        python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 alabaster>=0.7,<0.8,!=0.7.5 commonmark==0.9.1 recommonmark==0.5.0 sphinx<2 sphinx-rtd-theme<0.5 readthedocs-sphinx-ext<2.3 jinja2<3.1.0
+        python -m pip install --exists-action=w --no-cache-dir -r ${{ inputs.requirements_path }}
+
+    - name: Debug Configuration
+      shell: bash -eux {0}
+      run: cat conf.py
 
     - name: Build Documentation
       shell: bash -eux {0}
       run: |
         cd ${{ inputs.docs_path }}
-        rm -rf _build
-        sphinx-build -b html . _build/html -W --keep-going
-        test -f _build/html/index.html
+        python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
+        python -m sphinx -T -E -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
+        python -m sphinx -T -E -b epub -d _build/doctrees -D language=en . _buikd/epub
 
-    - name: Upload Artifact
+    - name: Upload html Artifact
       uses: actions/upload-artifact@v3
       with:
         name: html
         path: ${{ inputs.docs_path }}/_build/html/
+
+    - name: Upload htmlzip Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: htmlzip
+        path: ${{ inputs.docs_path }}/_build/htmlzip/
+
+    - name: Upload epub Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: epub
+        path: ${{ inputs.docs_path }}/_build/epub/
