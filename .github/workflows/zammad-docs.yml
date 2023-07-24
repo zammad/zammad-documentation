@@ -19,22 +19,12 @@ on:
       system_dependencies:
         description: Optional list of system dependencies to install via `apt` command, separated by spaces.
         required: false
-        default: 'gettext'
+        default: gettext
         type: string
       python_version:
         description: The version of Python binary to use.
         required: false
         default: '3.7'
-        type: string
-      repository:
-        description: The source repository name, in case it differs from the current one.
-        required: false
-        default: ${{ github.repository }}
-        type: string
-      ref:
-        description: The source repository reference, in case it differs from the current one.
-        required: false
-        default: ${{ github.ref }}
         type: string
 
 jobs:
@@ -44,8 +34,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
       with:
-        repository: ${{ inputs.repository }}
-        ref: ${{ inputs.ref }}
         fetch-depth: 50
 
     - name: Install System Dependencies
@@ -75,23 +63,16 @@ jobs:
       run: |
         cd ${{ inputs.docs_path }}
         python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
-        # python -m sphinx -T -E -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
         python -m sphinx -T -E -b epub -d _build/doctrees -D language=en . _build/epub
 
     - name: Upload html Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: html
+        name: html-${{ github.sha }}
         path: ${{ inputs.docs_path }}/_build/html/
-
-    # - name: Upload htmlzip Artifact
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: htmlzip
-    #     path: ${{ inputs.docs_path }}/_build/htmlzip/
 
     - name: Upload epub Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: epub
-        path: ${{ inputs.docs_path }}/_build/epub/
+        name: epub-${{ github.sha }}
+        path: ${{ inputs.docs_path }}/_build/epub/*.epub
