@@ -1,4 +1,4 @@
-name: build-test
+name: Test
 
 # Controls when the workflow will run.
 on:
@@ -17,5 +17,6 @@ on:
   workflow_dispatch: ~
 
 jobs:
-  zammad-docs:
-    uses: ./.github/workflows/zammad-docs.yml
+  docs:
+    name: Documentation
+    uses: ./.github/workflows/docs.yml
