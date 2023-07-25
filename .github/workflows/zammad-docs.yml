@@ -1,4 +1,4 @@
-name: zammad-docs
+name: Documentation
 
 # Controls when the workflow will run.
 on:
@@ -6,11 +6,6 @@ on:
   # Allow the workflow to be reusable.
   workflow_call:
     inputs:
-      requirements_path:
-        description: Path to the `requirements.txt`, relative to the repository root.
-        required: false
-        default: requirements.txt
-        type: string
       docs_path:
         description: Path to the documentation directory, relative to the repository root.
         required: false
@@ -26,9 +21,15 @@ on:
         required: false
         default: '3.7'
         type: string
+      requirements_path:
+        description: Path to the `requirements.txt`, relative to the repository root.
+        required: false
+        default: requirements.txt
+        type: string
 
 jobs:
-  build-test:
+  test:
+    name: Test
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout Repository
@@ -36,6 +37,11 @@ jobs:
       with:
         fetch-depth: 50
 
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-20.04
+    steps:
     - name: Install System Dependencies
       shell: bash -eux {0}
       run: |
@@ -65,14 +71,18 @@ jobs:
         python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
         python -m sphinx -T -E -b epub -d _build/doctrees -D language=en . _build/epub
 
+    - name: Compute short SHA
+      id: sha
+      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
     - name: Upload html Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: html-${{ github.sha }}
+        name: html-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/html/
 
     - name: Upload epub Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: epub-${{ github.sha }}
+        name: epub-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/epub/*.epub
