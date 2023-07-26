@@ -55,6 +55,18 @@ APP_RESTART_CMD
       that you have to allow the Zammad user via e.g. ``sudoers`` to run
       the required restart command.
 
+GPG_PATH
+   Defines the path to the GPG installation.
+
+   Default: **unset**
+
+   .. note::
+
+      Define the path if you installed Zammad from Source, if you want to use
+      different versions of PGP on your machine or if your PGP installation
+      differs from the standard installation.
+
+
 RAILS_LOG_TO_STDOUT
    Print output directly to standard output
    instead of ``/var/log/zammad/production.log``.
