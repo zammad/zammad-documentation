@@ -313,7 +313,7 @@ An Elasticsearch plugin is required to index the contents of email attachments:
 2.10 GnuPG (optional)
 ---------------------------------------------
 If you want to use the PGP integration for sending and receiving signed and
-encrypted emails, you need to install the GnuPG-Tools.
+encrypted emails, you need to install the GnuPG-Tool.
 Please have a look at the official `GnuPG website`_.
 
 .. _GnuPG website: https://www.gnupg.org/index.html
