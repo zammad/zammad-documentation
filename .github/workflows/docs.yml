@@ -86,9 +86,11 @@ jobs:
           fi
         fi
 
-    - name: Debug Configuration
+    - name: Modify Configuration
       shell: bash -eux {0}
-      run: cat conf.py
+      run: |
+        sed -i 's/extensions = \[/extensions = ["readthedocs_ext.readthedocs", /' conf.py
+        cat conf.py
 
     - name: Build Documentation
       shell: bash -eux {0}

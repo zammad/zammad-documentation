@@ -13,7 +13,7 @@ author = u'Zammad'
 source_suffix = '.rst'
 master_doc = 'index'
 exclude_patterns = ['_build', 'html', 'doctrees']
-extensions = ['versionwarning.extension', 'sphinx_tabs.tabs', 'readthedocs_ext.readthedocs']
+extensions = ['versionwarning.extension', 'sphinx_tabs.tabs']
 
 locale_dirs = ['locale/']
 gettext_compact = False
