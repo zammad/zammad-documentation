@@ -81,7 +81,7 @@ jobs:
         if [[ -d "locale" ]]; then
           make gettext
           if git status --short | grep " M locale/"; then
-            echo "Translation sources are out-of-date, please update them with `make gettext`."
+            echo "::error title=Translation sources are out-of-date!::Please update translation sources with 'make gettext' command..."
             exit 1
           fi
         fi
