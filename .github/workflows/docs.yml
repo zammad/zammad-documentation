@@ -62,14 +62,14 @@ jobs:
         rstcheck --warn-unknown-settings --recursive .
 
     # Runs only on Pull Requests and if they contain changes.
-    - name: Check for Code Comments
-      shell: bash -eux {0}
+    - name: Check for Outstanding Code Comments
       if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha != github.sha }}
+      shell: bash -eux {0}
       env:
         BASE_SHA: ${{ github.event.pull_request.base.sha }}
         COMMENT_KEYWORD: ${{ format('{0}{1}{2}{3}', 'T', 'O', 'D', 'O') }} # HA!
       run: |
-        COMMENTS=$(git diff $BASE_SHA... --color=always | perl -wlne 'print $1 if /^\e\[32m\+\e\[m\e\[32m(.*)\e\[m$/' | grep $COMMENT_KEYWORD)
+        COMMENTS=$(git diff $BASE_SHA... --color=always | perl -wlne 'print $1 if /^\e\[32m\+\e\[m\e\[32m(.*)\e\[m$/' | grep $COMMENT_KEYWORD || true)
         if [ $(echo $COMMENTS | wc -l) -ne 0 ]; then
           echo "::warning title=New $COMMENT_KEYWORD comments found!::Found $COMMENT_KEYWORD comments, please check if this was intentional or not..."
           echo "$COMMENTS"
