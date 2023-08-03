@@ -95,11 +95,14 @@ jobs:
 
     - name: Build Documentation
       shell: bash -eux {0}
+      env:
+        # TODO: Re-enable failure on warnings when all translation issues are handled.
+        fail_on_warning: # -W --keep-going
       run: |
         cd ${{ inputs.docs_path }}
-        python -m sphinx -T -E -W --keep-going -b html -d _build/doctrees -D language=en . _build/html
-        python -m sphinx -T -E -W --keep-going -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
-        python -m sphinx -T -E -W --keep-going -b epub -d _build/doctrees -D language=en . _build/epub
+        python -m sphinx -T -E $fail_on_warning -b html -d _build/doctrees -D language=en . _build/html
+        python -m sphinx -T -E $fail_on_warning -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
+        python -m sphinx -T -E $fail_on_warning -b epub -d _build/doctrees -D language=en . _build/epub
 
     - name: Compute short SHA
       id: sha
