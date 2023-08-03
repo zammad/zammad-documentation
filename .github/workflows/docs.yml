@@ -70,7 +70,7 @@ jobs:
         COMMENT_KEYWORD: ${{ format('{0}{1}{2}{3}', 'T', 'O', 'D', 'O') }} # HA!
       run: |
         COMMENTS=$(git diff $BASE_SHA... --color=always | perl -wlne 'print $1 if /^\e\[32m\+\e\[m\e\[32m(.*)\e\[m$/' | grep $COMMENT_KEYWORD || true)
-        if [ $(echo $COMMENTS | wc -l) -ne 0 ]; then
+        if [ -n "$COMMENTS" ]; then
           echo "::warning title=New $COMMENT_KEYWORD comments found!::Found $COMMENT_KEYWORD comments, please check if this was intentional or not..."
           echo "$COMMENTS"
         fi
@@ -89,8 +89,9 @@ jobs:
     - name: Modify Configuration
       shell: bash -eux {0}
       run: |
-        sed -i 's/extensions = \[/extensions = ["readthedocs_ext.readthedocs", /' conf.py
-        cat conf.py
+        test -f .github/rtd-conf.py
+        cat .github/rtd-conf.py >> ${{ inputs.docs_path }}/conf.py
+        cat ${{ inputs.docs_path }}/conf.py
 
     - name: Build Documentation
       shell: bash -eux {0}
