@@ -19,7 +19,7 @@ on:
       python_version:
         description: The version of Python binary to use.
         required: false
-        default: '3.7'
+        default: '3.11'
         type: string
       requirements_path:
         description: Path to the `requirements.txt`, relative to the repository root.
@@ -52,7 +52,7 @@ jobs:
       shell: bash -eux {0}
       run: |
         python -m pip install --upgrade --no-cache-dir pip setuptools
-        python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 'alabaster>=0.7,<0.8,!=0.7.5' commonmark==0.9.1 recommonmark==0.5.0 'sphinx<2' 'sphinx-rtd-theme<0.5' 'readthedocs-sphinx-ext<2.3' 'jinja2<3.1.0'
+        python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 'alabaster>=0.7,<0.8,!=0.7.5' commonmark==0.9.1 recommonmark==0.5.0 sphinx sphinx-rtd-theme 'readthedocs-sphinx-ext<2.3'
         python -m pip install --exists-action=w --no-cache-dir -r ${{ inputs.requirements_path }}
 
     - name: Check RST Syntax
@@ -61,27 +61,45 @@ jobs:
         python -m pip install --upgrade --no-cache-dir 'rstcheck[sphinx]'
         rstcheck --warn-unknown-settings --recursive .
 
+    # Runs only on Pull Requests and if they contain changes.
+    - name: Check for Outstanding Code Comments
+      if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha != github.sha }}
+      shell: bash -eux {0}
+      env:
+        BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        COMMENT_KEYWORD: ${{ format('{0}{1}{2}{3}', 'T', 'O', 'D', 'O') }} # HA!
+      run: |
+        COMMENTS=$(git diff $BASE_SHA... --color=always | perl -wlne 'print $1 if /^\e\[32m\+\e\[m\e\[32m(.*)\e\[m$/' | grep $COMMENT_KEYWORD || true)
+        if [ -n "$COMMENTS" ]; then
+          echo "::warning title=New $COMMENT_KEYWORD comments found!::Found $COMMENT_KEYWORD comments, please check if this was intentional or not..."
+          echo "$COMMENTS"
+        fi
+
     - name: Check Translation Sources
       shell: bash -eux {0}
       run: |
         if [[ -d "locale" ]]; then
           make gettext
           if git status --short | grep " M locale/"; then
-            echo "Translation sources are out-of-date, please update them with `make gettext`."
+            echo "::error title=Translation sources are out-of-date!::Please update translation sources with 'make gettext' command..."
             exit 1
           fi
         fi
 
-    - name: Debug Configuration
+    - name: Modify Configuration
       shell: bash -eux {0}
-      run: cat conf.py
+      run: |
+        test -f .github/rtd-conf.py
+        cat .github/rtd-conf.py >> ${{ inputs.docs_path }}/conf.py
+        cat ${{ inputs.docs_path }}/conf.py
 
     - name: Build Documentation
       shell: bash -eux {0}
       run: |
         cd ${{ inputs.docs_path }}
-        python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
-        python -m sphinx -T -E -b epub -d _build/doctrees -D language=en . _build/epub
+        python -m sphinx -T -E -W --keep-going -b html -d _build/doctrees -D language=en . _build/html
+        python -m sphinx -T -E -W --keep-going -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
+        python -m sphinx -T -E -W --keep-going -b epub -d _build/doctrees -D language=en . _build/epub
 
     - name: Compute short SHA
       id: sha
@@ -92,6 +110,12 @@ jobs:
       with:
         name: html-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/html/
+
+    - name: Upload htmlzip Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: htmlzip-${{ steps.sha.outputs.sha_short }}
+        path: ${{ inputs.docs_path }}/_build/htmlzip/
 
     - name: Upload epub Artifact
       uses: actions/upload-artifact@v3
