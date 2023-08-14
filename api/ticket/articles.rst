@@ -21,7 +21,7 @@ type
    Below list may be incomplete depending on your instance and possibly
    installed add-ons / custom changes.
 
-   .. note:: 
+   .. note::
 
       💬 If not stated otherwise, all article types below are communication
       articles and thus affecting SLA calculation in Zammad defaults.
@@ -124,7 +124,7 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    [
       {
          "id": 9,
@@ -153,7 +153,8 @@ Response:
          "type": "email",
          "sender": "Customer",
          "created_by": "david@example.com",
-         "updated_by": "david@example.com"
+         "updated_by": "david@example.com",
+         "time_unit": null
       },
       {
          "id": 10,
@@ -199,7 +200,7 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    {
       "id": 9,
       "ticket_id": 5,
@@ -227,7 +228,8 @@ Response:
       "type": "email",
       "sender": "Customer",
       "created_by": "david@example.com",
-      "updated_by": "david@example.com"
+      "updated_by": "david@example.com",
+      "time_unit": null
    }
 
 
@@ -236,9 +238,9 @@ Create
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-   .. tip:: 
+   .. tip::
 
-      If you want to create articles on behalf other users (e.g. for a phone 
+      If you want to create articles on behalf other users (e.g. for a phone
       note), use the ``origin_by_id`` attribute. ``ticket.agent`` permission
       is mandatory for this.
 
@@ -268,7 +270,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
          :force:
 
          # HTTP-Code 201 Created
-         
+
          {
             "id": 33,
             "ticket_id": 5,
@@ -338,7 +340,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
          :force:
 
          # HTTP-Code 201 Created
-         
+
          {
             "id": 35,
             "ticket_id": 5,
@@ -402,7 +404,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
          :force:
 
          # HTTP Code 201 Created
-         
+
          {
             "id": 37,
             "ticket_id": 5,
@@ -451,7 +453,7 @@ Receive attachments
 Now that you have all those fancy attachments within your tickets, you
 may want to download specific ones.
 
-``GET``-Request sent: 
+``GET``-Request sent:
 ``/api/v1/ticket_attachment/{ticket id}/{article id}/{attachment id}``
 
 Response:
