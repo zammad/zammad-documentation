@@ -1,17 +1,18 @@
 Ticket endpoints
 ================
 
-Zammad comes with many ticket related endpoints. 
-For better overview the grouped those up:
+Zammad comes with many ticket related endpoints.
+For better overview, they are splitted in different sections:
 
    .. toctree::
       :maxdepth: 1
       :glob:
 
-      /api/ticket/index
       /api/ticket/articles
+      /api/ticket/links
+      /api/ticket/mentions
       /api/ticket/priorities
       /api/ticket/states
       /api/ticket/tags
-      /api/ticket/links
-      /api/ticket/mentions
+      /api/ticket/index
+      /api/ticket/timeaccounting
