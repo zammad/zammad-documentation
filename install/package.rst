@@ -60,12 +60,6 @@ Add Repository
                $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                  gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
-         Ubuntu 16.04
-            .. code-block:: sh
-
-               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 16.04 main"| \
-                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
-
          Ubuntu 18.04
             .. code-block:: sh
 

@@ -98,6 +98,8 @@ If you want to install Zammad, you need the following software.
 2.2. Supported distributions
 ----------------------------
 
+Zammad provides binary packages for the most recent two stable / long-term-support releases of the supported Linux distributions, until they reach their end-of-life or until they can no longer provide the technical requirements for Zammad. Using of the latest supported stable / long-term-support version is generally recommended.
+
 Below you can find all distributions Zammad provides packages for.
 
 .. csv-table:: Supported operating system matrix
@@ -107,7 +109,11 @@ Below you can find all distributions Zammad provides packages for.
    "CentOS / RHEL", "7 & 8"
    "Debian", "10, 11 & 12"
    "OpenSuSE / SLES", "Leap 42.3 / 12; Leap 15.x / 15"
-   "Ubuntu", "16.04, 18.04, 20.04 & 22.04"
+   "Ubuntu", "18.04, 20.04 & 22.04"
+
+.. warning:: **⚠ Changes with Zammad 6.2**
+
+   Zammad 6.2 will not provide packages for Debian 10, Ubuntu 18.04, and SLES 12. Users of these distributions are encouraged to update to more recent versions like Debian 12, Ubuntu 22.04, and SLES 15.
 
 .. warning:: **⚠ SuSE users be aware**
 
@@ -138,13 +144,13 @@ installed with the Zammad-Package.
 
 .. code-block:: sh
 
-   # Debian 10 & 11, Ubuntu 16.04, 18.04 & 20.04
+   # Debian & Ubuntu
    $ apt install libimlib2
 
    # openSUSE
    $ zypper install imlib2
 
-   # CentOS 7 & 8
+   # CentOS
    $ yum install epel-release
    $ yum install imlib2
 
