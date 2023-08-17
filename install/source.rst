@@ -33,10 +33,6 @@ Software dependencies
 Please ensure that you already provided mentioned 
 :doc:`Software requirements </prerequisites/software>`.
 
-Also ensure to provide your database server and web server at this point.
-
-.. include:: /install/includes/prerequisites.rst
-
 Add user
 --------
 
@@ -67,10 +63,10 @@ Step 2: Install dependencies
    About this section: The RVM installation part uses definition list instead 
    of field lists intentionally. It's supposed to safe width for better readability.
 
-.. note:: 
+.. note::
 
-   | **Below commands do neither include the database server nor the web server.** 
-   | We do cover important web server related stuff within :doc:`/getting-started/configure-webserver`.
+   Please have a look at :doc:`/getting-started/configure-webserver` for
+   detailed instructions.
 
 
 Zammad requires specific ruby versions. Adapt the commands below if you install 
