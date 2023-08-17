@@ -3,7 +3,7 @@ Tickets
 
    .. warning::
 
-      Ticket endpoints depend on on group permissions if the user you're 
+      Ticket endpoints depend on group permissions if the user you're
       using is an agent. Because of this tickets may or may not be available.
 
 List
@@ -17,7 +17,7 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
 
    [
@@ -118,7 +118,7 @@ Response:
    :force:
 
    # HTTP-Code 200 Ok
-   
+
    {
       "tickets": [
          9,
@@ -1165,7 +1165,7 @@ Response:
    :force:
 
    # HTTP-Code 200 Ok
-   
+
    {
       "id": 3,
       "group_id": 1,
@@ -1211,26 +1211,26 @@ Create
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-   .. tip:: 
+   .. tip::
 
       **🐱‍👤 On behalf of users**
 
-      If you want to create tickets on behalf other users, use 
-      the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this. 
-      Use ``guess:{email address}`` to save an API call if you don't know the 
+      If you want to create tickets on behalf other users, use
+      the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this.
+      Use ``guess:{email address}`` to save an API call if you don't know the
       users ID or want to create the user in question.
 
       **📣 Add mention subscription right away**
 
-      Add the ``mentions`` attribute to your ticket payload and provide 
-      an array of user ids to directly subscribe them during ticket creation. 
+      Add the ``mentions`` attribute to your ticket payload and provide
+      an array of user ids to directly subscribe them during ticket creation.
 
       *E.g.:* ``"mentions": [1, 5, 7, 8],``
 
 ``POST``-Request sent: ``/api/v1/tickets``
 
 .. code-block:: json
-   
+
    {
       "title": "Help me!",
       "group": "2nd Level",
@@ -1249,7 +1249,7 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
-   
+
    {
       "id": 19,
       "group_id": 2,
@@ -1307,7 +1307,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 .. code-block:: json
    :force:
-   
+
    {
       "title": "No help for you",
       "group": "Sales",
@@ -1331,7 +1331,7 @@ Response:
    :force:
 
    # HTTP-Code 200 Ok
-   
+
    {
       "id": 19,
       "group_id": 1,
@@ -1379,7 +1379,7 @@ Response:
 
 .. tip:: **Adding attachments**
 
-   Attachment payloads are identical to the ``POST`` method, just use ``PUT`` 
+   Attachment payloads are identical to the ``POST`` method, just use ``PUT``
    instead.
 
 Delete
