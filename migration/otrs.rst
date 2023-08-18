@@ -33,25 +33,25 @@ This is a dependency of the OTRS migration plugin.
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/1029/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-6.0.76.opm
 
    .. tab:: OTRS 5
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/615/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-5.0.56.opm
 
    .. tab:: OTRS 4
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/309/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-4.0.25.opm
 
    .. tab:: OTRS 3
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/142/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-3.3.2.opm
 
 Step 2: Install OTRS migration plugin
 --------------------------------------
@@ -62,25 +62,25 @@ Step 2: Install OTRS migration plugin
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/1085/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-6.0.7.opm
 
    .. tab:: OTRS 5
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/617/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-5.0.4.opm
 
    .. tab:: OTRS 4
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/383/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-4.1.12.opm
 
    .. tab:: OTRS 3
 
       .. code-block::
 
-         https://addons.znuny.com/api/addon_repos/public/287/latest
+         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-3.0.33.opm
 
 .. hint::
 
