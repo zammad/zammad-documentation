@@ -1215,10 +1215,11 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
       **🐱‍👤 On behalf of users**
 
-      If you want to create tickets on behalf other users, use
+      If you want to create tickets on behalf of other users, use
       the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this.
       Use ``guess:{email address}`` to save an API call if you don't know the
-      users ID or want to create the user in question.
+      user's ID or want to create the user in question
+      (``"customer_id": "guess:jane@doe.com"``).
 
       **📣 Add mention subscription right away**
 
