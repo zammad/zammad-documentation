@@ -1,4 +1,4 @@
-# zammad documentation
+# Zammad Documentation
 
 If you want to contribute to the Zammad documentation, just create pull 
 requests.
