@@ -1,4 +1,4 @@
-Shared drafts
+Shared Drafts
 *************
 
 Show
@@ -23,7 +23,7 @@ Sample response (base64 coded inline image is cut off):
                "id": 2,
                "ticket_id": 58,
                "new_article": {
-                  "body": "<div>Some text for a shared draft. <br></div><div><br></div><div>Some inline image:<img tabindex=\"0\" style=\"width: 1000px; max-width: 100%;\" src=\"data:image/jpeg;base64,/9j/4AAQSkZJRg[...]
+                  "body": "<div>Some text for a shared draft. <br></div><div><br></div><div>Some inline image:<img tabindex=\"0\" style=\"width: 1000px; max-width: 100%;\" src=\"data:image/jpeg;base64,/9j/4AAQSkZJRg[...]",
                   "type": "email",
                   "internal": false,
                   "subtype": "",
