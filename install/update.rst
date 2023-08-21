@@ -16,7 +16,7 @@ Updating Zammad
 
       If you don't have time for updating all the time
       (nobody got time for that, right?), please consider using `Zammad hosting`_
-      for your and your customer's safety.
+      for your and your customers' safety.
 
       In case you couldn't update for a longer time, please ensure to at least
       update from **major to major** version. Big version jumps *may* work but
