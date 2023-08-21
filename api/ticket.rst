@@ -12,6 +12,7 @@ For better overview, they have been splitted in different sections:
       /api/ticket/links
       /api/ticket/mentions
       /api/ticket/priorities
+      /api/ticket/shared_drafts
       /api/ticket/states
       /api/ticket/tags
       /api/ticket/index
