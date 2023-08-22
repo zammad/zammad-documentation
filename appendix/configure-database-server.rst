@@ -27,7 +27,7 @@ Keep in mind that versions may differ from your setup - adapt where needed.
 
       .. code-block::
 
-         /etc/postgresql/(10|11|12|13|14|15)/main/postgresql.conf
+         /etc/postgresql/{your version}/main/postgresql.conf
 
    .. tab:: CentOS / OpenSUSE
 

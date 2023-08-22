@@ -17,7 +17,7 @@ Tickets and users
    To **manually** delete users and all their associated tickets
    (*e.g.* in compliance with a “Right to Forget” request under the GDPR),
    you can use the
-   `functions <https://admin-docs.zammad.org/en/latest/system/data-privacy.html>`_
+   `data privacy functions <https://admin-docs.zammad.org/en/latest/system/data-privacy.html>`_
    in the admin panel or
    :doc:`use the console </admin/console/dangerzone-for-experts>`.
 
