@@ -1,281 +1,751 @@
 Roles
 *****
 
-.. note:: **🤓 To see or not to see**
-
-   Please note that below samples were provided with ``admin`` and
-   ``ticket.agent`` permissions. Some attributes / information may not be
-   available in specific situations.
-
-   Please see our `Permission Guide`_ to get better insights.
-
-.. _Permission Guide:
-   https://admin-docs.zammad.org/en/latest/manage/roles/index.html#reference-guide-permissions
-
-
 List
 ====
 
-Required permission: ``ticket.agent`` **or** ``admin.user``
+Required permission: ``admin.role``
 
-**All roles**
+``GET`` -Request sent: ``/api/v1/roles/?full=true&_={id}``
 
-``GET`` -Request sent: ``/api/v1/roles/?full=true&_={userid}``
+Response:
 
-Response: 
+.. code-block:: json
+   :force:
 
-.. code-block:: json 
+   # HTTP-Code 200 OK
 
-	# HTTP-Code 200 OK
+   {
+      "record_ids": [
+         1,
+         2,
+         3
+      ],
+      "assets": {
+         "Role": {
+            "1": {
+               "id": 1,
+               "name": "Admin",
+               "preferences": {},
+               "default_at_signup": false,
+               "active": true,
+               "note": "To configure your system.",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:37.326Z",
+               "updated_at": "2023-08-08T09:45:15.315Z",
+               "permission_ids": [
+                  1,
+                  43,
+                  55,
+                  57,
+                  65
+               ],
+               "knowledge_base_permission_ids": [],
+               "group_ids": {
+                  "1": [
+                     "full"
+                  ],
+                  "2": [
+                     "full"
+                  ],
+                  "3": [
+                     "full"
+                  ]
+             **All roles**  }
+            },
+            "2": {
+               "id": 2,
+               "name": "Agent",
+               "preferences": {},
+               "default_at_signup": false,
+               "active": true,
+               "note": "To work on Tickets.",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:37.362Z",
+               "updated_at": "2023-08-08T09:59:48.202Z",
+               "permission_ids": [
+                  43,
+                  57,
+                  60,
+                  62,
+                  66
+               ],
+               "knowledge_base_permission_ids": [],
+               "group_ids": {
+                  "1": [
+                     "full"
+                  ],
+                  "2": [
+                     "full"
+                  ],
+                  "3": [
+                     "full"
+                  ]
+               }
+            },
+            "3": {
+               "id": 3,
+               "name": "Customer",
+               "preferences": {},
+               "default_at_signup": true,
+               "active": true,
+               "note": "People who create Tickets ask for help.",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:37.379Z",
+               "updated_at": "2023-08-17T12:14:20.080Z",
+               "permission_ids": [
+                  44,
+                  47,
+                  48,
+                  50,
+                  54,
+                  58
+               ],
+               "knowledge_base_permission_ids": [],
+               "group_ids": {}
+            }
+         },
+         "Group": {
+            "1": {
+               "id": 1,
+               "signature_id": 1,
+               "email_address_id": 1,
+               "name": "Sales",
+               "assignment_timeout": null,
+               "follow_up_possible": "yes",
+               "reopen_time_in_days": null,
+               "follow_up_assignment": true,
+               "active": true,
+               "shared_drafts": true,
+               "note": "Standard Group/Pool for Tickets.",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:38.651Z",
+               "updated_at": "2023-08-08T09:59:48.072Z",
+               "user_ids": [
+                  4,
+                  5,
+                  3
+               ]
+            },
+            "2": {
+               "id": 2,
+               "signature_id": null,
+               "email_address_id": 1,
+               "name": "2nd Level",
+               "assignment_timeout": null,
+               "follow_up_possible": "yes",
+               "reopen_time_in_days": null,
+               "follow_up_assignment": true,
+               "active": true,
+               "shared_drafts": true,
+               "note": "",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:48.589Z",
+               "updated_at": "2023-08-08T09:59:48.148Z",
+               "user_ids": [
+                  4,
+                  5,
+                  3
+               ]
+            },
+            "3": {
+               "id": 3,
+               "signature_id": null,
+               "email_address_id": 1,
+               "name": "Service Desk",
+               "assignment_timeout": null,
+               "follow_up_possible": "yes",
+               "reopen_time_in_days": null,
+               "follow_up_assignment": true,
+               "active": true,
+               "shared_drafts": true,
+               "note": "",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:48.602Z",
+               "updated_at": "2023-08-08T09:59:48.185Z",
+               "user_ids": [
+                  4,
+                  5,
+                  3
+               ]
+            }
+         },
+         "User": {
+            "1": {
+               "id": 1,
+               "organization_id": null,
+               "login": "-",
+               "firstname": "-",
+               "lastname": "",
+               "email": "",
+               "image": null,
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": "",
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": "",
+               "vip": false,
+               "verified": false,
+               "active": false,
+               "note": "",
+               "last_login": null,
+               "source": null,
+               "login_failed": 0,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {},
+               "updated_by_id": 1,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:37.217Z",
+               "updated_at": "2023-07-26T08:44:37.217Z",
+               "role_ids": [],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {}
+            },
+            "3": {
+               "login_failed": 0,
+               "last_login": "2023-08-22T06:51:00.458Z",
+               "updated_by_id": 1,
+               "id": 3,
+               "organization_id": 2,
+               "login": "chris@chrispresso.com",
+               "firstname": "Christopher",
+               "lastname": "Miller",
+               "email": "chris@chrispresso.com",
+               "image": "7a6a0d1d94ad2037153cf3a6c1b49a53",
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": "",
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": "",
+               "vip": false,
+               "verified": false,
+               "active": true,
+               "note": "",
+               "source": null,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {
+                  "locale": "en-us",
+                  "notification_config": {
+                     "matrix": {
+                        "create": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "update": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "reminder_reached": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "escalation": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        }
+                     }
+                  },
+                  "intro": true,
+                  "theme": "light",
+                  "two_factor_authentication": {}
+               },
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:48.807Z",
+               "updated_at": "2023-08-22T06:51:00.492Z",
+               "role_ids": [
+                  1,
+                  2
+               ],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {
+                  "1": [
+                     "full"
+                  ],
+                  "2": [
+                     "full"
+                  ],
+                  "3": [
+                     "full"
+                  ]
+               }
+            },
+            "4": {
+               "id": 4,
+               "organization_id": 2,
+               "login": "jacob@chrispresso.com",
+               "firstname": "Jacob",
+               "lastname": "Smith",
+               "email": "jacob@chrispresso.com",
+               "image": "95afc1244af5cb8b77edcd7224c5d5f8",
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": null,
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": null,
+               "vip": false,
+               "verified": false,
+               "active": true,
+               "note": "",
+               "last_login": null,
+               "source": null,
+               "login_failed": 0,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {
+                  "locale": "en-us",
+                  "notification_config": {
+                     "matrix": {
+                        "create": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "update": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "reminder_reached": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "escalation": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        }
+                  "theme": "light"
+               },
+               "updated_by_id": 4,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:49.390Z",
+               "updated_at": "2023-08-18T06:43:28.448Z",
+               "role_ids": [
+                  1,
+                  2
+               ],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {
+                  "1": [
+                     "full"
+                  ],
+                  "2": [
+                     "full"
+                  ],
+                  "3": [
+                     "full"
+                  ]
+               }
+            },
+            "5": {
+               "id": 5,
+               "organization_id": 2,
+               "login": "emma@chrispresso.com",
+               "firstname": "Emma",
+               "lastname": "Taylor",
+               "email": "emma@chrispresso.com",
+               "image": "b64fef91c29105b4a08a2a69be08eda3",
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": null,
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": null,
+               "vip": false,
+               "verified": false,
+               "active": true,
+               "note": "",
+               "last_login": null,
+               "source": null,
+               "login_failed": 0,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {
+                  "locale": "en-us",
+                  "notification_config": {
+                     "matrix": {
+                        "create": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "update": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "reminder_reached": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "escalation": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        }
+                     }
+                  },
+                  "secondaryAction": "closeTab"
+               },
+               "updated_by_id": 5,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:49.766Z",
+               "updated_at": "2023-08-09T09:51:34.110Z",
+               "role_ids": [
+                  2
+               ],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {
+                  "1": [
+                     "full"
+                  ],
+                  "2": [
+                     "full"
+                  ],
+                  "3": [
+                     "full"
+                  ]
+               }
+            }
+         },
+         "Organization": {
+            "2": {
+               "id": 2,
+               "name": "Chrispresso Inc.",
+               "shared": true,
+               "domain": "",
+               "domain_assignment": false,
+               "active": true,
+               "note": "Manufacturer of individual coffee products.",
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2023-07-26T08:44:48.617Z",
+               "updated_at": "2023-08-04T12:01:44.370Z",
+               "vip": false,
+               "member_ids": [
+                  3,
+                  4,
+                  5
+               ],
+               "secondary_member_ids": []
+            }
+         }
+      },
+      "total_count": 3
+   }
 
-	{
-	{"record_ids":[1,2,3,4],
-	"assets":{"Role":{"1":{"id":1,
-	"name":"Admin",
-	"default_at_signup":false,
-	"active":true,
-	"note":"To configure your system.",
-	"updated_by_id":3,"preferences":{},
-	"created_by_id":1,
-	"created_at":"2022-05-18T17:40:55.190Z",
-	"updated_at":"2022-05-19T00:26:27.303Z",
-	"permission_ids":[1,41,61,51],
-	"knowledge_base_permission_ids":[],
-	"group_ids":{}},
-	"2":{"id":2,
-	"name":"Agent",
-	"preferences":{},
-	"default_at_signup":false,
-	"active":true,
-	"note":"To work on Tickets.",
-	"updated_by_id":1,
-	"created_by_id":1,
-	"created_at":"2022-05-18T17:40:55.212Z",
-	"updated_at":"2022-05-18T17:40:55.212Z",
-	"permission_ids":[41,53,56,58,62],
-	"knowledge_base_permission_ids":[],
-	"group_ids":{}},
-	"3":{"id":3,
-	"name":"Customer",
-	"preferences":{},
-	"default_at_signup":true,
-	"active":true,
-	"note":"People who create Tickets ask for help.",
-	"updated_by_id":1,"created_by_id":1,
-	"created_at":"2022-05-18T17:40:55.219Z",
-	"updated_at":"2022-05-18T17:40:55.219Z",
-	"permission_ids":[42,45,46,48,54],
-	"knowledge_base_permission_ids":[],
-	"group_ids":{}},
-	"4":{"id":4,"name":"Mathew",
-	"preferences":{},
-	"default_at_signup":false,
-	"active":true,
-	"note":"New User",
-	"updated_by_id":3,
-	"created_by_id":3,
-	"created_at":"2022-05-19T01:02:58.007Z",
-	"updated_at":"2022-05-19T01:02:58.007Z",
-	"permission_ids":[1],
-	"knowledge_base_permission_ids":[],
-	"group_ids":{}}},
-	"User":{"1":{"id":1,
-	"organization_id":null,
-	"login":"-",
-	"firstname":"-",
-	"lastname":"",
-	"email":"",
-	"image":null,
-	"image_source":null,
-	"web":"",
-	"phone":"",
-	"fax":"",
-	"mobile":"",
-	"department":"",
-	"street":"",
-	"zip":"",
-	"city":"",
-	"country":"",
-	"address":"",
-	"vip":false,
-	"verified":false,
-	"active":false,
-	"note":"",
-	"last_login":null,
-	"source":null,
-	"login_failed":0,
-	"out_of_office":false,
-	"out_of_office_start_at":null,
-	"out_of_office_end_at":null,
-	"out_of_office_replacement_id":null,
-	"preferences":{},
-	"updated_by_id":1,
-	"created_by_id":1,
-	"created_at":"2022-05-18T17:40:55.144Z",
-	"updated_at":"2022-05-18T17:40:55.144Z",
-	"role_ids":[],
-	"organization_ids":[],
-	"authorization_ids":[],
-	"karma_user_ids":[],
-	"group_ids":{},
-	"accounts":{}},
-	"3":{"active":true,"login_failed":0,
-	"verified":false,
-	"source":null,
-	"id":3,
-	"updated_by_id":1,
-	"organization_id":2,
-	"login":"matmccabe@gmail.com",
-	"firstname":"Mathew",
-	"lastname":"McCabe",
-	"email":"matmccabe@gmail.com",
-	"image":null,
-	"image_source":null,
-	"web":"",
-	"phone":"",
-	"fax":"",
-	"mobile":"",
-	"department":null,
-	"street":"","zip":"",
-	"city":"",
-	"country":"",
-	"address":null,
-	"vip":false,
-	"note":"",
-	"last_login":"2022-05-19T00:36:11.231Z",
-	"out_of_office":false,
-	"out_of_office_start_at":null,
-	"out_of_office_end_at":null,
-	"out_of_office_replacement_id":null,
-	"preferences":{"notification_config":{"matrix":{"create":{"criteria":{"owned_by_me":true,
-	"owned_by_nobody":true,"subscribed":true,"no":false},
-	"channel":{"email":true,"online":true}},
-	"update":{"criteria":{"owned_by_me":true,
-	"owned_by_nobody":true,
-	"subscribed":true,"no":false},
-	"channel":{"email":true,"online":true}},
-	"reminder_reached":{"criteria":{"owned_by_me":true,
-	"owned_by_nobody":false,"subscribed":false,"no":false},
-	"channel":{"email":true,"online":true}},
-	"escalation":{"criteria":{"owned_by_me":true,
-	"owned_by_nobody":false,
-	"subscribed":false,
-	"no":false},
-	"channel":{"email":true,"online":true}}}},
-	"locale":"en-us","intro":true},
-	"created_by_id":1,
-	"created_at":"2022-05-19T00:06:31.281Z",
-	"updated_at":"2022-05-19T00:36:11.233Z",
-	"role_ids":[1,2],
-	"organization_ids":[],"authorization_ids":[],
-	"karma_user_ids":[],
-	"group_ids":{"1":["full"]},
-	"accounts":{}}},"Group":{"1":{"id":1,
-	"signature_id":1,
-	"email_address_id":1,
-	"name":"Users",
-	"assignment_timeout":null,
-	"follow_up_possible":"yes",
-	"follow_up_assignment":true,
-	"active":true,
-	"shared_drafts":true,
-	"note":"Standard Group/Pool for Tickets.",
-	"updated_by_id":3,
-	"created_by_id":1,
-	"created_at":"2022-05-18T17:40:55.690Z",
-	"updated_at":"2022-05-19T00:06:31.383Z",
-	"user_ids":[3]}},
-	"Organization":{"2":{"id":2,
-	"name":"Docu",
-	"shared":true,
-	"domain":"",
-	"domain_assignment":false,
-	"active":true,
-	"note":"",
-	"updated_by_id":1,
-	"created_by_id":1,
-	"created_at":"2022-05-19T00:06:31.249Z",
-	"updated_at":"2022-05-19T00:06:31.325Z",
-	"member_ids":[3]}}},"total_count":4}
-	}
+Show
+====
 
+Required permission: ``admin.role``
 
+``GET`` -Request sent: ``/api/v1/roles/{id}``
 
-**Specific role**
+Response:
 
-``GET`` -Request sent: ``/api/v1/roles/:id``
+.. code-block:: json
+   :force:
 
-Response: 
+   # HTTP-Code 200 OK
 
-.. code-block:: json 
-
-	# HTTP-Code 200 OK
-
-	{"id":4,"name":"Mathew",
-	"preferences":{},
-	"default_at_signup":false,
-	"active":true,
-	"note":"New User",
-	"updated_by_id":3,
-	"created_by_id":3,
-	"created_at":"2022-05-19T01:02:58.007Z",
-	"updated_at":"2022-05-19T01:02:58.007Z",
-	"permission_ids":[1],"knowledge_base_permission_ids":[],
-	"group_ids":{}}
-
+   {
+      "id": 2,
+      "name": "Agent",
+      "preferences": {},
+      "default_at_signup": false,
+      "active": true,
+      "note": "To work on Tickets.",
+      "updated_by_id": 3,
+      "created_by_id": 1,
+      "created_at": "2023-07-26T08:44:37.362Z",
+      "updated_at": "2023-08-08T09:59:48.202Z",
+      "permission_ids": [
+         43,
+         57,
+         60,
+         62,
+         66
+      ],
+      "knowledge_base_permission_ids": [],
+      "group_ids": {
+         "1": [
+            "full"
+         ],
+         "2": [
+            "full"
+         ],
+         "3": [
+            "full"
+         ]
+      }
+   }
 
 Create
 ======
 
+Required permission: ``admin.role``
+
 ``POST`` -Request sent: ``/api/v1/roles``
 
-Response: 
+Request:
 
 .. code-block:: json
-	 
-	# HTTP-Code 201 OK
+   :force:
 
-	{
-		{"id":4,
-		"name":"Mathew",
-		"preferences":{},
-		"default_at_signup":false,
-		"active":true,
-		"note":"New User",
-		"updated_by_id":3,
-		"created_by_id":3,
-		"created_at":"2022-05-19T01:02:58.007Z",
-		"updated_at":"2022-05-19T01:02:58.007Z",
-		"permission_ids":[1],"knowledge_base_permission_ids":[],
-		"group_ids":{}}
+   {
+      "active": true,
+      "default_at_signup": false,
+      "group_ids": {
+         "1": "full",
+         "2": "full",
+         "3": "full"
+      },
+      "id": "c-12",
+      "name": "VIP service",
+      "note": "Handling of VIP customers!",
+      "permission_ids": [
+         "57",
+         "58"
+      ]
+   }
 
-	}
+Response:
 
 .. code-block:: json
-	
-	# HTTP-Code 422 ERROR
-	{
-		{"error":"Cannot set default at signup when role has admin.branding, admin.group permissions.",
-		"error_human":"Cannot set default at signup when role has admin.branding, admin.group permissions."}
-	}
+   :force:
 
+   # HTTP-Code 201 Created
+
+   {
+      "id": 4,
+      "name": "VIP service",
+      "preferences": {},
+      "default_at_signup": false,
+      "active": true,
+      "note": "Handling of VIP customers!",
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "created_at": "2023-08-22T11:24:02.114Z",
+      "updated_at": "2023-08-22T11:24:02.111Z",
+      "permission_ids": [
+         57,
+         58
+      ],
+      "knowledge_base_permission_ids": [],
+      "group_ids": {
+         "1": [
+            "full"
+         ],
+         "2": [
+            "full"
+         ],
+         "3": [
+            "full"
+         ]
+      }
+   }
 
 Update
 ======
 
-``PUT`` -Request sent: ``/api/v1/roles/:id``
+Required permission: ``admin.role``
+
+``PUT`` -Request sent: ``/api/v1/roles/{id}``
+
+Request:
 
 .. code-block:: json
-	
-	# HTTP-Code 422 ERROR
-	{
-		{"id":5,"name":"User 2",
-		"default_at_signup":false,
-		"active":true,
-		"note":"To configure your system.",
-		"updated_by_id":3,"preferences":{},
-		"created_by_id":3,"created_at":"2022-05-19T01:46:44.175Z",
-		"updated_at":"2022-05-19T01:47:28.349Z",
-		"permission_ids":[],"knowledge_base_permission_ids":[],
-		"group_ids":{}}
-	}
+   :force:
+
+   {
+      "active": true,
+      "default_at_signup": false,
+      "group_ids": {
+         "1": "full",
+         "2": "full",
+         "3": "full"
+      },
+      "name": "Service",
+      "note": "Changed text",
+      "permission_ids": [
+         "57",
+         "58"
+      ]
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 OK
+
+   {
+      "updated_at": "2023-08-22T11:36:49.136Z",
+      "name": "Service",
+      "default_at_signup": false,
+      "active": true,
+      "note": "Changed text",
+      "updated_by_id": 3,
+      "id": 3,
+      "preferences": {},
+      "created_by_id": 1,
+      "created_at": "2023-07-26T08:44:37.379Z",
+      "permission_ids": [
+         57,
+         58
+      ],
+      "knowledge_base_permission_ids": [],
+      "group_ids": {
+         "1": [
+            "full"
+         ],
+         "2": [
+            "full"
+         ],
+         "3": [
+            "full"
+         ]
+      }
+   }
