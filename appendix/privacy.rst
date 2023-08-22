@@ -11,14 +11,15 @@ The following kinds of data are stored locally on the production system:
 Tickets and users
    By default, Zammad never automatically deletes tickets or users.
 
-   To enable automatic deletion of tickets after a given interval,
+   To enable **automatic** deletion of tickets after a given interval,
    `use the scheduler <https://admin-docs.zammad.org/en/latest/manage-scheduler.html>`_.
-   To manually delete users and all their associated tickets
-   (*e.g.,* in compliance with a “Right to Forget” request under the GDPR),
-   :doc:`use the console </admin/console/dangerzone-for-experts>`.
 
-   .. note:: The ability to delete users via the admin panel
-      is planned for a future release of Zammad.
+   To **manually** delete users and all their associated tickets
+   (*e.g.* in compliance with a “Right to Forget” request under the GDPR),
+   you can use the
+   `data privacy functions <https://admin-docs.zammad.org/en/latest/system/data-privacy.html>`_
+   in the admin panel or
+   :doc:`use the console </admin/console/dangerzone-for-experts>`.
 
 Chat sessions
    Once a chat session has been marked **closed**,
