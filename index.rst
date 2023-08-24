@@ -81,7 +81,6 @@ The Zammad documentation consists of three parts:
 
    /api/intro
    /api/user
-   /api/roles
    /api/organization
    /api/group
    /api/roles
