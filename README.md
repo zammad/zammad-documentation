@@ -1,4 +1,6 @@
-[![Documentation Status](https://readthedocs.org/projects/zammad/badge/?version=pre-release)](https://docs.zammad.org/en/latest/?badge=pre-release)
+[![Documentation Status](https://readthedocs.org/projects/zammad/badge/?version=pre-release)](https://docs.zammad.org/en/pre-release/?badge=pre-release) (pre-release)
+
+[![Documentation Status](https://readthedocs.org/projects/zammad/badge/?version=latest)](https://docs.zammad.org/en/latest/?badge=latest) (latest)
 
 # Zammad Documentation
 
