@@ -13,10 +13,7 @@ If you would like to improve the docs,
 simply:
 
 1. fork the repo,
-2. edit the appropriate `.rst` files
-   (see [Markup Format]
-(#restructuredtext-markup) below),
-and
+2. edit the appropriate `.rst` files (see [Markup Format](#restructuredtext-markup) below), and
 3. submit a pull request.
 
 Thanks! ❤ ❤ ❤
