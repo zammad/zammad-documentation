@@ -221,7 +221,4 @@ PostgreSQL
      - By default we will create the required database.
      - .. note:: On own database servers this setting might be troublesome.
        .. include:: /install/docker-compose/init-specific.include.rst
-   * - RSYNC_ADDITIONAL_PARAMS
-     - ``--no-perms --no-owner``
-     - By default the compose will copy data without permissions and owners. This may not fit for your storage driver.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+
