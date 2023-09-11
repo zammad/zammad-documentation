@@ -86,7 +86,7 @@ to ensure that Zammad still can access Elasticsearch.
    >> Setting.set('es_index', Socket.gethostname + '_zammad')  # Change the index name
    >> Setting.set('es_attachment_ignore', %w[.png .jpg .jpeg .mpeg .mpg .mov .bin .exe .box .mbox])  # A list of ignored file extensions (they will not be indexed)
    >> Setting.set('es_attachment_max_size_in_mb', 50)          # Limit the Attachment-Size to push to your elasticsearch index
-   >> Setting.set('es_ssl_verify', 'false')                    # Set the SSL verification to true or false
+   >> Setting.set('es_ssl_verify', 'false')                    # Turn SSL verification on or off
 
 Enable proxy
 ------------
