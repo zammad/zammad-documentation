@@ -623,6 +623,9 @@ Organization
    * - updated_by_id
      - ``1``
      - User ID that updated the organization
+   * - vip
+     - ``true``, ``false``
+     - Defines if the organization has VIP state
 
 Group
 =====

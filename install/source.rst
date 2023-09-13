@@ -33,10 +33,6 @@ Software dependencies
 Please ensure that you already provided mentioned 
 :doc:`Software requirements </prerequisites/software>`.
 
-Also ensure to provide your database server and web server at this point.
-
-.. include:: /install/includes/prerequisites.rst
-
 Add user
 --------
 
@@ -67,10 +63,10 @@ Step 2: Install dependencies
    About this section: The RVM installation part uses definition list instead 
    of field lists intentionally. It's supposed to safe width for better readability.
 
-.. note:: 
+.. note::
 
-   | **Below commands do neither include the database server nor the web server.** 
-   | We do cover important web server related stuff within :doc:`/getting-started/configure-webserver`.
+   Please have a look at :doc:`/getting-started/configure-webserver` for
+   detailed instructions.
 
 
 Zammad requires specific ruby versions. Adapt the commands below if you install 
@@ -226,6 +222,21 @@ Step 4: Initialize your database
 .. warning::
 
    Ensure to do this as ``zammad`` user in your Zammad directory!
+
+.. tip::
+
+   **🤓 Avoid a restart ...**
+
+   You can set the base URL of your Zammad installation by setting the
+   :ref:`ZAMMAD_HTTP_TYPE <http_type>` and :ref:`ZAMMAD_FQDN <fqdn>` environment
+   variables before initializing the database (see below).
+
+   .. code-block:: sh
+
+      # Example for a base URL of https://zammad.example.com
+      $ su - zammad
+      $ export ZAMMAD_HTTP_TYPE=https
+      $ export ZAMMAD_FQDN=zammad.example.com
 
 .. code-block:: sh
 

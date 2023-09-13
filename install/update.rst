@@ -16,10 +16,10 @@ Updating Zammad
 
       If you don't have time for updating all the time
       (nobody got time for that, right?), please consider using `Zammad hosting`_
-      for your and your customers safety.
+      for your and your customers' safety.
 
       In case you couldn't update for a longer time, please ensure to at least
-      update from **mayor to mayor** version. Big version jumps *may* work but
+      update from **major to major** version. Big version jumps *may* work but
       usually go terribly wrong. As example, expecting the current stable
       version of Zammad being 5.1 and your instance being on Zammad 2.4, your
       path would look like so:

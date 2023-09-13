@@ -32,7 +32,6 @@ The Zammad documentation consists of three parts:
    /install/elasticsearch
    /install/docker-compose
    /install/kubernetes
-   /install/univention
    /install/update
 
 
