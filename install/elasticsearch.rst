@@ -4,7 +4,7 @@ Set up Elasticsearch
 Zammad's search function is powered by Elasticsearch, and requires the
 `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html>`_.
 
-.. note:: 
+.. note::
 
    This guide uses the ``zammad run`` command prefix in command line examples.
    This prefix is only applicable to package installations
@@ -18,10 +18,10 @@ Step 1: Installation
 
    .. note:: **🧐 To use OSS or not to use...**
 
-      Starting with Zammad 4.0 our packages allow you to decide whether to use 
+      Starting with Zammad 4.0 our packages allow you to decide whether to use
       ``elasticsearch`` or ``elasticsearch-oss``.
 
-      ``elasticsearch-oss`` users please use below "direct download" tab for 
+      ``elasticsearch-oss`` users please use below "direct download" tab for
       further installation steps.
 
       .. warning::
@@ -90,15 +90,15 @@ Step 1: Installation
 
    .. tab:: Direct Download
 
-      Find the latest release on the 
+      Find the latest release on the
       `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
-      or see the 
+      or see the
       `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
-      for in-depth instructions. Ensure to also install the fitting 
+      for in-depth instructions. Ensure to also install the fitting
       (and mandatory!) attachment plugin for elasticsearch.
 
-      If you prefer the Open Source version of Elasticsearch, please use the 
-      `Elasticsearch-OSS <https://www.elastic.co/downloads/past-releases#elasticsearch-oss>`_ 
+      If you prefer the Open Source version of Elasticsearch, please use the
+      `Elasticsearch-OSS <https://www.elastic.co/downloads/past-releases#elasticsearch-oss>`_
       download page.
 
       .. code-block:: sh
@@ -109,23 +109,23 @@ Step 1: Installation
          # Increase the virtual memory map limit
          $ sysctl -w vm.max_map_count=262144
 
-After you installed Elasticsearch and its attachment plugin, 
+After you installed Elasticsearch and its attachment plugin,
 ensure to enable it by default and start it.
 
 .. code-block:: sh
-   
+
    $ systemctl start elasticsearch
    $ systemctl enable elasticsearch
 
 .. note:: 🐋 **Docker installations on macOS/Windows:**
 
-   Setting the ``vm.max_map_count`` kernel parameter requires 
+   Setting the ``vm.max_map_count`` kernel parameter requires
    `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
 
 Step 2: Suggested Configuration
 ===============================
 
-We use the following settings to optimize the performance of our Elasticsearch 
+We use the following settings to optimize the performance of our Elasticsearch
 servers. Your mileage may vary.
 
 .. code-block:: sh
@@ -160,7 +160,7 @@ Step 3: Connect Zammad
 
 .. hint:: **🤓 Before proceeding here...**
 
-   Make sure to install Zammad before running below commands, as this will 
+   Make sure to install Zammad before running below commands, as this will
    fail other wise.
 
       * install from :doc:`package <package>`
@@ -189,8 +189,8 @@ Optional settings
 
       .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
 
-         Elasticsearch provides many different authentication methods. 
-         Some of them may require paid X-Pack, please check the 
+         Elasticsearch provides many different authentication methods.
+         Some of them may require paid X-Pack, please check the
          `elastic documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html>`_
          for more information.
 
@@ -207,17 +207,44 @@ Optional settings
 
       Zammad supports searching by the contents of file attachments,
       which means Elasticsearch has to index those, too.
-      
+
       Limiting such indexing can help conserve system resources.
 
       .. code-block:: sh
 
          # Files with these extensions will not be indexed
-         $ zammad run rails r "Setting.set('es_attachment_ignore',\ 
+         $ zammad run rails r "Setting.set('es_attachment_ignore',\
            [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
          # Files larger than this size (in MB) will not be indexed
          $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
+
+   .. tab:: Remote host
+
+      Change your Elasticsearch URL if you have a separate Elasticsearch server.
+      Default is ``localhost``.
+
+      .. code-block:: sh
+
+         $ zammad run rails r "Setting.set('es_url', 'https://example.com')"
+
+   .. tab:: SSL Verification
+
+      You can define if a SSL verification will be performed. Default is
+      ``true``.
+
+      .. code-block:: sh
+
+         # Deactivating SSL verification is NOT recommended
+         $ zammad run rails r "Setting.set('es_ssl_verify', false)"
+
+      .. hint:: 🤔 **But how to handle an Elasticsearch server with custom
+         certificates?**
+
+         You can import custom certificates and custom CA certificates to
+         Zammad. Please have a look `here
+         <https://admin-docs.zammad.org/en/latest/settings/security/ssl-certificates.html>`_
+         in the admin documentation.
 
 Appendix
 ========
