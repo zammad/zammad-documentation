@@ -29,7 +29,7 @@ Firewall
 
    .. note::
 
-      Below only covers the distributions default firewall.
+      Below only covers the distribution's default firewall.
       It may not cover your case.
 
 .. tabs::
