@@ -21,18 +21,15 @@ SELinux
 
    .. tab:: OpenSUSE
 
-      SELinux support on SUSE seems to be in early state, at least for SLES 12 
-      (and Leap 42.x). This is why we won't cover it in this documentation.
-
-      See `the documentation <https://doc.opensuse.org/documentation/leap/archive/42.3/security/html/book.security/cha.selinux.html>`_ 
-      for more input if you still wish to continue.
+      See `the documentation <https://doc.opensuse.org/documentation/leap/security/html/book-security/cha-selinux.html>`_
+      for more input if you wish to continue.
 
 Firewall
 --------
 
-   .. note:: 
+   .. note::
 
-      Below only covers the distributions default firewall. 
+      Below only covers the distribution's default firewall.
       It may not cover your case.
 
 .. tabs::
@@ -48,13 +45,13 @@ Firewall
 
    .. tab:: Debian
 
-      .. warning:: 
+      .. warning::
 
-         We're covering ``nftables`` in this part - iptables is discouraged 
-         starting from Debian 10 (Buster). 
+         We're covering ``nftables`` in this part - iptables is discouraged
+         starting from Debian 10 (Buster).
          Our example uses the ``input`` chain, yours may be a different one!
 
-      Add the following lines to ``/etc/nftables.conf`` or your specific rule 
+      Add the following lines to ``/etc/nftables.conf`` or your specific rule
       file. Ensure to add these lines to your input-chain.
 
       .. code-block::
@@ -63,7 +60,7 @@ Firewall
          tcp dport { http, https } accept
          udp dport { http, https } accept
 
-      The result should look like the following. Keep in mind that your 
+      The result should look like the following. Keep in mind that your
       enviroment could require different / more rules.
 
       .. code-block::
@@ -102,8 +99,8 @@ Firewall
 
    .. tab:: OpenSUSE
 
-      If your system does not yet know webserver rules, you can add a new one 
-      for your firewall by creating the file 
+      If your system does not yet know webserver rules, you can add a new one
+      for your firewall by creating the file
       ``/etc/sysconfig/SuSEfirewall2.d/services/webserver`` with this content:
 
       .. code-block::
@@ -116,9 +113,9 @@ Firewall
          # space separated list of allowed UDP ports
          UDP="http https"
 
-      After that locate ``FW_CONFIGURATIONS_EXT`` within 
-      ``/etc/sysconfig/SuSEfirewall2`` and add the option ``webserver`` to the 
-      list. The list is seperated by spaces. 
+      After that locate ``FW_CONFIGURATIONS_EXT`` within
+      ``/etc/sysconfig/SuSEfirewall2`` and add the option ``webserver`` to the
+      list. The list is seperated by spaces.
       You may require a different zone, above covers the external zone.
 
       Now ensure to restart the firewall service.
@@ -129,5 +126,5 @@ Firewall
 
    .. tab:: other
 
-      If we didn't cover your distribution or firewall in question, ensure to 
+      If we didn't cover your distribution or firewall in question, ensure to
       open ports ``80`` and ``443`` (TCP & UDP) beside of the ports you need.

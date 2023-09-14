@@ -106,19 +106,12 @@ Below you can find all distributions Zammad provides packages for.
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
-   "CentOS / RHEL", "7 & 8"
-   "Debian", "10, 11 & 12"
-   "OpenSuSE / SLES", "Leap 42.3 / 12; Leap 15.x / 15"
-   "Ubuntu", "18.04, 20.04 & 22.04"
-
-.. warning:: **⚠ Changes with Zammad 6.2**
-
-   Zammad 6.2 will not provide packages for Debian 10, Ubuntu 18.04, and SLES 12. Users of these distributions are encouraged to update to more recent versions like Debian 12, Ubuntu 22.04, and SLES 15.
+   "CentOS / RHEL", "8"
+   "Debian", "11 & 12"
+   "OpenSuSE / SLES", "Leap 15.x / 15"
+   "Ubuntu", "20.04 & 22.04"
 
 .. warning:: **⚠ SuSE users be aware**
-
-   Due to the age of SLES12 / Leap 42.3 you may no longer be able to satisfy
-   all (soft) dependencies of Zammad.
 
    Note that SuSE Tumbleweed *does not* meet Zammad requirements and thus
    *is not* supported!
@@ -213,7 +206,8 @@ Node.js is required for asset compiling.
    :header: "Zammad", "Node.js"
    :widths: 20, 20
 
-   "5.2+", "16.0+"
+   "6.2+", "18.0+"
+   "5.2 - 6.1", "16.0+"
    "5.0 - 5.1", "10.0+"
 
 2.6. Reverse Proxy
