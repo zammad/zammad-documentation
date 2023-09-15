@@ -65,7 +65,6 @@ The Zammad documentation consists of three parts:
    :caption: Contributing / Development
 
    /contributing/start
-   /contributing/supported-versions-branches
 
 
 .. toctree::
