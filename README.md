@@ -4,7 +4,7 @@
 
 # Zammad Documentation
 
-Source files for [Zammad’s documentation][https://docs.zammad.org/en/latest/].
+Source files for [Zammad’s documentation](https://docs.zammad.org/en/latest/).
 
 ## Contributing
 
