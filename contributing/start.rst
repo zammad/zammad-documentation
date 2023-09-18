@@ -135,7 +135,7 @@ projects:
 
 Structure of translation projects in Weblate:
 
- * Documentations
+ * Documentation
     * User Documentation (latest)
     * User Documentation (pre-release)
     * Admin Documentation (latest)
@@ -153,7 +153,7 @@ Structure of translation projects in Weblate:
   **Zammad**). When Weblate detects the same strings in different versions,
   they will be used for all versions and only have to be translated once.
 
-After selecting a project (Documentations or Zammad), you will see different
+After selecting a project (Documentation or Zammad), you will see different
 sub-projects and their translation status summarized for all languages.
 These overviews may show a quite low translation rate, which is due to the
 amount of acive languages.
@@ -161,7 +161,7 @@ amount of acive languages.
 Here you can select one of the "components", which is more or less the same as
 different versions. After selecting one of them, you can see the status of
 translation for the different languages, as you can see in the
-following screenshot with an example from *Documentations > User
+following screenshot with an example from *Documentation > User
 Documentation (latest)*:
 
 .. figure:: /images/contributing/weblate-translations-user-docs.png
