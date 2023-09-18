@@ -102,18 +102,18 @@ Thanks! ❤ ❤ ❤
 .. _translation:
 
 Translation
-============
+===========
 
-If you want to contribute to the translations and improve the multi-language
+If you want to help us with translation and improve the multi-language
 support of Zammad and/or the documentation, you are welcome to contribute
 as well! The translation of Zammad itself and the documentation is done by using
 Weblate, which is a service for the collaborative translation of projects.
 
-You just have to head over to Zammad in Weblate_. You can either create an
-account (if you don't have one already) or even sign in with your Github
-account!
+You just have to head over to Zammad's `Weblate instance`_. You can either
+create an account (if you don't have one already) or even sign in with your
+Github account!
 
-We will cover some basic steps in the following sections to get started with
+We will cover some basic steps in the following sections to get you started with
 translating. However, if you want to use some additional features of Weblate
 and want to dive deeper into it, their `translation documentation`_ is a good
 starting point.
@@ -122,15 +122,16 @@ Basics
 ------
 
 The translation of **Zammad** and the translation of the **documentation**
-are splitted in two projects in Weblate. When you click in the top menu under
-"*Projects > Browse all projects*", you can find the overview of the two projects:
+are split into two projects in Weblate. When you click in the top menu under
+"*Projects > Browse all projects*", you can find the overview of the two
+projects:
 
 .. figure:: /images/contributing/weblate-overview-docs.png
   :align: center
   :scale: 65 %
-  :alt: Screenshot showing translated projects in Weblate and menu
+  :alt: Screenshot showing translation projects in Weblate and menu
 
-  Screenshot showing translated projects and menu bar of Weblate
+  Screenshot showing translation projects and menu bar of Weblate
 
 Structure of translation projects in Weblate:
 
@@ -153,13 +154,13 @@ Structure of translation projects in Weblate:
   they will be used for all versions and only have to be translated once.
 
 After selecting a project (Documentations or Zammad), you will see different
-sub-projects and their translation status condensed for all languages.
-These overviews may show a quite low translated rate, which is due to the amount
-of acivated languages.
+sub-projects and their translation status summarized for all languages.
+These overviews may show a quite low translation rate, which is due to the
+amount of acive languages.
 
 Here you can select one of the "components", which is more or less the same as
 different versions. After selecting one of them, you can see the status of
-translation for the different activated languages, as you can see in the
+translation for the different languages, as you can see in the
 following screenshot with an example from *Documentations > User
 Documentation (latest)*:
 
@@ -173,7 +174,7 @@ Documentation (latest)*:
 Translating
 -----------
 
-After selecting your languange, you want to translate to, a good starting point
+After selecting your languange you want to translate to, a good starting point
 is to select "*Untranslated strings*" (or the same meaning in your language,
 depending on what you have set in your profile).
 
@@ -190,8 +191,8 @@ the user interface of Weblate:
 2. **Translation area** itself. You can find the source string
    (*"English (United States)"*) at the top and the field for your translation
    (*"French"* in this example).
-3. **Glossary**: here you can find common translations in Zammad context. The words
-   from the glossary are highlightes in the source strings, as well.
+3. **Glossary**: here you can find common translations in Zammad context. The terms
+   from the glossary are highlighted in the source strings, as well.
 4. **Some useful tabs**:
     * **Nearby strings**: shows you the context of the word or string
     * **Automatic suggestions**: if similar strings are already translated, it will
@@ -223,7 +224,7 @@ documentation projects (see RestructuredText_ for details):
    more \*) should be adopted true to meaning.
 
 
-.. _Weblate:
+.. _Weblate instance:
   https://translations.zammad.org/
 
 .. _translation documentation:
