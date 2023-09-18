@@ -216,9 +216,12 @@ PostgreSQL
      - ``zammad_production``
      - Zammads database to use.
      -
+   * - POSTGRESQL_OPTIONS
+     - ``(unset)``
+     - Additional postgresql params to be appended to the database URI.
+     -
    * - POSTGRESQL_DB_CREATE
      - ``true``
      - By default we will create the required database.
      - .. note:: On own database servers this setting might be troublesome.
        .. include:: /install/docker-compose/init-specific.include.rst
-
