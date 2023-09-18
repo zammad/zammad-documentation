@@ -8,7 +8,7 @@ Source files for [Zammad’s documentation][https://docs.zammad.org/en/latest/].
 
 ## Contributing
 
-Please see [the Contributiong section in this manual](https://docs.zammad.org/en/latest/contributing/start.html).
+Please see [the Contributing section in this manual](https://docs.zammad.org/en/latest/contributing/start.html).
 
 ## Compilation
 
