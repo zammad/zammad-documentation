@@ -195,11 +195,14 @@ the user interface of Weblate:
    from the glossary are highlighted in the source strings, as well.
 4. **Some useful tabs**:
     * **Nearby strings**: shows you the context of the word or string
-    * **Automatic suggestions**: if similar strings are already translated, it will
-      show you the suggestions here.
-    * **Other languages**: here you can get an overview, which languages are translated
-      and you can also see the translated strings (could be useful for languages,
-      which are similar).
+    * **Automatic suggestions**: here you can find automatic suggestions from
+      DeepL and suggestions from similar strings, which are already translated.
+      Use the "*Clone to translation*" button to insert it in the translation
+      field to apply changes. Use the "*Accept*" button to accept the suggested
+      translation and automatically switch to the next string.
+    * **Other languages**: here you can get an overview, which languages are
+      translated and you can also see the translated strings (could be useful
+      for languages, which are similar).
 
 Troubleshooting
 ---------------
