@@ -23,6 +23,15 @@ html_static_path = ['_static']
 
 html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_css_files = [
+   'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
+   'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
+   'theme/theme_overrides.css'
+]
+
+html_js_files = [
+   'theme/zammad_overrides.js',
+]
 
 # Suppress "WARNING: unknown mimetype for ..." during EPUB builds.
 #   https://github.com/sphinx-doc/sphinx/issues/3214
@@ -31,30 +40,17 @@ suppress_warnings = ['epub.unknown_project_files']
 # thanks to https://blog.deimos.fr/2014/10/02/sphinxdoc-and-readthedocs-theme-tricks-2/
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-if not on_rtd:  # only import and set the theme if we're building docs locally
-   import sphinx_rtd_theme
-   html_theme = 'sphinx_rtd_theme'
-   html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-   # Override default css to get a larger width for local build
-   def setup(app):
-      app.add_js_file('theme/zammad_overrides.js')
-      app.add_css_file('theme/theme_overrides.css')
+if not on_rtd:
 
-   # We're running outside of readthedocs and expect the compiled version to 
-   # be a pre release
-   branch = 'pre-release'
+   # We're running outside of readthedocs and expect the compiled version to match the Git branch.
+   git_branch = os.environ.get('ZAMMAD_DOCS_GIT_BRANCH', None)
+
+   if git_branch == 'main':
+      branch = 'latest'
+   else:
+      branch = 'pre-release'
 
 else:
-   # Override default css to get a larger width for ReadTheDoc build
-   html_css_files = [
-      'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
-      'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
-      'theme/theme_overrides.css'
-   ]
-
-   html_js_files = [
-      'theme/zammad_overrides.js',
-   ]
 
    # Get current version we're on for possible version warning
    rtd_version = os.environ.get('READTHEDOCS_VERSION')

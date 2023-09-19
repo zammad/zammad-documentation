@@ -2,7 +2,7 @@
     max-width: 1050px
 }
 .wy-side-nav-search {
-    background-color: #b95f29;
+    background-color: #19191a;
 }
 
 /* Provide a button and shortened pres to reduce page heights */
@@ -65,4 +65,30 @@
 
 .rst-content table.docutils td {
     vertical-align: top;
+}
+
+/*
+ * Sphinx RTD theme compatibility layer
+ */
+
+.wy-plain-list-disc li ul,
+.rst-content .section ul li ul,
+.rst-content .toctree-wrapper ul li ul,
+article ul li ul {
+    margin-bottom: 12px;
+}
+
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+    color: #55a5d9;
+    font-weight: 700;
+    font-size: 85%;
+}
+
+.wy-menu-vertical a {
+    color: #d9d9d9;
+}
+
+.wy-menu-vertical li.current a {
+    color: #404040;
 }
