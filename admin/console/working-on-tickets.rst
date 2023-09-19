@@ -77,8 +77,8 @@ as of now are: ``name``, ``default_create`` and ``ui_color``.
    .. note::
 
       ``ui_color`` defines the CSS class to use. On default installations
-      you can either use ``low-priority`` (light blueish) or ``important``
-      (redish). This affects how Zammad displays the ticket titles
+      you can either use ``low-priority`` (light blue) or ``high-priority``
+      (red). This affects how Zammad displays the ticket titles
       *in overviews*.
 
 .. code-block:: ruby
@@ -86,7 +86,7 @@ as of now are: ``name``, ``default_create`` and ``ui_color``.
    >> Ticket::Priority.create(
          name: '4 super high',
          default_create: false,
-         ui_color: 'important',
+         ui_color: 'high-priority',
          created_by_id: 1,
          updated_by_id: 1
       )
