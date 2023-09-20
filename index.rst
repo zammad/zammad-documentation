@@ -1,12 +1,9 @@
-Welcome to Zammad's documentation!
-==================================
-The Zammad documentation consists of three parts:
+System Documentation
+====================
 
-- Zammad system installation and configuration (this documentation)
-
-- Zammad administration (https://admin-docs.zammad.org)
-
-- Zammad user documentation (https://user-docs.zammad.org)
+.. hint::
+   You are currently reading the Zammad system documentation. There are also
+   administration_ and `user manuals`_ available.
 
 .. toctree::
    :maxdepth: 2
@@ -100,3 +97,6 @@ The Zammad documentation consists of three parts:
    /appendix/troubleshooting/index
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
+
+.. _administration: https://admin-docs.zammad.org/en/latest/
+.. _user manuals: https://user-docs.zammad.org/en/latest/
