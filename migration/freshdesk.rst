@@ -4,7 +4,7 @@ From Freshdesk
 Limitations
 ===========
 
-Please note below Freshdesk specific limitations. 
+Please note below Freshdesk specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
@@ -16,10 +16,8 @@ These are additional limitations to the
    * Due to API limitations Zammad will not show the total number of objects
      to import, but instead correct them in steps of ``100``.
    * User passwords are not migrated and will require the user to use the
-     `password reset link`_ on the login page.
-
-.. _password reset link:
-   https://admin-docs.zammad.org/en/latest/settings/security/base.html#lost-password
+     :admin-docs:`password reset link </settings/security/base.html#lost-password>`
+     on the login page.
 
    .. note::
 
@@ -53,7 +51,7 @@ consider using the console over the browser version.
    .. tab:: Via browser
 
       After installing Zammad and configuring your 
-      :doc:`webserver </getting-started/configure-webserver>`, navigate to your 
+      :doc:`webserver </getting-started/configure-webserver>`, navigate to your
       Zammads FQDN in your browser and follow the migration wizard.
 
       Depending on the number of users, tickets and Freshdesk plan this may take
@@ -116,7 +114,7 @@ consider using the console over the browser version.
 
             Running the following command in a rails console will provide
             detailed state information of your migration.
-      
+
             .. code-block:: ruby
 
                pp ImportJob.find_by(name: 'Import::Freshdesk')
@@ -259,14 +257,12 @@ After migration
 ===============
 
 As the migration technically skips the getting started wizard, please
-note that you want to adjust your `FQDN settings`_ (FQDN & HTTP-Type).
+note that you want to adjust your
+:admin-docs:`FQDN settings </settings/system/base.html>` (FQDN & HTTP-Type).
 
 .. include:: /migration/includes/how-to-login.include.rst
-   
-.. _FQDN settings:
-   https://admin-docs.zammad.org/en/latest/settings/system/base.html
 
-After successfully migrating your Freshdesk instance, 
+After successfully migrating your Freshdesk instance,
 continue with :doc:`/getting-started/first-steps`.
 
 .. include:: /migration/includes/restarting-from-scratch.include.rst

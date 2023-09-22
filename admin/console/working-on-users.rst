@@ -21,10 +21,8 @@ Unlock a locked user account
 .. tip::
 
    Unlocking a locked user account is also supported by Zammad's web UI.
-   Please refer the `admin documentation`_ for more information.
-
-.. _admin documentation:
-   https://admin-docs.zammad.org/en/latest/manage/users/via-the-admin-panel.html
+   Please refer to the :admin-docs:`admin documentation </manage/users/via-the-admin-panel.html>`
+   for more information.
 
 It sometimes happens that a user locks himself out by wildly trying the wrong
 password multiple times. Depending on your maximum failing login count
