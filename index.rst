@@ -3,7 +3,7 @@ System Documentation
 
 .. hint::
    You are currently reading the Zammad system documentation. There are also
-   administration_ and `user manuals`_ available.
+   `administration`_ and `user manuals`_ available.
 
 .. toctree::
    :maxdepth: 2
