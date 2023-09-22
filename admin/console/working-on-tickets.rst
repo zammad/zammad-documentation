@@ -116,10 +116,8 @@ This will show all state types needed for creating new ticket states.
    *pending reminders* or *closed* states.
 
    State types also indicate the color scheme to be used.
-   You can learn more about that `in our user documentation`_.
-
-.. _in our user documentation:
-   https://user-docs.zammad.org/en/latest/basics/service-ticket/settings/state.html
+   You can learn more about that
+   :user-docs:`in our user documentation </basics/service-ticket/settings/state.html>`.
 
 .. code-block:: ruby
 
