@@ -46,10 +46,7 @@ Step 2: Install Zammad on the destination host
 
 Step 3: Activate maintenance mode
    This ends agents and customers sessions.
-   `Learn more about the maintenance mode in Zammad`_.
-
-.. _Learn more about the maintenance mode in Zammad:
-   https://admin-docs.zammad.org/en/latest/system/maintenance.html
+   Learn more about :admin-docs:`the maintenance mode in Zammad </system/maintenance.html>`.
 
 Step 4: Disable your communication channels
    This is just a safety measurement. As our restore scripts starts Zammad
@@ -205,19 +202,14 @@ Step 11: Re-enable Channels and deactivate maintenance mode
    After verifying the functionality of your channels, allow your agents and
    customers back in by disabling the maintenance mode.
 
-   `Learn more about the maintenance mode in Zammad`_.
+   Learn more about :admin-docs:`the maintenance mode in Zammad </system/maintenance.html>`.
 
    .. hint:: *Migrated from Zammad SaaS or switching providers?*
 
-      Please make sure that your `notification`_ and `FQDN`_ configuration
-      is still correct. Other wise you may have unexpected issues like not
+      Please make sure that your :admin-docs:`notification </channels/email/accounts/email-notification.html>`
+      and :admin-docs:`FQDN </settings/system/base.html>` configuration is
+      still correct. Other wise you may have unexpected issues like not
       receiving notifications or non functional authentications (3rd party).
-
-.. _notification:
-   https://admin-docs.zammad.org/en/latest/channels/email/accounts/email-notification.html
-
-.. _FQDN:
-   https://admin-docs.zammad.org/en/latest/settings/system/base.html
 
 Step 12 (optional): Update Zammad to latest possible version
    In case the backup source was not on the latest possible version, please

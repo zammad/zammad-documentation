@@ -7,15 +7,14 @@ Features
    Here's a small condensed list of the possibilities this CTI API provides.
 
    Inbound
-      * `Caller log functions`_ for your agents.
+      * :user-docs:`Caller log functions </extras/caller-log.html>` for your
+        agents.
       * Blocking of CallerIDs during signaling. *
-   
-   Outbound
-      * `Caller log functions`_ for your agents.
-      * Set outbound caller IDs depending on the caller ID target.
 
-.. _Caller log functions:
-   https://user-docs.zammad.org/en/latest/extras/caller-log.html
+   Outbound
+      * :user-docs:`Caller log functions </extras/caller-log.html>` for your
+        agents.
+      * Set outbound caller IDs depending on the caller ID target.
 
 .. include:: /api/generic-cti/cti-endpoint-limitations.include.rst
 
@@ -28,15 +27,12 @@ Endpoint
 
          Generic CTI configuration and the correct endpoint can be found in your
          Zammad integration settings and are documented in our
-         `admin documentation`_.
+         :admin-docs:`admin documentation </system/integrations/cti/generic.html>`.
 
          | Please also note the there listed requirements and limitations.
          | All options that require returns (e.g. blocking, manipulating
            outgoing caller IDs) rely on configurations within the Zammad CTI
            integration page.
-
-.. _admin documentation:
-   https://admin-docs.zammad.org/en/latest/system/integrations/generic-cti.html
 
 Events
    There are several events in terms of an ongoing call.

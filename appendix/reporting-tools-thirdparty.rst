@@ -13,10 +13,9 @@ This guide will discuss how to set up third party reporting tools with Zammad.
 .. IGNORE THE NEXT BLOCK - This functionality is not yet available.
    .. note:: **💰 Availability**
 
-      The following information require either a self-hosted installation or 
-      a hosted instance with **PLUS** package. If you're a Hosted user, please 
-      also check `the Elasticsearch integration 
-      <https://admin-docs.zammad.org/en/latest/system/integrations/hosted/elasticsearch.html>`_ 
+      The following information require either a self-hosted installation or
+      a hosted instance with **PLUS** package. If you're a Hosted user, please
+      also check :admin-docs:`the Elasticsearch integration </system/integrations/elasticsearch.html>`
       page for information on how to hook your tool to the index.
 
 Getting Started

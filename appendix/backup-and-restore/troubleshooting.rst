@@ -79,11 +79,9 @@ Here's some classics you may encounter.
    This warning will be shown once before creating an empty directory to allow
    the backup process to continue successfully.
 
-   If you believe that this is an error, please see `Storage Settings`_.
+   If you believe that this is an error, please see
+   :admin-docs:`Storage Settings </settings/system/storage.html>`.
    In case the issue posts, please consult the `Zammad Community`_.
-
-.. _Storage Settings:
-   https://admin-docs.zammad.org/en/latest/settings/system/storage.html
 
 .. _Zammad Community:
    https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5

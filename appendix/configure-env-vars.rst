@@ -40,8 +40,7 @@ General Options
 
 APP_RESTART_CMD
    The command Zammad will use to automatically restart the server
-   after `changes have been made in the Object Manager
-   <https://admin-docs.zammad.org/en/latest/system/objects.html>`_.
+   after :admin-docs:`changes have been made in the Object Manager </system/objects.html>`.
    (*E.g.,* ``"systemctl restart zammad"``)
 
    If this is undefined, you will have to restart manually

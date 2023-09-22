@@ -550,10 +550,8 @@ and user each.
 .. warning::
 
    Please note that Core Workflows may restrict access to attributes or values.
-   see `Core Workflows limitations`_ to learn more.
-
-.. _Core Workflows limitations:
-   https://admin-docs.zammad.org/en/latest/system/core-workflows/limitations.html
+   See :admin-docs:`Core Workflows limitations </system/core-workflows/limitations.html>`
+   to learn more.
 
 Pagination
 ==========

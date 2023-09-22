@@ -13,7 +13,11 @@ author = u'Zammad'
 source_suffix = '.rst'
 master_doc = 'index'
 exclude_patterns = ['_build', 'html', 'doctrees']
-extensions = ['versionwarning.extension', 'sphinx_tabs.tabs']
+extensions = [
+   'versionwarning.extension',
+   'sphinx_tabs.tabs',
+   'sphinx.ext.extlinks',
+]
 
 locale_dirs = ['locale/']
 gettext_compact = False
@@ -88,4 +92,24 @@ versionwarning_messages = {
       '<a href="https://docs.zammad.org/en/latest/install/update.html" '
       'title="Updating Zammad">Updating Zammad</a> asap.'
    ),
+}
+
+# Provide aliases to common external documentation targets.
+#   It supports automatic substitution for the current branch placeholders,
+#   but always links to the English translation.
+#
+#   :admin-docs:`the administrator documentation </manage/users/index.html>`
+#   :user-docs:`the user documentation </advanced/tabs.html>`
+#
+#   which may render the following links:
+#
+#   https://admin-docs.zammad.org/en/pre-release/manage/users/index.html
+#   https://user-docs.zammad.org/en/latest/advanced/tabs.html
+#
+#   Note the need for including the file extension as part of the path
+#   relative to the documentation root!
+#
+extlinks = {
+   'admin-docs': (f'https://admin-docs.zammad.org/en/{branch}%s', ''),
+   'user-docs': (f'https://user-docs.zammad.org/en/{branch}%s', ''),
 }

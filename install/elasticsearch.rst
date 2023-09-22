@@ -242,9 +242,8 @@ Optional settings
          certificates?**
 
          You can import custom certificates and custom CA certificates to
-         Zammad. Please have a look `here
-         <https://admin-docs.zammad.org/en/latest/settings/security/ssl-certificates.html>`_
-         in the admin documentation.
+         Zammad. Please have a look
+         :admin-docs:`in the admin documentation </settings/security/ssl-certificates.html>`.
 
 Appendix
 ========

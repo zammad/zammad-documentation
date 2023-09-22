@@ -28,9 +28,8 @@ so that anyone with an account on your local intranet will
 
 .. note:: If you *don’t* have this IT infrastructure
    but still want one-click login,
-   see `Third-Party Authentication`_ for alternatives.
-
-   .. _Third-Party Authentication: https://admin-docs.zammad.org/en/latest/settings/security.html#third-party-applications
+   see :admin-docs:`Third-Party Authentication </settings/security.html#third-party-applications>`
+   for alternatives.
 
 How does it work?
 ^^^^^^^^^^^^^^^^^
@@ -92,11 +91,9 @@ You will need:
 
 * some familiarity with system administration (*e.g.,* Apache configuration)
 
-For best results, set up `LDAP integration`_
+For best results, set up :admin-docs:`LDAP integration </system/integrations/ldap/index.html>`
 to make sure your Active Directory and Zammad user accounts
 are always in sync.
-
-.. _LDAP integration: https://admin-docs.zammad.org/en/latest/system/integrations/ldap.html
 
 .. _sso-register-spn:
 
