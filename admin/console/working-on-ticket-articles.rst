@@ -6,23 +6,16 @@ Working with ticket articles
 Count Public “Notes” toward SLAs
 --------------------------------
 
-Normally, `notes`_ don't count toward `service-level agreements`_.
+Normally, :user-docs:`notes </basics/service-ticket/follow-up.html#adding-new-messages-notes>`
+don't count toward :admin-docs:`service-level agreements </manage/slas/index.html>`.
 Use the following command to include publicly-visible notes when tracking SLA
 compliance. (Internal notes *will never* affect SLA calculations.)
-
-.. _notes:
-   https://user-docs.zammad.org/en/latest/basics/service-ticket/follow-up.html#adding-new-messages-notes
-
-.. _service-level agreements:
-   https://admin-docs.zammad.org/en/latest/manage/slas.html
 
 .. note::
 
    By default, customers are not notified when public notes are added to a
-   ticket. Set up a `trigger`_ if you wish to change this behavior. 
-
-.. _trigger:
-   https://admin-docs.zammad.org/en/latest/manage/trigger.html
+   ticket. Set up a :admin-docs:`trigger </manage/trigger.html>` if you wish to
+   change this behavior.
 
 .. warning::
 

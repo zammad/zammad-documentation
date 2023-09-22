@@ -7,11 +7,8 @@ Object
    Proceed with absolute caution and ensure to adjust any of Zammads default
    fields.
 
-   If you want to hide fields, consider `Core Workflows`_ instead.
-   For states and priorities use either API endpoints or rails console.
-
-.. _Core Workflows:
-   https://admin-docs.zammad.org/en/latest/system/core-workflows.html
+   If you want to hide fields, consider :admin-docs:`Core Workflows </system/core-workflows.html>`
+   instead. For states and priorities use either API endpoints or rails console.
 
 List
 ====

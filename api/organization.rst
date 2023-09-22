@@ -313,7 +313,7 @@ Response:
       ],
       "secondary_member_ids": []
    }
-   
+
 Delete
 ======
 
@@ -327,10 +327,8 @@ Required permission: ``admin.organization``
    is not possible via API - this will be indicated by
    ``"error": "Can't delete, object has references."``. This is *not* a bug.
 
-   Consider using `Data Privacy`_ via UI for more control instead.
-
-.. _Data Privacy:
-   https://admin-docs.zammad.org/en/latest/system/data-privacy.html
+   Consider using :admin-docs:`Data Privacy </system/data-privacy.html>` via UI
+   for more control instead.
 
 ``DELETE``-Request sent: ``/api/v1/organizations/{id}``
 

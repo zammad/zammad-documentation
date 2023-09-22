@@ -7,10 +7,8 @@ User
    ``ticket.agent`` permissions. Some attributes / information may not be
    available in specific situations.
 
-   Please see our `Permission Guide`_ to get better insights.
-
-.. _Permission Guide:
-   https://admin-docs.zammad.org/en/latest/manage/roles/index.html#reference-guide-permissions
+   Please see our :admin-docs:`Permission Guide </manage/roles/index.html#reference-guide-permissions>`
+   to get better insights.
 
 me - current user
 =================
@@ -1181,21 +1179,15 @@ Create
 ======
 
 Required permission: ``admin.user`` **or** ``ticket.agent``
-   
+
    .. note:: **🤓 This depends on permissions**
 
       Agents can't set user passwords, roles or group permission. Instead
-      Zammad will apply to `default sign up role`_.
+      Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
 
       Technically unauthenticated user creation is possible if you manage
       to provide the required CSRF token (out of scope of this documentation).
-      If you don't want that, consider `disabling user registration`_.
-
-.. _default sign up role:
-   https://admin-docs.zammad.org/en/latest/manage/roles/index.html#role-details
-
-.. _disabling user registration:
-   https://admin-docs.zammad.org/en/latest/settings/security/base.html
+      If you don't want that, consider :admin-docs:`disabling user registration </settings/security/base.html>`.
 
    .. tip:: **🧐 Creation payloads can be big**
 
@@ -1332,7 +1324,7 @@ Required permission: ``admin.user`` **or** ``ticket.agent``
    .. note:: **🤓 This depends on permissions**
 
       Agents can't set user passwords, roles or group permission. Instead
-      Zammad will apply to `default sign up role`_.
+      Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
 
 ``PUT``-Request sent: ``/api/v1/users/{id}``
 
@@ -1464,10 +1456,8 @@ Required permission: ``admin.user``
    via API - this will be indicated by
    ``"error": "Can't delete, object has references."``. This is *not* a bug.
 
-   Consider using `Data Privacy`_ via UI for more control instead.
-
-.. _Data Privacy:
-   https://admin-docs.zammad.org/en/latest/system/data-privacy.html
+   Consider using :admin-docs:`Data Privacy </system/data-privacy.html>` via UI
+   for more control instead.
 
 ``DELETE``-Request sent: ``/api/v1/users/{id}``
 

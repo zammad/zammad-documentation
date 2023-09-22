@@ -53,12 +53,9 @@ and thus should be avoided.
 
    .. note::
 
-      The "Core workflows" feature of Zammad comes with an `Ajax Mode`_ which
-      can be activated separately in case you're having issues with field
-      selections.
-
-.. _Ajax Mode:
-   https://admin-docs.zammad.org/en/latest/settings/system/frontend.html
+      The "Core workflows" feature of Zammad comes with an
+      :admin-docs:`AJAX Mode </settings/system/frontend.html>` which can be
+      activated separately in case you're having issues with field selections.
 
 2. Server requirements
 ======================
