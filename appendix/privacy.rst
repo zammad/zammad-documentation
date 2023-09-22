@@ -12,12 +12,12 @@ Tickets and users
    By default, Zammad never automatically deletes tickets or users.
 
    To enable **automatic** deletion of tickets after a given interval,
-   `use the scheduler <https://admin-docs.zammad.org/en/latest/manage-scheduler.html>`_.
+   :admin-docs:`use the scheduler </manage/scheduler.html>`.
 
    To **manually** delete users and all their associated tickets
    (*e.g.* in compliance with a “Right to Forget” request under the GDPR),
    you can use the
-   `data privacy functions <https://admin-docs.zammad.org/en/latest/system/data-privacy.html>`_
+   :admin-docs:`data privacy functions </system/data-privacy.html>`
    in the admin panel or
    :doc:`use the console </admin/console/dangerzone-for-experts>`.
 

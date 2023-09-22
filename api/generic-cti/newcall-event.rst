@@ -42,10 +42,7 @@ New call
    * - ``queue``
      - e.g. ``support``, ``sales``
      - An optional queue name, this option is relevant for the
-       `Caller Log Filter <admin documentation>`_
-
-.. _admin documentation:
-   https://admin-docs.zammad.org/en/latest/system/integrations/generic-cti.html
+       :admin-docs:`Caller Log Filter </system/integrations/cti/generic.html>`
 
 There's two options on how to ``POST`` the relevant data to Zammad.
 

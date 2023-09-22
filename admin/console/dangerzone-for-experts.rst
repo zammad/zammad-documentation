@@ -41,10 +41,8 @@ Removing users
    If you're not sure what to do and need to learn more about what Zammad does
    upon removing users, please consider using Zammad's UI options in stead.
 
-   Our documentation for the `data privacy`_ function will help you a lot!
-
-.. _data privacy:
-   https://admin-docs.zammad.org/en/latest/system/data-privacy.html
+   Our documentation for the :admin-docs:`data privacy </system/data-privacy.html>`
+   function will help you a lot!
 
 Removing users is possible in 2 ways: A single user and in bulk.
 

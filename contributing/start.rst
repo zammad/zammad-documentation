@@ -221,11 +221,17 @@ documentation projects (see RestructuredText_ for details):
    which is shown as link. This part can be translated. The path/to/document
    may not be translated, otherwise the link would not work anymore.
 
-\`some text \<https://admin-docs.zammad.org/en/latest/manage-text-modules.html\>`\_
-   This is a link which can refer to a documentation page or an external
-   website. "some text" is the displayed text in the documentation, the part
-   between \< and \> is the link target. The \_ at the end is important and must
-   remain in the translated text.
+\`some text \<https://example.com\>`\_
+   This is a link which can refer to an external website. "some text" is the
+   displayed text in the documentation, the part between \< and \> is the link
+   target. The \_ at the end is important and must remain in the translated
+   text.
+
+\:admin-docs:\`some text \</manage-text-modules.html\>`
+   This is a link which refers to external documentation. "some text" is the
+   displayed text in the documentation, the part between \< and \> is the link
+   target. Note the absence of \_ at the end, since this link is using a
+   different construction mechanism.
 
 \**example string**
    Markup for text (e.g. bold, italics). Alternative: \*example string\*.

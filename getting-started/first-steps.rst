@@ -1,7 +1,7 @@
 First steps
 ***********
 
-After successfully installing Zammad you'll have a couple of options. 
+After successfully installing Zammad you'll have a couple of options.
 
    * :doc:`Migrate from a supported source </migration/index>`
    * :ref:`Restore Zammad from an existing backup <restore_zammad>`
@@ -10,8 +10,8 @@ After successfully installing Zammad you'll have a couple of options.
 Getting Started Wizard
 ----------------------
 
-If you visit Zammads web page the first time, you'll be greeted by its 
-Getting Started Wizard. It will guide you through the first most important 
+If you visit Zammad's web page the first time, you'll be greeted by its
+Getting Started Wizard. It will guide you through the first most important
 things.
 
 .. figure:: /images/getting-started/wizard.gif
@@ -20,7 +20,7 @@ things.
    :align: center
 
 ..
-   About this section: Below part uses definition list instead of field lists 
+   About this section: Below part uses definition list instead of field lists
    intentionally. It's supposed to safe width for better readability.
 
 Step 1: Create your very first administrator account
@@ -35,22 +35,22 @@ Step 1: Create your very first administrator account
          * contains at least one digit
 
 Step 2: Provide company information
-   You can upload a custom logo fitting to your company here. 
-   The instance address is detected automatically and only required adjustment 
+   You can upload a custom logo fitting to your company here.
+   The instance address is detected automatically and only required adjustment
    in case it's detected wrong.
 
-   All of these settings can be changed within 
-   `Branding <https://admin-docs.zammad.org/en/latest/settings/branding.html>`_ and
-   `System <https://admin-docs.zammad.org/en/latest/settings/system.html>`_ settings.
+   All of these settings can be changed within
+   :admin-docs:`Branding </settings/branding.html>` and
+   :admin-docs:`System </settings/system/index.html>` settings.
 
 Step 3: E-Mail notification channel
-   By default Zammad uses sendmail - if that doesn't fit you can change it to 
+   By default Zammad uses sendmail - if that doesn't fit you can change it to
    SMTP here.
 
       .. warning::
 
-         Zammad uses ``noreply@<your-fqdn>`` as sender address by default. 
-         SMTP setups might fail - you may want to skip this step with choosing 
+         Zammad uses ``noreply@<your-fqdn>`` as sender address by default.
+         SMTP setups might fail - you may want to skip this step with choosing
          ``sendmail`` at this point. You can adjust it later!
 
 Step 4: Your first email channel (optional)
@@ -58,13 +58,13 @@ Step 4: Your first email channel (optional)
 
       .. warning::
 
-         Zammad reacts to fetched emails by default. 
+         Zammad reacts to fetched emails by default.
          If that's not what you want, skip this step for now.
 
    Learn more about the email channel within the documentation for
-   `email channels <https://admin-docs.zammad.org/en/latest/channels/email/index.html>`_.
+   :admin-docs:`email channels </channels/email/index.html>`.
 
-After finishing the wizard you'll be automatically logged in to the just created account. 
+After finishing the wizard you'll be automatically logged in to the just created account.
 
 .. figure:: /images/getting-started/dashboard-with-clues.png
    :alt: First time on the dashboard will provide a small clue intro
@@ -74,9 +74,9 @@ After finishing the wizard you'll be automatically logged in to the just created
 Further Steps
 -------------
 
-In our opinion the next step order would like below sample. 
-You can skip parts you don't need or adapt. All parts are described within 
-`Zammads admin documentation <https://admin-docs.zammad.org>`_.
+In our opinion the next step order would like below sample.
+You can skip parts you don't need or adapt. All parts are described within
+:admin-docs:`Zammad's admin documentation </>`.
 
    #. Configure your required groups
    #. Adjust triggers as needed
@@ -89,8 +89,8 @@ You can skip parts you don't need or adapt. All parts are described within
    #. Configure roles if needed
    #. Consider Third Party logins or LDAP integration for easier logins
    #. Add agent accounts (users)
-   #. Consider backup strategies for Zammad.
-      See :doc:`/appendix/backup-and-restore/index`
+   #. Consider backup strategies for Zammad, see
+      :doc:`/appendix/backup-and-restore/index`
 
 From point 5 on you'll be able to work productive in theory. 🙌
 
@@ -98,6 +98,6 @@ From point 5 on you'll be able to work productive in theory. 🙌
 
       **😖 Are you still lost?**
 
-      If above list doesn't help you or you'll need to jump in a lot faster, 
-      you can also get Workshops with one of our 
+      If above list doesn't help you or you'll need to jump in a lot faster,
+      you can also get Workshops with one of our
       `Zammad consultants <https://zammad.com/en/company/contact>`_.
