@@ -193,9 +193,10 @@ reached.
 (optional) Disable date and time picker (pending till) for pending states
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Starting with Zammad 5.0, `Core Workflows`_ automatically handles displaying the
-"pending till" field for pending states. Below snippet *is not required* and is
-only relevant if you don't want to create a workflow within the UI of Zammad.
+Starting with Zammad 5.0, :admin-docs:`Core Workflows </system/core-workflows.html>`
+automatically handles displaying the "pending till" field for pending states.
+Below snippet *is not required* and is only relevant if you don't want to
+create a workflow within the UI of Zammad.
 
 Replace ``pending customer feedback`` with the pending state of your choice.
 
@@ -242,11 +243,9 @@ Limit available states for customers
 
 .. tip::
 
-   `Core Workflows`_ allows you to achieve below described behavior any time
-   without any issues. No need to use the console if you don't want to!
-
-.. _Core Workflows:
-   https://admin-docs.zammad.org/en/latest/system/core-workflows.html
+   :admin-docs:`Core Workflows </system/core-workflows.html>` allows you to
+   achieve below described behavior any time without any issues. No need to use
+   the console if you don't want to!
 
 By default Zammad allows customers to change Ticket states to ``open`` and
 ``closed``. If this does not meet your requirenments, you can adjust this at

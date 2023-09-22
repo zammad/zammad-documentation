@@ -67,11 +67,8 @@ After this you'll be ready to continue with either
    Zammad database together with the attachments you've stored within the file
    system.
 
-   Please refer `Storage Settings`_ to learn how to change the
-   storage location of your attachments.
-
-.. _Storage Settings:
-   https://admin-docs.zammad.org/en/latest/settings/system/storage.html
+   Please refer :admin-docs:`Storage Settings </settings/system/storage.html>`
+   to learn how to change the storage location of your attachments.
 
 ``DEBUG``
    Default: ``no`` (accepts: ``yes`` or ``no``)

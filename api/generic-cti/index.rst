@@ -28,15 +28,12 @@ Endpoint
 
          Generic CTI configuration and the correct endpoint can be found in your
          Zammad integration settings and are documented in our
-         `admin documentation`_.
+         :admin-docs:`admin documentation </system/integrations/cti/generic.html>`.
 
          | Please also note the there listed requirements and limitations.
          | All options that require returns (e.g. blocking, manipulating
            outgoing caller IDs) rely on configurations within the Zammad CTI
            integration page.
-
-.. _admin documentation:
-   https://admin-docs.zammad.org/en/latest/system/integrations/generic-cti.html
 
 Events
    There are several events in terms of an ongoing call.
