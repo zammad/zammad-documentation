@@ -1,5 +1,5 @@
-System Documentation
-====================
+Zammad System Documentation
+===========================
 
 .. hint::
    You are currently reading the Zammad system documentation. There are also
