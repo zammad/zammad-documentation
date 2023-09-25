@@ -92,3 +92,8 @@ article ul li ul {
 .wy-menu-vertical li.current a {
     color: #404040;
 }
+
+.wy-side-nav-search > a img.logo {
+    width: 70px;
+    height: 61px;
+}
