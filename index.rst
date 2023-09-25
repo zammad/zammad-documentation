@@ -3,7 +3,8 @@ System Documentation
 
 .. hint::
    You are currently reading the Zammad system documentation. There are also
-   `administration`_ and `user manuals`_ available.
+   :admin-docs:`administrator </index.html>` and
+   :user-docs:`user manuals </index.html>` available.
 
 .. toctree::
    :maxdepth: 2
@@ -97,6 +98,3 @@ System Documentation
    /appendix/troubleshooting/index
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
-
-.. _administration: https://admin-docs.zammad.org/en/latest/
-.. _user manuals: https://user-docs.zammad.org/en/latest/
