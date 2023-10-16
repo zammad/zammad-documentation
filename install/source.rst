@@ -199,7 +199,6 @@ file could look like. Please also have a look at
          adapter: postgresql
          database: zammad
          pool: 50
-         timeout: 5000
          encoding: utf8
          username: zammad
          password: changeme
