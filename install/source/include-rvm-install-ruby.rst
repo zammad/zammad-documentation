@@ -8,5 +8,5 @@
    $ rvm install ruby-3.1.3
 
    # Install bundler, rake and rails
-   $ rvm use 3.1.3
+   $ rvm use ruby-3.1.3
    $ gem install bundler rake rails
