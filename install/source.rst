@@ -8,15 +8,15 @@ Install from source
 
 .. note::
 
-   The source installation is the most difficult installation type of Zammad. 
-   If you're not too experienced with Linux and all that, you may want to use 
+   The source installation is the most difficult installation type of Zammad.
+   If you're not too experienced with Linux and all that, you may want to use
    another installation type:
 
       * :doc:`/install/package`
       * :doc:`/install/docker-compose`
 
    | **Administrative note**
-   | Please note that we only use ``sudo`` after direct user changes. 
+   | Please note that we only use ``sudo`` after direct user changes.
      In all other situations you can expect ``root`` being in charge.
 
 .. hint::
@@ -30,7 +30,7 @@ Prerequisites
 Software dependencies
 ---------------------
 
-Please ensure that you already provided mentioned 
+Please ensure that you already provided mentioned
 :doc:`Software requirements </prerequisites/software>`.
 
 Add user
@@ -49,7 +49,7 @@ Step 1: Get the source
 
 .. note::
 
-   Not all distributions ship ``wget`` and ``tar`` by default, you may need to 
+   Not all distributions ship ``wget`` and ``tar`` by default, you may need to
    install it manually.
 
 .. include:: /install/source/include-get-the-source.rst
@@ -60,7 +60,7 @@ Step 2: Install dependencies
 ----------------------------
 
 ..
-   About this section: The RVM installation part uses definition list instead 
+   About this section: The RVM installation part uses definition list instead
    of field lists intentionally. It's supposed to safe width for better readability.
 
 .. note::
@@ -69,8 +69,8 @@ Step 2: Install dependencies
    detailed instructions.
 
 
-Zammad requires specific ruby versions. Adapt the commands below if you install 
-older versions. A list of required versions can be found on the 
+Zammad requires specific ruby versions. Adapt the commands below if you install
+older versions. A list of required versions can be found on the
 :doc:`Software requirements </prerequisites/software>` page.
 
 .. include:: /install/includes/postgres-installation.rst
@@ -98,7 +98,7 @@ older versions. A list of required versions can be found on the
 
       Install Ruby Environment
          .. include:: source/include-rvm-install-ruby.rst
-  
+
    .. tab:: Debian
 
       Install Node.js
@@ -111,7 +111,7 @@ older versions. A list of required versions can be found on the
               libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
               pkg-config libffi-dev libimlib2-dev gawk
 
-            $ gpg --keyserver keyserver.ubuntu.com --recv-keys\ 
+            $ gpg --keyserver keyserver.ubuntu.com --recv-keys\
               409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
             $ curl -L https://get.rvm.io | bash -s stable
 
@@ -133,7 +133,7 @@ older versions. A list of required versions can be found on the
             $ yum install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel ruby\
               zlib-devel glibc-headers glibc-devel openssl-devel git imlib2 imlib2-devel
 
-            $ gpg --keyserver keyserver.ubuntu.com --recv-keys\ 
+            $ gpg --keyserver keyserver.ubuntu.com --recv-keys\
               409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
             $ curl -L https://get.rvm.io | bash -s stable
 
@@ -154,7 +154,7 @@ older versions. A list of required versions can be found on the
             $ zypper install patch autoconf automake bison bzip2 gcc-c++ libffi-devel libtool make patch readline-devel\
               zlib-devel glibc-devel openssl-devel git imlib2 imlib2-devel gdbm-devel libyaml-devel
 
-            $ gpg --keyserver keyserver.ubuntu.com --recv-keys\ 
+            $ gpg --keyserver keyserver.ubuntu.com --recv-keys\
               409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
             $ curl -L https://get.rvm.io | bash -s stable
 
@@ -166,15 +166,15 @@ older versions. A list of required versions can be found on the
 
    .. tab:: other
 
-      Other systems than above mentioned are out of scope of this documentation. 
-      Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how 
-      to install rvm on your system. 
+      Other systems than above mentioned are out of scope of this documentation.
+      Please check the `rvm documentation <https://rvm.io/rvm/install>`_ on how
+      to install rvm on your system.
 
       Please also ensure to install ``nodejs``.
 
       After that install the specific required ruby version.
 
-| After installing bundler, rake and rails we'll need to install all required gems. 
+| After installing bundler, rake and rails we'll need to install all required gems.
 | The command depends on the database server you are using.
 
 .. include:: /install/includes/postgres-dependencies.rst
@@ -189,8 +189,8 @@ Step 3: Configure database settings
    $ cp config/database/database.yml config/database.yml
    $ vi config/database.yml
 
-Here's a sample configuration to give you an idea on how your configuration 
-file could look like. Please also have a look at 
+Here's a sample configuration to give you an idea on how your configuration
+file could look like. Please also have a look at
 :doc:`/appendix/configure-database-server` for deeper details.
 
    .. code-block:: yaml
@@ -199,19 +199,18 @@ file could look like. Please also have a look at
          adapter: postgresql
          database: zammad
          pool: 50
-         timeout: 5000
          encoding: utf8
          username: zammad
          password: changeme
 
-.. hint:: 
+.. hint::
 
-   You can remove the ``password`` line if you enable socket based 
+   You can remove the ``password`` line if you enable socket based
    authentication!
 
-.. hint:: 
+.. hint::
 
-   If you want to use an existing database server that's not on the same 
+   If you want to use an existing database server that's not on the same
    machine, you can also use ``host`` and ``port`` to set that up.
 
 .. include:: /install/source/include-chmod-database-yml.rst
@@ -277,7 +276,7 @@ You can start all services by hand or use systemd to start / stop Zammad.
 
    .. tab:: the manual way
 
-      .. warning:: 
+      .. warning::
 
         This method is not suitable for production use - you should avoid it.
 

@@ -31,8 +31,8 @@ Step 1: Verify Elasticsearch is running
       # check elasticsearch status
       $ systemctl status elasticsearch
 
-   .. note:: 
-      
+   .. note::
+
       This should output something like the following, make sure it says
       ``Active: active (running)``:
 
@@ -54,7 +54,7 @@ Step 1: Verify Elasticsearch is running
          $ systemctl status elasticsearch
 
       .. warning::
-         
+
          | If this fails, your Elasticsearch installation is probably broken.
          | Try completely purging and reinstalling Elasticsearch according
            to :doc:`/install/elasticsearch`
@@ -66,14 +66,14 @@ Step 2: Verify the ingest-attachment plugin is installed correctly
       # list installed elasticsearch plugins
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
-   .. note:: 
+   .. note::
       The output should include ``ingest-attachment``.
 
       Otherwise, try reinstalling the ``ingest-attachment`` plugin and check
       again:
 
       .. code-block:: sh
-      
+
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin remove ingest-attachment
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
@@ -81,14 +81,21 @@ Step 2: Verify the ingest-attachment plugin is installed correctly
 
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
-Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes  
+Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
    .. code-block:: sh
 
       # force zammad to drop and rebuild the elasticsearch indexes
       $ zammad run rake zammad:searchindex:rebuild
 
-   .. note:: 
-      
+Optionally, you can specify a number of CPU cores which are used for rebuilding
+the searchindex, as in the following example with 8 cores:
+
+   .. code-block:: sh
+
+      $ zammad run rake zammad:searchindex:rebuild[8]
+
+   .. note::
+
       This should start rebuilding the indexes and output it's progress:
 
       .. code-block:: sh
@@ -111,7 +118,7 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
         back to the console.
 
       .. warning::
-         
+
          | If this fails or throws an error, there might be something else
            wrong with your installation.
          | Make sure you followed the complete Elasticsearch set up and
