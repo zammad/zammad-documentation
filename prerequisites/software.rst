@@ -95,7 +95,11 @@ If you want to install Zammad, you need the following software.
 2.2. Supported distributions
 ----------------------------
 
-Zammad provides binary packages for the most recent two stable / long-term-support releases of the supported Linux distributions, until they reach their end-of-life or until they can no longer provide the technical requirements for Zammad. Using of the latest supported stable / long-term-support version is generally recommended.
+Zammad provides binary packages for the most recent two stable /
+long-term-support releases of the supported Linux distributions, until they
+reach their end-of-life or until they can no longer provide the technical
+requirements for Zammad. Using of the latest supported stable /
+long-term-support version is generally recommended.
 
 Below you can find all distributions Zammad provides packages for.
 
@@ -108,11 +112,13 @@ Below you can find all distributions Zammad provides packages for.
    "OpenSuSE / SLES", "Leap 42.3 / 12; Leap 15.x / 15"
    "Ubuntu", "18.04, 20.04 & 22.04"
 
-.. warning:: **⚠ Changes with Zammad 6.2**
+.. warning:: **⚠️ Changes with Zammad 6.2**
 
-   Zammad 6.2 will not provide packages for Debian 10, Ubuntu 18.04, and SLES 12. Users of these distributions are encouraged to update to more recent versions like Debian 12, Ubuntu 22.04, and SLES 15.
+   Zammad 6.2 will not provide packages for CentOS 7, Debian 10, Ubuntu 18.04,
+   and SLES 12. Users of these distributions are encouraged to update to more
+   recent versions like Debian 12, Ubuntu 22.04, and SLES 15.
 
-.. warning:: **⚠ SuSE users be aware**
+.. warning:: **⚠️ SuSE users be aware**
 
    Due to the age of SLES12 / Leap 42.3 you may no longer be able to satisfy
    all (soft) dependencies of Zammad.
@@ -228,8 +234,8 @@ The following reverse proxies are supported:
 2.7 Redis
 ~~~~~~~~~~~
 
-Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for realtime communication
-via web socket.
+Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for realtime
+communication via web socket.
 
    .. note::
 
