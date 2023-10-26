@@ -99,3 +99,20 @@ Zammad will create random data which make no logical sense.
 .. code-block:: ruby
 
    >> FillDb.load(agents: 50,customers: 1000,groups: 20,organizations: 40,overviews: 5,tickets: 100,)
+
+Change the current ticket counter
+---------------------------------
+
+Especially after migrating from another ticket system, you may want to reset the counter to the highest ticket number.
+
+Show all counters
+
+.. code-block:: ruby
+
+   >> Ticket::Counter.pluck(:id, :content)
+
+Set the counter
+
+.. code-block:: ruby
+
+   >> Ticket::Counter.update(content: 123, id: 1)
