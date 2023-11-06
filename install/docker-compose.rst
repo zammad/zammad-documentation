@@ -62,8 +62,9 @@ Step 1: Clone GitHub repo
 
 .. hint::
 
-   If cloning is too much of a hassle, it's also enough to get the files
-   ``docker-compose.yml`` and ``.env``.
+   If cloning is too much of a hassle, you can also download the files from
+   https://github.com/zammad/zammad-docker-compose/releases. This will make sure
+   file permissions are preserved.
 
 Step 2: Setting vm.max_map_count for Elasticsearch
 --------------------------------------------------
