@@ -174,6 +174,10 @@ Step 3: Connect Zammad
    # Build the search index
    $ zammad run rake zammad:searchindex:rebuild
 
+   # Optionally, you can specify a number of CPU cores which are used for
+   # rebuilding the searchindex, as in the following example with 8 cores:
+   $ zammad run rake zammad:searchindex:rebuild[8]
+
 Optional settings
 -----------------
 
