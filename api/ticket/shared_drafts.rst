@@ -595,7 +595,7 @@ Create
 
 Required permission: ``ticket.agent``.
 
-``POST``-Request sent: ``/api/v1/tickets/{ticket id}/shared_draft``
+``PUT``-Request sent: ``/api/v1/tickets/{ticket id}/shared_draft``
 
 .. code-block:: json
    :force:
