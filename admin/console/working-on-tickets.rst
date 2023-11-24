@@ -105,7 +105,7 @@ don't fit your desired scheme. Renaming would look like so:
 
 Get ticket state types
 ----------------------
-
+.. Not removed because it is still referenced in API state creation.
 
 This will show all state types needed for creating new ticket states.
 
