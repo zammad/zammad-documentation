@@ -45,62 +45,6 @@ Update all tickets of a specific customer
 
    >> Ticket.where(customer_id: 4).update_all(customer_id: 1)
 
-Priorities
-----------
-
-Ticket priorities help your agent to see how important a customer request is.
-Priorities are not available to customers and, Core wise, have no impact
-on how Zammad handles a ticket. You can however adjust Zammad's behavior
-with e.g. triggers, SLAs and schedulers.
-
-Not sure what priorities are available in the system? Either have a look
-in any ticket or run the following command.
-
-.. code-block:: ruby
-
-   >> Ticket::Priority.pluck(:name)
-
-Adding priorities for tickets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Ticket priorities come with several attributes, however, the most relevant
-as of now are: ``name``, ``default_create`` and ``ui_color``.
-
-   .. warning::
-
-      ``default_create`` allows you to define the default priority Zammad should
-      use during ticket creation. **However** - on default installations this is
-      the priority ``2 normal``.
-
-      *You cannot have more than one priority as the default_create priority!*
-
-   .. note::
-
-      ``ui_color`` defines the CSS class to use. On default installations
-      you can either use ``low-priority`` (light blue) or ``high-priority``
-      (red). This affects how Zammad displays the ticket titles
-      *in overviews*.
-
-.. code-block:: ruby
-
-   >> Ticket::Priority.create(
-         name: '4 super high',
-         default_create: false,
-         ui_color: 'high-priority',
-         created_by_id: 1,
-         updated_by_id: 1
-      )
-
-Change priority
-~~~~~~~~~~~~~~~
-
-If needed you can also set priorities to inactive or rename them if they
-don't fit your desired scheme. Renaming would look like so:
-
-.. code-block:: ruby
-
-   >> Ticket::Priority.update(name: '1 high')
-
 .. _state_types:
 
 Get ticket state types
