@@ -169,7 +169,11 @@ Step 3: Connect Zammad
 .. code-block:: sh
 
    # Set the Elasticsearch server address
-   $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+   $ zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
+
+   # Set the Elasicsearch credentials if needed
+   $ zammad run rails r "Setting.set('es_user', '<username>')"
+   $ zammad run rails r "Setting.set('es_password', '<password>')"
 
    # Build the search index
    $ zammad run rake zammad:searchindex:rebuild
