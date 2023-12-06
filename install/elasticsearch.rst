@@ -178,6 +178,13 @@ Step 3: Connect Zammad
    # rebuilding the searchindex, as in the following example with 8 cores:
    $ zammad run rake zammad:searchindex:rebuild[8]
 
+.. note:: 
+
+   If you use Elasticsearch 8+, you need to use an HTTPS URL in
+   'es_url' as 'https://localhost:9200' and configure an
+   Authentication (see HTTP Basic below).
+
+
 Optional settings
 -----------------
 
