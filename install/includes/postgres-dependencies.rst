@@ -11,9 +11,6 @@ Install PostgreSQL Dependencies
 
             .. code-block:: sh
 
-                # CentOS 7
-                $ yum install postgresql14-libs postgresql14-devel
-
                 # CentOS 8
                 $ yum install postgresql-libs postgresql-devel
 
@@ -29,8 +26,3 @@ Install Gems for Zammad
         $ su - zammad
         $ bundle config set without "test development mysql"
         $ bundle install
-
-        # CentOS 7 users - above command might fail, run the following
-        # command and repeat above bundle install.
-        # Adjust pg_config path according to your environment
-        $ gem install pg -v '1.2.3' -- --with-pg-config=/usr/pgsql-14/bin/pg_config

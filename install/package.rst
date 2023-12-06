@@ -41,9 +41,6 @@ some operating systems may require additional packages if not already installed.
 
          $ yum install wget epel-release
 
-         # CentOS 7
-         $ yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-
 .. include:: /install/includes/prerequisites.rst
 
 Add Repository and install Zammad
@@ -59,12 +56,6 @@ Add Repository
 
                $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                  gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
-
-         Ubuntu 18.04
-            .. code-block:: sh
-
-               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 18.04 main"| \
-                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
          Ubuntu 20.04
             .. code-block:: sh
@@ -86,12 +77,6 @@ Add Repository
                $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                  gpg --dearmor | tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg> /dev/null
 
-         Debian 10
-            .. code-block:: sh
-
-               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 10 main"| \
-                  tee /etc/apt/sources.list.d/zammad.list > /dev/null
-
          Debian 11
             .. code-block:: sh
 
@@ -111,12 +96,6 @@ Add Repository
 
                $ rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
-         RHEL 7 / CentOS 7
-            .. code-block:: sh
-
-               $ wget -O /etc/yum.repos.d/zammad.repo \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/el/7.repo
-
          RHEL 8 / CentOS 8
             .. code-block:: sh
 
@@ -125,22 +104,10 @@ Add Repository
 
       .. tab:: OpenSUSE / SLES
 
-         Remove obsolete Let's Encrypt CA (SLES12 and openSUSE 42.x only)
-            .. code-block:: sh
-
-               $ rm /usr/share/pki/trust/DST_Root_CA_X3.pem
-               $ update-ca-certificates
-
          Install Repository Key
             .. code-block:: sh
 
                $ rpm --import https://dl.packager.io/srv/zammad/zammad/key
-
-         SLES 12 / openSUSE 42.x
-            .. code-block:: sh
-
-               $ wget -O /etc/zypp/repos.d/zammad.repo \
-               https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/12.repo
 
          SLES 15 / openSUSE 15.x
             .. code-block:: sh
@@ -161,12 +128,6 @@ Install Zammad
       .. tab:: CentOS
 
          .. code-block:: sh
-
-            # CentOS 7
-            $ yum install postgresql14-server
-            $ postgresql-14-setup initdb
-            $ systemctl start postgresql-14
-            $ systemctl enable postgresql-14
 
             # general
             $ yum install zammad
