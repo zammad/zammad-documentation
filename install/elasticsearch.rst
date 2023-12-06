@@ -176,7 +176,7 @@ Step 3: Connect Zammad
 
 .. note:: 
 
-   If you use Elasticsearch 8, you need to use an encrypted URL in
+   If you use Elasticsearch 8+, you need to use an HTTPS URL in
    'es_url' as 'https://localhost:9200' and configure an
    Authentication (see HTTP Basic below).
 
