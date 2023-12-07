@@ -3,8 +3,9 @@ States
 
    .. warning::
 
-      Creating, changing or removing states via below endpoints require further
-      steps via console. See :ref:`states_to_ui`
+      Creating, changing or removing states via below endpoints is not
+      recommended! You can do this in UI, please have a look
+      :admin-docs:`here </system/objects.html#ticket-state-reference>`.
 
 List
 ====
@@ -18,9 +19,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    [
       {
          "id": 1,
@@ -141,9 +142,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    {
       "id": 4,
       "state_type_id": 5,
@@ -190,9 +191,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 201 Created
-   
+
    {
       "id": 8,
       "state_type_id": 2,
@@ -218,7 +219,7 @@ Required permission: ``admin.object``
 ``PUT``-Request sent: ``/api/v1/ticket_states/{id}``
 
 .. code-block:: json
-   
+
    {
       "note": "State created & updated via API"
    }
@@ -227,9 +228,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    {
       "id": 8,
       "note": "State created &amp; updated via API",
@@ -269,7 +270,7 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
 
    {}
