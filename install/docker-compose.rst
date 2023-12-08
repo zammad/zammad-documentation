@@ -116,7 +116,7 @@ Step 4: Start Zammad using DockerHub images
 
 .. code-block:: sh
 
-   $ docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails c
+   $ docker exec -it zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails c
 
 Same as above but it will open an interactive shell which you can use to run multiple commands/ use autocomplete.
 
