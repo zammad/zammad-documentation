@@ -22,9 +22,23 @@ Zammads docker images are hosted on `Dockerhub`_.
 .. _Dockerhub:
    https://hub.docker.com/r/zammad/zammad-docker-compose/
 
-.. warning::
+.. hint::
 
-   Never use the ``latest`` tag. Use a tag which has a version attached.
+   By default, docker compose will use a fixed Zammad version like
+   ``6.2.0-1``, which refers to a specific commit. In this scenario,
+   you are responsible to apply updates by updating the version on your own.
+
+   Alternatively, you can also use floating versions that will give you automatic updates
+   via ``docker compose pull``:
+
+   .. code-block:: sh
+
+      # VERSION=6.2     # all patchlevel updates
+      # VERSION=6       # including minor updates
+      # VERSION=latest  # all updates of stable versions, including major
+      # VERSION=develop # bleeding-edge development version (not recommended for production use)
+
+.. hint::
 
    You need at least 4 GB of RAM to run the containers.
 
