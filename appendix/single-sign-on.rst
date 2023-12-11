@@ -21,12 +21,12 @@ Zammad has its own logic for signing users up, storing their passwords,
 authenticating them, and managing their sessions.
 
 If your IT department keeps its own user identity store (like Active Directory),
-Zammad’s SSO support allows you to leverage that existing auth system
+Zammad's SSO support allows you to leverage that existing auth system
 so that anyone with an account on your local intranet will
 1) automatically have an account in Zammad and
 2) be able to log in with a single click.
 
-.. note:: If you *don’t* have this IT infrastructure
+.. note:: If you *don't* have this IT infrastructure
    but still want one-click login,
    see :admin-docs:`Third-Party Authentication </settings/security.html#third-party-applications>`
    for alternatives.
@@ -57,22 +57,22 @@ it creates a new session for that user.
    Apache initiates a three-sided login process (*Kerberos authentication*)
    between the itself, the user, and the Active Directory server.
 
-   If Active Directory doesn’t recognize the user or their password,
+   If Active Directory doesn't recognize the user or their password,
    Zammad never sees the request, and the session is never created.
 
    **What does this all mean?**
 
    It means there are many ways you could set up SSO—you
-   don’t need to follow this guide or even use Active Directory or Kerberos—but
-   if you don’t know what you’re doing,
-   you’re going to end up with a *massive* security hole.
+   don't need to follow this guide or even use Active Directory or Kerberos—but
+   if you don't know what you're doing,
+   you're going to end up with a *massive* security hole.
 
 Getting Started
 ---------------
 
 .. hint:: 😵 **Too busy to handle it on your own?**
 
-   We’ve got you covered.
+   We've got you covered.
    Our experts offer custom-tailored workshops
    to get your team up and running fast and with confidence.
    `Just drop us a line <https://zammad.com/contact>`_!
@@ -197,7 +197,7 @@ which offers Kerberos support through a plug-in module instead.
    just bear in mind that Apache will not start
    if the port it wants to listen on is being used by NGINX.
 
-   If for any reason you can’t complete this tutorial,
+   If for any reason you can't complete this tutorial,
    simply turn off Apache and restore NGINX:
 
    .. code-block:: sh
@@ -210,7 +210,7 @@ which offers Kerberos support through a plug-in module instead.
 2b. Pre-Configure Apache
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This documentation expects a already working Apache configuration. 
+This documentation expects a already working Apache configuration.
 Please see :doc:`/getting-started/configure-webserver` before continuing.
 
 2c. Install further Apache dependencies
@@ -223,16 +223,16 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
       .. code-block:: sh
 
          $ apt update
-         $ apt install krb5-user libapache2-mod-auth-kerb
+         $ apt install libapache2-mod-auth-gssapi
 
    .. tab:: CentOS
-   
+
       .. code-block:: sh
 
          $ yum install krb5-workstation mod_auth_kerb
 
    .. tab:: OpenSUSE
-   
+
       .. code-block:: sh
 
          $ zypper ref
@@ -241,7 +241,7 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
 2d. Enable Apache modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-SSO requires modules that are not enabled by default. By default you can use 
+SSO requires modules that are not enabled by default. By default you can use
 ``a2enmod`` to do so.
 
 .. tabs::
@@ -280,33 +280,50 @@ how to reach the *domain controller* (Active Directory server).
                                     (must not be read-only,
                                     but can be the same as ``<domain-controller>``)
 
-.. code-block::
+.. tabs::
 
-   # /etc/krb5.conf
+   .. tab:: Ubuntu / Debian
 
-   [libdefaults]
-     default_realm = <DOMAIN>
-     default_tkt_enctypes = aes256-cts-hmac-sha1-96
-     default_tgs_enctypes = aes256-cts-hmac-sha1-96
-     permitted_enctypes = aes256-cts-hmac-sha1-96
+      .. code-block::
 
-     kdc_timesync = 1
-     ccache_type = 4
-     forwardable = false
-     proxiable = false
-     fcc-mit-ticketflags = false
+         # /etc/krb5.conf
 
-   [realms]
-           # multiple KDCs ok (one `kdc = ...` definition per line)
-           <DOMAIN> = {
-                   kdc = <domain-controller>
-                   admin_server = <master-domain-controller>
-                   default_domain = <domain>
-           }
+         [libdefaults]
+           default_realm = <DOMAIN>
 
-   [domain_realm]
-           .<domain> = <DOMAIN>
-           <domain> = <DOMAIN>
+           default_tkt_enctypes = aes256-cts-hmac-sha1-96
+           default_tgs_enctypes = aes256-cts-hmac-sha1-96
+           permitted_enctypes = aes256-cts-hmac-sha1-96
+
+   .. tab:: CentOS/OpenSUSE
+
+      .. code-block::
+
+         # /etc/krb5.conf
+
+         [libdefaults]
+           default_realm = <DOMAIN>
+           default_tkt_enctypes = aes256-cts-hmac-sha1-96
+           default_tgs_enctypes = aes256-cts-hmac-sha1-96
+           permitted_enctypes = aes256-cts-hmac-sha1-96
+
+           kdc_timesync = 1
+           ccache_type = 4
+           forwardable = false
+           proxiable = false
+           fcc-mit-ticketflags = false
+
+         [realms]
+                 # multiple KDCs ok (one `kdc = ...` definition per line)
+                 <DOMAIN> = {
+                         kdc = <domain-controller>
+                         admin_server = <master-domain-controller>
+                         default_domain = <domain>
+                 }
+
+         [domain_realm]
+                 .<domain> = <DOMAIN>
+                 <domain> = <DOMAIN>
 
 .. _sso-generate-keytab:
 
@@ -347,7 +364,7 @@ and set the appropriate permissions:
 
 .. tabs::
 
-   .. tab:: Ubuntu, Debian, openSUSE
+   .. tab:: Ubuntu, Debian, OpenSUSE
 
       .. code-block:: sh
 
@@ -367,7 +384,7 @@ and set the appropriate permissions:
 ^^^^^^^^^^^^^^^^^^^^
 
 
-Add the following directive to the end of the virtual host configuration file 
+Add the following directive to the end of the virtual host configuration file
 to create your Kerberos SSO endpoint at ``/auth/sso``:
 
 .. note:: Replace the following placeholders in the command below:
@@ -375,30 +392,57 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
    :``<zammad-host>``: Zammad FQDN
    :``<domain>``:      Windows domain
 
-   The configuration below contains two ``Krb5KeyTab`` lines!
-   Keep only the one you need.
+   The configuration for CentOS and OpenSUSE below contains two ``Krb5KeyTab``
+   lines! Keep only the one you need.
 
-.. code-block:: apache
+.. tabs::
 
-   <LocationMatch "/auth/sso">
-      SSLRequireSSL
-      AuthType Kerberos
-      AuthName "Your Zammad"
-      KrbMethodNegotiate On
-      KrbVerifyKDC On
-      KrbMethodK5Passwd On
-      KrbAuthRealms <DOMAIN>
-      KrbLocalUserMapping on                 # strips @REALM suffix from REMOTE_USER variable
-      KrbServiceName HTTP/<zammad-host>@<DOMAIN>
-      Krb5KeyTab /etc/apache2/zammad.keytab  # Ubuntu, Debian, & openSUSE
-      Krb5KeyTab /etc/httpd/zammad.keytab    # CentOS
-      require valid-user
+   .. tab:: CentOS/OpenSUSE
 
-      RewriteEngine On
-      RewriteCond %{LA-U:REMOTE_USER} (.+)
-      RewriteRule . - [E=RU:%1,NS]
-      RequestHeader set X-Forwarded-User "%{RU}e" env=RU
-   </LocationMatch>
+      .. code-block:: apache
+
+         # /etc/apache2/sites-available/zammad.conf
+
+         <LocationMatch "/auth/sso">
+            SSLRequireSSL
+            AuthType Kerberos
+            AuthName "Your Zammad"
+            KrbMethodNegotiate On
+            KrbVerifyKDC On
+            KrbMethodK5Passwd On
+            KrbAuthRealms <DOMAIN>
+            KrbLocalUserMapping on                 # strips @REALM suffix from REMOTE_USER variable
+            KrbServiceName HTTP/<zammad-host>@<DOMAIN>
+            Krb5KeyTab /etc/apache2/zammad.keytab  # Ubuntu, Debian, & openSUSE
+            Krb5KeyTab /etc/httpd/zammad.keytab    # CentOS
+            require valid-user
+
+            RewriteEngine On
+            RewriteCond %{LA-U:REMOTE_USER} (.+)
+            RewriteRule . - [E=RU:%1,NS]
+            RequestHeader set X-Forwarded-User "%{RU}e" env=RU
+         </LocationMatch>
+
+   .. tab:: Debian/Ubuntu
+
+      .. code-block:: apache
+
+         # /etc/apache2/sites-available/zammad.conf
+
+         <LocationMatch "/auth/sso">
+            SSLRequireSSL
+            AuthType GSSAPI
+            AuthName "Your Zammad"
+            GssapiBasicAuth On
+            GssapiCredStore keytab:/etc/apache2/zammad.keytab
+            GssapiLocalName On
+            require valid-user
+
+            RewriteEngine On
+            RewriteCond %{LA-U:REMOTE_USER} (.+)
+            RewriteRule . - [E=RU:%1,NS]
+            RequestHeader set X-Forwarded-User "%{RU}e" env=RU
+         </LocationMatch>
 
 2g. Restart Apache to apply changes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -410,7 +454,7 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
 Step 3: Enable SSO in Zammad
 ----------------------------
 
-Next, enable “Authencation via SSO” in Zammad’s Admin Panel under 
+Next, enable “Authencation via SSO” in Zammad's Admin Panel under
 **Settings > Security > Third-Party Applications**:
 
 .. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
@@ -420,7 +464,7 @@ Next, enable “Authencation via SSO” in Zammad’s Admin Panel under
    In Zammad 3.5, this option
    adds a **Sign in using SSO** button to the sign-in page.
 
-.. note:: 
+.. note::
    On older versions of Zammad,
    visit ``https://your.zammad.host/auth/sso`` to sign in.
 
@@ -430,7 +474,7 @@ Step 4: Configure Client System (Windows Only)
 For the full SSO experience (*i.e.,* for passwordless, one-click sign-in),
 Zammad users must:
 
-1. be on the Active Directory server’s local intranet; and
+1. be on the Active Directory server's local intranet; and
 2. modify their network settings for the Zammad host
    to be treated as a local intranet server.
 
@@ -459,7 +503,7 @@ Zammad users must:
          :alt: Adding Zammad as a single sign-on site in Windows Internet options
 
    .. tab:: Firefox
-   
+
       .. note:: This option cannot be centrally managed
          because it is set in the browser rather than Windows Settings.
 
@@ -473,14 +517,14 @@ Zammad users must:
          :align: center
          :alt: Adding Zammad as a single sign-on site in the Firefox about:config menu
 
-         Enter ``about:config`` in the address bar to access advanced 
+         Enter ``about:config`` in the address bar to access advanced
          settings in Firefox.
 
 Troubleshooting
 ---------------
 
 * Are all relevant FQDNs/hostnames reachable
-  from your Active Directory and Zammad servers (including each other’s)?
+  from your Active Directory and Zammad servers (including each other's)?
 * Are the system clocks of your Active Directory and Zammad servers synchronized
   within five minutes of each other?
   (Kerberos is a time-sensitive protocol.)
@@ -513,12 +557,12 @@ Errors in Apache Logs
    Try generating it again, just to be sure.
 
 “No key table entry found for HTTP/FQDN\@DOMAIN”
-   Does your virtual host configuration’s ``KrbServiceName`` setting
+   Does your virtual host configuration's ``KrbServiceName`` setting
    exactly match the **service name** you provided to ``setspn``?
 
    This setting is case-sensitive.
 
-“Warning: received token seems to be NTLM, which isn’t supported by the Kerberos module. Check your IE configuration”
+“Warning: received token seems to be NTLM, which isn't supported by the Kerberos module. Check your IE configuration”
    Is your Zammad host accessible at an FQDN?
    This error may indicate that you configured your Zammad host
    as a numeric IP address instead.
@@ -541,8 +585,8 @@ Errors in Apache Logs
 “failed when verifying KDC” and “failed to verify krb5 credentials: Decrypt integrity check failed”
    Ensure ``KrbServiceName`` is the correct ServiceName provided via setspn.
 
-   Ensure your Active Directory supports the encryption method configured. 
+   Ensure your Active Directory supports the encryption method configured.
 
-   If all above is correct and the rest of FAQ also is ensured, make sure your 
-   client does not cache the results. 
+   If all above is correct and the rest of FAQ also is ensured, make sure your
+   client does not cache the results.
    ``klist purge`` clears the clients cache - a reboot of your client would do too.
