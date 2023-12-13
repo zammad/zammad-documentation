@@ -256,3 +256,13 @@ MEMCACHE_SERVERS
          Memcached allows you to restrict the maximum size Zammad may store
          as cache. This comes in handy in terms of performance and keeping
          caching files small. ``1 GB`` should be a reasonable size.
+
+Storage Options
+===============
+
+S3_URL
+   Allows you to provide your S3 configuration. Please have a look in our admin
+   documentation, where the :admin-docs:`setup of S3 storage </settings/system/storage.html>`
+   is described.
+
+   Format / example: ``https://key:secret@s3.eu-central-1.amazonaws.com/zammad-storage-bucket?region=eu-central-1&force_path_style=true``
