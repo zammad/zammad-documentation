@@ -24,7 +24,7 @@ requirements for your clients. This ensures that Zammad works as expected.
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
      - ⚠️ Deprecated, will be removed with Zammad 7
-   * - Safari 11
+   * - Safari 14
      -
 
 .. danger:: ⚠️ Deprecation warning ⚠️
