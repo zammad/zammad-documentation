@@ -203,7 +203,8 @@ Node.js is required for asset compiling.
    :header: "Zammad", "Node.js"
    :widths: 20, 20
 
-   "6.2+", "18.0+"
+   "6.3+", "18.10+"
+   "6.2", "18.0+"
    "5.2 - 6.1", "16.0+"
    "5.0 - 5.1", "10.0+"
 
