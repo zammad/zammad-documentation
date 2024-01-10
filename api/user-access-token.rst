@@ -912,7 +912,7 @@ Required permission: ``user_preferences.access_token``
 .. code-block:: json
 
    {
-      "label": "My amazing test",
+      "name": "My amazing test",
       "permission": ["cti.agent","ticket.agent"],
       "expires_at": "2021-12-21"
    }
@@ -925,12 +925,12 @@ Response:
    # HTTP-Code 200 Ok
 
    {
-      "name": "M4oXJgB_8WiMNWzSdrDv3K3YXJywDh52BqC7IKV-NnM_Cf_bd_SkS6zyIWNZKJXw"
+      "token": "M4oXJgB_8WiMNWzSdrDv3K3YXJywDh52BqC7IKV-NnM_Cf_bd_SkS6zyIWNZKJXw"
    }
 
 .. note::
 
-   Above returned ``name`` is the API token. This value is provided once after
+   Above returned ``token`` is the API token. This value is provided once after
    creation and can't be retrieved after.
 
 Delete
