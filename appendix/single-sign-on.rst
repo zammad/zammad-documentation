@@ -287,54 +287,38 @@ how to reach the *domain controller* (Active Directory server).
                                     (must not be read-only,
                                     but can be the same as ``<domain-controller>``)
 
-.. tabs::
+   .. code-block::
 
-   .. tab:: Ubuntu / Debian
+      # /etc/krb5.conf
 
-      .. code-block::
+      [libdefaults]
+        default_realm = <DOMAIN>
 
-         # /etc/krb5.conf
+        default_tkt_enctypes = aes256-cts-hmac-sha1-96
+        default_tgs_enctypes = aes256-cts-hmac-sha1-96
+        permitted_enctypes = aes256-cts-hmac-sha1-96
 
-         [libdefaults]
-           default_realm = <DOMAIN>
+        kdc_timesync = 1
+        ccache_type = 4
+        forwardable = false
+        proxiable = false
+        fcc-mit-ticketflags = false
 
-           default_tkt_enctypes = aes256-cts-hmac-sha1-96
-           default_tgs_enctypes = aes256-cts-hmac-sha1-96
-           permitted_enctypes = aes256-cts-hmac-sha1-96
-
-   .. tab:: CentOS/OpenSUSE
-
-      .. code-block::
-
-         # /etc/krb5.conf
-
-         [libdefaults]
-           default_realm = <DOMAIN>
-           default_tkt_enctypes = aes256-cts-hmac-sha1-96
-           default_tgs_enctypes = aes256-cts-hmac-sha1-96
-           permitted_enctypes = aes256-cts-hmac-sha1-96
-
-           kdc_timesync = 1
-           ccache_type = 4
-           forwardable = false
-           proxiable = false
-           fcc-mit-ticketflags = false
-
-         [realms]
-                 # multiple KDCs ok (one `kdc = ...` definition per line)
-                 <DOMAIN> = {
-                         kdc = <domain-controller>
-                         admin_server = <master-domain-controller>
-                         default_domain = <domain>
+      [realms]
+              # multiple KDCs ok (one `kdc = ...` definition per line)
+              <DOMAIN> = {
+                      kdc = <domain-controller>
+                      admin_server = <master-domain-controller>
+                      default_domain = <domain>
 
                       # below is only for GSSAPI
                       auth_to_local = RULE:[1:$1@$0](.*@<domain>)s/@<domain>$//
                       auth_to_local = DEFAULT
-                 }
+              }
 
-         [domain_realm]
-                 .<domain> = <DOMAIN>
-                 <domain> = <DOMAIN>
+      [domain_realm]
+              .<domain> = <DOMAIN>
+              <domain> = <DOMAIN>
 
 .. _sso-generate-keytab:
 
