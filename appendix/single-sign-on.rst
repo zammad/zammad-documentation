@@ -223,7 +223,7 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
       .. code-block:: sh
 
          $ apt update
-         $ apt install libapache2-mod-auth-gssapi
+         $ apt install krb5-user libapache2-mod-auth-gssapi
 
    .. tab:: CentOS
 
