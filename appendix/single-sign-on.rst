@@ -380,16 +380,16 @@ and set the appropriate permissions:
       .. code-block:: sh
 
          $ mv /root/zammad.keytab /etc/apache2/
-         $ chown www-data:www-data /etc/apache2/zammad.keytab
-         $ chmod 400 /etc/apache2/zammad.keytab
+         $ chown root:www-data /etc/apache2/zammad.keytab
+         $ chmod 640 /etc/apache2/zammad.keytab
 
    .. tab:: CentOS
 
       .. code-block:: sh
 
          $ mv /root/zammad.keytab /etc/httpd/
-         $ chown apache:apache /etc/httpd/zammad.keytab
-         $ chmod 400 /etc/httpd/zammad.keytab
+         $ chown root:apache /etc/httpd/zammad.keytab
+         $ chmod 640 /etc/httpd/zammad.keytab
 
 2g. Configure Apache
 ^^^^^^^^^^^^^^^^^^^^
