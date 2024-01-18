@@ -326,6 +326,10 @@ how to reach the *domain controller* (Active Directory server).
                          kdc = <domain-controller>
                          admin_server = <master-domain-controller>
                          default_domain = <domain>
+
+                      # below is only for GSSAPI
+                      auth_to_local = RULE:[1:$1@$0](.*@<domain>)s/@<domain>$//
+                      auth_to_local = DEFAULT
                  }
 
          [domain_realm]
