@@ -246,7 +246,14 @@ SSO requires modules that are not enabled by default. By default you can use
 
 .. tabs::
 
-   .. tab:: a2enmod
+   .. tab:: a2enmod (Ubuntu / Debian)
+
+      .. code-block:: sh
+
+         $ a2enmod auth_gssapi rewrite
+         $ systemctl restart apache2
+
+   .. tab:: a2enmod (OpenSUSE)
 
       .. code-block:: sh
 
