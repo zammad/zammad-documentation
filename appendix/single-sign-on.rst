@@ -287,38 +287,38 @@ how to reach the *domain controller* (Active Directory server).
                                     (must not be read-only,
                                     but can be the same as ``<domain-controller>``)
 
-   .. code-block::
+.. code-block::
 
-      # /etc/krb5.conf
+   # /etc/krb5.conf
 
-      [libdefaults]
-        default_realm = <DOMAIN>
+   [libdefaults]
+      default_realm = <DOMAIN>
 
-        default_tkt_enctypes = aes256-cts-hmac-sha1-96
-        default_tgs_enctypes = aes256-cts-hmac-sha1-96
-        permitted_enctypes = aes256-cts-hmac-sha1-96
+      default_tkt_enctypes = aes256-cts-hmac-sha1-96
+      default_tgs_enctypes = aes256-cts-hmac-sha1-96
+      permitted_enctypes = aes256-cts-hmac-sha1-96
 
-        kdc_timesync = 1
-        ccache_type = 4
-        forwardable = false
-        proxiable = false
-        fcc-mit-ticketflags = false
+      kdc_timesync = 1
+      ccache_type = 4
+      forwardable = false
+      proxiable = false
+      fcc-mit-ticketflags = false
 
-      [realms]
-              # multiple KDCs ok (one `kdc = ...` definition per line)
-              <DOMAIN> = {
-                      kdc = <domain-controller>
-                      admin_server = <master-domain-controller>
-                      default_domain = <domain>
+   [realms]
+            # multiple KDCs ok (one `kdc = ...` definition per line)
+            <DOMAIN> = {
+                     kdc = <domain-controller>
+                     admin_server = <master-domain-controller>
+                     default_domain = <domain>
 
-                      # below is only for GSSAPI
-                      auth_to_local = RULE:[1:$1@$0](.*@<domain>)s/@<domain>$//
-                      auth_to_local = DEFAULT
-              }
+                     # below is only for GSSAPI
+                     auth_to_local = RULE:[1:$1@$0](.*@<domain>)s/@<domain>$//
+                     auth_to_local = DEFAULT
+            }
 
-      [domain_realm]
-              .<domain> = <DOMAIN>
-              <domain> = <DOMAIN>
+   [domain_realm]
+            .<domain> = <DOMAIN>
+            <domain> = <DOMAIN>
 
 .. _sso-generate-keytab:
 
@@ -392,6 +392,27 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
 
 .. tabs::
 
+   .. tab:: Ubuntu/Debian
+
+      .. code-block:: apache
+
+         # /etc/apache2/sites-available/zammad.conf
+
+         <LocationMatch "/auth/sso">
+            SSLRequireSSL
+            AuthType GSSAPI
+            AuthName "Your Zammad"
+            GssapiBasicAuth On
+            GssapiCredStore keytab:/etc/apache2/zammad.keytab
+            GssapiLocalName On
+            require valid-user
+
+            RewriteEngine On
+            RewriteCond %{LA-U:REMOTE_USER} (.+)
+            RewriteRule . - [E=RU:%1,NS]
+            RequestHeader set X-Forwarded-User "%{RU}e" env=RU
+         </LocationMatch>
+
    .. tab:: CentOS/OpenSUSE
 
       .. code-block:: apache
@@ -410,27 +431,6 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
             KrbServiceName HTTP/<zammad-host>@<DOMAIN>
             Krb5KeyTab /etc/apache2/zammad.keytab  # Ubuntu, Debian, & openSUSE
             Krb5KeyTab /etc/httpd/zammad.keytab    # CentOS
-            require valid-user
-
-            RewriteEngine On
-            RewriteCond %{LA-U:REMOTE_USER} (.+)
-            RewriteRule . - [E=RU:%1,NS]
-            RequestHeader set X-Forwarded-User "%{RU}e" env=RU
-         </LocationMatch>
-
-   .. tab:: Debian/Ubuntu
-
-      .. code-block:: apache
-
-         # /etc/apache2/sites-available/zammad.conf
-
-         <LocationMatch "/auth/sso">
-            SSLRequireSSL
-            AuthType GSSAPI
-            AuthName "Your Zammad"
-            GssapiBasicAuth On
-            GssapiCredStore keytab:/etc/apache2/zammad.keytab
-            GssapiLocalName On
             require valid-user
 
             RewriteEngine On
