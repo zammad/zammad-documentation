@@ -246,7 +246,14 @@ SSO requires modules that are not enabled by default. By default you can use
 
 .. tabs::
 
-   .. tab:: a2enmod
+   .. tab:: a2enmod (Ubuntu / Debian)
+
+      .. code-block:: sh
+
+         $ a2enmod auth_gssapi rewrite
+         $ systemctl restart apache2
+
+   .. tab:: a2enmod (OpenSUSE)
 
       .. code-block:: sh
 
@@ -280,50 +287,38 @@ how to reach the *domain controller* (Active Directory server).
                                     (must not be read-only,
                                     but can be the same as ``<domain-controller>``)
 
-.. tabs::
+.. code-block::
 
-   .. tab:: Ubuntu / Debian
+   # /etc/krb5.conf
 
-      .. code-block::
+   [libdefaults]
+      default_realm = <DOMAIN>
 
-         # /etc/krb5.conf
+      default_tkt_enctypes = aes256-cts-hmac-sha1-96
+      default_tgs_enctypes = aes256-cts-hmac-sha1-96
+      permitted_enctypes = aes256-cts-hmac-sha1-96
 
-         [libdefaults]
-           default_realm = <DOMAIN>
+      kdc_timesync = 1
+      ccache_type = 4
+      forwardable = false
+      proxiable = false
+      fcc-mit-ticketflags = false
 
-           default_tkt_enctypes = aes256-cts-hmac-sha1-96
-           default_tgs_enctypes = aes256-cts-hmac-sha1-96
-           permitted_enctypes = aes256-cts-hmac-sha1-96
+   [realms]
+            # multiple KDCs ok (one `kdc = ...` definition per line)
+            <DOMAIN> = {
+                     kdc = <domain-controller>
+                     admin_server = <master-domain-controller>
+                     default_domain = <domain>
 
-   .. tab:: CentOS/OpenSUSE
+                     # below is only for GSSAPI
+                     auth_to_local = RULE:[1:$1@$0](.*@<domain>)s/@<domain>$//
+                     auth_to_local = DEFAULT
+            }
 
-      .. code-block::
-
-         # /etc/krb5.conf
-
-         [libdefaults]
-           default_realm = <DOMAIN>
-           default_tkt_enctypes = aes256-cts-hmac-sha1-96
-           default_tgs_enctypes = aes256-cts-hmac-sha1-96
-           permitted_enctypes = aes256-cts-hmac-sha1-96
-
-           kdc_timesync = 1
-           ccache_type = 4
-           forwardable = false
-           proxiable = false
-           fcc-mit-ticketflags = false
-
-         [realms]
-                 # multiple KDCs ok (one `kdc = ...` definition per line)
-                 <DOMAIN> = {
-                         kdc = <domain-controller>
-                         admin_server = <master-domain-controller>
-                         default_domain = <domain>
-                 }
-
-         [domain_realm]
-                 .<domain> = <DOMAIN>
-                 <domain> = <DOMAIN>
+   [domain_realm]
+            .<domain> = <DOMAIN>
+            <domain> = <DOMAIN>
 
 .. _sso-generate-keytab:
 
@@ -369,16 +364,16 @@ and set the appropriate permissions:
       .. code-block:: sh
 
          $ mv /root/zammad.keytab /etc/apache2/
-         $ chown www-data:www-data /etc/apache2/zammad.keytab
-         $ chmod 400 /etc/apache2/zammad.keytab
+         $ chown root:www-data /etc/apache2/zammad.keytab
+         $ chmod 640 /etc/apache2/zammad.keytab
 
    .. tab:: CentOS
 
       .. code-block:: sh
 
          $ mv /root/zammad.keytab /etc/httpd/
-         $ chown apache:apache /etc/httpd/zammad.keytab
-         $ chmod 400 /etc/httpd/zammad.keytab
+         $ chown root:apache /etc/httpd/zammad.keytab
+         $ chmod 640 /etc/httpd/zammad.keytab
 
 2g. Configure Apache
 ^^^^^^^^^^^^^^^^^^^^
@@ -396,6 +391,27 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
    lines! Keep only the one you need.
 
 .. tabs::
+
+   .. tab:: Ubuntu/Debian
+
+      .. code-block:: apache
+
+         # /etc/apache2/sites-available/zammad.conf
+
+         <LocationMatch "/auth/sso">
+            SSLRequireSSL
+            AuthType GSSAPI
+            AuthName "Your Zammad"
+            GssapiBasicAuth On
+            GssapiCredStore keytab:/etc/apache2/zammad.keytab
+            GssapiLocalName On
+            require valid-user
+
+            RewriteEngine On
+            RewriteCond %{LA-U:REMOTE_USER} (.+)
+            RewriteRule . - [E=RU:%1,NS]
+            RequestHeader set X-Forwarded-User "%{RU}e" env=RU
+         </LocationMatch>
 
    .. tab:: CentOS/OpenSUSE
 
@@ -415,27 +431,6 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
             KrbServiceName HTTP/<zammad-host>@<DOMAIN>
             Krb5KeyTab /etc/apache2/zammad.keytab  # Ubuntu, Debian, & openSUSE
             Krb5KeyTab /etc/httpd/zammad.keytab    # CentOS
-            require valid-user
-
-            RewriteEngine On
-            RewriteCond %{LA-U:REMOTE_USER} (.+)
-            RewriteRule . - [E=RU:%1,NS]
-            RequestHeader set X-Forwarded-User "%{RU}e" env=RU
-         </LocationMatch>
-
-   .. tab:: Debian/Ubuntu
-
-      .. code-block:: apache
-
-         # /etc/apache2/sites-available/zammad.conf
-
-         <LocationMatch "/auth/sso">
-            SSLRequireSSL
-            AuthType GSSAPI
-            AuthName "Your Zammad"
-            GssapiBasicAuth On
-            GssapiCredStore keytab:/etc/apache2/zammad.keytab
-            GssapiLocalName On
             require valid-user
 
             RewriteEngine On
