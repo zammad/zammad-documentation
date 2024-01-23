@@ -1,10 +1,10 @@
 Mentions
 ********
 
-   .. warning::
+.. warning::
 
-      Mention endpoints depend on on group permissions if the user you're 
-      using is an agent. Because of this tickets may or may not be available.
+    The mention endpoint depends on the group permissions and if the user you're
+    using is an **agent**. Because of this tickets may or may not be available.
 
 List
 ====
@@ -15,7 +15,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
 
    {
@@ -63,7 +63,7 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
-   
+
    {
      "id":2,
      "mentionable_type":"Ticket",
@@ -90,7 +90,7 @@ Response:
    :force:
 
    # HTTP-Code 200 Ok
-   
+
    {
      "id":2,
      "mentionable_type":"Ticket",

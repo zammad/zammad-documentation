@@ -163,7 +163,7 @@ List
 
 Required permission: ``ticket.agent`` **or** ``admin.user``
 
-   .. note:: Technically any, listings will return users own information only.
+.. note:: Technically, any listings will return users own information only.
 
 ``GET``-Request sent: ``/api/v1/users``
 
@@ -1120,7 +1120,7 @@ Show
 Required permission: ``ticket.agent`` **or** ``admin.user`` **or**
 ``ticket.customer`` (shared organization)
 
-   .. note:: Technically any, listings will return users own information only.
+.. note:: Technically, any listings will return user's own information only.
 
 ``GET``-Request sent: ``/api/v1/users/{id}``
 
@@ -1180,19 +1180,19 @@ Create
 
 Required permission: ``admin.user`` **or** ``ticket.agent``
 
-   .. note:: **🤓 This depends on permissions**
+.. note:: **🤓 This depends on permissions**
 
-      Agents can't set user passwords, roles or group permission. Instead
-      Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
+   Agents can't set user passwords, roles or group permission. Instead
+   Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
 
-      Technically unauthenticated user creation is possible if you manage
-      to provide the required CSRF token (out of scope of this documentation).
-      If you don't want that, consider :admin-docs:`disabling user registration </settings/security/base.html>`.
+   Technically, unauthenticated user creation is possible if you manage
+   to provide the required CSRF token (out of scope of this documentation).
+   If you don't want that, consider :admin-docs:`disabling user registration </settings/security/base.html>`.
 
-   .. tip:: **🧐 Creation payloads can be big**
+.. tip:: **🧐 Creation payloads can be big**
 
-      Unsure which attributes you can use or set? Run a get query on any
-      fitting user existing in your instance already.
+   Unsure which attributes you can use or set? Run a GET query on any
+   fitting user existing in your instance already.
 
 ``POST``-Request sent: ``/api/v1/users``
 
@@ -1321,10 +1321,10 @@ Update
 
 Required permission: ``admin.user`` **or** ``ticket.agent``
 
-   .. note:: **🤓 This depends on permissions**
+.. note:: **🤓 This depends on permissions**
 
-      Agents can't set user passwords, roles or group permission. Instead
-      Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
+   Agents can't set user passwords, roles or group permission. Instead
+   Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
 
 ``PUT``-Request sent: ``/api/v1/users/{id}``
 
