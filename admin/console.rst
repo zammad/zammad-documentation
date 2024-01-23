@@ -6,7 +6,7 @@ Zammad uses Ruby on Rails so you can make use of the `rails console`_.
 .. _rails console:
    http://guides.rubyonrails.org/command_line.html
 
-.. warning:: 
+.. warning::
 
    Please double check your commands before running, as some of those commands
    might cause data loss or damaged tickets! If you're unsure,
