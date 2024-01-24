@@ -1,16 +1,16 @@
 Configuration via Environment Variables
 ***************************************
 
-Use these environment variables to configure Zammad’s behavior at runtime.
+Use these environment variables to configure Zammad's behavior at runtime.
 
-.. note:: 🙋 **What’s an environment variable, and how do I “use” it?**
+.. note:: 🙋 **What's an environment variable, and how do I “use” it?**
 
    Unfortunately, that question has a very long answer
    that goes beyond the scope of this article.
    How you set environment variables will depend on how you installed Zammad
    (*e.g.,* source, package, or Docker).
 
-   But for package installations, here’s a short answer:
+   But for package installations, here's a short answer:
 
    .. code-block:: sh
 
@@ -44,37 +44,27 @@ APP_RESTART_CMD
    (*E.g.,* ``"systemctl restart zammad"``)
 
    If this is undefined, you will have to restart manually
-   after making changes in the Object Manager.
+   after making changes in the Object Manager. Please keep in mind that Zammad
+   runs as unprivileged user. This means that you have to allow the Zammad user
+   via e.g. ``sudoers`` to run the required restart command.
 
    Default: **unset**
-
-   .. note::
-
-      Please keep in mind that Zammad runs as unprivileged user. This means
-      that you have to allow the Zammad user via e.g. ``sudoers`` to run
-      the required restart command.
 
 GPG_PATH
-   Defines the path to the GPG installation.
+   Defines the path to the GPG installation. This is only needed if you
+   installed Zammad from Source, if you want to use different versions of PGP
+   on your machine or if your PGP installation differs from the standard
+   installation.
 
    Default: **unset**
-
-   .. note::
-
-      Define the path if you installed Zammad from Source, if you want to use
-      different versions of PGP on your machine or if your PGP installation
-      differs from the standard installation.
-
 
 RAILS_LOG_TO_STDOUT
    Print output directly to standard output
    instead of ``/var/log/zammad/production.log``.
 
-   .. warning:: On package installations, 
-      ⏫ **this setting can be overwritten during update.**
-
-      Use ``enabled`` to turn this option on only until the next update.
-      Use ``true`` to turn it on permanently.
+   This setting can be overwritten during update on package installations.
+   Use ``enabled`` to turn this option on only until the next update.
+   Use ``true`` to turn it on permanently.
 
    Default: **unset**
 
@@ -114,6 +104,11 @@ ZAMMAD_FQDN
 🖧 Network Options
 =================
 
+.. note::
+
+   Remember to update your web server config to reflect any changes you
+   make here.
+
 ZAMMAD_BIND_IP
    The IP address that the web server is bound to.
 
@@ -129,38 +124,32 @@ ZAMMAD_WEBSOCKET_PORT
 
    Default: ``6042``
 
-.. note:: 
-
-   Remember to update your web server config to reflect any changes you
-   make here.
-
 .. _performance_tuning:
 
 🎛️ Performance Tuning
 =====================
 
-.. warning:: ⚖️ **Each of these settings comes with its own tradeoffs.**
+**Each of below settings comes with its own tradeoffs.**
 
-   There are no “recommended values” here;
-   the optimal configuration will depend on
-   your system’s resources and typical application load.
+There are no “recommended values” here;
+the optimal configuration will depend on
+your system's resources and typical application load.
 
-   Proceed with caution; when adjusting any of these settings,
-   there is a point at which performance will begin to degrade rather than
-   improve, or other problems will begin to crop up.
+Proceed with caution; when adjusting any of these settings,
+there is a point at which performance will begin to degrade rather than
+improve, or other problems will begin to crop up.
 
-.. danger::
+Below settings *may* consume all available database connections.
+Please consider the
+:doc:`database server configuration </appendix/configure-database-server>`
+section for more.
 
-   Below settings *may* consume all available database connections.
-   Please consider the 
-   :doc:`database server configuration </appendix/configure-database-server>` 
-   section for more.
+To find out how many users are currently on Zammad, you can use the rails
+command below:
 
-.. tip:: 🤔 **How can I find out how many users are currently on Zammad?**
+.. code-block:: sh
 
-   .. code-block:: sh
-
-      $ zammad run rails r "p Sessions.list.uniq.count" 
+   $ zammad run rails r "p Sessions.list.uniq.count"
 
 WEB_CONCURRENCY
    How many instances of the application server to keep open at a time.
@@ -212,7 +201,7 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    | Default: **unset**
    | Maximum number of workers: ``16``
 
-   .. warning:: 🥵 **This option can be *very* CPU-intensive.**
+   .. warning:: 🥵 **This option can be very CPU-intensive.**
 
    .. danger::
 
@@ -251,11 +240,9 @@ MEMCACHE_SERVERS
    If not provided, Zammad falls back to file system
    (``/opt/zammad/tmp/cache*``).
 
-      .. tip:: **🤓 Size may be important**
-
-         Memcached allows you to restrict the maximum size Zammad may store
-         as cache. This comes in handy in terms of performance and keeping
-         caching files small. ``1 GB`` should be a reasonable size.
+   Memcached allows you to restrict the maximum size Zammad may store
+   as cache. This comes in handy in terms of performance and keeping
+   caching files small. ``1 GB`` should be a reasonable size.
 
 Storage Options
 ===============

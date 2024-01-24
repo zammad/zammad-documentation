@@ -1,28 +1,27 @@
-Migrate Zammad to new host
+Migrate Zammad to New Host
 **************************
 
-🙅‍♀️ This is a proof of concept, not a full how to. Your environment may be different.
-   Please note that the steps described on this page are an addition to
-   :doc:`backing up </appendix/backup-and-restore/backup>` and
-   :doc:`restoration </appendix/backup-and-restore/restore>`.
+This is a proof of concept, not a full how to. Your environment may be different.
+Please note that the steps described on this page are an addition to
+:doc:`backing up </appendix/backup-and-restore/backup>` and
+:doc:`restoring </appendix/backup-and-restore/restore>`.
+They're not meant to stand alone - we'll link and
+note this at the relevant parts.
 
-   They're not meant to stand alone - we'll link and
-   note this at the relevant parts.
-
-   If anything goes wrong, please consult the `Zammad Community`_ or consider
-   `paid support options`_.
-
-.. _Zammad Community:
-   https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5
-
-.. _paid support options:
-   https://zammad.com/en/services/professional-services
-
---------------------------------------------------------------------------------
+If anything goes wrong, please consult the
+`Zammad Community <https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5>`_ or consider
+`paid support options <https://zammad.com/en/services/professional-services>`_.
 
 .. hint::
 
-   Migrating from Zammad SaaS? Skip to *step 7*.
+   Migrating from Zammad SaaS? Skip to *step 7*. For restoration, you've
+   received an attachment dump! 🤓
+
+.. warning::
+
+   Restoration & Migration on docker based installation may differ.
+   While the steps are the same on most parts, it is not covered by
+   this documentation!
 
 Step 1: Note down your environmental adjustments
    This mainly affects :ref:`performance tuning settings <performance_tuning>`.
@@ -33,16 +32,10 @@ Step 2: Install Zammad on the destination host
    like your origin instance. You could also consider updating the old instance
    before migrating.
 
-   Choose beetween these installation types:
+   Choose between these installation types:
       * :doc:`package </install/package>`
       * :doc:`source code </install/package>`
       * :doc:`docker-compose </install/docker-compose>`
-
-           .. warning::
-
-              Restoration & Migration on docker based installation may differ.
-              While the steps are the same on most parts, it is not covered by
-              this documentation!
 
 Step 3: Activate maintenance mode
    This ends agents and customers sessions.
@@ -60,22 +53,16 @@ Step 5: Stop and disable Zammad
       $ systemctl disable zammad
       $ systemctl stop zammad
 
-   .. note::
-
-      This does not apply to docker based environments.
-
 Step 6: Backup!
    Follow our documentation part for
    :doc:`backup creation </appendix/backup-and-restore/backup>`.
 
-   .. hint::
+   Remember if you've created a full filesystem dump or only backed up
+   your attachments. This will be important for the restoration.
 
-      Note down if you've created a full filesystem dump or only backed up
-      your attachments. This will be important for the restoration.
-
-      If you want to go with the easiest way, consider only dumping your
-      attachments. Learn more on our
-      :doc:`configuration page </appendix/backup-and-restore/configuration>`.
+   If you want to go with the easiest way, consider only dumping your
+   attachments. Learn more on our
+   :doc:`configuration page </appendix/backup-and-restore/configuration>`.
 
 Step 7: Transfer your backup files
    You'll find the backup location within the ``config`` file in the backup
@@ -91,15 +78,10 @@ Step 8: Restore your backup
    :doc:`restoration page </appendix/backup-and-restore/restore>` to restore
    the backup on the new host.
 
-      .. warning:: 
+   If you're running a source code installation, we recommend install the same
+   version beforehand. This reduces environment fiddling *a lot*.
 
-         If you're running a source code installation, install the same version
-         before hand. This reduces environment fiddlings *a lot*.
-
-         If you don't want that, you can find a version list on the
-         :doc:`/prerequisites/software` page.
-
-      .. include:: /appendix/backup-and-restore/restore-warning-old-dumps.include.rst
+   .. include:: /appendix/backup-and-restore/restore-warning-old-dumps.include.rst
 
    Important
       Stop Zammad after the restoration has finished.
@@ -110,9 +92,6 @@ Step 8: Restore your backup
 Step 9: Run required maintenance tasks after restoring
    After successful restoration, please continue below depending if you've
    only backed up your attachments or had a full filesystem dump.
-
-
-      .. tip:: Migrating from Zammad SaaS? You've received an attachment dump! 🤓
 
    .. tabs::
 
@@ -135,11 +114,12 @@ Step 9: Run required maintenance tasks after restoring
          .. note::
 
             This step is only needed, if one of the following points is met:
-               * The source and destination Zammad-Version are not the same
-               * The Zammad-installation is not a source code installation²
-               * The Zammad-Backup is not an Export from Hosted-Setup
 
-            Full-Dumps for source code installations are not covered, however,
+               * The source and destination Zammad versions are not the same
+               * The Zammad installation is not a source code installation
+               * The Zammad backup is not an export from our hosted setup
+
+            Full dumps for source code installations are not covered, however,
             basically the same below applies to you: You have to ensure that
             the environments and application files are overwritten with the new /
             correct version.
@@ -159,7 +139,7 @@ Step 9: Run required maintenance tasks after restoring
                   $ zypper remove -R zammad
                   $ zypper install zammad
 
-            .. hint:: 
+            .. hint::
 
                You're unsure if above is really required and a mere reinstall
                would be enough? If you run a dedicated install command on for
@@ -187,12 +167,7 @@ Step 9: Run required maintenance tasks after restoring
                $ systemctl start zammad
 
 Step 10: Apply missing environmental settings
-   .. note::
-
-      This does not apply to Docker images, as the following settings should
-      be applied upon every start automatically.
-
-.. include:: /appendix/backup-and-restore/add-missing-environment.include.rst
+   .. include:: /appendix/backup-and-restore/add-missing-environment.include.rst
 
 Step 11: Re-enable Channels and deactivate maintenance mode
    Set the previous deactivated channels back to active if you're sure

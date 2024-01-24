@@ -1,18 +1,23 @@
 Troubleshooting Backup & Restore
 ********************************
 
-Errors have been made, possibly they can be corrected through.
+If you encountered errors, they possibly can be corrected.
 
-Exit codes
+.. hint:: **🥸 Your issue is not listed...?**
+
+   Please consult the `Zammad Community <https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5>`_
+   for technical assistance.
+
+Exit Codes
 ==========
 
-Backup & Restore script come with exit codes to help you within possible
-autonomous handling. However, we do not guarantee a complete error handling.
+Our backup & restore scripts come with exit codes to help you finding a
+solution. However, we do not guarantee a complete error handling.
 
-Beside the exit codes, there's also error messages returned to standard out.
+Beside the exit codes, there are also error messages returned to standard out.
 
 .. list-table:: Exit code list
-   :widths: 25 75
+   :widths: 10 80
    :header-rows: 1
 
    * - Code
@@ -34,11 +39,7 @@ Classics
 
 Here's some classics you may encounter.
 
-.. hint:: **🥸 Your issue is not listed...?**
-
-   Please consult the `Zammad Community`_ for technical assistance.
-
-``password authentication failed`` -or- ``peer authentication failed``
+``password authentication failed`` or ``peer authentication failed``
    This indicates that the password of your Zammad DB user is either different
    from your ``database.yml`` or the wrong database server may be contacted.
 
@@ -46,11 +47,9 @@ Here's some classics you may encounter.
       Zammad may fall back to socket connection which is why you didn't notice.
 
    What to do ...
-      * Ensure that the provided user credentials are correct
-
-           .. tip:: **🤓 Lazy users can use our helper**
-
-              In the backup directory you'll find a :ref:`reset_db_password`.
+      Ensure that the provided user credentials are correct. You can also
+      consider to use the :ref:`reset_db_password` script, you can find in the
+      backup directory.
 
 ``Ident authentication failed for user``
    This indicates your database server does require ``ident`` authentication.
@@ -83,5 +82,3 @@ Here's some classics you may encounter.
    :admin-docs:`Storage Settings </settings/system/storage.html>`.
    In case the issue posts, please consult the `Zammad Community`_.
 
-.. _Zammad Community:
-   https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5
