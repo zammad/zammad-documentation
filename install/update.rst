@@ -145,8 +145,6 @@ Updating Zammad
 
                   .. include:: /appendix/includes/mysql-deprication-note.rst
 
-                  .. include:: /appendix/includes/mysql-deprication-link.rst
-
       Step 5: Stop Zammad services
          Stop the application server, websocket server and scheduler.
 

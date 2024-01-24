@@ -1,8 +1,6 @@
 Call hangup
 ===========
 
-.. include:: /api/generic-cti/cti-endpoint-limitations.include.rst
-
 .. list-table:: Available attributes and sample data for hangup events
    :widths: 20, 40, 40
    :header-rows: 1
@@ -34,7 +32,7 @@ Call hangup
      - .. list-table::
           :widths: 10, 30
           :header-rows: 1
-          
+
           * - Cause type
             - Description
           * - ``normalClearing``
@@ -171,7 +169,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                {}
 
          Sample curl command:
-         
+
             .. code-block:: sh
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
@@ -202,7 +200,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                {}
 
          Sample curl command:
-         
+
             .. code-block:: sh
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \

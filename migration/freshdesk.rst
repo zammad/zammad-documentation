@@ -15,14 +15,12 @@ These are additional limitations to the
      Freshdesk plan (API rate limits apply).
    * Due to API limitations Zammad will not show the total number of objects
      to import, but instead correct them in steps of ``100``.
+   * Your Freshdesk plan has to provide API support. This may not apply to all
+     available plans.
    * User passwords are not migrated and will require the user to use the
      :admin-docs:`password reset link </settings/security/base.html#lost-password>`
      on the login page.
 
-   .. note::
-
-      Your Freshdesk plan has to provide API support.
-      This may not apply to all available plans.
 
 Prerequisites
 =============
@@ -31,7 +29,7 @@ Zammad requires API access which is why you'll need to `create an API key`_
 for the migration. The migrator will request your Freshdesk subdomain and
 API key.
 
-.. warning:: **🥸 To be or not to be**
+.. warning::
 
   Ensure to retrieve the API key with a **full administrator** account.
   Less privileged users will end in a broken migration.
@@ -89,18 +87,14 @@ consider using the console over the browser version.
             $ Setting.set('import_backend', 'freshdesk')
             $ Setting.set('import_mode', true)
 
+         If you want to know if your configuration works in a dry run,
+         run the following command:
 
-         .. hint::
+         .. code-block:: ruby
 
-            Want to know if your configuration works before hand?
-            Run the following command:
-
-            .. code-block:: ruby
-
-               Sequencer.process('Import::Freshdesk::ConnectionTest')
+            Sequencer.process('Import::Freshdesk::ConnectionTest')
 
       To start the actual migration, run the following commands
-
          .. code-block:: ruby
             :force:
 

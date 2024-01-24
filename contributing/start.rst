@@ -7,6 +7,7 @@ GitHub and creating a pull request with your changes (except for translations,
 see below). 🚀
 
 You can contribute to:
+
  * :ref:`source-code`
  * :ref:`documentation`
  * :ref:`translation`
@@ -135,15 +136,18 @@ projects:
 
 Structure of translation projects in Weblate:
 
- * Documentation
-    * User Documentation (latest)
-    * User Documentation (pre-release)
-    * Admin Documentation (latest)
-    * Admin Documentation (pre-release)
- * Zammad
-    * Zammad (development version)
-    * Zammad (stable version)
-    * *Some more which aren't relevant here*
+* Documentation
+
+   * User Documentation (latest)
+   * User Documentation (pre-release)
+   * Admin Documentation (latest)
+   * Admin Documentation (pre-release)
+
+* Zammad
+
+   * Zammad (development version)
+   * Zammad (stable version)
+   * *Some more which aren't relevant here*
 
 
 .. note::
@@ -194,6 +198,7 @@ the user interface of Weblate:
 3. **Glossary**: here you can find common translations in Zammad context. The terms
    from the glossary are highlighted in the source strings, as well.
 4. **Some useful tabs**:
+
     * **Nearby strings**: shows you the context of the word or string
     * **Automatic suggestions**: here you can find automatic suggestions from
       DeepL and suggestions from similar strings, which are already translated.

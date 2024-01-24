@@ -28,7 +28,7 @@ Database Helper: (re)set password
          * package installations (especially CentOS & SUSE)
          * possibly source code installations
 
-   Functionalities
+   Functionality
       The script will do the following actions depending on the situation
       automatically for you. It will double tab by asking for your confirmation
       up front.
@@ -36,12 +36,9 @@ Database Helper: (re)set password
          * If ``database.yml`` contains an empty password line, a new password
            will be generated, and set for the database user of Zammad, and
            saved to the configuration file.
-         * If `´database.yml`` contains a password, it will be used to set
+         * If ``database.yml`` contains a password, it will be used to set
            the password of the Zammad database user.
-
-         .. warning:: **⚠️ Downtime ⚠️**
-
-            The script will automatically stop and start Zammad!
+         * Please note that the script will automatically stop and start Zammad!
 
    Usage
       Run ``/opt/zammad/contrib/backup/zammad_db_user_helper.sh`` and follow

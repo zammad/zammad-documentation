@@ -19,10 +19,10 @@ FQDN setting
 
 Get the current FQDN setting of Zammad and, if needed, adjust it.
 
-   .. note::
+.. note::
 
-      This setting has no effect on SSL certificates or any web server
-      configurations.
+   This setting has no effect on SSL certificates or any web server
+   configurations.
 
 .. code-block:: ruby
 
@@ -35,16 +35,16 @@ HTTP(s) setting
 This setting indirectly belongs to your FQDN setting and is relevant for
 variable based URLs (e.g. in notifications) Zammad generated.
 
-   .. warning::
+.. warning::
 
-      This setting also affects Zammad's CSRF token behavior.
-      If you set this setting to e.g. HTTPs but you're using HTTP,
-      *logging in will fail*!
+   This setting also affects Zammad's CSRF token behavior.
+   If you set this setting to e.g. HTTPs but you're using HTTP,
+   *logging in will fail*!
 
-      .. note::
+.. note::
 
-         This setting has no effect on SSL certificates or any web server
-         configurations.
+   This setting has no effect on SSL certificates or any web server
+   configurations.
 
 .. code-block:: ruby
 
@@ -65,12 +65,10 @@ Use the following command
    >> Setting.get('storage_provider')        # get the current Attachment-Storage
    >> Setting.set('storage_provider', 'DB')  # Change Attachment-Storage to database
 
-.. tip::
+The following settings are available in a default installation:
 
-   The following settings are available in a default installation:
-
-      * ``DB`` (database)
-      * ``File`` (Filesystem (``/opt/zammad/storage/``))
+   * ``DB`` (database)
+   * ``File`` (Filesystem (``/opt/zammad/storage/``))
 
 Configuring Elasticsearch
 -------------------------

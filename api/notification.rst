@@ -13,10 +13,10 @@ List
 
 Required permission: ``any``
 
-   .. tip::
+.. tip::
 
-      Use the expand request to know the affected objects.
-      Other wise you'll need to find out what ID stands for which object type.
+   Use the expand request to know the affected objects.
+   Otherwise you'll need to find out what ID stands for which object type.
 
 ``GET``-Request sent: ``/api/v1/online_notifications?expand=true``
 
