@@ -6,10 +6,10 @@ List
 
 Required permission: ``ticket.agent`` **or** ``admin.organization``
 
-   .. note::
+.. note::
 
-      Technically, customers can only see their own organization
-      if applicable.
+   Technically, customers can only see their own organization
+   if applicable.
 
 ``GET``-Request sent: ``/api/v1/organizations``
 
@@ -180,9 +180,9 @@ Show
 
 Required permission: ``ticket.agent`` **or** ``admin.organization``
 
-   .. note::
+.. note::
 
-      Technically any users in question can only see their own organization.
+   Technically, any users in question can only see their own organization.
 
 ``GET``-Request sent: ``/api/v1/organizations/{id}``
 

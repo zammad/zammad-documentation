@@ -18,6 +18,8 @@ This guide will discuss how to set up third party reporting tools with Zammad.
       also check :admin-docs:`the Elasticsearch integration </system/integrations/elasticsearch.html>`
       page for information on how to hook your tool to the index.
 
+.. include:: reporting-tools-thirdparty/include-limitations.rst
+
 Getting Started
 ---------------
 
@@ -26,8 +28,6 @@ You will need
    * A instance of the reporting tool of your choice (hosted or self-hosted)
 
 .. include:: reporting-tools-thirdparty/include-requirements.rst
-
-.. include:: reporting-tools-thirdparty/include-limitations.rst
 
 Third Party Reporting Tools known to be working
 -----------------------------------------------
@@ -39,7 +39,7 @@ Third Party Reporting Tools known to be working
 
 .. note::
 
-   **😖 Your favorite tool is not available?**
+   **Want to use another tool?**
 
-   Worry not, if it does support Elasticsearch Indexes, you may be good to go! 
+   Don't worry, if it does support Elasticsearch Indexes, you may be good to go!
    See :doc:`/install/elasticsearch/indexed-attributes` for available indexes.

@@ -124,16 +124,16 @@ Admin privileges are not required; a normal user account will do.
 1b. Register an SPN for Zammad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: Replace the following placeholders in the command below:
+Replace the following placeholders in the command below:
 
-   :``<zammad-host>``:              Zammad FQDN
-   :``<service-acct>``:             Service account logon name
-   :``<password>``:                 Password of the service account
-                                    (Option ``/pass *`` did prove to not work)
-   :``<domain>``:                   Windows domain
-   :``<master-domain-controller>``: Master domain controller IP/FQD
+:``<zammad-host>``:              Zammad FQDN
+:``<service-acct>``:             Service account logon name
+:``<password>``:                 Password of the service account
+                                 (Option ``/pass *`` did prove to not work)
+:``<domain>``:                   Windows domain
+:``<master-domain-controller>``: Master domain controller IP/FQD
 
-   Below command will prompt for the users password.
+Below command will prompt for the users password:
 
 .. code-block:: sh
 
@@ -185,27 +185,32 @@ which offers Kerberos support through a plug-in module instead.
 2a. Turn off NGINX
 ^^^^^^^^^^^^^^^^^^
 
+.. warning:: This will take your Zammad instance **offline**
+   until Apache is fully configured and running.
+
 .. code-block:: sh
 
    $ systemctl stop nginx     # turn off nginx
    $ systemctl disable nginx  # keep it off after reboot
 
-.. warning:: This will take your Zammad instance **offline**
-   until Apache is fully configured and running.
+If you wish to minimize downtime, you can save this step for last;
+just bear in mind that Apache will not start
+if the port it wants to listen on is being used by NGINX.
 
-   If you wish to minimize downtime, you can save this step for last;
-   just bear in mind that Apache will not start
-   if the port it wants to listen on is being used by NGINX.
+If for any reason you can't complete this tutorial,
+simply turn off Apache and restore NGINX:
 
+<<<<<<< HEAD
    If for any reason you can’t complete this tutorial,
    simply turn off Apache and restore NGINX:
+=======
+.. code-block:: sh
+>>>>>>> a28153b (Fixes #423 - Reduced info/note/hint/warning containers (without losing information))
 
-   .. code-block:: sh
-
-      $ systemctl stop apache2
-      $ systemctl disable apache2
-      $ systemctl enable nginx
-      $ systemctl start nginx
+   $ systemctl stop apache2
+   $ systemctl disable apache2
+   $ systemctl enable nginx
+   $ systemctl start nginx
 
 2b. Pre-Configure Apache
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -271,14 +276,14 @@ SSO requires modules that are not enabled by default. By default you can use
 Kerberos realm configuration is how you tell the Zammad server
 how to reach the *domain controller* (Active Directory server).
 
-.. note:: Replace the following placeholders in the sample config below:
+Replace the following placeholders in the sample config below:
 
-   :``<domain>``:                   Windows domain
-   :``<domain-controller>``:        Domain controller IP/FQDN(s)
-   :``<master-domain-controller>``: Master domain controller IP/FQDN
+:``<domain>``:                   Windows domain
+:``<domain-controller>``:        Domain controller IP/FQDN(s)
+:``<master-domain-controller>``: Master domain controller IP/FQDN
 
-                                    (must not be read-only,
-                                    but can be the same as ``<domain-controller>``)
+                                 (must not be read-only,
+                                 but can be the same as ``<domain-controller>``)
 
 .. code-block::
 
@@ -317,14 +322,14 @@ Apache needs a Kerberos *keytab* (key table)
 to manage its shared secrets with the domain controller.
 
 
-.. note:: Replace the following placeholders in the commands below:
+Replace the following placeholders in the commands below:
 
-   :``<zammad-host>``: Zammad FQDN
-   :``<domain>``:      Windows domain
-   :``<secret-key>``:  Secret key (**omit the leading** ``0x``)
-   :``<vno>``:         Secret key version number
+:``<zammad-host>``: Zammad FQDN
+:``<domain>``:      Windows domain
+:``<secret-key>``:  Secret key (**omit the leading** ``0x``)
+:``<vno>``:         Secret key version number
 
-   The secret key and version number were found in :ref:`sso-register-spn` above.
+The secret key and version number were found in :ref:`sso-register-spn` above.
 
 .. code-block:: sh
 
@@ -370,13 +375,18 @@ and set the appropriate permissions:
 Add the following directive to the end of the virtual host configuration file 
 to create your Kerberos SSO endpoint at ``/auth/sso``:
 
-.. note:: Replace the following placeholders in the command below:
+Replace the following placeholders in the command below:
 
-   :``<zammad-host>``: Zammad FQDN
-   :``<domain>``:      Windows domain
+:``<zammad-host>``: Zammad FQDN
+:``<domain>``:      Windows domain
 
+<<<<<<< HEAD
    The configuration below contains two ``Krb5KeyTab`` lines!
    Keep only the one you need.
+=======
+The configuration for CentOS and OpenSUSE below contains two ``Krb5KeyTab``
+lines! Keep only the one you need.
+>>>>>>> a28153b (Fixes #423 - Reduced info/note/hint/warning containers (without losing information))
 
 .. code-block:: apache
 

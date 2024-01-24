@@ -21,14 +21,12 @@ These are additional limitations to the
 
    * **Important:** Please note that migration speed highly depends on your
      Kayako plan (API rate limits apply).
+   * Your Kayako plan has to provide API support. This may not apply to all
+     available plans.
    * User passwords are not migrated and will require the user to use the
      :admin-docs:`password reset link </settings/security/base.html#lost-password>`
      on the login page.
 
-   .. note::
-
-      Your Kayako plan has to provide API support.
-      This may not apply to all available plans.
 
 Prerequisites
 =============
@@ -36,7 +34,7 @@ Prerequisites
 Zammad requires API access which is why the migrator will request your
 Kayako-URL, email address and password.
 
-.. warning:: **🥸 To be or not to be**
+.. warning::
 
   Ensure to provide an user account with **full administrative** permissions.
   Less privileged users will end in a broken migration.
@@ -94,17 +92,14 @@ consider using the console over the browser version.
             $ Setting.set('import_mode', true)
 
 
-         .. hint::
+         If you want to know if your configuration works in a dry run,
+         run the following command:
 
-            Want to know if your configuration works before hand?
-            Run the following command:
+         .. code-block:: ruby
 
-            .. code-block:: ruby
-
-               Sequencer.process('Import::Kayako::ConnectionTest')
+            Sequencer.process('Import::Kayako::ConnectionTest')
 
       To start the actual migration, run the following commands
-
          .. code-block:: ruby
             :force:
 
@@ -266,7 +261,7 @@ note that you want to adjust your
 
 .. hint::
 
-   **😖 How do I login?**
+   **How to log in?**
 
    Zammad provides admin access to the user whose login credentials you
    provided. Use the admins email address and password provided during the

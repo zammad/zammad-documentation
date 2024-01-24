@@ -26,13 +26,11 @@ things.
 Step 1: Create your very first administrator account
    The fields should be fairly self explaining.
 
-   .. note::
+   Zammad does require the following password security by default:
 
-      Zammad does require the following password security by default:
-
-         * Password length of 10 or more
-         * 2 upper and 2 lower characters
-         * contains at least one digit
+   * Password length of 10 or more
+   * 2 upper and 2 lower characters
+   * contains at least one digit
 
 Step 2: Provide company information
    You can upload a custom logo fitting to your company here.
@@ -47,19 +45,17 @@ Step 3: E-Mail notification channel
    By default Zammad uses sendmail - if that doesn't fit you can change it to
    SMTP here.
 
-      .. warning::
-
-         Zammad uses ``noreply@<your-fqdn>`` as sender address by default.
-         SMTP setups might fail - you may want to skip this step with choosing
-         ``sendmail`` at this point. You can adjust it later!
+   Zammad uses ``noreply@<your-fqdn>`` as sender address by default.
+   SMTP setups might fail - you may want to skip this step with choosing
+   ``sendmail`` at this point. You can adjust it later!
 
 Step 4: Your first email channel (optional)
    If you want to start right away, you can connect your email account already.
 
-      .. warning::
+   .. warning::
 
-         Zammad reacts to fetched emails by default.
-         If that's not what you want, skip this step for now.
+      Zammad reacts to fetched emails by default.
+      If that's not what you want, skip this step for now.
 
    Learn more about the email channel within the documentation for
    :admin-docs:`email channels </channels/email/index.html>`.
@@ -94,10 +90,10 @@ You can skip parts you don't need or adapt. All parts are described within
 
 From point 5 on you'll be able to work productive in theory. 🙌
 
-   .. hint::
+.. hint::
 
-      **😖 Are you still lost?**
+   **😖 Are you still lost?**
 
-      If above list doesn't help you or you'll need to jump in a lot faster,
-      you can also get Workshops with one of our
-      `Zammad consultants <https://zammad.com/en/company/contact>`_.
+   If above list doesn't help you or you'll need to jump in a lot faster,
+   you can also get Workshops with one of our
+   `Zammad consultants <https://zammad.com/en/company/contact>`_.
