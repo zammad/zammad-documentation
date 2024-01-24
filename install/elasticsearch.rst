@@ -4,29 +4,25 @@ Set up Elasticsearch
 Zammad's search function is powered by Elasticsearch, and requires the
 `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html>`_.
 
-.. note::
+This guide uses the ``zammad run`` command prefix in command line examples.
+This prefix is only applicable to package installations
+(*i.e.,* via apt/yum/zypper, or ``.deb``/``.rpm`` files).
 
-   This guide uses the ``zammad run`` command prefix in command line examples.
-   This prefix is only applicable to package installations
-   (*i.e.,* via apt/yum/zypper, or ``.deb``/``.rpm`` files).
-
-   If you installed from source, be sure to omit this prefix
-   and run the bare ``rails ...`` or ``rake ...`` commands instead.
+If you installed from source, be sure to omit this prefix
+and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
 Step 1: Installation
 ====================
 
-   .. note:: **🧐 To use OSS or not to use...**
+Starting with Zammad 4.0, our packages allow you to decide whether to use
+``elasticsearch`` or ``elasticsearch-oss``.
 
-      Starting with Zammad 4.0 our packages allow you to decide whether to use
-      ``elasticsearch`` or ``elasticsearch-oss``.
+``elasticsearch-oss`` users please use below "direct download" tab for
+further installation steps.
 
-      ``elasticsearch-oss`` users please use below "direct download" tab for
-      further installation steps.
+.. warning::
 
-      .. warning::
-
-         Above does not apply to CentOS because of compatibility reasons.
+   Above does not apply to CentOS because of compatibility reasons.
 
 .. tabs::
 
@@ -158,13 +154,11 @@ servers. Your mileage may vary.
 Step 3: Connect Zammad
 ======================
 
-.. hint:: **🤓 Before proceeding here...**
+Before proceeding here, make sure to install Zammad before running below
+commands, as this will fail otherwise.
 
-   Make sure to install Zammad before running below commands, as this will
-   fail other wise.
-
-      * install from :doc:`package <package>`
-      * install from :doc:`source <source>`
+   * install from :doc:`package <package>`
+   * install from :doc:`source <source>`
 
 .. code-block:: sh
 
@@ -178,11 +172,9 @@ Step 3: Connect Zammad
    # rebuilding the searchindex, as in the following example with 8 cores:
    $ zammad run rake zammad:searchindex:rebuild[8]
 
-.. note::
-
-   If you use Elasticsearch 8+, you need to use a HTTPS URL in
-   'es_url' as 'https://localhost:9200' and configure an
-   authentication (see HTTP Basic below).
+Starting with Elasticsearch 8+, you need to use a HTTPS URL in
+'es_url' as 'https://localhost:9200' and configure an
+authentication (see HTTP Basic below).
 
 
 Optional settings

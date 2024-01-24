@@ -13,7 +13,7 @@ To do so run the following commands as either ``root`` or ``zammad`` user.
    $ mv config.dist config
 
 If below default values are not working for you or your installation in general,
-this is the best moment to adjust the configuration file as needed. 
+this is the best moment to adjust the configuration file as needed.
 
 After this you'll be ready to continue with either
 :doc:`creating your first backup </appendix/backup-and-restore/backup>` or
@@ -24,21 +24,17 @@ After this you'll be ready to continue with either
 
    Tell the backup script where to write your backup files to.
 
-      .. warning::
-
-         Ensure that the user you're going to use for backing up Zammad
-         (either ``root`` or ``zammad`` by default) has enough permissions
-         to write into the target directory structure.
+   Ensure that the user you're going to use for backing up Zammad
+   (either ``root`` or ``zammad`` by default) has enough permissions
+   to write into the target directory structure.
 
    In case the directory is not available yet, the backup script will attempt
    to create the directory.
 
-      .. hint::
-
-         Ensure to have enough space available on the backup location.
-         Zammad always creates full backups. While we do compress backups,
-         expect worst case ratios of 1 (no compression at all) depending
-         on your attachments!
+   Make also sure to have enough space available on the backup location.
+   Zammad always creates full backups. While we do compress backups,
+   expect worst case ratios of 1 (no compression at all) depending
+   on your attachments!
 
 ``HOLD_DAYS``
    Default: ``10``
@@ -49,18 +45,14 @@ After this you'll be ready to continue with either
 
    Old backups are removed *before* creating the actual (current) backup.
 
-      .. note::
+   **Example:**
 
-         | ``0`` will keep the last 25 hours worth of backup
-         | ``-1`` will always remove all available backups
-           (aka only keep current backup)
+   * ``0`` will keep the last 25 hours worth of backup
+   * ``-1`` will always remove all available backups
+     (aka only keep current backup)
 
 ``FULL_FS_DUMP``
    Default: ``yes`` (accepts: ``yes`` or ``no``)
-
-      .. note::
-
-         If you can't decide, our clear suggestion is setting this to ``no``.
 
    Setting this option to ``no`` allows you to only backup usage data without
    any environmental files from your old host. This allows you to backup your
@@ -70,14 +62,16 @@ After this you'll be ready to continue with either
    Please refer :admin-docs:`Storage Settings </settings/system/storage.html>`
    to learn how to change the storage location of your attachments.
 
+   If you can't decide, our clear suggestion is setting this to ``no``.
+
 ``DEBUG``
    Default: ``no`` (accepts: ``yes`` or ``no``)
 
    Having issues and want to fiddle around? Setting this option to ``yes`` may
    help you with this. It contains useful debug messages at strategic points.
 
-      .. warning::
+   .. warning::
 
-         This option potentially returns **sensitive** information to standard
-         out! *Do not* use this option in productive environments or ensure
-         to turn it *off after testing*.
+      This option potentially returns **sensitive** information to standard
+      out! *Do not* use this option in productive environments or ensure
+      to turn it *off after testing*.

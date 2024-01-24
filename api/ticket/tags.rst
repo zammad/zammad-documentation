@@ -17,7 +17,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    {
        "tags": [
            "americano",
@@ -33,7 +33,7 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
 
 ``GET``-Request sent: ``/api/v1/tag_search?term={tag name}``
 
-   .. hint:: Zammad will return all tags that contain your search phrase.
+.. hint:: Zammad will return all tags that contain your search phrase.
 
 Sample response:
 
@@ -41,7 +41,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    [
        {
            "id": 1,
@@ -73,7 +73,7 @@ Required permission: ``ticket.agent`` **or** ``admin.tag``
        "o_id": {ticket id}
    }
 
-.. hint:: 
+.. hint::
 
    This will create the tag if it doesn't exist and
    the user has permission to do so.
@@ -84,7 +84,7 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
-   
+
    true
 
 Remove
@@ -108,7 +108,7 @@ Response:
    :force:
 
    # HTTP-Code 201 Created
-   
+
    true
 
 Administration scope
@@ -127,7 +127,7 @@ Sample response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    [
        {
            "id": 1,
@@ -165,7 +165,7 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    {}
 
 Admin - Rename
@@ -187,7 +187,7 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    {}
 
 Admin - Delete
@@ -203,5 +203,5 @@ Response:
    :force:
 
    # HTTP-Code 200 OK
-   
+
    {}

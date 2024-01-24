@@ -27,10 +27,10 @@ SELinux
 Firewall
 --------
 
-   .. note::
+.. note::
 
-      Below only covers the distribution's default firewall.
-      It may not cover your case.
+   Below only covers the distribution's default firewall.
+   It may not cover your case.
 
 .. tabs::
 

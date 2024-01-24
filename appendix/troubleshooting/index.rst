@@ -8,16 +8,13 @@ problems with Zammad.
 
    If you can't solve your issue using the provided troubleshooting steps or
    can't find your particular issue described here, feel free to
-   `ask the community`_ for technical assistance.
-
-   .. _ask the community:
-      https://community.zammad.org
+   `ask the community <https://community.zammad.org>`_ for technical assistance.
 
 Data missing from the Web-UI / Search data missing or incomplete
 ================================================================
 
 A commonly reported issue is data missing from the Web-UI.
-This could be Tickets, Articles, Users or anything else
+This could be tickets, articles, users or anything else
 :doc:`indexed by Elasticsearch </install/elasticsearch/indexed-attributes>`
 and can be caused by missing or incomplete indexes.
 
@@ -31,33 +28,31 @@ Step 1: Verify Elasticsearch is running
       # check elasticsearch status
       $ systemctl status elasticsearch
 
-   .. note::
+   This should output something like the following, make sure it says
+   ``Active: active (running)``:
 
-      This should output something like the following, make sure it says
-      ``Active: active (running)``:
+   .. code-block:: sh
+      :emphasize-lines: 3
 
-      .. code-block:: sh
-         :emphasize-lines: 3
+      ● elasticsearch.service - Elasticsearch
+         Loaded: loaded (/lib/systemd/system/elasticsearch.service; enabled; vendor preset: enabled)
+         Active: active (running) since Tue 2021-07-20 09:38:21 UTC; 1h 4min ago
+         Docs: https://www.elastic.co
+         Main PID: 1790 (java)
 
-         ● elasticsearch.service - Elasticsearch
-            Loaded: loaded (/lib/systemd/system/elasticsearch.service; enabled; vendor preset: enabled)
-            Active: active (running) since Tue 2021-07-20 09:38:21 UTC; 1h 4min ago
-            Docs: https://www.elastic.co
-            Main PID: 1790 (java)
+   Otherwise, try starting it and check again:
 
-      Otherwise, try starting it and check again:
+   .. code-block:: sh
 
-      .. code-block:: sh
+      # restart elasticsearch and check status
+      $ systemctl restart elasticsearch
+      $ systemctl status elasticsearch
 
-         # restart elasticsearch and check status
-         $ systemctl restart elasticsearch
-         $ systemctl status elasticsearch
+   .. warning::
 
-      .. warning::
-
-         | If this fails, your Elasticsearch installation is probably broken.
-         | Try completely purging and reinstalling Elasticsearch according
-           to :doc:`/install/elasticsearch`
+      | If this fails, your Elasticsearch installation is probably broken.
+      | Try completely purging and reinstalling Elasticsearch according
+         to :doc:`/install/elasticsearch`
 
 
 Step 2: Verify the ingest-attachment plugin is installed correctly
@@ -66,20 +61,19 @@ Step 2: Verify the ingest-attachment plugin is installed correctly
       # list installed elasticsearch plugins
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
-   .. note::
-      The output should include ``ingest-attachment``.
+   The output should include ``ingest-attachment``.
 
-      Otherwise, try reinstalling the ``ingest-attachment`` plugin and check
-      again:
+   Otherwise, try reinstalling the ``ingest-attachment`` plugin and check
+   again:
 
-      .. code-block:: sh
+   .. code-block:: sh
 
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin remove ingest-attachment
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      $ /usr/share/elasticsearch/bin/elasticsearch-plugin remove ingest-attachment
+      $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-         $ systemctl restart elasticsearch
+      $ systemctl restart elasticsearch
 
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
+      $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
 Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
    .. code-block:: sh
@@ -94,35 +88,30 @@ the searchindex, as in the following example with 8 cores:
 
       $ zammad run rake zammad:searchindex:rebuild[8]
 
-   .. note::
+   This should start rebuilding the indexes and output it's progress:
 
-      This should start rebuilding the indexes and output it's progress:
+   .. code-block:: sh
 
-      .. code-block:: sh
+      Dropping indexes... done.
+      Deleting pipeline... done.
+      Creating indexes... done.
+      Creating pipeline... done.
+      Reloading data...
+         - Chat::Session...
+            done in 0 seconds.
+         - Cti::Log...
+            done in 0 seconds.
 
-         Dropping indexes... done.
-         Deleting pipeline... done.
-         Creating indexes... done.
-         Creating pipeline... done.
-         Reloading data...
-           - Chat::Session...
-             done in 0 seconds.
-           - Cti::Log...
-             done in 0 seconds.
+      [...]
 
-         [...]
+   Depending on the system performance and amount of data, this can take
+   a while to complete. Please let this task finish completely and wait until
+   it drops you back to the console.
 
-      | Depending on the system performance and amount of data, this can take
-        a while to complete.
-      | Please let this task finish completely and wait until it drops you
-        back to the console.
-
-      .. warning::
-
-         | If this fails or throws an error, there might be something else
-           wrong with your installation.
-         | Make sure you followed the complete Elasticsearch set up and
-           integration procedure according to :doc:`/install/elasticsearch`.
+   If this fails or throws an error, there might be something else
+   wrong with your installation.
+   Make sure you followed the complete Elasticsearch set up and
+   integration procedure according to :doc:`/install/elasticsearch`.
 
 .. tip::
 
@@ -131,5 +120,5 @@ the searchindex, as in the following example with 8 cores:
    ``/var/log/elasticsearch/elasticsearch.log``.
 
 | After completing these steps, you should have verified your Elasticsearch
-  installation is running and rebuilt the indexes.
-| If this does not resolve your issue, please `ask the community`_.
+  installation is running and rebuilt the indexes. If this does not resolve your
+  issue, feel free to `ask the community <https://community.zammad.org>`_.

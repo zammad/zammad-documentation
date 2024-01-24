@@ -1,48 +1,38 @@
 List of Indexed Attributes
 **************************
 
-Below is a comprehensive list of all object attributes indexed by 
-Elasticsearch. In other words, if you wish to find a ticket, article, or user 
-via the Zammad search box, Elasticsearch can match on any (or all) of the 
+Below is a comprehensive list of all object attributes indexed by
+Elasticsearch. In other words, if you wish to find a ticket, article, or user
+via the Zammad search box, Elasticsearch can match on any (or all) of the
 fields below.
 
 .. contents:: Table of content
    :local:
    :depth: 1
 
-.. note:: 
+.. note::
 
    These fields may vary if you created custom fields (objects) in the admin interface.
 
-.. warning::
+.. hint:: **Below you can find some hints:**
 
-   Zammad 4.0 introduced breaking changes on the Elasticsearch index.
+      * **(SLA)**: Attributes marked as SLA attribute are only set if the ticket is
+        affected by SLA calculation. Please note that some attributes may
+        not be set if specific conditions are not met.
 
-.. hint:: **🤓 Below list contains functionality hints**
-
-   In order to save space and duplicate information, we'll provide hints to 
-   functions within brackets if applicable.
-
-      * (SLA): 
-           Attributes marked as SLA attribute are only set if the ticket is 
-           affected by SLA calculation. Please note that some attributes may 
-           not be set if specific conditions are not met.
-
-         Also note that some attributes may be reset to ``null`` if no 
-         longer applicable.
-      * ``note`` attribute:
-           Note attributes usually are empty if not 
-           specified via console or API.
-      * Timestamps:
-           All timestamps provided by Zammad are UTC by default. 
-           This also applies to times provided by Elasticsearch
+        Also note that some attributes may be reset to ``null`` if no
+        longer applicable.
+      * ``note`` **attribute**: Note attributes usually are empty if not
+        specified via console or API.
+      * **Timestamps**: All timestamps provided by Zammad are UTC by default.
+        This also applies to times provided by Elasticsearch
 
 Ticket
 ======
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_ticket``
 
 .. list-table:: Ticket-Index
@@ -64,15 +54,15 @@ Ticket
      - First close time, set once
    * - close_diff_in_min
      - ``null``, ``239``, ``-5``
-     - Depends on ``close_in_min`` and tells how many minutes the ticket was 
+     - Depends on ``close_in_min`` and tells how many minutes the ticket was
        closed relative to SLAs solution time. **(SLA)**
    * - close_escalation_at
      - ``null``, ``2021-03-03T15:50:20.673Z``
-     - Time stamp when the ticket would escalate in case solution time 
+     - Time stamp when the ticket would escalate in case solution time
        is violated. **(SLA)**
    * - close_in_min
      - ``null``, 11
-     - Value in minutes for how long the ticket was open based on 
+     - Value in minutes for how long the ticket was open based on
        business hours. **(SLA)**
    * - create_article_sender
      - Contains these attributes:
@@ -122,7 +112,7 @@ Ticket
      - Customers User ID
    * - escalation_at
      - ``null``, ``2021-03-24T16:28:38.535Z``
-     - Time stamp of the next applicable escalation. One of the following 
+     - Time stamp of the next applicable escalation. One of the following
        attributes:
 
           * ``close_escalation_at``
@@ -132,16 +122,16 @@ Ticket
        **(SLA)**
    * - first_response_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
-     - Time stamp of the first communication type reaction to the customer 
+     - Time stamp of the first communication type reaction to the customer
        **(SLA)**
    * - first_response_diff_in_min
      - ``null``, ``10``, ``-6``
-     - Depends on ``first_response_in_min`` and tells how many minutes the 
-       tickets first response took relative to the first response time of your 
+     - Depends on ``first_response_in_min`` and tells how many minutes the
+       tickets first response took relative to the first response time of your
        SLA. **(SLA)**
    * - first_response_in_min
      - ``null``, ``11``
-     - Value in minutes for how long the first response took based on 
+     - Value in minutes for how long the first response took based on
        the business hours. **(SLA)**
    * - group
      - #{group object}
@@ -159,7 +149,7 @@ Ticket
    * - last_contact_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
      - | Time stamp of last communication type contact
-       | Depends on ``last_contact_agent_at``, ``last_contact_customer_at`` 
+       | Depends on ``last_contact_agent_at``, ``last_contact_customer_at``
          and "Ticket Last Contact Behaviour" setting
    * - last_contact_customer_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
@@ -192,7 +182,7 @@ Ticket
      - Depends on pending states, time stamp for pending time
    * - preferences
      - ``n/a``, special information for internal functions
-     - May not be available in your system, contains information for internal 
+     - May not be available in your system, contains information for internal
        system functions
    * - priority
      - #{priority object}
@@ -222,15 +212,15 @@ Ticket
      - Ticket type (deprecated)
    * - update_diff_in_min
      - ``null``, ``2021-03-24T16:28:38.303Z``
-     - Depends on ``update_in_min`` and tells how many minutes the last ticket 
+     - Depends on ``update_in_min`` and tells how many minutes the last ticket
        update took relatively to the update time setting **(SLA)**
    * - update_escalation_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
-     - Time stamp when the ticket would escalate in case update time 
+     - Time stamp when the ticket would escalate in case update time
        is violated. **(SLA)**
    * - update_in_min
      - ``null``, ``5``, ``-10``
-     - Value in minutes for how long the last ticket update took based on the 
+     - Value in minutes for how long the last ticket update took based on the
        business hours and update time. **(SLA)**
    * - updated_at
      - ``2021-03-24T16:28:38.303Z``
@@ -246,9 +236,9 @@ Ticket
 Ticket Priority
 ===============
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_ticket_priority``
 
 .. list-table:: Ticket Priority-Index
@@ -295,9 +285,9 @@ Ticket Priority
 Ticket State
 ============
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_ticket_state``
 
 .. list-table:: Ticket State-Index
@@ -333,7 +323,7 @@ Ticket State
      - State name
    * - next_state
      - ``n/a``, #{state object}
-     - Contains all follow up state information if applicable, 
+     - Contains all follow up state information if applicable,
        may not be available depending on the state type
    * - next_state_id
      - ``null``, ``4``
@@ -342,7 +332,7 @@ Ticket State
      - ``null``
      - Note that has been set via console or API
    * - state_type
-     - Contains these attributes: 
+     - Contains these attributes:
           * created_at: ``2021-03-03T14:50:20.582Z``
           * created_by_id: ``1``
           * id: ``4``
@@ -364,14 +354,14 @@ Ticket State
 Article
 =======
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_ticket``
 
-.. note:: 
+.. note::
 
-   Articles are part of the ticket index. 
+   Articles are part of the ticket index.
    To reduce complexity we decided to provide it in its own table. 🙏
 
 .. list-table:: Article-Index
@@ -448,9 +438,9 @@ Article
 User
 ====
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_user``
 
 .. list-table:: User-Index
@@ -535,7 +525,7 @@ User
      - Phone number of user
    * - preferences
      - ``{}``, #{several preference attributes}
-     - Depends on user and situation, may contain ``notification_config``, 
+     - Depends on user and situation, may contain ``notification_config``,
        ``locale`` and other internal system information
    * - role_ids
      - ``(Array)``, ``[1, 2]``
@@ -565,9 +555,9 @@ User
 Organization
 ============
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_organization``
 
 .. list-table:: Organization-Index
@@ -601,7 +591,7 @@ Organization
      - Organization ID
    * - members
      - #{array of user objects}
-     - | Array with complete Payload of the users being member of the 
+     - | Array with complete Payload of the users being member of the
          organization
        | Please see `User`_ for more
    * - name
@@ -630,9 +620,9 @@ Organization
 Group
 =====
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_group``
 
 .. list-table:: Group-Index
@@ -655,7 +645,7 @@ Group
      - ``1``
      - User ID that created the group
    * - email_address
-     - Contains these attributes: 
+     - Contains these attributes:
           * active: ``true``
           * channel_id: ``3``
           * created_at: ``2021-03-24T23:54:58.187Z``
@@ -687,7 +677,7 @@ Group
      - ``null``
      - Notes for the group available via web, console and API
    * - signature
-     - Contains these attributes: 
+     - Contains these attributes:
           * active: ``true``
           * body: ``<br>  #{user.firstname} #{user.lastname}<br>--<br>That Inc``
           * created_at: ``2021-03-03T14:50:19.775Z``
@@ -711,9 +701,9 @@ Group
 CTI Log
 =======
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_cti_log``
 
 .. list-table:: CTI Log-Index
@@ -790,9 +780,9 @@ CTI Log
 Chat Session
 ============
 
-.. tip:: 
+.. tip::
 
-   🤓 The following indice contains below mentioned information: 
+   🤓 The following indice contains below mentioned information:
    ``*_chat_session``
 
 .. list-table:: Chat Session-Index

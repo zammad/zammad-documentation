@@ -4,7 +4,7 @@ Backup and Restore
 Zammad comes with a collection of scripts for easy backup & restore for default
 installations. These scripts are located within ``/opt/zammad/contrib/backup``.
 
-.. note:: **⚖️ Important things to note before hand**
+.. warning:: **⚖️ Important things to note beforehand**
 
    These scripts do not come with any warranty and may not work in your
    specific use case. This depends on the configuration and installation type
@@ -39,7 +39,7 @@ precious time.
       How to create full dumps of your Zammad installation.
 
    :doc:`🗄️ Restore Backups </appendix/backup-and-restore/restore>`
-      Update went berserk and you need to go back? How to restore your instance on
+      Update went wrong and you need to go back? How to restore your instance on
       a new or the same host.
 
    :doc:`🔀 Migrating to new hosts </appendix/backup-and-restore/migrate-hosts>`

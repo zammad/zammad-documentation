@@ -417,7 +417,7 @@ Response:
          "object": "Ticket",
          "deletable": false
       },
-      
+
       [ ... ]
    ]
 
@@ -548,7 +548,7 @@ Required permission: ``admin.object``
                }
             }
          }
-         
+
 
       Response:
 
@@ -1525,15 +1525,13 @@ Update
 
 Required permission: ``admin.object``
 
-.. tip::
+Except on the request method, payloads or updating and creating objects are
+identical. For full payload samples thus scroll up to :ref:`create_object`.
 
-   Except on the request method, payloads or updating and creating objects are
-   identical. For full payload samples thus scroll up to :ref:`create_object`.
-
-   Zammad will return two attributes during update: ``data_option`` and
-   ``data_option_new``. The first attribute contains the current active values
-   and the second one the new to be values
-   (they'll become active after executing the database migrations).
+Zammad will return two attributes during update: ``data_option`` and
+``data_option_new``. The first attribute contains the current active values
+and the second one the new to be values
+(they'll become active after executing the database migrations).
 
 ``PUT``-Request sent: ``/api/v1/object_manager_attributes/{id}``
 
@@ -1545,7 +1543,7 @@ Required permission: ``admin.object``
       "object": "Ticket",
       "display": "Sample Boolean",
       "data_type": "boolean",
-      "position": 1200, 
+      "position": 1200,
       "data_option": {
          "options": {
             "true": "yes",

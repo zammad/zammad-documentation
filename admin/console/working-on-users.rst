@@ -55,11 +55,11 @@ If needed, you can simply change the Email address of the user.
    Please note that the login attribute is not affected by this and Zammad thus
    might show different information within the UI.
 
-   .. code-block:: ruby
+.. code-block:: ruby
 
-      >> u = User.find(**USERID**)
-      >> u.email = 'user@exmaple.com'
-      >> u.save!
+   >> u = User.find(**USERID**)
+   >> u.email = 'user@exmaple.com'
+   >> u.save!
 
 
 You need to find the user ID of the user first for this.

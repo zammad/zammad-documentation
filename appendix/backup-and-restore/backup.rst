@@ -1,6 +1,27 @@
 Create Backup
 *************
 
+Preparation
+===========
+
+Before running your first backup, please have a look at the
+:doc:`/appendix/backup-and-restore/configuration` to set it up correctly.
+
+Backup
+======
+
+In general, running a Zammad backup is as simple as running:
+
+.. code-block:: sh
+
+   $ /opt/zammad/contrib/backup/zammad_backup.sh
+
+Please make sure to test the backup function manually with the user
+you're planning to backup first. This ensures that your backup really
+is running as expected.
+
+The backup process should look like this one:
+
 .. code-block:: sh
 
    # Zammad backup started - Fri Jan 21 17:53:44 CET 2022!
@@ -15,30 +36,14 @@ Create Backup
 *Sample backup process with default*
 :doc:`settings </appendix/backup-and-restore/configuration>`.
 
---------------------------------------------------------------------------------
+Additional Information
+======================
 
-.. note::
-
-   🤓 Before running your first backup, please have a look at
-   :doc:`/appendix/backup-and-restore/configuration`.
-
-In general, running a Zammad backup is as simple as running
-
-.. code-block:: sh
-
-   $ /opt/zammad/contrib/backup/zammad_backup.sh
-
-Please make sure to test the backup function manually with the user
-you're planning the backup first. This ensures that your backup really
-is running as expected.
-
-Remarks
-   | The backup script can be either run as ``zammad`` or ``root`` user.
-   | Stopping Zammad is not required (but suggested) technically, but may be in
-     your use case!
-   | (Keep in mind that a running Zammad instance keeps changing data which may
-     be an issue during long backup runs)
-
+* The backup script can be either run as ``zammad`` or ``root`` user.
+* Stopping Zammad is not required (but suggested) technically. It may be
+  required in your case!
+* Keep in mind that a running Zammad instance keeps changing data which may
+  be an issue during long backup runs
 
 .. hint::
 

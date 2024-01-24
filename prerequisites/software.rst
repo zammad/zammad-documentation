@@ -32,15 +32,11 @@ requirements for your clients. This ensures that Zammad works as expected.
    Zammad 7 will no longer support Internet Explorer 11 environments.
    Users using IE will be forced to use a different browser.
 
-.. note::
-
-   | Zammad heavily uses Javascript which makes it a hard requirement.
-   |
-   | Browser addons that hook into page content may interfere with Zammads function
-     which is not a bug.
-   | Google Chromes translation module is known to do
-     odd things to especially state names. Use Zammads internal translations
-     instead.
+Please note that Zammad heavily uses Javascript which makes it a hard
+requirement. Some browser addons that hook into page content may interfere with
+Zammads function which is not a bug.
+For example the Google Chrome translation module is known to do odd things,
+especially to state names. Use Zammads internal translations instead.
 
 1.2. Network requirements
 -------------------------
@@ -48,14 +44,12 @@ requirements for your clients. This ensures that Zammad works as expected.
 Zammad uses web sockets. Some application firewalls may filter these
 connections. This may lead to decreased browser performance.
 
-There's a fallback to Ajax which  causes a higher application server load
+There's a fallback to Ajax which causes a higher application server load
 and thus should be avoided.
 
-   .. note::
-
-      The "Core workflows" feature of Zammad comes with an
-      :admin-docs:`AJAX Mode </settings/system/frontend.html>` which can be
-      activated separately in case you're having issues with field selections.
+In case you're having issues with field selection, you can activate the
+:admin-docs:`AJAX Mode for "Core Workflows" </settings/system/frontend.html>`
+separately.
 
 2. Server requirements
 ======================
@@ -109,10 +103,8 @@ Below you can find all distributions Zammad provides packages for.
    "OpenSuSE / SLES", "Leap 15.x / 15"
    "Ubuntu", "20.04 & 22.04"
 
-.. warning:: **⚠ SuSE users be aware**
-
-   Note that SuSE Tumbleweed *does not* meet Zammad requirements and thus
-   *is not* supported!
+.. warning:: ⚠️ SuSE Tumbleweed **does not** meet Zammad requirements and thus
+   **is not** supported!
 
 .. note:: **🤓 What about my specific distribution?! It's so cool!**
 
@@ -164,41 +156,31 @@ You can choose between the following database servers:
 
    .. include:: /appendix/includes/mysql-deprication-note.rst
 
-   .. include:: /appendix/includes/mysql-deprication-link.rst
+For **MySQL/MariaDB**, the following configuration is required:
 
-.. warning:: **Required configuration for MySQL/MariaDB:**
+* Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
+* Set ``max_allowed_packet`` to a value larger than the default of 4 MB
+  (64 MB+ recommended).
 
-   * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
-   * Set ``max_allowed_packet`` to a value larger than the default of 4 MB
-     (64 MB+ recommended).
+You may also want to consider the following settings for your **MySQL** server::
 
-   You may also want to consider the following settings for your MySQL server::
-
-      innodb_file_format = Barracuda
-      innodb_file_per_table = on
-      innodb_default_row_format = dynamic
-      innodb_large_prefix = 1
-      innodb_file_format_max = Barracuda
+   innodb_file_format = Barracuda
+   innodb_file_per_table = on
+   innodb_default_row_format = dynamic
+   innodb_large_prefix = 1
+   innodb_file_format_max = Barracuda
 
 2.5. Node.js
 ------------
 
-.. note::
-
-   | This soft dependency was introduced with Zammad 5.0.
-   | Package installations come pre-bundled with the correct NodeJS version.
-     Unless you require NodeJS on your machine for other projects, a manual
-     installation *is not* required.
-
 Node.js is required for asset compiling.
 
-.. hint:: **🔨 No changes to JS or CSS files?**
+**Package installations** come pre-bundled with the correct NodeJS version.
+A manual installation is *not required* unless you require NodeJS for other
+projects.
 
-   If you don't require to change any javascript or stylesheed files you'll
-   be fine without this package. It's only required if you have to run
-   ``rake assets:precompile`` on your system.
-
-   .. warning:: Node.js **is** required on source code installations.
+Node.js is only required on **source code installations** if you need to change
+any javascript or stylesheet files via ``rake assets:precompile``.
 
 .. csv-table:: Zammad/Node.js version compatibility
    :header: "Zammad", "Node.js"
@@ -224,14 +206,12 @@ The following reverse proxies are supported:
 2.7 Redis
 ~~~~~~~~~~~
 
-Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for realtime communication
-via web socket.
+Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for
+realtime communication via web socket.
 
-   .. note::
-
-      Configuration and installation is out of our scope.
-      Please follow the official vendor guides and ensure to have a
-      tight security on your installation.
+The installation and configuration is out of our scope.
+Please follow the official vendor guides and ensure to have a
+tight security on your installation.
 
 
 2.8. Elasticsearch (optional)
@@ -239,36 +219,30 @@ via web socket.
 
 Zammad uses Elasticsearch to
 
-   1) make search faster
+   1) make the search faster
    2) support advanced features like reports
-   3) searching by email attachment contents
+   3) search for content of email attachments
 
-This becomes increasingly important as the number of tickets in your system
-gets larger and larger.
+This becomes increasingly important the higher the number of tickets in your
+system gets.
 
-This dependency is optional but strongly recommended;
-Zammad will work without it,
-but search performance will be degraded, and some features will be disabled.
+.. warning::
+   This dependency is optional but **strongly recommended**!
+
+   Zammad will work without it, but search performance will be degraded and
+   the search will be very limited. We recommend using Elasticsearch, as it will
+   boost the usage of Zammad greatly!
 
 .. hint:: 📦 **If you install Zammad via package manager...**
 
-   It’s perfectly safe to manually override the Elasticsearch dependency.
+   It's perfectly safe to manually override the Elasticsearch dependency.
    The appropriate command line flag will depend on your platform
    (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
-   check your package manager’s manpage to find out.
+   check your package manager's manpage to find out.
 
-.. warning::
-
-   Please note that if you do not install and use Elasticsearch, the search
-   will be very limited! We recommend using Elasticsearch, as it will boost the
-   usage of Zammad greatly!
-
-.. note::
-
-   Starting with Zammad 4.0 you can decide if you want to use
-   ``elasticsearch`` or ``elasticsearch-oss``. Please note that CentOS
-   **requires** ``elasticsearch``.
-
+Starting with Zammad 4.0 you can decide if you want to use
+``elasticsearch`` or ``elasticsearch-oss``. Please note that CentOS
+**requires** ``elasticsearch``.
 
 .. csv-table:: Zammad/Elasticsearch version compatibility
    :header: "Zammad", "Elasticsearch"
@@ -281,7 +255,7 @@ but search performance will be degraded, and some features will be disabled.
    "3.3", ">= 2.4, <=7.6"
    "3.2", ">= 2.4, <=7.5"
    "3.1", ">= 2.4, <=7.4"
-   "2.0–3.0", ">= 2.4, <=5.6"
+   "2.0-3.0", ">= 2.4, <=5.6"
 
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
@@ -289,25 +263,22 @@ An Elasticsearch plugin is required to index the contents of email attachments:
 2.9. Optional tools of improved caching and distribution
 --------------------------------------------------------
 
-.. note:: **The features / integrations below were introduced by Zammad 5.0**
+These features / integrations below are optional. You should consider using
+them to have a better performance or if you want to use the corresponding
+feature.
 
-   These tools are optional and may make a lot of sense in big
-   environments even if you decide against distributed use cases.
-
-   We consider this topic as :ref:`performance_tuning`.
+You can also have a look in our :ref:`performance_tuning` section.
 
 2.9.1 Memcached
 ~~~~~~~~~~~~~~~
 
-   Instead of storing Zammads cache files within your filesystem, you can also
-   do so in `Memcached <https://memcached.org/>`_. This can allow you to restrict
-   the size of your cache directories to improve performance.
+Instead of storing Zammads cache files within your filesystem, you can also
+do so in `Memcached <https://memcached.org/>`_. This can allow you to restrict
+the size of your cache directories to improve performance.
 
-      .. note::
-
-         Configuration and installation is out of our scope.
-         Please follow the official vendor guides and ensure to have a
-         tight security on your installation.
+The installation and configuration is out of our scope.
+Please follow the official vendor guides and ensure to have a
+tight security on your installation.
 
 2.10 GnuPG (optional)
 ---------------------------------------------

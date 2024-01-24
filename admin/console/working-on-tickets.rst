@@ -53,7 +53,7 @@ Get ticket state types
 
 This will show all state types needed for creating new ticket states.
 
-.. tip:: **😖 What are state types?**
+.. tip:: **What are state types?**
 
    Zammad uses state types to know what it should do with your state.
    This allows you to have different types like *pending actions*,
@@ -62,6 +62,9 @@ This will show all state types needed for creating new ticket states.
    State types also indicate the color scheme to be used.
    You can learn more about that
    :user-docs:`in our user documentation </basics/service-ticket/settings/state.html>`.
+
+   If you want to add custom states, have a look in our
+   :admin-docs:`admin documentation section </system/objects.html#system-attributes>`.
 
 .. code-block:: ruby
 

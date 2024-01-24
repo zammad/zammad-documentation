@@ -1,11 +1,11 @@
 States
 ******
 
-   .. warning::
+.. warning::
 
-      Creating, changing or removing states via below endpoints is not
-      recommended! You can do this in UI, please have a look
-      :admin-docs:`here </system/objects.html#ticket-state-reference>`.
+   Creating, changing or removing states via below endpoints is not
+   recommended! You can do this in UI, please have a look
+   :admin-docs:`here </system/objects.html#ticket-state-reference>`.
 
 List
 ====
@@ -167,13 +167,13 @@ Create
 
 Required permission: ``admin.object``
 
-   .. note::
+.. note::
 
-      Below payload makes use of ``state_type_id`` which is a instance
-      specific set of IDs. State types indicate how the state will work.
+   Below payload makes use of ``state_type_id`` which is a instance
+   specific set of IDs. State types indicate how the state will work.
 
-      As there's no endpoint for retreiving these,
-      please use the :ref:`rails console <state_types>`.
+   As there's no endpoint for retreiving these,
+   please use the :ref:`rails console <state_types>`.
 
 ``POST``-Request sent: ``/api/v1/ticket_states``
 
