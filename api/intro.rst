@@ -23,11 +23,8 @@ endpoints listed here.
    * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_ 
      *(Third-Party)*
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
-     *(Third-Party)*
+     *(Third-Party; API client only, no "ready to use" App)*
 
-      .. note:: 
-
-         Please note that this is a API client only, it's no "ready to use" App.
 
 Authentication
 ==============
@@ -561,14 +558,12 @@ may have to use pagination at some points.
 
    .. note::
 
-      Number of returned objects
-         Zammad has hard limits for the maximum returned objects.
-         You can't raise these limits.
+      **Number of returned objects:** Zammad has hard limits for the maximum
+      returned objects. You can't raise these limits.
 
-      Number of total to return objects
-         Zammad does not provide a total count of objects available for your
-         query. This forces you to cycle through the pages until Zammad no
-         longer returns further objects.
+      **Number of total to return objects:** Zammad does not provide a total
+      count of objects available for your query. This forces you to cycle
+      through the pages until Zammad no longer returns further objects.
 
 In order to use pagination you'll need two get options:
 ``per_page`` and ``page``. Combine them like so to receive 5 results from
@@ -600,10 +595,8 @@ order_by
 Actions on behalf of other users
 ================================
 
-.. note::
-
-   The user used for running the on behalf query requires ``admin.user``
-   permission.
+**Requirement:** the user used for running the query on behalf requires
+``admin.user`` permission.
 
 Running API queries on behalf of other users allows you to e.g. create tickets
 on behalf of the user. The UI will display these kind of operations much better.

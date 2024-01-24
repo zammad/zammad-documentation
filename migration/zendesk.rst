@@ -13,14 +13,11 @@ These are additional limitations to the
        how long the migration is going to take.
    * **Important:** Please note that migration speed highly depends on your
      Zendesk plan (API rate limits apply).
+   * Your Zendesk plan has to provide API support. This may not apply to all
+     available plans.
    * User passwords are not migrated and will require the user to use the
      :admin-docs:`password reset link </settings/security/base.html#lost-password>`
      on the login page.
-
-   .. note::
-
-      Your Zendesk plan has to provide API support.
-      This may not apply to all available plans.
 
 Prerequisites
 =============
@@ -29,7 +26,7 @@ Zammad requires API access which is why you'll need to `create an API key`_
 for the migration. The migrator will request your Zendesk-URL, email address and
 API key.
 
-.. warning:: **🥸 To be or not to be**
+.. warning::
 
   Ensure to retrieve the API key with a **full administrator** account.
   Less privileged users will end in a broken migration.
@@ -89,18 +86,14 @@ consider using the console over the browser version.
             $ Setting.set('import_backend', 'zendesk')
             $ Setting.set('import_mode', true)
 
+         If you want to know if your configuration works in a dry run,
+         run the following command:
 
-         .. hint::
+         .. code-block:: ruby
 
-            Want to know if your configuration works before hand?
-            Run the following command:
-
-            .. code-block:: ruby
-
-               Sequencer.process('Import::Zendesk::ConnectionTest')
+            Sequencer.process('Import::Zendesk::ConnectionTest')
 
       To start the actual migration, run the following commands
-
          .. code-block:: ruby
             :force:
 

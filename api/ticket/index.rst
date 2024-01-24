@@ -1,10 +1,10 @@
 Tickets
 *******
 
-   .. warning::
+.. warning::
 
-      Ticket endpoints depend on group permissions if the user you're
-      using is an agent. Because of this tickets may or may not be available.
+   Ticket endpoints depend on group permissions and if the user you're
+   using is an **agent**. Because of this tickets may or may not be available.
 
 List
 ====
@@ -1211,22 +1211,22 @@ Create
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-   .. tip::
+.. tip::
 
-      **🐱‍👤 On behalf of users**
+   **🐱‍👤 On behalf of users**
 
-      If you want to create tickets on behalf of other users, use
-      the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this.
-      Use ``guess:{email address}`` to save an API call if you don't know the
-      user's ID or want to create the user in question
-      (``"customer_id": "guess:jane@doe.com"``).
+   If you want to create tickets on behalf of other users, use
+   the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this.
+   Use ``guess:{email address}`` to save an API call if you don't know the
+   user's ID or want to create the user in question
+   (``"customer_id": "guess:jane@doe.com"``).
 
-      **📣 Add mention subscription right away**
+   **📣 Add mention subscription right away**
 
-      Add the ``mentions`` attribute to your ticket payload and provide
-      an array of user ids to directly subscribe them during ticket creation.
+   Add the ``mentions`` attribute to your ticket payload and provide
+   an array of user ids to directly subscribe them during ticket creation.
 
-      *E.g.:* ``"mentions": [1, 5, 7, 8],``
+   *E.g.:* ``"mentions": [1, 5, 7, 8],``
 
 ``POST``-Request sent: ``/api/v1/tickets``
 

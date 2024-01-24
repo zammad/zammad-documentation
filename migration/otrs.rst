@@ -4,12 +4,12 @@ Migration from OTRS
 Limitations
 ===========
 
-Please note below OTRS specific limitations. 
+Please note below OTRS specific limitations.
 These are additional limitations to the :ref:`general ones listed <migration_limitations>`.
 
    * | Password migration works for OTRS >= 3.3 only
      | (on older instances a password reset within Zammad will be required)
-   * If you plan to import a differential migration after, 
+   * If you plan to import a differential migration after,
      do not change any data in Zammad!
    * Only customers of tickets are imported
    * Zammad expects your OTRS timestamps to be UTC and won't adjust them
@@ -93,29 +93,29 @@ Importing OTRS data
 
    .. tab:: via Browser
 
-      .. note:: 
+      .. note::
 
-         If your OTRS installation is rather huge, you might want to consider using 
-         the command line version of this feature. This also applies if you 
+         If your OTRS installation is rather huge, you might want to consider using
+         the command line version of this feature. This also applies if you
          experience Timeouts during the migration.
 
-      After installing Zammad and configuring your 
-      :doc:`webserver </getting-started/configure-webserver>`, navigate to your 
+      After installing Zammad and configuring your
+      :doc:`webserver </getting-started/configure-webserver>`, navigate to your
       Zammads FQDN in your Browser and follow the migration wizard.
 
-      Depending on the size of your OTRS installation this may take a while. 
+      Depending on the size of your OTRS installation this may take a while.
 
-      You can get an idea of this process in the 
+      You can get an idea of this process in the
       `migrator video on vimeo <https://vimeo.com/187752786>`_ .
 
    .. tab:: via Console
 
       .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
-      If you miss this at the beginning or you want to re-import again you have 
+      If you miss this at the beginning or you want to re-import again you have
       to use the command line at the moment.
 
-      Stop all Zammad processes and switch Zammad to import mode (no events are 
+      Stop all Zammad processes and switch Zammad to import mode (no events are
       fired - e. g. notifications, sending emails, ...)
 
       Start the migration
@@ -135,11 +135,11 @@ After successfully migrating your OTRS installation, continue with :doc:`/gettin
 Importing a differential
 ========================
 
-.. note:: 
+.. note::
 
-   This is only possible after finishing an earlier OTRS import **successful**. 
+   This is only possible after finishing an earlier OTRS import **successful**.
 
-In some cases it might be desirable to update the already imported data from OTRS. 
+In some cases it might be desirable to update the already imported data from OTRS.
 This is possible with the following commands.
 
 Run a differential import
@@ -153,7 +153,7 @@ Run a differential import
 
 .. include:: /migration/includes/commands-after-migration.include.rst
 
-All changes that occurred after your first migration should now also be available 
+All changes that occurred after your first migration should now also be available
 within your Zammad installation.
 
 .. include:: /migration/includes/restarting-from-scratch.include.rst

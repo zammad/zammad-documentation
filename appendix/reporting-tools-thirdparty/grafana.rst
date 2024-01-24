@@ -9,6 +9,8 @@ installation stores within the Elasticsearch indexes.
    :width: 90%
    :align: center
 
+.. include:: include-limitations.rst
+
 Overview
 --------
 
@@ -21,8 +23,6 @@ You will need
    * `Worldmap panel plugin <https://grafana.com/grafana/plugins/grafana-worldmap-panel/>`_ 
 
 .. include:: include-requirements.rst
-
-.. include:: include-limitations.rst
 
 Setting up required data sources
 --------------------------------

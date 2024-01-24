@@ -12,36 +12,29 @@ content_type
    plain text. This allows you to have better formatting options if you need
    them.
 
-   .. hint::
-
-      Zammad web UI usually uses ``text/html``.
+   Zammad web UI usually uses ``text/html``.
 
 type
    Zammad supports a huge number of article types.
    Below list may be incomplete depending on your instance and possibly
    installed add-ons / custom changes.
 
-   .. note::
 
-      💬 If not stated otherwise, all article types below are communication
-      articles and thus affecting SLA calculation in Zammad defaults.
+   If not stated otherwise, all article types below are **communication
+   articles** and thus affecting SLA calculation in Zammad defaults.
 
-      😖 What's the difference?!
-         Communication articles provide the option to reply automatically.
-         Which actions exactly are available depends on the article type
-         and e.g. recipient lists.
+   The difference is that communication articles provide the option to reply
+   automatically. Which actions exactly are available depends on the article
+   type and e.g. recipient lists.
 
-         .. figure:: /images/api/ticket-article_reply-buttons.png
-            :alt: Reply and forward buttons on email article
-            :width: 90%
+      .. figure:: /images/api/ticket-article_reply-buttons.png
+         :alt: Reply and forward buttons on email article
+         :width: 90%
 
    ``email``
       This allows you to create incoming or outgoing email articles.
 
-         .. hint::
-
-            This allows you to send Email via API.
-            However, this highly depends on the chosen ``sender``.
+      However, this highly depends on the chosen ``sender``.
 
    ``phone``
       Indicates phone notes.
@@ -55,9 +48,7 @@ type
       When ever a communication does not fit (e.g.: internal notes) choose note.
       Zammad also uses this article type as default fall back.
 
-         .. note::
-
-            😶 This *is not* a communication article.
+      This is **not a communication article**.
 
    ``sms``
       This type is being used for Zammads SMS integration.
@@ -90,10 +81,10 @@ internal
    For internal visible only use ``true``, for visibly for your customers as
    well use ``false``.
 
-      .. warning:: **🔒 Visibility: internal doesn't mean it's silent**
+   .. warning:: **🔒 Visibility: internal doesn't mean it's silent**
 
-         If you set an article to ``internal: true`` but choose to send
-         an email, please be aware that said Email is still being sent out!
+      If you set an article to ``internal: true`` but choose to send
+      an email, please be aware that said Email is still being sent out!
 
 sender
    Indicates which use did create the article. You can choose from:
@@ -238,11 +229,11 @@ Create
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
-   .. tip::
+.. tip::
 
-      If you want to create articles on behalf other users (e.g. for a phone
-      note), use the ``origin_by_id`` attribute. ``ticket.agent`` permission
-      is mandatory for this.
+   If you want to create articles on behalf of other users (e.g. for a phone
+   note), use the ``origin_by_id`` attribute. ``ticket.agent`` permission
+   is mandatory for this.
 
 ``POST``-Request sent: ``/api/v1/ticket_articles``
 

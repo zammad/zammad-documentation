@@ -6,18 +6,16 @@ Install from source
 
    source/macos
 
+The source installation is the most difficult installation type of Zammad.
+If you're not too experienced with Linux and all that, you may want to use
+another installation type:
+
+   * :doc:`/install/package`
+   * :doc:`/install/docker-compose`
+
 .. note::
-
-   The source installation is the most difficult installation type of Zammad.
-   If you're not too experienced with Linux and all that, you may want to use
-   another installation type:
-
-      * :doc:`/install/package`
-      * :doc:`/install/docker-compose`
-
-   | **Administrative note**
-   | Please note that we only use ``sudo`` after direct user changes.
-     In all other situations you can expect ``root`` being in charge.
+   Please note that we only use ``sudo`` after direct user changes.
+   In all other situations you can expect ``root`` being in charge.
 
 .. hint::
 
@@ -201,12 +199,7 @@ file could look like. Please also have a look at
          pool: 50
          encoding: utf8
          username: zammad
-         password: changeme
-
-.. hint::
-
-   You can remove the ``password`` line if you enable socket based
-   authentication!
+         password: changeme # You can remove this line if you enable socket based authentication!
 
 .. hint::
 

@@ -21,12 +21,12 @@ Zammad has its own logic for signing users up, storing their passwords,
 authenticating them, and managing their sessions.
 
 If your IT department keeps its own user identity store (like Active Directory),
-Zammad’s SSO support allows you to leverage that existing auth system
+Zammad's SSO support allows you to leverage that existing auth system
 so that anyone with an account on your local intranet will
 1) automatically have an account in Zammad and
 2) be able to log in with a single click.
 
-.. note:: If you *don’t* have this IT infrastructure
+.. note:: If you *don't* have this IT infrastructure
    but still want one-click login,
    see :admin-docs:`Third-Party Authentication </settings/security.html#third-party-applications>`
    for alternatives.
@@ -57,22 +57,22 @@ it creates a new session for that user.
    Apache initiates a three-sided login process (*Kerberos authentication*)
    between the itself, the user, and the Active Directory server.
 
-   If Active Directory doesn’t recognize the user or their password,
+   If Active Directory doesn't recognize the user or their password,
    Zammad never sees the request, and the session is never created.
 
    **What does this all mean?**
 
    It means there are many ways you could set up SSO—you
-   don’t need to follow this guide or even use Active Directory or Kerberos—but
-   if you don’t know what you’re doing,
-   you’re going to end up with a *massive* security hole.
+   don't need to follow this guide or even use Active Directory or Kerberos—but
+   if you don't know what you're doing,
+   you're going to end up with a *massive* security hole.
 
 Getting Started
 ---------------
 
 .. hint:: 😵 **Too busy to handle it on your own?**
 
-   We’ve got you covered.
+   We've got you covered.
    Our experts offer custom-tailored workshops
    to get your team up and running fast and with confidence.
    `Just drop us a line <https://zammad.com/contact>`_!
@@ -124,16 +124,16 @@ Admin privileges are not required; a normal user account will do.
 1b. Register an SPN for Zammad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: Replace the following placeholders in the command below:
+Replace the following placeholders in the command below:
 
-   :``<zammad-host>``:              Zammad FQDN
-   :``<service-acct>``:             Service account logon name
-   :``<password>``:                 Password of the service account
-                                    (Option ``/pass *`` did prove to not work)
-   :``<domain>``:                   Windows domain
-   :``<master-domain-controller>``: Master domain controller IP/FQD
+:``<zammad-host>``:              Zammad FQDN
+:``<service-acct>``:             Service account logon name
+:``<password>``:                 Password of the service account
+                                 (Option ``/pass *`` did prove to not work)
+:``<domain>``:                   Windows domain
+:``<master-domain-controller>``: Master domain controller IP/FQD
 
-   Below command will prompt for the users password.
+Below command will prompt for the users password:
 
 .. code-block:: sh
 
@@ -185,32 +185,32 @@ which offers Kerberos support through a plug-in module instead.
 2a. Turn off NGINX
 ^^^^^^^^^^^^^^^^^^
 
+.. warning:: This will take your Zammad instance **offline**
+   until Apache is fully configured and running.
+
 .. code-block:: sh
 
    $ systemctl stop nginx     # turn off nginx
    $ systemctl disable nginx  # keep it off after reboot
 
-.. warning:: This will take your Zammad instance **offline**
-   until Apache is fully configured and running.
+If you wish to minimize downtime, you can save this step for last;
+just bear in mind that Apache will not start
+if the port it wants to listen on is being used by NGINX.
 
-   If you wish to minimize downtime, you can save this step for last;
-   just bear in mind that Apache will not start
-   if the port it wants to listen on is being used by NGINX.
+If for any reason you can't complete this tutorial,
+simply turn off Apache and restore NGINX:
 
-   If for any reason you can’t complete this tutorial,
-   simply turn off Apache and restore NGINX:
+.. code-block:: sh
 
-   .. code-block:: sh
-
-      $ systemctl stop apache2
-      $ systemctl disable apache2
-      $ systemctl enable nginx
-      $ systemctl start nginx
+   $ systemctl stop apache2
+   $ systemctl disable apache2
+   $ systemctl enable nginx
+   $ systemctl start nginx
 
 2b. Pre-Configure Apache
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This documentation expects a already working Apache configuration. 
+This documentation expects a already working Apache configuration.
 Please see :doc:`/getting-started/configure-webserver` before continuing.
 
 2c. Install further Apache dependencies
@@ -226,13 +226,13 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
          $ apt install krb5-user libapache2-mod-auth-kerb
 
    .. tab:: CentOS
-   
+
       .. code-block:: sh
 
          $ yum install krb5-workstation mod_auth_kerb
 
    .. tab:: OpenSUSE
-   
+
       .. code-block:: sh
 
          $ zypper ref
@@ -241,7 +241,7 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
 2d. Enable Apache modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-SSO requires modules that are not enabled by default. By default you can use 
+SSO requires modules that are not enabled by default. By default you can use
 ``a2enmod`` to do so.
 
 .. tabs::
@@ -271,14 +271,14 @@ SSO requires modules that are not enabled by default. By default you can use
 Kerberos realm configuration is how you tell the Zammad server
 how to reach the *domain controller* (Active Directory server).
 
-.. note:: Replace the following placeholders in the sample config below:
+Replace the following placeholders in the sample config below:
 
-   :``<domain>``:                   Windows domain
-   :``<domain-controller>``:        Domain controller IP/FQDN(s)
-   :``<master-domain-controller>``: Master domain controller IP/FQDN
+:``<domain>``:                   Windows domain
+:``<domain-controller>``:        Domain controller IP/FQDN(s)
+:``<master-domain-controller>``: Master domain controller IP/FQDN
 
-                                    (must not be read-only,
-                                    but can be the same as ``<domain-controller>``)
+                                 (must not be read-only,
+                                 but can be the same as ``<domain-controller>``)
 
 .. code-block::
 
@@ -317,14 +317,14 @@ Apache needs a Kerberos *keytab* (key table)
 to manage its shared secrets with the domain controller.
 
 
-.. note:: Replace the following placeholders in the commands below:
+Replace the following placeholders in the commands below:
 
-   :``<zammad-host>``: Zammad FQDN
-   :``<domain>``:      Windows domain
-   :``<secret-key>``:  Secret key (**omit the leading** ``0x``)
-   :``<vno>``:         Secret key version number
+:``<zammad-host>``: Zammad FQDN
+:``<domain>``:      Windows domain
+:``<secret-key>``:  Secret key (**omit the leading** ``0x``)
+:``<vno>``:         Secret key version number
 
-   The secret key and version number were found in :ref:`sso-register-spn` above.
+The secret key and version number were found in :ref:`sso-register-spn` above.
 
 .. code-block:: sh
 
@@ -367,16 +367,16 @@ and set the appropriate permissions:
 ^^^^^^^^^^^^^^^^^^^^
 
 
-Add the following directive to the end of the virtual host configuration file 
+Add the following directive to the end of the virtual host configuration file
 to create your Kerberos SSO endpoint at ``/auth/sso``:
 
-.. note:: Replace the following placeholders in the command below:
+Replace the following placeholders in the command below:
 
-   :``<zammad-host>``: Zammad FQDN
-   :``<domain>``:      Windows domain
+:``<zammad-host>``: Zammad FQDN
+:``<domain>``:      Windows domain
 
-   The configuration below contains two ``Krb5KeyTab`` lines!
-   Keep only the one you need.
+The configuration for CentOS and OpenSUSE below contains two ``Krb5KeyTab``
+lines! Keep only the one you need.
 
 .. code-block:: apache
 
@@ -410,7 +410,7 @@ to create your Kerberos SSO endpoint at ``/auth/sso``:
 Step 3: Enable SSO in Zammad
 ----------------------------
 
-Next, enable “Authencation via SSO” in Zammad’s Admin Panel under 
+Next, enable “Authencation via SSO” in Zammad's Admin Panel under
 **Settings > Security > Third-Party Applications**:
 
 .. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
@@ -420,7 +420,7 @@ Next, enable “Authencation via SSO” in Zammad’s Admin Panel under
    In Zammad 3.5, this option
    adds a **Sign in using SSO** button to the sign-in page.
 
-.. note:: 
+.. note::
    On older versions of Zammad,
    visit ``https://your.zammad.host/auth/sso`` to sign in.
 
@@ -430,7 +430,7 @@ Step 4: Configure Client System (Windows Only)
 For the full SSO experience (*i.e.,* for passwordless, one-click sign-in),
 Zammad users must:
 
-1. be on the Active Directory server’s local intranet; and
+1. be on the Active Directory server's local intranet; and
 2. modify their network settings for the Zammad host
    to be treated as a local intranet server.
 
@@ -459,7 +459,7 @@ Zammad users must:
          :alt: Adding Zammad as a single sign-on site in Windows Internet options
 
    .. tab:: Firefox
-   
+
       .. note:: This option cannot be centrally managed
          because it is set in the browser rather than Windows Settings.
 
@@ -473,14 +473,14 @@ Zammad users must:
          :align: center
          :alt: Adding Zammad as a single sign-on site in the Firefox about:config menu
 
-         Enter ``about:config`` in the address bar to access advanced 
+         Enter ``about:config`` in the address bar to access advanced
          settings in Firefox.
 
 Troubleshooting
 ---------------
 
 * Are all relevant FQDNs/hostnames reachable
-  from your Active Directory and Zammad servers (including each other’s)?
+  from your Active Directory and Zammad servers (including each other's)?
 * Are the system clocks of your Active Directory and Zammad servers synchronized
   within five minutes of each other?
   (Kerberos is a time-sensitive protocol.)
@@ -513,12 +513,12 @@ Errors in Apache Logs
    Try generating it again, just to be sure.
 
 “No key table entry found for HTTP/FQDN\@DOMAIN”
-   Does your virtual host configuration’s ``KrbServiceName`` setting
+   Does your virtual host configuration's ``KrbServiceName`` setting
    exactly match the **service name** you provided to ``setspn``?
 
    This setting is case-sensitive.
 
-“Warning: received token seems to be NTLM, which isn’t supported by the Kerberos module. Check your IE configuration”
+“Warning: received token seems to be NTLM, which isn't supported by the Kerberos module. Check your IE configuration”
    Is your Zammad host accessible at an FQDN?
    This error may indicate that you configured your Zammad host
    as a numeric IP address instead.
@@ -541,8 +541,8 @@ Errors in Apache Logs
 “failed when verifying KDC” and “failed to verify krb5 credentials: Decrypt integrity check failed”
    Ensure ``KrbServiceName`` is the correct ServiceName provided via setspn.
 
-   Ensure your Active Directory supports the encryption method configured. 
+   Ensure your Active Directory supports the encryption method configured.
 
-   If all above is correct and the rest of FAQ also is ensured, make sure your 
-   client does not cache the results. 
+   If all above is correct and the rest of FAQ also is ensured, make sure your
+   client does not cache the results.
    ``klist purge`` clears the clients cache - a reboot of your client would do too.

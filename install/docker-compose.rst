@@ -7,8 +7,6 @@ Install with Docker Compose
    It's no problem if you run Zammad on docker, however, support is only
    provided for Zammad as application!
 
-.. note::
-
    Docker Compose environments require deeper system know how.
    If you're not too familiar with Docker and the way it works, you may want
    to stick with :doc:`the package installation </install/package/>` instead.
@@ -38,9 +36,8 @@ Zammads docker images are hosted on `Dockerhub`_.
       # VERSION=latest  # all updates of stable versions, including major
       # VERSION=develop # bleeding-edge development version (not recommended for production use)
 
-.. hint::
 
-   You need at least 4 GB of RAM to run the containers.
+Before you start, make sure to have at least 4 GB of RAM to run the containers.
 
 Install Docker Environment
 ==========================
