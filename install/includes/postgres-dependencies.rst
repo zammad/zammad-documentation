@@ -11,7 +11,6 @@ Install PostgreSQL Dependencies
 
             .. code-block:: sh
 
-                # CentOS 8
                 $ yum install postgresql-libs postgresql-devel
 
         .. tab:: OpenSuSE

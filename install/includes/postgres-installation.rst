@@ -13,7 +13,6 @@
 
       .. code-block:: sh
 
-         # CentOS 8
          $ yum install postgresql-server postgresql-contrib
          $ postgresql-setup initdb
          $ systemctl start postgresql
