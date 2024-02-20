@@ -102,6 +102,12 @@ Add Repository
                $ wget -O /etc/yum.repos.d/zammad.repo \
                https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
 
+         RHEL 9 / CentOS 9
+            .. code-block:: sh
+
+               $ wget -O /etc/yum.repos.d/zammad.repo \
+               https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
+
       .. tab:: OpenSUSE / SLES
 
          Install Repository Key
@@ -133,7 +139,7 @@ Install Zammad
             $ yum install zammad
 
          Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
-         packager.io on CentOS 8 you'll need to correct file permissions for
+         packager.io on CentOS you'll need to correct file permissions for
          public files.
 
          .. code-block:: sh
