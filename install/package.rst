@@ -46,6 +46,9 @@ some operating systems may require additional packages if not already installed.
 Add Repository and install Zammad
 =================================
 
+.. hint:: Packager.io may not be accessible from IPv6-only environments, so make
+   sure to consider this when performing the steps below.
+
 Add Repository
    .. tabs::
 
