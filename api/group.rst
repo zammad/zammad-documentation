@@ -1,10 +1,13 @@
 Group
 *****
 
-.. note:: **🤓 Confusing setting for endpoint**
+.. note::
 
-   Please note that ``follow_up_possible`` may not work as expected.
-   The possible values are ``yes`` or ``new_ticket``!
+   * Please note that ``follow_up_possible`` may not work as expected.
+     The possible values are ``yes`` or ``new_ticket``!
+   * If you want to create or update **subgroups**, use ``::`` as delimiter for
+     the names. You also have to name the complete hierarchy in the name.
+     Example: ``Sales::Europe::South``
 
 List
 ====
