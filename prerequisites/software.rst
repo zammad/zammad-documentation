@@ -205,6 +205,13 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
+
+.. hint:: 
+
+   Some configuration is required, please see :doc:`/getting-started/configure-webserver`.
+
+
+
 2.7 Redis
 ~~~~~~~~~~~
 
