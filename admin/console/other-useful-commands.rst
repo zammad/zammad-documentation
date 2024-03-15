@@ -38,6 +38,13 @@ has been parsed successfully.
 Add translation
 ---------------
 
+.. warning::
+
+   Although the procedure described below still works, it is not recommended for usage any more.
+
+   Since Zammad version 6.3 it's possible to customize any translation via graphical UI. All coupled with handy
+   suggestions for all translatable custom objects in the local system. For more information, see the documentation for the :admin-docs:`translations screen </system/translations.html>`.
+
 This comes in handy if you e.g. added a new state that you need to translate
 for several languages.
 
