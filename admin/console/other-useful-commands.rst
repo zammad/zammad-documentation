@@ -13,8 +13,8 @@ This will also show errors that might appear within that process.
 
    >> Channel.fetch
 
-Reprocess Unprocessable Emails
-------------------------------
+Reprocess Failed Emails
+-----------------------
 
 When Zammad fetches a mail it cannot parse (e.g. due to a parser bug or a
 malformed message), it will store the mail in the database and warn in
@@ -27,8 +27,8 @@ it. To do so, follow the steps below:
 Export all Failed Emails to a Local Folder
    Execute ``rake zammad:email_parser:failed_email:export_all``. You can find
    the location of the exported email in the output of your console.
-   Every time you perform an export of unprocessable emails, it creates one
-   folder with all unprocessable emails at the time of execution in it.
+   Every time you perform an export of failed (unprocessable) emails, it
+   creates one folder with all failed emails at the time of execution in it.
 
 Edit the Email
    The email has been exported in the step above. Now you can have a look at it
@@ -38,7 +38,8 @@ Edit the Email
 Import Locally Modified Email Back to Database
    After editing the email, run
    ``rake zammad:email_parser:failed_email:import /path/to/your/email.eml``
-   to apply your changes from the file to the database.
+   to apply your changes from the file to the database. You can also pass
+   the entire folder as argument, so all .eml files in it will we imported.
 
 Reprocess Edited Emails
    Run ``rake zammad:email_parser:failed_email:reprocess_all`` to reprocess the
@@ -49,9 +50,7 @@ Reprocess Edited Emails
 
 If you don't want to import/reprocess emails, you can delete them from the
 database after exporting them with the command
-``rake zammad:email_parser:failed_email:delete email.eml``. After deleting
-them from the database, you can delete the folder/emails from the file system,
-too.
+``rake zammad:email_parser:failed_email:delete email.eml``.
 
 Add Translation
 ---------------
