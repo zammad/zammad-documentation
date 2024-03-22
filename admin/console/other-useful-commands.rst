@@ -28,29 +28,33 @@ Export all Failed Emails to a Local Folder
    Execute ``rake zammad:email_parser:failed_email:export_all``. You can find
    the location of the exported email in the output of your console.
    Every time you perform an export of failed (unprocessable) emails, it
-   creates one folder with all failed emails at the time of execution in it.
+   creates one folder containing all failed emails at the time of execution.
 
 Edit the Email
    The email has been exported in the step above. Now you can have a look at it
    and try to repair it. Make sure to leave the file name untouched, as the
    import will otherwise fail.
 
-Import Locally Modified Email Back to Database
+Import and Reprocess Locally Modified Email
    After editing the email, run
-   ``rake zammad:email_parser:failed_email:import /path/to/your/email.eml``
+   ``rake zammad:email_parser:failed_email:import path/to/your/email.eml``
    to apply your changes from the file to the database. You can also pass
-   the entire folder as argument, so all .eml files in it will we imported.
+   the entire folder as argument, so all ``.eml`` files in it will we imported
+   and reprocessed. If the reprocessing of the mail was successful, the file(s)
+   will be deleted, and the empty folder removed.
 
-Reprocess Edited Emails
-   Run ``rake zammad:email_parser:failed_email:reprocess_all`` to reprocess the
-   parsing of the imported emails.
+   .. hint::
 
-   In case Zammad successfully reprocessed emails, you can delete the
-   folder/emails in the file system.
+      Make sure to run these commands only from the main Zammad folder ``/opt/zammad``.
+      There may be problems if you try to run it from within the generated subfolder.
 
-If you don't want to import/reprocess emails, you can delete them from the
-database after exporting them with the command
-``rake zammad:email_parser:failed_email:delete email.eml``.
+Delete Unwanted Email
+   In case of unwanted emails such as SPAM, you can delete them from the
+   database after exporting them with the command
+   ``rake zammad:email_parser:failed_email:delete path/to/your/email.eml``.
+   If you pass the export folder as argument instead, all contained emails will
+   be removed from the database, their files deleted and finally the empty folder
+   removed.
 
 Add Translation
 ---------------
