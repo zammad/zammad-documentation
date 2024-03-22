@@ -48,7 +48,7 @@ Import and Reprocess Locally Modified Email
       Make sure to run these commands only from the main Zammad folder ``/opt/zammad``.
       There may be problems if you try to run it from within the generated subfolder.
 
-Delete Unwanted Email
+Delete Unwanted Emails
    In case of unwanted emails such as SPAM, you can delete them from the
    database after exporting them with the command
    ``rake zammad:email_parser:failed_email:delete path/to/your/email.eml``.
