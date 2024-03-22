@@ -40,7 +40,7 @@ Import and Reprocess Locally Modified Email
    ``rake zammad:email_parser:failed_email:import path/to/your/email.eml``
    to apply your changes from the file to the database. You can also pass
    the entire folder as argument, so all ``.eml`` files in it will we imported
-   and reprocessed. If the reprocessing of the mail was successful, the file(s)
+   and reprocessed. If the reprocessing of the email was successful, the file(s)
    will be deleted, and the empty folder removed.
 
    .. hint::
@@ -49,7 +49,7 @@ Import and Reprocess Locally Modified Email
       There may be problems if you try to run it from within the generated subfolder.
 
 Delete Unwanted Emails
-   In case of unwanted emails such as SPAM, you can delete them from the
+   In case of unwanted emails such as spam, you can delete them from the
    database after exporting them with the command
    ``rake zammad:email_parser:failed_email:delete path/to/your/email.eml``.
    If you pass the export folder as argument instead, all contained emails will
