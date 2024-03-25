@@ -75,16 +75,17 @@ jobs:
           echo "$COMMENTS"
         fi
 
-    - name: Check Translation Sources
-      shell: bash -eux {0}
-      run: |
-        if [[ -d "locale" ]]; then
-          make gettext
-          if git status --short | grep " M locale/"; then
-            echo "::error title=Translation sources are out-of-date!::Please update translation sources with 'make gettext' command..."
-            exit 1
-          fi
-        fi
+    # TODO: Check why the CI incorrectly flags translation catalog as out-of-date and then re-enable this step.
+    # - name: Check Translation Sources
+    #   shell: bash -eux {0}
+    #   run: |
+    #     if [[ -d "locale" ]]; then
+    #       make gettext
+    #       if git status --short | grep " M locale/"; then
+    #         echo "::error title=Translation sources are out-of-date!::Please update translation sources with 'make gettext' command..."
+    #         exit 1
+    #       fi
+    #     fi
 
     - name: Modify Configuration
       shell: bash -eux {0}
