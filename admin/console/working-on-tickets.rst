@@ -99,7 +99,7 @@ don't fit your desired scheme. Renaming would look like so:
 
 .. code-block:: ruby
 
-   >> Ticket::Priority.update(name: '1 high')
+   >> Ticket::Priority.find_by(name: '1 low').update(name: '1 high')
 
 .. _state_types:
 
