@@ -58,7 +58,7 @@ jobs:
     - name: Check RST Syntax
       shell: bash -eux {0}
       run: |
-        python -m pip install --upgrade --no-cache-dir 'rstcheck[sphinx]'
+        python -m pip install --upgrade --no-cache-dir 'rstcheck[sphinx]<=6.1.0'
         rstcheck --warn-unknown-settings --recursive .
 
     # Runs only on Pull Requests and if they contain changes.
@@ -75,17 +75,16 @@ jobs:
           echo "$COMMENTS"
         fi
 
-    # TODO: Check why the CI incorrectly flags translation catalog as out-of-date and then re-enable this step.
-    # - name: Check Translation Sources
-    #   shell: bash -eux {0}
-    #   run: |
-    #     if [[ -d "locale" ]]; then
-    #       make gettext
-    #       if git status --short | grep " M locale/"; then
-    #         echo "::error title=Translation sources are out-of-date!::Please update translation sources with 'make gettext' command..."
-    #         exit 1
-    #       fi
-    #     fi
+    - name: Check Translation Sources
+      shell: bash -eux {0}
+      run: |
+        if [[ -d "locale" ]]; then
+          make gettext
+          if git status --short | grep " M locale/"; then
+            echo "::error title=Translation sources are out-of-date!::Please update translation sources with 'make gettext' command..."
+            exit 1
+          fi
+        fi
 
     - name: Modify Configuration
       shell: bash -eux {0}
