@@ -15,7 +15,7 @@ another installation type:
 .. hint::
 
    **🔎 Looking for MacOS hints?**
-   You can find a developer documentation
+   You can find the developer documentation
    `here <https://github.com/zammad/zammad/blob/develop/doc/developer_manual/development_environment/how-to-set-up-a-development-environment.md>`_.
 
 Prerequisites
