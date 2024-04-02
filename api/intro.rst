@@ -599,16 +599,16 @@ Actions on behalf of other users
 ``admin.user`` permission.
 
 Running API queries on behalf of other users allows you to e.g. create tickets
-on behalf of the user. The UI will display these kind of operations much better.
+by a different user.
 
-To do so, add a new HTTP header named ``X-On-Behalf-Of`` to your request.
+To do so, add a new HTTP header named ``From`` to your request.
 The value of this header can be one of the following:
 
    * user ID
    * user login
    * user email
 
-On behalf of is available for all endpoints.
+``From`` is available for all endpoints.
 
 Encoding
 ========
