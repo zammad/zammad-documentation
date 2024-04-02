@@ -1,11 +1,6 @@
 Install from source
 *******************
 
-.. toctree::
-   :hidden:
-
-   source/macos
-
 The source installation is the most difficult installation type of Zammad.
 If you're not too experienced with Linux and all that, you may want to use
 another installation type:
@@ -20,7 +15,8 @@ another installation type:
 .. hint::
 
    **🔎 Looking for MacOS hints?**
-   You can find outdated documentation :doc:`here </install/source/macos>`.
+   You can find the developer documentation
+   `here <https://github.com/zammad/zammad/blob/develop/doc/developer_manual/development_environment/how-to-set-up-a-development-environment.md>`_.
 
 Prerequisites
 =============
