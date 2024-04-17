@@ -24,7 +24,7 @@ requirements for your clients. This ensures that Zammad works as expected.
      - (based on Chromium 83)
    * - Microsoft Internet Explorer 11
      - ⚠️ Deprecated, will be removed with Zammad 7
-   * - Safari 11
+   * - Safari 14.1+
      -
 
 .. danger:: ⚠️ Deprecation warning ⚠️
@@ -72,13 +72,14 @@ If you want to install Zammad, you need the following software.
 | Zammad requires Ruby. All required rubygems like ruby on rails are listed in
   the Gemfile.
 | The following Ruby version is supported:
-| ``Ruby 3.1.3``
+| ``Ruby 3.2.3``
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
    :widths: 20, 20
 
-   "5.4+", "3.1.3"
+   "6.3+", "3.2.3"
+   "5.4 - 6.2", "3.1.3"
    "5.2 - 5.3", "3.0.4"
    "5.0 - 5.1", "2.7.4"
    "3.4.1 - 4.1", "2.6.6"
@@ -101,7 +102,7 @@ Below you can find all distributions Zammad provides packages for.
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
-   "CentOS / RHEL", "8"
+   "CentOS / RHEL", "8 & 9"
    "Debian", "11 & 12"
    "OpenSuSE / SLES", "Leap 15.x / 15"
    "Ubuntu", "20.04 & 22.04"
@@ -189,7 +190,8 @@ any javascript or stylesheet files via ``rake assets:precompile``.
    :header: "Zammad", "Node.js"
    :widths: 20, 20
 
-   "6.2+", "18.0+"
+   "6.3+", "18.10+"
+   "6.2", "18.0+"
    "5.2 - 6.1", "16.0+"
    "5.0 - 5.1", "10.0+"
 

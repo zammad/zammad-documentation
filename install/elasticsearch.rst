@@ -163,7 +163,7 @@ commands, as this will fail otherwise.
 .. code-block:: sh
 
    # Set the Elasticsearch server address
-   $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+   $ zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
    # Build the search index
    $ zammad run rake zammad:searchindex:rebuild

@@ -1,9 +1,9 @@
-Other useful commands
+Other Useful Commands
 *********************
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Fetch mails
+Fetch Mails
 -----------
 
 The below command will do a manual fetch of mail channels.
@@ -13,30 +13,58 @@ This will also show errors that might appear within that process.
 
    >> Channel.fetch
 
-Reprocess unprocessable mails
------------------------------
+Reprocess Failed Emails
+-----------------------
 
-When Zammad encounters a mail it cannot parse (e.g. due to a parser bug or a
-malformed message), it will store the mail in
-``var/spool/unprocessable_mail/<ID>.eml``,  give up on attempting to parse the
-mail, and will warn on the monitoring page that there are unprocessed mails.
-
-To force Zammad to reattempt to parse those mails, run the following command:
-
-.. code-block:: ruby
-
-   >> Channel::EmailParser.process_unprocessable_mails
+When Zammad fetches a mail it cannot parse (e.g. due to a parser bug or a
+malformed message), it will store the mail in the database and warn in
+the monitoring section about it.
 
 In case of a malformed message (e.g. an invalid email address in one of the
 header fields), you may need to manually edit the mail before Zammad can process
-it.
+it. To do so, follow the steps below:
 
-If Zammad fails to process the message, it will remain in the
-``var/spool/unprocessable_mail`` folder; otherwise it will be removed after it
-has been parsed successfully.
+Export all Failed Emails to a Local Folder
+   Execute ``rake zammad:email_parser:failed_email:export_all``. You can find
+   the location of the exported email in the output of your console.
+   Every time you perform an export of failed (unprocessable) emails, it
+   creates one folder containing all failed emails at the time of execution.
 
-Add translation
+Edit the Email
+   The email has been exported in the step above. Now you can have a look at it
+   and try to repair it. Make sure to leave the file name untouched, as the
+   import will otherwise fail.
+
+Import and Reprocess Locally Modified Email
+   After editing the email, run
+   ``rake zammad:email_parser:failed_email:import path/to/your/email.eml``
+   to apply your changes from the file to the database. You can also pass
+   the entire folder as argument, so all ``.eml`` files in it will we imported
+   and reprocessed. If the reprocessing of the email was successful, the file(s)
+   will be deleted, and the empty folder removed.
+
+   .. hint::
+
+      Make sure to run these commands only from the main Zammad folder ``/opt/zammad``.
+      There may be problems if you try to run it from within the generated subfolder.
+
+Delete Unwanted Emails
+   In case of unwanted emails such as spam, you can delete them from the
+   database after exporting them with the command
+   ``rake zammad:email_parser:failed_email:delete path/to/your/email.eml``.
+   If you pass the export folder as argument instead, all contained emails will
+   be removed from the database, their files deleted and finally the empty folder
+   removed.
+
+Add Translation
 ---------------
+
+.. warning::
+
+   Although the procedure described below still works, it is not recommended for usage any more.
+
+   Since Zammad version 6.3 it's possible to customize any translation via graphical UI. All coupled with handy
+   suggestions for all translatable custom objects in the local system. For more information, see the documentation for the :admin-docs:`translations screen </system/translations.html>`.
 
 This comes in handy if you e.g. added a new state that you need to translate
 for several languages.
@@ -56,7 +84,7 @@ for several languages.
 
 .. _Weblate: https://translations.zammad.org/
 
-Translating attributes
+Translating Attributes
 ~~~~~~~~~~~~~~~~~~~~~~
 
 By default Zammad will not translate custom attributes.
@@ -83,7 +111,7 @@ with the name of your attribute.
    If you're translating the display name of e.g. an Integer-attribute,
    this works as well!
 
-Fill a test system with test data
+Fill a Test System With Test Data
 ---------------------------------
 
 .. danger::
