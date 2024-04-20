@@ -23,7 +23,7 @@ Updating Zammad
       usually go terribly wrong. As example, expecting the current stable
       version of Zammad being 5.1 and your instance being on Zammad 2.4, your
       path would look like so:
-      ``2.4`` → ``3.0`` → ``4.0`` → ``5.0`` → ``latest stable (5.1)``
+      ``2.4`` → ``3.0`` → ``4.0`` → ``5.0`` → ``6.0`` → ``latest stable (6.3)``
 
 .. _release notes: https://zammad.com/en/releases
 .. _Zammad hosting: https://zammad.com/en/pricing
