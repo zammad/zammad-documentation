@@ -2,7 +2,7 @@ Troubleshooting and FAQ
 ***********************
 
 This guide will discuss frequently asked questions and how to resolve common
-problems with Zammad.
+problems with Elasticsearch.
 
 .. note:: 🤓 Troubleshooting unsuccessful or issue not described?
 
