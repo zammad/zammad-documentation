@@ -256,3 +256,4 @@ Appendix
    :titlesonly:
 
    elasticsearch/indexed-attributes
+   elasticsearch/troubleshooting
