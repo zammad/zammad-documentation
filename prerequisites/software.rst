@@ -69,10 +69,11 @@ If you want to install Zammad, you need the following software.
 
    Docker and package installations provide the required ruby dependencies!
 
-| Zammad requires Ruby. All required rubygems like ruby on rails are listed in
-  the Gemfile.
-| The following Ruby version is supported:
-| ``Ruby 3.2.3``
+Zammad requires Ruby. All required rubygems like ruby on rails are listed in
+the Gemfile.
+
+In the following table you can find the supported Ruby version for the
+different Zammad versions:
 
 .. csv-table:: Zammad/Ruby version compatibility
    :header: "Zammad", "Ruby"
