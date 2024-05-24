@@ -107,7 +107,7 @@ Below you can find all distributions Zammad provides packages for.
    "CentOS / RHEL", "8 & 9"
    "Debian", "11 & 12"
    "OpenSuSE / SLES", "Leap 15.x / 15"
-   "Ubuntu", "20.04 & 22.04"
+   "Ubuntu", "20.04, 22.04 & 24.04"
 
 .. warning:: ⚠️ SuSE Tumbleweed **does not** meet Zammad requirements and thus
    **is not** supported!
