@@ -99,7 +99,7 @@ GeoIP
 
 Geolocation
    Zammad's geolocation service relies on OpenStreetMap (OSM) unless you turned
-   it off. If you provide an address (or parts of an address) in an user
+   it off. If you provide an address (or parts of an address) in a user
    object, there is a lookup of coordinates from OSM which are stored in
    Zammad's database. Have a look at their
    `privacy policy <https://osmfoundation.org/wiki/Privacy_Policy>`_ for
