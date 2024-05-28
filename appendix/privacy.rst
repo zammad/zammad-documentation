@@ -91,17 +91,17 @@ GeoCalendar
 GeoIP
    No user information is stored or cached on geo.zammad.com.
 
-   One of Zammad’s security features is to track user sessions
-   based on the user’s browser and country of origin.
+   One of Zammad's security features is to track user sessions
+   based on the user's browser and country of origin.
    Suspicious login activity from a different browser or country may trigger Zammad
    to dispatch an alert email to the affected user.
    The GeoIP service is used to associate IP addresses to a geographic origin.
 
 Geolocation
-   Since Zammad’s geolocation service relies on Google’s
-   `Geocoding API <https://developers.google.com/maps/documentation/geocoding/policies>`_,
-   its use is subject to the `Google Privacy Policy <https://policies.google.com/privacy>`_.
+   Zammad's geolocation service relies on OpenStreetMap (OSM) unless you turned
+   it off. If you provide an address (or parts of an address) in a user
+   object, there is a lookup of coordinates from OSM which are stored in
+   Zammad's database. Have a look at their
+   `privacy policy <https://osmfoundation.org/wiki/Privacy_Policy>`_ for
+   more information.
 
-   Zammad uses geolocation to associate tickets with locations
-   to support map-style ticket overviews,
-   which display tickets as points on a map rather than items in a list.
