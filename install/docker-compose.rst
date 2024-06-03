@@ -110,19 +110,34 @@ Step 4: Start Zammad using DockerHub images
 
 .. hint:: **🔧 How to run rails/rake commands in containers**
 
-   The docker entrypoint script sets up environment variables required by Zammad to function properly.
-   That is why calling ``rails`` / ``rake`` on the console should be done via one of the following methods:
+   The docker entrypoint script sets up environment variables required by Zammad
+   to function properly. That is why calling ``rails`` / ``rake`` on the console
+   should be done via one of the following methods:
 
    .. code-block:: sh
 
       $ docker compose run --rm zammad-railsserver rails r '...your rails command here...'
 
-   This will run the command via the docker entrypoint and is recommended. In case you require the use of ``docker exec``, you can use the following command:
+   This will run the command via the docker entrypoint and is recommended.
+
+   Alternatively, you can run the rails console interactively by running:
+
+   .. code-block:: sh
+
+      $ docker compose run --rm zammad-railsserver rails c
+
+   In case you require the use of ``docker exec``, you can use the following
+   command:
 
    .. code-block:: sh
 
       $ docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails r '...your rails command here...'
 
-   This will manually invoke the docker entrypoint and pass the desired command to it for execution in the proper environment.
+   This will manually invoke the docker entrypoint and pass the desired command
+   to it for execution in the proper environment.
+
+   If you need to retrieve information from the rails server, you can place
+   for example ``pp`` (pretty print) in front of your rails command. This
+   leads to an output in your terminal.
 
 .. include:: /install/includes/next-steps.rst
