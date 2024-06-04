@@ -62,8 +62,18 @@ Use the following command
 
 .. code-block:: ruby
 
-   >> Setting.get('storage_provider')        # get the current Attachment-Storage
-   >> Setting.set('storage_provider', 'DB')  # Change Attachment-Storage to database
+   >> Setting.get('storage_provider')               # get the current Attachment-Storage
+   >> Setting.set('storage_provider', 'DB')         # Change Attachment-Storage to database
+
+If you have already stored files and want to move them, you can use the
+following example. Please be aware that this operation should only be executed
+in non-productive environments. In case you have to perform it in production
+environments, you should specify a sleep delay - otherwise your Zammad can be
+unresponsive.
+
+.. code-block:: ruby
+
+   >> Store::File.move('DB', 'File', delay_in_sec)  # Move files from DB to File with a specified delay after each file in seconds, e.g. 1
 
 The following settings are available in a default installation:
 
