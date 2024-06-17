@@ -252,7 +252,7 @@ PostgreSQL
      - Zammads database to use.
      -
    * - POSTGRESQL_OPTIONS
-     - ``(unset)``
+     - ``?pool=50``
      - Additional postgresql params to be appended to the database URI.
      -
    * - POSTGRESQL_DB_CREATE

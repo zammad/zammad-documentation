@@ -75,7 +75,12 @@ Deploying Zammad
 
 5. Optional: if you need to provide
    :doc:`environment variables <./docker-compose/environment>`, you can enter
-   them in the **Environment variable** section.
+   them in the **Environment variable** section or even upload a ``.env`` file.
+
+   .. note:: If you want to use a ``.env`` file, you can use the provided
+      ``.env.dist`` file and rename it. This way it is safe to update the repo
+      via ``git pull``.
+
 6. Finally, click on **Deploy the stack**
 
 .. figure:: /images/install/docker-compose/portainer/portainer-stacks.png
@@ -103,8 +108,8 @@ Step 1: Clone GitHub Repo
 
 .. warning::
 
-   If you're updating Zammad, below commands will cause values set in ``.env``
-   and ``docker-compose.override.yml`` to be lost. You're expected to check
+   If you're updating Zammad, below commands will cause values set in
+   ``docker-compose.override.yml`` to be lost. You're expected to check
    if the ``docker-compose.yml`` has changed and if so to adjust it accordingly.
 
 .. code-block:: sh
@@ -140,36 +145,43 @@ Step 3: Start Zammad by running containers
 
    $ docker compose up -d
 
-.. hint:: **🔧 How to run rails/rake commands in containers**
+Troubleshooting and Further Information
+=======================================
 
-   The docker entrypoint script sets up environment variables required by Zammad
-   to function properly. That is why calling ``rails`` / ``rake`` on the console
-   should be done via one of the following methods:
+Running rails/rake commands in containers
+-----------------------------------------
 
-   .. code-block:: sh
+The docker entrypoint script sets up environment variables required by Zammad
+to function properly. That is why calling ``rails`` / ``rake`` on the console
+should be done via one of the following methods:
 
-      $ docker compose run --rm zammad-railsserver rails r '...your rails command here...'
+.. code-block:: sh
 
-   This will run the command via the docker entrypoint and is recommended.
+   $ docker compose run --rm zammad-railsserver rails r '...your rails command here...'
 
-   Alternatively, you can run the rails console interactively by running:
+This will run the command via the docker entrypoint and is recommended.
 
-   .. code-block:: sh
+Alternatively, you can run the rails console interactively by running:
 
-      $ docker compose run --rm zammad-railsserver rails c
+.. code-block:: sh
 
-   In case you require the use of ``docker exec``, you can use the following
-   command:
+   $ docker compose run --rm zammad-railsserver rails c
 
-   .. code-block:: sh
+In case you require the use of ``docker exec``, you can use the following
+command:
 
-      $ docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails r '...your rails command here...'
+.. code-block:: sh
 
-   This will manually invoke the docker entrypoint and pass the desired command
-   to it for execution in the proper environment.
+   $ docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails r '...your rails command here...'
 
-   If you need to retrieve information from the rails server, you can place
-   for example ``pp`` (pretty print) in front of your rails command. This
-   leads to an output in your terminal.
+This will manually invoke the docker entrypoint and pass the desired command
+to it for execution in the proper environment.
+
+If you need to retrieve information from the rails server, you can place
+for example ``pp`` (pretty print) in front of your rails command. This
+leads to an output in your terminal.
+
+Further Reading
+---------------
 
 .. include:: /install/includes/next-steps.rst
