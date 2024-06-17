@@ -25,12 +25,30 @@ Docker Compose
      - Additional Info
    * - RESTART
      - ``always``
-     - By default containers will be restarted in case they stopped for whatever reason.
+     - By default containers will be restarted in case they stopped for whatever
+       reason.
      -
    * - VERSION
-     -
+     - See hint below.
      - This variables contains the version tag. Example: ``3.6.0-20``
-     - We update this string from time to time, Docker Hub may contain more current tags to the moment you're pulling.
+     - We update this string from time to time, Docker Hub may contain more
+       current tags to the moment you're pulling.
+
+.. hint::
+
+   By default, docker compose will use a fixed Zammad version like
+   ``6.2.0-1``, which refers to a specific commit. In this scenario,
+   you are responsible to apply updates by updating the version on your own.
+
+   Alternatively, you can also use floating versions that will give you automatic updates
+   via ``docker compose pull``:
+
+   .. code-block:: sh
+
+      # VERSION=6.2     # all patchlevel updates
+      # VERSION=6       # including minor updates
+      # VERSION=latest  # all updates of stable versions, including major
+      # VERSION=develop # bleeding-edge development version (not recommended for production use)
 
 Zammad
 ------
@@ -44,32 +62,41 @@ Zammad
      - Additional Info
    * - AUTOWIZARD_JSON
      - ``''``
-     - This variable allows you to provide initial configuration data for your instance. Autowizard JSON is out of scope of this documentation, however `this example file`_ should help.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     - This variable allows you to provide initial configuration data for your
+       instance. Autowizard JSON is out of scope of this documentation, however
+       `this example file`_ should help.
+     -
    * - ZAMMAD_WEB_CONCURRENCY
      - ``(unset)``
-     - Allows spawning ``n`` workers to allow more simultaneous connections for Zammads web UI. Please also note :doc:`/appendix/configure-env-vars` in this regard.
-     - .. tip:: This variable is specific to the ``railsserver`` container.
+     - Allows spawning ``n`` workers to allow more simultaneous connections for
+       Zammads web UI. Please also note :doc:`/appendix/configure-env-vars` in
+       this regard.
+     -
    * - | ZAMMAD_SESSION_JOBS
        | _CONCURRENT
      - ``(unset)``
-     - Allows spawning ``n`` session job workers to release pressure from Zammads background worker. Please also note :doc:`/appendix/configure-env-vars` in this regard.
-     - .. include:: /install/docker-compose/scheduler-specific.include.rst
+     - Allows spawning ``n`` session job workers to release pressure from
+       Zammads background worker. Please also note
+       :doc:`/appendix/configure-env-vars` in this regard.
+     -
    * - | ZAMMAD_PROCESS_SCHEDULED
        | _JOBS_WORKERS
      - ``(unset)``
-     - Allows spawning ``1`` independent scheduled job worker to release pressure from Zammads background worker. Please also note :doc:`/appendix/configure-env-vars` in this regard.
-     - .. Tip:: This variable is specific to the ``scheduler`` container.
+     - Allows spawning ``1`` independent scheduled job worker to release
+       pressure from Zammads background worker. Please also note
+       :doc:`/appendix/configure-env-vars` in this regard.
+     -
    * - | ZAMMAD_PROCESS_DELAYED
        | _JOBS_WORKERS
      - ``(unset)``
-     - Allows spawning ``n`` delayed job workers to release pressure from Zammads background worker. Please also note :doc:`/appendix/configure-env-vars` in this regard.
-     - .. Tip:: This variable is specific to the ``scheduler`` container.
+     - Allows spawning ``n`` delayed job workers to release pressure from
+       Zammads background worker. Please also note
+       :doc:`/appendix/configure-env-vars` in this regard.
+     -
    * - RAILS_TRUSTED_PROXIES
      - ``['127.0.0.1', '::1']``
      - By default Zammad trusts localhost proxies only.
-     - .. Tip:: This variable is specific to the ``init`` container.
-       .. danger:: **⚠ Only change this option if you know what you're doing! ⚠**
+     - .. danger:: **Only change this option if you know what you're doing!**
 
 .. _this example file:
    https://github.com/zammad/zammad/blob/stable/contrib/auto_wizard_example.json
@@ -87,33 +114,38 @@ Elasticsearch
      - Additional Info
    * - ELASTICSEARCH_ENABLED
      - ``true``
-     - Setting this variable to false will allow you to run your Zammad without Elasticsearch. Please note that we strongly advise **against** doing so.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     - Setting this variable to false will allow you to run your Zammad without
+       Elasticsearch. Please note that we strongly advise **against** doing so.
+     -
    * - ELASTICSEARCH_HOST
      - ``zammad-elasticsearch``
      - Provide a host name or address to your external Elasticsearch cluster.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     -
    * - ELASTICSEARCH_PORT
      - ``9200``
      - Provide a different port for Elasticsearch if needed.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     -
    * - ELASTICSEARCH_SCHEMA
      - ``http``
      - By default Elasticsearch is reachable via HTTP.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     -
    * - ELASTICSEARCH_NAMESPACE
      - ``zammad``
-     - With this name space all Zammad related indexes will be created. Change this if you're using external clusters.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     - With this name space all Zammad related indexes will be created. Change
+       this if you're using external clusters.
+     -
    * - ELASTICSEARCH_REINDEX
      - ``true``
-     - By default the docker-compose will *always re-index* upon a restart. On big installations this may be troublesome.
-     - .. warning:: Disabling this setting requires you to re-index your search index manually whenever that's needed by upgrading to a new Zammad version!
-       .. include:: /install/docker-compose/init-specific.include.rst
+     - By default the docker-compose will *always re-index* upon a restart.
+       On big installations this may be troublesome.
+     - .. warning:: Disabling this setting requires you to re-index your search
+          index manually whenever that's needed by upgrading to a new Zammad
+          version!
    * - ELASTICSEARCH_SSL_VERIFY
      - ``true``
-     - Allows you to let the compose scripts ignore self signed SSL certificates for your Elasticsearch installation if needed.
-     - .. include:: /install/docker-compose/init-specific.include.rst
+     - Allows you to let the compose scripts ignore self signed SSL certificates
+       for your Elasticsearch installation if needed.
+     -
 
 Memcached
 ---------
@@ -158,15 +190,18 @@ NGINX
    * - NGINX_PORT
      - ``8080``
      - The port Nginx will listen on.
-     - .. include:: /install/docker-compose/nginx-specific.include.rst
+     -
    * - NGINX_SERVER_NAME
      - ``_``
-     - By default the Nginx container of Zammad will respond to all request. You can provide your IP / FQDN if you want to.
-     - .. include:: /install/docker-compose/nginx-specific.include.rst
+     - By default the Nginx container of Zammad will respond to all request.
+       You can provide your IP / FQDN if you want to.
+     -
    * - NGINX_SERVER_SCHEME
      - ``\$scheme``
-     - If the Nginx container for Zammad **is not** the upstream server (aka you're using another proxy in front of nginx) ``$scheme`` may be wrong. You can set the correct scheme ``http`` or ``https`` if needed.
-     - .. include:: /install/docker-compose/nginx-specific.include.rst
+     - If the Nginx container for Zammad **is not** the upstream server
+       (aka you're using another proxy in front of nginx) ``$scheme`` may be
+       wrong. You can set the correct scheme ``http`` or ``https`` if needed.
+     -
    * - ZAMMAD_RAILSSERVER_HOST
      - ``zammad-railsserver``
      - Host name of the rails server container.
@@ -178,7 +213,7 @@ NGINX
    * - ZAMMAD_WEBSOCKET_HOST
      - ``zammad-websocket``
      - Host name of Zammads websocket server.
-     - .. include:: /install/docker-compose/nginx-specific.include.rst
+     -
    * - ZAMMAD_WEBSOCKET_PORT
      - ``6042``
      - Port of Zammads websocket server.
@@ -224,4 +259,5 @@ PostgreSQL
      - ``true``
      - By default we will create the required database.
      - .. note:: On own database servers this setting might be troublesome.
-       .. include:: /install/docker-compose/init-specific.include.rst
+
+
