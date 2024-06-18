@@ -1,5 +1,6 @@
 Depending on your setup, Zammad technically may be ready to go.
-However, we collected some further reading in case your setup is different:
+However, we collected some further reading in case your setup is different or
+if you want to set up you Zammad system now:
 
    #. :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
    #. :doc:`/getting-started/configure-webserver`

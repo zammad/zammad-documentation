@@ -3,6 +3,7 @@ Docker Compose Environment Variables
 
 Zammad's Docker Compose supports several environment variables that are not
 set by default. The best way to provide these is within the file ``.env``.
+If you run a Portainer setup, you can even import it via UI.
 
 In case our default ``docker-compose.yml`` is not good enough, please use
 ``docker-compose.override.yml`` to provide own changes.

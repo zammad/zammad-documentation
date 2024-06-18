@@ -97,11 +97,6 @@ Deploying Zammad
 Deployment with Docker-Compose
 ==============================
 
-.. toctree::
-   :hidden:
-   :maxdepth: 1
-
-   /install/docker-compose/environment
 
 Step 1: Clone GitHub Repo
 -------------------------
@@ -183,5 +178,16 @@ leads to an output in your terminal.
 
 Further Reading
 ---------------
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   /install/docker-compose/environment
+
+If you want to adjust parameters of your Docker deployment of Zammad, you
+should have a look at the
+:doc:`environment variables </install/docker-compose/environment>`
+which can be used in Docker context.
 
 .. include:: /install/includes/next-steps.rst
