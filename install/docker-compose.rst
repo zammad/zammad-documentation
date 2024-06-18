@@ -79,7 +79,7 @@ Deploying Zammad
 
    .. note:: If you want to use a ``.env`` file, you can use the provided
       ``.env.dist`` file and rename it. This way it is safe to update the repo
-      via ``git pull``.
+      via ``git pull`` or via **Pull and redeploy** in Portainer.
 
 6. Finally, click on **Deploy the stack**
 
@@ -119,7 +119,7 @@ Step 1: Clone GitHub Repo
    file permissions are preserved.
 
 
-Step 2: Adjust Environment as needed
+Step 2: Adjust Environment as Needed
 ------------------------------------
 
 In some cases our default environment is not what a docker-compose user is
@@ -128,7 +128,7 @@ this topic.
 
 See :doc:`/install/docker-compose/environment`
 
-Step 3: Start Zammad by running containers
+Step 3: Start Zammad by Running Containers
 ------------------------------------------
 
 .. warning::
@@ -140,10 +140,10 @@ Step 3: Start Zammad by running containers
 
    $ docker compose up -d
 
-Troubleshooting and Further Information
-=======================================
+Additional Information
+======================
 
-Running rails/rake commands in containers
+Running Rails/Rake Commands in Containers
 -----------------------------------------
 
 The docker entrypoint script sets up environment variables required by Zammad
@@ -155,7 +155,6 @@ should be done via one of the following methods:
    $ docker compose run --rm zammad-railsserver rails r '...your rails command here...'
 
 This will run the command via the docker entrypoint and is recommended.
-
 Alternatively, you can run the rails console interactively by running:
 
 .. code-block:: sh
@@ -190,4 +189,17 @@ should have a look at the
 :doc:`environment variables </install/docker-compose/environment>`
 which can be used in Docker context.
 
-.. include:: /install/includes/next-steps.rst
+Depending on your setup, Zammad technically may be ready to go.
+However, we collected some further reading in case your setup is different or
+if you want to start setting up you Zammad system now:
+
+   #. :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
+   #. :doc:`/getting-started/configure-webserver`
+   #. :doc:`/getting-started/first-steps`
+   #. You may also find Zammads :doc:`/admin/console` commands useful
+
+If you expect usage with 5 agents or more you may also want to consider the
+following pages.
+
+   * :ref:`Performance Tuning <performance_tuning>`
+   * :doc:`/appendix/configure-database-server`
