@@ -2,35 +2,24 @@ Install with Docker
 *******************
 
 Zammad can be deployed using Docker-Compose. You can even use
+graphical docker front ends like
 `Portainer <https://www.portainer.io/>`_.
-See the sections below for details.
 
 .. warning::
 
-   Be aware that we can't support in terms of Docker (-Compose) or Portainer
-   specific problems.
-   It's no problem if you run Zammad via Docker, however, support is only
-   provided for Zammad as application!
+   We do not provide support in terms of Docker (-Compose) or Portainer specific problems.
+   If you choose to run Zammad via Docker, support is only provided for the Zammad application.
 
-   If you're not too familiar with Docker and the way it works, you may want
+   In case you're not too familiar with Docker and the way it works, you may want
    to stick with :doc:`the package installation </install/package/>` instead.
 
 Prerequisites
 =============
 
-Docker-Compose Environment
-   This documentation expects you already have a working Docker Compose
-   environment. You can find the required documentations for these steps here:
-
-      * `Docker Engine <https://docs.docker.com/engine/installation/>`_
-      * `Docker Compose <https://docs.docker.com/compose/install/>`_
-
-Hardware Requirements
-   Make sure to have at least 4 GB of RAM to run the containers.
-
-Setting ``vm.max_map_count`` for Elasticsearch
-   Even with running Elasticsearch in a container, you're required to adjust your
-   host's settings to run Elasticsearch properly:
+* This documentation expects you already have a working
+  `Docker Compose <https://docs.docker.com/compose/>`_ environment.
+* Make sure to have at least 4 GB of RAM to run the containers.
+* You're required to adjust your host's settings to run Elasticsearch properly:
 
    .. code-block:: sh
 
@@ -39,49 +28,30 @@ Setting ``vm.max_map_count`` for Elasticsearch
 Deployment with Portainer
 =========================
 
-The easiest way to get Zammad running is via Portainer's management UI.
-If you already have a running Portainer instance, head over to
-:ref:`portainer-deploying-zammad`.
+The easiest way to get Zammad running is via a graphical docker UI. We recommend `Portainer <https://www.portainer.io/>`_.
+For installation instructions, check out `Portainer's documentation <https://docs.portainer.io/>`_.
 
-Install Portainer
------------------
+Step 1: **Add Stack**
+   In the Portainer GUI (e.g. ``https://yourdomain.tld:9443``),
+   choose your target environment, select **Stacks** and
+   choose **Add stack** as you can see in the screenshot below.
 
-Make sure to meet the
-`requirements and prerequisites <https://docs.portainer.io/start/requirements-and-prerequisites>`_
-and follow their official installation instructions
-(`Community Edition <https://docs.portainer.io/start/install-ce/server>`_ or
-`Business Edition <https://docs.portainer.io/start/install>`_).
+Step 2: **Build From Repository**
+   Switch to **Repository** build method and provide the information below:
 
-After following these steps, you should be able to access the Portainer UI via
-browser.
+   - **Name**: enter a desired name of the stack
+   - **Repository URL**: ``https://github.com/zammad/zammad-docker-compose``
+   - **Repository reference**: ``refs/heads/master``
+   - **Compose path**: ``docker-compose.yml`` (default)
 
-.. _portainer-deploying-zammad:
-
-Deploying Zammad
-----------------
-
-1. Head over to your Portainer GUI (e.g. ``https://yourdomain.tld:9443``)
-   and log in.
-2. Select your environment in which you want to deploy Zammad
-3. Select **Stacks** and choose **Add stack** as you can see in the following
-   screenshot
-4. Switch to **Repository** build method and provide the below listed
-   information:
-
-     - **Name**: enter a desired name of the stack
-     - **Repository URL**: ``https://github.com/zammad/zammad-docker-compose``
-     - **Repository reference**: ``refs/heads/master``
-     - **Compose path**: ``docker-compose.yml`` (default)
-
-5. Optional: if you need to provide
+   Optional: if you need to provide
    :doc:`environment variables <./docker-compose/environment>`, you can enter
    them in the **Environment variable** section or even upload a ``.env`` file.
+   See the `example env template <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_.
 
-   .. note:: If you want to use a ``.env`` file, you can use the provided
-      ``.env.dist`` file and rename it. This way it is safe to update the repo
-      via ``git pull`` or via **Pull and redeploy** in Portainer.
 
-6. Finally, click on **Deploy the stack**
+Step 3: **Deploy the Stack**
+   After the stack is ready, you can access Zammad via the configured docker host and port, e.g. ``http://localhost:8080/``.
 
 .. figure:: /images/install/docker-compose/portainer/portainer-stacks.png
    :alt: Screenshot showing portainer UI with stacks section and highlighted "Add stack" button
@@ -97,9 +67,41 @@ Deploying Zammad
 Deployment with Docker-Compose
 ==============================
 
+Step 1: **Clone the GitHub Repo**
+   .. code-block:: sh
 
-Step 1: Clone GitHub Repo
--------------------------
+      $ git clone https://github.com/zammad/zammad-docker-compose.git
+
+   Make sure to run ``git pull`` frequently to fetch updates.
+   Alternatively, you can download the files from
+   `the releases page <https://github.com/zammad/zammad-docker-compose/releases>`_.
+
+Step 2: **Adjust Environment as Needed**
+   In some cases our default environment is not what a docker-compose user is
+   looking for. See :doc:`/install/docker-compose/environment` for details on
+   which settings can be configured.
+
+   .. note:: If you want to use a ``.env`` file, you can use the provided
+      ``.env.dist`` file and copy it to ``.env``. That way it will be picked
+      up by Docker-Compose automatically and not overwritten during updates.
+
+Step 3: Start the stack
+   .. code-block:: sh
+
+      $ cd zammad-docker-compose
+      $ docker compose up -d
+
+   After the stack is ready, you can access Zammad via the configured docker host and port, e.g. ``http://localhost:8080/``.
+
+Updating
+========
+
+# TODO
+
+Customization
+=============
+
+# TODO
 
 .. warning::
 
@@ -107,44 +109,14 @@ Step 1: Clone GitHub Repo
    ``docker-compose.override.yml`` to be lost. You're expected to check
    if the ``docker-compose.yml`` has changed and if so to adjust it accordingly.
 
-.. code-block:: sh
-
-   $ git clone https://github.com/zammad/zammad-docker-compose.git
-   $ cd zammad-docker-compose
-
-.. hint::
-
-   If cloning is too much of a hassle, you can also download the files from
-   https://github.com/zammad/zammad-docker-compose/releases. This will make sure
-   file permissions are preserved.
-
-
-Step 2: Adjust Environment as Needed
-------------------------------------
-
-In some cases our default environment is not what a docker-compose user is
-looking for. To remove complexity from this page, we outsourced information on
-this topic.
-
-See :doc:`/install/docker-compose/environment`
-
-Step 3: Start Zammad by Running Containers
-------------------------------------------
-
-.. warning::
-
-   Before starting your containers ensure to not use default login data for
-   your Zammad database!
-
-.. code-block:: sh
-
-   $ docker compose up -d
 
 Additional Information
 ======================
 
 Running Rails/Rake Commands in Containers
 -----------------------------------------
+
+# TODO
 
 The docker entrypoint script sets up environment variables required by Zammad
 to function properly. That is why calling ``rails`` / ``rake`` on the console
@@ -175,31 +147,8 @@ If you need to retrieve information from the rails server, you can place
 for example ``pp`` (pretty print) in front of your rails command. This
 leads to an output in your terminal.
 
-Further Reading
----------------
-
 .. toctree::
    :hidden:
    :maxdepth: 1
 
    /install/docker-compose/environment
-
-If you want to adjust parameters of your Docker deployment of Zammad, you
-should have a look at the
-:doc:`environment variables </install/docker-compose/environment>`
-which can be used in Docker context.
-
-Depending on your setup, Zammad technically may be ready to go.
-However, we collected some further reading in case your setup is different or
-if you want to start setting up you Zammad system now:
-
-   #. :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
-   #. :doc:`/getting-started/configure-webserver`
-   #. :doc:`/getting-started/first-steps`
-   #. You may also find Zammads :doc:`/admin/console` commands useful
-
-If you expect usage with 5 agents or more you may also want to consider the
-following pages.
-
-   * :ref:`Performance Tuning <performance_tuning>`
-   * :doc:`/appendix/configure-database-server`
