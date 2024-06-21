@@ -110,38 +110,26 @@ Customization
    if the ``docker-compose.yml`` has changed and if so to adjust it accordingly.
 
 
-Additional Information
-======================
-
-Running Rails/Rake Commands in Containers
------------------------------------------
-
-# TODO
+How to Run Commands in the Stack
+================================
 
 The docker entrypoint script sets up environment variables required by Zammad
-to function properly. That is why calling ``rails`` / ``rake`` on the console
+to function properly. That is why calling ``rails`` or ``rake`` on the console
 should be done via one of the following methods:
 
 .. code-block:: sh
 
+   # Directly execute a specific command:
+
    $ docker compose run --rm zammad-railsserver rails r '...your rails command here...'
 
-This will run the command via the docker entrypoint and is recommended.
-Alternatively, you can run the rails console interactively by running:
-
-.. code-block:: sh
+   # Run the interactive rails console to manually enter Rails commands:
 
    $ docker compose run --rm zammad-railsserver rails c
 
-In case you require the use of ``docker exec``, you can use the following
-command:
-
-.. code-block:: sh
+   # Via 'docker exec':
 
    $ docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails r '...your rails command here...'
-
-This will manually invoke the docker entrypoint and pass the desired command
-to it for execution in the proper environment.
 
 If you need to retrieve information from the rails server, you can place
 for example ``pp`` (pretty print) in front of your rails command. This
