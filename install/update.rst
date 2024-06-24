@@ -177,7 +177,7 @@ Updating Zammad
          for updating instructions first.
 
       Updating Portainer based Installations
-         In your Zammad stack, click on **Pull and redeploy**, toggle
+         In your Zammad stack, click on **Pull and redeploy**, activate
          **Re-pull image and redeploy** and click on **Update**.
 
          .. figure:: /images/install/docker-compose/portainer/portainer-stack-update.png
