@@ -1,15 +1,10 @@
-Install on Kubernetes via Helm
-******************************
+Install on Kubernetes
+*********************
 
-.. warning:: We currently do not support Kubernetes installations in productive
-   use.
+.. hint::
 
-Kubernetes_ (k8s) is an open-source system for automating deployment, scaling,
-and management of containerized applications.
+   We do not provide support in terms of Kubernetes specific problems.
+   If you choose to run Zammad via Docker, support is only provided for the Zammad application.
 
-.. _Kubernetes: https://kubernetes.io
-
-For maintainability reasons, this documentation does not cover the installation
-instructions because these are included in our helm chart anyway. You can find
-the helm chart in the zammad-helm repository
-`here <https://github.com/zammad/zammad-helm/blob/main/zammad/README.md>`_.
+You can find installation instructions
+`in the documentation of our helm chart <https://github.com/zammad/zammad-helm/blob/main/zammad/README.md>`_.
