@@ -168,48 +168,28 @@ Updating Zammad
       Step 9: Log into Zammad
          Yes, that's it!
 
-   .. tab:: Docker Compose
+   .. tab:: Docker
 
-      .. warning::
+      .. hint::
 
-         ⚠️ **Updates may require extra steps or introduce breaking changes.**
+         Docker-Compose stack updates may require extra steps or introduce breaking changes. Always check the
+         `docker compose release notes <https://github.com/zammad/zammad-docker-compose/releases>`_
+         for updating instructions first.
 
-         Always check the
-         `upgrade notes <https://github.com/zammad/zammad-docker-compose#upgrading>`_
-         first.
+      Updating Portainer based Installations
+         In your Zammad stack, click on **Pull and redeploy**, activate
+         **Re-pull image and redeploy** and click on **Update**.
 
-      .. note:: **🙀 Incomplete documentation**
+         .. figure:: /images/install/docker-compose/portainer/portainer-stack-update.png
+            :alt: Screenshot showing stack details with highlighted "Pull and redeploy" button and modal dialog.
 
-         Sorry, but this documentation part is outdated.
-         We will rework this part later, but can't tell when yet.
+      Updating Docker-Compose based Installations
+         .. code-block:: sh
 
-         Please feel welcome to provide a pull request if you find spare time!
-
-      .. code-block:: sh
-
-         $ docker-compose stop
-         $ git pull
-         $ docker-compose pull
-         $ docker-compose up
-
-
-      Start Zammad building Docker images locally with development branch
-
-      * GIT_BRANCH=develop docker-compose -f docker-compose-build.yml up
-
-      Recreate locally built images
-
-      * GIT_BRANCH=develop docker-compose -f docker-compose-build.yml build --no-cache
-
-
-      Open shell in running Zammad image
-
-      * docker-compose exec zammad /bin/bash
-
-      Port compatibility error
-
-      * The nginx container may have compatibility problems with other machines or services pointing to port 0.0.0.0:80. So to fix this, we'll just have to modify the file `docker-compose.override.yml` and select different ports
-
+            $ cd zammad-docker-compose
+            $ git pull
+            $ docker-compose pull
+            $ docker-compose up -d
 
 Updating Elasticsearch
 ======================
