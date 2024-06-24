@@ -5,7 +5,7 @@ Zammad can be deployed using Docker-Compose. You can even use
 graphical docker front ends like
 `Portainer <https://www.portainer.io/>`_.
 
-.. warning::
+.. hint::
 
    We do not provide support in terms of Docker (-Compose) or Portainer specific problems.
    If you choose to run Zammad via Docker, support is only provided for the Zammad application.
@@ -49,6 +49,7 @@ Step 2: **Build From Repository**
    them in the **Environment variable** section or even upload a ``.env`` file.
    See the `example env template <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_.
 
+   Zammad runs on port ``8080`` by default. If you want to use another port, you can set it via the variable ``NGINX_EXPOSE_PORT``.
 
 Step 3: **Deploy the Stack**
    After the stack is ready, you can access Zammad via the configured docker host and port, e.g. ``http://localhost:8080/``.
@@ -85,6 +86,8 @@ Step 2: **Adjust Environment as Needed**
       ``.env.dist`` file and copy it to ``.env``. That way it will be picked
       up by Docker-Compose automatically and not overwritten during updates.
 
+   Zammad runs on port ``8080`` by default. If you want to use another port, you can set it via the variable ``NGINX_EXPOSE_PORT``.
+
 Step 3: Start the stack
    .. code-block:: sh
 
@@ -93,22 +96,20 @@ Step 3: Start the stack
 
    After the stack is ready, you can access Zammad via the configured docker host and port, e.g. ``http://localhost:8080/``.
 
-Updating
-========
+Customizing the Zammad Stack
+============================
 
-# TODO
+Sometimes it's necessary to apply local changes to the Zammad docker stack, e.g. to
+include additional services. If you plan to do so, we recommend that you do not change
+the ``docker-compose.yml`` file, but instead create a local ``docker-compose.override.yml``
+that includes all your modifications. Docker-Compose will
+`automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/multiple-compose-files/merge/>`_.
 
-Customization
-=============
+.. toctree::
+   :hidden:
+   :maxdepth: 1
 
-# TODO
-
-.. warning::
-
-   If you're updating Zammad, below commands will cause values set in
-   ``docker-compose.override.yml`` to be lost. You're expected to check
-   if the ``docker-compose.yml`` has changed and if so to adjust it accordingly.
-
+   /install/docker-compose/environment
 
 How to Run Commands in the Stack
 ================================
@@ -134,9 +135,3 @@ should be done via one of the following methods:
 If you need to retrieve information from the rails server, you can place
 for example ``pp`` (pretty print) in front of your rails command. This
 leads to an output in your terminal.
-
-.. toctree::
-   :hidden:
-   :maxdepth: 1
-
-   /install/docker-compose/environment

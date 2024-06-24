@@ -1,53 +1,7 @@
-Docker Compose Environment Variables
-************************************
+Docker Environment Variables
+****************************
 
-Zammad's Docker Compose supports several environment variables that are not
-set by default. The best way to provide these is within the file ``.env``.
-If you run a Portainer setup, you can even import it via UI.
-
-In case our default ``docker-compose.yml`` is not good enough, please use
-``docker-compose.override.yml`` to provide own changes.
-
-.. note::
-
-   Unless stated otherwise, below environment variables count for the whole
-   Zammad stack and not single containers. Below grouping is to help you find
-   them better, but do not reflect their container.
-
-Docker Compose
---------------
-.. list-table::
-   :widths: 28 20 52
-   :header-rows: 1
-
-   * - Variable
-     - Default Value
-     - Description
-   * - RESTART
-     - ``always``
-     - By default containers will be restarted in case they stopped for whatever
-       reason.
-   * - VERSION
-     - See hint below.
-     - This variables contains the version tag. Example: ``3.6.0-20``
-       We update this string from time to time, Docker Hub may contain more
-       current tags to the moment you're pulling.
-
-.. hint::
-
-   By default, docker compose will use a fixed Zammad version like
-   ``6.2.0-1``, which refers to a specific commit. In this scenario,
-   you are responsible to apply updates by updating the version on your own.
-
-   Alternatively, you can also use floating versions that will give you automatic updates
-   via ``docker compose pull``:
-
-   .. code-block:: sh
-
-      # VERSION=6.2     # all patchlevel updates
-      # VERSION=6       # including minor updates
-      # VERSION=latest  # all updates of stable versions, including major
-      # VERSION=develop # bleeding-edge development version (not recommended for production use)
+Zammad's docker stack supports these environment variables.
 
 Zammad
 ------
@@ -58,6 +12,12 @@ Zammad
    * - Variable
      - Default Value
      - Description
+   * - VERSION
+     - (current stable version of Zammad)
+     - Allows customization of the Zammad image tag. Example: ``6.3.1-54``.
+       This default version may be increased when you update your Zammad docker stack.
+       Please see the `example env template <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_
+       for more details on this variable.
    * - AUTOWIZARD_JSON
      - ``''``
      - This variable allows you to provide initial configuration data for your
@@ -66,32 +26,33 @@ Zammad
    * - ZAMMAD_WEB_CONCURRENCY
      - ``(unset)``
      - Allows spawning ``n`` workers to allow more simultaneous connections for
-       Zammads web UI. Please also note :doc:`/appendix/configure-env-vars` in
-       this regard.
+       Zammads web UI. See also: :doc:`/appendix/configure-env-vars`
    * - | ZAMMAD_SESSION_JOBS
        | _CONCURRENT
      - ``(unset)``
      - Allows spawning ``n`` session job workers to release pressure from
-       Zammads background worker. Please also note
-       :doc:`/appendix/configure-env-vars` in this regard.
+       Zammads background worker. See also: :doc:`/appendix/configure-env-vars`
    * - | ZAMMAD_PROCESS_SCHEDULED
        | _JOBS_WORKERS
      - ``(unset)``
      - Allows spawning ``1`` independent scheduled job worker to release
-       pressure from Zammads background worker. Please also note
-       :doc:`/appendix/configure-env-vars` in this regard.
+       pressure from Zammads background worker. See also: :doc:`/appendix/configure-env-vars`
    * - | ZAMMAD_PROCESS_DELAYED
        | _JOBS_WORKERS
      - ``(unset)``
      - Allows spawning ``n`` delayed job workers to release pressure from
-       Zammads background worker. Please also note
-       :doc:`/appendix/configure-env-vars` in this regard.
+       Zammads background worker. See also: :doc:`/appendix/configure-env-vars`
    * - RAILS_TRUSTED_PROXIES
      - ``['127.0.0.1', '::1']``
      - By default Zammad trusts localhost proxies only.
+   * - MEMCACHE_SERVERS
+     - ``zammad-memcached:11211``
+     - Provide your own Memcached instance to Zammad if you already have one.
+   * - REDIS_URL
+     - ``redis://zammad-redis:6379``
+     - Provide your own Redis instance if you already have one. Please note
+       that this method currently does not allow authentication.
 
-       .. danger::
-          **Only change this option if you know what you're doing!**
 
 .. _this example file:
    https://github.com/zammad/zammad/blob/stable/contrib/auto_wizard_example.json
@@ -137,78 +98,6 @@ Elasticsearch
      - Allows you to let the compose scripts ignore self signed SSL certificates
        for your Elasticsearch installation if needed.
 
-Memcached
----------
-.. list-table::
-   :widths: 28 20 52
-   :header-rows: 1
-
-   * - Variable
-     - Default Value
-     - Description
-   * - MEMCACHE_SERVERS
-     - ``zammad-memcached:11211``
-     - Provide your own Memcached instance if you already have one existing.
-
-       .. hint::
-          Was ``MEMCACHED_HOST`` before 5.0.x!
-
-Redis
------
-.. list-table::
-   :widths: 28 20 52
-   :header-rows: 1
-
-   * - Variable
-     - Default Value
-     - Description
-   * - REDIS_URL
-     - ``redis://zammad-redis:6379``
-     - Provide your own Redis instance if you already have one.
-
-       .. warning::
-          This method currently does not allow authentication.
-
-NGINX
------
-.. list-table::
-   :widths: 28 20 52
-   :header-rows: 1
-
-   * - Variable
-     - Default Value
-     - Description
-   * - NGINX_PORT
-     - ``8080``
-     - The port Nginx will listen on.
-   * - NGINX_SERVER_NAME
-     - ``_``
-     - By default the Nginx container of Zammad will respond to all request.
-       You can provide your IP / FQDN if you want to.
-   * - NGINX_SERVER_SCHEME
-     - ``\$scheme``
-     - If the Nginx container for Zammad **is not** the upstream server
-       (aka you're using another proxy in front of nginx) ``$scheme`` may be
-       wrong. You can set the correct scheme ``http`` or ``https`` if needed.
-   * - ZAMMAD_RAILSSERVER_HOST
-     - ``zammad-railsserver``
-     - Host name of the rails server container.
-   * - ZAMMAD_RAILSSERVER_PORT
-     - ``3000``
-     - Port of Zammads rails server.
-
-       .. include:: /install/docker-compose/include-env-var-note.rst
-   * - ZAMMAD_WEBSOCKET_HOST
-     - ``zammad-websocket``
-     - Host name of Zammads websocket server.
-   * - ZAMMAD_WEBSOCKET_PORT
-     - ``6042``
-     - Port of Zammads websocket server.
-
-       .. include:: /install/docker-compose/include-env-var-note.rst
-
-.. include:: /getting-started/include-csrf-hints.rst
-
 PostgreSQL
 ----------
 .. list-table::
@@ -243,4 +132,43 @@ PostgreSQL
        .. note::
           On own database servers this setting might be troublesome.
 
+nginx
+-----
+.. list-table::
+   :widths: 28 20 52
+   :header-rows: 1
 
+   * - Variable
+     - Default Value
+     - Description
+   * - NGINX_EXPOSE_PORT
+     - ``8080``
+     - The port to be exposed for accessing the Zammad stack from outside.
+       Change this to another value if you already have an existing service
+       listening on this port.
+   * - NGINX_PORT
+     - ``8080``
+     - The internal port the nginx service will listen on.
+   * - NGINX_SERVER_NAME
+     - ``_``
+     - By default the Nginx container of Zammad will respond to all request.
+       You can provide your IP / FQDN if you want to.
+   * - NGINX_SERVER_SCHEME
+     - ``\$scheme``
+     - If the Nginx container for Zammad **is not** the upstream server
+       (aka you're using another proxy in front of nginx) ``$scheme`` may be
+       wrong. You can set the correct scheme ``http`` or ``https`` if needed.
+   * - ZAMMAD_RAILSSERVER_HOST
+     - ``zammad-railsserver``
+     - Host name of the rails server container.
+   * - ZAMMAD_RAILSSERVER_PORT
+     - ``3000``
+     - Port of Zammads rails server. See also: :doc:`/appendix/configure-env-vars`
+   * - ZAMMAD_WEBSOCKET_HOST
+     - ``zammad-websocket``
+     - Host name of Zammads websocket server.
+   * - ZAMMAD_WEBSOCKET_PORT
+     - ``6042``
+     - Port of Zammads websocket server. See also: :doc:`/appendix/configure-env-vars`
+
+.. include:: /getting-started/include-csrf-hints.rst
