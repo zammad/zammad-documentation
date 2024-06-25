@@ -1,13 +1,8 @@
 Set up Elasticsearch
 ********************
 
-Zammad's search function can be powered by Elasticsearch (which is highly
-recommended).
-
-This guide uses the ``zammad run`` command prefix in command line examples.
-This prefix is only applicable to package installations.
-If you installed from source, be sure to omit this prefix
-and run the bare ``rails ...`` or ``rake ...`` commands instead.
+Zammad's search function can be powered by Elasticsearch (which is **highly
+recommended**).
 
 If these manual steps aren't what you are looking for, consider a `hosted Zammad
 setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </install/docker-compose>`.
@@ -15,16 +10,12 @@ setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </inst
 Step 1: Installation
 ====================
 
-Starting with Zammad 4.0, our packages allow you to decide whether to use
-``elasticsearch`` or ``elasticsearch-oss``.
-
-For installation instructions please have a look at
+Zammad allows you to use **elasticsearch** or **elasticsearch-oss**.
+For installation instructions please follow
 `Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
-
 
 Step 2: Configuration
 =====================
-
 
 .. code-block:: sh
 
@@ -79,6 +70,12 @@ commands, as this will fail otherwise.
 * install from :doc:`package <package>`
 * install from :doc:`source <source>`
 
+.. note::
+   This guide uses the ``zammad run`` command prefix in command line examples.
+   This prefix is only applicable to package installations.
+   If you installed from source, be sure to omit this prefix
+   and run the bare ``rails ...`` or ``rake ...`` commands instead.
+
 .. code-block:: sh
 
    # Set the Elasticsearch server address
@@ -91,7 +88,6 @@ commands, as this will fail otherwise.
    # Optionally, you can specify a number of CPU cores which are used for
    # rebuilding the searchindex, as in the following example with 8 cores:
    $ zammad run rake zammad:searchindex:rebuild[8]
-
 
 Optional settings
 -----------------
