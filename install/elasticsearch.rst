@@ -80,14 +80,14 @@ commands, as this will fail otherwise.
 
    # Set the Elasticsearch server address
    # It has to be https starting with ES8
-   $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+   $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
    # Build the search index
-   $ zammad run rake zammad:searchindex:rebuild
+   $ sudo zammad run rake zammad:searchindex:rebuild
 
    # Optionally, you can specify a number of CPU cores which are used for
    # rebuilding the searchindex, as in the following example with 8 cores:
-   $ zammad run rake zammad:searchindex:rebuild[8]
+   $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
 Optional settings
 -----------------
