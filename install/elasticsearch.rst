@@ -19,7 +19,7 @@ Starting with Zammad 4.0, our packages allow you to decide whether to use
 ``elasticsearch`` or ``elasticsearch-oss``.
 
 For installation instructions please have a look at
-`Elastic's installation instructions <https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html>`_.
+`Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
 
 
 Step 2: Configuration
@@ -82,6 +82,7 @@ commands, as this will fail otherwise.
 .. code-block:: sh
 
    # Set the Elasticsearch server address
+   # It has to be https starting with ES8
    $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
    # Build the search index
@@ -90,10 +91,6 @@ commands, as this will fail otherwise.
    # Optionally, you can specify a number of CPU cores which are used for
    # rebuilding the searchindex, as in the following example with 8 cores:
    $ zammad run rake zammad:searchindex:rebuild[8]
-
-Starting with Elasticsearch 8, you need to use a HTTPS URL in
-'es_url' as 'https://localhost:9200' and configure an
-authentication (see "Authentication" below).
 
 
 Optional settings
