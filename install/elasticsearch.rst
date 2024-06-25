@@ -20,30 +20,19 @@ Starting with Zammad 4.0, our packages allow you to decide whether to use
 
 For installation instructions please have a look at
 `Elastic's installation instructions <https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html>`_.
-If you run an older version than Elasticsearch 8, you have to install
-the ingest-attachment plugin manually via:
+
+
+Step 2: Configuration
+=====================
+
 
 .. code-block:: sh
 
+   # Install the ingest-attachment plugin manually, if running ES 7 or older:
    $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-You should also increase the virtual memory map limit:
-
-.. code-block:: sh
-
+   # Increase the virtual memory map limit
    $ sysctl -w vm.max_map_count=262144
-
-After you installed Elasticsearch (and its attachment plugin if on ES 7 or
-older), ensure to enable it by default and start it:
-
-.. code-block:: sh
-
-   $ systemctl start elasticsearch
-   $ systemctl enable elasticsearch
-
-
-Step 2: Suggested Configuration
-===============================
 
 We use the following settings to optimize the performance of our Elasticsearch
 servers. You may want to append that to your ``elasticsearch.yml`` as a useful
@@ -71,6 +60,14 @@ basic configuration.
    # Available in version 6.6+ only.
    indices.query.bool.max_clause_count: 2000
 
+After installation and configuration, ensure to enable Elasticsearch
+by default and start it:
+
+.. code-block:: sh
+
+   $ systemctl start elasticsearch
+   $ systemctl enable elasticsearch
+
 .. _configure_zammad_with_elasticsearch:
 
 Step 3: Connect Zammad
@@ -94,7 +91,7 @@ commands, as this will fail otherwise.
    # rebuilding the searchindex, as in the following example with 8 cores:
    $ zammad run rake zammad:searchindex:rebuild[8]
 
-Starting with Elasticsearch 8+, you need to use a HTTPS URL in
+Starting with Elasticsearch 8, you need to use a HTTPS URL in
 'es_url' as 'https://localhost:9200' and configure an
 authentication (see "Authentication" below).
 
@@ -102,9 +99,9 @@ authentication (see "Authentication" below).
 Optional settings
 -----------------
 
-We collected some useful settings you may want to adjust. For further
-information, please have a look at
-`Elastic's documentation <https://www.elastic.co/docs>`_.
+We collected some useful settings you may want to apply. For further
+information please have a look at
+`Elastic's documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html>`_.
 
 .. tabs::
 
