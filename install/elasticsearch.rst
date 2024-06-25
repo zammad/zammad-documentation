@@ -20,10 +20,10 @@ Step 2: Configuration
 .. code-block:: sh
 
    # Install the ingest-attachment plugin manually, if running ES 7 or older
-   $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+   $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    # Increase the virtual memory map limit
-   $ sysctl -w vm.max_map_count=262144
+   $ sudo sysctl -w vm.max_map_count=262144
 
 We use the following settings to optimize the performance of our Elasticsearch
 servers. You may want to append that to your ``elasticsearch.yml`` as a useful
