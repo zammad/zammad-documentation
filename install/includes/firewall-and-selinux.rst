@@ -13,11 +13,11 @@ SELinux
       .. code-block:: sh
 
          $ # Allow nginx or apache to access public files of Zammad and communicate
-         $ chcon -Rv --type=httpd_sys_content_t /opt/zammad/public/
-         $ setsebool httpd_can_network_connect on -P
-         $ semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
-         $ restorecon -Rv /opt/zammad/public/
-         $ chmod -R a+r /opt/zammad/public/
+         $ sudo chcon -Rv --type=httpd_sys_content_t /opt/zammad/public/
+         $ sudo setsebool httpd_can_network_connect on -P
+         $ sudo semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
+         $ sudo restorecon -Rv /opt/zammad/public/
+         $ sudo chmod -R a+r /opt/zammad/public/
 
    .. tab:: OpenSUSE
 
@@ -39,9 +39,9 @@ Firewall
       .. code-block:: sh
 
          $ # Open Port 80 and 443 on your Firewall
-         $ ufw allow 80
-         $ ufw allow 443
-         $ ufw reload
+         $ sudo ufw allow 80
+         $ sudo ufw allow 443
+         $ sudo ufw reload
 
    .. tab:: Debian
 
@@ -57,8 +57,8 @@ Firewall
       .. code-block::
 
          # Open Port 80 and 443 for Zammad
-         tcp dport { http, https } accept
-         udp dport { http, https } accept
+         sudo tcp dport { http, https } accept
+         sudo udp dport { http, https } accept
 
       The result should look like the following. Keep in mind that your
       enviroment could require different / more rules.
@@ -86,16 +86,16 @@ Firewall
             }
          }
 
-      To load your new rules, simply run ``systemctl reload nftables``.
+      To load your new rules, simply run ``sudo systemctl reload nftables``.
 
    .. tab:: CentOS
 
       .. code-block:: sh
 
          $ # Open Port 80 and 443 on your Firewall
-         $ firewall-cmd --zone=public --add-service=http --permanent
-         $ firewall-cmd --zone=public --add-service=https --permanent
-         $ firewall-cmd --reload
+         $ sudo firewall-cmd --zone=public --add-service=http --permanent
+         $ sudo firewall-cmd --zone=public --add-service=https --permanent
+         $ sudo firewall-cmd --reload
 
    .. tab:: OpenSUSE
 
@@ -122,7 +122,7 @@ Firewall
 
       .. code-block:: sh
 
-         systemctl restart SuSEfirewall2
+         sudo systemctl restart SuSEfirewall2
 
    .. tab:: other
 

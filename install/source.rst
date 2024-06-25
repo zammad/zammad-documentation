@@ -1,4 +1,4 @@
-Install from source
+Source Installation
 *******************
 
 The source installation is the most difficult installation type of Zammad.

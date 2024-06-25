@@ -19,7 +19,7 @@ Step 2: Configuration
 
 .. code-block:: sh
 
-   # Install the ingest-attachment plugin manually, if running ES 7 or older:
+   # Install the ingest-attachment plugin manually, if running ES 7 or older
    $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    # Increase the virtual memory map limit
