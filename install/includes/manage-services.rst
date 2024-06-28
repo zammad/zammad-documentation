@@ -14,6 +14,6 @@ with the parent ``zammad``.
 
    $ # Zammads background worker - relevant for all delayed- and background jobs
    $ systemctl (status|start|stop|restart) zammad-worker
-   
+
    $ # Zammads websocket server for session related information
    $ systemctl (status|start|stop|restart) zammad-websocket
