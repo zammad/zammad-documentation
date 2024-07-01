@@ -11,7 +11,7 @@ this is the current stable) would be:
 ``2.4`` → ``3.0`` → ``4.0`` → ``5.0`` → ``latest stable (5.1)``
 
 If you don't have time for updating all the time, please consider
-using `Zammad hosting`_ for your and your customer's safety.
+using `Zammad hosting`_ for your and your customers' safety.
 
 .. _release notes: https://zammad.com/en/releases
 .. _Zammad hosting: https://zammad.com/en/pricing
