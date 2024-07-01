@@ -81,7 +81,7 @@ using `Zammad hosting`_ for your and your customers' safety.
             `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
             and follow the instructions.
 
-            If you are using plugins for Elasticsearch, make sure they are
+            In case your are using plugins for Elasticsearch, make sure they are
             updated as well (note: starting with Elasticsearch 8, the
             ingest-attachment is no longer a plugin, it's now included in
             Elasticsearch).
@@ -90,12 +90,6 @@ using `Zammad hosting`_ for your and your customers' safety.
          Yes, that's it!
 
    .. tab:: Source
-
-      .. danger::
-
-         Zammad's former ``scheduler.rb`` script has changed and is now called
-         ``background-worker.rb``. Please ensure to reinstall the service - see
-         :ref:`source-install-systemd-reference`!
 
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches
@@ -170,7 +164,7 @@ using `Zammad hosting`_ for your and your customers' safety.
             `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
             and follow the instructions.
 
-            If you are using plugins for Elasticsearch, make sure they are
+            In case you are using plugins for Elasticsearch, make sure they are
             updated as well (note: starting with Elasticsearch 8, the
             ingest-attachment is no longer a plugin, it's now included in
             Elasticsearch).
