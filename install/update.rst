@@ -78,7 +78,8 @@ using `Zammad hosting`_ for your and your customer's safety.
             supported versions).
 
             If you have to update Elasticsearch, please have a look at their
-            `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_.
+            `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
+            and follow the instructions.
 
             If you are using plugins for Elasticsearch, make sure they are
             updated as well (note: starting with Elasticsearch 8, the
@@ -159,10 +160,25 @@ using `Zammad hosting`_ for your and your customer's safety.
             $ rails r "Locale.sync"
             $ rails r "Translation.sync"
 
-      Step 8: Start Zammad services
+      Step 8: Check if Elasticseach update is necessary
+            Make sure to have a
+            supported version of Elasticsearch installed (see
+            :ref:`software prerequisites <prerequisites_elasticsearch>` for
+            supported versions).
+
+            If you have to update Elasticsearch, please have a look at their
+            `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
+            and follow the instructions.
+
+            If you are using plugins for Elasticsearch, make sure they are
+            updated as well (note: starting with Elasticsearch 8, the
+            ingest-attachment is no longer a plugin, it's now included in
+            Elasticsearch).
+
+      Step 9: Start Zammad services
          Start the application server, web socket server and scheduler.
 
-      Step 9: Log into Zammad
+      Step 10: Log into Zammad
          Yes, that's it!
 
    .. tab:: Docker
