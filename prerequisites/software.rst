@@ -226,6 +226,7 @@ The installation and configuration is out of our scope.
 Please follow the official vendor guides and ensure to have a
 tight security on your installation.
 
+.. _prerequisites_elasticsearch:
 
 2.8. Elasticsearch (optional)
 -----------------------------
