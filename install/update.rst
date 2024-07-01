@@ -1,29 +1,17 @@
 Updating Zammad
-***************
+===============
 
-.. note::
+Before updating Zammad, we strongly recommend to take a look at our
+`release notes`_. You can find information about features and fixes as well as
+technical remarks and breaking changes.
 
-   🙈 Better safe than sorry
-      Before updating to a new version, please have a look into the
-      `release notes`_. These will provide further information on new
-      feature and fixes, but also technical remarks that may be relevant
-      during an upgrade!
+Be aware that you **should not** skip major Zammad versions while updating.
+That means, for example, your upgrade path from version 2.4 to 5.1 (assuming
+this is the current stable) would be:
+``2.4`` → ``3.0`` → ``4.0`` → ``5.0`` → ``latest stable (5.1)``
 
-   🤓 What about Zammad upgrade paths...?
-      In general we do not encourage you to skip Zammad versions or have
-      long update cycles. Zammad potentially stores very sensitive information
-      (personal information) which is why updating is very important.
-
-      If you don't have time for updating all the time
-      (nobody got time for that, right?), please consider using `Zammad hosting`_
-      for your and your customers' safety.
-
-      In case you couldn't update for a longer time, please ensure to at least
-      update from **major to major** version. Big version jumps *may* work but
-      usually go terribly wrong. As example, expecting the current stable
-      version of Zammad being 5.1 and your instance being on Zammad 2.4, your
-      path would look like so:
-      ``2.4`` → ``3.0`` → ``4.0`` → ``5.0`` → ``latest stable (5.1)``
+If you don't have time for updating all the time, please consider
+using `Zammad hosting`_ for your and your customer's safety.
 
 .. _release notes: https://zammad.com/en/releases
 .. _Zammad hosting: https://zammad.com/en/pricing
@@ -34,7 +22,7 @@ Updating Zammad
 
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches
-         :doc:`Zammad’s requirements </prerequisites/software>`.
+         :doc:`Zammad's requirements </prerequisites/software>`.
 
       Step 2: Stop Zammad
          .. code-block:: sh
@@ -72,21 +60,30 @@ Updating Zammad
                   $ zypper ref
                   $ zypper up
 
-         .. warning::
-
             The package comes with maintenance scripts that will run regular
-            tasks during updates for you.
+            tasks during updates for you. However, you should **always** have
+            a look on the outputs these helper scripts generate. Ignoring said
+            output may lead to incomplete updates that may corrupt data or
+            lead to issues.
 
-            | **However**
-            | Do not run Zammad updates unattended and **always** have a look
-              on the outputs these helper scripts generate. Ignoring said
-              output may lead to incomplete updates that may corrupt data or
-              lead to issues you find *way too late*.
+      Step 6: Additional steps
+         Check release notes
+            If not already done, check our `release notes`_ if extra steps are
+            necessary and perform them, if applicable.
 
-      Step 6: Run required extra steps
-         Extra steps needed for updates are mentioned in our release news.
+         Updating Elasticsearch
+            Updating Elasticsearch may be relevant, too. Make sure to have a
+            supported version of Elasticsearch installed (see
+            :ref:`software prerequisites <prerequisites_elasticsearch>` for
+            supported versions).
 
-         `Updating Elasticsearch`_ may be relevant in this step.
+            If you have to update Elasticsearch, please have a look at their
+            `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_.
+
+            If you are using plugins for Elasticsearch, make sure they are
+            updated as well (note: starting with Elasticsearch 8, the
+            ingest-attachment is no longer a plugin, it's now included in
+            Elasticsearch).
 
       Step 7: Log into Zammad
          Yes, that's it!
@@ -101,7 +98,7 @@ Updating Zammad
 
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches
-         :doc:`Zammad’s requirements </prerequisites/software>`.
+         :doc:`Zammad's requirements </prerequisites/software>`.
 
          .. tip:: **🤓 Ruby version changed?**
 
@@ -191,47 +188,3 @@ Updating Zammad
             $ docker-compose pull
             $ docker-compose up -d
 
-Updating Elasticsearch
-======================
-
-.. warning::
-
-   Updating Elasticsearch **does not** automatically update it's plugins!
-   This usually isn't an issue if Zammad is being updated right after
-   Elasticsearch.
-
-If you want to upgrade your elasticsearch installation, please take a look at the
-`elasticsearch documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
-as it will have the most current information for you.
-
-If, for whatever reason, you need to rebuild your search index after upgrading,
-use:
-
-.. code-block:: sh
-
-   $ zammad run rake zammad:searchindex:rebuild
-
-Optionally, you can specify a number of CPU cores which are used for rebuilding
-the searchindex, as in the following example with 8 cores:
-
-.. code-block:: sh
-
-   $ zammad run rake zammad:searchindex:rebuild[8]
-
-.. hint:: **🤓 Zammad 5.2 comes with changes**
-
-   As of Zammad 5.2 the reindex command has changed!
-   You will still be able to use the old method until Zammad 6, however, will
-   receive a deprecation warning.
-
-.. warning::
-
-   This step may fail if Zammad is under heavy load: Elasticsearch locks the
-   indices from deletion if you're pumping in new data, like receiving a new
-   ticket. (This only applies to single-node deployments, not clusters.)
-
-   If it does, try killing Zammad first::
-
-      $ systemctl stop zammad
-      $ zammad run rake zammad:searchindex:rebuild
-      $ systemctl start zammad
