@@ -90,14 +90,14 @@ ZAMMAD_HTTP_TYPE
    Defines the HTTP protocol of your instance.
    Possible values: ``http`` or ``https``
 
-   Default: ``http``
+   Default: unset
 
 .. _fqdn:
 
 ZAMMAD_FQDN
    Defines the fully qualified domain name of the system.
 
-   Default: ``zammad.example.com``
+   Default: unset
 
 .. _network_options:
 
