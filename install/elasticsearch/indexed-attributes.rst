@@ -143,6 +143,9 @@ Ticket
    * - id
      - ``1``, ``111``
      - ID of the Ticket
+   * - last_close_at
+     - ``null``, ``2021-03-03T14:50:20.673Z``
+     - Last close time, set on each closing of ticket
    * - last_contact_agent_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
      - Time stamp of last communication type contact of any agent
