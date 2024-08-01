@@ -1,10 +1,20 @@
 Backup and Restore
 ******************
 
-Zammad comes with a collection of scripts for easy backup & restore for default
-installations. These scripts are located within ``/opt/zammad/contrib/backup``.
+.. toctree::
+   :hidden:
 
-.. warning:: **⚖️ Important things to note beforehand**
+   configuration
+   backup
+   restore
+   migrate-hosts
+   troubleshooting
+   little-helpers
+
+Zammad ships scripts for backup & restore in package installations which you
+can use for your backup strategy.
+
+.. warning::
 
    These scripts do not come with any warranty and may not work in your
    specific use case. This depends on the configuration and installation type
@@ -18,62 +28,75 @@ installations. These scripts are located within ``/opt/zammad/contrib/backup``.
 Getting Started
 ===============
 
-.. toctree::
-   :hidden:
+These scripts are located in ``/opt/zammad/contrib/backup``. The following files
+might be important for you:
 
-   configuration
-   backup
-   restore
-   migrate-hosts
-   troubleshooting
-   little-helpers
+- Backup configuration file: ``config.dist``
+- Script for backing up your data: ``zammad_backup.sh``
+- Script for restoring your data: ``zammad_restore.sh``
 
-Before you continue, please also note the listed limitations to save your
-precious time.
+Head over to the next section for a simple backup configuration. In
+:ref:`advanced_backup`, you can find links to sub pages with a more
+detailed explanation of the scripts.
 
-   :doc:`🔨 Adjust script settings </appendix/backup-and-restore/configuration>`
-      Learn more about configuration options for backup and restore to see
-      scopes better.
+Basic Backup Setup
+------------------
 
-   :doc:`🗃️ Create Backups </appendix/backup-and-restore/backup>`
-      How to create full dumps of your Zammad installation.
+#. Rename/copy the ``config.dist`` file to ``config``.
+#. Change default parameters in  the ``config`` file if needed. Learn more
+   about the configuration options
+   :doc:`here </appendix/backup-and-restore/configuration>`.
+#. Execute ``/opt/zammad/contrib/backup/zammad_backup.sh``.
 
-   :doc:`🗄️ Restore Backups </appendix/backup-and-restore/restore>`
-      Update went wrong and you need to go back? How to restore your instance on
-      a new or the same host.
 
-   :doc:`🔀 Migrating to new hosts </appendix/backup-and-restore/migrate-hosts>`
-      This is a general summary on how to best migrate Zammad from host to host.
-      We'll reference to backup creation and restoration as needed.
+.. _advanced_backup:
 
-   :doc:`🔥 Troubleshooting </appendix/backup-and-restore/troubleshooting>`
-      Things hit the fan? This page might help you out of that pit.
+Advanced Setup and Restore
+--------------------------
 
-   :doc:`🤝 Helper scripts </appendix/backup-and-restore/little-helpers>`
-      These scripts may be helpful if Backup & Restore does not work as expected.
-      However note that these are potentially destructive.
+:doc:`Adjust script settings </appendix/backup-and-restore/configuration>`
+   Learn more about configuration options for backup and restore to see
+   scopes better.
+
+:doc:`Create Backups </appendix/backup-and-restore/backup>`
+   How to create full dumps of your Zammad installation.
+
+:doc:`Restore Backups </appendix/backup-and-restore/restore>`
+   Update went wrong and you need to go back? How to restore your instance on
+   a new or the same host.
+
+Additional Information
+----------------------
+
+:doc:`Migrating to new hosts </appendix/backup-and-restore/migrate-hosts>`
+   This is a general summary on how to best migrate Zammad from host to host.
+   We'll reference to backup creation and restoration as needed.
+
+:doc:`Troubleshooting </appendix/backup-and-restore/troubleshooting>`
+   Things hit the fan? This page might help you out of that pit.
+
+:doc:`Helper scripts </appendix/backup-and-restore/little-helpers>`
+   These scripts may be helpful if Backup & Restore does not work as expected.
+   However note that these are potentially destructive.
 
 Limitations
 ===========
 
 Please note the following limitations which may affect script functionality
-or availability.
+or availability:
 
-   * Restoration via script on docker and source code based installations may
-     not work and is out of scope of this documentation as of now
-   * Backup & Restore is only available for PostgreSQL and MySQL / MariaDB like
-     installations
-   * Starting with Zammad 5.0 the scripts *require* user & password
-     authentication. This is supported by most of our installation types
-   * Backup & Restore is always a full dump of everything (no incrementals)
-   * Restoring or backing up specific information (e.g. Tickets, Users, ...)
-     is not supported
-   * | Switching / Converting database installations *is not* possible
-     | Refer this guide to manually switch databases:
-       :doc:`/appendix/migrate-to-postgresql`
-   * Environmental settings (like e.g. :doc:`/appendix/configure-env-vars`) are
-     not backed up and thus require you to manually set them on a new host
-   * Restoration into a *older* Zammad version is not possible nor supported
-   * *Do not* attempt to restore backup files from custom scripts with the
-     provided scripts by Zammad. This is most likely subject to fail or bring
-     issues you may discover too late.
+   * These scripts won't work on container and source code based installations.
+   * It only works for PostgreSQL installations.
+   * The backup is always a full dump (no incremental backup).
+   * Partial backup and restore (e.g. only specific data like tickets, users)
+     is not possible.
+   * Switching database system **is not** possible. See
+     :doc:`here </appendix/migrate-to-postgresql>` how to manually switch
+     databases.
+   * System settings (like
+     :doc:`environment variables </appendix/configure-env-vars>`) are
+     not backed up.
+   * Restore to an older Zammad version is not possible.
+   * **Do not** restore backup files from custom scripts with the
+     provided scripts by Zammad. This might cause problems.
+
