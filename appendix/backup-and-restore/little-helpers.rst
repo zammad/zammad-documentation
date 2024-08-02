@@ -1,4 +1,4 @@
-Helper scripts
+Helper Scripts
 **************
 
 Warning
