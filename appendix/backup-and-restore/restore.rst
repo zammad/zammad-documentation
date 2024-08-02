@@ -25,6 +25,7 @@ your data.
      adjusting the backup and restore scripts to your need in an
      independent directory. You're working out of script and
      documentation scope!
+
 * PostgreSQL based installations will drop and re-create the database!
   MySQL / MariaDB based installations restore on the existing database.
 * You require at least twice the backed up Zammad instance size of free
