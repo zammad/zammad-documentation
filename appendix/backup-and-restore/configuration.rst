@@ -64,4 +64,4 @@ parameter in the table below.
 
 After this you'll be ready to continue with either
 :doc:`creating your first backup </appendix/backup-and-restore/backup>` or
-:doc:`restoring an existing backup </appendix/backup-and-restore/backup>`.
+:doc:`restoring an existing backup </appendix/backup-and-restore/restore>`.
