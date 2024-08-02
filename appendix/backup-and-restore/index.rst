@@ -1,16 +1,6 @@
 Backup and Restore
 ******************
 
-.. toctree::
-   :hidden:
-
-   configuration
-   backup
-   restore
-   migrate-hosts
-   troubleshooting
-   little-helpers
-
 Zammad ships scripts for backup & restore in package installations which you
 can use for your backup strategy.
 
@@ -54,30 +44,44 @@ Basic Backup Setup
 Advanced Setup and Restore
 --------------------------
 
-:doc:`Adjust script settings </appendix/backup-and-restore/configuration>`
-   Learn more about configuration options for backup and restore to see
-   scopes better.
+Adjust script settings
+   Learn more about configuration options for backup and restore
+   :doc:`here </appendix/backup-and-restore/configuration>`.
 
-:doc:`Create Backups </appendix/backup-and-restore/backup>`
-   How to create full dumps of your Zammad installation.
+Create Backups
+   Learn how to create full dumps of your Zammad installation
+   :doc:`here </appendix/backup-and-restore/backup>`.
 
-:doc:`Restore Backups </appendix/backup-and-restore/restore>`
-   Update went wrong and you need to go back? How to restore your instance on
-   a new or the same host.
+Restore Backups
+   Learn how to restore your instance on the same host
+   :doc:`here </appendix/backup-and-restore/restore>`.
 
 Additional Information
 ----------------------
 
-:doc:`Migrating to new hosts </appendix/backup-and-restore/migrate-hosts>`
-   This is a general summary on how to best migrate Zammad from host to host.
-   We'll reference to backup creation and restoration as needed.
+Migrating to a new host
+   :doc:`Here </appendix/backup-and-restore/migrate-hosts>` you can read how to
+   migrate Zammad from host to host.
 
-:doc:`Troubleshooting </appendix/backup-and-restore/troubleshooting>`
-   Things hit the fan? This page might help you out of that pit.
+Troubleshooting
+   If something went wrong,
+   :doc:`this page </appendix/backup-and-restore/troubleshooting>` might help
+   you out.
 
-:doc:`Helper scripts </appendix/backup-and-restore/little-helpers>`
-   These scripts may be helpful if Backup & Restore does not work as expected.
-   However note that these are potentially destructive.
+Helper scripts
+   Maybe this is helpful for you if backup & restore does not work as expected.
+   See :doc:`here </appendix/backup-and-restore/little-helpers>` for more
+   information.
+
+.. toctree::
+   :hidden:
+
+   configuration
+   backup
+   restore
+   migrate-hosts
+   troubleshooting
+   little-helpers
 
 Limitations
 ===========
@@ -99,4 +103,5 @@ or availability:
    * Restore to an older Zammad version is not possible.
    * **Do not** restore backup files from custom scripts with the
      provided scripts by Zammad. This might cause problems.
+
 
