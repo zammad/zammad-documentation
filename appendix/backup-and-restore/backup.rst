@@ -10,7 +10,10 @@ Before running your first backup, please have a look at the
 Backup
 ======
 
-In general, running a Zammad backup is as simple as running:
+It is recommended to stop Zammad before the backup runs.
+
+To create a backup, execute the script ``zammad_backup.sh`` as ``root``
+or ``zammad`` user:
 
 .. code-block:: sh
 
@@ -33,22 +36,6 @@ The backup process should look like this one:
 
    # Zammad backuped successfully - Fri Jan 21 17:53:57 CET 2022!
 
-*Sample backup process with default*
-:doc:`settings </appendix/backup-and-restore/configuration>`.
-
-Additional Information
-======================
-
-* The backup script can be either run as ``zammad`` or ``root`` user.
-* Stopping Zammad is not required (but suggested) technically. It may be
-  required in your case!
-* Keep in mind that a running Zammad instance keeps changing data which may
-  be an issue during long backup runs
-
-.. hint::
-
-   **😖 Having trouble backing up?**
-
-   Have a look at the
-   :doc:`troubleshooting section </appendix/backup-and-restore/troubleshooting>`
-   to address your issues.
+If you are facing issues while backing up your data, you can have a look at
+the :doc:`troubleshooting section </appendix/backup-and-restore/troubleshooting>`
+to see read about common issues.
