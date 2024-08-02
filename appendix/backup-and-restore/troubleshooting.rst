@@ -1,12 +1,10 @@
 Troubleshooting Backup & Restore
 ********************************
 
-If you encountered errors, they possibly can be corrected.
-
-.. hint:: **🥸 Your issue is not listed...?**
-
-   Please consult the `Zammad Community <https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5>`_
-   for technical assistance.
+You can find some common problems below. If your issue is not listed, feel
+free to consult the
+`Zammad Community <https://community.zammad.org/c/trouble-running-zammad-this-is-your-place/5>`_
+for technical assistance.
 
 Exit Codes
 ==========
@@ -16,7 +14,7 @@ solution. However, we do not guarantee a complete error handling.
 
 Beside the exit codes, there are also error messages returned to standard out.
 
-.. list-table:: Exit code list
+.. list-table::
    :widths: 10 80
    :header-rows: 1
 
@@ -30,55 +28,55 @@ Beside the exit codes, there are also error messages returned to standard out.
    * - ``2``
      - There was an error with database handling.
        This usually either happens if your database server does not meet script
-       requirements, login data being invalid or „broken‟ database dumps.
+       requirements, login data being invalid or "broken‟ database dumps.
    * - ``3``
      - There were issues with file / folder permissions.
 
-Classics
-========
-
-Here's some classics you may encounter.
+Common Problems
+===============
 
 ``password authentication failed`` or ``peer authentication failed``
    This indicates that the password of your Zammad DB user is either different
    from your ``database.yml`` or the wrong database server may be contacted.
 
-   „But my Zammad instance is running, how can it be wrong?‟
-      Zammad may fall back to socket connection which is why you didn't notice.
+   If your Zammad instance is running, it can be caused by falling back to
+   socket connection which is why you didn't notice.
 
-   What to do ...
-      Ensure that the provided user credentials are correct. You can also
-      consider to use the :ref:`reset_db_password` script, you can find in the
-      backup directory.
+   **What to do?**
+
+   Ensure that the provided user credentials are correct. You can also
+   consider to use the :ref:`reset_db_password` script, you can find in the
+   backup directory.
 
 ``Ident authentication failed for user``
    This indicates your database server does require ``ident`` authentication.
    That authentication method is not supported by our scripts.
 
-   What to do ...
-      Check ``pg_hba.conf`` of your PostgreSQL-Server and adjust it if needed.
+   **What to do?**
 
-      Usually authentication can be allowed like so:
 
-      .. code-block:: sh
+   Check the ``pg_hba.conf`` of your PostgreSQL-Server and adjust it if needed.
 
-         # THIS IS A SAMPLE AND MAY NOT FIT YOUR ENVIRONMENT
-         host    all             all             127.0.0.1/32            md5
-         host    all             all             ::1/128                 md5
+   Usually, authentication can be allowed like this:
 
-      Please consult the offical `PostgreSQL documentation`_ for this, as this
-      is out of our documentation scope.
+   .. code-block:: sh
+
+      # THIS IS A SAMPLE AND MAY NOT FIT YOUR ENVIRONMENT
+      host    all             all             127.0.0.1/32            md5
+      host    all             all             ::1/128                 md5
+
+   Please consult the official `PostgreSQL documentation`_ for this, as this
+   is out of our documentation scope.
 
 .. _PostgreSQL documentation: https://www.postgresql.org/docs/
 
 ``WARNING: You don't seem to have any attachments in the file system!``
-   This indicate you've set ``FULL_FS_DUMP`` to ``no`` but your instance
-   currently does not save attachments to file system.
+   This indicate that your instance currently does not save attachments to
+   file system.
 
    This warning will be shown once before creating an empty directory to allow
    the backup process to continue successfully.
 
-   If you believe that this is an error, please see
-   :admin-docs:`Storage Settings </settings/system/storage.html>`.
-   In case the issue posts, please consult the `Zammad Community`_.
+   Read more how to check and adjust the
+   :admin-docs:`storage settings </settings/system/storage.html>`.
 
