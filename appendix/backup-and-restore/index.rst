@@ -44,6 +44,16 @@ Basic Backup Setup
 Advanced Setup and Restore
 --------------------------
 
+.. toctree::
+   :hidden:
+
+   configuration
+   backup
+   restore
+   migrate-hosts
+   troubleshooting
+   little-helpers
+
 Adjust script settings
    Learn more about configuration options for backup and restore
    :doc:`here </appendix/backup-and-restore/configuration>`.
@@ -73,16 +83,6 @@ Helper scripts
    See :doc:`here </appendix/backup-and-restore/little-helpers>` for more
    information.
 
-.. toctree::
-   :hidden:
-
-   configuration
-   backup
-   restore
-   migrate-hosts
-   troubleshooting
-   little-helpers
-
 Limitations
 ===========
 
@@ -90,7 +90,7 @@ Please note the following limitations which may affect script functionality
 or availability:
 
    * These scripts won't work on container and source code based installations.
-   * It only works for PostgreSQL installations.
+   * They only work for PostgreSQL installations.
    * The backup is always a full dump (no incremental backup).
    * Partial backup and restore (e.g. only specific data like tickets, users)
      is not possible.
