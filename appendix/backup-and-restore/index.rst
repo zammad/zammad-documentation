@@ -1,10 +1,10 @@
 Backup and Restore
 ******************
 
-Zammad comes with a collection of scripts for easy backup & restore for default
-installations. These scripts are located within ``/opt/zammad/contrib/backup``.
+Zammad ships scripts for backup & restore in package installations which you
+can use in your backup strategy.
 
-.. warning:: **⚖️ Important things to note beforehand**
+.. warning::
 
    These scripts do not come with any warranty and may not work in your
    specific use case. This depends on the configuration and installation type
@@ -18,6 +18,32 @@ installations. These scripts are located within ``/opt/zammad/contrib/backup``.
 Getting Started
 ===============
 
+These scripts are located in ``/opt/zammad/contrib/backup``. The following files
+might be important for you:
+
+- Backup configuration file: ``config.dist``
+- Script for backing up your data: ``zammad_backup.sh``
+- Script for restoring your data: ``zammad_restore.sh``
+
+Head over to the next section for a simple backup configuration. In
+:ref:`advanced_backup`, you can find links to sub pages with a more
+detailed explanation of the scripts.
+
+Basic Backup Setup
+------------------
+
+#. Rename/copy the ``config.dist`` file to ``config``.
+#. Change default parameters in  the ``config`` file if needed. Learn more
+   about the configuration options
+   :doc:`here </appendix/backup-and-restore/configuration>`.
+#. Execute ``/opt/zammad/contrib/backup/zammad_backup.sh``.
+
+
+.. _advanced_backup:
+
+Advanced Setup and Restore
+--------------------------
+
 .. toctree::
    :hidden:
 
@@ -28,52 +54,54 @@ Getting Started
    troubleshooting
    little-helpers
 
-Before you continue, please also note the listed limitations to save your
-precious time.
+Adjust script settings
+   Learn more about configuration options for backup and restore
+   :doc:`here </appendix/backup-and-restore/configuration>`.
 
-   :doc:`🔨 Adjust script settings </appendix/backup-and-restore/configuration>`
-      Learn more about configuration options for backup and restore to see
-      scopes better.
+Create Backups
+   Learn how to create full dumps of your Zammad installation
+   :doc:`here </appendix/backup-and-restore/backup>`.
 
-   :doc:`🗃️ Create Backups </appendix/backup-and-restore/backup>`
-      How to create full dumps of your Zammad installation.
+Restore Backups
+   Learn how to restore your instance on the same host
+   :doc:`here </appendix/backup-and-restore/restore>`.
 
-   :doc:`🗄️ Restore Backups </appendix/backup-and-restore/restore>`
-      Update went wrong and you need to go back? How to restore your instance on
-      a new or the same host.
+Additional Information
+----------------------
 
-   :doc:`🔀 Migrating to new hosts </appendix/backup-and-restore/migrate-hosts>`
-      This is a general summary on how to best migrate Zammad from host to host.
-      We'll reference to backup creation and restoration as needed.
+Migrating to a new host
+   :doc:`Here </appendix/backup-and-restore/migrate-hosts>` you can read how to
+   migrate Zammad from one host to another host.
 
-   :doc:`🔥 Troubleshooting </appendix/backup-and-restore/troubleshooting>`
-      Things hit the fan? This page might help you out of that pit.
+Troubleshooting
+   If something went wrong,
+   :doc:`this page </appendix/backup-and-restore/troubleshooting>` might help
+   you out.
 
-   :doc:`🤝 Helper scripts </appendix/backup-and-restore/little-helpers>`
-      These scripts may be helpful if Backup & Restore does not work as expected.
-      However note that these are potentially destructive.
+Helper scripts
+   Maybe this is helpful for you if backup & restore does not work as expected.
+   See :doc:`here </appendix/backup-and-restore/little-helpers>` for more
+   information.
 
 Limitations
 ===========
 
 Please note the following limitations which may affect script functionality
-or availability.
+or availability:
 
-   * Restoration via script on docker and source code based installations may
-     not work and is out of scope of this documentation as of now
-   * Backup & Restore is only available for PostgreSQL and MySQL / MariaDB like
-     installations
-   * Starting with Zammad 5.0 the scripts *require* user & password
-     authentication. This is supported by most of our installation types
-   * Backup & Restore is always a full dump of everything (no incrementals)
-   * Restoring or backing up specific information (e.g. Tickets, Users, ...)
-     is not supported
-   * | Switching / Converting database installations *is not* possible
-     | Refer this guide to manually switch databases:
-       :doc:`/appendix/migrate-to-postgresql`
-   * Environmental settings (like e.g. :doc:`/appendix/configure-env-vars`) are
-     not backed up and thus require you to manually set them on a new host
-   * Restoration into a *older* Zammad version is not possible nor supported
-   * *Do not* attempt to restore backup files from custom scripts with the
-     provided scripts by Zammad. This is most likely subject to fail or bring
-     issues you may discover too late.
+   * These scripts won't work in container and source code based installations.
+   * They only work for PostgreSQL installations.
+   * The backup is always a full dump (no incremental backup).
+   * Partial backup and restore (e.g. only specific data like tickets, users)
+     is not possible.
+   * Switching database system **is not** possible. See
+     :doc:`here </appendix/migrate-to-postgresql>` how to manually switch
+     databases.
+   * System settings (like
+     :doc:`environment variables </appendix/configure-env-vars>`) are
+     not backed up.
+   * Restore to an older Zammad version is not possible.
+   * **Do not** restore backup files from custom scripts with the
+     provided scripts by Zammad. This might cause problems.
+
+
