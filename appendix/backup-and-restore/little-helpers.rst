@@ -5,13 +5,13 @@ Warning
 =======
 
 A script can potentially be destructive!
-You should **never** run scrips which scopes you don't understand.
+You should **never** run scripts which scopes you don't understand.
 
 Be aware that you are running these scripts at your own risk.
 
 .. _reset_db_password:
 
-Database Helper: (re)set password
+Database Helper: (Re)set Password
 =================================
 
 Limitations

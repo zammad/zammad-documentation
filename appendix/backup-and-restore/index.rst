@@ -2,7 +2,7 @@ Backup and Restore
 ******************
 
 Zammad ships scripts for backup & restore in package installations which you
-can use for your backup strategy.
+can use in your backup strategy.
 
 .. warning::
 
@@ -71,7 +71,7 @@ Additional Information
 
 Migrating to a new host
    :doc:`Here </appendix/backup-and-restore/migrate-hosts>` you can read how to
-   migrate Zammad from host to host.
+   migrate Zammad from one host to another host.
 
 Troubleshooting
    If something went wrong,
@@ -89,7 +89,7 @@ Limitations
 Please note the following limitations which may affect script functionality
 or availability:
 
-   * These scripts won't work on container and source code based installations.
+   * These scripts won't work in container and source code based installations.
    * They only work for PostgreSQL installations.
    * The backup is always a full dump (no incremental backup).
    * Partial backup and restore (e.g. only specific data like tickets, users)

@@ -10,7 +10,7 @@ Before running your first backup, please have a look at the
 Backup
 ======
 
-It is recommended to stop Zammad before the backup runs.
+It is recommended to stop Zammad before running the backup.
 
 To create a backup, execute the script ``zammad_backup.sh`` as ``root``
 or ``zammad`` user:
@@ -38,4 +38,4 @@ The backup process should look like this one:
 
 If you are facing issues while backing up your data, you can have a look at
 the :doc:`troubleshooting section </appendix/backup-and-restore/troubleshooting>`
-to see read about common issues.
+to read about common issues.

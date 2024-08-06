@@ -11,7 +11,7 @@ The steps described on this page are an addition to
 :doc:`backing up </appendix/backup-and-restore/backup>` and
 :doc:`restoring </appendix/backup-and-restore/restore>`.
 They're not meant to stand alone - we'll link and
-note this at the relevant parts.
+note this in the relevant parts.
 
 .. hint::
 
@@ -34,7 +34,7 @@ Step 2: Install Zammad on the destination host
       * :doc:`Install with Docker </install/docker-compose>`
 
 Step 3: Activate maintenance mode
-   This ends agents and customers sessions.
+   This ends all agent and customer sessions.
    See :admin-docs:`here </system/maintenance.html>` how to activate it.
 
 Step 4: Disable your communication channels

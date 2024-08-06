@@ -21,7 +21,7 @@ your data.
    * On *source code installations*, this does not work because of different
      environments. You could load it beforehand as root user to have
      access to Zammad specific commands.
-   * If both approaches above do not fit for your case, consider
+   * If both approaches above do not fit your case, consider
      adjusting the backup and restore scripts to your need in an
      independent directory. You're working out of script and
      documentation scope!
@@ -45,7 +45,7 @@ Step 1: Copy your backup files to a fitting location (if needed)
       <timestamp>_zammad_db.psql.gz
       <timestamp>_zammad_files.tar.gz
 
-   There are also two symlinks in your backup directory showing to the
+   There are also two symlinks in your backup directory pointing to the
    newest backup created.
 
    .. code-block:: sh
@@ -131,7 +131,7 @@ Step 3: Run the restore
       # Zammad restored successfully - Fri Jan 21 17:54:34 CET 2022!
 
 Step 4: Re-install Zammad if restoring a full filesystem restore
-   The backup script optionally backups the whole filesystem of Zammad.
+   The backup script optionally back up the whole filesystem of Zammad.
 
    If your filesystem dump contains attachments only (the tar will contain
    a ``storage`` folder *only*) skip this step!

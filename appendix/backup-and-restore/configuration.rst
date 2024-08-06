@@ -1,8 +1,8 @@
 Backup Configuration
 ********************
 
-Before you can run either a backup or restoration, the scripts requires
-to provide a configuration file. We're shipping a ``config.dist`` within the
+Before you can run either a backup or restoration, the scripts require
+you to provide a configuration file. We're shipping a ``config.dist`` within the
 ``/opt/zammad/contrib/backup`` directory which you can simply rename.
 
 To do so run the following commands as either ``root`` or ``zammad`` user.
@@ -26,7 +26,7 @@ parameter in the table below.
     - ``/var/tmp/zammad_backup``
     - Location where the script writes the backup files to.
 
-      The directory will be created if not existing. Make sure you have
+      The directory will be created if it does not exist. Make sure you have
       enough space because the script writes full dumps.
   * - ``HOLD_DAYS``
     - ``10``
@@ -34,17 +34,17 @@ parameter in the table below.
       This value contains a 60 minutes grace period (e.g. 10 days plus 1 hour)
       for safety reasons.
 
-      Old backups are removed *before* creating the current backup.
+      Old backups are removed *before* creating the a new backup.
 
       **Examples:**
 
       * ``1`` will keep backups of the last 25 hours
-      * ``-1`` will remove all available backups (except the current one)
+      * ``-1`` will remove all available backups (except the new one)
   * - ``FULL_FS_DUMP``
     - ``yes``
     - If set to ``yes``, the backup includes also application files.
 
-      If set to ``no``, the backup only includes usage data.
+      If set to ``no``, the backup includes only user data.
 
       In any case, it includes the Zammad database and the attachments, if you
       :admin-docs:`stored them in the file system </settings/system/storage.html>`.
@@ -57,7 +57,7 @@ parameter in the table below.
       .. warning::
 
          This option potentially returns **sensitive** information to standard
-         out! *Do not* use this option in productive environments or ensure
+         output! *Do not* use this option in production environments or ensure
          to turn it *off after testing*.
 
 
