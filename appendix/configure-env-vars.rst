@@ -101,8 +101,8 @@ ZAMMAD_FQDN
 
 .. _network_options:
 
-🖧 Network Options
-=================
+Network Options
+===============
 
 .. note::
 
@@ -126,8 +126,8 @@ ZAMMAD_WEBSOCKET_PORT
 
 .. _performance_tuning:
 
-🎛️ Performance Tuning
-=====================
+Performance Tuning
+==================
 
 **Each of below settings comes with its own tradeoffs.**
 
