@@ -47,7 +47,7 @@ This is a basic setup for **up to 40 agents**. As mentioned above, it highly
 depends on many factors, but this can be a good starting point for dimensioning
 your system.
 
-* 4 CPU cores
+* 6 CPU cores
 * 6 GB of RAM (+6 GB if you want to run Elasticsearch on the same server)
 
 Performance Tuning
