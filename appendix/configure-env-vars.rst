@@ -1,5 +1,5 @@
 Configuration via Environment Variables
-***************************************
+=======================================
 
 Use these environment variables to configure Zammad's behavior at runtime.
 
@@ -36,7 +36,7 @@ Use these environment variables to configure Zammad's behavior at runtime.
    :doc:`kubernetes </install/kubernetes>`.
 
 General Options
-===============
+---------------
 
 APP_RESTART_CMD
    The command Zammad will use to automatically restart the server
@@ -102,7 +102,7 @@ ZAMMAD_FQDN
 .. _network_options:
 
 Network Options
-===============
+---------------
 
 .. note::
 
@@ -127,7 +127,7 @@ ZAMMAD_WEBSOCKET_PORT
 .. _performance_tuning:
 
 Performance Tuning
-==================
+------------------
 
 **Each of below settings comes with its own tradeoffs.**
 
@@ -245,7 +245,7 @@ MEMCACHE_SERVERS
    caching files small. ``1 GB`` should be a reasonable size.
 
 Storage Options
-===============
+---------------
 
 S3_URL
    Allows you to provide your S3 configuration. Please have a look in our admin
