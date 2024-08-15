@@ -1,8 +1,8 @@
 Priorities
-**********
+==========
 
 List
-====
+----
 
 Required permission:
 ``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
@@ -13,9 +13,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    [
       {
          "id": 1,
@@ -60,7 +60,7 @@ Response:
 
 
 Show
-====
+----
 
 Required permission:
 ``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
@@ -71,9 +71,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    {
       "id": 3,
       "name": "3 high",
@@ -90,14 +90,14 @@ Response:
 
 
 Create
-======
+------
 
 Required permission: ``admin.object``
 
 ``POST``-Request sent: ``/api/v1/ticket_priorities``
 
 .. code-block:: json
-   
+
    {
       "name": "4 disaster",
       "default_create": false,
@@ -110,9 +110,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 201 Created
-   
+
    {
       "id": 4,
       "name": "4 disaster",
@@ -128,14 +128,14 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``admin.object``
 
 ``PUT``-Request sent: ``/api/v1/ticket_priorities/{id}``
 
 .. code-block:: json
-   
+
    {
       "ui_icon": "",
       "ui_color": "",
@@ -146,9 +146,9 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    {
       "id": 3,
       "ui_icon": "",
@@ -165,7 +165,7 @@ Response:
 
 
 Delete
-======
+------
 
 Required permission: ``admin.object``
 
@@ -186,7 +186,7 @@ Response:
 
 .. code-block:: json
    :force:
-   
+
    # HTTP-Code 200 Ok
-   
+
    {}

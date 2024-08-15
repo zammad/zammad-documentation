@@ -1,12 +1,12 @@
 Service-Level Agreements (SLA)
-******************************
+==============================
 
 .. note::
 
    🤓 SLAs depend on Zammads :doc:`Calendars </api/calendar>`.
 
 List
-====
+----
 
 Required permission: ``admin.sla``
 
@@ -43,7 +43,7 @@ Response:
 
 
 Show
-====
+----
 
 Required permission: ``admin.sla``
 
@@ -77,7 +77,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``admin.sla``
 
@@ -129,7 +129,7 @@ Response:
 
 
 Update
-======
+------
 
 Required permission: ``admin.sla``
 
@@ -182,7 +182,7 @@ Response:
 
 
 Delete
-======
+------
 
 Required permission: ``admin.sla``
 

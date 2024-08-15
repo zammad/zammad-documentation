@@ -1,5 +1,5 @@
 Introduction
-************
+============
 
 Zammad provides a powerful REST-API which allows all operations that
 are available via UI as well.
@@ -8,7 +8,7 @@ This page gives you a first impression for things that generally count for
 all endpoints and how to adapt.
 
 API clients
-===========
+-----------
 
 There are API clients available.
 Please note that these clients may not provide access to all available
@@ -27,7 +27,7 @@ endpoints listed here.
 
 
 Authentication
-==============
+--------------
 
 Zammad supports three different authentication methods for its API.
 
@@ -65,8 +65,8 @@ OAuth2 (token access)
 
       $ curl -H "Authorization: Bearer {your_token}" https://{fqdn}/{endpoint}
 
-Endpoints and example data
-==========================
+Endpoints and Example Data
+--------------------------
 
 For simplicity we'll not provide specific commands on the next pages, but
 instead tell the possible call method (e.g. ``GET``) and the endpoint to use
@@ -79,14 +79,14 @@ instance. Please keep in mind that you may see more fields or general
 information in case you added objects or other information.
 
 Content Type
-============
+------------
 
 Zammad returns JSON payloads whenever you retrieve data.
 If you're going to provide data, no matter of the general request type,
 don't forget to provide the content type ``application/json`` as well.
 
-Response Payloads (expand)
-==========================
+Response Payloads (Expand)
+--------------------------
 
 Zammad always returns information including hints to all relations.
 If you need more information than that (because IDs may not be enough) you
@@ -551,7 +551,7 @@ and user each.
    to learn more.
 
 Pagination
-==========
+----------
 
 As Zammad limits the number of returned objects for performance reasons, you
 may have to use pagination at some points.
@@ -572,8 +572,8 @@ more results.
 
 .. _sort_search_results:
 
-Sorting search results
-======================
+Sorting Search Results
+----------------------
 
 Zammad allows you to sort your search results by field if needed.
 
@@ -592,8 +592,8 @@ order_by
    Usually you'll want to combine both parameters in your searches - e.g.:
    ``?query={search string}&sort_by={row name}&order_by={direction}``
 
-Actions on behalf of other users
-================================
+Actions On Behalf of Other Users
+--------------------------------
 
 **Requirement:** the user used for running the query on behalf requires
 ``admin.user`` permission.

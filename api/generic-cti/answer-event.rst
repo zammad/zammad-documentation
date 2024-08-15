@@ -1,4 +1,4 @@
-Call answered
+Call Answered
 =============
 
 .. list-table:: Available attributes and sample data for answered events
@@ -158,7 +158,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                {}
 
          Sample curl command:
-         
+
             .. code-block:: sh
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
@@ -190,7 +190,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                {}
 
          Sample curl command:
-         
+
             .. code-block:: sh
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \

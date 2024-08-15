@@ -1,8 +1,8 @@
 Linking Tickets
-*******************
+===============
 
 Get
-===
+---
 
 Required permission: ``ticket.agent`` **or** ``admin``
 
@@ -676,7 +676,7 @@ Response:
 
 
 Add
-===
+---
 
 Required permission: ``ticket.agent`` **or** ``admin``
 
@@ -715,7 +715,7 @@ Response:
    }
 
 Delete
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``admin``
 

@@ -1,12 +1,12 @@
 Calendar
-********
+========
 
 .. note::
 
    🤓 Calendars belong to Zammads :doc:`SLA calculation </api/sla>`.
 
 List
-====
+----
 
 Required permission: ``admin.calendar``
 
@@ -110,7 +110,7 @@ Required permission: ``admin.calendar``
 
 
 Show
-====
+----
 
 Required permission: ``admin.calendar``
 
@@ -211,7 +211,7 @@ Required permission: ``admin.calendar``
    }
 
 Create
-======
+------
 
 Required permission: ``admin.calendar``
 
@@ -401,7 +401,7 @@ Response:
 
 
 Update
-======
+------
 
 Required permission: ``admin.calendar``
 
@@ -591,7 +591,7 @@ Response:
 
 
 Delete
-======
+------
 
 Required permission: ``admin.calendar``
 

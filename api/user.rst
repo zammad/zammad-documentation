@@ -1,5 +1,5 @@
 User
-****
+====
 
 .. note:: **🤓 To see or not to see**
 
@@ -10,8 +10,8 @@ User
    Please see our :admin-docs:`Permission Guide </manage/roles/index.html#reference-guide-permissions>`
    to get better insights.
 
-me - current user
-=================
+Me - Current User
+-----------------
 
 Required permission: any
 
@@ -159,7 +159,7 @@ Response:
 
 
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.user``
 
@@ -966,7 +966,7 @@ Response:
 
 
 Search
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``admin.user``
 
@@ -1115,7 +1115,7 @@ Response:
    ]
 
 Show
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.user`` **or**
 ``ticket.customer`` (shared organization)
@@ -1176,7 +1176,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``admin.user`` **or** ``ticket.agent``
 
@@ -1317,7 +1317,7 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``admin.user`` **or** ``ticket.agent``
 
@@ -1443,7 +1443,7 @@ Response:
    }
 
 Delete
-======
+------
 
 Required permission: ``admin.user``
 
