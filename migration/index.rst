@@ -1,5 +1,5 @@
 Migrating to Zammad
-*******************
+===================
 
 Zammad will migrate the following information:
 
@@ -15,7 +15,7 @@ done *after migration*.
 .. _migration_limitations:
 
 Limitations
-===========
+-----------
 
 There might be source dependent limitations which we will be covering on the direct migration pages. 
 
@@ -29,7 +29,7 @@ However, these limitations count for all migrations:
      specific information specific groups, tickets or users.
 
 Available Migration Options
-===========================
+---------------------------
 
 .. toctree::
    :maxdepth: 1

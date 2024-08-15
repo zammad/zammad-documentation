@@ -1,5 +1,5 @@
 Group
-*****
+=====
 
 .. note::
 
@@ -10,7 +10,7 @@ Group
      Example: ``Sales::Europe::South``
 
 List
-====
+----
 
 Required permission: ``admin.group``
 
@@ -88,7 +88,7 @@ Response:
 
 
 Show
-====
+----
 
 Required permission: ``admin.group``
 
@@ -123,7 +123,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``admin.group``
 
@@ -168,7 +168,7 @@ Response:
 
 
 Update
-======
+------
 
 Required permission: ``admin.group``
 
@@ -213,7 +213,7 @@ Response:
 
 
 Delete
-======
+------
 
 Required permission: ``admin.group``
 

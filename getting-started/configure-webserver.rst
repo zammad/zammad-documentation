@@ -1,4 +1,4 @@
-Configure the webserver
+Configure the Webserver
 =======================
 
 You can find current sample configuration files for your webserver within
@@ -16,7 +16,7 @@ install a configuration file to your nginx for you.
    | Please also note the environment information on
      :doc:`this page </install/docker-compose/environment>`
 
-Get a ssl certificate (recommended)
+Get a SSL Certificate (recommended)
 -----------------------------------
 
 Don't know how to get SSL certificates and install them on a webserver yet?
@@ -204,7 +204,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
 .. _GlobalSign: https://www.globalsign.com/en/managed-ssl
 .. _openSSL documentation: https://www.openssl.org/docs/
 
-Adjusting the webserver configuration
+Adjusting the Webserver Configuration
 -------------------------------------
 
 .. warning::

@@ -1,5 +1,5 @@
-Install from package
-********************
+Package Installation
+====================
 
 .. note::
 
@@ -9,12 +9,15 @@ Install from package
      not used.
 
 Prerequisites
-=============
+-------------
 
 Additional software dependencies
 --------------------------------
 
-In addition to already mentioned :ref:`Package dependencies <package_dependencies>`,
+1. Install Required Tools
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to already mentioned :ref:`software dependencies <package_dependencies>`,
 some operating systems may require additional packages if not already installed.
 
 .. tabs::
@@ -41,15 +44,82 @@ some operating systems may require additional packages if not already installed.
 
          $ yum install wget epel-release
 
-.. include:: /install/includes/prerequisites.rst
+2. Install Elasticsearch
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add Repository and install Zammad
-=================================
+Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
+needs to be installed before Zammad. Please take a look at the
+:doc:`instructions </install/elasticsearch>` first.
+
+3. Ensure Correct Locale
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To make Zammad work correctly, your system has to use the correct locales.
+
+.. tabs::
+
+   .. tab:: Ubuntu / Debian
+
+      List your current locale settings.
+
+      .. code-block:: sh
+
+         $ locale |grep "LANG="
+
+      .. include:: /install/includes/include-utf-8-clause.rst
+
+      .. code-block:: sh
+
+         $ sudo apt install locales
+         $ sudo locale-gen en_US.UTF-8
+         $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
+
+   .. tab:: CentOS
+
+      List your current locale settings.
+
+      .. code-block:: sh
+
+         $ locale |grep "LANG="
+
+      .. include:: /install/includes/include-utf-8-clause.rst
+
+      .. code-block:: sh
+
+         $ sudo localectl set-locale LANG=en_US.utf8
+
+   .. tab:: OpenSUSE / SLES
+
+      List your current locale settings.
+
+      .. code-block:: sh
+
+         $ localectl status |grep "LC_CTYPE"
+
+      .. include:: /install/includes/include-utf-8-clause.rst
+
+      .. code-block:: sh
+
+         $ sudo localectl set-locale LC_CTYPE=en_US.UTF-8
+
+      .. hint::
+
+         By default OpenSUSE uses ``POSIX`` as ``LANG`` value for the root
+         user. Learn more about this within the `OpenSUSE documentation
+         <https://doc.opensuse.org/documentation/leap/startup/html/book-opensuse-startup/cha-yast-lang.html#pro-yast-lang-additional>`_.
+
+         This does not affect other users and thus can be ignored.
+
+
+Add Repository and Install Zammad
+---------------------------------
 
 .. hint:: Packager.io may not be accessible from IPv6-only environments, so make
    sure to consider this when performing the steps below.
 
 Add Repository
+^^^^^^^^^^^^^^
+
    .. tabs::
 
       .. tab:: Ubuntu
@@ -131,6 +201,8 @@ Add Repository
                https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
 
 Install Zammad
+^^^^^^^^^^^^^^
+
    .. tabs::
 
       .. tab:: Ubuntu / Debian

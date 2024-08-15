@@ -1,5 +1,5 @@
 Tickets
-*******
+=======
 
 .. warning::
 
@@ -7,7 +7,7 @@ Tickets
    using is an **agent**. Because of this tickets may or may not be available.
 
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -104,7 +104,7 @@ Response:
    ]
 
 Search
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -1153,7 +1153,7 @@ Response:
    *the total amount*.
 
 Show
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -1207,7 +1207,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -1300,7 +1300,7 @@ Response:
    For more article attributes and options have a look into :doc:`articles`.
 
 Update
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -1384,7 +1384,7 @@ Response:
    instead.
 
 Delete
-======
+------
 
 Required permission: ``admin``
 

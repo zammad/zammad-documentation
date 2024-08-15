@@ -1,8 +1,8 @@
 Time Accounting
-***************
+===============
 
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.time_accounting``
 
@@ -50,7 +50,7 @@ Sample response:
 
 
 Show
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.time_accounting``
 
@@ -75,7 +75,7 @@ Sample response:
    }
 
 Create
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``admin.time_accounting``
 
@@ -108,7 +108,7 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``admin.time_accounting``
 
@@ -143,7 +143,7 @@ Response:
    }
 
 Remove
-======
+------
 
 Required permission: ``admin.time_accounting``
 

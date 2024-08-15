@@ -1,8 +1,8 @@
 From Freshdesk
-**************
+==============
 
 Limitations
-===========
+-----------
 
 Please note below Freshdesk specific limitations.
 These are additional limitations to the
@@ -23,7 +23,7 @@ These are additional limitations to the
 
 
 Prerequisites
-=============
+-------------
 
 Zammad requires API access which is why you'll need to `create an API key`_
 for the migration. The migrator will request your Freshdesk subdomain and
@@ -37,8 +37,8 @@ API key.
 .. _create an API key:
   https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
 
-Importing Freshdesk data
-========================
+Importing Freshdesk Data
+------------------------
 
 Generally you have two options on how to migrate data.
 If you have a fairly big instance with a lot of data, you may want to
@@ -247,8 +247,8 @@ consider using the console over the browser version.
 
       .. include:: /migration/includes/commands-after-migration.include.rst
 
-After migration
-===============
+After Migration
+---------------
 
 As the migration technically skips the getting started wizard, please
 note that you want to adjust your

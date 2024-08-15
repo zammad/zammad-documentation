@@ -1,5 +1,5 @@
-Migrate to PostgreSQL server
-****************************
+Migrate to PostgreSQL Server
+============================
 
 .. include:: /appendix/includes/mysql-deprication-note.rst
 
@@ -19,7 +19,7 @@ migration process.
 
 
 Preparation
-===========
+-----------
 
 #. Stop Zammad:
 
@@ -31,7 +31,7 @@ Preparation
 
 
 Install PostgreSQL
-------------------
+^^^^^^^^^^^^^^^^^^
 
 .. include:: /install/includes/postgres-installation.rst
 
@@ -49,7 +49,7 @@ Please also have a look at :doc:`/appendix/configure-database-server`.
 
 
 Install pgloader
-----------------
+^^^^^^^^^^^^^^^^
 
 .. tabs::
 
@@ -74,8 +74,8 @@ Install pgloader
          $ zypper install pgloader
 
 
-Create pgloader command file
-----------------------------
+Create pgloader Command File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a command file for pgloader with:
 
@@ -112,7 +112,7 @@ configuration of your current environment.
 
 
 Database Credentials
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Adjust the configuration file to fill in the credentials for your new
 PostgreSQL server. Use ``postgresql`` as ``adapter``.
@@ -121,8 +121,8 @@ PostgreSQL server. Use ``postgresql`` as ``adapter``.
 .. include:: /install/includes/postgres-permissions.rst
 
 
-Create empty database
----------------------
+Create Empty Database
+^^^^^^^^^^^^^^^^^^^^^
 
 Now you need to create an empty database in PostgreSQL.
 
@@ -143,7 +143,7 @@ Now you need to create an empty database in PostgreSQL.
 
 
 Migrate
-=======
+-------
 
 .. tabs::
 
@@ -165,7 +165,7 @@ Migrate
 
 
 Finishing
-=========
+---------
 
 After the migration has completed, you'll better clear some cache files:
 

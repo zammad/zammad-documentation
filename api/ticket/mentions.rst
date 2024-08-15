@@ -1,5 +1,5 @@
 Mentions
-********
+========
 
 .. warning::
 
@@ -7,7 +7,7 @@ Mentions
     using is an **agent**. Because of this tickets may or may not be available.
 
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -44,7 +44,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
    }
 
 Create
-======
+------
 
 Required permission: ``ticket.agent``
 
@@ -78,7 +78,7 @@ Response:
 The mention will be created for the user of the current session.
 
 Delete
-======
+------
 
 Required permission: ``ticket.agent``
 

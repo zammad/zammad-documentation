@@ -1,5 +1,5 @@
-Set up Elasticsearch
-********************
+Set Up Elasticsearch
+====================
 
 Zammad's search function is powered by Elasticsearch, and requires the
 `ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html>`_.
@@ -12,7 +12,7 @@ If you installed from source, be sure to omit this prefix
 and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
 Step 1: Installation
-====================
+--------------------
 
 Starting with Zammad 4.0, our packages allow you to decide whether to use
 ``elasticsearch`` or ``elasticsearch-oss``.
@@ -118,8 +118,8 @@ ensure to enable it by default and start it.
    Setting the ``vm.max_map_count`` kernel parameter requires
    `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
 
-Step 2: Suggested Configuration
-===============================
+Step 2: Configuration
+---------------------
 
 We use the following settings to optimize the performance of our Elasticsearch
 servers. Your mileage may vary.
@@ -152,7 +152,7 @@ servers. Your mileage may vary.
 .. _configure_zammad_with_elasticsearch:
 
 Step 3: Connect Zammad
-======================
+----------------------
 
 Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
@@ -178,7 +178,7 @@ authentication (see HTTP Basic below).
 
 
 Optional settings
------------------
+^^^^^^^^^^^^^^^^^
 
 .. tabs::
 
@@ -249,7 +249,7 @@ Optional settings
          :admin-docs:`in the admin documentation </settings/security/ssl-certificates.html>`.
 
 Appendix
-========
+--------
 
 .. toctree::
    :maxdepth: 0

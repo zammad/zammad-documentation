@@ -1,5 +1,5 @@
-First steps
-***********
+First Steps
+===========
 
 After successfully installing Zammad you'll have a couple of options.
 

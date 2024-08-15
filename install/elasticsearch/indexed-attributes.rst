@@ -1,5 +1,5 @@
 List of Indexed Attributes
-**************************
+==========================
 
 Below is a comprehensive list of all object attributes indexed by
 Elasticsearch. In other words, if you wish to find a ticket, article, or user
@@ -28,7 +28,7 @@ fields below.
         This also applies to times provided by Elasticsearch
 
 Ticket
-======
+------
 
 .. tip::
 
@@ -237,7 +237,7 @@ Ticket
      - User ID that updated the ticket
 
 Ticket Priority
-===============
+---------------
 
 .. tip::
 
@@ -286,7 +286,7 @@ Ticket Priority
      - User ID of user last updating the priority
 
 Ticket State
-============
+------------
 
 .. tip::
 
@@ -355,7 +355,7 @@ Ticket State
      - User ID that updated state last
 
 Article
-=======
+-------
 
 .. tip::
 
@@ -439,7 +439,7 @@ Article
      - User that updated article
 
 User
-====
+----
 
 .. tip::
 
@@ -556,7 +556,7 @@ User
      - ZIP code
 
 Organization
-============
+------------
 
 .. tip::
 
@@ -621,7 +621,7 @@ Organization
      - Defines if the organization has VIP state
 
 Group
-=====
+-----
 
 .. tip::
 
@@ -702,7 +702,7 @@ Group
      - User ID that updated group
 
 CTI Log
-=======
+-------
 
 .. tip::
 
@@ -781,7 +781,7 @@ CTI Log
      - Last update of entry
 
 Chat Session
-============
+------------
 
 .. tip::
 

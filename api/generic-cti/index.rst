@@ -1,5 +1,5 @@
 Generic CTI
-***********
+===========
 
 This page describes the generic CTI API scopes and functionalities.
 
