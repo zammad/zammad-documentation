@@ -1,10 +1,10 @@
 Other Useful Commands
-*********************
+=====================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Fetch Mails
------------
+Fetch Emails
+------------
 
 The below command will do a manual fetch of mail channels.
 This will also show errors that might appear within that process.
@@ -85,7 +85,7 @@ for several languages.
 .. _Weblate: https://translations.zammad.org/
 
 Translating Attributes
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 By default Zammad will not translate custom attributes.
 With the following code you can enable translation.

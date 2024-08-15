@@ -1,9 +1,9 @@
 Working with groups
-*******************
+===================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Find group
+Find Group
 ----------
 
 .. code-block:: ruby

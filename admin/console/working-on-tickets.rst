@@ -1,10 +1,10 @@
-Working with ticket information
-*******************************
+Working with Ticket Information
+===============================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Get the RAW mail that Zammad fetched
-------------------------------------
+Get the RAW Email That Zammad Fetched
+-------------------------------------
 
 The following command will help you to check on received EML-files Zammad
 fetched. This comes in handy if you delete Mails upon fetching and you need to
@@ -33,7 +33,7 @@ we get, we can then get the articles content.
    If you just use ``Ticket::Article.find(3)`` you can see further information
    (like who sent the mail, when we fetched it, ...).
 
-Update all tickets of a specific customer
+Update All Tickets of a Specific Customer
 -----------------------------------------
 
 .. warning::
@@ -47,7 +47,7 @@ Update all tickets of a specific customer
 
 .. _state_types:
 
-Get ticket state types
+Get Ticket State Types
 ----------------------
 .. Not removed because it is still referenced in API state creation.
 

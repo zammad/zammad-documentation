@@ -1,9 +1,9 @@
-Query and set / update Zammad settings
-**************************************
+Query and Set / Update Zammad Settings
+======================================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-ticket_hook setting
+Ticket_hook Setting
 -------------------
 
 This will give you the ticket hook that you'll find inside the ``[]`` in front
@@ -14,7 +14,7 @@ this setting in a productive system.
 
    >> Setting.get('ticket_hook')
 
-FQDN setting
+FQDN Setting
 ------------
 
 Get the current FQDN setting of Zammad and, if needed, adjust it.
@@ -29,7 +29,7 @@ Get the current FQDN setting of Zammad and, if needed, adjust it.
    >> Setting.get('fqdn')                    # Get current FQDN
    >> Setting.set('fqdn', 'new.domain.tld')  # Set a new FQDN
 
-HTTP(s) setting
+HTTP(s) Setting
 ---------------
 
 This setting indirectly belongs to your FQDN setting and is relevant for
@@ -51,7 +51,7 @@ variable based URLs (e.g. in notifications) Zammad generated.
    >> Setting.get('http_type')            # Get the current http type
    >> Setting.set('http_type', 'https')   # Change the http type to HTTPs
 
-Storage provider setting
+Storage Provider Setting
 ------------------------
 
 The storage provider setting is set to ``DB`` on default installations.
@@ -96,7 +96,7 @@ to ensure that Zammad still can access Elasticsearch.
    >> Setting.set('es_attachment_max_size_in_mb', 50)          # Limit the Attachment-Size to push to your elasticsearch index
    >> Setting.set('es_ssl_verify', 'false')                    # Turn SSL verification on or off
 
-Enable proxy
+Enable Proxy
 ------------
 
 Zammad needs to use a proxy for network communication? Set it here.

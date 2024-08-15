@@ -1,5 +1,5 @@
 Console
-*******
+=======
 
 Zammad uses Ruby on Rails so you can make use of the `rails console`_.
 
@@ -14,11 +14,11 @@ Zammad uses Ruby on Rails so you can make use of the `rails console`_.
 
 To open the rails console on the shell you have to enter the following commands.
 
-Start Zammad's Rails console
-============================
+Start Zammad's Rails Console
+----------------------------
 
-Running a single command
-------------------------
+Running a Single Command
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following command will allow you to run a single command, without running
 a shell (e.g. for automation).
@@ -41,8 +41,8 @@ a shell (e.g. for automation).
 
 .. _rails_shell:
 
-Running several commands in a shell
------------------------------------
+Running Several Commands in a Shell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following command will provide you a rails console.
 It allows you to run several commands inside it.
@@ -87,7 +87,7 @@ This reduces loading times greatly.
          3.1.3 :001 >
 
 Working on the console
-======================
+----------------------
 
 Here's a topic list for quick jumping and better overview.
 

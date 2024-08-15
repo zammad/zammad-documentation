@@ -53,7 +53,7 @@ Zammad System Documentation
    :glob:
    :caption: Administration via ...
 
-   Web-UI <https://admin-docs.zammad.org/>
+   Web-UI (admin documentation) <https://admin-docs.zammad.org/>
    Console </admin/console>
 
 
