@@ -90,7 +90,7 @@ commands, as this will fail otherwise.
    $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
 Optional settings
-^^^^^^^^^^^^^^^^^
+-----------------
 
 We collected some useful settings you may want to apply. For further
 information please have a look at
