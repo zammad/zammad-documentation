@@ -1,5 +1,5 @@
 Hardware
-********
+========
 
 The hardware requirements to run Zammad effectively vary depending on several
 factors, for example:
@@ -28,7 +28,7 @@ However, you can use the following information as a rough guide.
    store it just once.
 
 Minimum Setup
-=============
+-------------
 
 For a minimalistic Zammad deployment with a PostgreSQL database server, you
 should not go below the following values:
@@ -41,7 +41,7 @@ your RAM got exhausted, you could try a less-than-ideal solution like
 `limit the ES heap size <https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-heap-size>`_.
 
 Example Setup
-=============
+-------------
 
 This is a basic setup for **up to 40 agents**. As mentioned above, it highly
 depends on many factors, but this can be a good starting point for dimensioning
@@ -51,7 +51,7 @@ your system.
 * 6 GB of RAM (+6 GB if you want to run Elasticsearch on the same server)
 
 Performance Tuning
-==================
+------------------
 
 As the number of active users and/or tickets grows, performance will
 eventually degrade. You should have a look at
