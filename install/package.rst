@@ -1,5 +1,5 @@
 Package Installation
-********************
+====================
 
 This section describes the basic package installation of Zammad. If these
 manual steps aren't what you are looking for, consider a `hosted Zammad
@@ -7,13 +7,13 @@ setup <https://zammad.com/en/pricing>`_ or
 :doc:`deploy Zammad via Docker </install/docker-compose>`.
 
 Prerequisites
-=============
+-------------
 
 Before performing the following steps, make sure to meet
 Zammad's :doc:`/prerequisites/software` requirements.
 
 1. Install Required Tools
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to already mentioned :ref:`software dependencies <package_dependencies>`,
 some operating systems may require additional packages if not already installed.
@@ -43,14 +43,14 @@ some operating systems may require additional packages if not already installed.
          $ sudo yum install wget epel-release
 
 2. Install Elasticsearch
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
 needs to be installed before Zammad. Please take a look at the
 :doc:`instructions </install/elasticsearch>` first.
 
-3. Ensure correct locale
-------------------------
+3. Ensure Correct Locale
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 To make Zammad work correctly, your system has to use the correct locales.
 
@@ -110,13 +110,13 @@ To make Zammad work correctly, your system has to use the correct locales.
 
 
 Add Repository and Install Zammad
-=================================
+---------------------------------
 
 .. hint:: Packager.io may not be accessible from IPv6-only environments, so make
    sure to consider this when performing the steps below.
 
 Add Repository
---------------
+^^^^^^^^^^^^^^
 
 .. tabs::
 
@@ -199,7 +199,7 @@ Add Repository
             https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
 
 Install Zammad
---------------
+^^^^^^^^^^^^^^
 
 .. tabs::
 

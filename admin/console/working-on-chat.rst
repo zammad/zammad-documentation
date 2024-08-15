@@ -1,9 +1,9 @@
 Working with chat logs
-**********************
+======================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Removing IP address logs
+Removing IP Address Logs
 ------------------------
 
 Use the following command to remove all IP address records

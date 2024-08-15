@@ -29,7 +29,7 @@ You will need
 
 .. include:: reporting-tools-thirdparty/include-requirements.rst
 
-Third Party Reporting Tools known to be working
+Third Party Reporting Tools Known to be Working
 -----------------------------------------------
 
 .. toctree::

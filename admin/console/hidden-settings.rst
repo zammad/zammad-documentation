@@ -1,12 +1,12 @@
-Advanced customization settings
-*******************************
+Advanced Customization Settings
+===============================
 
 On this page you can find some settings that you won't find within the Zammad
 UI. Those settings might come in handy as it can change Zammad's behavior.
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Send all outgoing E-Mails to a BCC-Mailbox
+Send All Outgoing E-Mails to a BCC-Mailbox
 ------------------------------------------
 
 This option allows you to send all outgoing E-Mails (not notifications) to a
@@ -23,7 +23,7 @@ You can easily check the current BCC-Setting by running the following:
 
    >> Setting.get('system_bcc')
 
-Activate counter on grouped overviews
+Activate Counter on Grouped Overviews
 -------------------------------------
 
 This is a hidden setting which you can only set via Command-Line.
@@ -38,7 +38,7 @@ elements.
 
 .. image:: /images/console/ui_table_group_by_show_count-example.png
 
-Default ticket type on creation
+Default Ticket Type on Creation
 -------------------------------
 
 Zammad allows you to define the default article type upon ticket creation.
@@ -60,7 +60,7 @@ To check what setting is set currently, simply run:
 
    >> Setting.get('ui_ticket_create_default_type')
 
-Adding a warning to the ticket creation process
+Adding a Warning to the Ticket Creation Process
 -----------------------------------------------
 
 If in case you need to give your agent a note or warning during ticket creation,
@@ -97,7 +97,7 @@ Sample of the above setting:
 
 .. image:: /images/console/ui_ticket_create_notes.gif
 
-Adding a warning to the article reply process
+Adding a Warning to the Article Reply Process
 ---------------------------------------------
 
 In case you need to give your agent a warning during the ticket article reply,
@@ -140,7 +140,7 @@ Sample of the above setting:
 
 .. image:: /images/console/ui_ticket_add_article_hint-example.gif
 
-Show Email address of customer on customer selection (ticket creation)
+Show Email Address of Customer on Customer Selection (Ticket Creation)
 ----------------------------------------------------------------------
 
 By default Zammad will not display the E-Mail-Addresses of customers.
@@ -156,8 +156,8 @@ Get the current state of this setting with:
 
    >> Setting.get('ui_user_organization_selector_with_email')
 
-Change font settings for outgoing HTML mails
---------------------------------------------
+Change Font Settings for Outgoing HTML Emails
+---------------------------------------------
 
 .. note::
 
@@ -177,7 +177,7 @@ If you want to check the current setting, you can simply run the below code.
 
    >> Setting.get('html_email_css_font')
 
-Highlight customer's open ticket count
+Highlight Customer's Open Ticket Count
 --------------------------------------
 
 This option enhances the selected customer's open tickets count. It highlights

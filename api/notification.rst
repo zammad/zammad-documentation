@@ -1,5 +1,5 @@
 Online Notification
-*******************
+===================
 
 .. note::
 
@@ -9,7 +9,7 @@ Online Notification
    Please note that the best results are always achieved with *Agents*.
 
 List
-====
+----
 
 Required permission: ``any``
 
@@ -100,7 +100,7 @@ Response:
 
 
 Show
-====
+----
 
 Required permission: ``any``
 
@@ -127,7 +127,7 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``any``
 
@@ -160,7 +160,7 @@ Response:
    }
 
 Delete
-======
+------
 
 Required permission: ``any``
 
@@ -175,8 +175,8 @@ Response:
 
    {}
 
-Mark all as read
-================
+Mark All as Read
+----------------
 
 Required permission: ``any``
 

@@ -1,9 +1,9 @@
-Working with ticket articles
-****************************
+Working with Ticket Articles
+============================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Count Public “Notes” toward SLAs
+Count Public “Notes” Toward SLAs
 --------------------------------
 
 Normally, :user-docs:`notes </basics/service-ticket/follow-up.html#adding-new-messages-notes>`

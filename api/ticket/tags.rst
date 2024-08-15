@@ -1,11 +1,11 @@
 Tags
-****
+====
 
-Ticket scope
-============
+Ticket Scope
+------------
 
 List
-----
+^^^^
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -27,7 +27,7 @@ Sample response:
 
 
 Search
-------
+^^^^^^
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -58,7 +58,7 @@ Sample response:
    ]
 
 Add
----
+^^^
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -88,7 +88,7 @@ Response:
    true
 
 Remove
-------
+^^^^^^
 
 Required permission: ``ticket.agent`` **or** ``admin.tag``
 
@@ -111,11 +111,11 @@ Response:
 
    true
 
-Administration scope
-====================
+Administration Scope
+--------------------
 
 Admin - List
-------------
+^^^^^^^^^^^^
 
 Required permission: ``admin.tag``
 
@@ -147,7 +147,7 @@ Sample response:
    ]
 
 Admin - Create
---------------
+^^^^^^^^^^^^^^
 
 Required permission: ``admin.tag``
 
@@ -169,7 +169,7 @@ Response:
    {}
 
 Admin - Rename
---------------
+^^^^^^^^^^^^^^
 
 Required permission: ``admin.tag``
 
@@ -191,7 +191,7 @@ Response:
    {}
 
 Admin - Delete
---------------
+^^^^^^^^^^^^^^
 
 Required permission: ``admin.tag``
 

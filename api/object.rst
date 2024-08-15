@@ -1,5 +1,5 @@
 Object
-******
+======
 
 .. danger::
 
@@ -11,7 +11,7 @@ Object
    instead. For states and priorities use either API endpoints or rails console.
 
 List
-====
+----
 
 Required permission: ``admin.object``
 
@@ -422,7 +422,7 @@ Response:
    ]
 
 Show
-====
+----
 
 Required permission: ``admin.object``
 
@@ -496,7 +496,7 @@ Response:
 .. _create_object:
 
 Create
-======
+------
 
 Required permission: ``admin.object``
 
@@ -1521,7 +1521,7 @@ Required permission: ``admin.object``
             }
 
 Update
-======
+------
 
 Required permission: ``admin.object``
 
@@ -1628,7 +1628,7 @@ Response:
    }
 
 Delete
-======
+------
 
 Required permission: ``admin.object``
 
@@ -1644,7 +1644,7 @@ Response:
    {}
 
 Execute Database Migrations
-===========================
+---------------------------
 
 Required permission: ``admin.object``
 

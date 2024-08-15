@@ -1,14 +1,14 @@
 Software
-********
+========
 
-1. Client requirements
-======================
+1. Client Requirements
+----------------------
 
 Please note that, while Zammad being a web application, there's some
 requirements for your clients. This ensures that Zammad works as expected.
 
-1.1. Supported Browsers
------------------------
+1.1 Supported Browsers
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: Zammad/Browser version compatibility
    :header-rows: 1
@@ -38,8 +38,8 @@ Zammads function which is not a bug.
 For example the Google Chrome translation module is known to do odd things,
 especially to state names. Use Zammads internal translations instead.
 
-1.2. Network requirements
--------------------------
+1.2 Network Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad uses web sockets. Some application firewalls may filter these
 connections. This may lead to decreased browser performance.
@@ -51,8 +51,8 @@ In case you're having issues with field selection, you can activate the
 :admin-docs:`AJAX Mode for "Core Workflows" </settings/system/frontend.html>`
 separately.
 
-2. Server requirements
-======================
+2. Server Requirements
+----------------------
 
 If you want to install Zammad, you need the following software.
 
@@ -62,8 +62,8 @@ If you want to install Zammad, you need the following software.
    version)  are minimum requirements of Zammad. We strongly encourage you to
    use most current possible versions that *are not end of life*.
 
-2.1. Ruby Programming Language
-------------------------------
+2.1 Ruby Programming Language
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. hint:: **🤓 Only relevant for source code installations**
 
@@ -89,8 +89,8 @@ different Zammad versions:
    "3.1 - 3.3", "2.5.5"
    "2.5 - 3.0", "2.4.4"
 
-2.2. Supported distributions
-----------------------------
+2.2 Supported Distributions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad provides binary packages for the most recent two stable /
 long-term-support releases of the supported Linux distributions, until they
@@ -124,8 +124,8 @@ Below you can find all distributions Zammad provides packages for.
 
 .. _package_dependencies:
 
-2.3. Package Dependencies
--------------------------
+2.3 Package Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The below dependencies need to be installed on your system.
 If you're using the package install, the packages below will automatically
@@ -149,8 +149,8 @@ installed with the Zammad-Package.
    | *However:* If you have to use ``bundle install`` for e.g. custom Gems or
      development, you'll need to install it!
 
-2.4. Database Server
---------------------
+2.4 Database Server
+^^^^^^^^^^^^^^^^^^^
 
 Zammad will store all content in a Database.
 You can choose between the following database servers:
@@ -176,8 +176,8 @@ You may also want to consider the following settings for your **MySQL** server::
    innodb_large_prefix = 1
    innodb_file_format_max = Barracuda
 
-2.5. Node.js
-------------
+2.5 Node.js
+^^^^^^^^^^^
 
 Node.js is required for asset compiling.
 
@@ -197,8 +197,8 @@ any javascript or stylesheet files via ``rake assets:precompile``.
    "5.2 - 6.1", "16.0+"
    "5.0 - 5.1", "10.0+"
 
-2.6. Reverse Proxy
-------------------
+2.6 Reverse Proxy
+^^^^^^^^^^^^^^^^^
 
 In a typical web environment today, you use a reverse proxy to deliver the
 static content of your application. Only the "expensive" app required HTTP
@@ -217,7 +217,7 @@ The following reverse proxies are supported:
 
 
 2.7 Redis
-~~~~~~~~~~~
+^^^^^^^^^
 
 Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for
 realtime communication via web socket.
@@ -228,8 +228,8 @@ tight security on your installation.
 
 .. _prerequisites_elasticsearch:
 
-2.8. Elasticsearch (optional)
------------------------------
+2.8 Elasticsearch (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad uses Elasticsearch to
 
@@ -274,17 +274,11 @@ Starting with Zammad 4.0 you can decide if you want to use
 An Elasticsearch plugin is required to index the contents of email attachments:
 ``ingest-attachment``.
 
-2.9. Optional tools of improved caching and distribution
---------------------------------------------------------
+2.9 Memcached (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-These features / integrations below are optional. You should consider using
-them to have a better performance or if you want to use the corresponding
-feature.
-
-You can also have a look in our :ref:`performance_tuning` section.
-
-2.9.1 Memcached
-~~~~~~~~~~~~~~~
+This feature is optional. You should consider using it to have a better
+performance. You can also have a look in our :ref:`performance_tuning` section.
 
 Instead of storing Zammads cache files within your filesystem, you can also
 do so in `Memcached <https://memcached.org/>`_. This can allow you to restrict
@@ -295,7 +289,7 @@ Please follow the official vendor guides and ensure to have a
 tight security on your installation.
 
 2.10 GnuPG (optional)
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^
 If you want to use the PGP integration for sending and receiving signed and
 encrypted emails, you need to install the GnuPG-Tool.
 Please have a look at the official `GnuPG website`_.

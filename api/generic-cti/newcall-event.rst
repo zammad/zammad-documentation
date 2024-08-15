@@ -1,5 +1,8 @@
-New call
+New Call
 ========
+
+General
+-------
 
 .. list-table:: Available attributes and sample data for newCall events
    :widths: 20, 40, 40
@@ -155,7 +158,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                }
 
          Sample curl command:
-         
+
             .. code-block:: sh
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
@@ -186,7 +189,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                {}
 
          Sample curl command:
-         
+
             .. code-block:: sh
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
@@ -198,7 +201,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
                   --form 'user[]="Christopher Miller"' \
                   --form 'user[]="Emma Taylor"'
 
-Situation specific responses
+Situation Specific Responses
 ----------------------------
 
 Depending on the chosen call direction, Zammad will return either a (optionally)
