@@ -1,5 +1,5 @@
-Set up Elasticsearch
-********************
+Set Up Elasticsearch
+====================
 
 Zammad's search function can be powered by Elasticsearch (which is **highly
 recommended**).
@@ -8,14 +8,14 @@ If these manual steps aren't what you are looking for, consider a `hosted Zammad
 setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </install/docker-compose>`.
 
 Step 1: Installation
-====================
+--------------------
 
 Zammad allows you to use **elasticsearch** or **elasticsearch-oss**.
 For installation instructions please follow
 `Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
 
 Step 2: Configuration
-=====================
+---------------------
 
 .. code-block:: sh
 
@@ -62,7 +62,7 @@ by default and start it:
 .. _configure_zammad_with_elasticsearch:
 
 Step 3: Connect Zammad
-======================
+----------------------
 
 Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
@@ -90,7 +90,7 @@ commands, as this will fail otherwise.
    $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
 Optional settings
------------------
+^^^^^^^^^^^^^^^^^
 
 We collected some useful settings you may want to apply. For further
 information please have a look at
@@ -155,7 +155,7 @@ information please have a look at
       :admin-docs:`here </settings/security/ssl-certificates.html>`.
 
 Appendix
-========
+--------
 
 .. toctree::
    :maxdepth: 0

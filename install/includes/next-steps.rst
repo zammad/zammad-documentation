@@ -1,5 +1,5 @@
-Next steps
-==========
+Next Steps
+----------
 
 With this Zammad technically is ready to go. 
 However, you'll need to follow the following further steps to access 

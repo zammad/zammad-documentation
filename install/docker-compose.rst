@@ -1,5 +1,5 @@
 Install with Docker
-*******************
+===================
 
 Zammad can be deployed using Docker-Compose. You can even use
 graphical docker front ends like
@@ -14,7 +14,7 @@ graphical docker front ends like
    to stick with :doc:`the package installation </install/package/>` instead.
 
 Prerequisites
-=============
+-------------
 
 * This documentation expects you already have a working
   `Docker Compose <https://docs.docker.com/compose/>`_ environment.
@@ -26,7 +26,7 @@ Prerequisites
       $ sysctl -w vm.max_map_count=262144
 
 Deployment with Portainer
-=========================
+-------------------------
 
 The easiest way to get Zammad running is via a graphical docker UI. We recommend `Portainer <https://www.portainer.io/>`_.
 For installation instructions, check out `Portainer's documentation <https://docs.portainer.io/>`_.
@@ -66,7 +66,7 @@ Step 3: **Deploy the Stack**
 
 
 Deployment with Docker-Compose
-==============================
+------------------------------
 
 Step 1: **Clone the GitHub Repo**
    .. code-block:: sh
@@ -97,7 +97,7 @@ Step 3: Start the stack
    After the stack is ready, you can access Zammad via the configured docker host and port, e.g. ``http://localhost:8080/``.
 
 Customizing the Zammad Stack
-============================
+----------------------------
 
 Sometimes it's necessary to apply local changes to the Zammad docker stack, e.g. to
 include additional services. If you plan to do so, we recommend that you do not change
@@ -112,7 +112,7 @@ that includes all your modifications. Docker-Compose will
    /install/docker-compose/environment
 
 How to Run Commands in the Stack
-================================
+--------------------------------
 
 The docker entrypoint script sets up environment variables required by Zammad
 to function properly. That is why calling ``rails`` or ``rake`` on the console
