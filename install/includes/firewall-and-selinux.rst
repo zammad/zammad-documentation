@@ -1,10 +1,10 @@
 Firewall & SELinux
-==================
+------------------
 
 Some parts of these steps may not apply to you, feel free to skip them!
 
 SELinux
--------
+^^^^^^^
 
 .. tabs::
 
@@ -25,7 +25,7 @@ SELinux
       for more input if you wish to continue.
 
 Firewall
---------
+^^^^^^^^
 
 .. note::
 
@@ -115,7 +115,7 @@ Firewall
 
       After that locate ``FW_CONFIGURATIONS_EXT`` within
       ``/etc/sysconfig/SuSEfirewall2`` and add the option ``webserver`` to the
-      list. The list is seperated by spaces.
+      list. The list is separated by spaces.
       You may require a different zone, above covers the external zone.
 
       Now ensure to restart the firewall service.

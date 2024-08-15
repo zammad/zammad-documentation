@@ -1,7 +1,7 @@
 Articles
-********
+========
 
-General information about ticket articles
+General Information About Ticket Articles
 -----------------------------------------
 
 Some attributes of articles might not be straight forward or come with
@@ -103,7 +103,7 @@ sender
 .. _retrieve_articles_attachments:
 
 List Articles by Ticket
-=======================
+-----------------------
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -178,8 +178,8 @@ Response:
       }
    ]
 
-List specific article
-=====================
+List Specific Article
+---------------------
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -225,7 +225,7 @@ Response:
 
 
 Create
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
@@ -438,8 +438,8 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
             "updated_by": "chris@chrispresso.com"
          }
 
-Receive attachments
-===================
+Receive Attachments
+-------------------
 
 Now that you have all those fancy attachments within your tickets, you
 may want to download specific ones.

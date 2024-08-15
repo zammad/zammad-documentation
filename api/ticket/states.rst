@@ -1,5 +1,5 @@
 States
-******
+======
 
 .. warning::
 
@@ -8,7 +8,7 @@ States
    :admin-docs:`here </system/objects.html#ticket-state-reference>`.
 
 List
-====
+----
 
 Required permission:
 ``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
@@ -131,7 +131,7 @@ Response:
    ]
 
 Show
-====
+----
 
 Required permission:
 ``admin.object`` **or** ``ticket.agent`` **or** ``ticket.customer``
@@ -163,7 +163,7 @@ Response:
 
 
 Create
-======
+------
 
 Required permission: ``admin.object``
 
@@ -212,7 +212,7 @@ Response:
 
 
 Update
-======
+------
 
 Required permission: ``admin.object``
 
@@ -249,7 +249,7 @@ Response:
 
 
 Delete
-======
+------
 
 Required permission: ``admin.object``
 

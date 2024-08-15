@@ -1,5 +1,5 @@
-Deleting records
-****************
+Deleting Records
+================
 
 .. danger::
 
@@ -9,7 +9,7 @@ Deleting records
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Removing tickets (and their articles)
+Removing Tickets (And Their Articles)
 -------------------------------------
 
 .. code-block:: ruby
@@ -24,7 +24,7 @@ Removing tickets (and their articles)
    >> tickets_to_keep = [1, 2, 3]
    >> Ticket.where.not(id: tickets_to_keep).destroy_all
 
-Removing users
+Removing Users
 --------------
 
 .. warning::
@@ -62,7 +62,7 @@ Removing users is possible in 2 ways: A single user and in bulk.
                email: ['<email address 1>', '<email address 2>']
             ).destroy_all
 
-Removing organizations
+Removing Organizations
 ----------------------
 
 .. note:: Removing an organization does **not** delete associated customers.
@@ -99,7 +99,7 @@ Step 3: Proceed with deletion
            org.destroy
          end
 
-Removing system records
+Removing System Records
 -----------------------
 
 .. code-block:: ruby
@@ -120,10 +120,10 @@ Removing system records
 
 .. _dangerzone_reset_zammad:
 
-Reset Zammad installation
+Reset Zammad Installation
 -------------------------
 
-.. hint:: 
+.. hint::
 
    Below commands are incomplete intentionally, error outputs will hint you
    through! The following operations will cause data loss and are for

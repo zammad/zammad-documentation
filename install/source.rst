@@ -1,5 +1,5 @@
-Install from source
-*******************
+Source Installation
+===================
 
 The source installation is the most difficult installation type of Zammad.
 If you're not too experienced with Linux and all that, you may want to use
@@ -19,16 +19,16 @@ another installation type:
    `here <https://github.com/zammad/zammad/blob/develop/doc/developer_manual/development_environment/how-to-set-up-a-development-environment.md>`_.
 
 Prerequisites
-=============
+-------------
 
-Software dependencies
----------------------
+Software Dependencies
+^^^^^^^^^^^^^^^^^^^^^
 
 Please ensure that you already provided mentioned
 :doc:`Software requirements </prerequisites/software>`.
 
-Add user
---------
+Add User
+^^^^^^^^
 
 .. code-block:: sh
 
@@ -36,10 +36,10 @@ Add user
    $ groupadd zammad
 
 Installation
-============
+------------
 
-Step 1: Get the source
-----------------------
+Step 1: Get the Source
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
@@ -50,8 +50,8 @@ Step 1: Get the source
 
 .. _source_dependency_installation:
 
-Step 2: Install dependencies
-----------------------------
+Step 2: Install Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..
    About this section: The RVM installation part uses definition list instead
@@ -173,8 +173,8 @@ older versions. A list of required versions can be found on the
 
 .. include:: /install/includes/postgres-dependencies.rst
 
-Step 3: Configure database settings
------------------------------------
+Step 3: Configure Database Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: /install/includes/postgres-permissions.rst
 
@@ -204,8 +204,8 @@ file could look like. Please also have a look at
 
 .. include:: /install/source/include-chmod-database-yml.rst
 
-Step 4: Initialize your database
---------------------------------
+Step 4: Initialize Your Database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
@@ -236,8 +236,8 @@ Step 4: Initialize your database
    $ rails r "Locale.sync"
    $ rails r "Translation.sync"
 
-Step 5: Pre compile all Zammad assets
--------------------------------------
+Step 5: Pre-compile All Zammad Assets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: sh
 
@@ -245,8 +245,8 @@ Step 5: Pre compile all Zammad assets
 
 .. _source-install-systemd-reference:
 
-Step 6: Start Zammad or install as service
-------------------------------------------
+Step 6: Start Zammad or Install As Service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 

@@ -31,8 +31,8 @@ so that anyone with an account on your local intranet will
    see :admin-docs:`Third-Party Authentication </settings/security.html#third-party-applications>`
    for alternatives.
 
-How does it work?
-^^^^^^^^^^^^^^^^^
+How Does it Work?
+-----------------
 
 Once enabled, single sign-on activates an endpoint
 at ``https://your.zammad.host/auth/sso``.
@@ -182,7 +182,7 @@ which offers Kerberos support through a plug-in module instead.
 
 .. note:: All commands in this section must be run as root (or with ``sudo``).
 
-2a. Turn off NGINX
+2a. Turn Off NGINX
 ^^^^^^^^^^^^^^^^^^
 
 .. warning:: This will take your Zammad instance **offline**
@@ -213,7 +213,7 @@ simply turn off Apache and restore NGINX:
 This documentation expects a already working Apache configuration.
 Please see :doc:`/getting-started/configure-webserver` before continuing.
 
-2c. Install further Apache dependencies
+2c. Install Further Apache Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabs::
@@ -238,7 +238,7 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
          $ zypper ref
          $ zypper install krb5-client apache2-mod_auth_kerb
 
-2d. Enable Apache modules
+2d. Enable Apache Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 SSO requires modules that are not enabled by default. By default you can use
@@ -322,7 +322,7 @@ Replace the following placeholders in the sample config below:
 
 .. _sso-generate-keytab:
 
-2f. Generate keytab
+2f. Generate Keytab
 ^^^^^^^^^^^^^^^^^^^
 
 Apache needs a Kerberos *keytab* (key table)
@@ -439,7 +439,7 @@ lines! Keep only the one you need.
             RequestHeader set X-Forwarded-User "%{RU}e" env=RU
          </LocationMatch>
 
-2g. Restart Apache to apply changes
+2g. Restart Apache to Apply Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: sh

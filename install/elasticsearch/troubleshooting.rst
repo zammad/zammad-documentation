@@ -1,5 +1,5 @@
 Troubleshooting and FAQ
-***********************
+=======================
 
 This guide will discuss frequently asked questions and how to resolve common
 problems with Elasticsearch.
@@ -10,8 +10,8 @@ problems with Elasticsearch.
    can't find your particular issue described here, feel free to
    `ask the community <https://community.zammad.org>`_ for technical assistance.
 
-Data missing from the Web-UI / Search data missing or incomplete
-================================================================
+Data Missing From the Web-UI / Search Data Missing or Incomplete
+----------------------------------------------------------------
 
 A commonly reported issue is data missing from the Web-UI.
 This could be tickets, articles, users or anything else

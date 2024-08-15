@@ -1,8 +1,8 @@
 Organization
-************
+============
 
 List
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.organization``
 
@@ -99,7 +99,7 @@ Response:
    ]
 
 Search
-======
+------
 
 Required permission: ``ticket.agent`` **or** ``admin.organization``
 
@@ -176,7 +176,7 @@ Response:
    ]
 
 Show
-====
+----
 
 Required permission: ``ticket.agent`` **or** ``admin.organization``
 
@@ -215,7 +215,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``admin.organization``
 
@@ -266,7 +266,7 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``admin.organization``
 
@@ -315,7 +315,7 @@ Response:
    }
 
 Delete
-======
+------
 
 Required permission: ``admin.organization``
 

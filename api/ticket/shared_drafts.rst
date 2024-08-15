@@ -1,8 +1,8 @@
 Shared Drafts
-*************
+=============
 
 Show
-====
+----
 
 Required permission: ``ticket.agent``.
 
@@ -591,7 +591,7 @@ Sample response (base64 coded inline image is cut off):
    }
 
 Create
-======
+------
 
 Required permission: ``ticket.agent``.
 
@@ -1199,7 +1199,7 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``ticket.agent``
 
@@ -1820,7 +1820,7 @@ Response:
    }
 
 Remove
-======
+------
 
 Required permission: ``ticket.agent``
 

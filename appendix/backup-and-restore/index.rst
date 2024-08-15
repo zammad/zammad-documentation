@@ -1,5 +1,5 @@
 Backup and Restore
-******************
+==================
 
 Zammad ships scripts for backup & restore in package installations which you
 can use in your backup strategy.
@@ -16,7 +16,7 @@ can use in your backup strategy.
    as needed.
 
 Getting Started
-===============
+---------------
 
 These scripts are located in ``/opt/zammad/contrib/backup``. The following files
 might be important for you:
@@ -30,7 +30,7 @@ Head over to the next section for a simple backup configuration. In
 detailed explanation of the scripts.
 
 Basic Backup Setup
-------------------
+^^^^^^^^^^^^^^^^^^
 
 #. Rename/copy the ``config.dist`` file to ``config``.
 #. Change default parameters in  the ``config`` file if needed. Learn more
@@ -42,7 +42,7 @@ Basic Backup Setup
 .. _advanced_backup:
 
 Advanced Setup and Restore
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :hidden:
@@ -67,7 +67,7 @@ Restore Backups
    :doc:`here </appendix/backup-and-restore/restore>`.
 
 Additional Information
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Migrating to a new host
    :doc:`Here </appendix/backup-and-restore/migrate-hosts>` you can read how to
@@ -84,7 +84,7 @@ Helper scripts
    information.
 
 Limitations
-===========
+-----------
 
 Please note the following limitations which may affect script functionality
 or availability:

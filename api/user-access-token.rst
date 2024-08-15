@@ -1,8 +1,8 @@
 User Access Token
-*****************
+=================
 
 List
-====
+----
 
 Required permission: ``user_preferences.access_token``
 
@@ -903,7 +903,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``user_preferences.access_token``
 
@@ -934,7 +934,7 @@ Response:
    creation and can't be retrieved after.
 
 Delete
-======
+------
 
 Required permission: ``user_preferences.access_token``
 

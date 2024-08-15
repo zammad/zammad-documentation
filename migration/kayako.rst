@@ -1,8 +1,8 @@
 From Kayako
-***********
+===========
 
 Limitations
-===========
+-----------
 
 Please note below Kayako specific limitations.
 These are additional limitations to the
@@ -29,7 +29,7 @@ These are additional limitations to the
 
 
 Prerequisites
-=============
+-------------
 
 Zammad requires API access which is why the migrator will request your
 Kayako-URL, email address and password.
@@ -39,8 +39,8 @@ Kayako-URL, email address and password.
   Ensure to provide an user account with **full administrative** permissions.
   Less privileged users will end in a broken migration.
 
-Importing Kayako data
-=====================
+Importing Kayako Data
+---------------------
 
 Generally you have two options on how to migrate data.
 If you have a fairly big instance with a lot of data, you may want to
@@ -252,8 +252,8 @@ consider using the console over the browser version.
 
       .. include:: /migration/includes/commands-after-migration.include.rst
 
-After migration
-===============
+After Migration
+---------------
 
 As the migration technically skips the getting started wizard, please
 note that you want to adjust your

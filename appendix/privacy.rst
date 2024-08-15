@@ -1,10 +1,10 @@
 Privacy & Data Retention
-************************
+========================
 
 How long does Zammad hold onto user data? How can I manage its user data retention behavior?
 
 On-Premises Data
-================
+----------------
 
 The following kinds of data are stored locally on the production system:
 
@@ -57,7 +57,7 @@ Data Privacy Tasks
    Each entry in the data privacy task list is automatically deleted after 12 months.
 
 External Services
-=================
+-----------------
 
 Zammad utilizes third-party web services for certain functions,
 meaning that user data may occasionally be sent or exposed to third parties.

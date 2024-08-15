@@ -1,8 +1,8 @@
 Migration from OTRS
-********************
+===================
 
 Limitations
-===========
+-----------
 
 Please note below OTRS specific limitations.
 These are additional limitations to the :ref:`general ones listed <migration_limitations>`.
@@ -20,10 +20,10 @@ These are additional limitations to the :ref:`general ones listed <migration_lim
       Supported OTRS version: **3.1** up to **6.x**
 
 Prerequisites
-=============
+-------------
 
 Step 1: Install Znuny4OTRS-Repo
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a dependency of the OTRS migration plugin.
 
@@ -53,8 +53,8 @@ This is a dependency of the OTRS migration plugin.
 
          https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-3.3.2.opm
 
-Step 2: Install OTRS migration plugin
---------------------------------------
+Step 2: Install OTRS Migration Plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabs::
 
@@ -86,8 +86,8 @@ Step 2: Install OTRS migration plugin
 
    In some cases restarting your webserver may help to solve internal server errors.
 
-Importing OTRS data
-===================
+Importing OTRS Data
+-------------------
 
 .. tabs::
 
@@ -132,8 +132,8 @@ Importing OTRS data
 
 After successfully migrating your OTRS installation, continue with :doc:`/getting-started/first-steps`.
 
-Importing a differential
-========================
+Importing a Differential
+------------------------
 
 .. note::
 

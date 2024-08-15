@@ -1,5 +1,5 @@
-Configure Database server
-*************************
+Configure Database Server
+=========================
 
 .. note::
 

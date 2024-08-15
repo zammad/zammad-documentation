@@ -1,9 +1,9 @@
-Working on user information
-***************************
+Working on User Information
+===========================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Find user
+Find User
 ---------
 
 In order to work on user information or to check for specific information,
@@ -15,7 +15,7 @@ you'll need to find it first.
    >> User.find_by(email: 'your@email')  # Searching for the user by his Email address
    >> User.find_by(login: 'john.doe')    # Searching for the user by his login
 
-Unlock a locked user account
+Unlock a Locked User Account
 ----------------------------
 
 .. tip::
@@ -45,7 +45,7 @@ logins)
 
    >> User.find(**USERID**).login_failed
 
-Change / Update Email address of user
+Change / Update Email Address of User
 -------------------------------------
 
 If needed, you can simply change the Email address of the user.
@@ -64,7 +64,7 @@ If needed, you can simply change the Email address of the user.
 
 You need to find the user ID of the user first for this.
 
-Change / Update Login name of user
+Change / Update Login Name of User
 ----------------------------------
 
 Change the user name of the user (e.g. if you want to login with a shorter
@@ -79,7 +79,7 @@ username instead of a mail address)
 
 You need to find the user ID of the user first for this.
 
-Set admin rights for user
+Set Admin Rights for User
 -------------------------
 
 Don't have access to Zammad anymore? Grant yourself or another user
@@ -91,7 +91,7 @@ administrative rights.
    >> u.roles = Role.where(name: ['Agent', 'Admin'])
    >> u.save!
 
-Set password for user
+Set Password for User
 ---------------------
 
 You or the user did forget his password? No problem! Simply reset it by hand
@@ -100,8 +100,8 @@ if needed.
 .. code-block:: ruby
 
    >> User.find_by(email: 'you@example.com').update!(password: 'your_new_password')
-   
-Remove password for user
+
+Remove Password for User
 ------------------------
 
 If you added a second authentication method (e.g. LDAP) after launch, there

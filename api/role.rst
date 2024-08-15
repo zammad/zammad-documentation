@@ -1,8 +1,8 @@
 Roles
-*****
+=====
 
 List
-====
+----
 
 Required permission: ``admin.role``
 
@@ -109,7 +109,7 @@ Response:
    ]
 
 Show
-====
+----
 
 Required permission: ``admin.role``
 
@@ -155,7 +155,7 @@ Response:
    }
 
 Create
-======
+------
 
 Required permission: ``admin.role``
 
@@ -220,7 +220,7 @@ Response:
    }
 
 Update
-======
+------
 
 Required permission: ``admin.role``
 

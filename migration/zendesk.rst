@@ -1,8 +1,8 @@
 From Zendesk
-**************
+============
 
 Limitations
-===========
+-----------
 
 Please note below Zendesk specific limitations.
 These are additional limitations to the
@@ -20,7 +20,7 @@ These are additional limitations to the
      on the login page.
 
 Prerequisites
-=============
+-------------
 
 Zammad requires API access which is why you'll need to `create an API key`_
 for the migration. The migrator will request your Zendesk-URL, email address and
@@ -34,8 +34,8 @@ API key.
 .. _create an API key:
   https://support.zendesk.com/hc/en-us/articles/4408889192858-Generating-a-new-API-token
 
-Importing Zendesk data
-========================
+Importing Zendesk Data
+----------------------
 
 Generally you have two options on how to migrate data.
 If you have a fairly big instance with a lot of data, you may want to
@@ -246,8 +246,8 @@ consider using the console over the browser version.
 
       .. include:: /migration/includes/commands-after-migration.include.rst
 
-After migration
-===============
+After Migration
+---------------
 
 As the migration technically skips the getting started wizard, please
 note that you want to adjust your
