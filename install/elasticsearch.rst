@@ -178,7 +178,7 @@ authentication (see HTTP Basic below).
 
 
 Optional settings
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. tabs::
 
