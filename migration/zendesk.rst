@@ -18,6 +18,8 @@ These are additional limitations to the
    * User passwords are not migrated and will require the user to use the
      :admin-docs:`password reset link </settings/security/base.html#lost-password>`
      on the login page.
+   * Objects with cyrillic strings can't be migrated. Make sure to rename them
+     before starting the migration.
 
 Prerequisites
 -------------
