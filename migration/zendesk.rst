@@ -8,9 +8,9 @@ Please note below Zendesk specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
-   * | Differential migrations are **not** supported!
-     | The general suggestion is to run a test import before to learn
-       how long the migration is going to take.
+   * Differential migrations are **not** supported!
+     The general suggestion is to run a test import before to learn
+     how long the migration is going to take.
    * **Important:** Please note that migration speed highly depends on your
      Zendesk plan (API rate limits apply).
    * Your Zendesk plan has to provide API support. This may not apply to all
@@ -18,6 +18,8 @@ These are additional limitations to the
    * User passwords are not migrated and will require the user to use the
      :admin-docs:`password reset link </settings/security/base.html#lost-password>`
      on the login page.
+   * Objects with cyrillic strings can't be migrated. Make sure to rename them
+     before starting the migration.
 
 Prerequisites
 -------------
