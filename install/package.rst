@@ -36,13 +36,17 @@ some operating systems may require additional packages if not already installed.
          $ sudo SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
+   .. tab:: OpenSUSE
+
+      TODO: add needed packages
+
    .. tab:: CentOS
 
       .. code-block:: sh
 
          $ sudo yum install wget epel-release
 
-2. Install Elasticsearch
+1. Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
