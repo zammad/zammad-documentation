@@ -82,13 +82,13 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ localectl status |grep "LC_CTYPE"
+         $ localectl status |grep LANG
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
       .. code-block:: sh
 
-         $ sudo localectl set-locale LC_CTYPE=en_US.UTF-8
+         $ sudo localectl set-locale LANG=en_US.UTF-8
 
       .. hint::
 
@@ -110,7 +110,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ sudo localectl set-locale LANG=en_US.utf8
+         $ sudo localectl set-locale LANG=en_US.UTF-8
 
 
 Add Repository and Install Zammad
