@@ -56,8 +56,8 @@ by default and start it:
 
 .. code-block:: sh
 
-   $ systemctl start elasticsearch
-   $ systemctl enable elasticsearch
+   $ sudo systemctl start elasticsearch
+   $ sudo systemctl enable elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
 

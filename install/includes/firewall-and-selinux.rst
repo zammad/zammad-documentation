@@ -86,33 +86,6 @@ firewall. It may not cover your case.
 
       To load your new rules, simply run ``sudo systemctl reload nftables``.
 
-   .. tab:: OpenSUSE
-
-      If your system does not yet know webserver rules, you can add a new one
-      for your firewall by creating the file
-      ``/etc/sysconfig/SuSEfirewall2.d/services/webserver`` with this content:
-
-      .. code-block::
-
-         ## Name: Webserver
-         ## Description: Open ports for HTTP and HTTPs
-
-         # space separated list of allowed TCP ports
-         TCP="http https"
-         # space separated list of allowed UDP ports
-         UDP="http https"
-
-      After that locate ``FW_CONFIGURATIONS_EXT`` within
-      ``/etc/sysconfig/SuSEfirewall2`` and add the option ``webserver`` to the
-      list. The list is separated by spaces.
-      You may require a different zone, above covers the external zone.
-
-      Now ensure to restart the firewall service.
-
-      .. code-block:: sh
-
-         sudo systemctl restart SuSEfirewall2
-
    .. tab:: CentOS
 
       .. code-block:: sh

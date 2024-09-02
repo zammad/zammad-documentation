@@ -26,13 +26,9 @@ some operating systems may require additional packages if not already installed.
 
          $ sudo apt install curl apt-transport-https gnupg
 
-   .. tab:: OpenSUSE
-
-      TODO: add needed packages
-
    .. tab:: SLES
 
-      The openSUSE Enterprise 15 variant requires additional repositories to be
+      SLES 15 requires additional repositories to be
       activated. To do so, run the following commands.
 
       .. code-block:: sh
@@ -66,7 +62,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ locale |grep "LANG="
+         $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
@@ -82,7 +78,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ localectl status |grep LANG
+         $ localectl status | grep LANG
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
@@ -104,7 +100,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ locale |grep "LANG="
+         $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
