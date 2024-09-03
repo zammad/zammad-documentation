@@ -86,7 +86,7 @@ firewall. It may not cover your case.
 
       To load your new rules, simply run ``sudo systemctl reload nftables``.
 
-   .. tab:: CentOS
+   .. tab:: CentOS, RHEL, openSUSE, SLES
 
       .. code-block:: sh
 

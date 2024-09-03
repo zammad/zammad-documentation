@@ -223,7 +223,6 @@ Install Zammad
 
       .. code-block:: sh
 
-         # general
          $ sudo yum install zammad
 
       Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
