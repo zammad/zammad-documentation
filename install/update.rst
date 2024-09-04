@@ -55,24 +55,30 @@ using `Zammad hosting`_ for your and your customers' safety.
                .. code-block:: sh
 
                   $ apt update
-                  $ apt upgrade zammad   # updating only Zammad
-                  $ apt upgrade          # updating all packages
+                  $ apt upgrade zammad         # updating only Zammad
+                  $ systemctl stop zammad      # stop Zammad
+                  $ apt upgrade                # updating all packages
+                  $ systemctl start zammad     # start Zammad again
 
             .. tab:: OpenSUSE / SLES
 
                .. code-block:: sh
 
                   $ zypper ref
-                  $ zypper up zammad     # updating only Zammad
-                  $ zypper up            # updating all packages
+                  $ zypper up zammad           # updating only Zammad
+                  $ systemctl stop zammad      # stop Zammad
+                  $ zypper up                  # updating all packages
+                  $ systemctl start zammad     # start Zammad again
 
             .. tab:: CentOS / RHEL
 
                .. code-block:: sh
 
                   $ yum update-check
-                  $ yum update zammad    # updating only Zammad
-                  $ yum update           # updating all packages
+                  $ yum update zammad          # updating only Zammad
+                  $ systemctl stop zammad      # stop Zammad
+                  $ yum update                 # updating all packages
+                  $ systemctl start zammad     # start Zammad again
 
             The package comes with maintenance scripts that will run regular
             tasks during updates for you. However, you should **always** have
