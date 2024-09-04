@@ -38,6 +38,16 @@ using `Zammad hosting`_ for your and your customers' safety.
             $ zammad run rails r "Rails.cache.clear"
 
       Step 5: Update Zammad
+         .. note::
+            If you update your complete system and there are updates for Zammad
+            **and** your database server, this could lead to errors because your
+            database may not be online again when Zammad is updated.
+
+            In such a case, you might want to exclude one of them from updating
+            temporarily (e.g. via ``apt-mark hold zammad``/
+            ``apt-mark unhold zammad``) or update one of them beforehand as in
+            the commands below.
+
          .. tabs::
 
             .. tab:: Ubuntu / Debian
@@ -45,24 +55,28 @@ using `Zammad hosting`_ for your and your customers' safety.
                .. code-block:: sh
 
                   $ apt update
-                  $ apt upgrade
-
-            .. tab:: CentOS
-
-               .. code-block:: sh
-
-                  $ yum update zammad
+                  $ apt upgrade zammad   # updating only Zammad
+                  $ apt upgrade          # updating all packages
 
             .. tab:: OpenSUSE / SLES
 
                .. code-block:: sh
 
                   $ zypper ref
-                  $ zypper up
+                  $ zypper up zammad     # updating only Zammad
+                  $ zypper up            # updating all packages
+
+            .. tab:: CentOS / RHEL
+
+               .. code-block:: sh
+
+                  $ yum update-check
+                  $ yum update zammad    # updating only Zammad
+                  $ yum update           # updating all packages
 
             The package comes with maintenance scripts that will run regular
             tasks during updates for you. However, you should **always** have
-            a look on the outputs these helper scripts generate. Ignoring said
+            a look at the outputs these helper scripts generate. Ignoring said
             output may lead to incomplete updates that may corrupt data or
             lead to issues.
 
