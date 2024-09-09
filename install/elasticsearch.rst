@@ -23,10 +23,6 @@ For installation please follow
 Step 2: Configuration
 ---------------------
 
-We use the following settings to optimize the performance of our Elasticsearch
-servers. You may want to append that to your ``elasticsearch.yml`` as a useful
-basic configuration.
-
 Install ingest-plugin (only for Elasticsearch <= 7)
    .. code-block:: sh
 
@@ -38,6 +34,10 @@ Increase virtual memory map limit
       $ sudo sysctl -w vm.max_map_count=262144
 
 Adjust ``/etc/elasticsearch/elasticsearch.yml``
+   We use the following settings to optimize the performance of our Elasticsearch
+   servers. You may want to append that to your ``elasticsearch.yml`` as a useful
+   basic configuration.
+
    .. code-block:: sh
 
       # /etc/elasticsearch/elasticsearch.yml
@@ -68,14 +68,14 @@ Enable and start Elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
 
-Step 3: Connect Zammad
-----------------------
+Step 3: Connecting Zammad with Elasticsearch
+--------------------------------------------
 
 Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
 
-* install from :doc:`package <package>`
-* install from :doc:`source <source>`
+* Install from :doc:`package <package>`
+* Install from :doc:`source <source>`
 
 .. note::
    This guide uses the ``zammad run`` command prefix in command line examples.
@@ -87,7 +87,7 @@ Elasticsearch URL
    .. code-block:: sh
 
       # Set the Elasticsearch server address
-      # It has to be https starting with ES8
+      # It has to be "https" starting with ES8
       $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
 Elasticsearch user and password (only for Elasticsearch >= 8)
