@@ -12,7 +12,8 @@ fields below.
 
 .. note::
 
-   These fields may vary if you created custom fields (objects) in the admin interface.
+   These fields may vary if you created custom fields (objects) in the admin
+   interface.
 
 .. hint:: **Below you can find some hints:**
 
@@ -32,7 +33,7 @@ Ticket
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_ticket``
 
 .. list-table:: Ticket-Index
@@ -241,7 +242,7 @@ Ticket Priority
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_ticket_priority``
 
 .. list-table:: Ticket Priority-Index
@@ -290,7 +291,7 @@ Ticket State
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_ticket_state``
 
 .. list-table:: Ticket State-Index
@@ -359,7 +360,7 @@ Article
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_ticket``
 
 .. note::
@@ -410,9 +411,6 @@ Article
    * - preferences
      - ``{}``
      - Internal preferences, may be empty, mainly for delivery states
-   * - references
-     - ``null``
-     - Contains message references
    * - reply_to
      - ``null``
      - Contains reply to header if applicable
@@ -443,7 +441,7 @@ User
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_user``
 
 .. list-table:: User-Index
@@ -560,7 +558,7 @@ Organization
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_organization``
 
 .. list-table:: Organization-Index
@@ -625,7 +623,7 @@ Group
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_group``
 
 .. list-table:: Group-Index
@@ -706,7 +704,7 @@ CTI Log
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_cti_log``
 
 .. list-table:: CTI Log-Index
@@ -785,7 +783,7 @@ Chat Session
 
 .. tip::
 
-   🤓 The following indice contains below mentioned information:
+   The following index contains below mentioned information:
    ``*_chat_session``
 
 .. list-table:: Chat Session-Index
