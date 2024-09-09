@@ -146,8 +146,13 @@ servers. Your mileage may vary.
    # Available in version 6.6+ only.
    indices.query.bool.max_clause_count: 2000
 
-.. note:: For more information on the ``indices.query.bool.max_clause_count`` setting,
-   see the `Elasticsearch 6.6 release notes <https://www.elastic.co/guide/en/elasticsearch/reference/6.8/breaking-changes-6.6.html#_literal_query_string_literal_literal_multi_match_literal_and_literal_simple_query_string_literal_query>`_.
+After installation and configuration, ensure to enable Elasticsearch
+by default and start it:
+
+.. code-block:: sh
+
+   $ sudo systemctl start elasticsearch
+   $ sudo systemctl enable elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
 

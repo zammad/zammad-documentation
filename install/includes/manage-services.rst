@@ -1,4 +1,4 @@
-Manage services of Zammad
+Manage Services of Zammad
 -------------------------
 
 In general Zammad uses three services - these can be (re)started & stopped 
