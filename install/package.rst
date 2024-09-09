@@ -10,7 +10,7 @@ Prerequisites
 -------------
 
 Before performing the following steps, make sure to meet
-Zammad's :doc:`/prerequisites/software` requirements.
+Zammad's :doc:`software requirements </prerequisites/software>`.
 
 1. Install Required Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -26,9 +26,9 @@ some operating systems may require additional packages if not already installed.
 
          $ sudo apt install curl apt-transport-https gnupg
 
-   .. tab:: SLES 15
+   .. tab:: SLES
 
-      The openSUSE Enterprise 15 variant requires additional repositories to be
+      SLES 15 requires additional repositories to be
       activated. To do so, run the following commands.
 
       .. code-block:: sh
@@ -36,13 +36,13 @@ some operating systems may require additional packages if not already installed.
          $ sudo SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
-   .. tab:: CentOS
+   .. tab:: CentOS / RHEL
 
       .. code-block:: sh
 
          $ sudo yum install wget epel-release
 
-2. Install Elasticsearch
+1. Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
@@ -62,7 +62,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: sh
 
-         $ locale |grep "LANG="
+         $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
@@ -72,33 +72,19 @@ To make Zammad work correctly, your system has to use the correct locales.
          $ sudo locale-gen en_US.UTF-8
          $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
 
-   .. tab:: CentOS
-
-      List your current locale settings.
-
-      .. code-block:: sh
-
-         $ locale |grep "LANG="
-
-      .. include:: /install/includes/include-utf-8-clause.rst
-
-      .. code-block:: sh
-
-         $ sudo localectl set-locale LANG=en_US.utf8
-
    .. tab:: OpenSUSE / SLES
 
       List your current locale settings.
 
       .. code-block:: sh
 
-         $ localectl status |grep "LC_CTYPE"
+         $ localectl status | grep LANG
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
       .. code-block:: sh
 
-         $ sudo localectl set-locale LC_CTYPE=en_US.UTF-8
+         $ sudo localectl set-locale LANG=en_US.UTF-8
 
       .. hint::
 
@@ -107,6 +93,20 @@ To make Zammad work correctly, your system has to use the correct locales.
          <https://doc.opensuse.org/documentation/leap/startup/html/book-opensuse-startup/cha-yast-lang.html#pro-yast-lang-additional>`_.
 
          This does not affect other users and thus can be ignored.
+
+   .. tab:: CentOS / RHEL
+
+      List your current locale settings.
+
+      .. code-block:: sh
+
+         $ locale | grep "LANG="
+
+      .. include:: /install/includes/include-utf-8-clause.rst
+
+      .. code-block:: sh
+
+         $ sudo localectl set-locale LANG=en_US.UTF-8
 
 
 Add Repository and Install Zammad
@@ -166,25 +166,6 @@ Add Repository
             $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-   .. tab:: CentOS
-
-      Install Repository Key
-         .. code-block:: sh
-
-            $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
-
-      RHEL 8 / CentOS 8
-         .. code-block:: sh
-
-            $ sudo wget -O /etc/yum.repos.d/zammad.repo \
-            https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
-
-      RHEL 9 / CentOS 9
-         .. code-block:: sh
-
-            $ sudo wget -O /etc/yum.repos.d/zammad.repo \
-            https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
-
    .. tab:: OpenSUSE / SLES
 
       Install Repository Key
@@ -192,11 +173,32 @@ Add Repository
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
-      SLES 15 / openSUSE 15.x
+      openSUSE 15.x / SLES 15
          .. code-block:: sh
 
             $ sudo wget -O /etc/zypp/repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
+
+
+   .. tab:: CentOS / RHEL
+
+      Install Repository Key
+         .. code-block:: sh
+
+            $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
+
+      CentOS 8 / RHEL 8
+         .. code-block:: sh
+
+            $ sudo wget -O /etc/yum.repos.d/zammad.repo \
+            https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
+
+      CentOS 9 / RHEL 9
+         .. code-block:: sh
+
+            $ sudo wget -O /etc/yum.repos.d/zammad.repo \
+            https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
+
 
 Install Zammad
 ^^^^^^^^^^^^^^
@@ -210,11 +212,17 @@ Install Zammad
          $ sudo apt update
          $ sudo apt install zammad
 
-   .. tab:: CentOS
+   .. tab:: OpenSUSE / SLES
 
       .. code-block:: sh
 
-         # general
+         $ sudo zypper ref
+         $ sudo zypper install zammad
+
+   .. tab:: CentOS / RHEL
+
+      .. code-block:: sh
+
          $ sudo yum install zammad
 
       Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
@@ -224,13 +232,6 @@ Install Zammad
       .. code-block:: sh
 
          sudo chmod -R 755 /opt/zammad/public/
-
-   .. tab:: OpenSUSE / SLES
-
-      .. code-block:: sh
-
-         $ sudo zypper ref
-         $ sudo zypper install zammad
 
 .. include:: /install/includes/firewall-and-selinux.rst
 
