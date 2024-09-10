@@ -107,7 +107,7 @@ Add certificate to Zammad (only for Elasticsearch >= 8)
 
    .. code-block:: sh
 
-      $ sudo nano /etc/elasticsearch/certs/http_ca.crt
+      $ sudo cat /etc/elasticsearch/certs/http_ca.crt
 
    Go to the admin panel of Zammad and add your copied certificate under
    :admin-docs:`SSL Certificates </settings/security/ssl-certificates.html>`.
