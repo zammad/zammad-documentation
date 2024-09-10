@@ -7,68 +7,75 @@ recommended**).
 If these manual steps aren't what you are looking for, consider a `hosted Zammad
 setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </install/docker-compose>`.
 
+.. note:: Some steps may be required depending on your Elasticsearch version and
+   configuration. See remarks in the configuration steps below.
+
 Step 1: Installation
 --------------------
 
-Zammad allows you to use **elasticsearch** or **elasticsearch-oss**.
-For installation instructions please follow
-`Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_.
+For installation please follow
+`Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#elasticsearch-install-packages>`_.
+
+.. hint:: If you are installing Elasticsearch 8 and want to follow our
+   standard configuration below, make sure to copy/save the password which
+   is shown while installing Elasticsearch.
 
 Step 2: Configuration
 ---------------------
 
-.. code-block:: sh
+Install ingest-plugin (only for Elasticsearch <= 7)
+   .. code-block:: sh
 
-   # Install the ingest-attachment plugin manually, if running ES 7 or older
-   $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-   # Increase the virtual memory map limit
-   $ sudo sysctl -w vm.max_map_count=262144
+Increase virtual memory map limit
+   .. code-block:: sh
 
-We use the following settings to optimize the performance of our Elasticsearch
-servers. You may want to append that to your ``elasticsearch.yml`` as a useful
-basic configuration.
+      $ sudo sysctl -w vm.max_map_count=262144
 
-.. code-block:: sh
+Adjust ``/etc/elasticsearch/elasticsearch.yml``
+   We use the following settings to optimize the performance of our Elasticsearch
+   servers. You may want to append that to your ``elasticsearch.yml`` as a useful
+   basic configuration.
 
-   # /etc/elasticsearch/elasticsearch.yml
+   .. code-block:: sh
 
-   # Tickets above this size (articles + attachments + metadata)
-   # may fail to be properly indexed (Default: 100mb).
-   #
-   # When Zammad sends tickets to Elasticsearch for indexing,
-   # it bundles together all the data on each individual ticket
-   # and issues a single HTTP request for it.
-   # Payloads exceeding this threshold will be truncated.
-   #
-   # Performance may suffer if it is set too high.
-   http.max_content_length: 400mb
+      # /etc/elasticsearch/elasticsearch.yml
 
-   # Allows the engine to generate larger (more complex) search queries.
-   # Elasticsearch will raise an error or deprecation notice if this value is too low,
-   # but setting it too high can overload system resources (Default: 1024).
-   #
-   # Available in version 6.6+ only.
-   indices.query.bool.max_clause_count: 2000
+      # Tickets above this size (articles + attachments + metadata)
+      # may fail to be properly indexed (Default: 100mb).
+      #
+      # When Zammad sends tickets to Elasticsearch for indexing,
+      # it bundles together all the data on each individual ticket
+      # and issues a single HTTP request for it.
+      # Payloads exceeding this threshold will be truncated.
+      #
+      # Performance may suffer if it is set too high.
+      http.max_content_length: 400mb
 
-After installation and configuration, ensure to enable Elasticsearch
-by default and start it:
+      # Allows the engine to generate larger (more complex) search queries.
+      # Elasticsearch will raise an error or deprecation notice if this value is too low,
+      # but setting it too high can overload system resources (Default: 1024).
+      #
+      # Available in version 6.6+ only.
+      indices.query.bool.max_clause_count: 2000
 
-.. code-block:: sh
+Enable and start Elasticsearch
+   .. code-block:: sh
 
-   $ sudo systemctl start elasticsearch
-   $ sudo systemctl enable elasticsearch
+      $ systemctl start elasticsearch
+      $ systemctl enable elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
 
-Step 3: Connect Zammad
-----------------------
+Step 3: Connecting Zammad with Elasticsearch
+--------------------------------------------
 
 Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
 
-* install from :doc:`package <package>`
-* install from :doc:`source <source>`
+* Install from :doc:`package <package>`
+* Install from :doc:`source <source>`
 
 .. note::
    This guide uses the ``zammad run`` command prefix in command line examples.
@@ -76,18 +83,48 @@ commands, as this will fail otherwise.
    If you installed from source, be sure to omit this prefix
    and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
-.. code-block:: sh
+Elasticsearch URL
+   .. code-block:: sh
 
-   # Set the Elasticsearch server address
-   # It has to be https starting with ES8
-   $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+      # Set the Elasticsearch server address
+      # It has to be "https" starting with ES8
+      $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
-   # Build the search index
-   $ sudo zammad run rake zammad:searchindex:rebuild
+Elasticsearch user and password (only for Elasticsearch >= 8)
+   Now you need your password which was shown to you while installing
+   Elasticsearch.
 
-   # Optionally, you can specify a number of CPU cores which are used for
-   # rebuilding the searchindex, as in the following example with 8 cores:
-   $ sudo zammad run rake zammad:searchindex:rebuild[8]
+   .. code-block:: sh
+
+      # Set Elasticsearch user and password
+      $ zammad run rails r "Setting.set('es_user', 'elastic')"
+      $ zammad run rails r "Setting.set('password', '<password>')"
+
+Add certificate to Zammad (only for Elasticsearch >= 8)
+   Show and copy the auto-generated certificate from Elasticsearch and add it
+   to Zammad. Make sure to copy/paste the delimiters
+   (e.g. ``-----BEGIN CERTIFICATE-----``) too.
+
+   .. code-block:: sh
+
+      $ sudo cat /etc/elasticsearch/certs/http_ca.crt
+
+   Go to the admin panel of Zammad and add your copied certificate under
+   :admin-docs:`SSL Certificates </settings/security/ssl-certificates.html>`.
+
+   .. figure:: /images/install/elasticsearch/admin-certificate-management.png
+      :alt: Screenshot shows certificate management in Zammad's admin panel
+      :align: center
+
+Build/rebuild the searchindex
+   .. code-block:: sh
+
+      $ sudo zammad run rake zammad:searchindex:rebuild
+
+      # Optionally, you can specify a number of CPU cores which are used for
+      # rebuilding the searchindex, as in the following example with 8 cores:
+      $ sudo zammad run rake zammad:searchindex:rebuild[8]
+
 
 Optional settings
 -----------------
@@ -97,14 +134,6 @@ information please have a look at
 `Elastic's documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html>`_.
 
 .. tabs::
-
-   .. tab:: Authentication
-
-      .. code-block:: sh
-
-         # HTTP Basic
-         $ zammad run rails r "Setting.set('es_user', '<username>')"
-         $ zammad run rails r "Setting.set('es_password', '<password>')"
 
    .. tab:: Index namespacing
 

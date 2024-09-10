@@ -254,10 +254,6 @@ system gets.
    (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
    check your package manager's manpage to find out.
 
-Starting with Zammad 4.0 you can decide if you want to use
-``elasticsearch`` or ``elasticsearch-oss``. Please note that CentOS
-**requires** ``elasticsearch``.
-
 .. csv-table:: Zammad/Elasticsearch version compatibility
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
@@ -271,8 +267,9 @@ Starting with Zammad 4.0 you can decide if you want to use
    "3.1", ">= 2.4, <=7.4"
    "2.0-3.0", ">= 2.4, <=5.6"
 
-An Elasticsearch plugin is required to index the contents of email attachments:
-``ingest-attachment``.
+An Elasticsearch plugin is required for version 7 or older to index the
+contents of email attachments: ``ingest-attachment``. Starting with
+Elasticsearch 8, it is included by default.
 
 2.9 Memcached (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^
