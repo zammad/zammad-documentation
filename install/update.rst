@@ -43,10 +43,8 @@ using `Zammad hosting`_ for your and your customers' safety.
             **and** your database server, this could lead to errors because your
             database may not be online again when Zammad is updated.
 
-            In such a case, you might want to exclude one of them from updating
-            temporarily (e.g. via ``apt-mark hold zammad``/
-            ``apt-mark unhold zammad``) or update one of them beforehand as in
-            the commands below.
+            In such a case, you might want to exclude Zammad from updating
+            temporarily as you can see in the commands below.
 
          .. tabs::
 
@@ -55,30 +53,29 @@ using `Zammad hosting`_ for your and your customers' safety.
                .. code-block:: sh
 
                   $ apt update
-                  $ apt upgrade zammad         # updating only Zammad
-                  $ systemctl stop zammad      # stop Zammad
-                  $ apt upgrade                # updating all packages
-                  $ systemctl start zammad     # start Zammad again
+                  $ apt-mark hold zammad           # disable updates for Zammad
+                  $ apt upgrade                    # update all packages except Zammad
+                  $ apt-mark unhold zammad         # re-enable updates for Zammad
+                  $ apt upgrade                    # update Zammad
 
             .. tab:: OpenSUSE / SLES
 
                .. code-block:: sh
 
-                  $ zypper ref
-                  $ zypper up zammad           # updating only Zammad
-                  $ systemctl stop zammad      # stop Zammad
-                  $ zypper up                  # updating all packages
-                  $ systemctl start zammad     # start Zammad again
+                  $ zypper refresh
+                  $ zypper addlock zammad          # disable updates for Zammad
+                  $ zypper update                  # update all packages except Zammad
+                  $ zypper removelock zammad       # re-enable updates for Zammad
+                  $ zypper update                  # update Zammad
+
 
             .. tab:: CentOS / RHEL
 
                .. code-block:: sh
 
-                  $ yum update-check
-                  $ yum update zammad          # updating only Zammad
-                  $ systemctl stop zammad      # stop Zammad
-                  $ yum update                 # updating all packages
-                  $ systemctl start zammad     # start Zammad again
+                  $ yum check-update
+                  $ yum upgrade --exclude zammad   # update all packages except Zammad
+                  $ yum upgrade                    # update Zammad
 
             The package comes with maintenance scripts that will run regular
             tasks during updates for you. However, you should **always** have
