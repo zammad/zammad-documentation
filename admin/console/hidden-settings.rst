@@ -210,3 +210,31 @@ thresholds.
         - 0
         - 1
         - >= 2
+
+Activate Attachment Tab in Sidebar
+----------------------------------
+
+This option activates a new tab in the right sidebar in the ticket view
+which shows all attachments of the currently viewed ticket.
+
+.. code-block:: ruby
+
+   >> Setting.set('ui_ticket_zoom_sidebar_article_attachments', 'true')
+
+Sample of the above setting:
+
+.. figure:: /images/console/attachment-tab.png
+   :align: center
+   :scale: 80%
+
+Time Period for Showing Customer Profile on New Calls
+-----------------------------------------------------
+
+Zammad shows the customer profile dialog when a call of this customer is
+incoming and there is an existing ticket of this customer in this time period.
+The default time period is 30 days. If there is no ticket in this period, the
+customer dialog is not shown automatically.
+
+.. code-block:: ruby
+
+   >> Setting.set('cti_customer_last_activity', '90') # set the time period to 90 days
