@@ -134,7 +134,7 @@ Required permission: ``admin.group``
    {
      "name": "Amazing Group",
      "signature_id": 1,
-     "email_address_id": 1,
+     "email_address_id": 3,
      "assignment_timeout": 180,
      "follow_up_possible": "new_ticket",
      "follow_up_assignment": false,
