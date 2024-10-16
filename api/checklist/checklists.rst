@@ -1,7 +1,7 @@
 Checklists
 ==========
 
-.. note:: To create a checklist, you can add checklist items via
+.. note:: To add checklist items, use the
    :doc:`checklist items endpoint <checklist-items>`.
 
 Show
@@ -133,10 +133,110 @@ Response:
 Create
 ------
 
+Required permission: ``ticket.agent``
 
+``POST``-Request sent: ``/api/v1/checklists``
+
+Request:
+
+.. code-block:: json
+   :force:
+
+   {
+      "name": "My new checklist",
+      "ticket_id": 7
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 OK
+
+   {
+      "id": 12,
+      "assets": {
+         "Checklist": {
+            "12": {
+               "id": 12,
+               "name": "",
+               "sorted_item_ids": [
+                  "32"
+               ],
+               "created_by_id": 3,
+               "updated_by_id": 3,
+               "ticket_id": 7,
+               "created_at": "2024-10-16T06:57:51.474Z",
+               "updated_at": "2024-10-16T06:57:51.512Z",
+               "item_ids": [
+                  32
+               ]
+            }
+         },
+         "ChecklistItem": {
+            "32": {
+               "id": 32,
+               "text": "",
+               "checked": false,
+               "checklist_id": 12,
+               "created_by_id": 3,
+               "updated_by_id": 3,
+               "created_at": "2024-10-16T06:57:51.505Z",
+               "updated_at": "2024-10-16T06:57:51.505Z",
+               "ticket_id": null
+            }
+         }
+      }
+   }
 
 Update
 ------
+
+Required permission: ``ticket.agent``
+
+``PATCH``-Request sent: ``/api/v1/checklists/{checklist id}``
+
+Request:
+
+.. code-block:: json
+   :force:
+
+   {
+      "name": "New checklist name",
+      "sorted_item_ids": [
+         "34",
+         "33",
+         "32"
+      ]
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 OK
+
+   {
+      "name": "New checklist name",
+      "sorted_item_ids": [
+         "34",
+         "33",
+         "32"
+      ],
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "ticket_id": 7,
+      "id": 12,
+      "created_at": "2024-10-16T06:57:51.474Z",
+      "updated_at": "2024-10-16T07:49:06.923Z",
+      "item_ids": [
+         32,
+         33,
+         34
+      ]
+   }
 
 Delete
 ------

@@ -1,7 +1,7 @@
 Checklist Endpoints
 ===================
 
-Zammad's checklist endpoints are divided into different parts:
+Zammad has different checklist endpoints:
 
    .. toctree::
       :maxdepth: 1
