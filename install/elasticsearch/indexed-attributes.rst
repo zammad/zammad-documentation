@@ -50,6 +50,12 @@ Ticket
    * - article_count
      - ``1``
      - Number of articles within the ticket
+   * - checklist.name
+     - ``null``, ``Onboarding employee``
+     - Name of the checklist, empty by default
+   * - checklist.items
+     - ``Buy hardware``
+     - Name of the checklist item
    * - close_at
      - ``null``, ``2021-03-03T14:50:20.673Z``
      - First close time, set once
@@ -156,7 +162,7 @@ Ticket
      - ``null``, ``2021-03-24T16:28:38.303Z``
      - | Time stamp of last communication type contact
        | Depends on ``last_contact_agent_at``, ``last_contact_customer_at``
-         and "Ticket Last Contact Behaviour" setting
+         and "Ticket Last Contact Behavior" setting
    * - last_contact_customer_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
      - Time stamp of last communication type contact of customer
@@ -579,7 +585,7 @@ Organization
      - Creation date
    * - created_by
      - #{user object}
-     - | Complete Payload of the user that created the organzation
+     - | Complete Payload of the user that created the organization
        | Please see `User`_ for more
    * - created_by_id
      - ``1``
