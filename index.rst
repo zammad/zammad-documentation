@@ -26,12 +26,11 @@ Zammad System Documentation
    :caption: Installation & Update
 
    /install/package
-   /install/source
-   /install/elasticsearch
    /install/docker-compose
    /install/kubernetes
+   /install/source
+   /install/elasticsearch
    /install/update
-
 
 .. toctree::
    :maxdepth: 2
