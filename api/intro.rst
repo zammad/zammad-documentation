@@ -611,7 +611,7 @@ The value of this header can be one of the following:
 ``From`` is available for all endpoints.
 
 Encoding
-========
+--------
 
 The API expects UTF-8 encoding.
 Keep in mind that especially when using URLs with get options
