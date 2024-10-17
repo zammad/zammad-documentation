@@ -50,6 +50,12 @@ Ticket
    * - article_count
      - ``1``
      - Number of articles within the ticket
+   * - checklist
+     - Contains these attributes:
+
+       - name: ``null``, ``Checklist title``
+       - items: ``(array)``
+     - Items array contains the text of the items
    * - close_at
      - ``null``, ``2021-03-03T14:50:20.673Z``
      - First close time, set once
@@ -67,6 +73,7 @@ Ticket
        business hours. **(SLA)**
    * - create_article_sender
      - Contains these attributes:
+
           * note: ``null``
           * updated_at: ``2021-03-03T14:50:20.812Z``
           * name: ``Customer``
@@ -80,6 +87,7 @@ Ticket
      - ID of the user that created the article
    * - create_article_type
      - Contains these attributes:
+
           * note: ``null``
           * updated_at: ``2021-03-03T14:50:20.812Z``
           * name: ``phone``, ``email``, ``web``
@@ -154,7 +162,7 @@ Ticket
      - ``null``, ``2021-03-24T16:28:38.303Z``
      - | Time stamp of last communication type contact
        | Depends on ``last_contact_agent_at``, ``last_contact_customer_at``
-         and "Ticket Last Contact Behaviour" setting
+         and "Ticket Last Contact Behavior" setting
    * - last_contact_customer_at
      - ``null``, ``2021-03-24T16:28:38.303Z``
      - Time stamp of last communication type contact of customer
@@ -337,6 +345,7 @@ Ticket State
      - Note that has been set via console or API
    * - state_type
      - Contains these attributes:
+
           * created_at: ``2021-03-03T14:50:20.582Z``
           * created_by_id: ``1``
           * id: ``4``
@@ -576,7 +585,7 @@ Organization
      - Creation date
    * - created_by
      - #{user object}
-     - | Complete Payload of the user that created the organzation
+     - | Complete Payload of the user that created the organization
        | Please see `User`_ for more
    * - created_by_id
      - ``1``
@@ -647,6 +656,7 @@ Group
      - User ID that created the group
    * - email_address
      - Contains these attributes:
+
           * active: ``true``
           * channel_id: ``3``
           * created_at: ``2021-03-24T23:54:58.187Z``
@@ -679,6 +689,7 @@ Group
      - Notes for the group available via web, console and API
    * - signature
      - Contains these attributes:
+
           * active: ``true``
           * body: ``<br>  #{user.firstname} #{user.lastname}<br>--<br>That Inc``
           * created_at: ``2021-03-03T14:50:19.775Z``
@@ -795,6 +806,7 @@ Chat Session
      - Description
    * - chat
      - Contains these attributes:
+
           * active: ``true``
           * block_country: ``null``
           * block_ip: ``null``
@@ -824,6 +836,7 @@ Chat Session
      - ID of Chat Session
    * - messages
      - ``(Array)`` - Array entries contain these attributes:
+
           * chat_session_id: ``1``
           * content: ``Hello dear customer``
           * created_at: ``2021-03-25T10:26:35.977Z``
@@ -836,6 +849,7 @@ Chat Session
      - Name agent set for chat user, if applicable
    * - preferences
      - Contains these attributes:
+
           * dns_name: ``host.domain.tld``
           * geo_ip: ``{}``
           * participants: ``Array``, ``["47118371175780", "47118371850300"]``
@@ -859,7 +873,7 @@ Chat Session
      - User ID that last updated session, may be ``null``
    * - user
      - #{user object}
-     - | Complete Payload of the chat agemt
+     - | Complete Payload of the chat agent
        | Please see `User`_ for more
    * - user_id
      - ``3``
