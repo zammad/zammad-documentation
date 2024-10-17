@@ -50,12 +50,12 @@ Ticket
    * - article_count
      - ``1``
      - Number of articles within the ticket
-   * - checklist.name
-     - ``null``, ``Onboarding employee``
-     - Name of the checklist, empty by default
-   * - checklist.items
-     - ``Buy hardware``
-     - Name of the checklist item
+   * - checklist
+     - Contains these attributes:
+
+       - name: ``null``, ``Checklist title``
+       - items: ``(array)``
+     - Items array contains the text of the items
    * - close_at
      - ``null``, ``2021-03-03T14:50:20.673Z``
      - First close time, set once
