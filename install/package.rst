@@ -1,5 +1,5 @@
-Package Installation
-====================
+Install with Package Manager
+============================
 
 This section describes the basic package installation of Zammad. If these
 manual steps aren't what you are looking for, consider a `hosted Zammad
