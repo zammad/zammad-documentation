@@ -64,18 +64,14 @@ Response:
 
    # HTTP-Code 201 Created
 
-   {
-     "id":2,
-     "mentionable_type":"Ticket",
-     "mentionable_id":1,
-     "user_id":3,
-     "updated_by_id":3,
-     "created_by_id":3,
-     "created_at":"2021-03-16T08:51:08.985Z",
-     "updated_at":"2021-03-16T08:51:08.985Z"
-   }
+   true
 
 The mention will be created for the user of the current session.
+
+.. hint:: If you want to mention/subscribe other users, you can do so by
+  sending an additional ``X-On-Behalf-Of``-header in your request. You can
+  either provide the user ID or the user email address as value.
+
 
 Delete
 ------
