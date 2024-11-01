@@ -52,7 +52,7 @@ jobs:
       shell: bash -eux {0}
       run: |
         python -m pip install --upgrade --no-cache-dir pip setuptools
-        python -m pip install --upgrade --no-cache-dir pillow mock==1.0.1 'alabaster>=0.7,<0.8,!=0.7.5' commonmark==0.9.1 recommonmark==0.5.0 sphinx sphinx-rtd-theme 'readthedocs-sphinx-ext<2.3'
+        python -m pip install --upgrade --no-cache-dir sphinx
         python -m pip install --exists-action=w --no-cache-dir -r ${{ inputs.requirements_path }}
 
     - name: Check RST Syntax
@@ -86,22 +86,15 @@ jobs:
           fi
         fi
 
-    - name: Modify Configuration
-      shell: bash -eux {0}
-      run: |
-        test -f .github/rtd-conf.py
-        cat .github/rtd-conf.py >> ${{ inputs.docs_path }}/conf.py
-        cat ${{ inputs.docs_path }}/conf.py
-
     - name: Build Documentation
       shell: bash -eux {0}
       env:
-        # TODO: Re-enable failure on warnings when all translation issues are handled.
+        # NB: Disable failure on warnings when all translation issues are handled.
         fail_on_warning: # -W --keep-going
       run: |
         cd ${{ inputs.docs_path }}
         python -m sphinx -T -E $fail_on_warning -b html -d _build/doctrees -D language=en . _build/html
-        python -m sphinx -T -E $fail_on_warning -b readthedocssinglehtmllocalmedia -d _build/doctrees -D language=en . _build/htmlzip
+        python -m sphinx -T -E $fail_on_warning -b singlehtml -d _build/doctrees -D language=en . _build/htmlzip
         python -m sphinx -T -E $fail_on_warning -b epub -d _build/doctrees -D language=en . _build/epub
 
     - name: Compute short SHA
