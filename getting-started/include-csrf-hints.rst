@@ -21,3 +21,10 @@
 
          RequestHeader set X_FORWARDED_PROTO 'https'
          RequestHeader set X-Forwarded-Ssl on
+
+   caddy
+      Add the following line to your Zammad .env file:
+
+      .. code-block::
+
+         NGINX_SERVER_SCHEME=https    
