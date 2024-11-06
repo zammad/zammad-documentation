@@ -155,79 +155,79 @@ Response:
    # HTTP-Code 200 OK
 
    {
-      "id": 7,
+      "id": 13,
       "assets": {
          "Checklist": {
-            "7": {
-               "id": 7,
+            "13": {
+               "id": 13,
                "name": "Return order",
                "sorted_item_ids": [
-                  "27",
-                  "28",
-                  "29",
-                  "30"
+                  "36",
+                  "37",
+                  "38",
+                  "39"
                ],
                "created_by_id": 3,
                "updated_by_id": 3,
-               "created_at": "2024-11-06T12:08:21.450Z",
-               "updated_at": "2024-11-06T12:08:21.503Z",
+               "created_at": "2024-11-06T13:52:03.826Z",
+               "updated_at": "2024-11-06T13:52:03.916Z",
                "item_ids": [
-                  27,
-                  28,
-                  29,
-                  30
+                  36,
+                  37,
+                  38,
+                  39
                ]
             }
          },
          "ChecklistItem": {
-            "27": {
-               "id": 27,
+            "36": {
+               "id": 36,
                "text": "Prepare shipment",
                "checked": false,
-               "checklist_id": 7,
+               "checklist_id": 13,
                "created_by_id": 3,
                "updated_by_id": 3,
                "ticket_id": null,
-               "created_at": "2024-11-06T12:08:21.481Z",
-               "updated_at": "2024-11-06T12:08:21.481Z"
+               "created_at": "2024-11-06T13:52:03.874Z",
+               "updated_at": "2024-11-06T13:52:03.874Z"
             },
-            "28": {
-               "id": 28,
+            "37": {
+               "id": 37,
                "text": "Inform customer",
                "checked": false,
-               "checklist_id": 7,
+               "checklist_id": 13,
                "created_by_id": 3,
                "updated_by_id": 3,
                "ticket_id": null,
-               "created_at": "2024-11-06T12:08:21.488Z",
-               "updated_at": "2024-11-06T12:08:21.488Z"
+               "created_at": "2024-11-06T13:52:03.888Z",
+               "updated_at": "2024-11-06T13:52:03.888Z"
             },
-            "29": {
-               "id": 29,
+            "38": {
+               "id": 38,
                "text": "Hand over the goods to the shipping company",
                "checked": false,
-               "checklist_id": 7,
+               "checklist_id": 13,
                "created_by_id": 3,
                "updated_by_id": 3,
                "ticket_id": null,
-               "created_at": "2024-11-06T12:08:21.494Z",
-               "updated_at": "2024-11-06T12:08:21.494Z"
+               "created_at": "2024-11-06T13:52:03.898Z",
+               "updated_at": "2024-11-06T13:52:03.898Z"
             },
-            "30": {
-               "id": 30,
+            "39": {
+               "id": 39,
                "text": "Check whether return has arrived",
                "checked": false,
-               "checklist_id": 7,
+               "checklist_id": 13,
                "created_by_id": 3,
                "updated_by_id": 3,
                "ticket_id": null,
-               "created_at": "2024-11-06T12:08:21.499Z",
-               "updated_at": "2024-11-06T12:08:21.499Z"
+               "created_at": "2024-11-06T13:52:03.907Z",
+               "updated_at": "2024-11-06T13:52:03.907Z"
             }
          },
          "Ticket": {
             "7": {
-               "checklist_id": 7,
+               "checklist_id": 13,
                "updated_by_id": 3,
                "number": "16007",
                "title": "complaint wrong items in order #55194711",
@@ -265,7 +265,7 @@ Response:
                "preferences": {},
                "created_by_id": 6,
                "created_at": "2024-09-04T14:05:17.394Z",
-               "updated_at": "2024-11-06T12:08:21.505Z",
+               "updated_at": "2024-11-06T13:52:03.918Z",
                "referencing_checklist_ids": [],
                "article_ids": [
                   13,
@@ -470,11 +470,14 @@ Response:
                "out_of_office_start_at": null,
                "out_of_office_end_at": null,
                "out_of_office_replacement_id": null,
-               "preferences": {},
-               "updated_by_id": 1,
+               "preferences": {
+                  "tickets_closed": 1,
+                  "tickets_open": 1
+               },
+               "updated_by_id": 3,
                "created_by_id": 1,
                "created_at": "2024-11-05T14:05:10.244Z",
-               "updated_at": "2024-11-05T14:05:11.397Z",
+               "updated_at": "2024-11-06T13:51:06.168Z",
                "role_ids": [
                   3
                ],
