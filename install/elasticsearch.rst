@@ -1,206 +1,139 @@
 Set Up Elasticsearch
 ====================
 
-Zammad's search function is powered by Elasticsearch, and requires the
-`ingest attachment plugin <https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html>`_.
+Zammad's search function can be powered by Elasticsearch (which is **highly
+recommended**).
 
-This guide uses the ``zammad run`` command prefix in command line examples.
-This prefix is only applicable to package installations
-(*i.e.,* via apt/yum/zypper, or ``.deb``/``.rpm`` files).
+If these manual steps aren't what you are looking for, consider a `hosted Zammad
+setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </install/docker-compose>`.
 
-If you installed from source, be sure to omit this prefix
-and run the bare ``rails ...`` or ``rake ...`` commands instead.
+.. note:: Some steps may be required depending on your Elasticsearch version and
+   configuration. See remarks in the configuration steps below.
 
 Step 1: Installation
 --------------------
 
-Starting with Zammad 4.0, our packages allow you to decide whether to use
-``elasticsearch`` or ``elasticsearch-oss``.
+For installation please follow
+`Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#elasticsearch-install-packages>`_.
 
-``elasticsearch-oss`` users please use below "direct download" tab for
-further installation steps.
-
-.. warning::
-
-   Above does not apply to CentOS because of compatibility reasons.
-
-.. tabs::
-
-   .. tab:: Ubuntu
-
-      ::
-
-         $ apt install apt-transport-https sudo wget curl gnupg
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
-         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
-         $ apt update
-         $ apt install elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. tab:: Debian
-
-      ::
-
-         $ apt install apt-transport-https sudo wget curl gnupg
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
-         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
-         $ apt update
-         $ apt install elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. tab:: CentOS
-
-      ::
-
-         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         $ echo "[elasticsearch-7.x]
-         name=Elasticsearch repository for 7.x packages
-         baseurl=https://artifacts.elastic.co/packages/7.x/yum
-         gpgcheck=1
-         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         enabled=1
-         autorefresh=1
-         type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
-         $ yum install -y elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. tab:: OpenSUSE
-
-      ::
-
-         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         $ echo "[elasticsearch-7.x]
-         name=Elasticsearch repository for 7.x packages
-         baseurl=https://artifacts.elastic.co/packages/7.x/yum
-         gpgcheck=1
-         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         enabled=1
-         autorefresh=1
-         type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
-         $ zypper install elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. tab:: Direct Download
-
-      Find the latest release on the
-      `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
-      or see the
-      `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
-      for in-depth instructions. Ensure to also install the fitting
-      (and mandatory!) attachment plugin for elasticsearch.
-
-      If you prefer the Open Source version of Elasticsearch, please use the
-      `Elasticsearch-OSS <https://www.elastic.co/downloads/past-releases#elasticsearch-oss>`_
-      download page.
-
-      .. code-block:: sh
-
-         # Install the attachment plugin
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-         # Increase the virtual memory map limit
-         $ sysctl -w vm.max_map_count=262144
-
-After you installed Elasticsearch and its attachment plugin,
-ensure to enable it by default and start it.
-
-.. code-block:: sh
-
-   $ systemctl start elasticsearch
-   $ systemctl enable elasticsearch
-
-.. note:: 🐋 **Docker installations on macOS/Windows:**
-
-   Setting the ``vm.max_map_count`` kernel parameter requires
-   `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
+.. hint:: If you are installing Elasticsearch 8 and want to follow our
+   standard configuration below, make sure to copy/save the password which
+   is shown while installing Elasticsearch.
 
 Step 2: Configuration
 ---------------------
 
-We use the following settings to optimize the performance of our Elasticsearch
-servers. Your mileage may vary.
+Install ingest-plugin (only for Elasticsearch <= 7)
+   .. code-block:: sh
 
-.. code-block:: sh
+      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-   # /etc/elasticsearch/elasticsearch.yml
+Increase virtual memory map limit
+   .. code-block:: sh
 
-   # Tickets above this size (articles + attachments + metadata)
-   # may fail to be properly indexed (Default: 100mb).
-   #
-   # When Zammad sends tickets to Elasticsearch for indexing,
-   # it bundles together all the data on each individual ticket
-   # and issues a single HTTP request for it.
-   # Payloads exceeding this threshold will be truncated.
-   #
-   # Performance may suffer if it is set too high.
-   http.max_content_length: 400mb
+      $ sudo sysctl -w vm.max_map_count=262144
 
-   # Allows the engine to generate larger (more complex) search queries.
-   # Elasticsearch will raise an error or deprecation notice if this value is too low,
-   # but setting it too high can overload system resources (Default: 1024).
-   #
-   # Available in version 6.6+ only.
-   indices.query.bool.max_clause_count: 2000
+Adjust ``/etc/elasticsearch/elasticsearch.yml``
+   We use the following settings to optimize the performance of our Elasticsearch
+   servers. You may want to append that to your ``elasticsearch.yml`` as a useful
+   basic configuration.
 
-After installation and configuration, ensure to enable Elasticsearch
-by default and start it:
+   .. code-block:: sh
 
-.. code-block:: sh
+      # /etc/elasticsearch/elasticsearch.yml
 
-   $ sudo systemctl start elasticsearch
-   $ sudo systemctl enable elasticsearch
+      # Tickets above this size (articles + attachments + metadata)
+      # may fail to be properly indexed (Default: 100mb).
+      #
+      # When Zammad sends tickets to Elasticsearch for indexing,
+      # it bundles together all the data on each individual ticket
+      # and issues a single HTTP request for it.
+      # Payloads exceeding this threshold will be truncated.
+      #
+      # Performance may suffer if it is set too high.
+      http.max_content_length: 400mb
+
+      # Allows the engine to generate larger (more complex) search queries.
+      # Elasticsearch will raise an error or deprecation notice if this value is too low,
+      # but setting it too high can overload system resources (Default: 1024).
+      #
+      # Available in version 6.6+ only.
+      indices.query.bool.max_clause_count: 2000
+
+Enable and start Elasticsearch
+   .. code-block:: sh
+
+      $ systemctl start elasticsearch
+      $ systemctl enable elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
 
-Step 3: Connect Zammad
-----------------------
+Step 3: Connecting Zammad with Elasticsearch
+--------------------------------------------
 
 Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
 
-   * install from :doc:`package <package>`
-   * install from :doc:`source <source>`
+* Install from :doc:`package <package>`
+* Install from :doc:`source <source>`
 
-.. code-block:: sh
+.. note::
+   This guide uses the ``zammad run`` command prefix in command line examples.
+   This prefix is only applicable to package installations.
+   If you installed from source, be sure to omit this prefix
+   and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
-   # Set the Elasticsearch server address
-   $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+Elasticsearch URL
+   .. code-block:: sh
 
-   # Build the search index
-   $ zammad run rake zammad:searchindex:rebuild
+      # Set the Elasticsearch server address
+      # It has to be "https" starting with ES8
+      $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
-   # Optionally, you can specify a number of CPU cores which are used for
-   # rebuilding the searchindex, as in the following example with 8 cores:
-   $ zammad run rake zammad:searchindex:rebuild[8]
+Elasticsearch user and password (only for Elasticsearch >= 8)
+   Now you need your password which was shown to you while installing
+   Elasticsearch.
 
-Starting with Elasticsearch 8+, you need to use a HTTPS URL in
-'es_url' as 'https://localhost:9200' and configure an
-authentication (see HTTP Basic below).
+   .. code-block:: sh
+
+      # Set Elasticsearch user and password
+      $ zammad run rails r "Setting.set('es_user', 'elastic')"
+      $ zammad run rails r "Setting.set('password', '<password>')"
+
+Add certificate to Zammad (only for Elasticsearch >= 8)
+   Show and copy the auto-generated certificate from Elasticsearch and add it
+   to Zammad. Make sure to copy/paste the delimiters
+   (e.g. ``-----BEGIN CERTIFICATE-----``) too.
+
+   .. code-block:: sh
+
+      $ sudo cat /etc/elasticsearch/certs/http_ca.crt
+
+   Go to the admin panel of Zammad and add your copied certificate under
+   :admin-docs:`SSL Certificates </settings/security/ssl-certificates.html>`.
+
+   .. figure:: /images/install/elasticsearch/admin-certificate-management.png
+      :alt: Screenshot shows certificate management in Zammad's admin panel
+      :align: center
+
+Build/rebuild the searchindex
+   .. code-block:: sh
+
+      $ sudo zammad run rake zammad:searchindex:rebuild
+
+      # Optionally, you can specify a number of CPU cores which are used for
+      # rebuilding the searchindex, as in the following example with 8 cores:
+      $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
 
 Optional settings
 -----------------
 
+We collected some useful settings you may want to apply. For further
+information please have a look at
+`Elastic's documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html>`_.
+
 .. tabs::
-
-   .. tab:: Authentication
-
-      .. code-block:: sh
-
-         # HTTP Basic
-         $ zammad run rails r "Setting.set('es_user', '<username>')"
-         $ zammad run rails r "Setting.set('es_password', '<password>')"
-
-      .. hint:: 🤔 **How do I set up authentication on my Elasticsearch server?**
-
-         Elasticsearch provides many different authentication methods.
-         Some of them may require paid X-Pack, please check the
-         `elastic documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html>`_
-         for more information.
 
    .. tab:: Index namespacing
 
@@ -246,12 +179,9 @@ Optional settings
          # Deactivating SSL verification is NOT recommended
          $ zammad run rails r "Setting.set('es_ssl_verify', false)"
 
-      .. hint:: 🤔 **But how to handle an Elasticsearch server with custom
-         certificates?**
-
-         You can import custom certificates and custom CA certificates to
-         Zammad. Please have a look
-         :admin-docs:`in the admin documentation </settings/security/ssl-certificates.html>`.
+      If you want to use custom certificates, you can find information about
+      how to use them in Zammad
+      :admin-docs:`here </settings/security/ssl-certificates.html>`.
 
 Appendix
 --------

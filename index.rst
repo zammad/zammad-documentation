@@ -70,16 +70,17 @@ Zammad System Documentation
    :caption: REST API
 
    /api/intro
-   /api/user
-   /api/organization
-   /api/group
-   /api/role
    /api/calendar
-   /api/sla
-   /api/ticket
+   /api/checklist
    /api/generic-cti/index
+   /api/group
    /api/notification
    /api/object
+   /api/organization
+   /api/role
+   /api/sla
+   /api/ticket
+   /api/user
    /api/user-access-token
 
 

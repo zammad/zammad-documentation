@@ -37,9 +37,9 @@ firewall. It may not cover your case.
       .. code-block:: sh
 
          $ # Open Port 80 and 443 on your Firewall
-         $ ufw allow 80
-         $ ufw allow 443
-         $ ufw reload
+         $ sudo ufw allow 80
+         $ sudo ufw allow 443
+         $ sudo ufw reload
 
    .. tab:: Debian
 
@@ -55,8 +55,8 @@ firewall. It may not cover your case.
       .. code-block::
 
          # Open Port 80 and 443 for Zammad
-         tcp dport { http, https } accept
-         udp dport { http, https } accept
+         sudo tcp dport { http, https } accept
+         sudo udp dport { http, https } accept
 
       The result should look like the following. Keep in mind that your
       environment could require different / more rules.
@@ -84,14 +84,16 @@ firewall. It may not cover your case.
             }
          }
 
-      To load your new rules, simply run ``systemctl reload nftables``.
+      To load your new rules, simply run ``sudo systemctl reload nftables``.
 
    .. tab:: CentOS, RHEL, openSUSE, SLES
 
       .. code-block:: sh
 
          $ # Open Port 80 and 443 on your Firewall
-         $ firewall-cmd --zone=public --add-service=http --permanent
-         $ firewall-cmd --zone=public --add-service=https --permanent
-         $ firewall-cmd --reload
+         $ sudo firewall-cmd --zone=public --add-service=http --permanent
+         $ sudo firewall-cmd --zone=public --add-service=https --permanent
+         $ sudo firewall-cmd --reload
+
+
 
