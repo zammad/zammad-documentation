@@ -98,7 +98,7 @@ Elasticsearch user and password (only for Elasticsearch >= 8)
 
       # Set Elasticsearch user and password
       $ zammad run rails r "Setting.set('es_user', 'elastic')"
-      $ zammad run rails r "Setting.set('password', '<password>')"
+      $ zammad run rails r "Setting.set('es_password', '<password>')"
 
 Add certificate to Zammad (only for Elasticsearch >= 8)
    Show and copy the auto-generated certificate from Elasticsearch and add it
