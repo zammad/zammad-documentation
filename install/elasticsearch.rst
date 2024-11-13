@@ -13,12 +13,109 @@ setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </inst
 Step 1: Installation
 --------------------
 
-For installation please follow
+For installation please follow first and foremost
 `Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#elasticsearch-install-packages>`_.
 
 .. hint:: If you are installing Elasticsearch 8 and want to follow our
-   standard configuration below, make sure to copy/save the password which
+   standard configuration in step 2, make sure to copy/save the password which
    is shown while installing Elasticsearch.
+
+For a standard setup, you additionally can find the installation steps for
+Elasticsearch 7 below.
+
+.. tabs::
+
+   .. tab:: Ubuntu
+
+      ::
+
+         $ apt install apt-transport-https sudo wget curl gnupg
+         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
+           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
+           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+         $ apt update
+         $ apt install elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
+   .. tab:: Debian
+
+      ::
+
+         $ apt install apt-transport-https sudo wget curl gnupg
+         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
+           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
+           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+         $ apt update
+         $ apt install elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
+   .. tab:: CentOS
+
+      ::
+
+         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ echo "[elasticsearch-7.x]
+         name=Elasticsearch repository for 7.x packages
+         baseurl=https://artifacts.elastic.co/packages/7.x/yum
+         gpgcheck=1
+         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         enabled=1
+         autorefresh=1
+         type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
+         $ yum install -y elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
+   .. tab:: OpenSUSE
+
+      ::
+
+         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ echo "[elasticsearch-7.x]
+         name=Elasticsearch repository for 7.x packages
+         baseurl=https://artifacts.elastic.co/packages/7.x/yum
+         gpgcheck=1
+         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         enabled=1
+         autorefresh=1
+         type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
+         $ zypper install elasticsearch
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
+   .. tab:: Direct Download
+
+      Find the latest release on the
+      `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
+      or see the
+      `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
+      for in-depth instructions. Ensure to also install the fitting
+      (and mandatory!) attachment plugin for elasticsearch.
+
+      If you prefer the Open Source version of Elasticsearch, please use the
+      `Elasticsearch-OSS <https://www.elastic.co/downloads/past-releases#elasticsearch-oss>`_
+      download page.
+
+      .. code-block:: sh
+
+         # Install the attachment plugin
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
+         # Increase the virtual memory map limit
+         $ sysctl -w vm.max_map_count=262144
+
+After you installed Elasticsearch and its attachment plugin,
+ensure to enable it by default and start it.
+
+.. code-block:: sh
+
+   $ systemctl start elasticsearch
+   $ systemctl enable elasticsearch
+
+.. note:: 🐋 **Docker installations on macOS/Windows:**
+
+   Setting the ``vm.max_map_count`` kernel parameter requires
+   `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
 
 Step 2: Configuration
 ---------------------
