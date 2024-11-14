@@ -32,12 +32,7 @@ using `Zammad hosting`_ for your and your customers' safety.
       Step 3: Backup Zammad
          See :doc:`/appendix/backup-and-restore/index` for more information.
 
-      Step 4: Clear Zammad cache
-         .. code-block:: sh
-
-            $ zammad run rails r "Rails.cache.clear"
-
-      Step 5: Update Zammad
+      Step 4: Update Zammad
          .. note::
             If you update your complete system and there are updates for Zammad
             **and** your database server, this could lead to errors because your
@@ -83,7 +78,7 @@ using `Zammad hosting`_ for your and your customers' safety.
             output may lead to incomplete updates that may corrupt data or
             lead to issues.
 
-      Step 6: Additional steps
+      Step 5: Additional steps
          Check release notes
             If not already done, check our `release notes`_ if extra steps are
             necessary and perform them, if applicable.
@@ -103,7 +98,7 @@ using `Zammad hosting`_ for your and your customers' safety.
             ingest-attachment is no longer a plugin, it's now included in
             Elasticsearch).
 
-      Step 7: Log into Zammad
+      Step 6: Log into Zammad
          Yes, that's it!
 
    .. tab:: Source
