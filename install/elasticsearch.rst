@@ -13,15 +13,21 @@ setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </inst
 Step 1: Installation
 --------------------
 
-For installation please follow first and foremost
-`Elastic's installation instructions <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#elasticsearch-install-packages>`_.
+Elasticsearch offers two versions. Currently, the versions 7 and 8
+are maintained. For installation instructions, you should first and foremost
+follow
+`Elastic's installation documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#elasticsearch-install-packages>`_.
+Use the dropdown in the top left corner to choose which version you want to
+install.
+
+However, if you want go with Elasticsearch 7 (which is slightly easier to
+install), you can find the consolidated installation steps below.
+Be aware that the maintenance of version 7 might be stopped earlier than for
+version 8, which also comes with some additional security features.
 
 .. hint:: If you are installing Elasticsearch 8 and want to follow our
    standard configuration in step 2, make sure to copy/save the password which
    is shown while installing Elasticsearch.
-
-For a standard setup, you additionally can find the installation steps for
-Elasticsearch 7 below.
 
 .. tabs::
 
@@ -90,11 +96,8 @@ Elasticsearch 7 below.
       or see the
       `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
       for in-depth instructions. Ensure to also install the fitting
-      (and mandatory!) attachment plugin for elasticsearch.
-
-      If you prefer the Open Source version of Elasticsearch, please use the
-      `Elasticsearch-OSS <https://www.elastic.co/downloads/past-releases#elasticsearch-oss>`_
-      download page.
+      (and mandatory!) attachment plugin for elasticsearch, if installing
+      version 7.
 
       .. code-block:: sh
 
@@ -183,9 +186,14 @@ commands, as this will fail otherwise.
 Elasticsearch URL
    .. code-block:: sh
 
-      # Set the Elasticsearch server address
-      # It has to be "https" starting with ES8
+      # Set the Elasticsearch server address; adapt it to your scenario.
+
+      # Elasticsearch 7:
+      $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+
+      # Elasticsearch 8:
       $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
+
 
 Elasticsearch user and password (only for Elasticsearch >= 8)
    Now you need your password which was shown to you while installing
