@@ -112,7 +112,7 @@ Update
 
 Required permission: ``admin.time_accounting``
 
-``PUT``-Request sent: ``/api/v1/tickets/{ticket id}/time_accounting/{timeaccounting id}``
+``PUT``-Request sent: ``/api/v1/tickets/{ticket id}/time_accountings/{timeaccounting id}``
 
 
 .. code-block:: json
