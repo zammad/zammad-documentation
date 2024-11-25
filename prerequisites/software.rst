@@ -162,6 +162,13 @@ You can choose between the following database servers:
 
    .. include:: /appendix/includes/mysql-deprication-note.rst
 
+.. note::
+   If you use database connection pooling software like PgBouncer, make sure
+   to use a pooling mode that is fully compatible with PostgreSQL. Typically
+   this is called "session connection pooling". Transaction-based connection
+   pooling is not supported and may lead to errors during database migrations.
+
+
 For **MySQL/MariaDB**, the following configuration is required:
 
 * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
