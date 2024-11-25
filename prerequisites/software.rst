@@ -162,6 +162,10 @@ You can choose between the following database servers:
 
    .. include:: /appendix/includes/mysql-deprication-note.rst
 
+.. note::
+   Transaction-based connection pooling is not supported.
+   If your setup is built this way, database migrations may fail.
+
 For **MySQL/MariaDB**, the following configuration is required:
 
 * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
