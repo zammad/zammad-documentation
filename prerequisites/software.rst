@@ -163,8 +163,10 @@ You can choose between the following database servers:
    .. include:: /appendix/includes/mysql-deprication-note.rst
 
 .. note::
-   Transaction-based connection pooling is not supported.
-   If your setup is built this way, database migrations may fail.
+   Make sure to use session connection pooling. Transaction-based connection
+   pooling (e.g. by using PgBouncer) is not supported and may lead to errors
+   during database migrations.
+
 
 For **MySQL/MariaDB**, the following configuration is required:
 
