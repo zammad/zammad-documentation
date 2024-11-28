@@ -1,19 +1,16 @@
 Install with Docker
 ===================
 
+.. include:: /install/includes/hosted-services.rst
+
 Zammad can be deployed using Docker-Compose. You can even use
 graphical docker front ends like
 `Portainer <https://www.portainer.io/>`_.
-
-.. include:: /install/includes/hosted-services.rst
 
 .. hint::
 
    We do not provide support in terms of Docker (-Compose) or Portainer specific problems.
    If you choose to run Zammad via Docker, support is only provided for the Zammad application.
-
-   In case you're not too familiar with Docker and the way it works, you may want
-   to stick with :doc:`the package installation </install/package/>` instead.
 
 Prerequisites
 -------------
