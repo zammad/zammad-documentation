@@ -1,6 +1,8 @@
 Configure the Webserver
 =======================
 
+.. include:: /install/includes/hosted-services.rst
+
 You can find current sample configuration files for your webserver within
 ``contrib/`` of your Zammad installation.
 

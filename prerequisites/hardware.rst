@@ -1,6 +1,8 @@
 Hardware
 ========
 
+.. include:: /install/includes/hosted-services.rst
+
 The hardware requirements to run Zammad effectively vary depending on several
 factors, for example:
 

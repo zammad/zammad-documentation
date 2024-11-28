@@ -5,6 +5,8 @@ Zammad can be deployed using Docker-Compose. You can even use
 graphical docker front ends like
 `Portainer <https://www.portainer.io/>`_.
 
+.. include:: /install/includes/hosted-services.rst
+
 .. hint::
 
    We do not provide support in terms of Docker (-Compose) or Portainer specific problems.

@@ -1,10 +1,7 @@
 Install with Package Manager
 ============================
 
-This section describes the basic package installation of Zammad. If these
-manual steps aren't what you are looking for, consider a `hosted Zammad
-setup <https://zammad.com/en/pricing>`_ or
-:doc:`deploy Zammad via Docker </install/docker-compose>`.
+.. include:: /install/includes/hosted-services.rst
 
 Prerequisites
 -------------

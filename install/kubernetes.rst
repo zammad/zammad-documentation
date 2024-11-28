@@ -7,5 +7,7 @@ Install on Kubernetes
    If you choose to run Zammad via Kubernetes, support is only provided for the
    Zammad application.
 
+.. include:: /install/includes/hosted-services.rst
+
 You can find installation instructions
 `in the documentation of our helm chart <https://github.com/zammad/zammad-helm/blob/main/zammad/README.md>`_.
