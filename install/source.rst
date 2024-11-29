@@ -1,6 +1,8 @@
 Install from Source
 ===================
 
+.. include:: /install/includes/hosted-services.rst
+
 The source installation is the most difficult installation type of Zammad.
 If you're not too experienced with Linux and all that, you may want to use
 another installation type:
@@ -76,8 +78,8 @@ compilation. See `pnpm.io <https://pnpm.io/>`_ for more information.
       Install RVM
          .. code-block:: sh
 
-            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
-              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
+            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\
+              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\
               pkg-config libffi-dev libimlib2-dev gawk software-properties-common
 
             $ apt-add-repository -y ppa:rael-gc/rvm
@@ -98,8 +100,8 @@ compilation. See `pnpm.io <https://pnpm.io/>`_ for more information.
       Install RVM
          .. code-block:: sh
 
-            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\ 
-              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\ 
+            $ apt install curl git patch build-essential bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev autotools-dev\
+              libxslt1-dev libyaml-0-2 autoconf automake libreadline-dev libyaml-dev libtool libgmp-dev libgdbm-dev libncurses5-dev\
               pkg-config libffi-dev libimlib2-dev gawk
 
             $ gpg --keyserver keyserver.ubuntu.com --recv-keys\

@@ -1,6 +1,8 @@
 Software
 ========
 
+.. include:: /install/includes/hosted-services.rst
+
 1. Client Requirements
 ----------------------
 

@@ -1,6 +1,8 @@
 Updating Zammad
 ===============
 
+.. include:: /install/includes/hosted-services.rst
+
 Before updating Zammad, we strongly recommend to take a look at our
 `release notes`_. You can find information about features and fixes as well as
 technical remarks and breaking changes.
