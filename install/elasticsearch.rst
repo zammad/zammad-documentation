@@ -4,8 +4,7 @@ Set Up Elasticsearch
 Zammad's search function can be powered by Elasticsearch (which is **highly
 recommended**).
 
-If these manual steps aren't what you are looking for, consider a `hosted Zammad
-setup <https://zammad.com/en/pricing>`_ or :doc:`deploy Zammad via Docker </install/docker-compose>`.
+.. include:: /install/includes/hosted-services.rst
 
 .. note:: Some steps may be required depending on your Elasticsearch version and
    configuration. See remarks in the configuration steps below.
