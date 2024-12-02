@@ -12,7 +12,7 @@ communication across channels like email, chat, telephone and social media.
 The Software
 ------------
 
-The Zammad software is and will stay open source. You can find it on GitHub.
+The Zammad software is and will stay open source.
 It is licensed under the GNU AGPLv3. The source code is
 `available on GitHub <https://github.com/zammad/zammad>`_ and owned by the
 `Zammad Foundation <https://zammad-foundation.org/>`_, which is independent
