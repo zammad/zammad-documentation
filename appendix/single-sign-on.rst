@@ -121,8 +121,14 @@ Admin privileges are not required; a normal user account will do.
    Select “This account supports Kerberos AES 256 bit encryption” under
    **Properties > Account > Account options**.
 
-1b. Register an SPN for Zammad
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1b. Reset Password
+^^^^^^^^^^^^^^^^^^
+
+Reset service account password after enabling the "This account supports
+Kerberos AES 256 bit encryption".
+
+1c. Register a SPN for Zammad
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Replace the following placeholders in the command below:
 
@@ -146,7 +152,7 @@ Below command will prompt for the users password:
             /target <master-domain-controller> \
             /out zammad.keytab
 
-1c. Note the secret key and version number
+1d. Note the secret key and version number
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The output of the command above contains important data for Step 2e below:
