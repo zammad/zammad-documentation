@@ -38,17 +38,19 @@ Use these environment variables to configure Zammad's behavior at runtime.
 General Options
 ---------------
 
-APP_RESTART_CMD
-   The command Zammad will use to automatically restart the server
-   after :admin-docs:`changes have been made in the Object Manager </system/objects.html>`.
-   (*E.g.,* ``"systemctl restart zammad"``)
+AUTO_SHUTDOWN
+   Defines if an automatic shutdown of Zammad is performed
+   when the the database has been changed
+   (e.g. after custom attributes have been created in the
+   :admin-docs:`object manager </system/objects.html>`).
 
-   If this is undefined, you will have to restart manually
-   after making changes in the Object Manager. Please keep in mind that Zammad
-   runs as unprivileged user. This means that you have to allow the Zammad user
-   via e.g. ``sudoers`` to run the required restart command.
+   The underlying system (Systemd, Docker, Kubernetes) will then restart the
+   processes/containers after this shutdown.
 
-   Default: **unset**
+   Setting this to ``false`` might only make sense in very rare cases and you
+   have to restart the Zammad services then manually.
+
+   Default: **true**
 
 GPG_PATH
    Defines the path to the GPG installation. This is only needed if you
