@@ -38,20 +38,6 @@ Use these environment variables to configure Zammad's behavior at runtime.
 General Options
 ---------------
 
-AUTO_SHUTDOWN
-   Defines if an automatic shutdown of Zammad is performed
-   when the the database has been changed
-   (e.g. after custom attributes have been created in the
-   :admin-docs:`object manager </system/objects.html>`).
-
-   The underlying system (Systemd, Docker, Kubernetes) will then restart the
-   processes/containers after this shutdown.
-
-   Setting this to ``false`` might only make sense in very rare cases and you
-   have to restart the Zammad services then manually.
-
-   Default: **true**
-
 GPG_PATH
    Defines the path to the GPG installation. This is only needed if you
    installed Zammad from Source, if you want to use different versions of PGP
