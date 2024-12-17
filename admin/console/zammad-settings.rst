@@ -3,6 +3,26 @@ Query and Set / Update Zammad Settings
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
+Auto Shutdown Setting
+---------------------
+
+Defines if an automatic shutdown of Zammad is performed
+when the the database has been changed
+(e.g. after custom attributes have been created in the
+:admin-docs:`object manager </system/objects.html>`).
+The underlying system (Systemd, Docker, Kubernetes) will then restart the
+processes/containers after this shutdown.
+
+Default: **true**
+
+Setting this to ``false`` might only make sense in very rare cases and you
+have to restart the Zammad services then manually.
+
+.. code-block:: ruby
+
+   >> Setting.set('auto_shutdown', 'true')
+
+
 Ticket_hook Setting
 -------------------
 
