@@ -129,7 +129,9 @@ jobs:
         comment-tag: artifacts
         message: |
           ### Artifacts
+
           Produced during runtime
+
           📦 [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
           📦 [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})
           📦 [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})
