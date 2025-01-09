@@ -102,19 +102,36 @@ jobs:
       run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
     - name: Upload html Artifact
-      uses: actions/upload-artifact@v3
+      id: html
+      uses: actions/upload-artifact@v4
       with:
         name: html-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/html/
 
     - name: Upload htmlzip Artifact
-      uses: actions/upload-artifact@v3
+      id: htmlzip
+      uses: actions/upload-artifact@v4
       with:
         name: htmlzip-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/htmlzip/
 
     - name: Upload epub Artifact
-      uses: actions/upload-artifact@v3
+      id: epub
+      uses: actions/upload-artifact@v4
       with:
         name: epub-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/epub/*.epub
+
+    - name: Post Comment to PR with Artifact Links
+      if: github.event_name == 'pull_request'
+      uses: thollander/actions-comment-pull-request@v3
+      with:
+        comment-tag: artifacts
+        message: |
+          ### Artifacts
+
+          Produced during runtime
+
+          📦 [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
+          📦 [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})
+          📦 [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})
