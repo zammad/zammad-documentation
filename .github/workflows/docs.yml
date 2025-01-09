@@ -31,11 +31,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      repository-projects: write
-      id-token: write
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
@@ -127,18 +122,14 @@ jobs:
         name: epub-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/epub/*.epub
 
-    - name: Post Artifact Links to PR
+    - name: Comment PR with Artifact Links
       if: github.event_name == 'pull_request'
-      uses: actions/github-script@v5
+      uses: thollander/actions-comment-pull-request@v3
       with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: '
-              [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})\n
-              [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})\n
-              [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
-            '
-          })
+        message: |
+          ### Artifacts
+          Produced during runtime:
+          * [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})
+          * [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})
+          * [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
+        comment-tag: artifacts
