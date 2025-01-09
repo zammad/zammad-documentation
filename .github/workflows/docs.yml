@@ -122,14 +122,14 @@ jobs:
         name: epub-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/epub/*.epub
 
-    - name: Comment PR with Artifact Links
+    - name: Post Comment to PR with Artifact Links
       if: github.event_name == 'pull_request'
       uses: thollander/actions-comment-pull-request@v3
       with:
+        comment-tag: artifacts
         message: |
           ### Artifacts
-          Produced during runtime:
-          * [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})
-          * [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})
-          * [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
-        comment-tag: artifacts
+          Produced during runtime
+          📦 [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
+          📦 [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})
+          📦 [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})
