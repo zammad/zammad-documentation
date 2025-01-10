@@ -123,7 +123,8 @@ jobs:
         path: ${{ inputs.docs_path }}/_build/epub/*.epub
 
     - name: Post Comment to PR with Artifact Links
-      if: github.event_name == 'pull_request'
+      # Runs only on Pull Requests from the same repository (not from forks).
+      if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
       uses: thollander/actions-comment-pull-request@v3
       with:
         comment-tag: artifacts
