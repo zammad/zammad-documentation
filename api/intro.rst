@@ -20,7 +20,7 @@ endpoints listed here.
      *(Official)*
    * `Python Client <https://pypi.org/project/zammad-py/>`_ *(Third-Party)*
    * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(Third-Party)*
-   * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_ 
+   * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_
      *(Third-Party)*
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
      *(Third-Party; API client only, no "ready to use" App)*
@@ -50,7 +50,7 @@ HTTP Token Authentication (access token)
    | The access token must be provided as HTTP header in the HTTP call.
    | Each user can create several access tokens in their user preferences.
    | This authentication method can be disabled and may not be available in your
-     system. 
+     system.
 
    .. code-block:: sh
 
@@ -569,6 +569,50 @@ In order to use pagination you'll need two get options:
 ``per_page`` and ``page``. Combine them like so to receive 5 results from
 the first result page: ``?page=1&per_page=5`` - count page up to get
 more results.
+
+Search Endpoints
+----------------
+
+Global Search
+^^^^^^^^^^^^^
+
+
+Endpoint Search
+^^^^^^^^^^^^^^^
+
+Some endpoints support a search query. These are:
+
+- :doc:`Groups <group>`
+- :doc:`Organizations <organization>`
+- :doc:`Roles <role>`
+- :doc:`Tickets <ticket>`
+- :doc:`Users <user>`
+
+The following endpoints support a search query as well, but they are not
+explicitly covered in this documentation:
+
+- Chat Sessions
+- Knowledgebase
+- Macros
+- Overview
+- Templates
+- Text module
+
+Expand Parameter
+
+
+Full Parameter
+
+
+Only Total Count Parameter
+
+
+Below you can find an example based on the tickets endpoint.
+
+.. code-block:: sh
+
+   GET /api/v1/tickets/search?query=Welcome
+
 
 .. _sort_search_results:
 
