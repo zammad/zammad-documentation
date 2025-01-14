@@ -725,8 +725,8 @@ Search example
 
 ``Full`` Parameter
    You can even extend the response by using the ``full`` parameter. Be aware
-   that this response can be huge. It outputs all data of each attribute and
-   includes a ``total_count`` of search results.
+   that this response can be huge. It outputs all assets including related
+   attributes and a ``total_count`` of search results as well.
 
    ``GET``-Request sent: ``/api/v1/tickets/search?query=welcome&full=true``
 
