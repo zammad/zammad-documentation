@@ -1,3 +1,5 @@
+:orphan:
+
 .. note::
 
    Keep in mind that docker-compose and source code installations do not know
