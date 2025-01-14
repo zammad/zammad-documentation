@@ -4068,23 +4068,28 @@ So, how do I build such a condition based request?
 - In Zammad, go to the admin interface and create a condition, e.g. by creating
   a new overview or trigger. It can be inactive so you won't have any unwanted
   actions or changes.
-- Go to the :doc:`Rails console </admin/console>`
-- Search for the condition, adjust the following examples to your needs:
+- Go to the :doc:`Rails console </admin/console>`, either by using ``rails c`` /
+  ``zammad run rails c`` or adding the prefix ``rails r`` /
+  ``zammad run rails r`` in front of the commands below, depending on your
+  setup.
+- Search for the created condition, adjust the following examples to your needs:
 
 .. code-block:: ruby
 
-   Overview.find_by(name: 'My Tickets').condition.to_json
+   puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
 
 .. code-block:: ruby
 
-   Trigger.find_by(name: 'My new test trigger').condition.to_json
+   puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
 
 This leads to an output like the following:
 
 .. code-block:: json
 
-   "{\"ticket.state_id\":{\"operator\":\"is\",\"value\":[\"2\"]},\"ticket.tags\":{\"operator\":\"contains one\",\"value\":\"warning\"},\"ticket.created_at\":{\"operator\":\"within last (relative)\",\"value\":\"30\",\"range\":\"minute\"}}"
+   {"condition":{"ticket.state_id":{"operator":"is","value":["2"]},"ticket.title":{"operator":"contains","value":"Test"}}}
 
+Use this as payload in your ``POST``-Request in an endpoint search. The response
+includes the same objects as the trigger or overview you created.
 
 .. _sort_search_results:
 
