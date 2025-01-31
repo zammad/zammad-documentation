@@ -23,7 +23,9 @@ some operating systems may require additional packages if not already installed.
 
          $ sudo apt install curl apt-transport-https gnupg
 
-   .. tab:: SLES
+   .. tab:: OpenSUSE / SLES
+
+      OpenSUSE doesn't require any additional steps here!
 
       SLES 15 requires additional repositories to be
       activated. To do so, run the following commands.
@@ -39,7 +41,7 @@ some operating systems may require additional packages if not already installed.
 
          $ sudo yum install wget epel-release
 
-1. Install Elasticsearch
+2. Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
