@@ -399,6 +399,16 @@ Article
    * - created_by_id
      - ``10``
      - User ID that created the article
+   * - detected_language
+     - ``en``, ``de``
+     - Language code of detected language,
+
+       may be empty
+   * - detected_language_name
+     - ``German``, ``English``
+     - Language name of detected language,
+
+       may be empty
    * - from
      - ``David Bell <david@example.com>``
      - From field of article creator
@@ -413,7 +423,7 @@ Article
      - Defines if article is internal
    * - message_id
      - ``null``
-     - Message ID of Email if applicable
+     - Message ID of email if applicable
    * - origin_by_id
      - ``null``
      - User ID or original creator if created on behalf another user
