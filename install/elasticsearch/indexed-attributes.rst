@@ -405,7 +405,7 @@ Article
 
        may be empty
    * - detected_language_name
-     - ``german``, ``english``
+     - ``German``, ``English``
      - Language name of detected language,
 
        may be empty
