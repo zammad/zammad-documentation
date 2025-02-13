@@ -71,6 +71,9 @@ To make Zammad work correctly, your system has to use the correct locales.
          $ sudo locale-gen en_US.UTF-8
          $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
 
+      After fixing it, make sure to check the output again for including
+      ``<lang_code>.utf8``. A reboot may help if unsuccessful.
+
    .. tab:: OpenSUSE / SLES
 
       List your current locale settings.
@@ -84,6 +87,9 @@ To make Zammad work correctly, your system has to use the correct locales.
       .. code-block:: sh
 
          $ sudo localectl set-locale LANG=en_US.UTF-8
+
+      After fixing it, make sure to check the output again for including
+      ``<lang_code>.utf8``. A reboot may help if unsuccessful.
 
       .. hint::
 
@@ -107,6 +113,8 @@ To make Zammad work correctly, your system has to use the correct locales.
 
          $ sudo localectl set-locale LANG=en_US.UTF-8
 
+      After fixing it, make sure to check the output again for including
+      ``<lang_code>.utf8``. A reboot may help if unsuccessful.
 
 Add Repository and Install Zammad
 ---------------------------------
