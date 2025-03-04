@@ -135,7 +135,8 @@ Why?
    access it from an external Grafana instance.
 
 How?
-   Just use the relevant scenario file.
+   - Use the relevant scenario file
+   - Your ES service is now accessible under port ``9200``
 
 Disable Backup Service
 ^^^^^^^^^^^^^^^^^^^^^^
