@@ -25,7 +25,8 @@ and apply the following changes.
 Below the "Compose path" field, click on the **Add file** button. This opens
 the "Additional paths" section where you can specify the scenario you want to
 use. Add ``/scenarios/{scenario you want to use}.yml`` and replace the last
-part with the name of one of the scenario files.
+part in ``{}`` brackets with the name of one of the scenario files. You can
+even combine the scenarios by adding additional paths.
 
 .. figure:: /images/install/docker-compose/additional-scenarios/portainer-additional-paths.png
     :alt: Screenshot shows where to add additional paths in Portainer
@@ -34,6 +35,18 @@ part with the name of one of the scenario files.
 Usage with Docker Compose
 -------------------------
 
+Follow the first 2 steps of the
+:doc:`general deployment guide <../docker-compose>`. To start the stack with
+one or more additional scenarios, use the following command for step 3 in
+the cloned repository folder instead:
+
+.. code-block:: yaml
+
+   docker compose -f docker-compose.yml -f /scenarios/{scenario you want to use}.yml up -d
+
+Replace the part in ``{}`` brackets with the file name of one of the scenario
+files. You can even combine the scenarios by adding additional files according
+to the example above.
 
 Scenario Details
 ----------------
@@ -63,6 +76,16 @@ Add Nginx Proxy Manager
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Relevant file: ``/scenarios/add-nginx-proxy-manager.yml``
+
+**Why?**
+
+If you don't already have a reverse proxy, you can directly deploy it with
+the Zammad stack.
+
+**How?**
+
+- Use the relevant scenario file
+- Provide your Cloudflare token as environment variable (``CLOUDFLARE_TUNNEL_TOKEN``)
 
 Disable Backup Service
 ^^^^^^^^^^^^^^^^^^^^^^
