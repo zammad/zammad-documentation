@@ -112,6 +112,15 @@ that includes all your modifications. Docker-Compose will
    :maxdepth: 1
 
    /install/docker-compose/environment
+   /install/docker-compose/docker-compose-scenarios
+
+There are also some scenarios which are supported out of the box. For example,
+you can deploy the stack with an included Nginx Proxy Manager (NPM) or
+with disabled Postgres or Elasticsearch services, in case you already have
+these services running. They are
+described in a
+:doc:`separate sub-page <docker-compose/docker-compose-scenarios>` to keep this
+section clean.
 
 How to Run Commands in the Stack
 --------------------------------
