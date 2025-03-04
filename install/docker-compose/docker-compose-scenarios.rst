@@ -33,7 +33,7 @@ and apply the following changes.
 
 Below the "Compose path" field, click on the **Add file** button. This opens
 the "Additional paths" section where you can specify the scenario you want to
-use. Add ``/scenarios/{scenario you want to use}.yml`` and replace the last
+use. Add ``scenarios/{scenario you want to use}.yml`` and replace the last
 part in ``{}`` brackets with the name of one of the scenario files. You can
 even combine the scenarios by adding additional paths.
 
@@ -63,7 +63,7 @@ Scenario Details
 Add Cloudflare Tunnel
 ^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/add-cloudflare-tunnel.yml``
+Relevant file: ``scenarios/add-cloudflare-tunnel.yml``
 
 Why?
    If you want to publish Zammad in a very easy way and without taking
@@ -72,13 +72,16 @@ Why?
 
 How?
    - Use the relevant scenario file
+   - Add a sub-domain to an already existing domain
+   - Forward it to your Zammad Nginx instance with port ``8080``
+   - Create a tunnel. This is where you get your token for the next step
    - Provide your Cloudflare token by using the environment variable
      ``CLOUDFLARE_TUNNEL_TOKEN``
 
 Add External Network to Nginx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/add-external-network-to-nginx.yml``
+Relevant file: ``scenarios/add-external-network-to-nginx.yml``
 
 Why?
    If you need to connect your Zammad stack to another network on your
@@ -92,7 +95,7 @@ How?
 Add External Network to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/add-external-network-to-elasticsearch.yml``
+Relevant file: ``scenarios/add-external-network-to-elasticsearch.yml``
 
 Why?
    If you need to connect your Zammad stack to another network on your
@@ -107,7 +110,7 @@ How?
 Add Nginx Proxy Manager
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/add-nginx-proxy-manager.yml``
+Relevant file: ``scenarios/add-nginx-proxy-manager.yml``
 
 Why?
    If you don't have a reverse proxy already, you can directly deploy it with
@@ -116,19 +119,14 @@ Why?
 How?
   - Use the relevant scenario file
   - Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
-  - After deploying the stack, go to the NPM UI by accessing the IP of your
-    deployment and the port ``81`` (e.g. ``172.20.0.5:81``)
-  - Log in with ``admin@example.com`` (user) and ``changeme`` (password)
-  - You have to change the email address and the password after the log in
-  - Go to *Hosts > Proxy hosts* and select **Add Proxy Host**.
-  - Configure it according to your needs and make sure to set up a proper
-    SSL certificate
   - Configure your DNS. The chosen Zammad FQDN should point to the NPM IP/host.
+  - Configure your NPM according to your needs and make sure to set up a proper
+    SSL certificate
 
 Add Host Port to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/add-hostport-to-elasticsearch.yml``
+Relevant file: ``scenarios/add-hostport-to-elasticsearch.yml``
 
 Why?
    If you want to expose the Elasticsearch service of this stack, e.g. to
@@ -141,7 +139,7 @@ How?
 Disable Backup Service
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/disable-backup-service.yml``
+Relevant file: ``scenarios/disable-backup-service.yml``
 
 Why?
    If you want to do the backups in a different way, you can disable the backup
@@ -154,7 +152,7 @@ How?
 Disable Elasticsearch Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``/scenarios/disable-elasticsearch-service.yml``
+Relevant file: ``scenarios/disable-elasticsearch-service.yml``
 
 Why?
    If you have an Elasticsearch instance already and want to use it for Zammad
@@ -163,5 +161,11 @@ Why?
 
 How?
    - Use the relevant scenario file
-   - Use the environment variable ``ELASTICSEARCH_ENABLED`` and set it to
-     ``false``
+   - Use the environment following environment variables to provide information
+     about your external ES:
+
+      - ``ELASTICSEARCH_SCHEMA``
+      - ``ELASTICSEARCH_HOST``
+      - ``ELASTICSEARCH_PORT``
+      - ``ELASTICSEARCH_USER``
+      - ``ELASTICSEARCH_PASS``

@@ -122,6 +122,25 @@ described in a
 :doc:`separate sub-page <docker-compose/docker-compose-scenarios>` to keep this
 section clean.
 
+SSL Certificates
+----------------
+
+Before publishing any service on the internet, you definitely have to request
+certificates for your services. The two easiest ways of doing that is
+either to use a Cloudflare tunnel. Alternatively, you could request certificates
+from `Letsencrypt <https://letsencrypt.org/>`_ by using the Zammad stack with
+an included Nginx Proxy Manager (NPM). Both scenarios are covered in the
+:doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
+
+Some notes for users who want a quick setup with NPM:
+
+- Use the relevant scenario file as described in the
+  :doc:`scenarios page <docker-compose/docker-compose-scenarios>`
+- Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
+- Configure your DNS. The chosen Zammad FQDN should point to the NPM IP/host
+- Configure a new proxy host and follow their steps to get a
+  certificate
+
 How to Run Commands in the Stack
 --------------------------------
 
