@@ -63,6 +63,9 @@ Step 3: **Deploy the Stack**
 
    Stack creation with provided information in **Repository** screen
 
+You can configure your Portainer based deployment even more. Have a look at
+our :doc:`advanced modules section <docker-compose/advanced-modules>` on how
+to do that.
 
 Deployment with Docker-Compose
 ------------------------------
