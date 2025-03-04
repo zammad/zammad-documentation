@@ -1,17 +1,14 @@
-Advanced Portainer Configuration
-================================
-
-KB Custom URL
--------------
+Custom Knowledge Base URL with NPM
+==================================
 
 If you want to publish Zammad's knowledge base under a different URL than the
 default one, you can follow our configuration example using
 `NPM (Nginx Proxy Manager) <https://nginxproxymanager.com/>`_ below.
 
 Configure Zammad
-^^^^^^^^^^^^^^^^
+----------------
 
-.. figure:: /images/install/docker-compose/additional-modules/kb-custom-url.png
+.. figure:: /images/appendix/custom-kb-url/kb-custom-url.png
     :alt: Screenshots shows the custom URL tab in Zammad's KB settings
     :scale: 70%
 
@@ -23,12 +20,12 @@ Configure Zammad
   your NPM. You can already copy the snippet or just leave it open, it is
   needed for the NPM configuration.
 
-.. figure:: /images/install/docker-compose/additional-modules/kb-custom-url-dialog.png
+.. figure:: /images/appendix/custom-kb-url/kb-custom-url-dialog.png
     :alt: Screenshots shows the web server configuration dialog for custom KB URL
     :scale: 70%
 
 Configure NPM
-^^^^^^^^^^^^^
+-------------
 
 In NPM, add a new proxy host with the following parameters:
 
@@ -39,7 +36,7 @@ Details tab
     - **Forward Port**: the port of your Zammad (by default ``8080`` in
       Portainer deployment)
 
-    .. figure:: /images/install/docker-compose/additional-modules/npm-details-tab.png
+    .. figure:: /images/appendix/custom-kb-url/npm-details-tab.png
         :alt: Screenshots shows NPM configuration dialog with details tab
         :scale: 70%
 
@@ -51,7 +48,7 @@ Custom location tab
       and paste ``proxy_set_header X-ORIGINAL-URL $request_uri;`` (the lower
       part of Zammad's snippet)
 
-    .. figure:: /images/install/docker-compose/additional-modules/npm-custom-locations-tab.png
+    .. figure:: /images/appendix/custom-kb-url/npm-custom-locations-tab.png
         :alt: Screenshots shows NPM configuration dialog with custom locations tab
         :scale: 70%
 
@@ -63,11 +60,11 @@ Advanced tab
 
         # Add following lines to "server" directive
         if ($host = help.your.domain ) {
-        rewrite ^/(api|assets)/(.*)$ /$1/$2 last;
-        rewrite ^(.*)$ /help$1 last;
+          rewrite ^/(api|assets)/(.*)$ /$1/$2 last;
+          rewrite ^(.*)$ /help$1 last;
         }
 
-    .. figure:: /images/install/docker-compose/additional-modules/npm-advanced-tab.png
+    .. figure:: /images/appendix/custom-kb-url/npm-advanced-tab.png
         :alt: Screenshots shows NPM configuration dialog with custom locations tab
         :scale: 70%
 

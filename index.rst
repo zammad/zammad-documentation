@@ -97,3 +97,4 @@ Zammad System Documentation
    /appendix/privacy
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
+   /appendix/custom-kb-url
