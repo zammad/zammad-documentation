@@ -79,13 +79,22 @@ Relevant file: ``/scenarios/add-nginx-proxy-manager.yml``
 
 **Why?**
 
-If you don't already have a reverse proxy, you can directly deploy it with
+If you don't have a reverse proxy already, you can directly deploy it with
 the Zammad stack.
 
 **How?**
 
 - Use the relevant scenario file
-- Provide your Cloudflare token as environment variable (``CLOUDFLARE_TUNNEL_TOKEN``)
+- Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
+- After deploying the stack, go to the NPM UI by accessing the IP of your
+  deployment and the port ``81`` (e.g. ``172.20.0.5:81``)
+- Log in with ``admin@example.com`` (user) and ``changeme`` (password)
+- You have to change the email address and the password after the log in
+- Go to *Hosts > Proxy hosts* and select **Add Proxy Host**.
+- Configure it according to your needs and make sure to set up a proper
+  SSL certificate
+- Configure your DNS. The chosen Zammad FQDN should point to the NPM IP/host.
+
 
 Disable Backup Service
 ^^^^^^^^^^^^^^^^^^^^^^
