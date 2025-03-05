@@ -98,14 +98,27 @@ Step 3: Start the stack
 
    After the stack is ready, you can access Zammad via the configured docker host and port, e.g. ``http://localhost:8080/``.
 
+Exposing the Stack via HTTPS
+----------------------------
+
+To publish a Zammad stack on the internet, it needs be secured via the HTTPS protocol.
+With the Zammad stack, you can:
+
+- Use a reverse proxy like Nginx Proxy Manager (NPM). It has a GUI that provides an easy `Letsencrypt <https://letsencrypt.org/>`_ integration.
+- Use a cloudflare tunnel, which provides SSL termination.
+
+Both scenarios are covered in the :doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
+
+
 Customizing the Zammad Stack
 ----------------------------
 
-Sometimes it's necessary to apply local changes to the Zammad docker stack, e.g. to
-include additional services. If you plan to do so, we recommend that you do not change
-the ``docker-compose.yml`` file, but instead create a local ``docker-compose.override.yml``
-that includes all your modifications. Docker-Compose will
-`automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/multiple-compose-files/merge/>`_.
+The Zammad stack can be customized by loading additional scenario files for common use cases.
+For example, you can deploy the stack with an included Nginx Proxy Manager (NPM) or
+with disabled Postgres or Elasticsearch services, in case you already have
+these services running.
+
+Please see the :doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
 .. toctree::
    :hidden:
@@ -114,32 +127,6 @@ that includes all your modifications. Docker-Compose will
    /install/docker-compose/environment
    /install/docker-compose/docker-compose-scenarios
 
-There are also some scenarios which are supported out of the box. For example,
-you can deploy the stack with an included Nginx Proxy Manager (NPM) or
-with disabled Postgres or Elasticsearch services, in case you already have
-these services running. They are
-described in a
-:doc:`separate sub-page <docker-compose/docker-compose-scenarios>` to keep this
-section clean.
-
-SSL Certificates
-----------------
-
-Before publishing any service on the internet, you definitely have to request
-certificates for your services. The two easiest ways of doing that is
-either to use a Cloudflare tunnel. Alternatively, you could request certificates
-from `Letsencrypt <https://letsencrypt.org/>`_ by using the Zammad stack with
-an included Nginx Proxy Manager (NPM). Both scenarios are covered in the
-:doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
-
-Some notes for users who want a quick setup with NPM:
-
-- Use the relevant scenario file as described in the
-  :doc:`scenarios page <docker-compose/docker-compose-scenarios>`
-- Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
-- Configure your DNS. The chosen Zammad FQDN should point to the NPM IP/host
-- Configure a new proxy host and follow their steps to get a
-  certificate
 
 How to Run Commands in the Stack
 --------------------------------

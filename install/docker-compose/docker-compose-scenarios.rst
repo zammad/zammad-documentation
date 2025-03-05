@@ -13,13 +13,24 @@ pre-defined scenarios.
 
 The following scenarios are supported:
 
-- **Add a Cloudflare tunnel service to the stack** (add-cloudflare-tunnel.yml)
-- **Add an external network to Elasticsearch** (add-external-network-to-elasticsearch.yml)
-- **Add an external network to Nginx** (add-external-network-to-nginx.yml)
-- **Add an host port to Elasticsearch** (add-hostport-to-elasticsearch.yml)
-- **Add a Nginx Proxy Manager (NPM) to the stack** (add-nginx-proxy-manager.yml)
-- **Disable the backup service** (disable-backup-service.yml)
-- **Disable Elasticsearch service** (disable-elasticsearch-service.yml)
+- Making the stack available via HTTPS
+
+  - **Add a Cloudflare tunnel service to the stack** (add-cloudflare-tunnel.yml)
+  - **Add a Nginx Proxy Manager (NPM) to the stack** (add-nginx-proxy-manager.yml)
+  - **Add an external docker network to Nginx** (add-external-network-to-nginx.yml)
+
+- Using external services
+
+  - **Disable Elasticsearch service** (disable-elasticsearch-service.yml)
+
+- Making services externally available
+
+  - **Add an external docker network to Elasticsearch** (add-external-network-to-elasticsearch.yml)
+  - **Add an host port to Elasticsearch** (add-hostport-to-elasticsearch.yml)
+
+- Additional scenarios
+
+  - **Disable the backup service** (disable-backup-service.yml)
 
 You can find the files in the
 `Zammad-Docker-Compose repository <https://github.com/zammad/zammad-docker-compose>`_.
@@ -78,7 +89,7 @@ How?
    - Provide your Cloudflare token by using the environment variable
      ``CLOUDFLARE_TUNNEL_TOKEN``
 
-Add External Network to Nginx
+Add External Docker Network to Nginx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Relevant file: ``scenarios/add-external-network-to-nginx.yml``
@@ -92,7 +103,7 @@ How?
    - Provide the name of your external network by using the environment
      variable ``ZAMMAD_NGINX_EXTERNAL_NETWORK``
 
-Add External Network to Elasticsearch
+Add External Docker Network to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Relevant file: ``scenarios/add-external-network-to-elasticsearch.yml``
@@ -119,9 +130,9 @@ Why?
 How?
   - Use the relevant scenario file
   - Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
-  - Configure your DNS. The chosen Zammad FQDN should point to the NPM IP/host.
-  - Configure your NPM according to your needs and make sure to set up a proper
-    SSL certificate
+  - Configure your DNS. The chosen Zammad FQDN should point to the IP address of the NPM host.
+  - Configure a new proxy host in your NPM and follow their steps to get an SSL certificate.
+
 
 Add Host Port to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,3 +180,16 @@ How?
       - ``ELASTICSEARCH_PORT``
       - ``ELASTICSEARCH_USER``
       - ``ELASTICSEARCH_PASS``
+
+Other use cases
+^^^^^^^^^^^^^^^
+
+- suggest a new scenario…
+
+- or customize locally:
+
+Sometimes it's necessary to apply local changes to the Zammad docker stack, e.g. to
+include additional services. If you plan to do so, we recommend that you do not change
+the ``docker-compose.yml`` file, but instead create a local ``docker-compose.override.yml``
+that includes all your modifications. Docker-Compose will
+`automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/multiple-compose-files/merge/>`_.
