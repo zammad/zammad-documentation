@@ -23,7 +23,7 @@ Zammad
      - This variable allows you to provide initial configuration data for your
        instance. Autowizard JSON is out of scope of this documentation, however
        `this example file`_ should help.
-   * - ZAMMAD_WEB_CONCURRENCY
+   * - WEB_CONCURRENCY
      - ``(unset)``
      - Allows spawning ``n`` workers to allow more simultaneous connections for
        Zammads web UI. See also: :doc:`/appendix/configure-env-vars`
