@@ -8,28 +8,28 @@ If the "vanilla" Zammad stack doesn't cover your use-case, you can use one of
 the pre-defined scenarios. We don't recommend to change the compose files
 locally because upstream changes for the stack aren't reflected automatically
 then. This is why you should either use Portainer's repository build method or
-clone the repository and update it regularly.
+clone the repository and update it regularly, when using docker compose.
 
 The following scenarios are supported:
 
 - Making the stack available via HTTPS
 
-  - Add a Cloudflare tunnel service to the stack(add-cloudflare-tunnel.yml)
-  - dd a Nginx Proxy Manager (NPM) to the stack (add-nginx-proxy-manager.yml)
-  - Add an external docker network to Nginx (add-external-network-to-nginx.yml)
+  - Add a Cloudflare tunnel service to the stack
+  - Add a Nginx Proxy Manager (NPM) to the stack
+  - Add an external docker network to Nginx
 
 - Using external services
 
-  - Disable Elasticsearch service (disable-elasticsearch-service.yml)
+  - Disable Elasticsearch service
 
 - Making services externally available
 
-  - Add an external docker network to Elasticsearch (add-external-network-to-elasticsearch.yml)
-  - Add an host port to Elasticsearch (add-hostport-to-elasticsearch.yml)
+  - Add an external docker network to Elasticsearch
+  - Add an host port to Elasticsearch
 
 - Additional scenarios
 
-  - Disable the backup service (disable-backup-service.yml)
+  - Disable the backup service
 
 You can find the files in the
 `Zammad-Docker-Compose repository <https://github.com/zammad/zammad-docker-compose>`_.
@@ -61,49 +61,87 @@ the cloned repository folder instead:
 
 .. code-block:: sh
 
-   docker compose -f docker-compose.yml -f /scenarios/{scenario you want to use}.yml up -d
+   docker compose -f docker-compose.yml -f scenarios/{scenario you want to use}.yml up -d
 
 Replace the part in ``{}`` brackets with the file name of one of the scenario
 files. You can even combine the scenarios by adding additional files according
 to the example above.
 
-Scenario Details
-----------------
+
+Making the Stack Available via HTTPS
+------------------------------------
+
+If you set up Zammad for production use, it needs to be secured by using an
+HTTPS connection. Because this can be achieved in different ways, we added 3
+different scenarios.
 
 Add Cloudflare Tunnel
 ^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``scenarios/add-cloudflare-tunnel.yml``
+If you want to publish Zammad in a very easy way and without taking
+care about e.g. SSL certificates, you can use a
+`Cloudflare <https://www.cloudflare.com/>`_ tunnel.
 
-Why?
-   If you want to publish Zammad in a very easy way and without taking
-   care about e.g. SSL certificates, you can use a
-   `Cloudflare <https://www.cloudflare.com/>`_ tunnel.
+- Use the scenario file ``scenarios/add-cloudflare-tunnel.yml`` for deployment
+- Add a sub-domain to an already existing domain in your Cloudflare dashboard
+- Forward it to your Zammad Nginx instance with port ``8080``
+- Create a tunnel. This is where you get your token for the next step
+- Provide your Cloudflare token by using the environment variable
+  ``CLOUDFLARE_TUNNEL_TOKEN``
 
-How?
-   - Use the relevant scenario file
-   - Add a sub-domain to an already existing domain
-   - Forward it to your Zammad Nginx instance with port ``8080``
-   - Create a tunnel. This is where you get your token for the next step
-   - Provide your Cloudflare token by using the environment variable
-     ``CLOUDFLARE_TUNNEL_TOKEN``
+Add Nginx Proxy Manager
+^^^^^^^^^^^^^^^^^^^^^^^
+
+A very common setup of publishing web services is to use a reverse proxy, which
+handles the SSL termination. One common tool is the Nginx Proxy Manager (NPM),
+which can be configured via UI quite simple. If you don't have a reverse
+proxy already, this might be a useful scenario for you. If you already have a
+running reverse proxy, head over to the next section.
+
+- Use the scenario file ``scenarios/add-nginx-proxy-manager.yml`` for deployment
+- Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
+- Configure your DNS. The chosen Zammad FQDN should point to the IP address of
+  the NPM host
+- Configure a new proxy host in your NPM and follow the steps to get an SSL
+  certificate
 
 Add External Docker Network to Nginx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you already have a reverse proxy which takes care about the SSL termination,
+this scenario is helpful. It adds an external docker network to Zammad's
+included Nginx service to be able to access it from a separated reverse proxy.
+
+- Use the scenario file ``scenarios/add-external-network-to-nginx.yml`` for deployment
+- Provide the name of your external network by using the environment
+  variable ``ZAMMAD_NGINX_EXTERNAL_NETWORK``
+
+Using External Services
+-----------------------
+
+Disable Elasticsearch Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``scenarios/add-external-network-to-nginx.yml``
+Do you have an Elasticsearch instance already running and want to use it for
+Zammad too? Then you can disable the Elasticsearch service in the Zammad stack
+to save resources.
 
-Why?
-   If you need to connect your Zammad stack to another network on your
-   docker compose / Portainer instance where your NPM is running.
+- Use the scenario file ``scenarios/disable-elasticsearch-service.yml`` for
+  deployment
+- Use the following environment variables to provide information about the
+  connection to your existing Elasticsearch instance:
 
-How?
-   - Use the relevant scenario file
-   - Provide the name of your external network by using the environment
-     variable ``ZAMMAD_NGINX_EXTERNAL_NETWORK``
+  - ``ELASTICSEARCH_SCHEMA``
+  - ``ELASTICSEARCH_HOST``
+  - ``ELASTICSEARCH_PORT``
+  - ``ELASTICSEARCH_USER``
+  - ``ELASTICSEARCH_PASS``
+
+Making Services Externally Available
+------------------------------------
 
 Add External Docker Network to Elasticsearch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Relevant file: ``scenarios/add-external-network-to-elasticsearch.yml``
 
@@ -115,23 +153,6 @@ How?
    - Use the relevant scenario file
    - Provide the name of your external network by using the environment
      variable ``ZAMMAD_ELASTICSEARCH_EXTERNAL_NETWORK``
-
-
-Add Nginx Proxy Manager
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Relevant file: ``scenarios/add-nginx-proxy-manager.yml``
-
-Why?
-   If you don't have a reverse proxy already, you can directly deploy it with
-   the Zammad stack.
-
-How?
-  - Use the relevant scenario file
-  - Provide your FQDN for Zammad by using the environment variable ``ZAMMAD_FQDN``
-  - Configure your DNS. The chosen Zammad FQDN should point to the IP address of the NPM host.
-  - Configure a new proxy host in your NPM and follow their steps to get an SSL certificate.
-
 
 Add Host Port to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,6 +167,9 @@ How?
    - Use the relevant scenario file
    - Your ES service is now accessible under port ``9200``
 
+Additional Scenarios
+--------------------
+
 Disable Backup Service
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -157,28 +181,6 @@ Why?
 
 How?
    Just use the relevant scenario file.
-
-
-Disable Elasticsearch Service
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Relevant file: ``scenarios/disable-elasticsearch-service.yml``
-
-Why?
-   If you have an Elasticsearch instance already and want to use it for Zammad
-   too, you can disable the Elasticsearch service in the stack to save
-   resources.
-
-How?
-   - Use the relevant scenario file
-   - Use the environment following environment variables to provide information
-     about your external ES:
-
-      - ``ELASTICSEARCH_SCHEMA``
-      - ``ELASTICSEARCH_HOST``
-      - ``ELASTICSEARCH_PORT``
-      - ``ELASTICSEARCH_USER``
-      - ``ELASTICSEARCH_PASS``
 
 Other use cases
 ^^^^^^^^^^^^^^^

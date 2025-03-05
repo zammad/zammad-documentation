@@ -47,7 +47,7 @@ Step 2: Build From Repository
    - **Compose path**: ``docker-compose.yml`` (default)
 
    If you want to customize the stack, read on in
-   :ref:`this section <customizing-stack>` below.
+   :ref:`the customization section <customizing-stack>` below.
 
    Zammad runs on port ``8080`` by default. If you want to use another port, you
    can set it via the variable ``NGINX_EXPOSE_PORT``.
@@ -79,12 +79,11 @@ Step 1: Clone the GitHub Repo
    `the releases page <https://github.com/zammad/zammad-docker-compose/releases>`_.
 
 Step 2: Adjust Environment as Needed
-   In some cases our default environment is not what a docker-compose user is
-   looking for. See :doc:`/install/docker-compose/environment` for details on
-   which settings can be configured.
-
-   If you want to customize the stack, read on in
-   :ref:`this section <customizing-stack>` below.
+   In some cases, our default environment is not what a docker-compose user is
+   looking for. You can customize the stack using pre-defined scenarios and
+   adjust environment variables. Jump to the
+   :ref:`customization section <customizing-stack>` below to find more
+   information.
 
    Zammad runs on port ``8080`` by default. If you want to use another port, you
    can set it via the variable ``NGINX_EXPOSE_PORT``.
@@ -143,7 +142,24 @@ should be done via one of the following methods:
 
 .. tabs::
 
-   .. tab:: Docker Compose / console
+   .. tab:: Via Portainer GUI
+
+      In your Portainer GUI, go to the container view and select the running
+      rails container from your Zammad stack. Click on the **Exec Console**
+      icon in the "Quick Actions" column.
+
+      .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
+         :alt:
+         :width: 70%
+
+      In the "Execute" dialog, select the "rails console" entry point as you
+      can see in the screenshot:
+
+      .. figure:: /images/install/docker-compose/portainer/portainer-execute-command.png
+         :alt:
+         :width: 70%
+
+   .. tab:: Via console
 
       Directly execute a specific command:
 
@@ -166,20 +182,3 @@ should be done via one of the following methods:
       If you need to retrieve information from the rails server, you can place
       for example ``pp`` (pretty print) in front of your rails command. This
       leads to an output in your terminal.
-
-   .. tab:: Portainer
-
-      In your Portainer GUI, go to the container view and select the running
-      rails container from your Zammad stack. Click on the **Exec Console**
-      icon in the "Quick Actions" column.
-
-      .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
-         :alt:
-         :width: 70%
-
-      In the "Execute" dialog, select the "rails console" entry point as you
-      can see in the screenshot:
-
-      .. figure:: /images/install/docker-compose/portainer/portainer-execute-command.png
-         :alt:
-         :width: 70%
