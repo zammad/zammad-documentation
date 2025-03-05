@@ -155,6 +155,10 @@ These scenarios are meant to connect from external applications to Zammad
 services. Depending on where your external service is hosted, you can use one
 of the following scenarios.
 
+.. danger:: When exposing Elasticsearch outside the stack, make sure
+   to set the variable ``ELASTICSEARCH_PASS`` to a custom value first!
+   Otherwise this is a big security issue because the Elasticsearch index
+   contains most of Zammad's data.
 
 Add External Docker Network to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,16 +173,20 @@ Elasticsearch container.
 - Provide the name of your external network by using the environment
   variable ``ZAMMAD_ELASTICSEARCH_EXTERNAL_NETWORK``
 
+.. hint:: If you want to use TLS, you have to connect to Elasticsearch via
+  reverse proxy.
+
 Add Host Port to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case you want to expose the Elasticsearch service of the Zammad stack in the
 network, you can assign a host port to the container. This is useful if you need to
-access the Elasticseach container from a different host.
+access the Elasticsearch container from a different host.
 
 - Use the scenario file ``scenarios/add-hostport-to-elasticsearch.yml`` for
   deployment
-- Access your ES service under port ``9200``
+- The default port for Elasticsearch is ``9200``. Change it to another
+  port by using the environment variable ``ELASTICSEARCH_EXPOSE_HTTP_PORT``
 
 .. _additional-scenarios:
 
