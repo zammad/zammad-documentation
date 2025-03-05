@@ -4,33 +4,32 @@ Docker Compose Scenarios
 Overview
 --------
 
-The best way to deploy Zammad with Docker Compose or Portainer is by using
-the repository build method. With this, your Zammad can be updated regularly
-and you are using the default compose file of the repository. This might be
-good as default, but your situation may differ. This is why you can set
-:doc:`environment variables for docker <environment>` and/or even use our
-pre-defined scenarios.
+If the "vanilla" Zammad stack doesn't cover your use-case, you can use one of
+the pre-defined scenarios. We don't recommend to change the compose files
+locally because upstream changes for the stack aren't reflected automatically
+then. This is why you should either use Portainer's repository build method or
+clone the repository and update it regularly.
 
 The following scenarios are supported:
 
 - Making the stack available via HTTPS
 
-  - **Add a Cloudflare tunnel service to the stack** (add-cloudflare-tunnel.yml)
-  - **Add a Nginx Proxy Manager (NPM) to the stack** (add-nginx-proxy-manager.yml)
-  - **Add an external docker network to Nginx** (add-external-network-to-nginx.yml)
+  - Add a Cloudflare tunnel service to the stack(add-cloudflare-tunnel.yml)
+  - dd a Nginx Proxy Manager (NPM) to the stack (add-nginx-proxy-manager.yml)
+  - Add an external docker network to Nginx (add-external-network-to-nginx.yml)
 
 - Using external services
 
-  - **Disable Elasticsearch service** (disable-elasticsearch-service.yml)
+  - Disable Elasticsearch service (disable-elasticsearch-service.yml)
 
 - Making services externally available
 
-  - **Add an external docker network to Elasticsearch** (add-external-network-to-elasticsearch.yml)
-  - **Add an host port to Elasticsearch** (add-hostport-to-elasticsearch.yml)
+  - Add an external docker network to Elasticsearch (add-external-network-to-elasticsearch.yml)
+  - Add an host port to Elasticsearch (add-hostport-to-elasticsearch.yml)
 
 - Additional scenarios
 
-  - **Disable the backup service** (disable-backup-service.yml)
+  - Disable the backup service (disable-backup-service.yml)
 
 You can find the files in the
 `Zammad-Docker-Compose repository <https://github.com/zammad/zammad-docker-compose>`_.
