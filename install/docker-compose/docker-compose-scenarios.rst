@@ -12,16 +12,23 @@ clone the repository and update it regularly, when using docker compose.
 
 The following scenarios are supported and explained further below:
 
-Making the stack available via HTTPS
+- :ref:`Making the stack available via HTTPS <stack-https>`
+
   - Add a Cloudflare tunnel service to the stack
   - Add a Nginx Proxy Manager (NPM) to the stack
   - Add an external docker network to Nginx
-Using external services
+
+- :ref:`Using external services <external-services>`
+
   - Disable Elasticsearch service
-Making services externally available
+
+- :ref:`Making services externally available <external-availability>`
+
   - Add an external docker network to Elasticsearch
   - Add an host port to Elasticsearch
-Additional scenarios
+
+- :ref:`Additional scenarios <additional-scenarios>`
+
   - Disable the backup service
 
 You can find the files in the
@@ -67,6 +74,7 @@ General Usage
     files. You can even combine the scenarios by adding additional files according
     to the example above.
 
+.. _stack-https:
 
 Making the Stack Available via HTTPS
 ------------------------------------
@@ -115,6 +123,8 @@ of the Zammad stack's network.
 - Provide the name of your external network by using the environment
   variable ``ZAMMAD_NGINX_EXTERNAL_NETWORK``
 
+.. _external-services:
+
 Using External Services
 -----------------------
 
@@ -135,6 +145,8 @@ to save resources.
   - ``ELASTICSEARCH_PORT``
   - ``ELASTICSEARCH_USER``
   - ``ELASTICSEARCH_PASS``
+
+.. _external-availability:
 
 Making Services Externally Available
 ------------------------------------
@@ -167,6 +179,8 @@ access the Elasticseach container from a different host.
 - Use the scenario file ``scenarios/add-hostport-to-elasticsearch.yml`` for
   deployment
 - Access your ES service under port ``9200``
+
+.. _additional-scenarios:
 
 Additional Scenarios
 --------------------
