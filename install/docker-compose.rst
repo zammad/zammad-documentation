@@ -104,7 +104,7 @@ Exposing the Stack via HTTPS
 ----------------------------
 
 To publish a Zammad stack on the internet, it needs be secured via the HTTPS
-protocol. With the Zammad stack, you can:
+protocol. To achieve that without modifying the Zammad stack, you can:
 
 - Use a reverse proxy like Nginx Proxy Manager (NPM). It has a GUI that provides
   an easy `Letsencrypt <https://letsencrypt.org/>`_ integration.
