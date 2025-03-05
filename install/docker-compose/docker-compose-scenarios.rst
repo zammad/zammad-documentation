@@ -160,6 +160,9 @@ of the following scenarios.
    Otherwise this is a big security issue because the Elasticsearch index
    contains most of Zammad's data.
 
+.. hint:: If you want to use TLS, you have to connect to Elasticsearch via
+   reverse proxy.
+
 Add External Docker Network to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -172,9 +175,6 @@ Elasticsearch container.
   for deployment
 - Provide the name of your external network by using the environment
   variable ``ZAMMAD_ELASTICSEARCH_EXTERNAL_NETWORK``
-
-.. hint:: If you want to use TLS, you have to connect to Elasticsearch via
-  reverse proxy.
 
 Add Host Port to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
