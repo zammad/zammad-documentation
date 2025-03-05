@@ -125,6 +125,9 @@ you already have these services running.
 
 Please see the :doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
+To adjust the stack and settings, use
+:doc:`docker specific environment variables </install/docker-compose/environment>`.
+
 .. toctree::
    :hidden:
    :maxdepth: 1

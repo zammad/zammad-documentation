@@ -140,32 +140,34 @@ to save resources.
 Making Services Externally Available
 ------------------------------------
 
+These scenarios are meant to connect from external services to Zammad
+services and vice versa. Depending on where your external service is hosted,
+use one of the following scenarios.
+
+
 Add External Docker Network to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``scenarios/add-external-network-to-elasticsearch.yml``
+A common use case for this is to use a reporting/visualization tool like Grafana
+on the same host in another stack. Because such tools need to access the
+Elasticsearch index, the network of the other stack has to be added to Zammad's
+Elasticsearch Container.
 
-Why?
-   If you need to connect your Zammad stack to another network on your
-   docker compose / Portainer instance where your Elasticsearch is running.
-
-How?
-   - Use the relevant scenario file
-   - Provide the name of your external network by using the environment
-     variable ``ZAMMAD_ELASTICSEARCH_EXTERNAL_NETWORK``
+- Use the scenario file ``scenarios/add-external-network-to-elasticsearch.yml``
+  for deployment
+- Provide the name of your external network by using the environment
+  variable ``ZAMMAD_ELASTICSEARCH_EXTERNAL_NETWORK``
 
 Add Host Port to Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``scenarios/add-hostport-to-elasticsearch.yml``
+In case you want to expose the Elasticsearch service of the Zammad stack in the
+network, you can assign a port to the container. This is useful if you need to
+access the Elasticseach container from a different host.
 
-Why?
-   If you want to expose the Elasticsearch service of this stack, e.g. to
-   access it from an external Grafana instance.
-
-How?
-   - Use the relevant scenario file
-   - Your ES service is now accessible under port ``9200``
+- Use the scenario file ``scenarios/add-hostport-to-elasticsearch.yml`` for
+  deployment
+- Access your ES service under port ``9200``
 
 Additional Scenarios
 --------------------
@@ -173,24 +175,24 @@ Additional Scenarios
 Disable Backup Service
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Relevant file: ``scenarios/disable-backup-service.yml``
+In case you want to handle backups in a different way, you can disable the
+built in backup service in the stack to save resources.
 
-Why?
-   If you want to do the backups in a different way, you can disable the backup
-   service in the stack to save resources.
+You can do so by just using the scenario file
+``scenarios/disable-backup-service.yml`` for deployment.
 
-How?
-   Just use the relevant scenario file.
-
-Other use cases
+Other Use Cases
 ^^^^^^^^^^^^^^^
 
-- suggest a new scenario…
+Your scenario is not covered? Feel free to suggest your use case. If we consider
+it as an important scenario, we include it in the repository then.
 
-- or customize locally:
+Customize the Stack Locally
+---------------------------
 
-Sometimes it's necessary to apply local changes to the Zammad docker stack, e.g. to
-include additional services. If you plan to do so, we recommend that you do not change
-the ``docker-compose.yml`` file, but instead create a local ``docker-compose.override.yml``
-that includes all your modifications. Docker-Compose will
+Sometimes it's necessary to apply local changes to the Zammad docker stack,
+e.g. to include additional services. If you plan to do so, we recommend that
+you do not change the ``docker-compose.yml`` file, but instead create a local
+``docker-compose.override.yml`` that includes all your modifications.
+Docker compose will
 `automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/multiple-compose-files/merge/>`_.
