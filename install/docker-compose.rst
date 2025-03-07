@@ -19,7 +19,7 @@ Prerequisites
 * This documentation expects you already have a working
   `Docker Compose <https://docs.docker.com/compose/>`_ environment.
 * Make sure to have at least 4 GB of RAM to run the containers.
-* You should adjust your host's settings to run Elasticsearch properly:
+* Adjust your host's settings to run Elasticsearch properly:
 
    .. code-block:: sh
 
@@ -38,6 +38,9 @@ Step 1: Add Stack
    choose your target environment, select **Stacks** and
    choose **Add stack** as you can see in the screenshot below.
 
+.. figure:: /images/install/docker-compose/portainer/portainer-stacks.png
+   :alt: Screenshot showing portainer UI with stacks section and highlighted "Add stack" button
+
 Step 2: Build From Repository
    Switch to **Repository** build method and provide the information below:
 
@@ -46,25 +49,22 @@ Step 2: Build From Repository
    - **Repository reference**: ``refs/heads/master``
    - **Compose path**: ``docker-compose.yml`` (default)
 
-   If you want to customize the stack, read on in
-   :ref:`the customization section <customizing-stack>` below.
-
-   Zammad runs on port ``8080`` by default. If you want to use another port, you
-   can set it via the variable ``NGINX_EXPOSE_PORT``.
-
-Step 3: Deploy the Stack
-   After the stack is ready, you can access Zammad via the configured docker
-   host and port, e.g. ``http://localhost:8080/``.
-
-.. figure:: /images/install/docker-compose/portainer/portainer-stacks.png
-   :alt: Screenshot showing portainer UI with stacks section and highlighted "Add stack" button
-
-   In the **Stacks** section in Portainer select **Add stack**.
+   In some cases, our default environment is not what a Docker-Compose user is
+   looking for. You can customize the stack using pre-defined scenarios and
+   adjust environment variables. Jump to the
+   :ref:`the customization section <customizing-stack>` below to find more
+   information.
 
 .. figure:: /images/install/docker-compose/portainer/portainer-stack-creation.png
    :alt: Screenshot showing stack creation with necessary information
 
-   Stack creation with provided information in **Repository** screen
+Step 3: Deploy the Stack
+   Finally, click the **Deploy the stack** button. The first time, it may take
+   some time until the Docker images are fetched.
+
+   After the stack is ready, you can access Zammad via the configured docker
+   host and port, e.g. ``http://localhost:8080/``.
+
 
 Deployment with Docker-Compose
 ------------------------------
@@ -85,17 +85,15 @@ Step 2: Adjust Environment as Needed
    :ref:`customization section <customizing-stack>` below to find more
    information.
 
-   Zammad runs on port ``8080`` by default. If you want to use another port, you
-   can set it via the variable ``NGINX_EXPOSE_PORT``.
-
 Step 3: Start the stack
    .. code-block:: sh
 
       cd zammad-docker-compose
       docker compose up -d
 
-   Optional: Use an additional ``.yml`` file from the scenarios folder to
-   apply one of the :doc:`pre-defined scenarios <docker-compose/docker-compose-scenarios>`.
+   Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
+   Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
+   section.
 
    After the stack is ready, you can access Zammad via the configured docker
    host and port, e.g. ``http://localhost:8080/``.
