@@ -59,8 +59,8 @@ Step 2: Build From Repository
    :alt: Screenshot showing stack creation with necessary information
 
 Step 3: Deploy the Stack
-   Finally, click Deploy the stack button. The first time, it may take some
-   time until the Docker images are fetched.
+   Finally, click the **Deploy the stack** button. The first time, it may take
+   some time until the Docker images are fetched.
 
    After the stack is ready, you can access Zammad via the configured docker
    host and port, e.g. ``http://localhost:8080/``.
