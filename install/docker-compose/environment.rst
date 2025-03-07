@@ -1,7 +1,15 @@
 Docker Environment Variables
 ****************************
 
-Zammad's docker stack supports these environment variables.
+Find the available docker environment variables below with default values, if
+applicable. You might also be interested in the
+:doc:`environment variables documentation </appendix/configure-env-vars>`.
+
+.. hint::
+
+   If you want to use a ``.env`` file, you can use the provided ``.env.dist``
+   file and copy it to ``.env``. That way it will be picked up by Docker-Compose
+   automatically and not overwritten during updates.
 
 Zammad
 ------
