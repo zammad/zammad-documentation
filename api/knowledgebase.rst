@@ -2,8 +2,8 @@ Knowledge Base
 ==============
 
 Zammad has different knowledge base related endpoints. You can find the general
-one about knowledge bases itself on this page. The sub-endpoints have been split
-off into separate pages:
+one about the knowledge base itself on this page. The sub-endpoints have been
+split off into separate pages:
 
    .. toctree::
       :maxdepth: 1
@@ -630,7 +630,7 @@ Response:
    }
 
 Reorder Sub-Categories
-------------------
+----------------------
 
 Required permission: ``knowledge_base.editor``
 
@@ -925,5 +925,417 @@ Response:
       }
    }
 
+Reorder Root Categories
+-----------------------
 
-PUT   /api/v1/knowledge_bases/:knowledge_base_id/categories/reorder_root_categories
+.. hint:: You have to provide the order of all top level categories, i.e.
+   categories with no category as parent (parent: ``>> Homepage <<``).
+
+Required permission: ``knowledge_base.editor``
+
+``PATCH``-Request sent: ``/api/v1/knowledge_bases/{ID of your KB}/categories/reorder_root_categories``
+
+.. code-block:: json
+   :force:
+
+   {
+      "ordered_ids": [
+         5,
+         2,
+         3,
+         4,
+         1
+      ]
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {
+      "KnowledgeBaseCategory": {
+         "3": {
+            "knowledge_base_id": 1,
+            "position": 2,
+            "id": 3,
+            "parent_id": null,
+            "category_icon": "f00c",
+            "created_at": "2025-03-13T10:15:33.217Z",
+            "updated_at": "2025-03-13T14:29:53.585Z",
+            "translation_ids": [
+               3
+            ],
+            "answer_ids": [],
+            "child_ids": [
+               3
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         },
+         "2": {
+            "knowledge_base_id": 1,
+            "position": 1,
+            "id": 2,
+            "parent_id": null,
+            "category_icon": "f015",
+            "created_at": "2025-03-12T14:51:29.019Z",
+            "updated_at": "2025-03-13T14:29:53.552Z",
+            "translation_ids": [
+               2
+            ],
+            "answer_ids": [
+               2,
+               3
+            ],
+            "child_ids": [
+               2
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         },
+         "4": {
+            "knowledge_base_id": 1,
+            "position": 3,
+            "id": 4,
+            "parent_id": null,
+            "category_icon": "f00c",
+            "created_at": "2025-03-13T10:16:55.888Z",
+            "updated_at": "2025-03-13T14:04:12.421Z",
+            "translation_ids": [
+               4
+            ],
+            "answer_ids": [],
+            "child_ids": [
+               4
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         },
+         "5": {
+            "knowledge_base_id": 1,
+            "position": 0,
+            "id": 5,
+            "parent_id": null,
+            "category_icon": "f115",
+            "created_at": "2025-03-13T10:39:53.137Z",
+            "updated_at": "2025-03-13T14:29:53.497Z",
+            "translation_ids": [
+               5
+            ],
+            "answer_ids": [],
+            "child_ids": [
+               5
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         },
+         "1": {
+            "knowledge_base_id": 1,
+            "position": 4,
+            "id": 1,
+            "parent_id": null,
+            "category_icon": "f115",
+            "created_at": "2025-03-12T14:50:42.533Z",
+            "updated_at": "2025-03-13T14:29:53.638Z",
+            "translation_ids": [
+               1
+            ],
+            "answer_ids": [
+               5,
+               6,
+               7,
+               4
+            ],
+            "child_ids": [
+               1
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         }
+      },
+      "KnowledgeBase": {
+         "1": {
+            "id": 1,
+            "iconset": "FontAwesome",
+            "color_highlight": "#38ae6a",
+            "color_header": "#f9fafb",
+            "color_header_link": "hsl(206,8%,50%)",
+            "homepage_layout": "grid",
+            "category_layout": "grid",
+            "active": true,
+            "show_feed_icon": false,
+            "custom_address": "mynewaddress.tld",
+            "created_at": "2025-03-12T10:09:01.203Z",
+            "updated_at": "2025-03-13T14:04:12.316Z",
+            "translation_ids": [
+               1
+            ],
+            "kb_locale_ids": [
+               1
+            ],
+            "category_ids": [
+               2,
+               1,
+               5,
+               8,
+               4,
+               3,
+               9
+            ],
+            "answer_ids": [
+               2,
+               3,
+               5,
+               6,
+               7,
+               4
+            ],
+            "permission_ids": [
+               3,
+               4,
+               5
+            ],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         }
+      },
+      "KnowledgeBaseLocale": {
+         "1": {
+            "id": 1,
+            "knowledge_base_id": 1,
+            "system_locale_id": 1,
+            "primary": true,
+            "created_at": "2025-03-12T10:09:01.206Z",
+            "updated_at": "2025-03-12T10:09:01.206Z",
+            "knowledge_base_translation_ids": [
+               1
+            ],
+            "category_translation_ids": [],
+            "answer_translation_ids": [],
+            "menu_item_ids": []
+         }
+      },
+      "KnowledgeBaseTranslation": {
+         "1": {
+            "id": 1,
+            "title": "Company Knowledge Base",
+            "footer_note": "© Company",
+            "kb_locale_id": 1,
+            "knowledge_base_id": 1,
+            "created_at": "2025-03-12T10:09:01.224Z",
+            "updated_at": "2025-03-13T09:00:07.809Z"
+         }
+      },
+      "KnowledgeBaseCategoryTranslation": {
+         "3": {
+            "id": 3,
+            "title": "My new category changed with PUT",
+            "kb_locale_id": 1,
+            "category_id": 3,
+            "created_at": "2025-03-13T10:15:33.223Z",
+            "updated_at": "2025-03-13T10:34:33.691Z"
+         },
+         "2": {
+            "id": 2,
+            "title": "Category 2",
+            "kb_locale_id": 1,
+            "category_id": 2,
+            "created_at": "2025-03-12T14:51:29.024Z",
+            "updated_at": "2025-03-12T14:51:29.024Z"
+         },
+         "4": {
+            "id": 4,
+            "title": "Yet another category",
+            "kb_locale_id": 1,
+            "category_id": 4,
+            "created_at": "2025-03-13T10:16:55.891Z",
+            "updated_at": "2025-03-13T10:16:55.891Z"
+         },
+         "5": {
+            "id": 5,
+            "title": "New Category 5",
+            "kb_locale_id": 1,
+            "category_id": 5,
+            "created_at": "2025-03-13T10:39:53.141Z",
+            "updated_at": "2025-03-13T10:39:53.141Z"
+         },
+         "1": {
+            "id": 1,
+            "title": "Category 1",
+            "kb_locale_id": 1,
+            "category_id": 1,
+            "created_at": "2025-03-12T14:50:42.547Z",
+            "updated_at": "2025-03-12T14:50:42.547Z"
+         }
+      }
+   }
