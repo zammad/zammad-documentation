@@ -538,6 +538,8 @@ Response:
 Show Permissions
 ----------------
 
+Required permission: ``knowledge_base.editor``
+
 ``GET``-Request sent: ``/api/v1/knowledge_bases/{ID of your KB}/permissions``
 
 Response:
@@ -564,16 +566,364 @@ Response:
       "inherited": []
    }
 
-TODO:
-
 Change Permissions
 ------------------
 
-PUT /api/v1/knowledge_bases/:id/permissions
+Required permission: ``knowledge_base.editor``
 
-Reorder Categories
+``PUT``-Request sent: ``/api/v1/knowledge_bases/{ID of your KB}/permissions``
+
+.. code-block:: json
+   :force:
+
+   {
+      "permissions_dialog": {
+         "permissions": {
+            "1": "editor",
+            "2": "reader",
+            "4": "editor"
+         }
+      }
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {
+      "roles_reader": [],
+      "roles_editor": [
+         {
+            "id": 1,
+            "name": "Admin"
+         },
+         {
+            "id": 2,
+            "name": "Agent"
+         },
+         {
+            "id": 4,
+            "name": "KB editor"
+         }
+      ],
+      "permissions": [
+         {
+            "id": 3,
+            "access": "editor",
+            "role_id": 1
+         },
+         {
+            "id": 4,
+            "access": "reader",
+            "role_id": 2
+         },
+         {
+            "id": 5,
+            "access": "editor",
+            "role_id": 4
+         }
+      ],
+      "inherited": []
+   }
+
+Reorder Sub-Categories
 ------------------
 
-PATCH /api/v1/knowledge_bases/:knowledge_base_id/categories/:id/reorder_categories
+Required permission: ``knowledge_base.editor``
+
+``PATCH``-Request sent: ``/api/v1/knowledge_bases/{ID of your KB}/categories/{ID of category}/reorder_categories``
+
+.. code-block:: json
+   :force:
+
+   {
+      "ordered_ids": [
+         9,
+         8
+      ]
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {
+      "KnowledgeBaseCategory": {
+         "1": {
+            "id": 1,
+            "knowledge_base_id": 1,
+            "parent_id": null,
+            "category_icon": "f115",
+            "position": 0,
+            "created_at": "2025-03-12T14:50:42.533Z",
+            "updated_at": "2025-03-13T14:10:23.137Z",
+            "translation_ids": [
+               1
+            ],
+            "answer_ids": [
+               5,
+               6,
+               7,
+               4
+            ],
+            "child_ids": [
+               1
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         },
+         "8": {
+            "parent_id": 1,
+            "position": 1,
+            "knowledge_base_id": 1,
+            "id": 8,
+            "category_icon": "f115",
+            "created_at": "2025-03-13T14:09:46.597Z",
+            "updated_at": "2025-03-13T14:10:23.135Z",
+            "translation_ids": [
+               8
+            ],
+            "answer_ids": [],
+            "child_ids": [
+               8
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         },
+         "9": {
+            "parent_id": 1,
+            "position": 0,
+            "knowledge_base_id": 1,
+            "id": 9,
+            "category_icon": "f115",
+            "created_at": "2025-03-13T14:09:54.157Z",
+            "updated_at": "2025-03-13T14:10:23.057Z",
+            "translation_ids": [
+               9
+            ],
+            "answer_ids": [],
+            "child_ids": [
+               9
+            ],
+            "permission_ids": [],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         }
+      },
+      "KnowledgeBase": {
+         "1": {
+            "id": 1,
+            "iconset": "FontAwesome",
+            "color_highlight": "#38ae6a",
+            "color_header": "#f9fafb",
+            "color_header_link": "hsl(206,8%,50%)",
+            "homepage_layout": "grid",
+            "category_layout": "grid",
+            "active": true,
+            "show_feed_icon": false,
+            "custom_address": "mynewaddress.tld",
+            "created_at": "2025-03-12T10:09:01.203Z",
+            "updated_at": "2025-03-13T14:04:12.316Z",
+            "translation_ids": [
+               1
+            ],
+            "kb_locale_ids": [
+               1
+            ],
+            "category_ids": [
+               2,
+               1,
+               5,
+               4,
+               3
+            ],
+            "answer_ids": [
+               2,
+               3,
+               5,
+               6,
+               7,
+               4
+            ],
+            "permission_ids": [
+               3,
+               4,
+               5
+            ],
+            "permissions_effective": [
+               {
+                  "id": 3,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 1,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.308Z",
+                  "updated_at": "2025-03-13T14:04:12.308Z"
+               },
+               {
+                  "id": 4,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 2,
+                  "access": "reader",
+                  "created_at": "2025-03-13T14:04:12.311Z",
+                  "updated_at": "2025-03-13T14:04:12.311Z"
+               },
+               {
+                  "id": 5,
+                  "permissionable_type": "KnowledgeBase",
+                  "permissionable_id": 1,
+                  "role_id": 4,
+                  "access": "editor",
+                  "created_at": "2025-03-13T14:04:12.313Z",
+                  "updated_at": "2025-03-13T14:04:12.313Z"
+               }
+            ]
+         }
+      },
+      "KnowledgeBaseLocale": {
+         "1": {
+            "id": 1,
+            "knowledge_base_id": 1,
+            "system_locale_id": 1,
+            "primary": true,
+            "created_at": "2025-03-12T10:09:01.206Z",
+            "updated_at": "2025-03-12T10:09:01.206Z",
+            "knowledge_base_translation_ids": [
+               1
+            ],
+            "category_translation_ids": [],
+            "answer_translation_ids": [],
+            "menu_item_ids": []
+         }
+      },
+      "KnowledgeBaseTranslation": {
+         "1": {
+            "id": 1,
+            "title": "Company Knowledge Base",
+            "footer_note": "© Company",
+            "kb_locale_id": 1,
+            "knowledge_base_id": 1,
+            "created_at": "2025-03-12T10:09:01.224Z",
+            "updated_at": "2025-03-13T09:00:07.809Z"
+         }
+      },
+      "KnowledgeBaseCategoryTranslation": {
+         "1": {
+            "id": 1,
+            "title": "Category 1",
+            "kb_locale_id": 1,
+            "category_id": 1,
+            "created_at": "2025-03-12T14:50:42.547Z",
+            "updated_at": "2025-03-12T14:50:42.547Z"
+         },
+         "8": {
+            "id": 8,
+            "title": "Sub category 1",
+            "kb_locale_id": 1,
+            "category_id": 8,
+            "created_at": "2025-03-13T14:09:46.602Z",
+            "updated_at": "2025-03-13T14:09:46.602Z"
+         },
+         "9": {
+            "id": 9,
+            "title": "Sub category 2",
+            "kb_locale_id": 1,
+            "category_id": 9,
+            "created_at": "2025-03-13T14:09:54.161Z",
+            "updated_at": "2025-03-13T14:09:54.161Z"
+         }
+      }
+   }
+
 
 PUT   /api/v1/knowledge_bases/:knowledge_base_id/categories/reorder_root_categories
