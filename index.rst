@@ -74,6 +74,7 @@ Zammad System Documentation
    /api/checklist
    /api/generic-cti/index
    /api/group
+   /api/knowledgebase
    /api/notification
    /api/object
    /api/organization
