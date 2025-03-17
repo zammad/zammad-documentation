@@ -2,7 +2,7 @@ Ticket Endpoints
 ================
 
 Zammad comes with many ticket related endpoints.
-For better overview, they have been splitted in different sections:
+For better overview, they have been split into different sections:
 
    .. toctree::
       :maxdepth: 1
