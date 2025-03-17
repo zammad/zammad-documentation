@@ -1,8 +1,9 @@
 Knowledge Base
 ==============
 
-Zammad has different knowledge base related endpoints. You can find the general
-one about the knowledge base itself on this page. The sub-endpoints have been
+Zammad has multiple knowledge base related endpoints. The most important - but
+not all - are covered in this documentation. You can find the general ones about
+the knowledge base itself on this page. The sub-endpoints have been
 split off into separate pages:
 
    .. toctree::
@@ -11,8 +12,6 @@ split off into separate pages:
 
       /api/knowledgebase/answers
       /api/knowledgebase/categories
-
-.. /api/knowledgebase/settings
 
 .. hint::
 
