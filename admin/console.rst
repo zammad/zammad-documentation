@@ -31,13 +31,25 @@ a shell (e.g. for automation).
    (e.g. like ``rails r 'p Delayed::Job.count'``),
    you'll actually receive a printed output (without you won't!).
 
-.. code-block:: sh
+.. tabs::
 
-   # package installation
-   $ zammad run rails r '{COMMAND}'
+   .. tab:: Docker Installation
 
-   # source installation
-   $ rails r '{COMMAND}'
+      .. code-block:: sh
+
+         $ docker compose run --rm zammad-railsserver rails r '{COMMAND}'
+
+   .. tab:: Package Installation
+
+      .. code-block:: sh
+
+         $ zammad run rails r '{COMMAND}'
+
+   .. tab:: Source/Development Installation
+
+      .. code-block:: sh
+
+         $ rails r '{COMMAND}'
 
 .. _rails_shell:
 
@@ -47,9 +59,29 @@ Running Several Commands in a Shell
 The following command will provide you a rails console.
 It allows you to run several commands inside it.
 
-This reduces loading times greatly.
+.. tabs::
 
-.. include:: /admin/console-rails-shell.include.rst
+   .. tab:: Docker Installation
+
+      .. code-block:: sh
+
+         $ docker compose run --rm zammad-railsserver rails c
+
+      .. tip:: If you use Portainer to manage your Docker containers,
+         you can even use a
+         :ref:`console via Portainer's GUI <docker-run-commands>`.
+
+   .. tab:: Package Installation
+
+      .. code-block:: sh
+
+         $ $ zammad run rails c
+
+   .. tab:: Source/Development Installation
+
+      .. code-block:: sh
+
+         $ rails c
 
 .. hint:: **Starting Rails Console in Safe Mode**
 
