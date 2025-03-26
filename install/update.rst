@@ -234,13 +234,13 @@ using `Zammad hosting`_ for your and your customers' safety.
          Only needed if the release note tells you to rebuild the Elasticsearch
          index.
 
-         Docker compose:
+         **Docker compose:**
 
          .. code-block:: sh
 
             $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild[8]
 
-         Portainer:
+         **Portainer:**
 
          Open the :ref:`console via Portainer's GUI <docker-run-commands>`
          (but use the entrypoint ``bash-via-entrypoint: /docker-entrypoint.sh /bin/bash``
