@@ -100,8 +100,21 @@ using `Zammad hosting`_ for your and your customers' safety.
             ingest-attachment is no longer a plugin, it's now included in
             Elasticsearch).
 
-      Step 6: Log into Zammad
+      Step 6: Rebuild Elasticsearch index (optional)
+         Only needed if the release note tells you to rebuild the Elasticsearch
+         index.
+
+         .. code-block:: sh
+
+            $ zammad run rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
+            $ zammad run rake zammad:searchindex:rebuild[8]
+
+      Step 7: Log into Zammad
          Yes, that's it!
+
 
    .. tab:: Source
 
@@ -186,8 +199,21 @@ using `Zammad hosting`_ for your and your customers' safety.
       Step 9: Start Zammad services
          Start the application server, web socket server and scheduler.
 
-      Step 10: Log into Zammad
+      Step 10: Rebuild Elasticsearch index (optional)
+         Only needed if the release note tells you to rebuild the Elasticsearch
+         index.
+
+         .. code-block:: sh
+
+            $ rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
+            $ rake zammad:searchindex:rebuild[8]
+
+      Step 11: Log into Zammad
          Yes, that's it!
+
 
    .. tab:: Docker
 
@@ -212,3 +238,30 @@ using `Zammad hosting`_ for your and your customers' safety.
             $ docker-compose pull
             $ docker-compose up -d
 
+      Rebuild Elasticsearch index (optional)
+         Only needed if the release note tells you to rebuild the Elasticsearch
+         index.
+
+         **Docker compose:**
+
+         .. code-block:: sh
+
+            $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
+            $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild[8]
+
+         **Portainer:**
+
+         Open the :ref:`console via Portainer's GUI <docker-run-commands>`
+         (but use the entrypoint ``bash-via-entrypoint: /docker-entrypoint.sh /bin/bash``
+         instead) and run:
+
+         .. code-block:: sh
+
+            $ rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
+            $ rake zammad:searchindex:rebuild[8]

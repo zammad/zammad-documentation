@@ -134,6 +134,8 @@ To adjust the stack and settings, use
    /install/docker-compose/docker-compose-scenarios
 
 
+.. _docker-run-commands:
+
 How to Run Commands in the Stack
 --------------------------------
 

@@ -220,7 +220,18 @@ Add certificate to Zammad (only for Elasticsearch >= 8)
       :alt: Screenshot shows certificate management in Zammad's admin panel
       :align: center
 
+.. _es-rebuild-searchindex:
+
 Build/rebuild the searchindex
+   .. hint::
+      - The rebuild may take many hours or even days, if a lot of data is
+        already present in a productive environment. However, you can safely
+        run this during operating times without the risk of loosing data. As a
+        downside, it could lead to reduced performance and that some data may
+        not be shown in search results.
+      - Consider specifying a number of CPU cores to be used for the rebuild
+        (see example below).
+
    .. code-block:: sh
 
       $ sudo zammad run rake zammad:searchindex:rebuild
