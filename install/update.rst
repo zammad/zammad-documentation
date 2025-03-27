@@ -106,6 +106,10 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          .. code-block:: sh
 
+            $ zammad run rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
             $ zammad run rake zammad:searchindex:rebuild[8]
 
       Step 7: Log into Zammad
@@ -201,6 +205,10 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          .. code-block:: sh
 
+            $ rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
             $ rake zammad:searchindex:rebuild[8]
 
       Step 11: Log into Zammad
@@ -238,6 +246,10 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          .. code-block:: sh
 
+            $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
             $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild[8]
 
          **Portainer:**
@@ -248,4 +260,8 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          .. code-block:: sh
 
+            $ rake zammad:searchindex:rebuild
+
+            # Optionally, you can specify a number of CPU cores which are used for
+            # rebuilding the searchindex, as in the following example with 8 cores:
             $ rake zammad:searchindex:rebuild[8]
