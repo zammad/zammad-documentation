@@ -38,18 +38,6 @@ Use these environment variables to configure Zammad's behavior at runtime.
 General Options
 ---------------
 
-APP_RESTART_CMD
-   The command Zammad will use to automatically restart the server
-   after :admin-docs:`changes have been made in the Object Manager </system/objects.html>`.
-   (*E.g.,* ``"systemctl restart zammad"``)
-
-   If this is undefined, you will have to restart manually
-   after making changes in the Object Manager. Please keep in mind that Zammad
-   runs as unprivileged user. This means that you have to allow the Zammad user
-   via e.g. ``sudoers`` to run the required restart command.
-
-   Default: **unset**
-
 GPG_PATH
    Defines the path to the GPG installation. This is only needed if you
    installed Zammad from Source, if you want to use different versions of PGP

@@ -25,38 +25,6 @@ Sample response:
        ]
    }
 
-
-Search
-^^^^^^
-
-Required permission: ``ticket.agent`` **or** ``admin.tag``
-
-``GET``-Request sent: ``/api/v1/tag_search?term={tag name}``
-
-.. hint:: Zammad will return all tags that contain your search phrase.
-
-Sample response:
-
-.. code-block:: json
-   :force:
-
-   # HTTP-Code 200 OK
-
-   [
-       {
-           "id": 1,
-           "value": "americano"
-       },
-       {
-           "id": 2,
-           "value": "complaint"
-       },
-       {
-           "id": 3,
-           "value": "viennese melange"
-       }
-   ]
-
 Add
 ^^^
 
