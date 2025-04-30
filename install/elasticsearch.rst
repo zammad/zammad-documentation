@@ -298,6 +298,16 @@ information please have a look at
       how to use them in Zammad
       :admin-docs:`here </settings/security/ssl-certificates.html>`.
 
+   .. tab:: Asciifold
+
+      By default, the
+      `Asciifold <https://www.elastic.co/docs/reference/text-analysis/analysis-asciifolding-tokenfilter>`_
+      feature of Elasticsearch is enabled. This can be useful if you deal with
+      text which includes diacritics and/or umlauts.
+
+      In case you need a more exact search, you can turn it off via
+      :ref:`rails console <disable-asciifold>`.
+
 Appendix
 --------
 
