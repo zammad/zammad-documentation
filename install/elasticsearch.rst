@@ -305,9 +305,8 @@ information please have a look at
       feature of Elasticsearch is enabled. This can be useful if you deal with
       text which includes diacritics and/or umlauts.
 
-      In case you observe issues, you can turn it off via
+      In case you need a more exact search, you can turn it off via
       :ref:`rails console <disable-asciifold>`.
-
 
 Appendix
 --------

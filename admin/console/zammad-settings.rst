@@ -133,9 +133,12 @@ Zammad needs to use a proxy for network communication? Set it here.
 Disable Asciifold
 -----------------
 
-This feature is turned on by default. In case you observe issues, you can turn
-it off:
+This feature is turned on by default. In case you need a more exact search, you
+can turn it off:
 
 .. code-block:: ruby
 
    >> Setting.set('es_asciifolding', false)
+
+After changing the setting, make sure to
+:ref:`rebuild the search index <es-rebuild-searchindex>`.
