@@ -126,3 +126,16 @@ Zammad needs to use a proxy for network communication? Set it here.
    >> Setting.set('proxy', 'proxy.example.com:3128')
    >> Setting.set('proxy_username', 'some user')
    >> Setting.set('proxy_password', 'some pass')
+
+
+.. _disable-asciifold:
+
+Disable Asciifold
+-----------------
+
+This feature is turned on by default. In case you observe issues, you can turn
+it off:
+
+.. code-block:: ruby
+
+   >> Setting.set('es_asciifolding', false)
