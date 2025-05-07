@@ -147,26 +147,22 @@ WEB_CONCURRENCY
 
    Default: **unset**
 
-ZAMMAD_SESSION_JOBS_CONCURRENT
+ZAMMAD_PROCESS_SESSIONS_JOBS_WORKERS
    How many instances of the session worker to run at a time.
 
    Increasing this can speed up background jobs (like the scheduler)
-   when too many users are on Zammad at once.
+   when many users are on Zammad at once.
 
-   Generally speaking, it should only be useful to adjust this setting
-   if you have more than 40 active users at a time.
-
-   .. warning:: 🥵 **Session workers can be extremely CPU-intensive.**
-
-      In some cases, they can reach 100% CPU utilization on their own.
-      Increasing this setting is safer on systems with more cores.
+   It is not useful to adjust this setting if you have less than 40 active
+   users at a time. Increasing the amount of workers can consume a lot of
+   resources!
 
    Default: **unset**
 
 ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
    Allows spawning an independent process just for processing scheduled jobs
-   like LDAP syncs. This can free up Zammads background worker for other tasks
-   when running tasks that require fairly long.
+   like LDAP syncs. This can free up Zammad's background worker for other tasks
+   when running tasks that take rather long.
 
    | Default: **unset**
    | Maximum number of workers: ``1``
