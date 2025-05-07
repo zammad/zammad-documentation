@@ -1294,19 +1294,71 @@ Response:
 Delete
 ------
 
-Required permission: ``admin.user``
-
 .. danger:: **⚠ This is a permanent removal**
 
    Please note that removing users cannot be undone.
    Zammad will also remove references - thus potentially tickets!
 
-   Removing users with references in e.g. activity streams is not possible
-   via API - this will be indicated by
-   ``"error": "Can't delete, object has references."``. This is *not* a bug.
+Technically, you can delete users via ``/api/v1/users/{id}``. However, we
+strongly encourage you to use the
+:admin-docs:`data privacy in Zammad's UI </system/data-privacy.html>` or the
+data privacy endpoint instead (see section below). Using one of them makes sure
+that related information like tickets are deleted as well.
 
-   Consider using :admin-docs:`Data Privacy </system/data-privacy.html>` via UI
-   for more control instead.
+Via Data Privacy Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Required permission: ``admin.data_privacy``
+
+``POST``-Request sent: ``/api/v1/data_privacy_task``
+
+.. code-block:: json
+
+   {
+      "deletable_type": "User",
+      "deletable_id": 19
+   }
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 201 Created
+
+   {
+      "id": 5,
+      "state": "in process",
+      "deletable_type": "User",
+      "deletable_id": 19,
+      "preferences": {
+         "owner_tickets": [],
+         "owner_tickets_count": 0,
+         "customer_tickets": [],
+         "customer_tickets_count": 0,
+         "user": {
+            "firstname": "A*r",
+            "lastname": "W*t",
+            "email": "a*t@j*s.com",
+            "organization": "J*s c*r p*s"
+         }
+      },
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "created_at": "2025-05-07T08:13:51.350Z",
+      "updated_at": "2025-05-07T08:13:51.350Z"
+   }
+
+To check the state and verify if the task got completed, send a ``GET``-Request
+to ``/api/v1/data_privacy_tasks/{id}``. Be aware that the execution of the task
+may take some time.
+
+Via User Endpoint
+^^^^^^^^^^^^^^^^^
+
+.. warning:: Not recommended!
+
+Required permission: ``admin.user``
 
 ``DELETE``-Request sent: ``/api/v1/users/{id}``
 
