@@ -78,6 +78,34 @@ version 8, which also comes with some additional security features.
 
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
+      .. code-block:: sh
+
+      .. code-block:: sh
+
+         $ apt install apt-transport-https sudo wget curl gnupg
+
+      .. code-block:: sh
+
+         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
+           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+
+      .. code-block:: sh
+
+         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
+           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+
+      .. code-block:: sh
+
+         $ apt update
+
+      .. code-block:: sh
+
+         $ apt install elasticsearch
+
+      .. code-block:: sh
+
+         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
    .. tab:: CentOS
 
       .. code-block:: sh
