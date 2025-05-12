@@ -147,11 +147,21 @@ Add Repository
             $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
+
+
       Ubuntu 24.04
+         .. hint:: Starting with Ubuntu 24.04, we provide the command to add the
+            repository in the
+            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+
          .. code-block:: sh
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 24.04 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ printf "Types: deb
+              URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
+              Suites: 22.04
+              Components: main
+              Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+              sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: Debian
 

@@ -30,28 +30,37 @@ version 8, which also comes with some additional security features.
 
 .. tabs::
 
-   .. tab:: Ubuntu
+   .. tab:: Ubuntu/Debian (deb822)
+
+      .. hint:: In this tab, the repository is added by using the
+         `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+         If you run a distribution which doesn't support it, use the legacy
+         method instead.
 
       ::
 
          $ apt install apt-transport-https sudo wget curl gnupg
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
            gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+         $ printf "Types: deb
+           URIs: https://artifacts.elastic.co/packages/7.x/apt
+           Suites: stable
+           Components: main
+           Signed-By: /etc/apt/trusted.gpg.d/elasticsearch.gpg" | \
+           sudo tee /etc/apt/sources.list.d/elastic-7.x.sources > /dev/null
          $ apt update
          $ apt install elasticsearch
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-   .. tab:: Debian
+   .. tab:: Ubuntu/Debian (legacy)
 
       ::
 
          $ apt install apt-transport-https sudo wget curl gnupg
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
            gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
+           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
          $ apt update
          $ apt install elasticsearch
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
