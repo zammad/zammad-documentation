@@ -69,7 +69,7 @@ Response:
 The mention will be created for the user of the current session.
 
 .. hint:: If you want to mention/subscribe other users, you can do so by
-  sending an additional ``X-On-Behalf-Of``-header in your request. You can
+  sending an additional ``From``-header in your request. You can
   either provide the user ID or the user email address as value.
 
 
