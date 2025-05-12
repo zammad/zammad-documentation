@@ -30,12 +30,7 @@ version 8, which also comes with some additional security features.
 
 .. tabs::
 
-   .. tab:: Ubuntu/Debian (deb822)
-
-      .. hint:: In this tab, the repository is added by using the
-         `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
-         If you run a distribution which doesn't support it, use the legacy
-         method instead.
+   .. tab:: Ubuntu/Debian
 
       .. code-block:: sh
 
@@ -46,42 +41,30 @@ version 8, which also comes with some additional security features.
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
            gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
 
-      .. code-block:: sh
+      .. tabs::
 
-         $ printf "Types: deb
-           URIs: https://artifacts.elastic.co/packages/7.x/apt
-           Suites: stable
-           Components: main
-           Signed-By: /etc/apt/trusted.gpg.d/elasticsearch.gpg" | \
-           sudo tee /etc/apt/sources.list.d/elastic-7.x.sources > /dev/null
+         .. tab:: Deb822 format
 
-      .. code-block:: sh
+            In this tab, the repository is added by using the
+            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+            If you run a distribution which doesn't support it, use the legacy
+            format instead.
 
-         $ apt update
+            .. code-block:: sh
 
-      .. code-block:: sh
+               $ printf "Types: deb
+               URIs: https://artifacts.elastic.co/packages/7.x/apt
+               Suites: stable
+               Components: main
+               Signed-By: /etc/apt/trusted.gpg.d/elasticsearch.gpg" | \
+               sudo tee /etc/apt/sources.list.d/elastic-7.x.sources > /dev/null
 
-         $ apt install elasticsearch
+         .. tab:: Legacy format
 
-      .. code-block:: sh
+            .. code-block:: sh
 
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. tab:: Ubuntu/Debian (legacy)
-
-      .. code-block:: sh
-
-         $ apt install apt-transport-https sudo wget curl gnupg
-
-      .. code-block:: sh
-
-         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
-
-      .. code-block:: sh
-
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+               $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
+               tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
 
       .. code-block:: sh
 
