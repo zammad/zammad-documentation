@@ -37,39 +37,72 @@ version 8, which also comes with some additional security features.
          If you run a distribution which doesn't support it, use the legacy
          method instead.
 
-      ::
+      .. code-block:: sh
 
          $ apt install apt-transport-https sudo wget curl gnupg
+
+      .. code-block:: sh
+
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
            gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+
+      .. code-block:: sh
+
          $ printf "Types: deb
            URIs: https://artifacts.elastic.co/packages/7.x/apt
            Suites: stable
            Components: main
            Signed-By: /etc/apt/trusted.gpg.d/elasticsearch.gpg" | \
            sudo tee /etc/apt/sources.list.d/elastic-7.x.sources > /dev/null
+
+      .. code-block:: sh
+
          $ apt update
+
+      .. code-block:: sh
+
          $ apt install elasticsearch
+
+      .. code-block:: sh
+
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: Ubuntu/Debian (legacy)
 
-      ::
+      .. code-block:: sh
 
          $ apt install apt-transport-https sudo wget curl gnupg
+
+      .. code-block:: sh
+
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
            gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+
+      .. code-block:: sh
+
          $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
            tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+
+      .. code-block:: sh
+
          $ apt update
+
+      .. code-block:: sh
+
          $ apt install elasticsearch
+
+      .. code-block:: sh
+
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: CentOS
 
-      ::
+      .. code-block:: sh
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+      .. code-block:: sh
+
          $ echo "[elasticsearch-7.x]
          name=Elasticsearch repository for 7.x packages
          baseurl=https://artifacts.elastic.co/packages/7.x/yum
@@ -78,14 +111,23 @@ version 8, which also comes with some additional security features.
          enabled=1
          autorefresh=1
          type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
+
+      .. code-block:: sh
+
          $ yum install -y elasticsearch
+
+      .. code-block:: sh
+
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: OpenSUSE
 
-      ::
+      .. code-block:: sh
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+      .. code-block:: sh
+
          $ echo "[elasticsearch-7.x]
          name=Elasticsearch repository for 7.x packages
          baseurl=https://artifacts.elastic.co/packages/7.x/yum
@@ -94,7 +136,13 @@ version 8, which also comes with some additional security features.
          enabled=1
          autorefresh=1
          type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
+
+      .. code-block:: sh
+
          $ zypper install elasticsearch
+
+      .. code-block:: sh
+
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: Direct Download
@@ -107,12 +155,16 @@ version 8, which also comes with some additional security features.
       (and mandatory!) attachment plugin for elasticsearch, if installing
       version 7.
 
+      Install the attachment plugin:
+
       .. code-block:: sh
 
-         # Install the attachment plugin
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-         # Increase the virtual memory map limit
+      Increase the virtual memory map limit:
+
+      .. code-block:: sh
+
          $ sysctl -w vm.max_map_count=262144
 
 After you installed Elasticsearch and its attachment plugin,
@@ -121,6 +173,9 @@ ensure to enable it by default and start it.
 .. code-block:: sh
 
    $ systemctl start elasticsearch
+
+.. code-block:: sh
+
    $ systemctl enable elasticsearch
 
 .. note:: 🐋 **Docker installations on macOS/Windows:**
@@ -172,6 +227,9 @@ Enable and start Elasticsearch
    .. code-block:: sh
 
       $ systemctl start elasticsearch
+
+   .. code-block:: sh
+
       $ systemctl enable elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
@@ -192,14 +250,18 @@ commands, as this will fail otherwise.
    and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
 Elasticsearch URL
+   Set the Elasticsearch server address; adapt it to your scenario.
+
+   Elasticsearch 7:
+
    .. code-block:: sh
 
-      # Set the Elasticsearch server address; adapt it to your scenario.
-
-      # Elasticsearch 7:
       $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
-      # Elasticsearch 8:
+   Elasticsearch 8:
+
+   .. code-block:: sh
+
       $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
 
@@ -207,10 +269,16 @@ Elasticsearch user and password (only for Elasticsearch >= 8)
    Now you need your password which was shown to you while installing
    Elasticsearch.
 
+   Set Elasticsearch user:
+
    .. code-block:: sh
 
-      # Set Elasticsearch user and password
       $ zammad run rails r "Setting.set('es_user', 'elastic')"
+
+   Set Elasticsearch password:
+
+   .. code-block:: sh
+
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
 Add certificate to Zammad (only for Elasticsearch >= 8)
@@ -241,12 +309,16 @@ Build/rebuild the searchindex
       - Consider specifying a number of CPU cores to be used for the rebuild
         (see example below).
 
+   Without specifying CPU cores:
+
    .. code-block:: sh
 
       $ sudo zammad run rake zammad:searchindex:rebuild
 
-      # Optionally, you can specify a number of CPU cores which are used for
-      # rebuilding the searchindex, as in the following example with 8 cores:
+   Example with specifying 8 CPU cores:
+
+   .. code-block:: sh
+
       $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
 
