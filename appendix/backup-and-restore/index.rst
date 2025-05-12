@@ -36,6 +36,8 @@ Basic Backup Setup
 #. Change default parameters in  the ``config`` file if needed. Learn more
    about the configuration options
    :doc:`here </appendix/backup-and-restore/configuration>`.
+#. Optional: install ``pigz`` - if installed, ``pigz`` will be used by the
+   scripts. (see: `pig-zee <https://zlib.net/pigz/>`_)
 #. Execute ``/opt/zammad/contrib/backup/zammad_backup.sh``.
 
 
