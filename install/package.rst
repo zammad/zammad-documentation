@@ -185,10 +185,18 @@ Add Repository
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       Debian 12
+         .. hint:: Starting with Debian 12, we provide the command to add the
+            repository in the
+            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+
          .. code-block:: sh
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ printf "Types: deb
+              URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
+              Suites: 12
+              Components: main
+              Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+              sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: OpenSUSE / SLES
 
