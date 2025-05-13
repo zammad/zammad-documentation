@@ -64,36 +64,9 @@ If you want to install Zammad, you need the following software.
    version)  are minimum requirements of Zammad. We strongly encourage you to
    use most current possible versions that *are not end of life*.
 
-2.1 Ruby Programming Language
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Docker and Kubernetes are shipping all dependencies and services by default!
 
-.. hint:: **🤓 Only relevant for source code installations**
-
-   Docker and package installations provide the required ruby dependencies!
-
-Zammad requires Ruby. All required rubygems like ruby on rails are listed in
-the Gemfile.
-
-In the following table you can find the supported Ruby version for the
-different Zammad versions:
-
-.. csv-table:: Zammad/Ruby version compatibility
-   :header: "Zammad", "Ruby"
-   :widths: 20, 20
-
-   "6.6+", "3.3.8"
-   "6.5", "3.2.8"
-   "6.3.1 - 6.4", "3.2.4"
-   "6.3.0", "3.2.3"
-   "5.4 - 6.2", "3.1.3"
-   "5.2 - 5.3", "3.0.4"
-   "5.0 - 5.1", "2.7.4"
-   "3.4.1 - 4.1", "2.6.6"
-   "3.4.0", "2.6.5"
-   "3.1 - 3.3", "2.5.5"
-   "2.5 - 3.0", "2.4.4"
-
-2.2 Supported Distributions
+2.1 Supported Distributions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad provides binary packages for the most recent two stable /
@@ -120,7 +93,7 @@ Below you can find all distributions Zammad provides packages for.
 
    If you distribution is not listed, you can still install Zammad.
    For this you can either use :doc:`Docker-Compose </install/docker-compose>`
-   or :doc:`Source </install/source>` installation.
+   or :doc:`kubernetes </install/kubernetes>` installation.
 
    We try to provide all current distributions that are supported by
    `Packager.io <https://packager.io/>`_. This means that we can't always
@@ -128,12 +101,12 @@ Below you can find all distributions Zammad provides packages for.
 
 .. _package_dependencies:
 
-2.3 Package Dependencies
+2.2 Package Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The below dependencies need to be installed on your system.
-If you're using the package install, the packages below will automatically
-installed with the Zammad-Package.
+The dependencies below need to be installed on your system.
+If you're using the package installation method, these packages will
+automatically be installed with the Zammad-Package.
 
 .. code-block:: sh
 
@@ -153,10 +126,10 @@ installed with the Zammad-Package.
    | *However:* If you have to use ``bundle install`` for e.g. custom Gems or
      development, you'll need to install it!
 
-2.4 Database Server
+2.3 Database Server
 ^^^^^^^^^^^^^^^^^^^
 
-Zammad will store all content in a Database.
+Zammad will store all content in a database.
 You can choose between the following database servers:
 
 * PostgreSQL 10+
@@ -172,7 +145,6 @@ You can choose between the following database servers:
    this is called "session connection pooling". Transaction-based connection
    pooling is not supported and may lead to errors during database migrations.
 
-
 For **MySQL/MariaDB**, the following configuration is required:
 
 * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
@@ -187,28 +159,7 @@ You may also want to consider the following settings for your **MySQL** server::
    innodb_large_prefix = 1
    innodb_file_format_max = Barracuda
 
-2.5 Node.js
-^^^^^^^^^^^
-
-Node.js is required for asset compiling.
-
-**Package installations** come pre-bundled with the correct NodeJS version.
-A manual installation is *not required* unless you require NodeJS for other
-projects.
-
-Node.js is only required on **source code installations** if you need to change
-any javascript or stylesheet files via ``rake assets:precompile``.
-
-.. csv-table:: Zammad/Node.js version compatibility
-   :header: "Zammad", "Node.js"
-   :widths: 20, 20
-
-   "6.3+", "18.10+"
-   "6.2", "18.0+"
-   "5.2 - 6.1", "16.0+"
-   "5.0 - 5.1", "10.0+"
-
-2.6 Reverse Proxy
+2.4 Reverse Proxy
 ^^^^^^^^^^^^^^^^^
 
 In a typical web environment today, you use a reverse proxy to deliver the
@@ -220,26 +171,22 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-
 .. hint::
 
    Some configuration is required, please see :doc:`/getting-started/configure-webserver`.
 
-
-
-2.7 Redis
+2.5 Redis
 ^^^^^^^^^
 
 Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for
 realtime communication via web socket.
 
-The installation and configuration is out of our scope.
-Please follow the official vendor guides and ensure to have a
-tight security on your installation.
+The installation and configuration is out of scope of this documentation.
+Please follow the official guides and ensure to set it up in a secure way.
 
 .. _prerequisites_elasticsearch:
 
-2.8 Elasticsearch (optional)
+2.6 Elasticsearch (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad uses Elasticsearch to
@@ -262,7 +209,7 @@ system gets.
 
    It's perfectly safe to manually override the Elasticsearch dependency.
    The appropriate command line flag will depend on your platform
-   (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
+   (e.g. ``--force``, ``--ignore-depends``, ``--skip-broken``);
    check your package manager's manpage to find out.
 
 .. csv-table:: Zammad/Elasticsearch version compatibility
@@ -282,7 +229,7 @@ An Elasticsearch plugin is required for version 7 or older to index the
 contents of email attachments: ``ingest-attachment``. Starting with
 Elasticsearch 8, it is included by default.
 
-2.9 Memcached
+2.7 Memcached
 ^^^^^^^^^^^^^
 
 Zammad heavily relies on caching to improve performance. This cache can be stored
@@ -300,8 +247,8 @@ The installation and configuration is out of scope of this documentation.
 In case you have to install Memcached manually, please follow the
 `official documentation of Memcached <https://docs.memcached.org/>`_.
 
-2.10 GnuPG (optional)
-^^^^^^^^^^^^^^^^^^^^^
+2.8 GnuPG (optional)
+^^^^^^^^^^^^^^^^^^^^
 If you want to use the PGP integration for sending and receiving signed and
 encrypted emails, you need to install the GnuPG-Tool.
 Please have a look at the official `GnuPG website`_.

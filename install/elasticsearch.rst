@@ -224,13 +224,12 @@ Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
 
 * Install from :doc:`package <package>`
-* Install from :doc:`source <source>`
+* Install with :doc:`docker <docker-compose>` (the default stack already includes Elasticsearch)
 
 .. note::
    This guide uses the ``zammad run`` command prefix in command line examples.
    This prefix is only applicable to package installations.
-   If you installed from source, be sure to omit this prefix
-   and run the bare ``rails ...`` or ``rake ...`` commands instead.
+   Check the :doc:`console guide </admin/console>` for more information.
 
 Elasticsearch URL
    Set the Elasticsearch server address; adapt it to your scenario.
