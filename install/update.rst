@@ -20,7 +20,7 @@ using `Zammad hosting`_ for your and your customers' safety.
 
 .. tabs::
 
-   .. tab:: Package
+   .. tab:: Package Installation
 
       Step 1: Ensure dependencies
          Before proceeding, double-check that your system environment matches
@@ -115,107 +115,7 @@ using `Zammad hosting`_ for your and your customers' safety.
       Step 7: Log into Zammad
          Yes, that's it!
 
-
-   .. tab:: Source
-
-      Step 1: Ensure dependencies
-         Before proceeding, double-check that your system environment matches
-         :doc:`Zammad's requirements </prerequisites/software>`.
-
-         .. tip:: **🤓 Ruby version changed?**
-
-            Please see
-            :ref:`Installation part of source code installation <source_dependency_installation>`
-
-      Step 2: Stop Zammad and Clear Zammad cache
-         Before you continue, stop your Zammad processes.
-
-         .. code-block:: sh
-
-            $ rails r "Rails.cache.clear"
-
-      Step 3: Download Zammad to your system
-         .. include:: /install/source/include-get-the-source.rst
-
-         .. include:: /install/source/include-chmod-database-yml.rst
-
-      Step 4: Install Gems
-         .. code-block:: sh
-
-            $ su - zammad
-            $ cd /opt/zammad
-            $ gem install bundler
-
-         .. tabs::
-
-            .. tab:: PostgreSQL
-
-               .. code-block:: sh
-
-                  $ bundle install --without test development mysql
-
-            .. tab:: MySQL / MariaDB
-
-               .. code-block:: sh
-
-                  $ bundle install --without test development postgres
-
-               .. danger::
-
-                  .. include:: /appendix/includes/mysql-deprication-note.rst
-
-      Step 5: Stop Zammad services
-         Stop the application server, websocket server and scheduler.
-
-      Step 6: Upgrade your database
-         .. code-block:: sh
-
-            $ su - zammad
-            $ rake db:migrate
-            $ rake assets:precompile
-
-      Step 7: Synchronize Zammad's translation files
-         .. code-block:: sh
-
-            $ su - zammad # ignore if you haven't exited the Zammad user
-            $ rails r "Locale.sync"
-            $ rails r "Translation.sync"
-
-      Step 8: Check if Elasticseach update is necessary
-            Make sure to have a
-            supported version of Elasticsearch installed (see
-            :ref:`software prerequisites <prerequisites_elasticsearch>` for
-            supported versions).
-
-            If you have to update Elasticsearch, please have a look at their
-            `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
-            and follow the instructions.
-
-            In case you are using plugins for Elasticsearch, make sure they are
-            updated as well (note: starting with Elasticsearch 8, the
-            ingest-attachment is no longer a plugin, it's now included in
-            Elasticsearch).
-
-      Step 9: Start Zammad services
-         Start the application server, web socket server and scheduler.
-
-      Step 10: Rebuild Elasticsearch index (optional)
-         Only needed if the release note tells you to rebuild the Elasticsearch
-         index.
-
-         .. code-block:: sh
-
-            $ rake zammad:searchindex:rebuild
-
-            # Optionally, you can specify a number of CPU cores which are used for
-            # rebuilding the searchindex, as in the following example with 8 cores:
-            $ rake zammad:searchindex:rebuild[8]
-
-      Step 11: Log into Zammad
-         Yes, that's it!
-
-
-   .. tab:: Docker
+   .. tab:: Docker Installation
 
       .. hint::
 
