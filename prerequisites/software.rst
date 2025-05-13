@@ -64,6 +64,8 @@ If you want to install Zammad, you need the following software.
    version)  are minimum requirements of Zammad. We strongly encourage you to
    use most current possible versions that *are not end of life*.
 
+   Docker and Kubernetes are shipping all dependencies and services by default!
+
 2.1 Ruby Programming Language
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -120,7 +122,7 @@ Below you can find all distributions Zammad provides packages for.
 
    If you distribution is not listed, you can still install Zammad.
    For this you can either use :doc:`Docker-Compose </install/docker-compose>`
-   or :doc:`Source </install/source>` installation.
+   or :doc:`kubernetes </install/kubernetes>` installation.
 
    We try to provide all current distributions that are supported by
    `Packager.io <https://packager.io/>`_. This means that we can't always
@@ -172,7 +174,6 @@ You can choose between the following database servers:
    this is called "session connection pooling". Transaction-based connection
    pooling is not supported and may lead to errors during database migrations.
 
-
 For **MySQL/MariaDB**, the following configuration is required:
 
 * Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
@@ -220,12 +221,9 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-
 .. hint::
 
    Some configuration is required, please see :doc:`/getting-started/configure-webserver`.
-
-
 
 2.7 Redis
 ^^^^^^^^^
@@ -233,9 +231,8 @@ The following reverse proxies are supported:
 Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for
 realtime communication via web socket.
 
-The installation and configuration is out of our scope.
-Please follow the official vendor guides and ensure to have a
-tight security on your installation.
+The installation and configuration is out of scope of this documentation.
+Please follow the official guides and ensure to set it up in a secure way.
 
 .. _prerequisites_elasticsearch:
 
