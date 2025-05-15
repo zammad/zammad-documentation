@@ -80,8 +80,6 @@ version 8, which also comes with some additional security features.
 
       .. code-block:: sh
 
-      .. code-block:: sh
-
          $ apt install apt-transport-https sudo wget curl gnupg
 
       .. code-block:: sh
