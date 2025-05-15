@@ -9,15 +9,27 @@ SELinux
    The commands below only work on Ubuntu, Debian and CentOS. If you use a
    different distribution, please have a look at their documentation.
 
+Allow nginx or apache to access public files of Zammad and communicate:
+
 .. code-block:: sh
 
-   $ # Allow nginx or apache to access public files of Zammad and communicate
    $ sudo chcon -Rv --type=httpd_sys_content_t /opt/zammad/public/
-   $ sudo setsebool httpd_can_network_connect on -P
-   $ sudo semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
-   $ sudo restorecon -Rv /opt/zammad/public/
-   $ sudo chmod -R a+r /opt/zammad/public/
 
+.. code-block:: sh
+
+   $ sudo setsebool httpd_can_network_connect on -P
+
+.. code-block:: sh
+
+   $ sudo semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
+
+.. code-block:: sh
+
+   $ sudo restorecon -Rv /opt/zammad/public/
+
+.. code-block:: sh
+
+   $ sudo chmod -R a+r /opt/zammad/public/
 
 Firewall
 ^^^^^^^^
@@ -34,11 +46,18 @@ firewall. It may not cover your case.
 
    .. tab:: Ubuntu
 
+      Open Port 80 and 443 on your Firewall:
+
       .. code-block:: sh
 
-         $ # Open Port 80 and 443 on your Firewall
          $ sudo ufw allow 80
+
+      .. code-block:: sh
+
          $ sudo ufw allow 443
+
+      .. code-block:: sh
+
          $ sudo ufw reload
 
    .. tab:: Debian
@@ -52,10 +71,14 @@ firewall. It may not cover your case.
       Add the following lines to ``/etc/nftables.conf`` or your specific rule
       file. Ensure to add these lines to your input-chain.
 
+      Open Port 80 and 443 for Zammad:
+
       .. code-block::
 
-         # Open Port 80 and 443 for Zammad
          sudo tcp dport { http, https } accept
+
+      .. code-block::
+
          sudo udp dport { http, https } accept
 
       The result should look like the following. Keep in mind that your
@@ -88,11 +111,18 @@ firewall. It may not cover your case.
 
    .. tab:: CentOS, RHEL, openSUSE, SLES
 
+      Open Port 80 and 443 on your Firewall:
+
       .. code-block:: sh
 
-         $ # Open Port 80 and 443 on your Firewall
          $ sudo firewall-cmd --zone=public --add-service=http --permanent
+
+      .. code-block:: sh
+
          $ sudo firewall-cmd --zone=public --add-service=https --permanent
+
+      .. code-block:: sh
+
          $ sudo firewall-cmd --reload
 
 

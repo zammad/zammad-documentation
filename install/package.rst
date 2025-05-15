@@ -33,6 +33,9 @@ some operating systems may require additional packages if not already installed.
       .. code-block:: sh
 
          $ sudo SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
+
+      .. code-block:: sh
+
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
    .. tab:: CentOS / RHEL
@@ -68,7 +71,13 @@ To make Zammad work correctly, your system has to use the correct locales.
       .. code-block:: sh
 
          $ sudo apt install locales
+
+      .. code-block:: sh
+
          $ sudo locale-gen en_US.UTF-8
+
+      .. code-block:: sh
+
          $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
 
       After fixing it, make sure to check the output again for including
@@ -148,10 +157,18 @@ Add Repository
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       Ubuntu 24.04
+         .. hint:: Starting with Ubuntu 24.04, we provide the command to add the
+            repository in the
+            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+
          .. code-block:: sh
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 24.04 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ printf "Types: deb
+              URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
+              Suites: 22.04
+              Components: main
+              Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+              sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: Debian
 
@@ -168,10 +185,18 @@ Add Repository
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       Debian 12
+         .. hint:: Starting with Debian 12, we provide the command to add the
+            repository in the
+            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+
          .. code-block:: sh
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ printf "Types: deb
+              URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
+              Suites: 12
+              Components: main
+              Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+              sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: OpenSUSE / SLES
 
@@ -217,6 +242,9 @@ Install Zammad
       .. code-block:: sh
 
          $ sudo apt update
+
+      .. code-block:: sh
+
          $ sudo apt install zammad
 
    .. tab:: OpenSUSE / SLES
@@ -224,6 +252,9 @@ Install Zammad
       .. code-block:: sh
 
          $ sudo zypper ref
+
+      .. code-block:: sh
+
          $ sudo zypper install zammad
 
    .. tab:: CentOS / RHEL
