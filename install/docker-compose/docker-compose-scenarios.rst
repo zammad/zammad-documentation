@@ -30,6 +30,7 @@ The following scenarios are supported and explained further below:
 - :ref:`Additional scenarios <additional-scenarios>`
 
   - Disable the backup service
+  - Add an Ollama instance to the stack
 
 You can find the files in the
 `Zammad-Docker-Compose repository <https://github.com/zammad/zammad-docker-compose>`_.
@@ -201,6 +202,26 @@ built in backup service in the stack to save resources.
 
 You can do so by just using the scenario file
 ``scenarios/disable-backup-service.yml`` for deployment.
+
+Add Ollama
+^^^^^^^^^^
+
+You can spin up an additional `Ollama <https://ollama.com/>`_ container to use
+:admin-docs:`Zammad's AI features </ai/features.html>` on your machine.
+
+.. warning:: You should use this only for development or testing purposes and not
+   in production unless you have a good understanding about how to bridge your
+   GPU into a docker container (and even have a GPU in your server) and have a
+   basic understanding about the differences of LLMs and their sizes.
+
+To deploy an Ollama container inside the Zammad stack, use the scenario file
+``scenarios/add-ollama.yml``. This creates an Ollama container which
+automatically pulls and serves ``Llama3.2`` to be ready to use/test AI features
+out of the box.
+
+Make sure to use the container's IP or name with the port ``11434`` appended or,
+in the case of a reverse proxy, the URL for the
+:admin-docs:`provider configuration </ai/provider.html>` in Zammad.
 
 Other Use Cases
 ^^^^^^^^^^^^^^^
