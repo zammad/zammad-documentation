@@ -195,6 +195,32 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
       Doing so on productive instances will draw important parts of your
       instance not working. **WE STRONGLY** encourage against using this flag.
 
+
+ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS
+   How many instances of AI workers should run simultaneously. AI workers handle
+   Zammad's AI requests and fetch the responses from the configured AI provider.
+   By default, one worker is running.
+
+   Self hosted AI users should be careful in increasing it. Depending on your
+   hardware, it may cause your AI service to collapse.
+
+   For AI cloud service users with a big Zammad instance, it could make sense
+   to increase it to have some kind of parallelization.
+
+   | Default: **unset**
+   | Maximum number of workers: ``16``
+
+
+ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS_THREADS
+   How many threads should be processed by **one** AI worker (if you have more
+   than one worker, it is multiplied by the amount of workers). This may speed
+   up the AI processing, but be aware that a ruby worker can only span across 1
+   core anyway.
+
+   | Default: ``1``
+   | Maximum number of threads: ``16``
+
+
 --------------------------------------------------------------------------------
 
 .. note::
