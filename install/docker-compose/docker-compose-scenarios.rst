@@ -209,18 +209,16 @@ Add Ollama
 You can spin up an additional `Ollama <https://ollama.com/>`_ container to use
 :admin-docs:`Zammad's AI features </ai/features.html>` on your machine.
 
-.. warning:: You should use this only for development or testing purposes and not
-   in production unless you have a good understanding about how to bridge your
-   GPU into a docker container (and even have a GPU in your server) and have a
-   basic understanding about the differences of LLMs and their sizes.
+.. hint:: This is intended for development or testing purposes as running a
+   productive LLM stack is complex.
 
 To deploy an Ollama container inside the Zammad stack, use the scenario file
 ``scenarios/add-ollama.yml``. This creates an Ollama container which
 automatically pulls and serves ``Llama3.2`` to be ready to use/test AI features
 out of the box.
 
-Make sure to use the container's IP or name with the port ``11434`` appended or,
-in the case of a reverse proxy, the URL for the
+Add the container name and port (``http://ollama:11434``) or, in case of using
+a reverse proxy, the URL to the
 :admin-docs:`provider configuration </ai/provider.html>` in Zammad.
 
 Other Use Cases
