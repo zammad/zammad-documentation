@@ -217,9 +217,8 @@ To deploy an Ollama container inside the Zammad stack, use the scenario file
 automatically pulls and serves ``Llama3.2`` to be ready to use/test AI features
 out of the box.
 
-Add the container name and port (``http://ollama:11434``) or, in case of using
-a reverse proxy, the URL to the
-:admin-docs:`provider configuration </ai/provider.html>` in Zammad.
+To use it in Zammad, add the service name and port (``http://ollama:11434``) to
+the :admin-docs:`provider configuration </ai/provider.html>`.
 
 Other Use Cases
 ^^^^^^^^^^^^^^^
