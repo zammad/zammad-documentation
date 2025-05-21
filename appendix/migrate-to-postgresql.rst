@@ -16,7 +16,6 @@ server is PostgreSQL.
    comes without any warranty. Please proceed at your own risk. In doubt
    please refer to the documentation of the tools used.
 
-
 Preparation
 -----------
 
@@ -27,7 +26,6 @@ Preparation
       $ systemctl stop zammad
 
 #. Create a backup of your instance.
-
 
 Install PostgreSQL
 ^^^^^^^^^^^^^^^^^^
@@ -86,7 +84,6 @@ example.
 Verify the rest of the MySQL credentials in the command file, they should reflect the
 configuration of your current environment.
 
-
 Database Credentials
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -95,7 +92,6 @@ PostgreSQL server. Use ``postgresql`` as ``adapter``.
 
 
 .. include:: /install/includes/postgres-permissions.rst
-
 
 Create Empty Database
 ^^^^^^^^^^^^^^^^^^^^^
@@ -126,7 +122,6 @@ Migrate
       .. code-block:: sh
 
          $ pgloader --verbose /tmp/pgloader-command
-
 
 Finishing
 ---------
