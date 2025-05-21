@@ -67,20 +67,9 @@ Create pgloader Command File
 
 Create a command file for pgloader with:
 
-.. tabs::
+.. code-block:: sh
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rake zammad:db:pgloader > /tmp/pgloader-command
+   $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
 Afterwards, you need to tweak the created file with the correct URL
 of the target PostgreSQL server.
@@ -113,21 +102,9 @@ Create Empty Database
 
 Now you need to create an empty database in PostgreSQL.
 
-.. tabs::
+.. code-block:: sh
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rake db:create
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rake db:create
-
+   $ zammad run rake db:create
 
 Migrate
 -------
@@ -154,23 +131,9 @@ Migrate
 Finishing
 ---------
 
-After the migration has completed, you'll better clear some cache files:
+After the migration has completed, it is recommended to remove some cache files:
 
-.. tabs::
+.. code-block:: sh
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rails r 'Rails.cache.clear'
-         $ systemctl start zammad
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rails r 'Rails.cache.clear'
-
-         # Run as root
-         $ systemctl start zammad
+   $ zammad run rails r 'Rails.cache.clear'
+   $ systemctl start zammad
