@@ -129,35 +129,17 @@ automatically be installed with the Zammad-Package.
 2.3 Database Server
 ^^^^^^^^^^^^^^^^^^^
 
-Zammad will store all content in a database.
-You can choose between the following database servers:
+Zammad stores its content in a database. The supported database system is
+`PostgreSQL <https://www.postgresql.org/>`_ 10 or newer.
 
-* PostgreSQL 10+
-* MySQL 5.7+ / MariaDB 10.3+ (⚠️ deprecated with Zammad 7.0+)
-
-.. danger::
-
-   .. include:: /appendix/includes/mysql-deprication-note.rst
+If no PostgreSQL server could be detected, it will be installed automatically
+during the package installation.
 
 .. note::
    If you use database connection pooling software like PgBouncer, make sure
    to use a pooling mode that is fully compatible with PostgreSQL. Typically
    this is called "session connection pooling". Transaction-based connection
    pooling is not supported and may lead to errors during database migrations.
-
-For **MySQL/MariaDB**, the following configuration is required:
-
-* Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
-* Set ``max_allowed_packet`` to a value larger than the default of 4 MB
-  (64 MB+ recommended).
-
-You may also want to consider the following settings for your **MySQL** server::
-
-   innodb_file_format = Barracuda
-   innodb_file_per_table = on
-   innodb_default_row_format = dynamic
-   innodb_large_prefix = 1
-   innodb_file_format_max = Barracuda
 
 2.4 Reverse Proxy
 ^^^^^^^^^^^^^^^^^

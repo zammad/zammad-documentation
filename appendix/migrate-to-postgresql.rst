@@ -1,22 +1,18 @@
 Migrate to PostgreSQL Server
 ============================
 
-.. include:: /appendix/includes/mysql-deprication-note.rst
+The following guide will give you some hints for the migration from
+MySQL/MariaDB to PostgreSQL. Starting with Zammad 7, the only supported database
+server is PostgreSQL.
 
-The following guide will provide you with a rough direction through that
-migration process.
+.. warning::
 
-.. note:: **🤓 Zammad version requirement ahead**
-
-   Below commands will only work with Zammad 5.3.0 or higher.
-   Please make sure to update the latest (MySQL supported) version first.
-
-.. warning:: **Proof of concept ahead**
-
-   As the technical details may differ from system to system, this guide
-   comes without any warranty. Please proceed at your own risk. In doubt
-   please refer to the documentation of the tools used.
-
+   - The commands on this page will only work with Zammad 5.3 or higher.
+   - Make sure to migrate **before** upgrading to Zammad 7. An upgrade
+     to Zammad 7 is not possible on a MySQL installation.
+   - As the technical details may differ from system to system, this guide
+     comes without any warranty. Please proceed at your own risk. In doubt,
+     please refer to the documentation of the tools used.
 
 Preparation
 -----------
@@ -29,24 +25,12 @@ Preparation
 
 #. Create a backup of your instance.
 
-
 Install PostgreSQL
 ^^^^^^^^^^^^^^^^^^
 
 .. include:: /install/includes/postgres-installation.rst
 
 Please also have a look at :doc:`/appendix/configure-database-server`.
-
-.. tabs::
-
-   .. tab:: Package installation
-
-      Nothing to do, continue with the next step. 🎉
-
-   .. tab:: Source code installations
-
-      .. include:: /install/includes/postgres-dependencies.rst
-
 
 Install pgloader
 ^^^^^^^^^^^^^^^^
@@ -79,21 +63,9 @@ Create pgloader Command File
 
 Create a command file for pgloader with:
 
-.. tabs::
+.. code-block:: sh
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rake zammad:db:pgloader > /tmp/pgloader-command
-
+   $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
 Afterwards, you need to tweak the created file with the correct URL
 of the target PostgreSQL server.
@@ -110,7 +82,6 @@ example.
 Verify the rest of the MySQL credentials in the command file, they should reflect the
 configuration of your current environment.
 
-
 Database Credentials
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -120,27 +91,14 @@ PostgreSQL server. Use ``postgresql`` as ``adapter``.
 
 .. include:: /install/includes/postgres-permissions.rst
 
-
 Create Empty Database
 ^^^^^^^^^^^^^^^^^^^^^
 
 Now you need to create an empty database in PostgreSQL.
 
-.. tabs::
+.. code-block:: sh
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rake db:create
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rake db:create
-
+   $ zammad run rake db:create
 
 Migrate
 -------
@@ -163,27 +121,12 @@ Migrate
 
          $ pgloader --verbose /tmp/pgloader-command
 
-
 Finishing
 ---------
 
-After the migration has completed, you'll better clear some cache files:
+After the migration has completed, it is recommended to remove some cache files:
 
-.. tabs::
+.. code-block:: sh
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rails r 'Rails.cache.clear'
-         $ systemctl start zammad
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rails r 'Rails.cache.clear'
-
-         # Run as root
-         $ systemctl start zammad
+   $ zammad run rails r 'Rails.cache.clear'
+   $ systemctl start zammad
