@@ -1,10 +1,9 @@
 Migrate to PostgreSQL Server
 ============================
 
-.. include:: /appendix/includes/mysql-deprication-note.rst
-
-The following guide will provide you with a rough direction through that
-migration process.
+The following guide will give you some hints for the migration from
+MySQL/MariaDB to PostgreSQL. Starting with Zammad 7, the only supported database
+server is PostgreSQL.
 
 .. note:: **🤓 Zammad version requirement ahead**
 
@@ -36,17 +35,6 @@ Install PostgreSQL
 .. include:: /install/includes/postgres-installation.rst
 
 Please also have a look at :doc:`/appendix/configure-database-server`.
-
-.. tabs::
-
-   .. tab:: Package installation
-
-      Nothing to do, continue with the next step. 🎉
-
-   .. tab:: Source code installations
-
-      .. include:: /install/includes/postgres-dependencies.rst
-
 
 Install pgloader
 ^^^^^^^^^^^^^^^^
@@ -93,7 +81,6 @@ Create a command file for pgloader with:
 
          $ su - zammad
          $ rake zammad:db:pgloader > /tmp/pgloader-command
-
 
 Afterwards, you need to tweak the created file with the correct URL
 of the target PostgreSQL server.
