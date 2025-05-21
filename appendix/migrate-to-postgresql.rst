@@ -5,16 +5,14 @@ The following guide will give you some hints for the migration from
 MySQL/MariaDB to PostgreSQL. Starting with Zammad 7, the only supported database
 server is PostgreSQL.
 
-.. note:: **🤓 Zammad version requirement ahead**
+.. warning::
 
-   Below commands will only work with Zammad 5.3.0 or higher.
-   Please make sure to update the latest (MySQL supported) version first.
-
-.. warning:: **Proof of concept ahead**
-
-   As the technical details may differ from system to system, this guide
-   comes without any warranty. Please proceed at your own risk. In doubt
-   please refer to the documentation of the tools used.
+   - The commands on this page will only work with Zammad 5.3 or higher.
+   - Make sure to migrate **before** upgrading to Zammad 7. An upgrade
+     to Zammad 7 is not possible on a MySQL installation.
+   - As the technical details may differ from system to system, this guide
+     comes without any warranty. Please proceed at your own risk. In doubt,
+     please refer to the documentation of the tools used.
 
 Preparation
 -----------
