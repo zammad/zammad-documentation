@@ -30,7 +30,6 @@ Step 2: Install Zammad on the destination host
    Have a look at the installation instructions:
 
       * :doc:`Package Installation </install/package>`
-      * :doc:`Source Installation </install/package>`
       * :doc:`Install with Docker </install/docker-compose>`
 
 Step 3: Activate maintenance mode
