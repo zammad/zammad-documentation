@@ -217,7 +217,7 @@ ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS_THREADS
    up the AI processing, but be aware that a ruby worker can only span across 1
    core anyway.
 
-   | Default: ``1``
+   | Default: ``5``
    | Maximum number of threads: ``16``
 
 
