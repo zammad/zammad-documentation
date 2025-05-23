@@ -164,11 +164,11 @@ Add Repository
          .. code-block:: sh
 
             $ printf "Types: deb
-              URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
-              Suites: 22.04
-              Components: main
-              Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
-              sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
+            URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
+            Suites: 22.04
+            Components: main
+            Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+            sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: Debian
 
@@ -192,11 +192,11 @@ Add Repository
          .. code-block:: sh
 
             $ printf "Types: deb
-              URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
-              Suites: 12
-              Components: main
-              Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
-              sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
+            URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
+            Suites: 12
+            Components: main
+            Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+            sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: OpenSUSE / SLES
 
