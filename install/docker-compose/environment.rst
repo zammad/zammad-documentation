@@ -178,5 +178,10 @@ nginx
    * - ZAMMAD_WEBSOCKET_PORT
      - ``6042``
      - Port of Zammads websocket server. See also: :doc:`/appendix/configure-env-vars`
+   * - ZAMMAD_EXT_PROXY
+     - ``false``
+     - Enables support for an external (reverse) proxy in front of the Nginx container.
+       When set to ``true``, the container will trust the Docker gateway as a proxy source
+       and configure real client IP handling via ``X-Forwarded-For``.
 
 .. include:: /getting-started/include-csrf-hints.rst
