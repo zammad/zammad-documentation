@@ -1,5 +1,5 @@
-Backup and Restore (Package)
-============================
+Backup & Restore (Package)
+==========================
 
 Zammad ships scripts for backup & restore in package installations which you
 can use in your backup strategy.

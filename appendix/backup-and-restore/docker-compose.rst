@@ -1,20 +1,15 @@
 Backup & Restore (Docker)
 =========================
 
-This guide shows a basic backup and restore process for a docker compose
-based deployment of Zammad. If you already use a different method or tool, it is
-fine to stick with it as long as it works. In such a case, consider using the
-:ref:`disable-backup-service scenario <additional-scenarios>`.
+This section shows some basics about the backup and restore process for a docker
+compose based deployment of Zammad. If you already use a different method or
+tool, it is fine to stick with it as long as it works. In such a case, consider
+using the :ref:`disable-backup-service scenario <additional-scenarios>`.
 
-Important Information
----------------------
-
-If you migrate from another installation method or host/stack, make sure to
-start the stack once without following the restore procedure to create a new
-database. This is required to execute the restore process.
-
-Be aware that the restore process always uses the latest backup according
-to the timestamp in the file name.
+If you're familiar with docker, the Quick Start section below includes the
+information you'll need. The :ref:`file-handling` section covers some examples
+about how to handle the backup files and to copy it into a docker volume to
+restore it.
 
 Quick Start
 -----------
@@ -29,24 +24,29 @@ o'clock each night. The backup is stored in the volume of the
 Restore
 ^^^^^^^
 
-- Start the new stack at least once so the database is set up.
-- Copy or move the backup files to ``/var/tmp/zammad/restore/`` in the volume of
-  the **zammad-backup** container. Read on in the next section for some examples
-  how to do that.
-- Stop the stack.
-- Start the stack. The restore process is triggered if the ``restore``
-  directory is detected and the backup files are in place.
-- After the restore process has finished, the ``restore`` directory got renamed.
-  You can safely delete it now.
+.. warning::
+   Be aware that the restore process always uses the latest backup according
+   to the timestamp of the file name.
 
-Backup Files Handling
----------------------
+#. Start the new stack at least once so a Zammad database is available.
+#. Copy or move the backup files to ``/var/tmp/zammad/restore/`` inside the
+   volume of the **zammad-backup** container.
+#. Stop the stack.
+#. Start the stack. The restore process is triggered if the ``restore``
+   directory is detected and the backup files are in place.
+#. After the restore process has finished, the ``restore`` directory got renamed.
+   You can safely delete it now.
 
-If you're not sure how to create the ``restore`` directory in the docker volume
-and how to copy the backup files into it, you can find some examples below.
+.. _file-handling:
 
-Copy Files Inside One Volume
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File Handling
+-------------
+
+If you're not sure how to handle the backup files and how to create the
+``restore`` directory in the docker volume, you can find some examples below.
+
+Restore Inside the Same Stack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Requires:** console access to the zammad-backup container.
 
@@ -62,20 +62,24 @@ into it.
 
 Now stop the stack and restart it to execute the restore process.
 
-Copy Files from Host Into the Volume
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Restore from Another Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Requires:** console access to the host system and the zammad-backup container.
 
-In case you have to fetch your backup from another docker deployment, the
-following command might be helpful:
+To **obtain** your backup files from another docker compose deployment, one way
+is to copy it to the host system with ``docker compose cp``:
 
 .. code-block::
 
-   docker compose cp zammad-backup:/var/tmp/zammad/ /path/to/your/host/directory/restore/
+   docker compose cp zammad-backup:/var/tmp/zammad/ /path/to/your/host/directory/
 
-On the host system, place your files in a folder called ``restore``. Copy this
-restore directory via ``docker compose cp`` into the volume:
+In case you are searching for your backup files from a package installation,
+have a look at the :doc:`/appendix/backup-and-restore/index` section.
+
+To **restore** the backup, place your files in a folder called ``restore``
+on the host system. Copy this restore directory via ``docker compose cp`` into
+the volume:
 
 .. code-block:: sh
 
@@ -83,8 +87,8 @@ restore directory via ``docker compose cp`` into the volume:
 
 Now stop the stack and restart it to execute the restore process.
 
-Use a Web GUI to Upload Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use a Web GUI
+^^^^^^^^^^^^^
 
 **Requires:** console access to the host system or Portainer access with the
 permission to deploy a container.
@@ -96,6 +100,15 @@ Our example uses the tool `filebrowser <https://filebrowser.org/>`_, but any
 similar tool should work too. If you'd like to use such a tool permanently, make
 sure to provide additional volumes for persistence (e.g. for their database,
 etc.).
+
+.. hint:: The steps below cover the restore process. To get your backup files
+   in the same way, you have to mount an additional volume of the "old" stack
+   you want to get your backup from. Just map an additional volume using the
+   Portainer UI or add another volume by enhancing the console command below
+   with ``-v old-zammad-docker-compose_zammad-backup:/srv``.
+
+   Be careful and don't confuse the volumes, otherwise you could overwrite
+   the backup you want to restore.
 
 #. Deploy filebrowser
 
@@ -131,7 +144,7 @@ etc.).
 
 #. After the container is started, go to the web interface by using the IP
    address and the port you defined.
-#. Log in with the credentials ``admin`` / ``admin``.
+#. Log in with the default credentials ``admin`` / ``admin``.
 #. You should now see at least 2 .gz files including a timestamp.
 #. Create a **New folder** by using the button on the left side. Name it
    ``restore``.
