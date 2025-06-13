@@ -98,17 +98,13 @@ to the host system.
 
 Our example uses the tool `filebrowser <https://filebrowser.org/>`_, but any
 similar tool should work too. If you'd like to use such a tool permanently, make
-sure to provide additional volumes for persistence (e.g. for their database,
-etc.).
+sure to provide additional volumes for persistence (e.g. for their database).
 
-.. hint:: The steps below cover the restore process. To get your backup files
-   in the same way, you have to mount an additional volume of the "old" stack
-   you want to get your backup from. Just map an additional volume using the
-   Portainer UI or add another volume by enhancing the console command below
-   with ``-v old-zammad-docker-compose_zammad-backup:/srv``.
-
-   Be careful and don't confuse the volumes, otherwise you could overwrite
-   the backup you want to restore.
+.. hint:: The steps below cover the restore process by uploading files. To get
+   your backup files in the same way from another stack, you can follow steps
+   1-4 below and simply map the **zammad-backup** volume of your *old* stack.
+   Then you can download the files, stop and remove the filebrowser container
+   and redeploy it, following the steps below.
 
 #. Deploy filebrowser
 
