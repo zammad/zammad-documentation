@@ -1,5 +1,5 @@
-File Handling
-=============
+File Handling Examples
+======================
 
 If you're not sure how to handle the backup files and how to create the
 ``restore`` directory in the docker volume, you can find some examples below.
@@ -33,15 +33,16 @@ is to copy it to the host system with ``docker compose cp``:
    docker compose cp zammad-backup:/var/tmp/zammad/ /path/to/your/host/directory/
 
 In case you are searching for your backup files from a package installation,
-have a look at the :doc:`/appendix/backup-and-restore/index` section.
+have a look at the :doc:`/appendix/backup-and-restore/index` section. You don't
+need a full dump for restoring your backup.
 
 To **restore** the backup, place your files in a folder called ``restore``
-on the host system. Copy this restore directory via ``docker compose cp`` into
-the volume:
+on the host system. This folder is mounted temporarily to ``/restore_tmp`` in
+the backup container. The directory then gets copied to the actual directory:
 
 .. code-block:: sh
 
-   docker compose cp /path/to/your/files/restore/ zammad-backup:/var/tmp/zammad/
+   docker compose run --rm -v /path/to/your/host/directory:/restore_tmp zammad-backup bash -c "cp -rv /restore_tmp /var/tmp/zammad/"
 
 Now start the stack to execute the restore process.
 
