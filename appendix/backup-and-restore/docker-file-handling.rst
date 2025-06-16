@@ -105,7 +105,7 @@ sure to provide additional volumes for persistence (e.g. for their database).
    ``restore``.
 #. Enter this folder and upload your backup files (on the top right corner with
    the up arrow). If the upload fails, it might be required to change the
-   permissions of the files (e.g. readable by everyone).
+   permissions of the files (e.g. readable for everyone).
 
 Now start the stack to execute the restore process. After that, you can safely
 delete the renamed folder and stop the filebrowser.
