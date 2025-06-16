@@ -38,6 +38,10 @@ Restore
 
 #. Start the new stack at least once so a Zammad database is available.
 #. Stop the stack.
+#. In case you restore to a production stack with activated file system
+   storage, you should purge the content of the directory
+   ``/opt/zammad/storage/`` inside the volume. The restore process only
+   adds/overwrites files there, no cleanup will take place.
 #. Copy or move the backup files to ``/var/tmp/zammad/restore/`` inside the
    volume of the **zammad-backup** container. Be aware that the restore process
    always uses the latest backup according to the timestamp of the file name.
