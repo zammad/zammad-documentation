@@ -185,3 +185,10 @@ should be done via one of the following methods:
       If you need to retrieve information from the rails server, you can place
       for example ``pp`` (pretty print) in front of your rails command. This
       leads to an output in your terminal.
+
+Backup & Restore
+----------------
+
+Because the backup and restore procedure is different than for the package
+installation, we created a dedicated
+:doc:`/appendix/backup-and-restore/docker-compose` page for that.

@@ -92,6 +92,7 @@ Zammad System Documentation
 
 
    /appendix/backup-and-restore/index
+   /appendix/backup-and-restore/docker-compose
    /appendix/configure-env-vars
    /appendix/configure-database-server
    /appendix/migrate-to-postgresql
