@@ -7,12 +7,18 @@ Backup & Restore (Docker)
    docker-file-handling
 
 This section shows some basics about the backup and restore process for a docker
-compose based deployment of Zammad. If you already use a different method or
-tool, it is fine to stick with it as long as it works. In such a case, consider
+compose based deployment of Zammad.
+
+If you are familiar with volume based backup and restore procedures in docker,
+and perhaps already use a different method or tool, then you can keep using it.
+A backup would typically mean shutting down the stack to ensure all in-memory
+files get written to disk, then backing up the volume contents, and then starting
+the stack again. When using such am method, you can consider
 using the :ref:`disable-backup-service scenario <additional-scenarios>` so that
-the built-in backup and restore mechanism of Zammad is not used. This page
-describes the built-in backup and restore mechanism of Zammad's docker compose
-stack.
+the built-in backup and restore mechanism of Zammad is not activated.
+
+The rest of this page describes the built-in backup and restore mechanism of
+Zammad's docker compose stack.
 
 If you're familiar with docker, the Quick Start section below includes the
 information you'll need. The
