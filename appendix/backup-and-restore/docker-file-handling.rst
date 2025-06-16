@@ -42,7 +42,7 @@ the backup container. The directory then gets copied to the actual directory:
 
 .. code-block:: sh
 
-   docker compose run --rm -v /path/to/your/host/directory:/restore_tmp zammad-backup bash -c "cp -rv /restore_tmp /var/tmp/zammad/"
+   docker compose run --rm -v /path/to/your/host/directory:/restore zammad-backup bash -c "cp -rv /restore /var/tmp/zammad/"
 
 Now start the stack to execute the restore process.
 
