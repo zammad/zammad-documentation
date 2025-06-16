@@ -58,7 +58,13 @@ Step 2: Configure the backup script (if needed)
    Please consult :doc:`/appendix/backup-and-restore/configuration` for more
    information.
 
-Step 3: Run the restore
+Step 3: Clean up the storage folder
+   In case you restore to a production environment with activated file system
+   storage, you should purge the content of the directory
+   ``/opt/zammad/storage/``. The restore process only adds/overwrites files
+   there, no cleanup will take place.
+
+Step 4: Run the restore
    .. include:: /appendix/backup-and-restore/restore-warning-old-dumps.include.rst
 
    Restoration works in two possible ways, depending on how interactive
@@ -129,7 +135,7 @@ Step 3: Run the restore
 
       # Zammad restored successfully - Fri Jan 21 17:54:34 CET 2022!
 
-Step 4: Re-install Zammad if restoring a full filesystem restore
+Step 5: Re-install Zammad if restoring a full filesystem restore
    The backup script optionally back up the whole filesystem of Zammad.
 
    If your filesystem dump contains attachments only (the tar will contain
@@ -138,7 +144,7 @@ Step 4: Re-install Zammad if restoring a full filesystem restore
    For a better overview, please see:
    :doc:`step 9 of our migration path </appendix/backup-and-restore/migrate-hosts>`.
 
-Step 5: Apply missing environmental settings
+Step 6: Apply missing environmental settings
    .. include:: /appendix/backup-and-restore/add-missing-environment.include.rst
 
 If you are facing issues, consider reading our
