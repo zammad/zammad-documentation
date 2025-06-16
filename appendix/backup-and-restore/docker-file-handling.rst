@@ -37,7 +37,7 @@ have a look at the :doc:`/appendix/backup-and-restore/index` section. You don't
 need a full dump for restoring your backup.
 
 To **restore** the backup, place your files in a folder called ``restore``
-on the host system. This folder is mounted temporarily to ``/restore_tmp`` in
+on the host system. This folder is mounted temporarily to ``/restore`` in
 the backup container. The directory then gets copied to the actual directory:
 
 .. code-block:: sh
