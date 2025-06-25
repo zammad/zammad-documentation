@@ -224,7 +224,7 @@ the :admin-docs:`provider configuration </ai/provider.html>`.
 Limit Resources
 ^^^^^^^^^^^^^^^
 
-If you want to limit the hardware resources, the Zammad stack is allowed to use,
+If you want to limit the hardware resources the Zammad stack is allowed to use,
 use the ``scenarios/apply-resource-limits.yml`` scenario. Default values for CPU
 and memory usage for each container in the stack are applied then. You can find
 these default values in the ``.env.dist`` file. Provide the changed variables
