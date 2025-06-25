@@ -35,11 +35,12 @@ Zammad
      - ``(unset)``
      - Allows spawning ``n`` workers to allow more simultaneous connections for
        Zammads web UI. See also: :doc:`/appendix/configure-env-vars`
-   * - | ZAMMAD_SESSION_JOBS
-       | _CONCURRENT
+   * - | ZAMMAD_PROCESS_SESSION
+       | _JOBS_WORKERS
      - ``(unset)``
-     - Allows spawning ``n`` session job workers to release pressure from
-       Zammads background worker. See also: :doc:`/appendix/configure-env-vars`
+     - How many instances of the session worker to run at a time. See also:
+       :doc:`/appendix/configure-env-vars`. In case you limited hardware
+       resources, make sure to adjust these when setting this variable.
    * - | ZAMMAD_PROCESS_SCHEDULED
        | _JOBS_WORKERS
      - ``(unset)``
