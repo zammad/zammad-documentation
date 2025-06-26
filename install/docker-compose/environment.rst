@@ -110,12 +110,6 @@ Elasticsearch
    * - ELASTICSEARCH_SCHEMA
      - ``http``
      - By default Elasticsearch is reachable via HTTP.
-   * - ELASTICSEARCH_USER
-     - ``elastic``
-     - Set a user to access the Elasticsearch index.
-   * - ELASTICSEARCH_PASS
-     - ``zammad``
-     - Set a password for the Elasticsearch user.
    * - ELASTICSEARCH_NAMESPACE
      - ``zammad``
      - With this name space all Zammad related indexes will be created. Change
