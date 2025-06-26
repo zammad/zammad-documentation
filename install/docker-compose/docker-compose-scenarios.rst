@@ -31,6 +31,7 @@ The following scenarios are supported and explained further below:
 
   - Disable the backup service
   - Add an Ollama instance to the stack
+  - Limit hardware resources of the stack
 
 You can find the files in the
 `Zammad-Docker-Compose repository <https://github.com/zammad/zammad-docker-compose>`_.
@@ -219,6 +220,15 @@ out of the box.
 
 To use it in Zammad, add the service name and port (``http://ollama:11434``) to
 the :admin-docs:`provider configuration </ai/provider.html>`.
+
+Limit Resources
+^^^^^^^^^^^^^^^
+
+If you want to limit the hardware resources the Zammad stack is allowed to use,
+use the ``scenarios/apply-resource-limits.yml`` scenario. Default values for CPU
+and memory usage for each container in the stack are applied then. You can find
+these default values in the ``.env.dist`` file. Provide the changed variables
+you want to use as environment variables and deploy the stack.
 
 Other Use Cases
 ^^^^^^^^^^^^^^^
