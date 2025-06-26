@@ -31,10 +31,17 @@ Zammad
      - This variable allows you to provide initial configuration data for your
        instance. Autowizard JSON is out of scope of this documentation, however
        `this example file`_ should help.
+   * - ZAMMAD_HTTP_TYPE
+     - ``(unset)``
+     - Set the :admin-docs:`http type </settings/system/base.html>` for your
+       instance.
+   * - ZAMMAD_FQDN
+     - ``(unset)``
+     - Set the :admin-docs:`FQDN </settings/system/base.html>` for your instance.
    * - ZAMMAD_WEB_CONCURRENCY
      - ``(unset)``
      - Allows spawning ``n`` workers to allow more simultaneous connections for
-       Zammads web UI. See also: :doc:`/appendix/configure-env-vars`
+       Zammad's web UI. See also: :doc:`/appendix/configure-env-vars`
 
        In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-railsserver's CPU setting should match the value from this variable.
@@ -103,6 +110,12 @@ Elasticsearch
    * - ELASTICSEARCH_SCHEMA
      - ``http``
      - By default Elasticsearch is reachable via HTTP.
+   * - ELASTICSEARCH_USER
+     - ``elastic``
+     - Set a user to access the Elasticsearch index.
+   * - ELASTICSEARCH_PASS
+     - ``zammad``
+     - Set a password for the Elasticsearch user.
    * - ELASTICSEARCH_NAMESPACE
      - ``zammad``
      - With this name space all Zammad related indexes will be created. Change
@@ -120,6 +133,9 @@ Elasticsearch
      - ``true``
      - Allows you to let the compose scripts ignore self signed SSL certificates
        for your Elasticsearch installation if needed.
+   * - ELASTICSEARCH_HEAP_SIZE
+     - ``(unset)``
+     - Set the available memory for Elasticsearch.
 
 PostgreSQL
 ----------
@@ -141,10 +157,10 @@ PostgreSQL
      - The database user for Zammad.
    * - POSTGRESQL_PASS
      - ``zammad``
-     - The password of Zammads database user.
+     - The password of Zammad's database user.
    * - POSTGRESQL_DB
      - ``zammad_production``
-     - Zammads database to use.
+     - Zammad's database to use.
    * - POSTGRESQL_OPTIONS
      - ``?pool=50``
      - Additional postgresql params to be appended to the database URI.
@@ -181,17 +197,20 @@ nginx
      - If the Nginx container for Zammad **is not** the upstream server
        (aka you're using another proxy in front of nginx) ``$scheme`` may be
        wrong. You can set the correct scheme ``http`` or ``https`` if needed.
+   * - NGINX_CLIENT_MAX_BODY_SIZE
+     - ``(unset)``
+     - Define the maximum size of data that a client can send to the server.
    * - ZAMMAD_RAILSSERVER_HOST
      - ``zammad-railsserver``
      - Host name of the rails server container.
    * - ZAMMAD_RAILSSERVER_PORT
      - ``3000``
-     - Port of Zammads rails server. See also: :doc:`/appendix/configure-env-vars`
+     - Port of Zammad's rails server. See also: :doc:`/appendix/configure-env-vars`
    * - ZAMMAD_WEBSOCKET_HOST
      - ``zammad-websocket``
-     - Host name of Zammads websocket server.
+     - Host name of Zammad's websocket server.
    * - ZAMMAD_WEBSOCKET_PORT
      - ``6042``
-     - Port of Zammads websocket server. See also: :doc:`/appendix/configure-env-vars`
+     - Port of Zammad's websocket server. See also: :doc:`/appendix/configure-env-vars`
 
 .. include:: /getting-started/include-csrf-hints.rst
