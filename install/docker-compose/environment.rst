@@ -41,8 +41,8 @@ Zammad
    * - | ZAMMAD_PROCESS_SESSION
        | _JOBS_WORKERS
      - ``(unset)``
-     - How many instances of the session worker to run at a time. This also
-       applies to the ``*_WORKERS`` variables below. See also:
+     - Allows spawning ``n`` independent session jobs workers to release
+       pressure from Zammad's background worker. See also:
        :doc:`/appendix/configure-env-vars`.
 
        In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
@@ -50,17 +50,16 @@ Zammad
    * - | ZAMMAD_PROCESS_SCHEDULED
        | _JOBS_WORKERS
      - ``(unset)``
-     - Allows spawning ``1`` independent scheduled job worker to release
+     - Allows spawning ``1`` independent scheduled jobs worker to release
        pressure from Zammad's background worker. See also:
        :doc:`/appendix/configure-env-vars`.
 
-       .. hint::
-          In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
-          the zammad-scheduler CPU setting should match the sum of all worker settings variables.
+       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       the zammad-scheduler CPU setting should match the sum of all worker settings variables.
    * - | ZAMMAD_PROCESS_DELAYED
        | _JOBS_WORKERS
      - ``(unset)``
-     - Allows spawning ``n`` delayed job workers to release pressure from
+     - Allows spawning ``n`` delayed jobs workers to release pressure from
        Zammad's background worker. See also: :doc:`/appendix/configure-env-vars`.
 
 
