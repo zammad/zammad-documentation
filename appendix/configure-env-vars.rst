@@ -140,8 +140,7 @@ command below:
    $ zammad run rails r "p Sessions.list.uniq.count"
 
 WEB_CONCURRENCY
-   How many instances of the application server to keep open at a time. It only
-   applies if the value is set to ``2`` or higher.
+   How many instances of the application server to keep open at a time.
 
    Increasing this can reduce loading times
    when too many users are on Zammad at once.
@@ -149,8 +148,7 @@ WEB_CONCURRENCY
    Default: **unset**
 
 ZAMMAD_PROCESS_SESSIONS_JOBS_WORKERS
-   How many instances of the session worker to run at a time. It only
-   applies if the value is set to ``2`` or higher.
+   How many instances of the session worker to run at a time.
 
    Increasing this can speed up background jobs (like the scheduler)
    when many users are on Zammad at once.
@@ -178,8 +176,7 @@ ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
       instance not working. **WE STRONGLY** encourage against using this flag.
 
 ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
-   How many processes should work on delayed jobs? It only
-   applies if the value is set to ``2`` or higher.
+   How many processes should work on delayed jobs?
 
    Increasing this *can* improve issues with delayed jobs stacking up in your
    system. You may want to try to use ``ZAMMAD_SESSION_JOBS_CONCURRENT`` before
