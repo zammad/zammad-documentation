@@ -33,31 +33,39 @@ Zammad
        `this example file`_ should help.
    * - ZAMMAD_WEB_CONCURRENCY
      - ``(unset)``
-     - How many instances of the session worker to run at a time. This also
-       applies to the ``*_WORKERS`` variables below. See also:
-       :doc:`/appendix/configure-env-vars`. In case you limited hardware resources
-       (e.g. via :doc:`docker compose scenarios </install/docker-compose/docker-compose-scenarios>`),
-       the CPU setting should match the value from this variable.
+     - Allows spawning ``n`` workers to allow more simultaneous connections for
+       Zammads web UI. See also: :doc:`/appendix/configure-env-vars`
+
+       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       the zammad-railsserver's CPU setting should match the value from this variable.
    * - | ZAMMAD_PROCESS_SESSION
        | _JOBS_WORKERS
      - ``(unset)``
-     - See description above.
+     - How many instances of the session worker to run at a time. This also
+       applies to the ``*_WORKERS`` variables below. See also:
+       :doc:`/appendix/configure-env-vars`.
+
+       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       the zammad-scheduler CPU setting should match the sum of all worker settings variables.
    * - | ZAMMAD_PROCESS_SCHEDULED
        | _JOBS_WORKERS
      - ``(unset)``
      - Allows spawning ``1`` independent scheduled job worker to release
        pressure from Zammad's background worker. See also:
-       :doc:`/appendix/configure-env-vars`. In case you limited hardware resources
-       (e.g. via :doc:`docker compose scenarios </install/docker-compose/docker-compose-scenarios>`),
-       the CPU setting should match the sum of all worker settings variables.
+       :doc:`/appendix/configure-env-vars`.
+
+       .. hint::
+          In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+          the zammad-scheduler CPU setting should match the sum of all worker settings variables.
    * - | ZAMMAD_PROCESS_DELAYED
        | _JOBS_WORKERS
      - ``(unset)``
      - Allows spawning ``n`` delayed job workers to release pressure from
        Zammad's background worker. See also: :doc:`/appendix/configure-env-vars`.
-       In case you limited hardware resources
-       (e.g. via :doc:`docker compose scenarios </install/docker-compose/docker-compose-scenarios>`),
-       the CPU setting should match the sum of all worker settings variables.
+
+
+       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       the zammad-scheduler CPU setting should match the sum of all worker settings variables.
    * - RAILS_TRUSTED_PROXIES
      - ``['127.0.0.1', '::1']``
      - By default Zammad trusts localhost proxies only.
