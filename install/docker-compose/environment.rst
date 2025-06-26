@@ -115,14 +115,10 @@ Elasticsearch
      - With this name space all Zammad related indexes will be created. Change
        this if you're using external clusters.
    * - ELASTICSEARCH_REINDEX
-     - ``true``
-     - By default the docker-compose will *always re-index* upon a restart.
-       On big installations this may be troublesome.
-
-       .. warning::
-          Disabling this setting requires you to re-index your search
-          index manually whenever that's needed by upgrading to a new Zammad
-          version!
+     - ``(unset)``
+     - The searchindex automatically gets rebuilt when no index can be
+       detected. If you need to rebuild the searchindex manually, either set
+       this variable to ``true`` or run the reindex command via docker manually.
    * - ELASTICSEARCH_SSL_VERIFY
      - ``true``
      - Allows you to let the compose scripts ignore self signed SSL certificates
