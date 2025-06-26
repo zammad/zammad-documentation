@@ -134,8 +134,9 @@ Elasticsearch
      - Allows you to let the compose scripts ignore self signed SSL certificates
        for your Elasticsearch installation if needed.
    * - ELASTICSEARCH_HEAP_SIZE
-     - ``(unset)``
-     - Set the available memory for Elasticsearch.
+     - ``1G``
+     - Set the available memory for Elasticsearch. If you face issues with ES
+       and its performance, you should increase this value to a reasonable size.
 
 PostgreSQL
 ----------
