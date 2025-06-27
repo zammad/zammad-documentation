@@ -74,7 +74,10 @@ Zammad
        the zammad-scheduler CPU setting should match the sum of all worker settings variables.
    * - RAILS_TRUSTED_PROXIES
      - ``['127.0.0.1', '::1']``
-     - By default Zammad trusts localhost proxies only.
+     - By default, Zammad trusts localhost proxies only. Set IP addresses or host
+       names of your existing reverse proxies. Host names are resolved during
+       the start of Zammad. A change of the host name requires a restart of
+       Zammad.
    * - MEMCACHE_SERVERS
      - ``zammad-memcached:11211``
      - Provide your own Memcached instance to Zammad if you already have one.
