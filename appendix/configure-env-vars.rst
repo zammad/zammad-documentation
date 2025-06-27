@@ -1,16 +1,19 @@
 Configuration via Environment Variables
 =======================================
 
-Use these environment variables to configure Zammad's behavior at runtime.
+Use environment variables to configure Zammad's settings and configuration.
+If you installed Zammad via docker, there is an additional page describing
+:doc:`/install/docker-compose/environment`.
 
-.. note:: 🙋 **What's an environment variable, and how do I “use” it?**
+.. note:: **How to set an environment variable?**
 
-   Unfortunately, that question has a very long answer
-   that goes beyond the scope of this article.
-   How you set environment variables will depend on how you installed Zammad
-   (*e.g.,* source, package, or Docker).
+   It depends on how you installed Zammad (source, package, docker).
+   Either set it via ``zammad config`` command as you can see below, use your
+   system's way of setting variables via command line
+   (e.g. ``export VARIABLE=value)``, place an ``.env`` file in the directory or
+   even use a GUI like Portainer to define them for a docker installation.
 
-   But for package installations, here's a short answer:
+   Example for package installations:
 
    .. code-block:: sh
 
@@ -24,9 +27,6 @@ Use these environment variables to configure Zammad's behavior at runtime.
       # unset OPTION
       $ zammad config:unset OPTION
       $ systemctl restart zammad
-
-   To learn more, do some googling on environment variables
-   and the shell environment (or execution environment) in Unix.
 
 .. important::
 
