@@ -1,16 +1,19 @@
 Configuration via Environment Variables
 =======================================
 
-Use these environment variables to configure Zammad's behavior at runtime.
+Use environment variables to configure Zammad's settings and configuration.
+If you installed Zammad via docker, there is an additional page describing
+:doc:`/install/docker-compose/environment`.
 
-.. note:: 🙋 **What's an environment variable, and how do I “use” it?**
+.. note:: **How to set an environment variable?**
 
-   Unfortunately, that question has a very long answer
-   that goes beyond the scope of this article.
-   How you set environment variables will depend on how you installed Zammad
-   (*e.g.,* source, package, or Docker).
+   It depends on how you installed Zammad (source, package, docker).
+   Either set it via ``zammad config`` command as you can see below, use your
+   system's way of setting variables via command line
+   (e.g. ``export VARIABLE=value)``, place an ``.env`` file in the directory or
+   even use a GUI like Portainer to define them for a docker installation.
 
-   But for package installations, here's a short answer:
+   Example for package installations:
 
    .. code-block:: sh
 
@@ -24,9 +27,6 @@ Use these environment variables to configure Zammad's behavior at runtime.
       # unset OPTION
       $ zammad config:unset OPTION
       $ systemctl restart zammad
-
-   To learn more, do some googling on environment variables
-   and the shell environment (or execution environment) in Unix.
 
 .. important::
 
@@ -112,6 +112,17 @@ ZAMMAD_WEBSOCKET_PORT
 
    Default: ``6042``
 
+RAILS_TRUSTED_PROXIES
+   This setting is important for the correct detection of client IP addresses
+   and features based on it, like rate limiting.
+
+   By default, Zammad trusts localhost proxies only. Any additional proxy servers
+   will have to be added here, by IP address (if static) or by host name.
+   Host names are resolved during the start of Zammad, so that a restart is required
+   whenever the IP address of a proxy server changes.
+
+   Default: ``127.0.0.1,::1``
+
 .. _performance_tuning:
 
 Performance Tuning
@@ -167,14 +178,6 @@ ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
    | Default: **unset**
    | Maximum number of workers: ``1``
 
-   .. danger::
-
-      Disable processing of scheduled jobs by setting
-      ``ZAMMAD_PROCESS_SCHEDULED_JOBS_DISABLE``.
-
-      Doing so on productive instances will draw important parts of your
-      instance not working. **WE STRONGLY** encourage against using this flag.
-
 ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    How many processes should work on delayed jobs?
 
@@ -186,14 +189,6 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    | Maximum number of workers: ``16``
 
    .. warning:: 🥵 **This option can be very CPU-intensive.**
-
-   .. danger::
-
-      Disable processing of delayed jobs by setting
-      ``ZAMMAD_PROCESS_DELAYED_JOBS_DISABLE``.
-
-      Doing so on productive instances will draw important parts of your
-      instance not working. **WE STRONGLY** encourage against using this flag.
 
 
 ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS
