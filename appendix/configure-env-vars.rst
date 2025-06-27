@@ -113,11 +113,15 @@ ZAMMAD_WEBSOCKET_PORT
    Default: ``6042``
 
 RAILS_TRUSTED_PROXIES
-   By default, Zammad trusts localhost proxies only. Set IP addresses or host
-   names of your existing reverse proxies. Host names are resolved during the
-   start of Zammad. A change of the host name requires a restart of Zammad.
+   This setting is important for the correct detection of client IP addresses
+   and features based on it, like rate limiting.
 
-   Default: ``['127.0.0.1', '::1']``
+   By default, Zammad trusts localhost proxies only. Any additional proxy servers
+   will have to be added here, by IP address (if static) or by host name.
+   Host names are resolved during the start of Zammad, so that a restart is required
+   whenever the IP address of a proxy server changes.
+
+   Default: ``127.0.0.1,::1``
 
 .. _performance_tuning:
 
@@ -174,14 +178,6 @@ ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
    | Default: **unset**
    | Maximum number of workers: ``1``
 
-   .. danger::
-
-      Disable processing of scheduled jobs by setting
-      ``ZAMMAD_PROCESS_SCHEDULED_JOBS_DISABLE``.
-
-      Doing so on productive instances will draw important parts of your
-      instance not working. **WE STRONGLY** encourage against using this flag.
-
 ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    How many processes should work on delayed jobs?
 
@@ -193,14 +189,6 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    | Maximum number of workers: ``16``
 
    .. warning:: 🥵 **This option can be very CPU-intensive.**
-
-   .. danger::
-
-      Disable processing of delayed jobs by setting
-      ``ZAMMAD_PROCESS_DELAYED_JOBS_DISABLE``.
-
-      Doing so on productive instances will draw important parts of your
-      instance not working. **WE STRONGLY** encourage against using this flag.
 
 
 ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS

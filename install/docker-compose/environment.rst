@@ -38,6 +38,18 @@ Zammad
    * - ZAMMAD_FQDN
      - ``(unset)``
      - Set the :admin-docs:`FQDN </settings/system/base.html>` for your instance.
+   * - RAILS_TRUSTED_PROXIES
+     - ``127.0.0.1,::1``
+     - This setting is important for the correct detection of client IP addresses
+       and features based on it, like rate limiting.
+
+       By default, Zammad trusts localhost proxies only. Any additional proxy servers
+       will have to be added here, by IP address (if static) or by host name.
+       Host names are resolved during the start of Zammad, so that a restart is required
+       whenever the IP address of a proxy server changes.
+
+       Note that in docker context, Zammad may see the network gateway IP address instead of the
+       actual proxy server IP address, if it is placed in another network.
    * - ZAMMAD_WEB_CONCURRENCY
      - ``(unset)``
      - Allows spawning ``n`` workers to allow more simultaneous connections for
@@ -72,12 +84,6 @@ Zammad
 
        In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-scheduler CPU setting should match the sum of all worker settings variables.
-   * - RAILS_TRUSTED_PROXIES
-     - ``['127.0.0.1', '::1']``
-     - By default, Zammad trusts localhost proxies only. Set IP addresses or host
-       names of your existing reverse proxies. Host names are resolved during
-       the start of Zammad. A change of the host name requires a restart of
-       Zammad.
    * - MEMCACHE_SERVERS
      - ``zammad-memcached:11211``
      - Provide your own Memcached instance to Zammad if you already have one.
