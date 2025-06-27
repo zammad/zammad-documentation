@@ -112,6 +112,13 @@ ZAMMAD_WEBSOCKET_PORT
 
    Default: ``6042``
 
+RAILS_TRUSTED_PROXIES
+   By default, Zammad trusts localhost proxies only. Set IP addresses or host
+   names of your existing reverse proxies. Host names are resolved during the
+   start of Zammad. A change of the host name requires a restart of Zammad.
+
+   Default: ``['127.0.0.1', '::1']``
+
 .. _performance_tuning:
 
 Performance Tuning
