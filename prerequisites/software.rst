@@ -171,11 +171,11 @@ Please follow the official guides and ensure to set it up in a secure way.
 2.6 Elasticsearch (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Zammad uses Elasticsearch to
+Zammad uses Elasticsearch to:
 
-   1) make the search faster
-   2) support advanced features like reports
-   3) search for content of email attachments
+   1) make the search faster,
+   2) support advanced features like reports,
+   3) search for content of email attachments.
 
 This becomes increasingly important the higher the number of tickets in your
 system gets.
@@ -187,18 +187,12 @@ system gets.
    the search will be very limited. We recommend using Elasticsearch, as it will
    boost the usage of Zammad greatly!
 
-.. hint:: 📦 **If you install Zammad via package manager...**
-
-   It's perfectly safe to manually override the Elasticsearch dependency.
-   The appropriate command line flag will depend on your platform
-   (e.g. ``--force``, ``--ignore-depends``, ``--skip-broken``);
-   check your package manager's manpage to find out.
-
 .. csv-table:: Zammad/Elasticsearch version compatibility
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "5.2+", ">= 7.8, < 9"
+   "7.0+", ">= 7.8, < 10"
+   "5.2 - 6.5", ">= 7.8, < 9"
    "5.0 - 5.1", ">= 7.8, < 8"
    "4.0-4.1", ">= 6.5, <= 7.12"
    "3.4-3.6", ">= 5.5, <= 7.9"
@@ -210,6 +204,13 @@ system gets.
 An Elasticsearch plugin is required for version 7 or older to index the
 contents of email attachments: ``ingest-attachment``. Starting with
 Elasticsearch 8, it is included by default.
+
+.. hint:: You can override the Elasticsearch dependency for package
+   installations (not recommended!)
+
+   It depends on your system how to manually override the Elasticsearch
+   dependency (e.g. ``--force``, ``--ignore-depends``, ``--skip-broken``);
+   check your package manager's manpage to find out.
 
 2.7 Memcached
 ^^^^^^^^^^^^^
