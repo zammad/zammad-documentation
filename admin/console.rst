@@ -37,7 +37,7 @@ a shell (e.g. for automation).
 
       .. code-block:: sh
 
-         $ docker compose run --rm zammad-railsserver rails r '{COMMAND}'
+         $ docker compose run --rm zammad-railsserver bundle exec rails r '{COMMAND}'
 
    .. tab:: Package Installation
 
@@ -65,7 +65,7 @@ It allows you to run several commands inside it.
 
       .. code-block:: sh
 
-         $ docker compose run --rm zammad-railsserver rails c
+         $ docker compose run --rm zammad-railsserver bundle exec rails c
 
       .. tip:: If you use Portainer to manage your Docker containers,
          you can even use a

@@ -149,18 +149,23 @@ should be done via one of the following methods:
 
       In your Portainer GUI, go to the container view and select the running
       rails container from your Zammad stack. Click on the **Exec Console**
-      icon in the "Quick Actions" column.
+      icon in the "Quick Actions" column and on the **Connect** button.
 
       .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
          :alt:
          :width: 70%
 
-      In the "Execute" dialog, select the "rails console" entry point as you
-      can see in the screenshot:
+      Run the interactive rails console by executing:
 
-      .. figure:: /images/install/docker-compose/portainer/portainer-execute-command.png
-         :alt:
-         :width: 70%
+      .. code-block::
+
+         bundle exec rails c
+
+      Directly execute a specific command:
+
+      .. code-block::
+
+         bundle exec rails r '...your rails command here...'
 
    .. tab:: Via console
 
@@ -168,19 +173,19 @@ should be done via one of the following methods:
 
       .. code-block:: sh
 
-         docker compose run --rm zammad-railsserver rails r '...your rails command here...'
+         docker compose run --rm zammad-railsserver bundle exec rails r '...your rails command here...'
 
-      Run the interactive rails console to manually enter Rails commands:
-
-      .. code-block:: sh
-
-         docker compose run --rm zammad-railsserver rails c
-
-      Via ``docker exec``:
+      Run the interactive rails console to manually enter rails commands:
 
       .. code-block:: sh
 
-         docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails r '...your rails command here...'
+         docker compose run --rm zammad-railsserver bundle exec rails c
+
+      Via ``docker compose exec``:
+
+      .. code-block:: sh
+
+         docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
 
       If you need to retrieve information from the rails server, you can place
       for example ``pp`` (pretty print) in front of your rails command. This
