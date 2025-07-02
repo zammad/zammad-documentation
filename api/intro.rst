@@ -562,8 +562,9 @@ may have to use pagination at some points.
    returned objects. You can't raise these limits.
 
    **Number of total to return objects:** Zammad does not provide a total
-   count of objects available for your query. This forces you to cycle
-   through the pages until Zammad no longer returns further objects.
+   count of objects available for your query, unless you explicitly request it.
+   To include the amount of search results, use the ``with_total_count`` or
+   ``only_total_count`` parameter.
 
 In order to use pagination you'll need two get options:
 ``per_page`` and ``page``. Combine them like so to receive 5 results from
@@ -2380,6 +2381,340 @@ Search example
          "total_count": 1
       }
 
+``With Total Count`` Parameter
+   Using this parameter will additionally output the amount of search results.
+   It can be combined with ``full`` and ``expand``.
+
+   ``GET``-Request sent: ``/api/v1/tickets/search?query=welcome&full=true&with_total_count=true``
+
+   .. code-block:: json
+
+      {
+         "record_ids": [
+            2,
+            1
+         ],
+         "assets": {
+            "Ticket": {
+               "1": {
+               "id": 1,
+               "group_id": 1,
+               "priority_id": 2,
+               "state_id": 1,
+               "organization_id": 1,
+               "number": "97001",
+               "title": "Welcome to Zammad!",
+               "owner_id": 1,
+               "customer_id": 2,
+               "note": null,
+               "first_response_at": null,
+               "first_response_escalation_at": null,
+               "first_response_in_min": null,
+               "first_response_diff_in_min": null,
+               "close_at": null,
+               "close_escalation_at": null,
+               "close_in_min": null,
+               "close_diff_in_min": null,
+               "update_escalation_at": null,
+               "update_in_min": null,
+               "update_diff_in_min": null,
+               "last_close_at": null,
+               "last_contact_at": "2025-06-27T08:35:35.210Z",
+               "last_contact_agent_at": null,
+               "last_contact_customer_at": "2025-06-27T08:35:35.210Z",
+               "last_owner_update_at": null,
+               "create_article_type_id": 5,
+               "create_article_sender_id": 2,
+               "article_count": 1,
+               "escalation_at": null,
+               "pending_time": null,
+               "type": null,
+               "time_unit": null,
+               "preferences": {},
+               "updated_by_id": 2,
+               "created_by_id": 2,
+               "created_at": "2025-06-27T08:35:35.005Z",
+               "updated_at": "2025-06-27T08:35:35.306Z",
+               "checklist_id": null,
+               "referencing_checklist_ids": [],
+               "article_ids": [
+                  1
+               ],
+               "ticket_time_accounting_ids": [],
+               "ai_stored_result_ids": []
+               },
+               "2": {
+               "id": 2,
+               "group_id": 1,
+               "priority_id": 2,
+               "state_id": 2,
+               "organization_id": 1,
+               "number": "97002",
+               "title": "Welcome again",
+               "owner_id": 1,
+               "customer_id": 2,
+               "note": null,
+               "first_response_at": null,
+               "first_response_escalation_at": null,
+               "first_response_in_min": null,
+               "first_response_diff_in_min": null,
+               "close_at": null,
+               "close_escalation_at": null,
+               "close_in_min": null,
+               "close_diff_in_min": null,
+               "update_escalation_at": null,
+               "update_in_min": null,
+               "update_diff_in_min": null,
+               "last_close_at": null,
+               "last_contact_at": "2025-07-02T11:46:41.117Z",
+               "last_contact_agent_at": null,
+               "last_contact_customer_at": "2025-07-02T11:46:41.117Z",
+               "last_owner_update_at": null,
+               "create_article_type_id": 5,
+               "create_article_sender_id": 2,
+               "article_count": 1,
+               "escalation_at": null,
+               "pending_time": null,
+               "type": null,
+               "time_unit": null,
+               "preferences": {},
+               "updated_by_id": 3,
+               "created_by_id": 3,
+               "created_at": "2025-07-02T11:46:41.040Z",
+               "updated_at": "2025-07-02T11:46:41.210Z",
+               "checklist_id": null,
+               "referencing_checklist_ids": [],
+               "article_ids": [
+                  2
+               ],
+               "ticket_time_accounting_ids": [],
+               "ai_stored_result_ids": []
+               }
+            },
+            "Organization": {
+               "1": {
+               "id": 1,
+               "name": "Zammad Foundation",
+               "shared": true,
+               "domain": "",
+               "domain_assignment": false,
+               "active": true,
+               "vip": false,
+               "note": "",
+               "updated_by_id": 1,
+               "created_by_id": 1,
+               "created_at": "2025-06-27T08:35:34.797Z",
+               "updated_at": "2025-07-02T11:46:41.105Z",
+               "member_ids": [
+                  2
+               ],
+               "secondary_member_ids": []
+               }
+            },
+            "User": {
+               "1": {
+               "id": 1,
+               "organization_id": null,
+               "login": "-",
+               "firstname": "-",
+               "lastname": "",
+               "email": "",
+               "image": null,
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": "",
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": "",
+               "vip": false,
+               "verified": false,
+               "active": false,
+               "note": "",
+               "last_login": null,
+               "source": null,
+               "login_failed": 0,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {},
+               "updated_by_id": 1,
+               "created_by_id": 1,
+               "created_at": "2025-06-27T08:35:31.793Z",
+               "updated_at": "2025-06-27T08:35:31.793Z",
+               "role_ids": [],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {}
+               },
+               "2": {
+               "id": 2,
+               "organization_id": 1,
+               "login": "nicole.braun@zammad.org",
+               "firstname": "Nicole",
+               "lastname": "Braun",
+               "email": "nicole.braun@zammad.org",
+               "image": null,
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": "",
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": "",
+               "vip": false,
+               "verified": false,
+               "active": true,
+               "note": "",
+               "last_login": null,
+               "source": null,
+               "login_failed": 0,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {
+                  "tickets_closed": 0,
+                  "tickets_open": 2
+               },
+               "updated_by_id": 3,
+               "created_by_id": 1,
+               "created_at": "2025-06-27T08:35:34.872Z",
+               "updated_at": "2025-07-02T11:46:41.840Z",
+               "role_ids": [
+                  3
+               ],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {}
+               },
+               "3": {
+               "login_failed": 0,
+               "last_login": "2025-07-02T08:54:52.403Z",
+               "updated_by_id": 1,
+               "id": 3,
+               "organization_id": null,
+               "login": "admin@example.com",
+               "firstname": "Test",
+               "lastname": "Admin",
+               "email": "admin@example.com",
+               "image": null,
+               "image_source": null,
+               "web": "",
+               "phone": "",
+               "fax": "",
+               "mobile": "",
+               "department": null,
+               "street": "",
+               "zip": "",
+               "city": "",
+               "country": "",
+               "address": null,
+               "vip": false,
+               "verified": false,
+               "active": true,
+               "note": "",
+               "source": null,
+               "out_of_office": false,
+               "out_of_office_start_at": null,
+               "out_of_office_end_at": null,
+               "out_of_office_replacement_id": null,
+               "preferences": {
+                  "notification_config": {
+                     "matrix": {
+                        "create": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "update": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": true,
+                              "subscribed": true,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "reminder_reached": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        },
+                        "escalation": {
+                           "criteria": {
+                              "owned_by_me": true,
+                              "owned_by_nobody": false,
+                              "subscribed": false,
+                              "no": false
+                           },
+                           "channel": {
+                              "email": true,
+                              "online": true
+                           }
+                        }
+                     }
+                  },
+                  "locale": "en-us",
+                  "intro": true,
+                  "keyboard_shortcuts_clues": true,
+                  "overviews_last_used": {
+                     "1": "2025-06-27T09:27:26.333Z",
+                     "5": "2025-06-27T09:27:28.222Z"
+                  },
+                  "theme": "light"
+               },
+               "created_by_id": 1,
+               "created_at": "2025-06-27T09:27:00.302Z",
+               "updated_at": "2025-07-02T08:54:52.433Z",
+               "role_ids": [
+                  1,
+                  2
+               ],
+               "two_factor_preference_ids": [],
+               "organization_ids": [],
+               "authorization_ids": [],
+               "overview_sorting_ids": [],
+               "group_ids": {
+                  "1": [
+                     "full"
+                  ]
+                  }
+               }
+            }
+         },
+         "total_count": 2
+      }
 
 ``Only Total Count`` Parameter
    Using this parameter will output only the amount of search results.
