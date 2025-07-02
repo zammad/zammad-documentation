@@ -185,7 +185,7 @@ should be done via one of the following methods:
 
       .. code-block:: sh
 
-         docker compose exec zammad-railsserver bundle exec rails r bundle exec rails r '...your rails command here...'
+         docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
 
       If you need to retrieve information from the rails server, you can place
       for example ``pp`` (pretty print) in front of your rails command. This
