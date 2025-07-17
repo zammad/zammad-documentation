@@ -15,7 +15,7 @@ Step 1: Installation
 Elasticsearch offers different versions. Currently, the versions 7 and 8
 are supported by Zammad. For installation instructions, you should first and
 foremost follow
-`Elastic's installation documentation <https://www.elastic.co/guide/en/elasticsearch/reference/8.x/setup.html>`_.
+`Elastic's installation documentation <https://www.elastic.co/guide/en/elasticsearch/reference/8.19/install-elasticsearch.html>`_.
 Use the dropdown in the top left corner to choose which version you want to
 install.
 
