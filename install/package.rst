@@ -144,12 +144,6 @@ Add Repository
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
 
-      Ubuntu 20.04
-         .. code-block:: sh
-
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
-
       Ubuntu 22.04
          .. code-block:: sh
 
