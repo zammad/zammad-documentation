@@ -24,31 +24,22 @@ requirements for your clients. This ensures that Zammad works as expected.
      - This also applies for all Chromium based Browsers like Microsoft Edge
    * - Opera 69+
      - (based on Chromium 83)
-   * - Microsoft Internet Explorer 11
-     - ⚠️ Deprecated, will be removed with Zammad 7
    * - Safari 14.1+
      -
 
-.. danger:: ⚠️ Deprecation warning ⚠️
-
-   Zammad 7 will no longer support Internet Explorer 11 environments.
-   Users using IE will be forced to use a different browser.
-
 Please note that Zammad heavily uses Javascript which makes it a hard
 requirement. Some browser addons that hook into page content may interfere with
-Zammads function which is not a bug.
+Zammad's function which is not a bug.
 For example the Google Chrome translation module is known to do odd things,
-especially to state names. Use Zammads internal translations instead.
+especially to state names. Use Zammad's internal translations instead.
 
 1.2 Network Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad uses web sockets. Some application firewalls may filter these
 connections. This may lead to decreased browser performance.
-
 There's a fallback to Ajax which causes a higher application server load
 and thus should be avoided.
-
 In case you're having issues with field selection, you can activate the
 :admin-docs:`AJAX Mode for "Core Workflows" </settings/system/frontend.html>`
 separately.
@@ -84,12 +75,9 @@ Below you can find all distributions Zammad provides packages for.
    "CentOS / RHEL", "8 & 9"
    "Debian", "11 & 12"
    "OpenSUSE / SLES", "Leap 15.x / 15"
-   "Ubuntu", "20.04, 22.04 & 24.04"
+   "Ubuntu", "22.04 & 24.04"
 
-.. warning:: ⚠️ SuSE Tumbleweed **does not** meet Zammad requirements and thus
-   **is not** supported!
-
-.. note:: **🤓 What about my specific distribution?! It's so cool!**
+.. note:: **What about my specific distribution?**
 
    If you distribution is not listed, you can still install Zammad.
    For this you can either use :doc:`Docker-Compose </install/docker-compose>`
@@ -123,15 +111,14 @@ automatically be installed with the Zammad-Package.
 .. note::
 
    | ``libimlib2-dev`` **or** ``imlib2-devel`` are no longer required.
-   | *However:* If you have to use ``bundle install`` for e.g. custom Gems or
+   | *However:* If you have to use ``bundle install`` for e.g. custom gems or
      development, you'll need to install it!
 
 2.3 Database Server
 ^^^^^^^^^^^^^^^^^^^
 
 Zammad stores its content in a database. The supported database system is
-`PostgreSQL <https://www.postgresql.org/>`_ 10 or newer.
-
+`PostgreSQL <https://www.postgresql.org/>`_ 13 or newer.
 If no PostgreSQL server could be detected, it will be installed automatically
 during the package installation.
 
@@ -160,9 +147,8 @@ The following reverse proxies are supported:
 2.5 Redis
 ^^^^^^^^^
 
-Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for
-realtime communication via web socket.
-
+`Redis <https://redis.io/>`_ is required for realtime communication via web
+socket. Zammad requires Redis 6 or newer.
 The installation and configuration is out of scope of this documentation.
 Please follow the official guides and ensure to set it up in a secure way.
 
