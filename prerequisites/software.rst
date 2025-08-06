@@ -44,7 +44,7 @@ In case you're having issues with field selection, you can activate the
 :admin-docs:`AJAX Mode for "Core Workflows" </settings/system/frontend.html>`
 separately.
 
-1. Server Requirements
+2. Server Requirements
 ----------------------
 
 If you want to install Zammad, you need the following software.
@@ -148,7 +148,7 @@ The following reverse proxies are supported:
 ^^^^^^^^^
 
 `Redis <https://redis.io/>`_ is required for realtime communication via web
-socket. Zammad requires Redis 6 or later.
+socket. Zammad requires Redis 6 or newer.
 The installation and configuration is out of scope of this documentation.
 Please follow the official guides and ensure to set it up in a secure way.
 
