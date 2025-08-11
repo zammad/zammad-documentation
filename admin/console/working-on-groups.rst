@@ -1,4 +1,4 @@
-Working with groups
+Working with Groups
 ===================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst

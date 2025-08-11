@@ -100,16 +100,3 @@ if needed.
 .. code-block:: ruby
 
    >> User.find_by(email: 'you@example.com').update!(password: 'your_new_password')
-
-Remove Password for User
-------------------------
-
-If you added a second authentication method (e.g. LDAP) after launch, there
-still may be a password in Zammad's own user management. In cases like that
-users will be able to login with their (local) Zammad password in addition to
-the credentials stored on the external authentication provider. Simply remove
-the password stored by Zammad.
-
-.. code-block:: ruby
-
-   >> User.find_by(email: 'you@example.com').update!(password: nil)
