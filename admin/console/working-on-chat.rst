@@ -1,4 +1,4 @@
-Working with chat logs
+Working with Chat Logs
 ======================
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
