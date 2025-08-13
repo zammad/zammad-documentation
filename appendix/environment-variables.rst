@@ -1,9 +1,9 @@
 Environment Variables
 =====================
 
-Find the available environment variables below with default values, if
-applicable. The variables for docker and package based installations might be
-different in some cases. You can find a hint in the tables below with the
+Find the most important environment variables below with default values, if
+applicable. The variables for docker and package based installations can be
+different in some cases. You can find a badge in the tables below with the
 following meaning:
 
 - |docker| => Only available for docker installations
@@ -14,29 +14,8 @@ For easy copy/pasting of variables, please have a look at the
 `.env.dist file for docker in Github <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_
 or go to the section at the end of the page for a
 :ref:`collection of package installation variables <collection-package-variables>`.
-
-.. note:: **How to set an environment variable?**
-
-   It depends on how you installed Zammad (package, docker).
-   Either set it via ``zammad config`` command as you can see below, use your
-   system's way of setting variables via command line
-   (e.g. ``export VARIABLE=value)``, place an ``.env`` file in the directory or
-   even use a GUI like Portainer to define them for a docker installation.
-
-   Example for package installations:
-
-   .. code-block:: sh
-
-      # set OPTION to "value"
-      $ zammad config:set OPTION=value
-      $ systemctl restart zammad
-
-      # get OPTION
-      $ zammad config:get OPTION
-
-      # unset OPTION
-      $ zammad config:unset OPTION
-      $ systemctl restart zammad
+If you want to know how to set these variables, have a look at
+:ref:`how-to-env-var`.
 
 .. hint::
 
@@ -318,6 +297,32 @@ Nginx
 .. |docker| image:: /images/docker.svg
    :height: 24px
    :width: 24px
+
+.. _how-to-env-var:
+
+How to Set Environment Variables
+--------------------------------
+
+It depends on how you installed Zammad (package, docker).
+Either set it via ``zammad config`` command as you can see below, use your
+system's way of setting variables via command line
+(e.g. ``export VARIABLE=value)``, place an ``.env`` file in the directory or
+even use a GUI like Portainer to define them for a docker installation.
+
+Example for package installations:
+
+.. code-block:: sh
+
+   # set OPTION to "value"
+   $ zammad config:set OPTION=value
+   $ systemctl restart zammad
+
+   # get OPTION
+   $ zammad config:get OPTION
+
+   # unset OPTION
+   $ zammad config:unset OPTION
+   $ systemctl restart zammad
 
 .. _collection-package-variables:
 
