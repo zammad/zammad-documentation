@@ -100,7 +100,7 @@ or availability:
      :doc:`here </appendix/migrate-to-postgresql>` how to manually switch
      databases.
    * System settings (like
-     :doc:`environment variables </appendix/configure-env-vars>`) are
+     :doc:`environment variables </appendix/environment-variables>`) are
      not backed up.
    * Restore to an older Zammad version is not possible.
    * **Do not** restore backup files from custom scripts with the

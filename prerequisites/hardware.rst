@@ -57,5 +57,5 @@ Performance Tuning
 
 As the number of active users and/or tickets grows, performance will
 eventually degrade. You should have a look at
-:ref:`performance tuning section <performance_tuning>` then, or consider upgrade
+:doc:`/appendix/environment-variables` then, or consider upgrade
 your setup.

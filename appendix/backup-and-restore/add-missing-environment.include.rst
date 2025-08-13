@@ -1,5 +1,7 @@
 If you've set any environmental settings like higher web concurrency
-due to required :ref:`performance_tuning`, please re-apply your settings now.
+due to required performance tuning via
+`environment variables </appendix/environment-variables>`, please re-apply your
+settings now.
 
 If not already done, please install Elasticsearch now (if you want to use it).
 Follow :ref:`configure_zammad_with_elasticsearch` to reconfigure your
