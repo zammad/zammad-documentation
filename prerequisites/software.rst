@@ -201,16 +201,18 @@ Elasticsearch 8, it is included by default.
 2.7 Memcached
 ^^^^^^^^^^^^^
 
-Zammad heavily relies on caching to improve performance. This cache can be stored
-in the file system without relying on externals services. However, this is only possible
-if all services of Zammad are running on the same file system!
+Zammad heavily relies on caching to improve performance. This cache can be
+stored in the file system without relying on externals services. However, this
+is only possible if all services of Zammad are running on the same file system!
 
-In all other cases like deploying Zammad via containers (Docker or Kubernetes) or on separate cluster nodes, a
-`Memcached <https://memcached.org/>`_ service is required to store the cache and serve it to all Zammad instances.
+In all other cases like deploying Zammad via containers (Docker or Kubernetes)
+or on separate cluster nodes, a `Memcached <https://memcached.org/>`_ service is
+required to store the cache and serve it to all Zammad instances.
 The Docker and Kubernetes stacks already include this service.
 
-However, even local file system installations may benefit from Memcached's performance improvements.
-You might want to have a look at our :ref:`performance_tuning` section too.
+However, even local file system installations may benefit from Memcached's
+performance improvements. You might want to have a look at our
+:doc:`/appendix/environment-variables` section too.
 
 The installation and configuration is out of scope of this documentation.
 In case you have to install Memcached manually, please follow the
