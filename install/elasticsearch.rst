@@ -226,11 +226,12 @@ Build/rebuild the searchindex
    .. hint::
       - The rebuild may take many hours or even days, if a lot of data is
         already present in a productive environment. However, you can safely
-        run this during operating times without the risk of loosing data. As a
+        run this during operating times without the risk of losing data. As a
         downside, it could lead to reduced performance and that some data may
         not be shown in search results.
       - Consider specifying a number of CPU cores to be used for the rebuild
         (see example below).
+      - If you just want to add a missing index, use the third command below.
 
    .. code-block:: sh
 
@@ -240,6 +241,14 @@ Build/rebuild the searchindex
       # rebuilding the searchindex, as in the following example with 8 cores:
       $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
+   Add a specific index with the command below. Replace ``Ticket`` with the one
+   you want to add. If your database already holds data which has to be indexed,
+   additionally use the second command:
+
+   .. code-block:: sh
+
+      $ zammad run rails r "SearchIndexBackend.create_object_index('Ticket')"
+      $ zammad run rails r "Ticket.search_index_reload"
 
 Optional settings
 -----------------
