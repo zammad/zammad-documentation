@@ -289,7 +289,7 @@ Build/rebuild the searchindex
         not be shown in search results.
       - Consider specifying a number of CPU cores to be used for the rebuild
         (see example below).
-      - If you just want to add a missing index, use the third command below.
+      - If you just want to add a missing index, you find the commands below too.
 
    Without specifying CPU cores:
 
@@ -303,13 +303,18 @@ Build/rebuild the searchindex
 
       $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
-   Add a specific index with the command below. Replace ``Ticket`` with the one
-   you want to add. If your database already holds data which has to be indexed,
-   additionally use the second command:
+   Add a specific index with the following command. Replace ``Ticket`` with the
+   one you want to add:
 
    .. code-block:: sh
 
       $ zammad run rails r "SearchIndexBackend.create_object_index('Ticket')"
+
+   To index already existing data for this specific index, execute a reload of
+   this index, replace ``Ticket`` here as well:
+
+   .. code-block:: sh
+
       $ zammad run rails r "Ticket.search_index_reload"
 
 Optional settings

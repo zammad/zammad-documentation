@@ -112,6 +112,21 @@ using `Zammad hosting`_ for your and your customers' safety.
             # rebuilding the searchindex, as in the following example with 8 cores:
             $ zammad run rake zammad:searchindex:rebuild[8]
 
+         Add only a specific index with the following command. This is not
+         needed if you already run a complete rebuild of the index. Replace
+         ``Ticket`` with the one you want to add:
+
+         .. code-block:: sh
+
+            $ zammad run rails r "SearchIndexBackend.create_object_index('Ticket')"
+
+         To index already existing data for this specific index, execute a
+         reload of this index, replace ``Ticket`` here as well:
+
+         .. code-block:: sh
+
+            $ zammad run rails r "Ticket.search_index_reload"
+
       Step 7: Log into Zammad
          Yes, that's it!
 
