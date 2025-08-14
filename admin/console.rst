@@ -75,7 +75,7 @@ It allows you to run several commands inside it.
 
       .. code-block:: sh
 
-         $ $ zammad run rails c
+         $ zammad run rails c
 
    .. tab:: Source/Development Installation
 
