@@ -10,13 +10,6 @@ following meaning:
 - |package| => Only available for package installation
 - Without badge => Available for both installation variants
 
-For easy copy/pasting of variables, please have a look at the
-`.env.dist file for docker in Github <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_
-or go to the section at the end of the page for a
-:ref:`collection of package installation variables <collection-package-variables>`.
-If you want to know how to set these variables, have a look at
-:ref:`how-to-env-var`.
-
 .. hint::
 
    If you want to use a ``.env`` file in docker compose deployments, you can
@@ -394,46 +387,3 @@ Example for package installations:
    # unset OPTION
    $ zammad config:unset OPTION
    $ systemctl restart zammad
-
-.. _collection-package-variables:
-
-Collection for Package Installation
------------------------------------
-
-Below you can find a collection of environment variables for package
-installations.
-
-.. code-block:: sh
-
-   ### General Options ###
-
-   #GPG_PATH=
-   #RAILS_LOG_TO_STDOUT=
-   #ZAMMAD_SAFE_MODE=
-   #ZAMMAD_HTTP_TYPE=
-   #ZAMMAD_FQDN=
-
-   ### Network Options ###
-
-   #ZAMMAD_BIND_IP=
-   #ZAMMAD_RAILS_PORT=
-   #ZAMMAD_WEBSOCKET_PORT=
-   #RAILS_TRUSTED_PROXIES=
-
-   ### Performance Tuning ###
-
-   #WEB_CONCURRENCY=
-   #ZAMMAD_PROCESS_SESSIONS_JOBS_WORKERS=
-   #ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS=
-   #ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS=
-   #ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS=
-   #ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS_THREADS=
-
-   ### Misc ###
-
-   #REDIS_URL=
-   #MEMCACHE_SERVERS=
-
-   ### Storage Options ###
-
-   #S3_URL=
