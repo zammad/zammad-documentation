@@ -16,7 +16,7 @@ install a configuration file to your nginx for you.
 
    | **Docker Compose / Kubernetes users**
    | Please also note the environment information on
-     :doc:`this page </install/docker-compose/environment>`
+     :doc:`this page </appendix/environment-variables>`
 
 Get a SSL Certificate (recommended)
 -----------------------------------
@@ -383,8 +383,7 @@ Adjusting the Webserver Configuration
       as well. The websocket server listens on ``ws://127.0.0.1:6042``.
 
       If above ports are used by other applications already, please
-      have a look at :ref:`network options <network_options>` on our
-      environment page.
+      have a look at :doc:`/appendix/environment-variables`.
 
       .. warning::
 

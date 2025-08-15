@@ -91,8 +91,8 @@ It allows you to run several commands inside it.
    available.
 
    However, it's possible to start rails console in safe mode by setting
-   :ref:`a special environment variable <safe_mode>`. With
-   ``ZAMMAD_SAFE_MODE=1`` set, availability of these services will be ignored.
+   the environment variable ``ZAMMAD_SAFE_MODE=1``. With this setting enabled,
+   the availability of these services will be ignored.
 
    .. tabs::
 
