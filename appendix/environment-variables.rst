@@ -290,6 +290,8 @@ Nginx
      - ``6042``
      - Port of Zammad's websocket server.
 
+.. _performance-tuning:
+
 Performance Tuning
 ------------------
 

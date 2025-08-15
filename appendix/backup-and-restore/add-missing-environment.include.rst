@@ -1,6 +1,5 @@
 If you've set any environmental settings like higher web concurrency
-due to required performance tuning via
-`environment variables </appendix/environment-variables>`, please re-apply your
+due to required :ref:`performance-tuning`, please re-apply your
 settings now.
 
 If not already done, please install Elasticsearch now (if you want to use it).
