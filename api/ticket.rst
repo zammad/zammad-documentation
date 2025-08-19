@@ -16,4 +16,5 @@ For better overview, they have been split into different sections:
       /api/ticket/states
       /api/ticket/tags
       /api/ticket/index
+      /api/ticket/ticket-summary
       /api/ticket/timeaccounting
