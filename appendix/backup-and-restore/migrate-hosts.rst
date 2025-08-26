@@ -19,8 +19,8 @@ note this in the relevant parts.
    received an attachment dump! 🤓
 
 Step 1: Note down your environmental adjustments
-   This mainly affects :ref:`performance tuning settings <performance_tuning>`.
-   This will be important after restoring.
+   This mainly affects :ref:`performance-tuning` via environment variables and
+   will be important after restoring.
 
 Step 2: Install Zammad on the destination host
    For the easiest restoration path possible, please install the same version
