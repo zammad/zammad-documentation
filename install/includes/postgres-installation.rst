@@ -4,27 +4,59 @@
 
       .. code-block:: console
 
-         $ apt update
-         $ apt install postgresql postgresql-contrib
-         $ systemctl start postgresql
-         $ systemctl enable postgresql
+         $ sudo apt update
+
+      .. code-block:: console
+
+         $ sudo apt install postgresql postgresql-contrib
+
+      .. code-block:: console
+
+         $ sudo systemctl start postgresql
+
+      .. code-block:: console
+
+         $ sudo systemctl enable postgresql
 
    .. tab:: CentOS
 
       .. code-block:: console
 
-         $ yum install postgresql-server postgresql-contrib
-         $ postgresql-setup initdb
-         $ systemctl start postgresql
-         $ systemctl enable postgresql
+         $ sudo yum install postgresql-server postgresql-contrib
+
+      .. code-block:: console
+
+         $ sudo postgresql-setup initdb
+
+      .. code-block:: console
+
+         $ sudo systemctl start postgresql
+
+
+      .. code-block:: console
+
+         $ sudo systemctl enable postgresql
 
    .. tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
-         $ zypper refresh
-         $ zypper install postgresql postgresql-server postgresql-contrib
-         # openSuSE 15 also requires:
-         $ zypper install postgresql-server-devel
-         $ systemctl start postgresql
-         $ systemctl enable postgresql
+         $ sudo zypper refresh
+
+      .. code-block:: console
+
+         $ sudo zypper install postgresql postgresql-server postgresql-contrib
+
+      openSuSE 15 also requires:
+
+      .. code-block:: console
+
+         $ sudo zypper install postgresql-server-devel
+
+      .. code-block:: console
+
+         $ sudo systemctl start postgresql
+
+      .. code-block:: console
+
+         $ sudo systemctl enable postgresql

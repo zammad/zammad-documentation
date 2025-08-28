@@ -21,7 +21,7 @@ Preparation
 
    .. code-block:: console
 
-      $ systemctl stop zammad
+      $ sudo systemctl stop zammad
 
 #. Create a backup of your instance.
 
@@ -41,21 +41,27 @@ Install pgloader
 
       .. code-block:: console
 
-         $ apt update
-         $ apt install pgloader
+         $ sudo apt update
+
+      .. code-block:: console
+
+         $ sudo apt install pgloader
 
    .. tab:: CentOS
 
       .. code-block:: console
 
-         $ yum install -y pgloader
+         $ sudo yum install -y pgloader
 
    .. tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
-         $ zypper refresh
-         $ zypper install pgloader
+         $ sudo zypper refresh
+
+      .. code-block:: console
+
+         $ sudo zypper install pgloader
 
 
 Create pgloader Command File
@@ -67,14 +73,15 @@ Create a command file for pgloader with:
 
    $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
-Afterwards, you need to tweak the created file with the correct URL
-of the target PostgreSQL server.
+Afterwards, you need to tweak the created file with the correct URL of the
+target PostgreSQL server.
 
-.. code-block:: cfg
+Adjust the PostgreSQL URL below to the correct value before executing this
+command file:
 
-   -- Adjust the PostgreSQL URL below to correct value before executing this command file.
-   INTO pgsql://zammad:pgsql_password@localhost/zammad
+.. code-block:: text
 
+   pgsql://zammad:pgsql_password@localhost/zammad
 
 You will at least need to replace ``psql_password`` placeholder in the provided
 example.
@@ -124,9 +131,13 @@ Migrate
 Finishing
 ---------
 
-After the migration has completed, it is recommended to remove some cache files:
+After the migration has completed, it is recommended to remove some cache files
+and restart Zammad:
 
 .. code-block:: console
 
    $ zammad run rails r 'Rails.cache.clear'
-   $ systemctl start zammad
+
+.. code-block:: console
+
+   $ sudo systemctl start zammad

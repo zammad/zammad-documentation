@@ -45,8 +45,11 @@ Step 5: Stop and disable Zammad
 
    .. code-block:: console
 
-      $ systemctl disable zammad
-      $ systemctl stop zammad
+      $ sudo systemctl disable zammad
+
+   .. code-block:: console
+
+      $ sudo systemctl stop zammad
 
 Step 6: Backup
    Follow the :doc:`backup section </appendix/backup-and-restore/backup>` to
@@ -94,9 +97,9 @@ Step 9: Run required maintenance tasks after restoring
 
             This step is only needed, if one of the following points is met:
 
-               * The source and destination Zammad versions are not the same
-               * The Zammad installation is not a source code installation
-               * The Zammad backup is not an export from our hosted setup
+            * The source and destination Zammad versions are not the same
+            * The Zammad installation is not a source code installation
+            * The Zammad backup is not an export from our hosted setup
 
             Full dumps for source code installations are not covered, however,
             basically the same below applies to you: You have to ensure that
@@ -117,31 +120,36 @@ Step 9: Run required maintenance tasks after restoring
 
             .. code-block:: console
 
-               $ dpkg -r --force-depends zammad
-               $ apt install zammad
+               $ sudo dpkg -r --force-depends zammad
+
+            .. code-block:: console
+
+               $ sudo apt install zammad
 
             **OpenSUSE**
 
             .. code-block:: console
 
-               $ zypper remove -R zammad
-               $ zypper install zammad
+               $ sudo zypper remove -R zammad
+
+            .. code-block:: console
+
+               $ sudo zypper install zammad
 
             .. hint::
 
                You're unsure if above is really required and a mere reinstall
-               would be enough? If you run a dedicated install command on for
-               Zammad and receive the following, you absolutely have to run
-               above to fix your installation.
+               would be enough? If you get an output like the following after
+               running a Zammad install command, you have to run above to fix
+               your installation.
 
-                  .. code-block:: console
+               .. code-block:: text
 
-                     $ root@zammad:/# apt-get update && apt install zammad
-                       Reading package lists... Done
-                       Building dependency tree
-                       Reading state information... Done
-                       zammad is already the newest version (x.x.x-xxxxxx.xxxxxx.xxx).
-                       0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+                  Reading package lists... Done
+                  Building dependency tree
+                  Reading state information... Done
+                  zammad is already the newest version (x.x.x-xxxxxx.xxxxxx.xxx).
+                  0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 
          Step 9.2: Clear the cache
             .. include:: /appendix/backup-and-restore/clear-the-cache.include.rst
@@ -149,9 +157,13 @@ Step 9: Run required maintenance tasks after restoring
          Step 9.3: Ensure Zammad is running
             .. code-block:: console
 
-               $ systemctl status zammad
-               # If Zammad is not running, run below
-               $ systemctl start zammad
+               $ sudo systemctl status zammad
+
+            If Zammad is not running, start it:
+
+            .. code-block:: console
+
+               $ sudo systemctl start zammad
 
    .. hint:: Migrated from Zammad SaaS or switching provider?
 

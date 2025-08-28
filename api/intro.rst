@@ -25,12 +25,10 @@ endpoints listed here.
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
      *(Third-Party; API client only, no "ready to use" App)*
 
-
 Authentication
 --------------
 
 Zammad supports three different authentication methods for its API.
-
 
 HTTP Basic Authentication (username/password)
    | The username / password must be provided as HTTP header in the HTTP call.
@@ -55,7 +53,6 @@ HTTP Token Authentication (access token)
    .. code-block:: console
 
       $ curl -H "Authorization: Token token={your_token}" https://{fqdn}/{endpoint}
-
 
 OAuth2 (token access)
    | The token must be provided as HTTP header in your calls.
@@ -526,8 +523,6 @@ explicitly covered in this documentation:
 - Templates
 - Text module
 
-
-
 Search example
    ``GET``-Request sent: ``/api/v1/tickets/search?query=welcome``
 
@@ -653,7 +648,6 @@ Search example
             "create_article_sender": "Customer"
          }
       ]
-
 
 ``Full`` Parameter
    You can even extend the response by using the ``full`` parameter. Be aware
@@ -4319,7 +4313,6 @@ different to the ones for the endpoint search.
          }
       ]
    }
-
 
 Condition Based Search
 ^^^^^^^^^^^^^^^^^^^^^^

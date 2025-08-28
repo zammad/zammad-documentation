@@ -10,6 +10,9 @@ To do so run the following commands as either ``root`` or ``zammad`` user.
 .. code-block:: console
 
    $ cd /opt/zammad/contrib/backup/
+
+.. code-block:: console
+
    $ mv config.dist config
 
 Adjust the values according to your needs. See the explanation of each

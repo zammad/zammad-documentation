@@ -25,7 +25,7 @@ is running as expected.
 
 The backup process should look like this one:
 
-.. code-block:: console
+.. code-block:: text
 
    # Zammad backup started - Fri Jan 21 17:53:44 CET 2022!
 

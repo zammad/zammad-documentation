@@ -377,15 +377,26 @@ even use a GUI like Portainer to define them for a docker installation.
 
 Example for package installations:
 
+Set OPTION to "value":
+
 .. code-block:: console
 
-   # set OPTION to "value"
    $ zammad config:set OPTION=value
-   $ systemctl restart zammad
 
-   # get OPTION
+Get the value of OPTION:
+
+.. code-block:: console
+
    $ zammad config:get OPTION
 
-   # unset OPTION
+Unset the OPTION:
+
+.. code-block:: console
+
    $ zammad config:unset OPTION
-   $ systemctl restart zammad
+
+When changing settings, make sure to restart Zammad:
+
+.. code-block:: console
+
+   $ sudo systemctl restart zammad

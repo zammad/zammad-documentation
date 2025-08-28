@@ -1,8 +1,8 @@
 Grafana
 =======
 
-Grafana allows you to query, visualize and alert on metrics your Zammad 
-installation stores within the Elasticsearch indexes. 
+Grafana allows you to query, visualize and alert on metrics your Zammad
+installation stores within the Elasticsearch indexes.
 
 .. figure:: /images/appendix/reporting-tools/grafana/grafana-dashboard-several-metas.png
    :alt: Sample Dashboard with metrics from a Zammad instance.
@@ -28,8 +28,8 @@ Setting up required data sources
 
 .. hint:: **🤓 You may not need all data sources**
 
-**Before we start:** The data sources always follow the same scheme. We reduced 
-below information to ``name``, ``time field name`` and ``index name``. 
+**Before we start:** The data sources always follow the same scheme. We reduced
+below information to ``name``, ``time field name`` and ``index name``.
 Everything else relies on your environment and is out of our scope.
 
    .. note::
@@ -60,21 +60,21 @@ ES - Tickets by first_response_at:
    | Index name: ``zammad_production_ticket``
    | Time field name: ``first_response_at``
 
-With above data sources you basically have everything you need to start 
+With above data sources you basically have everything you need to start
 building your own dashboards. 🎉
 
    .. tip:: **🤓 Not sure about your index names?**
 
-      Querying your Elasticsearch like below 
+      Querying your elasticsearch like this and replace ``localhost:9200`` with
+      the IP/URL of your setup:
 
       .. code-block:: console
 
-         # Replace localhost:9200 with the IP/URL of your setup if needed
          $ curl http://localhost:9200/_aliases?pretty=true
 
-      will return a list that looks similar to the following:
+      This will return a list that looks similar to the following:
 
-      .. code-block::
+      .. code-block:: json
 
          {
            "zammad_production_knowledge_base_translation" : {
@@ -118,16 +118,16 @@ building your own dashboards. 🎉
 The Dashboards
 --------------
 
-If you want to get inspired, you can also use our sample dashboards as 
-mentioned below. These dashboards can also be found on 
+If you want to get inspired, you can also use our sample dashboards as
+mentioned below. These dashboards can also be found on
 `GitHub <https://github.com/zammad/grafana-dashboards>`_.
 
 Importing an existing Dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Navigate to **➕ → Import** and either upload the json file you received or 
-use the grafana.com ID. During importing you can provide a dashboard name 
-and folder. You'll also be asked to map the data sources to your environment. 
+Navigate to **➕ → Import** and either upload the json file you received or
+use the grafana.com ID. During importing you can provide a dashboard name
+and folder. You'll also be asked to map the data sources to your environment.
 If you used our data source names above, you can simply search for the same name.
 
    .. figure:: /images/appendix/reporting-tools/grafana/import-existing-dashboard.gif
@@ -173,12 +173,12 @@ Required data sources:
    * ``ES - Tickets by created_at``
    * ``ES - Tickets by closed_at``
 
-.. [1] Specific reference IDs are not the same on every instance and thus the 
-       panel may not work or show incorrect data. Check the panels description 
+.. [1] Specific reference IDs are not the same on every instance and thus the
+       panel may not work or show incorrect data. Check the panels description
        on how to find our the relations on your system.
-.. [2] Some values are not available as time series information. 
+.. [2] Some values are not available as time series information.
        This means we can only display the *last* value of the field in question.
-.. [3] Requires SLA function to be active. 
+.. [3] Requires SLA function to be active.
        Negative values indicate SLA violations.
 
 Chat-Session statistics

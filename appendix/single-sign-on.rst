@@ -118,7 +118,7 @@ Admin privileges are not required; a normal user account will do.
    :alt: Login screen with SSO button for one-click login.
    :align: center
 
-   Select “This account supports Kerberos AES 256 bit encryption” under
+   Select "This account supports Kerberos AES 256 bit encryption" under
    **Properties > Account > Account options**.
 
 1b. Reset Password
@@ -157,7 +157,7 @@ Below command will prompt for the users password:
 
 The output of the command above contains important data for Step 2e below:
 
-.. code-block:: none
+.. code-block:: text
 
    Using legacy password setting method
    Failed to set property 'servicePrincipalName' to 'HTTP/<zammad-host>' on Dn 'CN=Zammad Service,DC=<domain>,DC=<tld>': 0x13.
@@ -194,10 +194,17 @@ which offers Kerberos support through a plug-in module instead.
 .. warning:: This will take your Zammad instance **offline**
    until Apache is fully configured and running.
 
+Turn off Nginx:
+
 .. code-block:: console
 
-   $ systemctl stop nginx     # turn off nginx
-   $ systemctl disable nginx  # keep it off after reboot
+   $ sudo systemctl stop nginx
+
+Keep it off after reboot:
+
+.. code-block:: console
+
+   $ sudo systemctl disable nginx
 
 If you wish to minimize downtime, you can save this step for last;
 just bear in mind that Apache will not start
@@ -208,10 +215,19 @@ simply turn off Apache and restore NGINX:
 
 .. code-block:: console
 
-   $ systemctl stop apache2
-   $ systemctl disable apache2
-   $ systemctl enable nginx
-   $ systemctl start nginx
+   $ sudo systemctl stop apache2
+
+.. code-block:: console
+
+   $ sudo systemctl disable apache2
+
+.. code-block:: console
+
+   $ sudo systemctl enable nginx
+
+.. code-block:: console
+
+   $ sudo systemctl start nginx
 
 2b. Pre-Configure Apache
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -228,21 +244,27 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
 
       .. code-block:: console
 
-         $ apt update
-         $ apt install krb5-user libapache2-mod-auth-gssapi
+         $ sudo apt update
+
+      .. code-block:: console
+
+         $ sudo apt install krb5-user libapache2-mod-auth-gssapi
 
    .. tab:: CentOS
 
       .. code-block:: console
 
-         $ yum install krb5-workstation mod_auth_kerb
+         $ sudo yum install krb5-workstation mod_auth_kerb
 
    .. tab:: OpenSUSE
 
       .. code-block:: console
 
-         $ zypper ref
-         $ zypper install krb5-client apache2-mod_auth_kerb
+         $ sudo zypper ref
+
+.. code-block:: console
+
+         $ sudo zypper install krb5-client apache2-mod_auth_kerb
 
 2d. Enable Apache Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -257,13 +279,19 @@ SSO requires modules that are not enabled by default. By default you can use
       .. code-block:: console
 
          $ a2enmod auth_gssapi rewrite
-         $ systemctl restart apache2
+
+      .. code-block:: console
+
+         $ sudo systemctl restart apache2
 
    .. tab:: a2enmod (OpenSUSE)
 
       .. code-block:: console
 
          $ a2enmod auth_kerb rewrite
+
+      .. code-block:: console
+
          $ systemctl restart apache2
 
    .. tab:: via configuration file (CentOS)
@@ -271,7 +299,7 @@ SSO requires modules that are not enabled by default. By default you can use
       add/uncomment the appropriate ``LoadModule`` statements
       in your Apache config:
 
-      .. code-block::
+      .. code-block:: text
 
          # /etc/httpd/conf/httpd.conf
 
@@ -293,7 +321,7 @@ Replace the following placeholders in the sample config below:
                                  (must not be read-only,
                                  but can be the same as ``<domain-controller>``)
 
-.. code-block::
+.. code-block:: text
 
    # /etc/krb5.conf
 
@@ -369,21 +397,32 @@ and set the appropriate permissions:
 
       .. code-block:: console
 
-         $ mv /root/zammad.keytab /etc/apache2/
-         $ chown root:www-data /etc/apache2/zammad.keytab
-         $ chmod 640 /etc/apache2/zammad.keytab
+         $ sudo mv /root/zammad.keytab /etc/apache2/
+
+      .. code-block:: console
+
+         $ sudo chown root:www-data /etc/apache2/zammad.keytab
+
+      .. code-block:: console
+
+         $ sudo chmod 640 /etc/apache2/zammad.keytab
 
    .. tab:: CentOS
 
       .. code-block:: console
 
-         $ mv /root/zammad.keytab /etc/httpd/
-         $ chown root:apache /etc/httpd/zammad.keytab
-         $ chmod 640 /etc/httpd/zammad.keytab
+         $ sudo mv /root/zammad.keytab /etc/httpd/
+
+      .. code-block:: console
+
+         $ sudo chown root:apache /etc/httpd/zammad.keytab
+
+      .. code-block:: console
+
+         $ sudo chmod 640 /etc/httpd/zammad.keytab
 
 2g. Configure Apache
 ^^^^^^^^^^^^^^^^^^^^
-
 
 Add the following directive to the end of the virtual host configuration file
 to create your Kerberos SSO endpoint at ``/auth/sso``:
@@ -450,24 +489,17 @@ lines! Keep only the one you need.
 
 .. code-block:: console
 
-   $ systemctl restart apache2
+   $ sudo systemctl restart apache2
 
 Step 3: Enable SSO in Zammad
 ----------------------------
 
-Next, enable “Authencation via SSO” in Zammad's Admin Panel under
-**Settings > Security > Third-Party Applications**:
+Next, enable "Authentication via SSO" in Zammad's admin panel under
+*Security > Third-Party Applications*:
 
 .. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
    :align: center
-   :alt: “Authentication via SSO” toggle button in the Admin Panel
-
-   In Zammad 3.5, this option
-   adds a **Sign in using SSO** button to the sign-in page.
-
-.. note::
-   On older versions of Zammad,
-   visit ``https://your.zammad.host/auth/sso`` to sign in.
+   :alt: "Authentication via SSO" toggle button in the admin panel
 
 Step 4: Configure Client System (Windows Only)
 ----------------------------------------------
@@ -494,10 +526,10 @@ Zammad users must:
 
       1. Add your Zammad FQDN in Internet Options
          under **Security > Local Intranet > Sites > Advanced**.
-      2. Select “Require server verification (https:) for all sites in this zone”.
+      2. Select "Require server verification (https:) for all sites in this zone".
       3. Under **Security level for this zone > Custom level... > Settings >
          User Authentication > Logon**,
-         select “Automatic logon only in Intranet Zone”.
+         select "Automatic logon only in Intranet Zone".
 
       .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_internet-options.gif
          :align: center
@@ -538,37 +570,37 @@ Errors in Apache Logs
    Add ``LogLevel debug`` to your virtual host configuration,
    then restart the service to apply the changes.
 
-“an unsupported mechanism was requested”
+"an unsupported mechanism was requested"
    Does your Active Directory service account have **Kerberos AES 256-bit encryption** enabled?
 
    If for some reason your server does not support AES 256-bit encryption,
    the LDAP Wiki has `more information about Kerberos encryption types
    <https://ldapwiki.com/wiki/MsDS-SupportedEncryptionTypes>`_.
 
-“failed to verify krb5 credentials: Key version is not available”
+"failed to verify krb5 credentials: Key version is not available"
    Did you use the exact **version number** (``vno``) provided by ``ktpass``
    when :ref:`generating your keytab <sso-generate-keytab>`?
 
    Try generating it again, just to be sure.
 
-“unspecified GSS failure. Minor code may provide more information (, No key table entry found for HTTP/FQDN\@DOMAIN)”
+"unspecified GSS failure. Minor code may provide more information (, No key table entry found for HTTP/FQDN\@DOMAIN)"
    Does the **service name** you provided to ``setspn`` exactly match
    the one you used when :ref:`generating your keytab <sso-generate-keytab>`?
 
    Try generating it again, just to be sure.
 
-“No key table entry found for HTTP/FQDN\@DOMAIN”
+"No key table entry found for HTTP/FQDN\@DOMAIN"
    Does your virtual host configuration's ``KrbServiceName`` setting
    exactly match the **service name** you provided to ``setspn``?
 
    This setting is case-sensitive.
 
-“Warning: received token seems to be NTLM, which isn't supported by the Kerberos module. Check your IE configuration”
+"Warning: received token seems to be NTLM, which isn't supported by the Kerberos module. Check your IE configuration"
    Is your Zammad host accessible at an FQDN?
    This error may indicate that you configured your Zammad host
    as a numeric IP address instead.
 
-“Cannot decrypt ticket for HTTP/FQDN\@DOMAIN”
+"Cannot decrypt ticket for HTTP/FQDN\@DOMAIN"
    Did you make sure to change the password
    on your Active Directory service account
    *after enabling 256-bit AES encryption?*
@@ -579,11 +611,11 @@ Errors in Apache Logs
 
    Try running ``kinit -k -t <path to keytab> HTTP/<zammad-host>@<DOMAIN>``.
    If no output is returned, you're good - if you see
-   “kinit: Preauthentication failed while getting initial credentials”
+   "kinit: Preauthentication failed while getting initial credentials"
    your credentials provided were wrong or you used ``/pass *`` during ktpass
    command.
 
-“failed when verifying KDC” and “failed to verify krb5 credentials: Decrypt integrity check failed”
+"failed when verifying KDC" and "failed to verify krb5 credentials: Decrypt integrity check failed"
    Ensure ``KrbServiceName`` is the correct ServiceName provided via setspn.
 
    Ensure your Active Directory supports the encryption method configured.
