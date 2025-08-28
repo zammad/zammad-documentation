@@ -17,6 +17,7 @@ extensions = [
    'versionwarning.extension',
    'sphinx_tabs.tabs',
    'sphinx.ext.extlinks',
+   'sphinx_copybutton',
 ]
 
 locale_dirs = ['locale/']
@@ -113,3 +114,5 @@ extlinks = {
    'admin-docs': (f'https://admin-docs.zammad.org/en/{branch}%s', ''),
    'user-docs': (f'https://user-docs.zammad.org/en/{branch}%s', ''),
 }
+
+copybutton_exclude = '.gp'
