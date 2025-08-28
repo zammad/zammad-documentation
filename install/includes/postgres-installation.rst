@@ -2,7 +2,7 @@
 
    .. tab:: Ubuntu / Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ apt update
          $ apt install postgresql postgresql-contrib
@@ -11,7 +11,7 @@
 
    .. tab:: CentOS
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ yum install postgresql-server postgresql-contrib
          $ postgresql-setup initdb
@@ -20,7 +20,7 @@
 
    .. tab:: OpenSUSE / SLES
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zypper refresh
          $ zypper install postgresql postgresql-server postgresql-contrib

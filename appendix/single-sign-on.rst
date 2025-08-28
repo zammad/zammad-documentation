@@ -141,7 +141,7 @@ Replace the following placeholders in the command below:
 
 Below command will prompt for the users password:
 
-.. code-block:: sh
+.. code-block:: console
 
    $ setspn -s HTTP/<zammad-host> <service-acct>
    $ ktpass /princ HTTP/<zammad-host>@<DOMAIN> \
@@ -194,7 +194,7 @@ which offers Kerberos support through a plug-in module instead.
 .. warning:: This will take your Zammad instance **offline**
    until Apache is fully configured and running.
 
-.. code-block:: sh
+.. code-block:: console
 
    $ systemctl stop nginx     # turn off nginx
    $ systemctl disable nginx  # keep it off after reboot
@@ -206,7 +206,7 @@ if the port it wants to listen on is being used by NGINX.
 If for any reason you can't complete this tutorial,
 simply turn off Apache and restore NGINX:
 
-.. code-block:: sh
+.. code-block:: console
 
    $ systemctl stop apache2
    $ systemctl disable apache2
@@ -226,20 +226,20 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
 
    .. tab:: Ubuntu / Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ apt update
          $ apt install krb5-user libapache2-mod-auth-gssapi
 
    .. tab:: CentOS
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ yum install krb5-workstation mod_auth_kerb
 
    .. tab:: OpenSUSE
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zypper ref
          $ zypper install krb5-client apache2-mod_auth_kerb
@@ -254,14 +254,14 @@ SSO requires modules that are not enabled by default. By default you can use
 
    .. tab:: a2enmod (Ubuntu / Debian)
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ a2enmod auth_gssapi rewrite
          $ systemctl restart apache2
 
    .. tab:: a2enmod (OpenSUSE)
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ a2enmod auth_kerb rewrite
          $ systemctl restart apache2
@@ -344,7 +344,7 @@ Replace the following placeholders in the commands below:
 
 The secret key and version number were found in :ref:`sso-register-spn` above.
 
-.. code-block:: sh
+.. code-block:: console
 
    $ ktutil
 
@@ -367,7 +367,7 @@ and set the appropriate permissions:
 
    .. tab:: Ubuntu, Debian, OpenSUSE
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ mv /root/zammad.keytab /etc/apache2/
          $ chown root:www-data /etc/apache2/zammad.keytab
@@ -375,7 +375,7 @@ and set the appropriate permissions:
 
    .. tab:: CentOS
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ mv /root/zammad.keytab /etc/httpd/
          $ chown root:apache /etc/httpd/zammad.keytab
@@ -448,7 +448,7 @@ lines! Keep only the one you need.
 2g. Restart Apache to Apply Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+.. code-block:: console
 
    $ systemctl restart apache2
 

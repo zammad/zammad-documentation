@@ -67,7 +67,7 @@ building your own dashboards. 🎉
 
       Querying your Elasticsearch like below 
 
-      .. code-block:: sh
+      .. code-block:: console
 
          # Replace localhost:9200 with the IP/URL of your setup if needed
          $ curl http://localhost:9200/_aliases?pretty=true

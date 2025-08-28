@@ -13,28 +13,40 @@ This option allows you to send all outgoing E-Mails (not notifications) to a
 specific mailbox. Please note that this shouldn't be a mailbox you're importing
 already! This will apply to all groups and is a global setting.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('system_bcc', 'alias@domain.tld')
 
 You can easily check the current BCC-Setting by running the following:
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('system_bcc')
 
 Activate Counter on Grouped Overviews
 -------------------------------------
 
-This is a hidden setting which you can only set via Command-Line.
+This is a hidden setting which you can only set via console.
 This will globally enable a ticket number value in each heading for grouped
 elements.
 
-.. code-block:: ruby
+Enable counter on grouped overviews:
 
-   >> Setting.set('ui_table_group_by_show_count', true)  # enable counter on grouped overviews
-   >> Setting.set('ui_table_group_by_show_count', false) # disable counter on grouped overviews
-   >> Setting.get('ui_table_group_by_show_count')        # get current setting (`nil` is false)
+.. code-block:: irb
+
+   >> Setting.set('ui_table_group_by_show_count', true)
+
+Disable counter on grouped overviews:
+
+.. code-block:: irb
+
+   >> Setting.set('ui_table_group_by_show_count', false)
+
+Get current setting (``nil`` is false):
+
+.. code-block:: irb
+
+   >> Setting.get('ui_table_group_by_show_count')
 
 .. image:: /images/console/ui_table_group_by_show_count-example.png
 
@@ -50,13 +62,13 @@ You can choose between
    * ``phone-out`` (outgoing call) and
    * ``email-out``  (Sending an E-Mail out).
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('ui_ticket_create_default_type', 'email-out')
 
 To check what setting is set currently, simply run:
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('ui_ticket_create_default_type')
 
@@ -72,7 +84,7 @@ You can use three different warnings for
    * Outgoing Calls ``:"phone-out"=>""`` and
    * Outgoing E-Mails ``:"email-out"=>""``.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('ui_ticket_create_notes', {
          :"phone-in"=>"You're about to note a incoming phone call.",
@@ -89,7 +101,7 @@ You can use three different warnings for
 
 To check what's currently set, you can use:
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('ui_ticket_create_notes')
 
@@ -112,7 +124,7 @@ You can provide different warnings for different channels and article visibility
    * Internal Emails ``:"email-internal"=>""`` and
    * Public Emails ``:"email-public"=>""``.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('ui_ticket_add_article_hint', {
          :"note-internal"=>"You are writing an |internal note|, only people of your organization will see it.",
@@ -132,7 +144,7 @@ You can provide different warnings for different channels and article visibility
 
 To check what's currently set, you can use:
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('ui_ticket_add_article_hint')
 
@@ -146,13 +158,13 @@ Show Email Address of Customer on Customer Selection (Ticket Creation)
 By default Zammad will not display the E-Mail-Addresses of customers.
 The below option allows you to change this behavior.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('ui_user_organization_selector_with_email', true)
 
 Get the current state of this setting with:
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('ui_user_organization_selector_with_email')
 
@@ -167,13 +179,13 @@ Change Font Settings for Outgoing HTML Emails
 The below setting allows you to adjust Zammad's email font setting.
 This setting does not require a service restart.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set("html_email_css_font", "font-family:'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif; font-size: 12px;")
 
 If you want to check the current setting, you can simply run the below code.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('html_email_css_font')
 
@@ -183,7 +195,7 @@ Highlight Customer's Open Ticket Count
 This option enhances the selected customer's open tickets count. It highlights
 the count in different colors if they hit a threshold.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('ui_sidebar_open_ticket_indicator_colored', true)
 
@@ -217,7 +229,7 @@ Activate Attachment Tab in Sidebar
 This option activates a new tab in the right sidebar in the ticket view
 which shows all attachments of the currently viewed ticket.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('ui_ticket_zoom_sidebar_article_attachments', 'true')
 
@@ -235,6 +247,6 @@ incoming and there is an existing ticket of this customer in this time period.
 The default time period is 30 days. If there is no ticket in this period, the
 customer dialog is not shown automatically.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('cti_customer_last_activity', '90') # set the time period to 90 days

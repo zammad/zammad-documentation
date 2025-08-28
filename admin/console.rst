@@ -35,19 +35,19 @@ a shell (e.g. for automation).
 
    .. tab:: Docker Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ docker compose run --rm zammad-railsserver bundle exec rails r '{COMMAND}'
 
    .. tab:: Package Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zammad run rails r '{COMMAND}'
 
    .. tab:: Source/Development Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ rails r '{COMMAND}'
 
@@ -63,7 +63,7 @@ It allows you to run several commands inside it.
 
    .. tab:: Docker Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ docker compose run --rm zammad-railsserver bundle exec rails c
 
@@ -73,13 +73,13 @@ It allows you to run several commands inside it.
 
    .. tab:: Package Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         $ $ zammad run rails c
+         $ zammad run rails c
 
    .. tab:: Source/Development Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ rails c
 

@@ -11,23 +11,23 @@ SELinux
 
 Allow nginx or apache to access public files of Zammad and communicate:
 
-.. code-block:: sh
+.. code-block:: console
 
    $ sudo chcon -Rv --type=httpd_sys_content_t /opt/zammad/public/
 
-.. code-block:: sh
+.. code-block:: console
 
    $ sudo setsebool httpd_can_network_connect on -P
 
-.. code-block:: sh
+.. code-block:: console
 
    $ sudo semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
 
-.. code-block:: sh
+.. code-block:: console
 
    $ sudo restorecon -Rv /opt/zammad/public/
 
-.. code-block:: sh
+.. code-block:: console
 
    $ sudo chmod -R a+r /opt/zammad/public/
 
@@ -48,15 +48,15 @@ firewall. It may not cover your case.
 
       Open Port 80 and 443 on your Firewall:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo ufw allow 80
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo ufw allow 443
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo ufw reload
 
@@ -113,15 +113,15 @@ firewall. It may not cover your case.
 
       Open Port 80 and 443 on your Firewall:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo firewall-cmd --zone=public --add-service=http --permanent
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo firewall-cmd --zone=public --add-service=https --permanent
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo firewall-cmd --reload
 

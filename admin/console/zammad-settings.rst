@@ -18,7 +18,7 @@ Default: **true**
 Setting this to ``false`` might only make sense in very rare cases and you
 have to restart the Zammad services then manually.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('auto_shutdown', 'true')
 
@@ -30,7 +30,7 @@ This will give you the ticket hook that you'll find inside the ``[]`` in front
 of the ticket number. By default this will be `Ticket#` - you shouldn't change
 this setting in a productive system.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('ticket_hook')
 
@@ -44,7 +44,7 @@ Get the current FQDN setting of Zammad and, if needed, adjust it.
    This setting has no effect on SSL certificates or any web server
    configurations.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('fqdn')                    # Get current FQDN
    >> Setting.set('fqdn', 'new.domain.tld')  # Set a new FQDN
@@ -66,7 +66,7 @@ variable based URLs (e.g. in notifications) Zammad generated.
    This setting has no effect on SSL certificates or any web server
    configurations.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('http_type')            # Get the current http type
    >> Setting.set('http_type', 'https')   # Change the http type to HTTPs
@@ -80,7 +80,7 @@ using the database to store attachments is not the best approach.
 
 Use the following command
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.get('storage_provider')               # get the current Attachment-Storage
    >> Setting.set('storage_provider', 'DB')         # Change Attachment-Storage to database
@@ -91,7 +91,7 @@ in non-productive environments. In case you have to perform it in production
 environments, you should specify a sleep delay - otherwise your Zammad can be
 unresponsive.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Store::File.move('DB', 'File', delay_in_sec)  # Move files from DB to File with a specified delay after each file in seconds, e.g. 1
 
@@ -106,7 +106,7 @@ Configuring Elasticsearch
 If your Elasticsearch installation changes, you can use the following commands
 to ensure that Zammad still can access Elasticsearch.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('es_url', 'http://127.0.0.1:9200')           # Change elasticsearch URL to poll
    >> Setting.set('es_user', 'elasticsearch')                  # Change elasticsearch user (e.g. for authentication)
@@ -121,7 +121,7 @@ Enable Proxy
 
 Zammad needs to use a proxy for network communication? Set it here.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('proxy', 'proxy.example.com:3128')
    >> Setting.set('proxy_username', 'some user')
@@ -136,7 +136,7 @@ Disable Asciifold
 This feature is turned on by default. In case you need a more exact search, you
 can turn it off:
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Setting.set('es_asciifolding', false)
 

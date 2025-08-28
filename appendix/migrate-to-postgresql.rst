@@ -19,7 +19,7 @@ Preparation
 
 #. Stop Zammad:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ systemctl stop zammad
 
@@ -39,20 +39,20 @@ Install pgloader
 
    .. tab:: Ubuntu / Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ apt update
          $ apt install pgloader
 
    .. tab:: CentOS
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ yum install -y pgloader
 
    .. tab:: OpenSUSE / SLES
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zypper refresh
          $ zypper install pgloader
@@ -63,7 +63,7 @@ Create pgloader Command File
 
 Create a command file for pgloader with:
 
-.. code-block:: sh
+.. code-block:: console
 
    $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
@@ -96,7 +96,7 @@ Create Empty Database
 
 Now you need to create an empty database in PostgreSQL.
 
-.. code-block:: sh
+.. code-block:: console
 
    $ zammad run rake db:create
 
@@ -109,7 +109,7 @@ Migrate
 
       You can check your configuration by running pgloader in a dry run first:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ pgloader --dry-run /tmp/pgloader-command
 
@@ -117,7 +117,7 @@ Migrate
 
       Once you are ready and setup you can start the actual migration:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ pgloader --verbose /tmp/pgloader-command
 
@@ -126,7 +126,7 @@ Finishing
 
 After the migration has completed, it is recommended to remove some cache files:
 
-.. code-block:: sh
+.. code-block:: console
 
    $ zammad run rails r 'Rails.cache.clear'
    $ systemctl start zammad

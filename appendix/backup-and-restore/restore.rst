@@ -39,7 +39,7 @@ Step 1: Copy your backup files to a fitting location (if needed)
 
    The Zammad backup consists of two files. They are named like this:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       <timestamp>_zammad_db.psql.gz
       <timestamp>_zammad_files.tar.gz
@@ -47,7 +47,7 @@ Step 1: Copy your backup files to a fitting location (if needed)
    There are also two symlinks in your backup directory pointing to the
    newest backup created.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       latest_zammad_db.psql.gz
       latest_zammad_files.tar.gz
@@ -74,7 +74,7 @@ Step 4: Run the restore
 
       .. tab:: Interactive restoration (recommended)
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ /opt/zammad/contrib/backup/zammad_restore.sh
 
@@ -90,7 +90,7 @@ Step 4: Run the restore
             The following command will overwrite existing data without further
             prompts!
 
-         .. code-block:: sh
+         .. code-block:: console
 
             # When called with a timestamp argument (matching the backups filename),
             # Zammad will proceed immediately to restoring the specified backup.
@@ -98,7 +98,7 @@ Step 4: Run the restore
 
    The restore operation should look like this:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       # Zammad restore started - Fri Jan 21 17:54:13 CET 2022!
 

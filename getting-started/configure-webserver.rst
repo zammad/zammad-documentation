@@ -69,7 +69,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
             once. Replace ``<webserver>`` in below command by either
             ``apache``, ``httpd`` or ``nginx`` and to match your setup.
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ certbot --<webserver> -d zammad.example.com
 
@@ -94,7 +94,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
                acme.sh by default no longer uses letsencrypt.
                For this reason you'll have to change the default CA.
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ acme.sh --set-default-ca  --server letsencrypt
 
@@ -108,7 +108,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
             Replace ``<webserver>`` in the following command by either
             ``apache`` or ``nginx`` and to match your setup, use ``standalone`` for other webservers.
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ acme.sh --issue --<webserver> -d zammad.example.com
 
@@ -126,7 +126,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
                after getting a renewal. Replace ``<webserver>`` by either
                ``apache2``, ``httpd`` or ``nginx``
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ acme.sh --install-cert -d zammad.example.com \
                    --cert-file      /etc/ssl/private/zammad.example.com.pem  \
@@ -178,7 +178,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
       Zammad when being asked for
       ``Common Name (e.g. server FQDN or YOUR name)``.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ openssl req -newkey rsa:4096 -nodes -x509 -days 1825\
              -keyout key.pem -out certificate.pem
@@ -188,7 +188,7 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
       If you want to check your certificate you just created, you can use the
       following command.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ openssl x509 -text -noout -in certificate.pem
 
@@ -225,7 +225,7 @@ Adjusting the Webserver Configuration
       Step 1 - Get a current config file
          Copy & overwrite the default ``zammad.conf`` by using
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/nginx/sites-available/zammad.conf
 
@@ -274,7 +274,7 @@ Adjusting the Webserver Configuration
 
             .. tab:: a2enmod
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ a2enmod proxy proxy_html proxy_http proxy_wstunnel headers ssl
                   $ systemctl restart apache2
@@ -304,7 +304,7 @@ Adjusting the Webserver Configuration
 
          Copy & overwrite the default ``zammad.conf`` by using
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-available/zammad.conf
 
@@ -349,13 +349,13 @@ Adjusting the Webserver Configuration
 
             .. tab:: Ubuntu / Debian / openSUSE
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ a2ensite zammad
 
             .. tab:: CentOS
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ ln -s /etc/httpd/sites-available/zammad_ssl.conf /etc/httpd/sites-enabled/
 

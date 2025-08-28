@@ -7,7 +7,7 @@ you to provide a configuration file. We're shipping a ``config.dist`` within the
 
 To do so run the following commands as either ``root`` or ``zammad`` user.
 
-.. code-block:: sh
+.. code-block:: console
 
    $ cd /opt/zammad/contrib/backup/
    $ mv config.dist config

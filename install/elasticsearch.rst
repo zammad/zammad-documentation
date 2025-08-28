@@ -32,11 +32,11 @@ later versions, which also come with some additional security features.
 
    .. tab:: Ubuntu/Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ apt install apt-transport-https sudo wget curl gnupg
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
            gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
@@ -50,7 +50,7 @@ later versions, which also come with some additional security features.
             If you run a distribution which doesn't support it, use the legacy
             format instead.
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ printf "Types: deb
                URIs: https://artifacts.elastic.co/packages/7.x/apt
@@ -61,30 +61,30 @@ later versions, which also come with some additional security features.
 
          .. tab:: Legacy format
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
                tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ apt update
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ apt install elasticsearch
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: CentOS
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ echo "[elasticsearch-7.x]
          name=Elasticsearch repository for 7.x packages
@@ -95,21 +95,21 @@ later versions, which also come with some additional security features.
          autorefresh=1
          type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ yum install -y elasticsearch
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
    .. tab:: OpenSUSE
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ echo "[elasticsearch-7.x]
          name=Elasticsearch repository for 7.x packages
@@ -120,11 +120,11 @@ later versions, which also come with some additional security features.
          autorefresh=1
          type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zypper install elasticsearch
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
@@ -140,24 +140,24 @@ later versions, which also come with some additional security features.
 
       Install the attachment plugin:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
       Increase the virtual memory map limit:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sysctl -w vm.max_map_count=262144
 
 After you installed Elasticsearch and its attachment plugin,
 ensure to enable it by default and start it.
 
-.. code-block:: sh
+.. code-block:: console
 
    $ systemctl start elasticsearch
 
-.. code-block:: sh
+.. code-block:: console
 
    $ systemctl enable elasticsearch
 
@@ -170,12 +170,12 @@ Step 2: Configuration
 ---------------------
 
 Install ingest-plugin (only for Elasticsearch <= 7)
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
 Increase virtual memory map limit
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo sysctl -w vm.max_map_count=262144
 
@@ -184,7 +184,7 @@ Adjust ``/etc/elasticsearch/elasticsearch.yml``
    servers. You may want to append that to your ``elasticsearch.yml`` as a useful
    basic configuration.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       # /etc/elasticsearch/elasticsearch.yml
 
@@ -207,11 +207,11 @@ Adjust ``/etc/elasticsearch/elasticsearch.yml``
       indices.query.bool.max_clause_count: 2000
 
 Enable and start Elasticsearch
-   .. code-block:: sh
+   .. code-block:: console
 
       $ systemctl start elasticsearch
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ systemctl enable elasticsearch
 
@@ -236,13 +236,13 @@ Elasticsearch URL
 
    Elasticsearch 7:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
    Elasticsearch 8+:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
@@ -252,13 +252,13 @@ Elasticsearch user and password (only for Elasticsearch >= 8)
 
    Set Elasticsearch user:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ zammad run rails r "Setting.set('es_user', 'elastic')"
 
    Set Elasticsearch password:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
@@ -267,7 +267,7 @@ Add certificate to Zammad (only for Elasticsearch >= 8)
    to Zammad. Make sure to copy/paste the delimiters
    (e.g. ``-----BEGIN CERTIFICATE-----``) too.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo cat /etc/elasticsearch/certs/http_ca.crt
 
@@ -292,13 +292,13 @@ Build/rebuild the searchindex
 
    Without specifying CPU cores:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo zammad run rake zammad:searchindex:rebuild
 
    Example with specifying 8 CPU cores:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ sudo zammad run rake zammad:searchindex:rebuild[8]
 
@@ -317,7 +317,7 @@ information please have a look at
       Useful when connecting multiple services or Zammad instances
       to a single Elasticsearch server (to prevent name collisions during indexing).
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zammad run rails r "Setting.set('es_index', Socket.gethostname.downcase + '_zammad')"
 
@@ -328,7 +328,7 @@ information please have a look at
 
       Limiting such indexing can help conserve system resources.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          # Files with these extensions will not be indexed
          $ zammad run rails r "Setting.set('es_attachment_ignore',\
@@ -342,7 +342,7 @@ information please have a look at
       Change your Elasticsearch URL if you have a separate Elasticsearch server.
       Default is ``localhost``.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zammad run rails r "Setting.set('es_url', 'https://example.com')"
 
@@ -351,7 +351,7 @@ information please have a look at
       You can define if a SSL verification will be performed. Default is
       ``true``.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          # Deactivating SSL verification is NOT recommended
          $ zammad run rails r "Setting.set('es_ssl_verify', false)"

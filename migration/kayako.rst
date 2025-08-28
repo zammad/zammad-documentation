@@ -76,7 +76,7 @@ consider using the console over the browser version.
       .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
       To prepare the migration, run the following commands
-         .. code-block:: ruby
+         .. code-block:: irb
             :force:
 
             # Set variables for easier settings
@@ -95,12 +95,12 @@ consider using the console over the browser version.
          If you want to know if your configuration works in a dry run,
          run the following command:
 
-         .. code-block:: ruby
+         .. code-block:: irb
 
             Sequencer.process('Import::Kayako::ConnectionTest')
 
       To start the actual migration, run the following commands
-         .. code-block:: ruby
+         .. code-block:: irb
             :force:
 
             # That the actual job
@@ -114,7 +114,7 @@ consider using the console over the browser version.
             Running the following command in a rails console will provide
             detailed state information of your migration.
 
-            .. code-block:: ruby
+            .. code-block:: irb
 
                pp ImportJob.find_by(name: 'Import::Kayako')
 
@@ -126,7 +126,7 @@ consider using the console over the browser version.
 
                .. tab:: Freshly started import
 
-                  .. code-block:: ruby
+                  .. code-block:: irb
 
                      #<ImportJob:0x0000000008274310
                       id: 1,
@@ -150,7 +150,7 @@ consider using the console over the browser version.
 
                .. tab:: Import half way
 
-                  .. code-block:: ruby
+                  .. code-block:: irb
 
                      #<ImportJob:0x000055ba3d9dbbb8
                       id: 1,
@@ -201,7 +201,7 @@ consider using the console over the browser version.
 
                .. tab:: Finished import
 
-                  .. code-block:: ruby
+                  .. code-block:: irb
 
                      #<ImportJob:0x0000561da0def350
                       id: 1,

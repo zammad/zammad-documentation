@@ -11,6 +11,6 @@
       * ``ssl_dhparam`` directive (nginx)
       * ``SSLOpenSSLConfCmd DHParameters`` directive (apache2)
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ openssl dhparam -out <path>/dhparam.pem 4096

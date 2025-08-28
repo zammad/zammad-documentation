@@ -34,14 +34,14 @@ Keep in mind that versions may differ from your setup - adapt where needed.
       Can't find your configuration files?
       You can run the following command to get the path:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo -u postgres psql -c 'SHOW config_file'
 
 Adjust ``max_connections`` (mandatory)
    Zammad will take up to 200 connections by default, with below command you can raise this limit fairly high.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       # Raise maximum allowed number of connections
       $ sed -i "/max_connections/c\max_connections = 2000" <postgresql-configuration-file>
@@ -55,7 +55,7 @@ Adjust PostgreSQL for bigger instances (optional)
       Check below settings first and ensure your system is able to provide the requirements!
       Below settings are what we found to be useful, everything else is out of scope of this documentation!
 
-   .. code-block:: sh
+   .. code-block:: console
 
       # Caching improvements
       $ sed -i "/shared_buffers/c\shared_buffers = 2GB" <postgresql-configuration-file>

@@ -68,7 +68,7 @@ General Usage
     one or more additional scenarios, use the following command for step 3 in
     the cloned repository folder instead:
 
-    .. code-block:: sh
+    .. code-block:: console
 
       docker compose -f docker-compose.yml -f scenarios/{scenario you want to use}.yml up -d
 

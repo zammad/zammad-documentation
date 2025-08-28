@@ -1,5 +1,5 @@
 After the import has finished, run the following commands
-   .. code-block:: ruby
+   .. code-block:: irb
       :force:
 
       $ Setting.set('import_mode', false)

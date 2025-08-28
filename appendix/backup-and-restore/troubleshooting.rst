@@ -59,7 +59,7 @@ Common Problems
 
    Usually, authentication can be allowed like this:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       # THIS IS A SAMPLE AND MAY NOT FIT YOUR ENVIRONMENT
       host    all             all             127.0.0.1/32            md5

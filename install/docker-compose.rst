@@ -21,7 +21,7 @@ Prerequisites
 * Make sure to have at least 4 GB of RAM to run the containers.
 * Adjust your host's settings to run Elasticsearch properly:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       sysctl -w vm.max_map_count=262144
 
@@ -70,7 +70,7 @@ Deployment with Docker-Compose
 ------------------------------
 
 Step 1: Clone the GitHub Repo
-   .. code-block:: sh
+   .. code-block:: console
 
       git clone https://github.com/zammad/zammad-docker-compose.git
 
@@ -86,7 +86,7 @@ Step 2: Adjust Environment as Needed
    information.
 
 Step 3: Start the stack
-   .. code-block:: sh
+   .. code-block:: console
 
       cd zammad-docker-compose
       docker compose up -d
@@ -170,19 +170,19 @@ should be done via one of the following methods:
 
       Directly execute a specific command:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          docker compose run --rm zammad-railsserver bundle exec rails r '...your rails command here...'
 
       Run the interactive rails console to manually enter rails commands:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          docker compose run --rm zammad-railsserver bundle exec rails c
 
       Via ``docker compose exec``:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
 

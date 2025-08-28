@@ -377,7 +377,7 @@ even use a GUI like Portainer to define them for a docker installation.
 
 Example for package installations:
 
-.. code-block:: sh
+.. code-block:: console
 
    # set OPTION to "value"
    $ zammad config:set OPTION=value

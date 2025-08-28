@@ -121,7 +121,7 @@ Importing OTRS Data
       Start the migration
          Ensure to replace `xxx` with your values.
 
-         .. code-block:: ruby
+         .. code-block:: irb
 
             >> Setting.set('import_otrs_endpoint', 'https://xxx/otrs/public.pl?Action=ZammadMigrator')
             >> Setting.set('import_otrs_endpoint_key', 'xxx')
@@ -143,7 +143,7 @@ In some cases it might be desirable to update the already imported data from OTR
 This is possible with the following commands.
 
 Run a differential import
-   .. code-block:: ruby
+   .. code-block:: irb
 
       >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
       >> Setting.set('import_otrs_endpoint_key', 'xxx')

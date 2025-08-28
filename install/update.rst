@@ -27,7 +27,7 @@ using `Zammad hosting`_ for your and your customers' safety.
          :doc:`Zammad's requirements </prerequisites/software>`.
 
       Step 2: Stop Zammad
-         .. code-block:: sh
+         .. code-block:: console
 
             $ systemctl stop zammad
 
@@ -47,7 +47,7 @@ using `Zammad hosting`_ for your and your customers' safety.
 
             .. tab:: Ubuntu / Debian
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ apt update
                   $ apt-mark hold zammad           # disable updates for Zammad
@@ -57,7 +57,7 @@ using `Zammad hosting`_ for your and your customers' safety.
 
             .. tab:: OpenSUSE / SLES
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ zypper refresh
                   $ zypper addlock zammad          # disable updates for Zammad
@@ -68,7 +68,7 @@ using `Zammad hosting`_ for your and your customers' safety.
 
             .. tab:: CentOS / RHEL
 
-               .. code-block:: sh
+               .. code-block:: console
 
                   $ yum check-update
                   $ yum upgrade --exclude zammad   # update all packages except Zammad
@@ -104,7 +104,7 @@ using `Zammad hosting`_ for your and your customers' safety.
          Only needed if the release note tells you to rebuild the Elasticsearch
          index.
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ zammad run rake zammad:searchindex:rebuild
 
@@ -131,7 +131,7 @@ using `Zammad hosting`_ for your and your customers' safety.
             :alt: Screenshot showing stack details with highlighted "Pull and redeploy" button and modal dialog.
 
       Updating Docker-Compose based Installations
-         .. code-block:: sh
+         .. code-block:: console
 
             $ cd zammad-docker-compose
             $ git pull
@@ -144,7 +144,7 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          **Docker compose:**
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild
 
@@ -158,7 +158,7 @@ using `Zammad hosting`_ for your and your customers' safety.
          (but use the entrypoint ``bash-via-entrypoint: /docker-entrypoint.sh /bin/bash``
          instead) and run:
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ rake zammad:searchindex:rebuild
 

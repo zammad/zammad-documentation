@@ -23,7 +23,7 @@ If you are experiencing this issue and installed Elasticsearch according to
 Elasticsearch is working correctly.
 
 Step 1: Verify Elasticsearch is running
-   .. code-block:: sh
+   .. code-block:: console
 
       # check elasticsearch status
       $ systemctl status elasticsearch
@@ -31,7 +31,7 @@ Step 1: Verify Elasticsearch is running
    This should output something like the following, make sure it says
    ``Active: active (running)``:
 
-   .. code-block:: sh
+   .. code-block:: console
       :emphasize-lines: 3
 
       ● elasticsearch.service - Elasticsearch
@@ -42,7 +42,7 @@ Step 1: Verify Elasticsearch is running
 
    Otherwise, try starting it and check again:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       # restart elasticsearch and check status
       $ systemctl restart elasticsearch
@@ -56,7 +56,7 @@ Step 1: Verify Elasticsearch is running
 
 
 Step 2: Verify the ingest-attachment plugin is installed correctly
-   .. code-block:: sh
+   .. code-block:: console
 
       # list installed elasticsearch plugins
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
@@ -66,7 +66,7 @@ Step 2: Verify the ingest-attachment plugin is installed correctly
    Otherwise, try reinstalling the ``ingest-attachment`` plugin and check
    again:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin remove ingest-attachment
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
@@ -76,7 +76,7 @@ Step 2: Verify the ingest-attachment plugin is installed correctly
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
 Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
-   .. code-block:: sh
+   .. code-block:: console
 
       # force zammad to drop and rebuild the elasticsearch indexes
       $ zammad run rake zammad:searchindex:rebuild
@@ -84,13 +84,13 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
 Optionally, you can specify a number of CPU cores which are used for rebuilding
 the searchindex, as in the following example with 8 cores:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ zammad run rake zammad:searchindex:rebuild[8]
 
    This should start rebuilding the indexes and output it's progress:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       Dropping indexes... done.
       Deleting pipeline... done.

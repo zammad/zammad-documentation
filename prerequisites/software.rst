@@ -96,7 +96,7 @@ The dependencies below need to be installed on your system.
 If you're using the package installation method, these packages will
 automatically be installed with the Zammad-Package.
 
-.. code-block:: sh
+.. code-block:: console
 
    # Debian & Ubuntu
    $ apt install libimlib2

@@ -43,7 +43,7 @@ Step 4: Disable your communication channels
 Step 5: Stop and disable Zammad
    Make sure that no data will be changed *before* backing up.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ systemctl disable zammad
       $ systemctl stop zammad
@@ -115,14 +115,14 @@ Step 9: Run required maintenance tasks after restoring
          Step 9.1: Uninstall and reinstall Zammad without resolving dependencies
             **Debian, Ubuntu**
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ dpkg -r --force-depends zammad
                $ apt install zammad
 
             **OpenSUSE**
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ zypper remove -R zammad
                $ zypper install zammad
@@ -134,7 +134,7 @@ Step 9: Run required maintenance tasks after restoring
                Zammad and receive the following, you absolutely have to run
                above to fix your installation.
 
-                  .. code-block:: sh
+                  .. code-block:: console
 
                      $ root@zammad:/# apt-get update && apt install zammad
                        Reading package lists... Done
@@ -147,7 +147,7 @@ Step 9: Run required maintenance tasks after restoring
             .. include:: /appendix/backup-and-restore/clear-the-cache.include.rst
 
          Step 9.3: Ensure Zammad is running
-            .. code-block:: sh
+            .. code-block:: console
 
                $ systemctl status zammad
                # If Zammad is not running, run below

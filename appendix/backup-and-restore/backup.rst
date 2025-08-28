@@ -15,7 +15,7 @@ It is recommended to stop Zammad before running the backup.
 To create a backup, execute the script ``zammad_backup.sh`` as ``root``
 or ``zammad`` user:
 
-.. code-block:: sh
+.. code-block:: console
 
    $ /opt/zammad/contrib/backup/zammad_backup.sh
 
@@ -25,7 +25,7 @@ is running as expected.
 
 The backup process should look like this one:
 
-.. code-block:: sh
+.. code-block:: console
 
    # Zammad backup started - Fri Jan 21 17:53:44 CET 2022!
 
