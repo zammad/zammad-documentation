@@ -21,7 +21,7 @@ some operating systems may require additional packages if not already installed.
 
       .. code-block:: console
 
-         # apt install curl apt-transport-https gnupg
+         $ sudo apt install curl apt-transport-https gnupg
 
    .. tab:: OpenSUSE / SLES
 
