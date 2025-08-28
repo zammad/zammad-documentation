@@ -1,7 +1,11 @@
+Package installation:
+
 .. code-block:: sh
 
-   # package installation
-   $ zammad run rails c
+   zammad run rails c
 
-   # source installation
-   $ rails c
+Source installation:
+
+.. code-block::
+
+   rails c

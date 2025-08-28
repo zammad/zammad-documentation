@@ -37,19 +37,19 @@ a shell (e.g. for automation).
 
       .. code-block:: sh
 
-         $ docker compose run --rm zammad-railsserver bundle exec rails r '{COMMAND}'
+         docker compose run --rm zammad-railsserver bundle exec rails r '{COMMAND}'
 
    .. tab:: Package Installation
 
       .. code-block:: sh
 
-         $ zammad run rails r '{COMMAND}'
+         zammad run rails r '{COMMAND}'
 
    .. tab:: Source/Development Installation
 
       .. code-block:: sh
 
-         $ rails r '{COMMAND}'
+         rails r '{COMMAND}'
 
 .. _rails_shell:
 
@@ -65,7 +65,7 @@ It allows you to run several commands inside it.
 
       .. code-block:: sh
 
-         $ docker compose run --rm zammad-railsserver bundle exec rails c
+         docker compose run --rm zammad-railsserver bundle exec rails c
 
       .. tip:: If you use Portainer to manage your Docker containers,
          you can even use a
@@ -75,13 +75,13 @@ It allows you to run several commands inside it.
 
       .. code-block:: sh
 
-         $ $ zammad run rails c
+         zammad run rails c
 
    .. tab:: Source/Development Installation
 
       .. code-block:: sh
 
-         $ rails c
+         rails c
 
 .. hint:: **Starting Rails Console in Safe Mode**
 
@@ -98,7 +98,7 @@ It allows you to run several commands inside it.
 
       .. code-tab:: console Package Installation
 
-         $ ZAMMAD_SAFE_MODE=1 zammad run rails c
+         ZAMMAD_SAFE_MODE=1 zammad run rails c
          Zammad is running in safe mode. Any third-party services like Redis are ignored.
 
          There was an error trying to connect to Redis via redis://localhost:6379.
@@ -109,7 +109,7 @@ It allows you to run several commands inside it.
 
       .. code-tab:: console Source Installation
 
-         $ ZAMMAD_SAFE_MODE=1 rails c
+         ZAMMAD_SAFE_MODE=1 rails c
          Zammad is running in safe mode. Any third-party services like Redis are ignored.
 
          There was an error trying to connect to Redis via redis://localhost:6379.

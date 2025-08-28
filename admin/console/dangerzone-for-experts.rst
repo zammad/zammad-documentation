@@ -12,37 +12,41 @@ Deleting Records
 Removing Tickets (And Their Articles)
 -------------------------------------
 
+Delete a ticket (specified by database ID):
+
 .. code-block:: ruby
 
-   # Delete a ticket (specified by database ID)
-   >> Ticket.find(4).destroy
+   Ticket.find(4).destroy
 
-   # Delete all tickets
-   >> Ticket.destroy_all
+Delete all tickets:
 
-   # Keep some tickets (specified by database ID); delete the rest
-   >> tickets_to_keep = [1, 2, 3]
-   >> Ticket.where.not(id: tickets_to_keep).destroy_all
+.. code-block:: ruby
+
+   Ticket.destroy_all
+
+Keep some tickets (specified by database ID); delete the rest:
+
+.. code-block:: ruby
+
+   tickets_to_keep = [1, 2, 3]
+
+.. code-block:: ruby
+
+   Ticket.where.not(id: tickets_to_keep).destroy_all
 
 Removing Users
 --------------
 
-.. warning::
-
-   Customers **may not** be deleted while they have tickets remaining in the
-   system.
-
-   As such, the examples below will delete not only the specified customers,
-   but **all tickets associated with them**, as well. Below commands remove
-   upon executing without any further warnings.
-
 .. hint::
 
-   If you're not sure what to do and need to learn more about what Zammad does
-   upon removing users, please consider using Zammad's UI options in stead.
+   Console based deletion is not recommended. Instead, use Zammad's
+   :admin-docs:`data privacy </system/data-privacy.html>` feature.
 
-   Our documentation for the :admin-docs:`data privacy </system/data-privacy.html>`
-   function will help you a lot!
+.. warning::
+
+   Customers **can't be** deleted while they have tickets remaining in the
+   system. Because of that, the examples below delete **all tickets associated
+   with them**, as well. The commands don't require a confirmation, be careful.
 
 Removing users is possible in 2 ways: A single user and in bulk.
 
@@ -52,15 +56,15 @@ Removing users is possible in 2 ways: A single user and in bulk.
 
       .. code-block:: ruby
 
-         >> User.find_by(email: '<email address>').destroy
+         User.find_by(email: '<email address>').destroy
 
    .. tab:: Remove several users
 
       .. code-block:: ruby
 
-         >> User.where(
-               email: ['<email address 1>', '<email address 2>']
-            ).destroy_all
+         User.where(
+            email: ['<email address 1>', '<email address 2>']
+         ).destroy_all
 
 Removing Organizations
 ----------------------
@@ -68,55 +72,71 @@ Removing Organizations
 .. note:: Removing an organization does **not** delete associated customers.
 
 Step 1: Select organizations
+   By "active" status:
+
    .. code-block:: ruby
 
-      # by "active" status
-      >> organizations = Organization.where(active: false)
+      organizations = Organization.where(active: false)
 
-      # by name
-      >> organizations = Organization.where(name: 'Acme')
+   By name:
 
-      # by partial match on notes
-      >> organizations = Organization.where('note LIKE ?', '%foo%')
+   .. code-block:: ruby
+
+      organizations = Organization.where(name: 'Acme')
+
+   By partial match on notes content:
+
+   .. code-block:: ruby
+
+      organizations = Organization.where('note LIKE ?', '%foo%')
 
 Step 2: Preview affected organizations
    .. code-block:: ruby
 
-      >> puts organizations.map { |org| "ORGANIZATION #{org.name}" }.join("\n")
+      puts organizations.map { |org| "ORGANIZATION #{org.name}" }.join("\n")
 
 Step 3: Proceed with deletion
    .. code-block:: ruby
 
-      >> organizations.each do |org|
-           puts %{Preparing deletion of organization "#{org.name}"...}
+      organizations.each do |org|
+        puts %{Preparing deletion of organization "#{org.name}"...}
 
-           org.members.each do |member|
-              puts "  Removing #{member.fullname} from organization..."
-              member.update!(organization_id: nil)
-           end
+        org.members.each do |member|
+           puts "  Removing #{member.fullname} from organization..."
+           member.update!(organization_id: nil)
+        end
 
-           puts "  Deleting #{org.name}..."
-           org.destroy
-         end
+        puts "  Deleting #{org.name}..."
+        org.destroy
+      end
 
 Removing System Records
 -----------------------
 
+Remove all online notifications:
+
 .. code-block:: ruby
 
-   # Remove all online notifications
-   >> OnlineNotification.destroy_all
+   OnlineNotification.destroy_all
 
-   # Remove all entries from the Activity Stream (dashboard)
-   >> ActivityStream.destroy_all
+Remove all entries from the Activity Stream (dashboard):
 
-   # Remove entries for all recently viewed objects
-   # (tickets, users, organizations)
-   >> RecentView.destroy_all
+.. code-block:: ruby
 
-   # Remove all history information from tickets, users and organizations
-   # (dangerous!)
-   >> History.destroy_all
+   ActivityStream.destroy_all
+
+Remove entries for all recently viewed objects (tickets, users, organizations):
+
+.. code-block:: ruby
+
+   RecentView.destroy_all
+
+Remove all history information from tickets, users and organizations
+(dangerous!):
+
+.. code-block:: ruby
+
+   History.destroy_all
 
 .. _dangerzone_reset_zammad:
 
@@ -133,7 +153,16 @@ Reset Zammad Installation
 
 .. code-block:: sh
 
-   $ rake db:drop
-   $ rake db:create
-   $ rake db:migrate
-   $ rake db:seed
+   rake db:drop
+
+.. code-block:: sh
+
+   rake db:create
+
+.. code-block:: sh
+
+   rake db:migrate
+
+.. code-block:: sh
+
+   rake db:seed
