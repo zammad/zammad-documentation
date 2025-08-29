@@ -29,7 +29,7 @@ using `Zammad hosting`_ for your and your customers' safety.
       Step 2: Stop Zammad
          .. code-block:: console
 
-            $ systemctl stop zammad
+            $ sudo systemctl stop zammad
 
       Step 3: Backup Zammad
          See :doc:`/appendix/backup-and-restore/index` for more information.
@@ -47,32 +47,88 @@ using `Zammad hosting`_ for your and your customers' safety.
 
             .. tab:: Ubuntu / Debian
 
+               Update package index:
+
                .. code-block:: console
 
-                  $ apt update
-                  $ apt-mark hold zammad           # disable updates for Zammad
-                  $ apt upgrade                    # update all packages except Zammad
-                  $ apt-mark unhold zammad         # re-enable updates for Zammad
-                  $ apt upgrade                    # update Zammad
+                  $ sudo apt update
+
+               Disable updates for Zammad:
+
+               .. code-block:: console
+
+                  $ sudo apt-mark hold zammad
+
+               Update all packages except Zammad:
+
+               .. code-block:: console
+
+                  $ sudo apt upgrade
+
+               Re-enable updates for Zammad:
+
+               .. code-block:: console
+
+                  $ sudo apt-mark unhold zammad
+
+               Update Zammad:
+
+               .. code-block:: console
+
+                  $ sudo apt upgrade
 
             .. tab:: OpenSUSE / SLES
 
+               Update package index:
+
                .. code-block:: console
 
-                  $ zypper refresh
-                  $ zypper addlock zammad          # disable updates for Zammad
-                  $ zypper update                  # update all packages except Zammad
-                  $ zypper removelock zammad       # re-enable updates for Zammad
-                  $ zypper update                  # update Zammad
+                  $ sudo zypper refresh
+
+               Disable updates for Zammad:
+
+               .. code-block:: console
+
+                  $ sudo zypper addlock zammad
+
+               Update all packages except Zammad:
+
+               .. code-block:: console
+
+                  $ sudo zypper update
+
+               Re-enable updates for Zammad:
+
+               .. code-block:: console
+
+                  $ sudo zypper removelock zammad
+
+               Update Zammad:
+
+               .. code-block:: console
+
+                  $ sudo zypper update
 
 
             .. tab:: CentOS / RHEL
 
+               Update package index:
+
                .. code-block:: console
 
-                  $ yum check-update
-                  $ yum upgrade --exclude zammad   # update all packages except Zammad
-                  $ yum upgrade                    # update Zammad
+                  $ sudo yum check-update
+
+               Update all packages except Zammad:
+
+               .. code-block:: console
+
+                  $ sudo yum upgrade --exclude zammad
+
+               Update Zammad:
+
+               .. code-block:: console
+
+                  $ sudo yum upgrade
 
             The package comes with maintenance scripts that will run regular
             tasks during updates for you. However, you should **always** have
@@ -104,12 +160,16 @@ using `Zammad hosting`_ for your and your customers' safety.
          Only needed if the release note tells you to rebuild the Elasticsearch
          index.
 
+         Without specifying CPU cores:
+
          .. code-block:: console
 
             $ zammad run rake zammad:searchindex:rebuild
 
-            # Optionally, you can specify a number of CPU cores which are used for
-            # rebuilding the searchindex, as in the following example with 8 cores:
+         With specifying the number of CPU cores to use (example: 8):
+
+         .. code-block:: console
+
             $ zammad run rake zammad:searchindex:rebuild[8]
 
       Step 7: Log into Zammad
