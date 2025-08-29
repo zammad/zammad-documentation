@@ -116,3 +116,7 @@ extlinks = {
 }
 
 copybutton_exclude = '.gp'
+copybutton_line_continuation_character = '\\'
+
+# Copy button can be disabled by adding the `:class: no-copybutton` to the code block.
+copybutton_selector = 'div:not(.no-copybutton) > div.highlight > pre'
