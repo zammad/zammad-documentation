@@ -75,16 +75,16 @@ firewall. It may not cover your case.
 
       .. code-block::
 
-         sudo tcp dport { http, https } accept
+         $ sudo tcp dport { http, https } accept
 
       .. code-block::
 
-         sudo udp dport { http, https } accept
+         $ sudo udp dport { http, https } accept
 
       The result should look like the following. Keep in mind that your
       environment could require different / more rules.
 
-      .. code-block::
+      .. code-block:: text
 
          #!/usr/local/sbin/nft -f
          flush ruleset

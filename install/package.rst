@@ -57,7 +57,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
    .. tab:: Ubuntu / Debian
 
-      List your current locale settings.
+      List your current locale settings:
 
       .. code-block:: console
 
@@ -68,7 +68,13 @@ To make Zammad work correctly, your system has to use the correct locales.
       .. code-block:: console
 
          $ sudo apt install locales
+
+      .. code-block:: console
+
          $ sudo locale-gen en_US.UTF-8
+
+      .. code-block:: console
+
          $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
 
       After fixing it, make sure to check the output again for including
@@ -76,7 +82,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
    .. tab:: OpenSUSE / SLES
 
-      List your current locale settings.
+      List your current locale settings:
 
       .. code-block:: console
 
@@ -101,7 +107,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
    .. tab:: CentOS / RHEL
 
-      List your current locale settings.
+      List your current locale settings:
 
       .. code-block:: console
 
