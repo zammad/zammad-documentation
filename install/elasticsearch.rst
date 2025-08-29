@@ -34,12 +34,12 @@ later versions, which also come with some additional security features.
 
       .. code-block:: console
 
-         $ apt install apt-transport-https sudo wget curl gnupg
+         $ sudo apt install apt-transport-https sudo wget curl gnupg
 
       .. code-block:: console
 
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+           gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
 
       .. tabs::
 
@@ -64,15 +64,15 @@ later versions, which also come with some additional security features.
             .. code-block:: console
 
                $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-               tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+               sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
 
       .. code-block:: console
 
-         $ apt update
+         $ sudo apt update
 
       .. code-block:: console
 
-         $ apt install elasticsearch
+         $ sudo apt install elasticsearch
 
       .. code-block:: console
 
@@ -82,7 +82,7 @@ later versions, which also come with some additional security features.
 
       .. code-block:: console
 
-         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
       .. code-block:: console
 
@@ -93,11 +93,11 @@ later versions, which also come with some additional security features.
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
          enabled=1
          autorefresh=1
-         type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
+         type=rpm-md"| sudo tee /etc/yum.repos.d/elasticsearch-7.x.repo
 
       .. code-block:: console
 
-         $ yum install -y elasticsearch
+         $ sudo yum install -y elasticsearch
 
       .. code-block:: console
 
@@ -107,7 +107,7 @@ later versions, which also come with some additional security features.
 
       .. code-block:: console
 
-         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
       .. code-block:: console
 
@@ -118,11 +118,11 @@ later versions, which also come with some additional security features.
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
          enabled=1
          autorefresh=1
-         type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
+         type=rpm-md"| sudo tee /etc/zypp/repos.d/elasticsearch-7.x.repo
 
       .. code-block:: console
 
-         $ zypper install elasticsearch
+         $ sudo zypper install elasticsearch
 
       .. code-block:: console
 
@@ -148,18 +148,18 @@ later versions, which also come with some additional security features.
 
       .. code-block:: console
 
-         $ sysctl -w vm.max_map_count=262144
+         $ sudo sysctl -w vm.max_map_count=262144
 
 After you installed Elasticsearch and its attachment plugin,
 ensure to enable it by default and start it.
 
 .. code-block:: console
 
-   $ systemctl start elasticsearch
+   $ sudo systemctl start elasticsearch
 
 .. code-block:: console
 
-   $ systemctl enable elasticsearch
+   $ sudo systemctl enable elasticsearch
 
 .. note:: 🐋 **Docker installations on macOS/Windows:**
 
@@ -172,7 +172,7 @@ Step 2: Configuration
 Install ingest-plugin (only for Elasticsearch <= 7)
    .. code-block:: console
 
-      $ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+      $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
 Increase virtual memory map limit
    .. code-block:: console
@@ -184,7 +184,7 @@ Adjust ``/etc/elasticsearch/elasticsearch.yml``
    servers. You may want to append that to your ``elasticsearch.yml`` as a useful
    basic configuration.
 
-   .. code-block:: console
+   .. code-block:: text
 
       # /etc/elasticsearch/elasticsearch.yml
 
@@ -209,11 +209,11 @@ Adjust ``/etc/elasticsearch/elasticsearch.yml``
 Enable and start Elasticsearch
    .. code-block:: console
 
-      $ systemctl start elasticsearch
+      $ sudo systemctl start elasticsearch
 
    .. code-block:: console
 
-      $ systemctl enable elasticsearch
+      $ sudo systemctl enable elasticsearch
 
 .. _configure_zammad_with_elasticsearch:
 
@@ -238,13 +238,13 @@ Elasticsearch URL
 
    .. code-block:: console
 
-      $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
+      $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
 
    Elasticsearch 8+:
 
    .. code-block:: console
 
-      $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
+      $ zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
 
 Elasticsearch user and password (only for Elasticsearch >= 8)
@@ -294,13 +294,13 @@ Build/rebuild the searchindex
 
    .. code-block:: console
 
-      $ sudo zammad run rake zammad:searchindex:rebuild
+      $ zammad run rake zammad:searchindex:rebuild
 
    Example with specifying 8 CPU cores:
 
    .. code-block:: console
 
-      $ sudo zammad run rake zammad:searchindex:rebuild[8]
+      $ zammad run rake zammad:searchindex:rebuild[8]
 
 
 Optional settings
@@ -323,18 +323,21 @@ information please have a look at
 
    .. tab:: File-attachment indexing rules
 
-      Zammad supports searching by the contents of file attachments,
-      which means Elasticsearch has to index those, too.
+      Zammad supports searching by the contents of file attachments, which means
+      Elasticsearch has to index those, too. Limiting such indexing can help
+      conserve system resources.
 
-      Limiting such indexing can help conserve system resources.
+      Files with these extensions will not be indexed:
 
       .. code-block:: console
 
-         # Files with these extensions will not be indexed
          $ zammad run rails r "Setting.set('es_attachment_ignore',\
            [ '.png', '.jpg', '.jpeg', '.mpeg', '.mpg', '.mov', '.bin', '.exe', '.box', '.mbox' ] )"
 
-         # Files larger than this size (in MB) will not be indexed
+      Files larger than this size (in MB) will not be indexed:
+
+      .. code-block:: console
+
          $ zammad run rails r "Setting.set('es_attachment_max_size_in_mb', 50)"
 
    .. tab:: Remote host
@@ -348,12 +351,11 @@ information please have a look at
 
    .. tab:: SSL Verification
 
-      You can define if a SSL verification will be performed. Default is
+      You can disable SSL verification, which is not recommended. Default is
       ``true``.
 
       .. code-block:: console
 
-         # Deactivating SSL verification is NOT recommended
          $ zammad run rails r "Setting.set('es_ssl_verify', false)"
 
       If you want to use custom certificates, you can find information about
@@ -367,8 +369,11 @@ information please have a look at
       feature of Elasticsearch is enabled. This can be useful if you deal with
       text which includes diacritics and/or umlauts.
 
-      In case you need a more exact search, you can turn it off via
-      :ref:`rails console <disable-asciifold>`.
+      In case you need a more exact search, you can turn it off:
+
+      .. code-block:: console
+
+         $ zammad run rails r "Setting.set('es_asciifolding', false)"
 
 Appendix
 --------

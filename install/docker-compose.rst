@@ -23,7 +23,7 @@ Prerequisites
 
    .. code-block:: console
 
-      sysctl -w vm.max_map_count=262144
+      $ sudo sysctl -w vm.max_map_count=262144
 
 Deployment with Portainer
 -------------------------
@@ -72,7 +72,7 @@ Deployment with Docker-Compose
 Step 1: Clone the GitHub Repo
    .. code-block:: console
 
-      git clone https://github.com/zammad/zammad-docker-compose.git
+      $ git clone https://github.com/zammad/zammad-docker-compose.git
 
    Make sure to run ``git pull`` frequently to fetch updates.
    Alternatively, you can download the files from
@@ -88,8 +88,8 @@ Step 2: Adjust Environment as Needed
 Step 3: Start the stack
    .. code-block:: console
 
-      cd zammad-docker-compose
-      docker compose up -d
+      $ cd zammad-docker-compose
+      $ docker compose up -d
 
    Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
    Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
@@ -156,15 +156,15 @@ should be done via one of the following methods:
 
       Run the interactive rails console by executing:
 
-      .. code-block::
+      .. code-block:: console
 
-         bundle exec rails c
+         $ bundle exec rails c
 
       Directly execute a specific command:
 
-      .. code-block::
+      .. code-block::console
 
-         bundle exec rails r '...your rails command here...'
+         $ bundle exec rails r '...your rails command here...'
 
    .. tab:: Via console
 
@@ -172,19 +172,19 @@ should be done via one of the following methods:
 
       .. code-block:: console
 
-         docker compose run --rm zammad-railsserver bundle exec rails r '...your rails command here...'
+         $ docker compose run --rm zammad-railsserver bundle exec rails r '...your rails command here...'
 
       Run the interactive rails console to manually enter rails commands:
 
       .. code-block:: console
 
-         docker compose run --rm zammad-railsserver bundle exec rails c
+         $ docker compose run --rm zammad-railsserver bundle exec rails c
 
       Via ``docker compose exec``:
 
       .. code-block:: console
 
-         docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
+         $ docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
 
       If you need to retrieve information from the rails server, you can place
       for example ``pp`` (pretty print) in front of your rails command. This
