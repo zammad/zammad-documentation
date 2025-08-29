@@ -1,4 +1,6 @@
-After the import has finished, run the following commands:
+After import
+   After the import has finished, run the following commands:
+
    .. code-block:: irb
 
       >> Setting.set('import_mode', false)

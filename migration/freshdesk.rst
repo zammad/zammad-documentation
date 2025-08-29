@@ -8,9 +8,9 @@ Please note below Freshdesk specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
-   * | Differential migrations are **not** supported!
-     | The general suggestion is to run a test import before to learn
-       how long the migration is going to take.
+   * Differential migrations are **not** supported!
+     The general suggestion is to run a test import before to learn
+     how long the migration is going to take.
    * **Important:** Please note that migration speed highly depends on your
      Freshdesk plan (API rate limits apply).
    * Due to API limitations Zammad will not show the total number of objects

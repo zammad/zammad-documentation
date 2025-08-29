@@ -8,10 +8,10 @@ Please note below Kayako specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
-   * | Differential migrations are **not** supported!
-     | The general suggestion is to run a test import before to learn
-       how long the migration is going to take.
-   * Selfhosted installations (Kayako classic) *are not* supported.
+   * Differential migrations are **not** supported!
+     The general suggestion is to run a test import before to learn
+     how long the migration is going to take.
+   * Self hosted installations (Kayako classic) are **not** supported.
    * The following ticket field customizations are being ignored
      (affects "Scale" plan):
 
