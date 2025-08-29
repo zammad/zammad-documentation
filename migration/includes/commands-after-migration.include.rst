@@ -1,7 +1,12 @@
-After the import has finished, run the following commands
+After the import has finished, run the following commands:
    .. code-block:: irb
-      :force:
 
-      $ Setting.set('import_mode', false)
-      $ Setting.set('system_init_done', true)
-      $ Rails.cache.clear
+      >> Setting.set('import_mode', false)
+
+   .. code-block:: irb
+
+      >> Setting.set('system_init_done', true)
+
+   .. code-block:: irb
+
+      >> Rails.cache.clear

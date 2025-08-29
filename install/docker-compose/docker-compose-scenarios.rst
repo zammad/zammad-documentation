@@ -70,7 +70,7 @@ General Usage
 
     .. code-block:: console
 
-      docker compose -f docker-compose.yml -f scenarios/{scenario you want to use}.yml up -d
+      $ docker compose -f docker-compose.yml -f scenarios/{scenario you want to use}.yml up -d
 
     Replace the part in ``{}`` brackets with the file name of one of the scenario
     files. You can even combine the scenarios by adding additional files according
