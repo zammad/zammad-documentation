@@ -33,6 +33,9 @@ some operating systems may require additional packages if not already installed.
       .. code-block:: console
 
          $ sudo SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
+
+      .. code-block:: console
+
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
    .. tab:: CentOS / RHEL
@@ -233,6 +236,9 @@ Install Zammad
       .. code-block:: console
 
          $ sudo apt update
+
+      .. code-block:: console
+
          $ sudo apt install zammad
 
    .. tab:: OpenSUSE / SLES
@@ -240,6 +246,9 @@ Install Zammad
       .. code-block:: console
 
          $ sudo zypper ref
+
+      .. code-block:: console
+
          $ sudo zypper install zammad
 
    .. tab:: CentOS / RHEL
