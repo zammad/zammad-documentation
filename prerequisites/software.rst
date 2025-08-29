@@ -96,17 +96,29 @@ The dependencies below need to be installed on your system.
 If you're using the package installation method, these packages will
 automatically be installed with the Zammad-Package.
 
-.. code-block:: console
+.. tabs::
 
-   # Debian & Ubuntu
-   $ apt install libimlib2
+   .. tab:: Debian & Ubuntu
 
-   # openSUSE
-   $ zypper install imlib2
+      .. code-block:: console
 
-   # CentOS
-   $ yum install epel-release
-   $ yum install imlib2
+         $ sudo apt install libimlib2
+
+   .. tab:: openSUSE
+
+      .. code-block:: console
+
+         $ sudo zypper install imlib2
+
+   .. tab:: CentOS
+
+      .. code-block:: console
+
+         $ sudo yum install epel-release
+
+      .. code-block:: console
+
+         $ sudo yum install imlib2
 
 .. note::
 
