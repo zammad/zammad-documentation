@@ -161,11 +161,6 @@ ensure to enable it by default and start it.
 
    $ sudo systemctl enable elasticsearch
 
-.. note:: 🐋 **Docker installations on macOS/Windows:**
-
-   Setting the ``vm.max_map_count`` kernel parameter requires
-   `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
-
 Step 2: Configuration
 ---------------------
 
