@@ -194,8 +194,17 @@ using `Zammad hosting`_ for your and your customers' safety.
          .. code-block:: console
 
             $ cd zammad-docker-compose
+
+         .. code-block:: console
+
             $ git pull
+
+         .. code-block:: console
+
             $ docker-compose pull
+
+         .. code-block:: console
+
             $ docker-compose up -d
 
       Rebuild Elasticsearch index (optional)
@@ -204,12 +213,16 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          **Docker compose:**
 
+         Without specifying CPU cores:
+
          .. code-block:: console
 
             $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild
 
-            # Optionally, you can specify a number of CPU cores which are used for
-            # rebuilding the searchindex, as in the following example with 8 cores:
+         With specifying CPU cores to use (example: 8):
+
+         .. code-block:: console
+
             $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild[8]
 
          **Portainer:**
@@ -218,10 +231,14 @@ using `Zammad hosting`_ for your and your customers' safety.
          (but use the entrypoint ``bash-via-entrypoint: /docker-entrypoint.sh /bin/bash``
          instead) and run:
 
+         Without specifying CPU cores:
+
          .. code-block:: console
 
             $ rake zammad:searchindex:rebuild
 
-            # Optionally, you can specify a number of CPU cores which are used for
-            # rebuilding the searchindex, as in the following example with 8 cores:
+         With specifying CPU cores to use (example: 8):
+
+         .. code-block:: console
+
             $ rake zammad:searchindex:rebuild[8]

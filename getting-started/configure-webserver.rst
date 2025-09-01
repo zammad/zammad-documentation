@@ -5,7 +5,6 @@ Configure the Webserver
 
 You can find current sample configuration files for your webserver within
 ``contrib/`` of your Zammad installation.
-
 If you're using the package installation, Zammad attempts to automatically
 install a configuration file to your nginx for you.
 
@@ -26,20 +25,24 @@ The guide within the tabs below can help you jumping in.
 
 Make sure to used named configuration. The default sample configuration
 for both nginx and apache are *not* named.
-
 To fix this, open the ``zammad.conf`` in your webserver's configuration
 directory and make sure to replace ``server_name localhost;`` (nginx) or
 ``ServerName localhost`` (Apache 2) with Zammad's actual subdomain.
 
-*Where?*
+**Where?**
 
-**nginx:**
+.. tabs::
 
-.. include:: includes/nginx-config-paths.include.rst
+   .. tab:: Nginx
 
-**Apache 2:**
+      .. include:: includes/nginx-config-paths.include.rst
 
-.. include:: includes/apache-config-paths.include.rst
+   .. tab:: Apache 2
+
+      .. include:: includes/apache-config-paths.include.rst
+
+
+**How?**
 
 .. tabs::
 
