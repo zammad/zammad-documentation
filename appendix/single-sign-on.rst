@@ -262,7 +262,7 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
 
          $ sudo zypper ref
 
-.. code-block:: console
+      .. code-block:: console
 
          $ sudo zypper install krb5-client apache2-mod_auth_kerb
 
