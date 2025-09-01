@@ -4335,11 +4335,11 @@ So, how do I build such a condition based request?
 
 .. code-block:: irb
 
-   puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
+   >> puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
 
 .. code-block:: irb
 
-   puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
+   >> puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
 
 This leads to an output like the following:
 

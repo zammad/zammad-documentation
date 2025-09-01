@@ -25,7 +25,7 @@ Prerequisites
 Step 1: Install Znuny4OTRS-Repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is a dependency of the OTRS migration plugin. Install the version that
+This is a dependency of the OTRS migration plugin. Add the repository that
 matches your OTRS version:
 
 - `OTRS 6 repository <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-6.0.76.opm>`_

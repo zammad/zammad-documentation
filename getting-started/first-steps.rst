@@ -95,5 +95,5 @@ From point 5 on you'll be able to work productive in theory. 🙌
    **😖 Are you still lost?**
 
    If above list doesn't help you or you'll need to jump in a lot faster,
-   you can also get Workshops with one of our
-   `Zammad consultants <https://zammad.com/en/company/contact>`_.
+   you can also `book workshops <https://zammad.com/en/company/contact>`_ with
+   one of our Zammad consultants.

@@ -94,29 +94,34 @@ It allows you to run several commands inside it.
    the environment variable ``ZAMMAD_SAFE_MODE=1``. With this setting enabled,
    the availability of these services will be ignored.
 
+   **Set variable and run rails console:**
+
    .. tabs::
 
-      .. code-tab:: console Package Installation
+      .. tab:: Package Installation
 
-         $ ZAMMAD_SAFE_MODE=1 zammad run rails c
-         Zammad is running in safe mode. Any third-party services like Redis are ignored.
 
-         There was an error trying to connect to Redis via redis://localhost:6379.
-         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
-         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
-         Loading production environment (Rails 6.1.7.3)
-         3.1.3 :001 >
+         .. code-block:: console
 
-      .. code-tab:: console Source Installation
+            $ ZAMMAD_SAFE_MODE=1 zammad run rails c
 
-         $ ZAMMAD_SAFE_MODE=1 rails c
-         Zammad is running in safe mode. Any third-party services like Redis are ignored.
+      .. tab:: Source Installation
 
-         There was an error trying to connect to Redis via redis://localhost:6379.
-         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
-         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
-         Loading production environment (Rails 6.1.7.3)
-         3.1.3 :001 >
+         .. code-block:: console
+
+            $ ZAMMAD_SAFE_MODE=1 rails c
+
+   **This gives you a response like this:**
+
+   .. code-block:: text
+
+      Zammad is running in safe mode. Any third-party services like Redis are ignored.
+
+      There was an error trying to connect to Redis via redis://localhost:6379.
+      Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
+      ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
+      Loading production environment (Rails 6.1.7.3)
+      3.1.3 :001 >
 
 Working on the console
 ----------------------
