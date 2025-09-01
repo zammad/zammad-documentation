@@ -263,7 +263,7 @@ Install Zammad
 
       .. code-block:: console
 
-         sudo chmod -R 755 /opt/zammad/public/
+         $ sudo chmod -R 755 /opt/zammad/public/
 
 .. include:: /install/includes/firewall-and-selinux.rst
 

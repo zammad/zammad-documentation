@@ -21,9 +21,9 @@ Prerequisites
 * Make sure to have at least 4 GB of RAM to run the containers.
 * Adjust your host's settings to run Elasticsearch properly:
 
-   .. code-block:: console
+  .. code-block:: console
 
-      $ sudo sysctl -w vm.max_map_count=262144
+     $ sudo sysctl -w vm.max_map_count=262144
 
 Deployment with Portainer
 -------------------------
@@ -89,6 +89,9 @@ Step 3: Start the stack
    .. code-block:: console
 
       $ cd zammad-docker-compose
+
+   .. code-block:: console
+
       $ docker compose up -d
 
    Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
