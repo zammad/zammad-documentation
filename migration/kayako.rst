@@ -146,6 +146,7 @@ consider using the console over the browser version.
             .. tab:: Freshly started import
 
                .. code-block:: text
+                  :class: no-copybutton
 
                   #<ImportJob:0x0000000008274310
                      id: 1,
@@ -170,6 +171,7 @@ consider using the console over the browser version.
             .. tab:: Import half way
 
                .. code-block:: text
+                  :class: no-copybutton
 
                   #<ImportJob:0x000055ba3d9dbbb8
                      id: 1,
@@ -221,6 +223,7 @@ consider using the console over the browser version.
             .. tab:: Finished import
 
                .. code-block:: text
+                  :class: no-copybutton
 
                   #<ImportJob:0x0000561da0def350
                      id: 1,

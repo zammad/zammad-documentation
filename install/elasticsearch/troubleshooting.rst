@@ -102,6 +102,7 @@ Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
    This should start rebuilding the indexes and output it's progress:
 
    .. code-block:: text
+      :class: no-copybutton
 
       Dropping indexes... done.
       Deleting pipeline... done.

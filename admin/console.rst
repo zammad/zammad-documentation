@@ -114,6 +114,7 @@ It allows you to run several commands inside it.
    **This gives you a response like this:**
 
    .. code-block:: text
+      :class: no-copybutton
 
       Zammad is running in safe mode. Any third-party services like Redis are ignored.
 

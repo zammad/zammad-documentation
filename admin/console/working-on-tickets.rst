@@ -31,6 +31,7 @@ Get article IDs:
 Example output:
 
 .. code-block:: irb
+   :class: no-copybutton
 
    => [4, 3, 2]
 

@@ -6,10 +6,10 @@ UI. Those settings might come in handy as it can change Zammad's behavior.
 
 .. include:: /admin/console/missing-commands-ask-community.include.rst
 
-Send All Outgoing E-Mails to a BCC-Mailbox
+Send All Outgoing Emails to a BCC-Mailbox
 ------------------------------------------
 
-This option allows you to send all outgoing E-Mails (not notifications) to a
+This option allows you to send all outgoing emails (not notifications) to a
 specific mailbox. Please note that this shouldn't be a mailbox you're importing
 already! This will apply to all groups and is a global setting.
 
@@ -60,7 +60,7 @@ You can choose between
 
    * ``phone-in`` (incoming call, **default**),
    * ``phone-out`` (outgoing call) and
-   * ``email-out``  (Sending an E-Mail out).
+   * ``email-out``  (Sending an email out).
 
 .. code-block:: irb
 
@@ -80,16 +80,16 @@ you can do so with the below command.
 
 You can use three different warnings for
 
-   * Incoming Calls ``:"phone-in"=>""``,
-   * Outgoing Calls ``:"phone-out"=>""`` and
-   * Outgoing E-Mails ``:"email-out"=>""``.
+   * Incoming calls ``:"phone-in"=>""``,
+   * Outgoing calls ``:"phone-out"=>""`` and
+   * Outgoing emails ``:"email-out"=>""``.
 
 .. code-block:: irb
 
    >> Setting.set('ui_ticket_create_notes', {
-         "phone-in"=>"You're about to note a incoming phone call.",
-         "phone-out"=>"You're about to note an outgoing phone call.",
-         "email-out"=>"You're going to send out an E-Mail."
+         "phone-in"  => "You're about to note an incoming phone call.",
+         "phone-out" => "You're about to note an outgoing phone call.",
+         "email-out" => "You're going to send out an email."
       })
 
 .. note::
@@ -127,20 +127,19 @@ You can provide different warnings for different channels and article visibility
 .. code-block:: irb
 
    >> Setting.set('ui_ticket_add_article_hint', {
-         "note-internal"   => "You are writing an |internal note|, only people of your organization will see it.",
-         "note-public"     => "You are writing a |public note|.",
-         "phone-internal"  => "You are writing an |internal phone note|, only people of your organization will see it.",
-         "phone-public"    => "You are writing a |public phone note|.",
-         "email-internal"  => "You are writing an |internal Email|, only people of your organization will see it.",
-         "email-public"    => "You are writing a |public Email|."
+         "note-internal"  => "You are writing an |internal note|, only people of your organization will see it.",
+         "note-public"    => "You are writing a |public note|.",
+         "phone-internal" => "You are writing an |internal phone note|, only people of your organization will see it.",
+         "phone-public"   => "You are writing a |public phone note|.",
+         "email-internal" => "You are writing an |internal email|, only people of your organization will see it.",
+         "email-public"   => "You are writing a |public email|."
       })
 
 .. note::
 
    You can use example sub-settings above independently, if you e.g. don't need
-   a warning on internal calls, simply leave out ``"phone-internal"`` out
-   of the setting. The setting itself is in a form of an array (``{}``).
-
+   a warning on internal calls, simply leave out ``"phone-internal"``
+   of the setting. The setting itself is in a form of a hash (``{}``).
 
 To check what's currently set, you can use:
 
@@ -155,7 +154,7 @@ Sample of the above setting:
 Show Email Address of Customer on Customer Selection (Ticket Creation)
 ----------------------------------------------------------------------
 
-By default Zammad will not display the E-Mail-Addresses of customers.
+By default Zammad will not display the email addresses of customers.
 The below option allows you to change this behavior.
 
 .. code-block:: irb

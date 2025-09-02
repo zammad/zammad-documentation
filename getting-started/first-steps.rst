@@ -41,7 +41,7 @@ Step 2: Provide company information
    :admin-docs:`Branding </settings/branding.html>` and
    :admin-docs:`System </settings/system/index.html>` settings.
 
-Step 3: E-Mail notification channel
+Step 3: Email notification channel
    By default Zammad uses sendmail - if that doesn't fit you can change it to
    SMTP here.
 
