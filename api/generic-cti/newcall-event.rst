@@ -82,7 +82,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
@@ -117,7 +117,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
@@ -159,7 +159,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --form 'event="newCall"' \
@@ -190,7 +190,7 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: sh
+            .. code-block:: console
 
                $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --form 'event="newCall"' \

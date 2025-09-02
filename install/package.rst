@@ -19,7 +19,7 @@ some operating systems may require additional packages if not already installed.
 
    .. tab:: Ubuntu / Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt install curl apt-transport-https gnupg
 
@@ -30,17 +30,17 @@ some operating systems may require additional packages if not already installed.
       SLES 15 requires additional repositories to be
       activated. To do so, run the following commands.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
    .. tab:: CentOS / RHEL
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo yum install wget epel-release
 
@@ -60,23 +60,23 @@ To make Zammad work correctly, your system has to use the correct locales.
 
    .. tab:: Ubuntu / Debian
 
-      List your current locale settings.
+      List your current locale settings:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt install locales
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo locale-gen en_US.UTF-8
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
 
@@ -85,15 +85,15 @@ To make Zammad work correctly, your system has to use the correct locales.
 
    .. tab:: OpenSUSE / SLES
 
-      List your current locale settings.
+      List your current locale settings:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ localectl status | grep LANG
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo localectl set-locale LANG=en_US.UTF-8
 
@@ -110,15 +110,15 @@ To make Zammad work correctly, your system has to use the correct locales.
 
    .. tab:: CentOS / RHEL
 
-      List your current locale settings.
+      List your current locale settings:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo localectl set-locale LANG=en_US.UTF-8
 
@@ -139,13 +139,13 @@ Add Repository
    .. tab:: Ubuntu
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
 
       Ubuntu 22.04
-         .. code-block:: sh
+         .. code-block:: console
 
             $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
@@ -155,7 +155,7 @@ Add Repository
             repository in the
             `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ printf "Types: deb
             URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
@@ -167,13 +167,13 @@ Add Repository
    .. tab:: Debian
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
 
       Debian 11
-         .. code-block:: sh
+         .. code-block:: console
 
             $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
@@ -183,7 +183,7 @@ Add Repository
             repository in the
             `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ printf "Types: deb
             URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
@@ -195,12 +195,12 @@ Add Repository
    .. tab:: OpenSUSE / SLES
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
       openSUSE 15.x / SLES 15
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo wget -O /etc/zypp/repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
@@ -209,18 +209,18 @@ Add Repository
    .. tab:: CentOS / RHEL
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
       CentOS 8 / RHEL 8
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo wget -O /etc/yum.repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
 
       CentOS 9 / RHEL 9
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo wget -O /etc/yum.repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
@@ -233,27 +233,27 @@ Install Zammad
 
    .. tab:: Ubuntu / Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt update
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt install zammad
 
    .. tab:: OpenSUSE / SLES
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo zypper ref
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo zypper install zammad
 
    .. tab:: CentOS / RHEL
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo yum install zammad
 
@@ -261,9 +261,9 @@ Install Zammad
       packager.io on CentOS you'll need to correct file permissions for
       public files.
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         sudo chmod -R 755 /opt/zammad/public/
+         $ sudo chmod -R 755 /opt/zammad/public/
 
 .. include:: /install/includes/firewall-and-selinux.rst
 

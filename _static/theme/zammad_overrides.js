@@ -7,14 +7,15 @@ function collapseLongCodeBlocks() {
     if (el.clientHeight <= maxHeight) return;
 
     el.classList.add('collapsing-code-block');
-    if (el.querySelector(`.collapsing-code-block__toggle`)) return;
+    if (el.querySelector(`.collapsing-code-toggle`)) return;
 
     const button = document.createElement('button');
-    button.classList.add('collapsing-code-block__toggle');
+    button.classList.add('collapsing-code-toggle');
     button.onclick = (event) => {
-      event.target.parentElement.classList.toggle('collapsing-code-block--open')
+      console.debug('onclick', event.target)
+      event.target.parentElement.querySelector('.collapsing-code-block').classList.toggle('collapsing-code-block--open')
     };
-    el.appendChild(button);
+    el.parentElement.appendChild(button);
   });
 }
 

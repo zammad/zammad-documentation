@@ -25,19 +25,17 @@ endpoints listed here.
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
      *(Third-Party; API client only, no "ready to use" App)*
 
-
 Authentication
 --------------
 
 Zammad supports three different authentication methods for its API.
-
 
 HTTP Basic Authentication (username/password)
    | The username / password must be provided as HTTP header in the HTTP call.
    | This authentication method can be disabled and may not be available in your
      system.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ curl -u {username}:{password} https://{fqdn}/{endpoint}
 
@@ -52,16 +50,15 @@ HTTP Token Authentication (access token)
    | This authentication method can be disabled and may not be available in your
      system.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ curl -H "Authorization: Token token={your_token}" https://{fqdn}/{endpoint}
-
 
 OAuth2 (token access)
    | The token must be provided as HTTP header in your calls.
    | This allows 3rd party applications to authenticate against Zammad.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ curl -H "Authorization: Bearer {your_token}" https://{fqdn}/{endpoint}
 
@@ -526,8 +523,6 @@ explicitly covered in this documentation:
 - Templates
 - Text module
 
-
-
 Search example
    ``GET``-Request sent: ``/api/v1/tickets/search?query=welcome``
 
@@ -653,7 +648,6 @@ Search example
             "create_article_sender": "Customer"
          }
       ]
-
 
 ``Full`` Parameter
    You can even extend the response by using the ``full`` parameter. Be aware
@@ -4320,7 +4314,6 @@ different to the ones for the endpoint search.
       ]
    }
 
-
 Condition Based Search
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4340,13 +4333,13 @@ So, how do I build such a condition based request?
   setup.
 - Search for the created condition, adjust the following examples to your needs:
 
-.. code-block:: ruby
+.. code-block:: irb
 
-   puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
+   >> puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
 
-.. code-block:: ruby
+.. code-block:: irb
 
-   puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
+   >> puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
 
 This leads to an output like the following:
 

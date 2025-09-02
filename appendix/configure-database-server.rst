@@ -19,35 +19,39 @@ Keep in mind that versions may differ from your setup - adapt where needed.
 
    .. tab:: Ubuntu / Debian
 
-      .. code-block::
+      .. code-block:: console
 
-         /etc/postgresql/{your version}/main/postgresql.conf
+         $ /etc/postgresql/{your version}/main/postgresql.conf
 
    .. tab:: CentOS / OpenSUSE
 
-      .. code-block::
+      .. code-block:: console
 
-         /var/lib/pgsql/data/postgresql.conf
+         $ /var/lib/pgsql/data/postgresql.conf
 
    .. tab:: other
 
       Can't find your configuration files?
       You can run the following command to get the path:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo -u postgres psql -c 'SHOW config_file'
 
 Adjust ``max_connections`` (mandatory)
    Zammad will take up to 200 connections by default, with below command you can raise this limit fairly high.
 
-   .. code-block:: sh
+   Raise maximum allowed number of connections:
 
-      # Raise maximum allowed number of connections
+   .. code-block:: console
+
       $ sed -i "/max_connections/c\max_connections = 2000" <postgresql-configuration-file>
 
-      # Apply changes by restarting postgresql and Zammad (in this order)
-      $ systemctl restart postgresql zammad
+   Apply changes by restarting postgresql and Zammad (in this order):
+
+   .. code-block:: console
+
+      $ sudo systemctl restart postgresql zammad
 
 Adjust PostgreSQL for bigger instances (optional)
    .. warning::
@@ -55,13 +59,26 @@ Adjust PostgreSQL for bigger instances (optional)
       Check below settings first and ensure your system is able to provide the requirements!
       Below settings are what we found to be useful, everything else is out of scope of this documentation!
 
-   .. code-block:: sh
+   Caching improvements:
 
-      # Caching improvements
+   .. code-block:: console
+
       $ sed -i "/shared_buffers/c\shared_buffers = 2GB" <postgresql-configuration-file>
+
+   .. code-block:: console
+
       $ sed -i "/temp_buffers/c\temp_buffers = 256MB" <postgresql-configuration-file>
+
+   .. code-block:: console
+
       $ sed -i "/work_mem/c\work_mem = 10MB" <postgresql-configuration-file>
+
+   .. code-block:: console
+
       $ sed -i "/max_stack_depth/c\max_stack_depth = 5MB" <postgresql-configuration-file>
 
-      # Apply changes by restarting postgresql and Zammad (in this order)
-      $ systemctl restart postgresql zammad
+   Apply changes by restarting postgresql and Zammad (in this order):
+
+   .. code-block:: console
+
+      $ sudo systemctl restart postgresql zammad

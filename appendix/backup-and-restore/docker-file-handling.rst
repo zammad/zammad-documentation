@@ -14,9 +14,9 @@ the directory and copy/move the files into it. The following example starts the
 **zammad-backup** container and copies *all* .gz files from the backup directory
 into the restore directory:
 
-.. code-block:: sh
+.. code-block:: console
 
-   docker compose run --rm zammad-backup bash -c "mkdir /var/tmp/zammad/restore; cp /var/tmp/zammad/*.gz /var/tmp/zammad/restore -v"
+   $ docker compose run --rm zammad-backup bash -c "mkdir /var/tmp/zammad/restore; cp /var/tmp/zammad/*.gz /var/tmp/zammad/restore -v"
 
 Now start the stack to execute the restore process.
 
@@ -28,9 +28,9 @@ Restore from Another Installation
 To **obtain** your backup files from another docker compose deployment, one way
 is to copy it to the host system with ``docker compose cp``:
 
-.. code-block::
+.. code-block:: console
 
-   docker compose cp zammad-backup:/var/tmp/zammad/ /path/to/your/host/directory/
+   $ docker compose cp zammad-backup:/var/tmp/zammad/ /path/to/your/host/directory/
 
 In case you are searching for your backup files from a package installation,
 have a look at the :doc:`/appendix/backup-and-restore/index` section. You don't
@@ -40,9 +40,9 @@ To **restore** the backup, place your files in a folder called ``restore``
 on the host system. This folder is mounted temporarily to ``/restore`` in
 the backup container. The directory then gets copied to the actual directory:
 
-.. code-block:: sh
+.. code-block:: console
 
-   docker compose run --rm -v /path/to/your/host/directory:/restore zammad-backup bash -c "cp -rv /restore /var/tmp/zammad/"
+   $ docker compose run --rm -v /path/to/your/host/directory:/restore zammad-backup bash -c "cp -rv /restore /var/tmp/zammad/"
 
 Now start the stack to execute the restore process.
 
@@ -74,9 +74,9 @@ sure to provide additional volumes for persistence (e.g. for their database).
          Deploy the container and provide the volume of **zammad-backup** and a
          port under which you want to access the web UI:
 
-         .. code-block:: sh
+         .. code-block:: console
 
-            docker run -v zammad-docker-compose_zammad-backup:/srv -p 8089:80 filebrowser/filebrowser
+            $ docker run -v zammad-docker-compose_zammad-backup:/srv -p 8089:80 filebrowser/filebrowser
 
       .. tab:: Via Portainer
 

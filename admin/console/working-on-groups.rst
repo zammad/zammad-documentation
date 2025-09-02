@@ -6,6 +6,6 @@ Working with Groups
 Find Group
 ----------
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Group.find_by(name: 'Users').follow_up_possible

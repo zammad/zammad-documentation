@@ -47,9 +47,9 @@ consider using the console over the browser version.
 
    .. tab:: Via browser
 
-      After installing Zammad and configuring your 
+      After installing Zammad and configuring your
       :doc:`webserver </getting-started/configure-webserver>`, navigate to your
-      Zammads FQDN in your browser and follow the migration wizard.
+      Zammad's FQDN in your browser and follow the migration wizard.
 
       Depending on the number of users, tickets and Zendesk plan this may take
       some while.
@@ -72,179 +72,205 @@ consider using the console over the browser version.
 
       .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
-      To prepare the migration, run the following commands
-         .. code-block:: ruby
-            :force:
+      Prepare the migration
+         Set variables for easier configuration. Replace the values in ``{}``
+         with your values:
 
-            # Set variables for easier settings
-            $ subdomain = '{zendesk url}'
-            $ email = '{zendesk admin email address}'
-            $ token = '{zendesk token}'
+         .. code-block:: irb
 
-            # Update Zammad settings for Zendesk import
-            $ Setting.set('import_zendesk_endpoint', "https://#{subdomain}/api/v2")
-            $ Setting.set('import_zendesk_endpoint_username', email)
-            $ Setting.set('import_zendesk_endpoint_key', token)
-            $ Setting.set('import_backend', 'zendesk')
-            $ Setting.set('import_mode', true)
+            >> subdomain = '{zendesk url}'
 
+         .. code-block:: irb
+
+            >> email = '{zendesk admin email address}'
+
+         .. code-block:: irb
+
+            >> token = '{zendesk token}'
+
+         Update Zammad settings for Zendesk import:
+
+         .. code-block:: irb
+
+            >> Setting.set('import_zendesk_endpoint', "https://#{subdomain}/api/v2")
+
+         .. code-block:: irb
+
+            >> Setting.set('import_zendesk_endpoint_username', email)
+
+         .. code-block:: irb
+
+            >> Setting.set('import_zendesk_endpoint_key', token)
+
+         .. code-block:: irb
+
+            >> Setting.set('import_backend', 'zendesk')
+
+         .. code-block:: irb
+
+            >> Setting.set('import_mode', true)
+
+      Dry run
          If you want to know if your configuration works in a dry run,
          run the following command:
 
-         .. code-block:: ruby
+         .. code-block:: irb
 
-            Sequencer.process('Import::Zendesk::ConnectionTest')
+            >> Sequencer.process('Import::Zendesk::ConnectionTest')
 
-      To start the actual migration, run the following commands
-         .. code-block:: ruby
-            :force:
+      Start the migration
+         To start the actual migration, run the following commands:
 
-            # That the actual job
-            $ job = ImportJob.create(name: 'Import::Zendesk')
-            $ AsyncImportJob.perform_later(job)
+         .. code-block:: irb
 
-         .. tip::
+            >> job = ImportJob.create(name: 'Import::Zendesk')
 
-            **🤓 Want to check the state of the migration?**
+         .. code-block:: irb
 
-            Running the following command in a rails console will provide
-            detailed state information of your migration.
+            >> AsyncImportJob.perform_later(job)
 
-            .. code-block:: ruby
+      Check status
+         Running the following command in a rails console will provide
+         detailed state information of your migration.
 
-               pp ImportJob.find_by(name: 'Import::Zendesk')
+         .. code-block:: irb
 
-            To give you an idea how the migration job state looks like, you can
-            use below tabs. As long as ``finished_at`` is ``nil``, the process
-            is still running.
+            >> pp ImportJob.find_by(name: 'Import::Zendesk')
 
-            .. tabs::
+         To give you an idea how the migration job state looks like, you can
+         use below tabs. As long as ``finished_at`` is ``nil``, the process
+         is still running.
 
-               .. tab:: Freshly started import
+         .. tabs::
 
-                  .. code-block:: ruby
+            .. tab:: Freshly started import
 
-                     #<ImportJob:0x0000000008274310
-                      id: 1,
-                      name: "Import::Zendesk",
-                      dry_run: false,
-                      payload: {},
-                      result:
-                       {"Organizations"=>
-                         {"skipped"=>0,
-                          "created"=>0,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>0,
-                          "total"=>100}},
-                      started_at: Mon, 03 Jan 2022 18:41:51 UTC +00:00,
-                      finished_at: nil,
-                      created_at: Mon, 03 Jan 2022 18:41:16 UTC +00:00,
-                      updated_at: Mon, 03 Jan 2022 18:43:32 UTC +00:00>
+               .. code-block:: text
+                  :class: no-copybutton
 
-               .. tab:: Import half way
+                  #<ImportJob:0x0000000008274310
+                     id: 1,
+                     name: "Import::Zendesk",
+                     dry_run: false,
+                     payload: {},
+                     result:
+                     {"Organizations"=>
+                        {"skipped"=>0,
+                        "created"=>0,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>0,
+                        "total"=>100}},
+                     started_at: Mon, 03 Jan 2022 18:41:51 UTC +00:00,
+                     finished_at: nil,
+                     created_at: Mon, 03 Jan 2022 18:41:16 UTC +00:00,
+                     updated_at: Mon, 03 Jan 2022 18:43:32 UTC +00:00>
 
-                  .. code-block:: ruby
+            .. tab:: Import half way
 
-                     #<ImportJob:0x000055ba3d9dbbb8
-                      id: 1,
-                      name: "Import::Zendesk",
-                      dry_run: false,
-                      payload: {},
-                      result:
-                       {"Groups"=>
-                         {"skipped"=>0,
-                          "created"=>3,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3,
-                          "total"=>3},
-                        "Organizations"=>
-                         {"skipped"=>0,
-                          "created"=>193,
-                          "updated"=>1,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>194,
-                          "total"=>194},
-                        "Users"=>
-                         {"skipped"=>0,
-                          "created"=>3352,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3352,
-                          "total"=>3352},
-                        "Tickets"=>
-                         {"skipped"=>0,
-                          "created"=>987,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>987,
-                          "total"=>1000}},
-                      started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
-                      finished_at: nil,
-                      created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
-                      updated_at: Tue, 04 Jan 2022 12:12:52 UTC +00:00>
+               .. code-block:: text
+                  :class: no-copybutton
 
-               .. tab:: Finished import
+                  #<ImportJob:0x000055ba3d9dbbb8
+                     id: 1,
+                     name: "Import::Zendesk",
+                     dry_run: false,
+                     payload: {},
+                     result:
+                     {"Groups"=>
+                        {"skipped"=>0,
+                        "created"=>3,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3,
+                        "total"=>3},
+                     "Organizations"=>
+                        {"skipped"=>0,
+                        "created"=>193,
+                        "updated"=>1,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>194,
+                        "total"=>194},
+                     "Users"=>
+                        {"skipped"=>0,
+                        "created"=>3352,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3352,
+                        "total"=>3352},
+                     "Tickets"=>
+                        {"skipped"=>0,
+                        "created"=>987,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>987,
+                        "total"=>1000}},
+                     started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
+                     finished_at: nil,
+                     created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
+                     updated_at: Tue, 04 Jan 2022 12:12:52 UTC +00:00>
 
-                  .. code-block:: ruby
+            .. tab:: Finished import
 
-                     #<ImportJob:0x0000561da0def350
-                      id: 1,
-                      name: "Import::Zendesk",
-                      dry_run: false,
-                      payload: {},
-                      result:
-                       {"Groups"=>
-                         {"skipped"=>0,
-                          "created"=>3,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3,
-                          "total"=>3},
-                        "Organizations"=>
-                         {"skipped"=>0,
-                          "created"=>193,
-                          "updated"=>1,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>194,
-                          "total"=>194},
-                        "Users"=>
-                         {"skipped"=>0,
-                          "created"=>3352,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3352,
-                          "total"=>3352},
-                        "Tickets"=>
-                         {"skipped"=>0,
-                          "created"=>4714,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>1,
-                          "deactivated"=>0,
-                          "sum"=>4715,
-                          "total"=>4715}},
-                      started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
-                      finished_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00,
-                      created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
-                      updated_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00>
+               .. code-block:: text
+                  :class: no-copybutton
+
+                  #<ImportJob:0x0000561da0def350
+                     id: 1,
+                     name: "Import::Zendesk",
+                     dry_run: false,
+                     payload: {},
+                     result:
+                     {"Groups"=>
+                        {"skipped"=>0,
+                        "created"=>3,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3,
+                        "total"=>3},
+                     "Organizations"=>
+                        {"skipped"=>0,
+                        "created"=>193,
+                        "updated"=>1,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>194,
+                        "total"=>194},
+                     "Users"=>
+                        {"skipped"=>0,
+                        "created"=>3352,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3352,
+                        "total"=>3352},
+                     "Tickets"=>
+                        {"skipped"=>0,
+                        "created"=>4714,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>1,
+                        "deactivated"=>0,
+                        "sum"=>4715,
+                        "total"=>4715}},
+                     started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
+                     finished_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00,
+                     created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
+                     updated_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00>
 
       .. include:: /migration/includes/commands-after-migration.include.rst
 

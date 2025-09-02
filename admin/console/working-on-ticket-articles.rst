@@ -21,7 +21,14 @@ compliance. (Internal notes *will never* affect SLA calculations.)
 
    Changing this setting will disable the option to delete public notes.
 
-.. code-block:: ruby
+Enable SLA to count notes as communication:
 
-   >> Ticket::Article::Type.find_by(name:'note').update!(communication: true)    # Enable SLA to count notes as communication
-   >> Ticket::Article::Type.find_by(name:'note').update!(communication: false)   # Enable SLA to ignore notes as communication
+.. code-block:: irb
+
+   >> Ticket::Article::Type.find_by(name:'note').update!(communication: true)
+
+Enable SLA to ignore notes as communication:
+
+.. code-block:: irb
+
+   >> Ticket::Article::Type.find_by(name:'note').update!(communication: false)

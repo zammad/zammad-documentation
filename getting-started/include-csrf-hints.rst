@@ -17,7 +17,7 @@
       Within your virtual host configuration just above the first
       ``ProxyPass`` directive insert:
 
-      .. code-block::
+      .. code-block:: text
 
          RequestHeader set X_FORWARDED_PROTO 'https'
          RequestHeader set X-Forwarded-Ssl on

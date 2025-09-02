@@ -8,10 +8,10 @@ Please note below Kayako specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
-   * | Differential migrations are **not** supported!
-     | The general suggestion is to run a test import before to learn
-       how long the migration is going to take.
-   * Selfhosted installations (Kayako classic) *are not* supported.
+   * Differential migrations are **not** supported!
+     The general suggestion is to run a test import before to learn
+     how long the migration is going to take.
+   * Self hosted installations (Kayako classic) are **not** supported.
    * The following ticket field customizations are being ignored
      (affects "Scale" plan):
 
@@ -26,7 +26,6 @@ These are additional limitations to the
    * User passwords are not migrated and will require the user to use the
      :admin-docs:`password reset link </settings/security/base.html#lost-password>`
      on the login page.
-
 
 Prerequisites
 -------------
@@ -75,180 +74,203 @@ consider using the console over the browser version.
 
       .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
-      To prepare the migration, run the following commands
-         .. code-block:: ruby
-            :force:
+      Prepare the migration
+         Set variables for easier configuration. Replace the values in ``{}``
+         with your values:
 
-            # Set variables for easier settings
-            $ subdomain = '{kayako subdomain}.kayako.com'
-            $ email = '{kayako admin email address}'
-            $ password = '{kayako admin password}'
+         .. code-block:: irb
 
-            # Update Zammad settings for Kayako import
-            $ Setting.set('import_kayako_endpoint', "https://#{subdomain}/api/v1")
-            $ Setting.set('import_kayako_endpoint_username', email)
-            $ Setting.set('import_kayako_endpoint_password', password)
-            $ Setting.set('import_backend', 'kayako')
-            $ Setting.set('import_mode', true)
+            >> subdomain = '{kayako subdomain}.kayako.com'
 
+         .. code-block:: irb
 
+            >> email = '{kayako admin email address}'
+
+         .. code-block:: irb
+
+            >> password = '{kayako admin password}'
+
+         Update Zammad settings for Kayako import:
+
+         .. code-block:: irb
+
+            >> Setting.set('import_kayako_endpoint', "https://#{subdomain}/api/v1")
+
+         .. code-block:: irb
+
+            >> Setting.set('import_kayako_endpoint_username', email)
+
+         .. code-block:: irb
+
+            >> Setting.set('import_kayako_endpoint_password', password)
+
+         .. code-block:: irb
+
+            >> Setting.set('import_backend', 'kayako')
+
+         .. code-block:: irb
+
+            >> Setting.set('import_mode', true)
+
+      Dry run:
          If you want to know if your configuration works in a dry run,
          run the following command:
 
-         .. code-block:: ruby
+         .. code-block:: irb
 
-            Sequencer.process('Import::Kayako::ConnectionTest')
+            >> Sequencer.process('Import::Kayako::ConnectionTest')
 
-      To start the actual migration, run the following commands
-         .. code-block:: ruby
-            :force:
+      Start the migration
+         .. code-block:: irb
 
-            # That the actual job
-            $ job = ImportJob.create(name: 'Import::Kayako')
-            $ AsyncImportJob.perform_later(job)
+            >> job = ImportJob.create(name: 'Import::Kayako')
 
-         .. tip::
+         .. code-block:: irb
 
-            **🤓 Want to check the state of the migration?**
+            >> AsyncImportJob.perform_later(job)
 
-            Running the following command in a rails console will provide
-            detailed state information of your migration.
+      Check status
+         Running the following command in a rails console will provide detailed
+         state information of your migration.
 
-            .. code-block:: ruby
+         .. code-block:: irb
 
-               pp ImportJob.find_by(name: 'Import::Kayako')
+            >> pp ImportJob.find_by(name: 'Import::Kayako')
 
-            To give you an idea how the migration job state looks like, you can
-            use below tabs. As long as ``finished_at`` is ``nil``, the process
-            is still running.
+         To give you an idea how the migration job state looks like, you can
+         use below tabs. As long as ``finished_at`` is ``nil``, the process
+         is still running.
 
-            .. tabs::
+         .. tabs::
 
-               .. tab:: Freshly started import
+            .. tab:: Freshly started import
 
-                  .. code-block:: ruby
+               .. code-block:: text
+                  :class: no-copybutton
 
-                     #<ImportJob:0x0000000008274310
-                      id: 1,
-                      name: "Import::Kayako",
-                      dry_run: false,
-                      payload: {},
-                      result:
-                       {"Organizations"=>
-                         {"skipped"=>0,
-                          "created"=>0,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>0,
-                          "total"=>100}},
-                      started_at: Mon, 03 Jan 2022 18:41:51 UTC +00:00,
-                      finished_at: nil,
-                      created_at: Mon, 03 Jan 2022 18:41:16 UTC +00:00,
-                      updated_at: Mon, 03 Jan 2022 18:43:32 UTC +00:00>
+                  #<ImportJob:0x0000000008274310
+                     id: 1,
+                     name: "Import::Kayako",
+                     dry_run: false,
+                     payload: {},
+                     result:
+                     {"Organizations"=>
+                        {"skipped"=>0,
+                        "created"=>0,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>0,
+                        "total"=>100}},
+                     started_at: Mon, 03 Jan 2022 18:41:51 UTC +00:00,
+                     finished_at: nil,
+                     created_at: Mon, 03 Jan 2022 18:41:16 UTC +00:00,
+                     updated_at: Mon, 03 Jan 2022 18:43:32 UTC +00:00>
 
-               .. tab:: Import half way
+            .. tab:: Import half way
 
-                  .. code-block:: ruby
+               .. code-block:: text
+                  :class: no-copybutton
 
-                     #<ImportJob:0x000055ba3d9dbbb8
-                      id: 1,
-                      name: "Import::Kayako",
-                      dry_run: false,
-                      payload: {},
-                      result:
-                       {"Groups"=>
-                         {"skipped"=>0,
-                          "created"=>3,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3,
-                          "total"=>3},
-                        "Organizations"=>
-                         {"skipped"=>0,
-                          "created"=>193,
-                          "updated"=>1,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>194,
-                          "total"=>194},
-                        "Users"=>
-                         {"skipped"=>0,
-                          "created"=>3352,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3352,
-                          "total"=>3352},
-                        "Tickets"=>
-                         {"skipped"=>0,
-                          "created"=>987,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>987,
-                          "total"=>1000}},
-                      started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
-                      finished_at: nil,
-                      created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
-                      updated_at: Tue, 04 Jan 2022 12:12:52 UTC +00:00>
+                  #<ImportJob:0x000055ba3d9dbbb8
+                     id: 1,
+                     name: "Import::Kayako",
+                     dry_run: false,
+                     payload: {},
+                     result:
+                     {"Groups"=>
+                        {"skipped"=>0,
+                        "created"=>3,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3,
+                        "total"=>3},
+                     "Organizations"=>
+                        {"skipped"=>0,
+                        "created"=>193,
+                        "updated"=>1,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>194,
+                        "total"=>194},
+                     "Users"=>
+                        {"skipped"=>0,
+                        "created"=>3352,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3352,
+                        "total"=>3352},
+                     "Tickets"=>
+                        {"skipped"=>0,
+                        "created"=>987,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>987,
+                        "total"=>1000}},
+                     started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
+                     finished_at: nil,
+                     created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
+                     updated_at: Tue, 04 Jan 2022 12:12:52 UTC +00:00>
 
-               .. tab:: Finished import
+            .. tab:: Finished import
 
-                  .. code-block:: ruby
+               .. code-block:: text
+                  :class: no-copybutton
 
-                     #<ImportJob:0x0000561da0def350
-                      id: 1,
-                      name: "Import::Kayako",
-                      dry_run: false,
-                      payload: {},
-                      result:
-                       {"Groups"=>
-                         {"skipped"=>0,
-                          "created"=>3,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3,
-                          "total"=>3},
-                        "Organizations"=>
-                         {"skipped"=>0,
-                          "created"=>193,
-                          "updated"=>1,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>194,
-                          "total"=>194},
-                        "Users"=>
-                         {"skipped"=>0,
-                          "created"=>3352,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>0,
-                          "deactivated"=>0,
-                          "sum"=>3352,
-                          "total"=>3352},
-                        "Tickets"=>
-                         {"skipped"=>0,
-                          "created"=>4714,
-                          "updated"=>0,
-                          "unchanged"=>0,
-                          "failed"=>1,
-                          "deactivated"=>0,
-                          "sum"=>4715,
-                          "total"=>4715}},
-                      started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
-                      finished_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00,
-                      created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
-                      updated_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00>
+                  #<ImportJob:0x0000561da0def350
+                     id: 1,
+                     name: "Import::Kayako",
+                     dry_run: false,
+                     payload: {},
+                     result:
+                     {"Groups"=>
+                        {"skipped"=>0,
+                        "created"=>3,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3,
+                        "total"=>3},
+                     "Organizations"=>
+                        {"skipped"=>0,
+                        "created"=>193,
+                        "updated"=>1,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>194,
+                        "total"=>194},
+                     "Users"=>
+                        {"skipped"=>0,
+                        "created"=>3352,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>0,
+                        "deactivated"=>0,
+                        "sum"=>3352,
+                        "total"=>3352},
+                     "Tickets"=>
+                        {"skipped"=>0,
+                        "created"=>4714,
+                        "updated"=>0,
+                        "unchanged"=>0,
+                        "failed"=>1,
+                        "deactivated"=>0,
+                        "sum"=>4715,
+                        "total"=>4715}},
+                     started_at: Tue, 04 Jan 2022 11:37:38 UTC +00:00,
+                     finished_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00,
+                     created_at: Tue, 04 Jan 2022 11:37:36 UTC +00:00,
+                     updated_at: Tue, 04 Jan 2022 14:30:57 UTC +00:00>
 
       .. include:: /migration/includes/commands-after-migration.include.rst
 

@@ -23,15 +23,16 @@ If you are experiencing this issue and installed Elasticsearch according to
 Elasticsearch is working correctly.
 
 Step 1: Verify Elasticsearch is running
-   .. code-block:: sh
+   Check elasticsearch status:
 
-      # check elasticsearch status
+   .. code-block:: console
+
       $ systemctl status elasticsearch
 
    This should output something like the following, make sure it says
    ``Active: active (running)``:
 
-   .. code-block:: sh
+   .. code-block:: text
       :emphasize-lines: 3
 
       ● elasticsearch.service - Elasticsearch
@@ -42,11 +43,13 @@ Step 1: Verify Elasticsearch is running
 
    Otherwise, try starting it and check again:
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      # restart elasticsearch and check status
-      $ systemctl restart elasticsearch
-      $ systemctl status elasticsearch
+      $ sudo systemctl restart elasticsearch
+
+   .. code-block:: console
+
+      $ sudo systemctl status elasticsearch
 
    .. warning::
 
@@ -56,9 +59,10 @@ Step 1: Verify Elasticsearch is running
 
 
 Step 2: Verify the ingest-attachment plugin is installed correctly
-   .. code-block:: sh
+   List installed elasticsearch plugins:
 
-      # list installed elasticsearch plugins
+   .. code-block:: console
+
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
    The output should include ``ingest-attachment``.
@@ -66,31 +70,39 @@ Step 2: Verify the ingest-attachment plugin is installed correctly
    Otherwise, try reinstalling the ``ingest-attachment`` plugin and check
    again:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin remove ingest-attachment
+
+   .. code-block:: console
+
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-      $ systemctl restart elasticsearch
+   .. code-block:: console
+
+      $ sudo systemctl restart elasticsearch
+
+   .. code-block:: console
 
       $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
 
 Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
-   .. code-block:: sh
+   Without specifying CPU cores to use:
 
-      # force zammad to drop and rebuild the elasticsearch indexes
+   .. code-block:: console
+
       $ zammad run rake zammad:searchindex:rebuild
 
-Optionally, you can specify a number of CPU cores which are used for rebuilding
-the searchindex, as in the following example with 8 cores:
+   With specifying the amount of CPU cores to use (example: 8):
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ zammad run rake zammad:searchindex:rebuild[8]
 
    This should start rebuilding the indexes and output it's progress:
 
-   .. code-block:: sh
+   .. code-block:: text
+      :class: no-copybutton
 
       Dropping indexes... done.
       Deleting pipeline... done.

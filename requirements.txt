@@ -7,3 +7,4 @@ sphinxcontrib-devhelp<1.0.6
 sphinxcontrib-htmlhelp<2.0.5
 sphinxcontrib-serializinghtml<1.1.10
 sphinxcontrib-qthelp<1.0.7
+sphinx-copybutton>=0.5.2
