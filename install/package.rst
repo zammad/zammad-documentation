@@ -265,8 +265,170 @@ Install Zammad
 
          $ sudo chmod -R 755 /opt/zammad/public/
 
-.. include:: /install/includes/firewall-and-selinux.rst
+Firewall & SELinux
+------------------
 
-.. include:: /install/includes/manage-services.rst
+Some parts of these steps may not apply to you, feel free to skip them!
 
-.. include:: /install/includes/next-steps.rst
+SELinux
+^^^^^^^
+.. note::
+   The commands below only work on Ubuntu, Debian and CentOS. If you use a
+   different distribution, please have a look at their documentation.
+
+Allow nginx or apache to access public files of Zammad and communicate:
+
+.. code-block:: console
+
+   $ sudo chcon -Rv --type=httpd_sys_content_t /opt/zammad/public/
+
+.. code-block:: console
+
+   $ sudo setsebool httpd_can_network_connect on -P
+
+.. code-block:: console
+
+   $ sudo semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
+
+.. code-block:: console
+
+   $ sudo restorecon -Rv /opt/zammad/public/
+
+.. code-block:: console
+
+   $ sudo chmod -R a+r /opt/zammad/public/
+
+Firewall
+^^^^^^^^
+
+Ensure to open ports ``80`` and ``443`` (TCP & UDP) beside of the ports you
+need. Below you can find a few examples for different distributions.
+If you are using a different distribution, please have a look at their
+documentation.
+
+Please note that the examples below only cover the distribution's default
+firewall. It may not cover your case.
+
+.. tabs::
+
+   .. tab:: Ubuntu
+
+      Open Port 80 and 443 on your Firewall:
+
+      .. code-block:: console
+
+         $ sudo ufw allow 80
+
+      .. code-block:: console
+
+         $ sudo ufw allow 443
+
+      .. code-block:: console
+
+         $ sudo ufw reload
+
+   .. tab:: Debian
+
+      .. warning::
+
+         We're covering ``nftables`` in this part - iptables is discouraged
+         starting from Debian 10 (Buster).
+         Our example uses the ``input`` chain, yours may be a different one!
+
+      Add the following lines to ``/etc/nftables.conf`` or your specific rule
+      file. Ensure to add these lines to your input-chain.
+
+      Open Port 80 and 443 for Zammad:
+
+      .. code-block::
+
+         $ sudo tcp dport { http, https } accept
+
+      .. code-block::
+
+         $ sudo udp dport { http, https } accept
+
+      The result should look like the following. Keep in mind that your
+      environment could require different / more rules.
+
+      .. code-block:: text
+
+         #!/usr/local/sbin/nft -f
+         flush ruleset
+
+         table inet filter {
+            chain input {
+               type filter hook input priority 0; policy drop;
+               ct state established,related accept
+               tcp dport ssh log accept
+               tcp dport { http, https } accept
+               udp dport { http, https } accept
+            }
+
+            chain forward {
+               type filter hook forward priority 0; policy accept;
+            }
+
+            chain output {
+               type filter hook output priority 0; policy accept;
+            }
+         }
+
+      To load your new rules, simply run ``sudo systemctl reload nftables``.
+
+   .. tab:: CentOS, RHEL, openSUSE, SLES
+
+      Open Port 80 and 443 on your Firewall:
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=http --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=https --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --reload
+
+Manage Services of Zammad
+-------------------------
+
+Zammad uses three services. These services can be managed individually or all at
+once by using the parent **zammad**.
+
+- **zammad**: includes the services below
+
+  - **zammad-web**: internal puma server (relevant for displaying the web app)
+  - **zammad-worker**: background worker - relevant for all delayed- and background jobs
+  - **zammad-websocket**: websocket server for session related information
+
+Manage the services with ``systemctl``'s commands ``start``, ``restart``,
+``stop``, ``status``. Example to start Zammad with all sub-services:
+
+.. code-block:: console
+
+   $ sudo systemctl start zammad
+
+To stop or restart a service or to check its status, adjust the command as
+mentioned above.
+
+Next Steps
+----------
+
+With this Zammad technically is ready to go.
+However, you'll need to follow the following further steps to access
+Zammad's Web-UI and getting started with it.
+
+   #. :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
+   #. :doc:`/getting-started/configure-webserver`
+   #. :doc:`/getting-started/first-steps`
+   #. You may also find Zammad's :doc:`/admin/console` commands useful
+
+If you expect usage with 5 agents or more you may also want to consider the
+following pages.
+
+   * :doc:`/appendix/environment-variables`
+   * :doc:`/appendix/configure-database-server`
+
