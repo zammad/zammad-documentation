@@ -281,6 +281,12 @@ Adjusting the Webserver Configuration
 
                   $ a2enmod proxy proxy_html proxy_http proxy_wstunnel headers ssl
 
+               If you want to run Zammad under HTTP/2, you will also need
+
+               .. code-block:: console
+
+                  $ a2enmod h2 proxy_http2 mpm_event
+
                .. code-block:: console
 
                   $ sudo systemctl restart apache2
