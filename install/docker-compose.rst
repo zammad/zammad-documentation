@@ -25,8 +25,11 @@ Prerequisites
 
      $ sudo sysctl -w vm.max_map_count=262144
 
-Deployment with Portainer
--------------------------
+Deployment
+----------
+
+With Portainer
+^^^^^^^^^^^^^^
 
 The easiest way to get Zammad running is via a graphical docker UI. We recommend
 `Portainer <https://www.portainer.io/>`_.
@@ -66,8 +69,8 @@ Step 3: Deploy the Stack
    host and port, e.g. ``http://localhost:8080/``.
 
 
-Deployment with Docker-Compose
-------------------------------
+With Docker-Compose
+^^^^^^^^^^^^^^^^^^^
 
 Step 1: Clone the GitHub Repo
    .. code-block:: console
@@ -165,7 +168,7 @@ should be done via one of the following methods:
 
       Directly execute a specific command:
 
-      .. code-block::console
+      .. code-block:: console
 
          $ bundle exec rails r '...your rails command here...'
 
