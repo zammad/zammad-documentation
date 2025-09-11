@@ -12,26 +12,20 @@ requirements for your clients. This ensures that Zammad works as expected.
 1.1 Supported Browsers
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: Zammad/Browser version compatibility
-   :header-rows: 1
-   :widths: 20, 30
+Because Zammad is a web application, only an up-to-date browser is needed. The
+following browsers are supported in their latest stable version:
 
-   * - Browser
-     - Remarks
-   * - Firefox 78+
-     - (ESR)
-   * - (Google) Chrome 83+
-     - This also applies for all Chromium based Browsers like Microsoft Edge
-   * - Opera 69+
-     - (based on Chromium 83)
-   * - Safari 14.1+
-     -
+- Firefox
+- Chrome (and Chromium-based)
+- Opera
+- Safari
 
-Please note that Zammad heavily uses Javascript which makes it a hard
-requirement. Some browser addons that hook into page content may interfere with
-Zammad's function which is not a bug.
-For example the Google Chrome translation module is known to do odd things,
-especially to state names. Use Zammad's internal translations instead.
+This does not mean that Zammad will not work with other browsers or older
+versions, just that we do not test against or provide support for them.
+
+The communication between client and server is based on web sockets. Some
+firewalls may filter these connections. This may lead to decreased browser
+performance.
 
 1.2 Network Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^
