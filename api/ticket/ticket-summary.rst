@@ -17,7 +17,7 @@ summary happen in a single operation:
 
 Using ``GET`` would be incorrect since the call may also create data. If you
 want a summary to exist, call the endpoint; if it's not ready yet, retry after
-at least 30 seconds (depending on your AI provider and model).
+at least 30 seconds.
 
 Sample response if the generation of a new summary was just triggered by the
 request:
