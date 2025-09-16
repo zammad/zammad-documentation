@@ -6,14 +6,18 @@ Show/Trigger
 
 Required permission: ``ticket.agent``
 
-``POST``-Request sent: ``/api/v1/tickets/{ticket id}/enqueue_summarize``
+``POST``-Request sent: ``/api/v1/tickets/{ticket id}/summarize``
 
-The following ``POST`` request fetches an existing summary, if there is one
-available in the ticket. If there is no summary available or the ticket was
-changed after the existing summary was created, a new summary is triggered.
-In such a case, you won't get a response with the summary. To get a summary, you
-have to re-send the request with a small delay considering the AI job may take
-a few seconds.
+The ticket summarize endpoint uses ``POST`` because creating and fetching the
+summary happen in a single operation:
+
+- If a summary exists, it is returned.
+- If a summary does not exist, creation is triggered in the background
+  (async job).
+
+Using ``GET`` would be incorrect since the call may also create data. If you
+want a summary to exist, call the endpoint; if it's not ready yet, retry after
+at least 30 seconds (depending on your AI provider and model).
 
 Sample response if the generation of a new summary was just triggered by the
 request:
@@ -28,7 +32,7 @@ request:
    }
 
 Sample response for an existing summary (e.g. for the same ticket like above
-after waiting a few seconds):
+after waiting until creation has finished):
 
 .. code-block:: json
    :force:
