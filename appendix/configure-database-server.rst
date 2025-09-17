@@ -44,22 +44,16 @@ Adjust ``max_connections`` (mandatory)
 
    Determine Value
       To help you determine a number, Zammad ships a function to calculate a
-      suggestion. If executed, it asks you to input some integer values which
-      are the base for the calculation.
+      suggestion. If executed, it asks you to input some integer values and
+      additionally uses internally known values for the calculation. Be aware
+      that the suggestion is instance specific. That means you must run the
+      calculation on the system you want to adjust the ``max_connection`` value.
 
       Run it by using the command:
 
       .. code-block:: console
 
          $ rake zammad:db:max_connections
-
-      As an alternative, these values can be provided as environment variables.
-      In case they are set, the function bypasses the interactive input and just
-      calculates the suggestion. The environment variables are:
-
-      - ``ZAMMAD_MAX_CONNECTIONS_WEB_SERVERS``
-      - ``ZAMMAD_MAX_CONNECTIONS_CONCURRENT_CRONJOBS``
-      - ``ZAMMAD_MAX_CONNECTIONS_CONCURRENT_MANUAL``
 
    Adjust Value
       Raise the maximum allowed number of connections:
