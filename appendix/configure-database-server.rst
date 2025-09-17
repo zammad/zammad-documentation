@@ -39,19 +39,34 @@ Keep in mind that versions may differ from your setup - adapt where needed.
          $ sudo -u postgres psql -c 'SHOW config_file'
 
 Adjust ``max_connections`` (mandatory)
-   Zammad will take up to 200 connections by default, with below command you can raise this limit fairly high.
+   Zammad uses up to 200 connections by default. Depending on your setup
+   and load, you may want to change this value.
 
-   Raise maximum allowed number of connections:
+   Determine Value
+      To help you determine a number, Zammad ships a function to calculate a
+      suggestion. If executed, it asks you to input some integer values and
+      additionally uses internally known values for the calculation. Be aware
+      that the suggestion is instance specific. That means you must run the
+      calculation on the system you want to adjust the ``max_connection`` value.
 
-   .. code-block:: console
+      Run it by using the command:
 
-      $ sed -i "/max_connections/c\max_connections = 2000" <postgresql-configuration-file>
+      .. code-block:: console
 
-   Apply changes by restarting postgresql and Zammad (in this order):
+         $ rake zammad:db:max_connections
 
-   .. code-block:: console
+   Adjust Value
+      Raise the maximum allowed number of connections:
 
-      $ sudo systemctl restart postgresql zammad
+      .. code-block:: console
+
+         $ sed -i "/max_connections/c\max_connections = 2000" <postgresql-configuration-file>
+
+      Apply changes by restarting postgresql and Zammad (in this order):
+
+      .. code-block:: console
+
+         $ sudo systemctl restart postgresql zammad
 
 Adjust PostgreSQL for bigger instances (optional)
    .. warning::
