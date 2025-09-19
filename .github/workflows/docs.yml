@@ -59,7 +59,7 @@ jobs:
       shell: bash -eux {0}
       run: |
         python -m pip install --upgrade --no-cache-dir 'rstcheck[sphinx]<=6.1.0'
-        rstcheck --warn-unknown-settings --recursive .
+        rstcheck --warn-unknown-settings --recursive **/*.rst
 
     # Runs only on Pull Requests and if they contain changes.
     - name: Check for Outstanding Code Comments
