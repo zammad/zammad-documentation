@@ -170,12 +170,12 @@ Add Repository
          .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
+               gpg --dearmor | sudo tee /usr/share/keyrings/pkgr-zammad-keyring.gpg> /dev/null
 
       Debian 11
          .. code-block:: console
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
+            $ echo "deb [signed-by=/usr/share/keyrings/pkgr-zammad-keyring.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       Debian 12
@@ -189,7 +189,17 @@ Add Repository
             URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
             Suites: 12
             Components: main
-            Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+            Signed-By: /usr/share/keyrings/pkgr-zammad-keyring.gpg" | \
+            sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
+
+      Debian 13
+         .. code-block:: console
+
+            $ printf "Types: deb
+            URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/debian
+            Suites: 13
+            Components: main
+            Signed-By: /usr/share/keyrings/pkgr-zammad-keyring.gpg" | \
             sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. tab:: OpenSUSE / SLES
