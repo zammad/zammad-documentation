@@ -3,13 +3,13 @@ Install with Docker
 
 .. include:: /install/includes/hosted-services.rst
 
-Zammad can be deployed using Docker-Compose. You can even use
-graphical docker front ends like
+Zammad can be deployed using Docker Compose. You can even use
+graphical Docker front ends like
 `Portainer <https://www.portainer.io/>`_.
 
 .. hint::
 
-   We do not provide support in terms of Docker (-Compose) or Portainer specific
+   We do not provide support in terms of Docker (Compose) or Portainer specific
    problems. If you choose to run Zammad via Docker, support is only provided
    for the Zammad application.
 
@@ -31,7 +31,7 @@ Deployment
 With Portainer
 ^^^^^^^^^^^^^^
 
-The easiest way to get Zammad running is via a graphical docker UI. We recommend
+The easiest way to get Zammad running is via a graphical Docker UI. We recommend
 `Portainer <https://www.portainer.io/>`_.
 For installation instructions, check out
 `Portainer's documentation <https://docs.portainer.io/>`_.
@@ -52,7 +52,7 @@ Step 2: Build From Repository
    - **Repository reference**: ``refs/heads/master``
    - **Compose path**: ``docker-compose.yml`` (default)
 
-   In some cases, our default environment is not what a Docker-Compose user is
+   In some cases, our default environment is not what a Docker Compose user is
    looking for. You can customize the stack using pre-defined scenarios and
    adjust environment variables. Jump to the
    :ref:`the customization section <customizing-stack>` below to find more
@@ -65,11 +65,11 @@ Step 3: Deploy the Stack
    Finally, click the **Deploy the stack** button. The first time, it may take
    some time until the Docker images are fetched.
 
-   After the stack is ready, you can access Zammad via the configured docker
+   After the stack is ready, you can access Zammad via the configured Docker
    host and port, e.g. ``http://localhost:8080/``.
 
 
-With Docker-Compose
+With Docker Compose
 ^^^^^^^^^^^^^^^^^^^
 
 Step 1: Clone the GitHub Repo
@@ -82,7 +82,7 @@ Step 1: Clone the GitHub Repo
    `the releases page <https://github.com/zammad/zammad-docker-compose/releases>`_.
 
 Step 2: Adjust Environment as Needed
-   In some cases, our default environment is not what a docker-compose user is
+   In some cases, our default environment is not what a Docker Compose user is
    looking for. You can customize the stack using pre-defined scenarios and
    adjust environment variables. Jump to the
    :ref:`customization section <customizing-stack>` below to find more
@@ -101,7 +101,7 @@ Step 3: Start the stack
    Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
    section.
 
-   After the stack is ready, you can access Zammad via the configured docker
+   After the stack is ready, you can access Zammad via the configured Docker
    host and port, e.g. ``http://localhost:8080/``.
 
 Exposing the Stack via HTTPS
@@ -115,7 +115,7 @@ protocol. To achieve that without modifying the Zammad stack, you can:
 - Use a cloudflare tunnel, which provides SSL termination.
 
 Both scenarios are covered in the
-:doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
+:doc:`Docker Compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
 .. _customizing-stack:
 
@@ -124,13 +124,13 @@ Customizing the Zammad Stack
 
 The Zammad stack can be customized by loading additional scenario files for
 common use cases. For example, you can deploy the stack with an included Nginx
-Proxy Manager (NPM) or with disabled Postgres or Elasticsearch services, in case
+Proxy Manager (NPM) or with disabled PostgreSQL or Elasticsearch services, in case
 you already have these services running.
 
-Please see the :doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
+Please see the :doc:`Docker Compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
 To adjust the stack and settings, use
-:doc:`docker specific environment variables </appendix/environment-variables>`.
+:doc:`Docker specific environment variables </appendix/environment-variables>`.
 
 .. toctree::
    :hidden:
@@ -144,7 +144,7 @@ To adjust the stack and settings, use
 How to Run Commands in the Stack
 --------------------------------
 
-The docker entrypoint script sets up environment variables required by Zammad
+The Docker entrypoint script sets up environment variables required by Zammad
 to function properly. That is why calling ``rails`` or ``rake`` on the console
 should be done via one of the following methods:
 
@@ -153,14 +153,14 @@ should be done via one of the following methods:
    .. tab:: Via Portainer GUI
 
       In your Portainer GUI, go to the container view and select the running
-      rails container from your Zammad stack. Click on the **Exec Console**
+      Rails container from your Zammad stack. Click on the **Exec Console**
       icon in the "Quick Actions" column and on the **Connect** button.
 
       .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
          :alt:
          :width: 70%
 
-      Run the interactive rails console by executing:
+      Run the interactive Rails console by executing:
 
       .. code-block:: console
 
@@ -180,7 +180,7 @@ should be done via one of the following methods:
 
          $ docker compose run --rm zammad-railsserver bundle exec rails r '...your rails command here...'
 
-      Run the interactive rails console to manually enter rails commands:
+      Run the interactive Rails console to manually enter Rails commands:
 
       .. code-block:: console
 
@@ -192,8 +192,8 @@ should be done via one of the following methods:
 
          $ docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
 
-      If you need to retrieve information from the rails server, you can place
-      for example ``pp`` (pretty print) in front of your rails command. This
+      If you need to retrieve information from the Rails server, you can place
+      for example ``pp`` (pretty print) in front of your Rails command. This
       leads to an output in your terminal.
 
 Backup & Restore

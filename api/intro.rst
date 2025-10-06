@@ -15,15 +15,15 @@ Please note that these clients may not provide access to all available
 endpoints listed here.
 
    * `Ruby Client <https://github.com/zammad/zammad-api-client-ruby>`_
-     *(Official)*
+     *(official)*
    * `PHP Client <https://github.com/zammad/zammad-api-client-php>`_
-     *(Official)*
-   * `Python Client <https://pypi.org/project/zammad-py/>`_ *(Third-Party)*
-   * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(Third-Party)*
+     *(official)*
+   * `Python Client <https://pypi.org/project/zammad-py/>`_ *(third party)*
+   * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(third party)*
    * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_
-     *(Third-Party)*
+     *(third party)*
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
-     *(Third-Party; API client only, no "ready to use" App)*
+     *(third party; API client only, no "ready to use" app)*
 
 Authentication
 --------------

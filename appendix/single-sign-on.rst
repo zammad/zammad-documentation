@@ -28,7 +28,7 @@ so that anyone with an account on your local intranet will
 
 .. note:: If you *don't* have this IT infrastructure
    but still want one-click login,
-   see :admin-docs:`Third-Party Authentication </settings/security.html#third-party-applications>`
+   see :admin-docs:`Third Party Authentication </settings/security.html#third-party-applications>`
    for alternatives.
 
 How Does it Work?
@@ -495,7 +495,7 @@ Step 3: Enable SSO in Zammad
 ----------------------------
 
 Next, enable "Authentication via SSO" in Zammad's admin panel under
-*Security > Third-Party Applications*:
+*Security > Third-party Applications*:
 
 .. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
    :align: center

@@ -23,7 +23,7 @@ If you are experiencing this issue and installed Elasticsearch according to
 Elasticsearch is working correctly.
 
 Step 1: Verify Elasticsearch is running
-   Check elasticsearch status:
+   Check Elasticsearch status:
 
    .. code-block:: console
 
@@ -59,7 +59,7 @@ Step 1: Verify Elasticsearch is running
 
 
 Step 2: Verify the ingest-attachment plugin is installed correctly
-   List installed elasticsearch plugins:
+   List installed Elasticsearch plugins:
 
    .. code-block:: console
 

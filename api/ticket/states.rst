@@ -173,7 +173,7 @@ Required permission: ``admin.object``
    specific set of IDs. State types indicate how the state will work.
 
    As there's no endpoint for retreiving these,
-   please use the :ref:`rails console <state_types>`.
+   please use the :ref:`Rails console <state_types>`.
 
 ``POST``-Request sent: ``/api/v1/ticket_states``
 

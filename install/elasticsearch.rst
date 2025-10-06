@@ -135,7 +135,7 @@ later versions, which also come with some additional security features.
       or see the
       `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
       for in-depth instructions. Ensure to also install the fitting
-      (and mandatory!) attachment plugin for elasticsearch, if installing
+      (and mandatory!) attachment plugin for Elasticsearch, if installing
       version 7.
 
       Install the attachment plugin:
@@ -219,7 +219,7 @@ Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
 
 * Install from :doc:`package <package>`
-* Install with :doc:`docker <docker-compose>` (the default stack already includes Elasticsearch)
+* Install with :doc:`Docker <docker-compose>` (the default stack already includes Elasticsearch)
 
 .. note::
    This guide uses the ``zammad run`` command prefix in command line examples.

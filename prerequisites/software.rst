@@ -74,8 +74,8 @@ Below you can find all distributions Zammad provides packages for.
 .. note:: **What about my specific distribution?**
 
    If you distribution is not listed, you can still install Zammad.
-   For this you can either use :doc:`Docker-Compose </install/docker-compose>`
-   or :doc:`kubernetes </install/kubernetes>` installation.
+   For this you can either use :doc:`Docker Compose </install/docker-compose>`
+   or :doc:`Kubernetes </install/kubernetes>` installation.
 
    We try to provide all current distributions that are supported by
    `Packager.io <https://packager.io/>`_. This means that we can't always

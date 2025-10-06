@@ -258,7 +258,7 @@ Install Zammad
          $ sudo yum install zammad
 
       Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
-      packager.io on CentOS you'll need to correct file permissions for
+      Packager.io on CentOS you'll need to correct file permissions for
       public files.
 
       .. code-block:: console
@@ -276,7 +276,7 @@ SELinux
    The commands below only work on Ubuntu, Debian and CentOS. If you use a
    different distribution, please have a look at their documentation.
 
-Allow nginx or apache to access public files of Zammad and communicate:
+Allow Nginx or Apache to access public files of Zammad and communicate:
 
 .. code-block:: console
 

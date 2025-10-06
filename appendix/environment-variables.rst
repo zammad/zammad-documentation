@@ -2,19 +2,19 @@ Environment Variables
 =====================
 
 Find the most important environment variables below with default values, if
-applicable. The variables for docker and package based installations can be
+applicable. The variables for Docker and package based installations can be
 different in some cases. You can find a badge in the column **Limited** with the
 following meaning:
 
-- |docker| => Only available for docker installations
+- |docker| => Only available for Docker installations
 - |package| => Only available for package installation
 - Without badge => Available for both installation variants
 
 .. hint::
 
-   If you want to use a ``.env`` file in docker compose deployments, you can
+   If you want to use a ``.env`` file in Docker Compose deployments, you can
    use the provided ``.env.dist`` file and copy it to ``.env``. That way it will
-   be picked up by docker compose automatically and not overwritten during
+   be picked up by Docker Compose automatically and not overwritten during
    updates.
 
 Miscellaneous
@@ -75,7 +75,7 @@ Zammad
      - |docker|
      - current stable version of Zammad
      - Allows customization of the Zammad image tag. Example: ``6.3.1-54``.
-       This default version may be increased when you update your Zammad docker
+       This default version may be increased when you update your Zammad Docker
        stack. Please see the
        `example env template <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_
        for more details on this variable.
@@ -106,7 +106,7 @@ Zammad
        name. Host names are resolved during the start of Zammad, so that a
        restart is required whenever the IP address of a proxy server changes.
 
-       Note that in docker context, Zammad may see the network gateway IP
+       Note that in Docker context, Zammad may see the network gateway IP
        address instead of the actual proxy server IP address, if it is placed in
        another network.
    * - | ZAMMAD_PROCESS_DELAYED\_
@@ -126,7 +126,7 @@ Zammad
      - ``5``
      - How many threads should be processed by **one** AI worker (if you have more
        than one worker, it is multiplied by the amount of workers). This may
-       speed up the AI processing, but be aware that a ruby worker can only span
+       speed up the AI processing, but be aware that a Ruby worker can only span
        across 1 core anyway. The maximum number of threads is ``16``.
    * - MEMCACHE_SERVERS
      - 
@@ -180,11 +180,11 @@ Elasticsearch
      - unset
      - The searchindex automatically gets rebuilt when no index can be
        detected. If you need to rebuild the searchindex manually, either set
-       this variable to ``true`` or run the reindex command via docker manually.
+       this variable to ``true`` or run the reindex command via Docker manually.
    * - ELASTICSEARCH_SSL_VERIFY
      - |docker|
      - ``true``
-     - Allows you to let the compose scripts ignore self signed SSL certificates
+     - Allows you to let the Compose scripts ignore self signed SSL certificates
        for your Elasticsearch installation if needed.
    * - ELASTICSEARCH_HEAP_SIZE
      - |docker|
@@ -226,7 +226,7 @@ PostgreSQL
    * - POSTGRESQL_OPTIONS
      - |docker|
      - ``?pool=50``
-     - Additional postgresql params to be appended to the database URI.
+     - Additional PostgreSQL params to be appended to the database URI.
    * - POSTGRESQL_DB_CREATE
      - |docker|
      - ``true``
@@ -272,15 +272,15 @@ Nginx
    * - ZAMMAD_RAILSSERVER_HOST
      - |docker|
      - ``zammad-railsserver``
-     - Host name of the rails server container.
+     - Host name of the Rails server container.
    * - ZAMMAD_RAILSSERVER_PORT
      - |docker|
      - ``3000``
-     - Port of Zammad's rails server.
+     - Port of Zammad's Rails server.
    * - ZAMMAD_RAILS_PORT
      - |package|
      - ``3000``
-     - Port of Zammad's rails server.
+     - Port of Zammad's Rails server.
    * - ZAMMAD_WEBSOCKET_HOST
      - |docker|
      - ``zammad-websocket``
@@ -319,7 +319,7 @@ the :doc:`configure-database-server` for more information.
      - unset
      - Allows spawning ``n`` workers to allow more simultaneous connections for
        Zammad's web UI.
-       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-railsserver's CPU setting should match the value from this variable.
    * - | ZAMMAD_PROCESS\_
        | SESSION_JOBS_WORKERS
@@ -331,7 +331,7 @@ the :doc:`configure-database-server` for more information.
        setting if you have less than 40 active users at a time. Increasing the
        amount of workers can consume a lot of resources!
 
-       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-scheduler CPU setting should match the sum of all worker
        settings variables.
    * - | ZAMMAD_PROCESS\_
@@ -342,7 +342,7 @@ the :doc:`configure-database-server` for more information.
        pressure from Zammad's background worker. Maximum number of workers:
        ``1``.
 
-       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-scheduler CPU setting should match the sum of all worker
        settings variables.
    * - | ZAMMAD_PROCESS\_
@@ -352,7 +352,7 @@ the :doc:`configure-database-server` for more information.
      - Allows spawning ``n`` delayed jobs workers to release pressure from
        Zammad's background worker.
 
-       In case you applied :doc:`docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
+       In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-scheduler CPU setting should match the sum of all worker
        settings variables.
 
@@ -369,11 +369,11 @@ the :doc:`configure-database-server` for more information.
 How to Set Environment Variables
 --------------------------------
 
-It depends on how you installed Zammad (package, docker).
+It depends on how you installed Zammad (package, Docker).
 Either set it via ``zammad config`` command as you can see below, use your
 system's way of setting variables via command line
 (e.g. ``export VARIABLE=value)``, place an ``.env`` file in the directory or
-even use a GUI like Portainer to define them for a docker installation.
+even use a GUI like Portainer to define them for a Docker installation.
 
 Example for package installations:
 
