@@ -6,7 +6,7 @@ Configure the Webserver
 You can find current sample configuration files for your webserver within
 ``contrib/`` of your Zammad installation.
 If you're using the package installation, Zammad attempts to automatically
-install a configuration file to your nginx for you.
+install a configuration file to your Nginx for you.
 
 .. note::
 
@@ -24,9 +24,9 @@ Don't know how to get SSL certificates and install them on a webserver yet?
 The guide within the tabs below can help you jumping in.
 
 Make sure to used named configuration. The default sample configuration
-for both nginx and apache are *not* named.
+for both Nginx and Apache are *not* named.
 To fix this, open the ``zammad.conf`` in your webserver's configuration
-directory and make sure to replace ``server_name localhost;`` (nginx) or
+directory and make sure to replace ``server_name localhost;`` (Nginx) or
 ``ServerName localhost`` (Apache 2) with Zammad's actual subdomain.
 
 **Where?**
@@ -57,18 +57,18 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
       These certificates are valid for 90 days and can be renewed automatically.
 
       The two most common tools are
-      `certbot <https://certbot.eff.org/instructions>`_ and
+      `Certbot <https://certbot.eff.org/instructions>`_ and
       `acme.sh <https://github.com/acmesh-official/acme.sh>`_.
 
       .. tabs::
 
-         .. tab:: certbot
+         .. tab:: Certbot
 
             If not happened automatically, you have to install
-            the nginx or apache plugin for certbot:
+            the Nginx or Apache plugin for Certbot:
             ``python3-certbot-nginx`` OR ``python3-certbot-apache``
 
-            During the first certbot run it will request additional information
+            During the first Certbot run it will request additional information
             once. Replace ``<webserver>`` in below command by either
             ``apache``, ``httpd`` or ``nginx`` and to match your setup.
 
@@ -77,12 +77,12 @@ directory and make sure to replace ``server_name localhost;`` (nginx) or
                $ certbot --<webserver> -d zammad.example.com
 
             Certbot will now attempt to issue a certificate for you.
-            If successful, certbot will ask you if you want to
+            If successful, Certbot will ask you if you want to
             ``[1] not redirect`` or ``[2] redirect`` automatically.
             You can choose to not redirect **if** you plan to use the sample
             configuration of Zammad. If not, select ``[2] redirect``.
 
-            From this moment on, certbot will automatically renew your
+            From this moment on, Certbot will automatically renew your
             installed certificates if they're valid for another 30 days or less.
 
             .. hint:: **Not exactly what you're looking for?**
@@ -223,7 +223,7 @@ Adjusting the Webserver Configuration
 
 .. tabs::
 
-   .. tab:: nginx (default)
+   .. tab:: Nginx (default)
 
       Step 1 - Get a current config file
          Copy & overwrite the default ``zammad.conf`` by using
@@ -232,7 +232,7 @@ Adjusting the Webserver Configuration
 
             $ cp /opt/zammad/contrib/nginx/zammad_ssl.conf /etc/nginx/sites-available/zammad.conf
 
-         Your nginx directories may differ, please adjust your commands if
+         Your Nginx directories may differ, please adjust your commands if
          needed.
 
          Most common:
@@ -264,10 +264,10 @@ Adjusting the Webserver Configuration
          .. include:: /getting-started/include-ssl-config-generator-webserver.rst
 
       Step 3 - Save & reload
-         Reload your nginx ``systemctl reload nginx`` to apply your
+         Reload your Nginx with ``systemctl reload nginx`` to apply your
          configuration changes.
 
-   .. tab:: apache2
+   .. tab:: Apache2
 
       Step 1 - Ensure required modules are enabled
          Zammad requires modules that are not enabled by default. By default
@@ -306,7 +306,7 @@ Adjusting the Webserver Configuration
                   LoadModule proxy_http_module modules/mod_proxy_http.so
                   LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so
 
-               Don't forget to restart your apache.
+               Don't forget to restart your Apache.
 
       Step 2 - Get a current config file
          .. note::
@@ -320,7 +320,7 @@ Adjusting the Webserver Configuration
 
             $ cp /opt/zammad/contrib/apache2/zammad_ssl.conf /etc/apache2/sites-available/zammad.conf
 
-         Your apache directories may differ, please adjust your commands
+         Your Apache directories may differ, please adjust your commands
          if needed.
 
          Most common:
@@ -383,7 +383,7 @@ Adjusting the Webserver Configuration
          ``/etc/httpd/conf/httpd.conf``.
 
       Step 4 - Save & reload
-         Reload your apache to apply your configuration changes:
+         Reload your Apache to apply your configuration changes:
 
          .. code-block:: console
 
@@ -392,7 +392,7 @@ Adjusting the Webserver Configuration
    .. tab:: local testing or other proxy servers
 
       Want to test locally first or use a different Proxy we don't support?
-      The main application (rails server) is listening on
+      The main application (Rails server) is listening on
       ``http://127.0.0.1:3000``.
 
       If you're using a proxy server, also ensure that you proxy the websockets

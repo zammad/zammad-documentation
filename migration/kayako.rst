@@ -130,7 +130,7 @@ consider using the console over the browser version.
             >> AsyncImportJob.perform_later(job)
 
       Check status
-         Running the following command in a rails console will provide detailed
+         Running the following command in a Rails console will provide detailed
          state information of your migration.
 
          .. code-block:: irb

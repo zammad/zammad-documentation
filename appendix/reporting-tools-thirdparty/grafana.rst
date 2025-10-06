@@ -76,7 +76,7 @@ building your own dashboards. 🎉
 
    .. tip:: **🤓 Not sure about your index names?**
 
-      Querying your elasticsearch like this and replace ``localhost:9200`` with
+      Querying your Elasticsearch like this and replace ``localhost:9200`` with
       the IP/URL of your setup:
 
       .. code-block:: console

@@ -8,8 +8,8 @@
    You can find the path by looking at your webserver configuration by
    looking for:
 
-      * ``ssl_dhparam`` directive (nginx)
-      * ``SSLOpenSSLConfCmd DHParameters`` directive (apache2)
+      * ``ssl_dhparam`` directive (Nginx)
+      * ``SSLOpenSSLConfCmd DHParameters`` directive (Apache2)
 
    .. code-block:: console
 

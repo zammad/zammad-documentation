@@ -59,16 +59,16 @@ Data Privacy Tasks
 External Services
 -----------------
 
-Zammad utilizes third-party web services for certain functions,
+Zammad utilizes third party web services for certain functions,
 meaning that user data may occasionally be sent or exposed to third parties.
 These functions can be individually disabled in the admin panel
 under **Settings → System → Services**.
 
-.. note:: By default, the third-party services that Zammad relies on
+.. note:: By default, the third party services that Zammad relies on
    are mostly ones hosted and managed by the Zammad Foundation itself,
    but Zammad can be extended to interface with other services instead.
 
-   The source code for these third-party service integrations can be found
+   The source code for these third party service integrations can be found
    `here <https://github.com/zammad/zammad/tree/develop/lib/service>`_.
 
 Images

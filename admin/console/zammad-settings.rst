@@ -127,19 +127,19 @@ Configuring Elasticsearch
 If your Elasticsearch installation changes, you can use the following commands
 to ensure that Zammad still can access Elasticsearch.
 
-Change elasticsearch URL:
+Change Elasticsearch URL:
 
 .. code-block:: irb
 
    >> Setting.set('es_url', 'http://127.0.0.1:9200')
 
-Set elasticsearch user (e.g. for authentication):
+Set Elasticsearch user (e.g. for authentication):
 
 .. code-block::
 
    >> Setting.set('es_user', 'elasticsearch')
 
-Set the password for authentication of the elasticsearch user:
+Set the password for authentication of the Elasticsearch user:
 
 .. code-block:: irb
 
@@ -157,7 +157,7 @@ Set ignored file extensions / file types (they will not be indexed):
 
    >> Setting.set('es_attachment_ignore', %w[.png .jpg .jpeg .mpeg .mpg .mov .bin .exe .box .mbox])
 
-Set the maximum attachment to be indexed by elasticsearch:
+Set the maximum attachment to be indexed by Elasticsearch:
 
 .. code-block:: irb
 

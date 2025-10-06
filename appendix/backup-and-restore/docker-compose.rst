@@ -6,10 +6,10 @@ Backup & Restore (Docker)
 
    docker-file-handling
 
-This section shows some basics about the backup and restore process for a docker
-compose based deployment of Zammad.
+This section shows some basics about the backup and restore process for a Docker
+Compose based deployment of Zammad.
 
-If you are familiar with volume based backup and restore procedures in docker,
+If you are familiar with volume based backup and restore procedures in Docker,
 and perhaps already use a different method or tool, then you can keep using it.
 A backup would typically mean shutting down the stack to ensure all in-memory
 files get written to disk, then backing up the volume contents, and then starting
@@ -18,12 +18,12 @@ using the :ref:`disable-backup-service scenario <additional-scenarios>` so that
 the built-in backup and restore mechanism of Zammad is not activated.
 
 The rest of this page describes the built-in backup and restore mechanism of
-Zammad's docker compose stack.
+Zammad's Docker Compose stack.
 
-If you're familiar with docker, the sections below include the
+If you're familiar with Docker, the sections below include the
 information you'll need. The
 :doc:`/appendix/backup-and-restore/docker-file-handling` page covers some
-examples about how to handle the backup files and to copy it into a docker
+examples about how to handle the backup files and to copy it into a Docker
 volume to restore it.
 
 Backup
@@ -45,7 +45,7 @@ Restore
 #. Copy or move the backup files to ``/var/tmp/zammad/restore/`` inside the
    volume of the **zammad-backup** container. Be aware that the restore process
    always uses the latest backup according to the timestamp of the file name.
-   Only backups from package and docker installations are supported by this
+   Only backups from package and Docker installations are supported by this
    built-in backup method. Don't provide the ``latest_zammad_*.gz`` files
    because they link to an unknown location for the restore process.
 #. Start the stack. The restore process is triggered if the ``restore``

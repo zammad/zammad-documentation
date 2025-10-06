@@ -179,8 +179,8 @@ using `Zammad hosting`_ for your and your customers' safety.
 
       .. hint::
 
-         Docker-Compose stack updates may require extra steps or introduce breaking changes. Always check the
-         `docker compose release notes <https://github.com/zammad/zammad-docker-compose/releases>`_
+         Docker Compose stack updates may require extra steps or introduce breaking changes. Always check the
+         `Docker Compose release notes <https://github.com/zammad/zammad-docker-compose/releases>`_
          for updating instructions first.
 
       Updating Portainer based Installations
@@ -190,7 +190,7 @@ using `Zammad hosting`_ for your and your customers' safety.
          .. figure:: /images/install/docker-compose/portainer/portainer-stack-update.png
             :alt: Screenshot showing stack details with highlighted "Pull and redeploy" button and modal dialog.
 
-      Updating Docker-Compose based Installations
+      Updating Docker Compose based Installations
          .. code-block:: console
 
             $ cd zammad-docker-compose
@@ -211,7 +211,7 @@ using `Zammad hosting`_ for your and your customers' safety.
          Only needed if the release note tells you to rebuild the Elasticsearch
          index.
 
-         **Docker compose:**
+         **Docker Compose:**
 
          Without specifying CPU cores:
 

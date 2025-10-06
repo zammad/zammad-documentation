@@ -1,7 +1,7 @@
 Console
 =======
 
-Zammad uses Ruby on Rails so you can make use of the `rails console`_.
+Zammad uses Ruby on Rails so you can make use of the `Rails console`_.
 
 .. _rails console:
    http://guides.rubyonrails.org/command_line.html
@@ -12,7 +12,7 @@ Zammad uses Ruby on Rails so you can make use of the `rails console`_.
    might cause data loss or damaged tickets! If you're unsure,
    **use a test system first**!
 
-To open the rails console on the shell you have to enter the following commands.
+To open the Rails console on the shell you have to enter the following commands.
 
 Start Zammad's Rails Console
 ----------------------------
@@ -56,7 +56,7 @@ a shell (e.g. for automation).
 Running Several Commands in a Shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following command will provide you a rails console.
+The following command will provide you a Rails console.
 It allows you to run several commands inside it.
 
 .. tabs::
@@ -85,16 +85,16 @@ It allows you to run several commands inside it.
 
 .. hint:: **Starting Rails Console in Safe Mode**
 
-   Normally, starting rails console requires certain
-   :doc:`third-party services </prerequisites/software>` to be up and running.
+   Normally, starting a Rails console requires certain
+   :doc:`third party services </prerequisites/software>` to be up and running.
    You may receive errors and console will refuse to start in case they are not
    available.
 
-   However, it's possible to start rails console in safe mode by setting
+   However, it's possible to start Rails console in safe mode by setting
    the environment variable ``ZAMMAD_SAFE_MODE=1``. With this setting enabled,
    the availability of these services will be ignored.
 
-   **Set variable and run rails console:**
+   **Set variable and run Rails console:**
 
    .. tabs::
 
@@ -116,7 +116,7 @@ It allows you to run several commands inside it.
    .. code-block:: text
       :class: no-copybutton
 
-      Zammad is running in safe mode. Any third-party services like Redis are ignored.
+      Zammad is running in safe mode. Any third party services like Redis are ignored.
 
       There was an error trying to connect to Redis via redis://localhost:6379.
       Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
