@@ -51,9 +51,9 @@ directory and make sure to replace ``server_name localhost;`` (Nginx) or
       You either already know what you're doing, you're developing or like the
       danger. ⚔️
 
-   .. tab:: letsencrypt
+   .. tab:: Let's Encrypt
 
-      letsencrypt is an easy and free way to retrieve valid ssl certificates.
+      Let's Encrypt is an easy and free way to retrieve valid ssl certificates.
       These certificates are valid for 90 days and can be renewed automatically.
 
       The two most common tools are
@@ -94,7 +94,7 @@ directory and make sure to replace ``server_name localhost;`` (Nginx) or
 
             .. note::
 
-               acme.sh by default no longer uses letsencrypt.
+               acme.sh by default no longer uses Let's Encrypt.
                For this reason you'll have to change the default CA.
 
                .. code-block:: console
@@ -150,7 +150,7 @@ directory and make sure to replace ``server_name localhost;`` (Nginx) or
    .. tab:: public, paid CA
 
       If you prefer to use certificates from other official CAs than
-      letsencrypt, you can do so as well. Just get your certificate bundle from
+      Let's Encrypt, you can do so as well. Just get your certificate bundle from
       the source you prefer and continue with
       `Adjusting the webserver configuration`_.
 

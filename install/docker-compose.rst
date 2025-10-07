@@ -111,7 +111,7 @@ To publish a Zammad stack on the internet, it needs be secured via the HTTPS
 protocol. To achieve that without modifying the Zammad stack, you can:
 
 - Use a reverse proxy like Nginx Proxy Manager (NPM). It has a GUI that provides
-  an easy `Letsencrypt <https://letsencrypt.org/>`_ integration.
+  an easy `Let's Encrypt <https://letsencrypt.org/>`_ integration.
 - Use a cloudflare tunnel, which provides SSL termination.
 
 Both scenarios are covered in the
