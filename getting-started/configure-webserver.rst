@@ -87,7 +87,7 @@ directory and make sure to replace ``server_name localhost;`` (Nginx) or
 
             .. hint:: **Not exactly what you're looking for?**
 
-               The `cerbot documentation`_
+               The `Certbot documentation`_
                has a lot more use cases than we cover here.
 
          .. tab:: acme.sh
@@ -202,7 +202,7 @@ directory and make sure to replace ``server_name localhost;`` (Nginx) or
          If above command is not good enough for you, the
          `openSSL documentation`_ is a good place to learn more.
 
-.. _cerbot documentation: https://certbot.eff.org/docs/using.html#certbot-commands
+.. _Certbot documentation: https://certbot.eff.org/docs/using.html#certbot-commands
 .. _acme.sh documentation: https://github.com/acmesh-official/acme.sh/wiki/How-to-issue-a-cert
 .. _Sectigo (formerly Comodo): https://sectigo.com/ssl-certificates-tls
 .. _Secorio: https://secorio.com/en/productfinder/
