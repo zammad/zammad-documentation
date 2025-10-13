@@ -8,9 +8,9 @@ the `official Elasticsearch installation
 documentation <https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch>`__.
 Adapt it wherever needed if your use-case differs.
 
-You can find the consolidated installation steps below.
-Be aware that the maintenance of version 7 might be stopped earlier than for
-later versions, which also come with some additional security features.
+.. warning:: There are newer versions of Elasticsearch available. This guide
+   is just in place for a transition period. Consider the
+   :doc:`installation of Elasticsearch 9 <install-elasticsearch-9>` instead.
 
 Installation
 ------------
