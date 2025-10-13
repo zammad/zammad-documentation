@@ -6,7 +6,7 @@ intention is to get you up and running quickly. However, in case you
 need a more advanced configuration or face any issues, have a look at
 the `official Elasticsearch installation
 documentation <https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch>`__.
-Adapt it wherever needed in case your use-case differs.
+Adapt it wherever needed if your use-case differs.
 
 Installation
 ------------
@@ -56,7 +56,7 @@ Add the Repository
 
    .. tab:: OpenSUSE/SLES
 
-      Create the file ``/etc/zypp/repos.d/elasticsearch.repo``and add:
+      Create the file ``/etc/zypp/repos.d/elasticsearch.repo`` and add:
 
       .. code-block:: text
 
@@ -71,7 +71,7 @@ Add the Repository
 
    .. tab:: CentOS/RHEL
 
-      Create the file ``/etc/yum.repos.d/elasticsearch.repo``and add:
+      Create the file ``/etc/yum.repos.d/elasticsearch.repo`` and add:
       
       .. code-block:: text
 

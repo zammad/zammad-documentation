@@ -6,7 +6,7 @@ intention is to get you up and running quickly. However, in case you
 need a more advanced configuration or face any issues, have a look at
 the `official Elasticsearch installation
 documentation <https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch>`__.
-Adapt it wherever needed in case your use-case differs.
+Adapt it wherever needed if your use-case differs.
 
 You can find the consolidated installation steps below.
 Be aware that the maintenance of version 7 might be stopped earlier than for

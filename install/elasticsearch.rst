@@ -6,8 +6,6 @@ Elasticsearch
 Zammad's search function can be powered by Elasticsearch (which is **highly
 recommended**).
 
-
-
 .. toctree::
    :maxdepth: 1
 

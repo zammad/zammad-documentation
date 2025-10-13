@@ -42,13 +42,20 @@ Elasticsearch user and password (only for Elasticsearch >= 8)
 
       $ zammad run rails r "Setting.set('es_user', 'elastic')"
 
-   Set Elasticsearch password:
+   Set Elasticsearch password. Replace ``<password>`` with the one you got
+   during the installation of Elasticsearch. In case you need to create a new
+   password, run
+   ``/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic``.
 
    .. code-block:: console
 
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
 Add certificate to Zammad (only for Elasticsearch >= 8)
+   This step requires a running Zammad. If you are installing a new Zammad
+   instance, go on with the :doc:`installation <./package>` and come back here
+   when you can access the admin settings in the browser.
+
    Show and copy the auto-generated certificate from Elasticsearch and add it
    to Zammad. Make sure to copy/paste the delimiters
    (e.g. ``-----BEGIN CERTIFICATE-----``) too.
@@ -57,8 +64,11 @@ Add certificate to Zammad (only for Elasticsearch >= 8)
 
       $ sudo cat /etc/elasticsearch/certs/http_ca.crt
 
-   Go to the admin panel of Zammad and add your copied certificate under
-   :admin-docs:`SSL Certificates </settings/security/ssl-certificates.html>`.
+   To add it in Zammad, go to *Settings > Security > SSL Certificates* in the
+   :admin-docs:`admin settings </settings/security/ssl-certificates.html>` and
+   add your copied certificate. Either upload the certificate file or paste the
+   content in the dialog. After saving the certificate, Zammad is now able to
+   connect to and access the Elasticsearch index.
 
    .. figure:: /images/install/elasticsearch/admin-certificate-management.png
       :alt: Screenshot shows certificate management in Zammad's admin panel
