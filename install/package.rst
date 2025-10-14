@@ -48,8 +48,9 @@ some operating systems may require additional packages if not already installed.
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
-needs to be installed before Zammad. Please take a look at the
-:doc:`instructions </install/elasticsearch>` first.
+needs to be installed before Zammad. Read on in the
+:doc:`Elasticsearch section </install/elasticsearch>` first and continue
+with the next step after you finished the installation of it.
 
 3. Ensure Correct Locale
 ^^^^^^^^^^^^^^^^^^^^^^^^
