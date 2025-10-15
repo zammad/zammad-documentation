@@ -19,7 +19,8 @@ endpoints listed here.
    * `PHP Client <https://github.com/zammad/zammad-api-client-php>`_
      *(official)*
    * `Python Client <https://pypi.org/project/zammad-py/>`_ *(third party)*
-   * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(third party)*
+   * `.NET Client [System.Text.Json] <https://github.com/meenzen/Zammad.Client.SystemTextJson>`_ *(third party)*
+   * `.NET Client [Newtonsoft.Json] <https://github.com/S3bt3r/Zammad.Client>`_ *(third party; unmaintained)*
    * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_
      *(third party)*
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
