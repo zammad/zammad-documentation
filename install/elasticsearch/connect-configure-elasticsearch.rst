@@ -52,23 +52,33 @@ Elasticsearch user and password (Elasticsearch 8 and newer)
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
 Add certificate to Zammad (Elasticsearch 8 and newer)
-   This step requires a running Zammad. If you are installing a new Zammad
-   instance, go on with the :doc:`installation <../package>` and come back here
-   when you can access the admin settings in the browser.
+   This step requires an installed Zammad.
 
-   Show and copy the auto-generated certificate from Elasticsearch and add it
-   to Zammad. Make sure to copy/paste the delimiters
-   (e.g. ``-----BEGIN CERTIFICATE-----``) too.
+   Add it via **Rails console**:
+      In case you are installing a new Zammad and didn't run through the
+      getting started wizard already, add the certificate via console:
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ sudo cat /etc/elasticsearch/certs/http_ca.crt
+         $ sudo cat /etc/elasticsearch/certs/http_ca.crt | sudo zammad run rails r "SSLCertificate.create!(certificate: STDIN.read)"
 
-   To add it in Zammad, go to *Settings > Security > SSL Certificates* in the
-   :admin-docs:`admin settings </settings/security/ssl-certificates.html>` and
-   add your copied certificate. Either upload the certificate file or paste the
-   content in the dialog. After saving the certificate, Zammad is now able to
-   connect to and access the Elasticsearch index.
+   Add it via **UI**:
+      In case you already have a running and configured Zammad, you can add the
+      certificate in Zammad's
+      :admin-docs:`admin settings </settings/security/ssl-certificates.html>`
+      (*Settings > Security > SSL Certificates*) as an alternative.
+      To show and copy the auto-generated certificate from Elasticsearch, run:
+
+      .. code-block:: console
+
+         $ sudo cat /etc/elasticsearch/certs/http_ca.crt
+
+      To add it in Zammad, either upload the certificate file or paste the
+      content in the dialog. Make sure to copy/paste the delimiters
+      (e.g. ``-----BEGIN CERTIFICATE-----``) too.
+
+   In any case, you can find the certificate in the UI. This looks like
+   this:
 
    .. figure:: /images/install/elasticsearch/admin-certificate-management.png
       :alt: Screenshot shows certificate management in Zammad's admin panel
