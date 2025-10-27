@@ -149,17 +149,25 @@ Reset Zammad Installation
 
    Don't forget to stop Zammad before trying to reset your instance!
 
+Truncate the database:
+
 .. code-block:: console
 
    $ rake zammad:db:truncate
+
+Migrate the database:
 
 .. code-block:: console
 
    $ rake db:migrate
 
+Load the seed data:
+
 .. code-block:: console
 
    $ rake db:seed
+
+Clear the cache and reload the settings:
 
 .. code-block:: console
 
@@ -168,6 +176,6 @@ Reset Zammad Installation
 .. hint::
 
    You can also use the ``zammad:db:reset`` command to reset your instance. This task
-   will truncate the database, run the migrations, seed the database, and rebuild
-   the indices. However, it will not ask for your confirmation between each step
-   so you should use it with caution.
+   will truncate the database, run the migrations, seed the database, clear the cache
+   and reload the settings. However, it will not ask for your confirmation between each 
+   step, so you should use it with caution.
