@@ -143,19 +143,15 @@ Reset Zammad Installation
 
 .. hint::
 
-   Below commands are incomplete intentionally, error outputs will hint you
-   through! The following operations will cause data loss and are for
+   Below commands are intentionally incomplete, error output will guide you
+   through! The following operations will cause data loss and are intended for
    development / testing only.
 
-   Don't forget to stop Zammad before trying to drop the database!
+   Don't forget to stop Zammad before trying to reset your instance!
 
 .. code-block:: console
 
-   $ rake db:drop
-
-.. code-block:: console
-
-   $ rake db:create
+   $ rake zammad:db:truncate
 
 .. code-block:: console
 
@@ -164,3 +160,14 @@ Reset Zammad Installation
 .. code-block:: console
 
    $ rake db:seed
+
+.. code-block:: console
+
+   $ rake zammad:db:rebuild
+
+.. hint::
+
+   You can also use the ``zammad:db:reset`` command to reset your instance. This task
+   will truncate the database, run the migrations, seed the database, and rebuild
+   the indices. However, it will not ask for your confirmation between each step
+   so you should use it with caution.
