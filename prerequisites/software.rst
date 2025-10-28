@@ -51,6 +51,11 @@ If you want to install Zammad, you need the following software.
 
    Docker and Kubernetes are shipping all dependencies and services by default!
 
+.. warning:: Due to a known issue in OpenSSL 3.6.0, this version is **not**
+   supported. In case your distro offers you 3.6.0 already, check if you can
+   stay on a lower version or - when available - jump directly to a higher
+   version.
+
 2.1 Supported Distributions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
