@@ -64,6 +64,11 @@ If you want to install Zammad, you need the following software.
    version)  are minimum requirements of Zammad. We strongly encourage you to
    use most current possible versions that *are not end of life*.
 
+.. warning:: Due to a known issue in OpenSSL 3.6.0, this version is **not**
+   supported. In case your distro offers you 3.6.0 already, check if you can
+   stay on a lower version or - when available - jump directly to a higher
+   version.
+
 2.1 Ruby Programming Language
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -94,6 +99,8 @@ different Zammad versions:
    "2.5 - 3.0", "2.4.4"
 
 2.2 Supported Distributions
+
+2.1 Supported Distributions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad provides binary packages for the most recent two stable /
