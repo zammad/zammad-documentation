@@ -167,38 +167,32 @@ Add Repository
 
    .. tab:: Debian
 
-         .. hint::
-            - Starting with Debian 12, we provide the command to add the
-              repository in the
-              `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
-            - Starting with Debian 13, the packages are hosted under a different
-              URL and the signing key is saved to a different directory.
+      .. hint::
+         - Starting with Debian 12, we provide the command to add the
+           repository in the
+           `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
+         - Starting with Debian 13, the packages are hosted under a different
+           URL and the signing key is saved to a different directory.
 
-      Add Repository Key
-         Debian 11 & 12:
-         
+      Add Repository Key (Debian 11 & 12)
          .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
                gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
 
-         Debian 13:
-
+      Add Repository Key (Debian 13)
          .. code-block:: console
 
             $ curl -fsSL https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg | \
                gpg --dearmor | sudo tee /usr/share/keyrings/zammad.gpg> /dev/null
 
-      Add Repository
-         Debian 11:
-
+      Add Repository (Debian 11)
          .. code-block:: console
 
             $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-         Debian 12:
-
+      Add Repository (Debian 12)
          .. code-block:: console
 
             $ printf "Types: deb
@@ -208,8 +202,7 @@ Add Repository
             Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
             sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
-         Debian 13
-
+      Add Repository (Debian 13)
          .. code-block:: console
             
             $ printf "Types: deb
