@@ -159,10 +159,13 @@ The following reverse proxies are supported:
 ^^^^^^^^^
 
 `Redis <https://redis.io/>`_ is required for realtime communication via web
-socket. Zammad requires Redis 6 or newer.
-The installation and configuration is out of scope of this documentation.
-Please follow the official guides and ensure to set it up in a secure way.
-Available environement variables for standard and Sentinel setups are briefly
+socket. Zammad requires Redis 6 or newer. It gets installed automatically
+(package) or is included in the stack (Docker Compose) with a working
+configuration. However, the installation and configuration is out of scope of
+this documentation. Please follow the official guides and ensure to set it up in
+a secure way.
+
+Available environment variables for standard and Sentinel setups are briefly
 mentioned in the :doc:`Redis Variables </appendix/redis>` page.
 
 .. _prerequisites_elasticsearch:
