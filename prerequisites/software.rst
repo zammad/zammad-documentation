@@ -163,7 +163,7 @@ socket. Zammad requires Redis 6 or newer.
 The installation and configuration is out of scope of this documentation.
 Please follow the official guides and ensure to set it up in a secure way.
 Available environement variables for standard and Sentinel setups are briefly
-mentioned on the :doc:`Redis Configuration </appendix/redis>` page.
+mentioned in the :doc:`Redis Variables </appendix/redis>` page.
 
 .. _prerequisites_elasticsearch:
 

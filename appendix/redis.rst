@@ -1,5 +1,5 @@
-Redis Configuration
-===================
+Redis Variables
+===============
 
 Zammad requires Redis to work. During package installation, it is installed
 automatically unless there is a Redis installation on the host already. In the
@@ -25,12 +25,12 @@ connect Zammad to a Redis Sentinel cluster, only ``REDIS_SENTINELS`` variable is
 mandatory, the others are optional.
 
 .. csv-table::
-   :header: "Variable", "Explanation", "Example"
-   :widths: 15, 20, 30
+   :header: "Variable", "Comment"
+   :widths: 15, 45
 
-   ``REDIS_SENTINELS``,         "Mandatory to use Sentinel setup; comma separated IPs/URLs; optional port",     "``sentinel1.example.com:26380``, ``sentinel2.example.com``"
-   ``REDIS_SENTINEL_NAME``,     "Name of Sentinel setup; fallback to ``mymaster`` if not provided",             "``custommaster``"
-   ``REDIS_SENTINEL_USERNAME``, "Username for Sentinel",                                                        "``sentineluser``"
-   ``REDIS_SENTINEL_PASSWORD``, "Password for Sentinel",                                                        "``sentinelpass``"
-   ``REDIS_USERNAME``,          "Username for Redis",                                                               "``user``"
-   ``REDIS_PASSWORD``,          "Password for Redis",                                                               "``pass``"
+   ``REDIS_SENTINELS``,         "Mandatory when using a Sentinel setup; comma separated IPs/URLs; optional port. Examples: ``sentinel1.example.com:26380``, ``sentinel2.example.com``"
+   ``REDIS_SENTINEL_NAME``,     "Name of Sentinel setup; fallback to ``mymaster`` if not provided"
+   ``REDIS_SENTINEL_USERNAME``, "Username for Sentinel"
+   ``REDIS_SENTINEL_PASSWORD``, "Password for Sentinel"
+   ``REDIS_USERNAME``,          "Username for Redis"
+   ``REDIS_PASSWORD``,          "Password for Redis"
