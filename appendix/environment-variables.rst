@@ -138,9 +138,9 @@ Zammad
      - 
      - - Docker: ``redis://zammad-redis:6379``
        - Package: unset
-     - Provide your own Redis instance if you already have one. Please note
-       that this method currently does not allow authentication.
+     - Provide your own Redis instance if you already have one.
        The package installation fallback is ``/opt/zammad/tmp/websocket_*``.
+       See :doc:`Redis Variables </appendix/redis>` for a Sentinel setup.
 
 Elasticsearch
 -------------
