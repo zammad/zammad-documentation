@@ -38,10 +38,6 @@ html_js_files = [
    'theme/zammad_overrides.js',
 ]
 
-# Suppress "WARNING: unknown mimetype for ..." during EPUB builds.
-#   https://github.com/sphinx-doc/sphinx/issues/3214
-suppress_warnings = ['epub.unknown_project_files']
-
 # thanks to https://blog.deimos.fr/2014/10/02/sphinxdoc-and-readthedocs-theme-tricks-2/
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -67,10 +63,6 @@ else:
       branch = "pre-release"
    else:
       branch = "old-version"
-
-# Ensure `version` config is set due to EPUB requirements:
-#   WARNING: conf value "version" should not be empty for EPUB3
-version = branch
 
 # Default definitions for this documentations version warnings if applicable
 # https://sphinx-version-warning.readthedocs.io/en/latest/configuration.html
