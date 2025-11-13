@@ -12,12 +12,7 @@ build:
 
 sphinx:
   configuration: conf.py
-  # TODO: Re-enable failure on warnings when all translation issues are handled.
-  # fail_on_warning: true
-
-formats:
-  - htmlzip
-  - epub
+  fail_on_warning: true
 
 python:
   install:

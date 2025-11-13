@@ -94,8 +94,6 @@ jobs:
       run: |
         cd ${{ inputs.docs_path }}
         python -m sphinx -T -E $fail_on_warning -b html -d _build/doctrees -D language=en . _build/html
-        python -m sphinx -T -E $fail_on_warning -b singlehtml -d _build/doctrees -D language=en . _build/htmlzip
-        python -m sphinx -T -E $fail_on_warning -b epub -d _build/doctrees -D language=en . _build/epub
 
     - name: Compute short SHA
       id: sha
@@ -108,20 +106,6 @@ jobs:
         name: html-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/html/
 
-    - name: Upload htmlzip Artifact
-      id: htmlzip
-      uses: actions/upload-artifact@v4
-      with:
-        name: htmlzip-${{ steps.sha.outputs.sha_short }}
-        path: ${{ inputs.docs_path }}/_build/htmlzip/
-
-    - name: Upload epub Artifact
-      id: epub
-      uses: actions/upload-artifact@v4
-      with:
-        name: epub-${{ steps.sha.outputs.sha_short }}
-        path: ${{ inputs.docs_path }}/_build/epub/*.epub
-
     - name: Post Comment to PR with Artifact Links
       # Runs only on Pull Requests from the same repository (not from forks).
       if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
@@ -133,6 +117,4 @@ jobs:
 
           Produced during runtime
 
-          📦 [epub-${{ steps.sha.outputs.sha_short }}](${{ steps.epub.outputs.artifact-url }})
           📦 [html-${{ steps.sha.outputs.sha_short }}](${{ steps.html.outputs.artifact-url }})
-          📦 [htmlzip-${{ steps.sha.outputs.sha_short }}](${{ steps.htmlzip.outputs.artifact-url }})
