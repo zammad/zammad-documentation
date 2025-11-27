@@ -9,8 +9,13 @@ Required permission: ``knowledge_base.reader`` or ``knowledge_base.editor``
 ``GET``-Request sent: ``/api/v1/knowledge_bases/{ID of your KB}/answers/{ID of answer}``
 
 .. tip:: If you want to get the content of an answer, add the parameters
-   ``?full=1&include_contents=1`` to the query URL. The request for the
-   following response included the parameters.
+   ``?include_contents={ID of the translated answer}`` to the query URL.
+   To find the ID of the translated answer (can be different than the answer
+   ID), query the answer and look for ``KnowledgeBaseAnswerTranslation``. Use
+   the ID of the translated answer for the above mentioned request (e.g.
+   ``[...]/answers/2?include_contents=5``).
+
+   The request for the following response included the parameters.
 
 Response:
 
