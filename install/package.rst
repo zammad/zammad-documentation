@@ -133,7 +133,8 @@ Add Repository
          .. code-block:: sh
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
+               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null \
+               && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
 
       Ubuntu 20.04
          .. code-block:: sh
@@ -159,7 +160,8 @@ Add Repository
          .. code-block:: sh
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
+               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null \
+               && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
 
       Debian 11
          .. code-block:: sh
