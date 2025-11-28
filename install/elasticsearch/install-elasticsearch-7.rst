@@ -26,7 +26,8 @@ Installation
       .. code-block:: console
 
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null
+           gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null \
+           && sudo chmod 644 /etc/apt/trusted.gpg.d/elasticsearch.gpg
 
       .. tabs::
 

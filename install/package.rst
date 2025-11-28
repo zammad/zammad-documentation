@@ -143,7 +143,8 @@ Add Repository
          .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
+               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null \
+               && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
 
       Ubuntu 22.04
          .. code-block:: console
@@ -175,13 +176,15 @@ Add Repository
          .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null
+               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null \
+               && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
 
       Add Repository Key (Debian 13)
          .. code-block:: console
 
             $ curl -fsSL https://go.packager.io/srv/deb/zammad/zammad/gpg-key.asc | \
-               gpg --dearmor | sudo tee /usr/share/keyrings/zammad.gpg> /dev/null
+               gpg --dearmor | sudo tee /usr/share/keyrings/zammad.gpg> /dev/null \
+               && sudo chmod 644 /usr/share/keyrings/zammad.gpg
 
       Add Repository (Debian 11)
          .. code-block:: console
