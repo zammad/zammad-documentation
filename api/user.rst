@@ -1310,7 +1310,7 @@ Via Data Privacy Endpoint
 
 Required permission: ``admin.data_privacy``
 
-``POST``-Request sent: ``/api/v1/data_privacy_task``
+``POST``-Request sent: ``/api/v1/data_privacy_tasks``
 
 .. code-block:: json
 
