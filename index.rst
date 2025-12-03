@@ -97,6 +97,7 @@ Zammad System Documentation
    /appendix/configure-database-server
    /appendix/migrate-to-postgresql
    /appendix/privacy
+   /appendix/proxy
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
    /appendix/redis
