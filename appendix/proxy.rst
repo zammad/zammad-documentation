@@ -22,6 +22,16 @@ Set it the way you want and adjust the values to your use case:
 
    export ES_JAVA_OPTS="-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=8080"
 
+.. hint::
+   Depending on your environment, you might want to use the lower case variants
+   of the variables as well. If in doubt, set both variants, e.g. like that:
+
+   .. code-block:: sh
+
+      export HTTP_PROXY=$http_proxy
+      export HTTPS_PROXY=$https_proxy
+      export ES_JAVA_OPTS=$es_java_opts
+
 Download Dependencies
 ---------------------
 
