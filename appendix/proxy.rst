@@ -59,3 +59,7 @@ Local:
 .. code-block:: sh
 
    /opt/zammad/contrib/packager.io/test_download_dependencies_connection.sh
+
+This script will try to connect to the services mentioned above and show the
+results. If everything is fine, you should see a checkmark for each contacted
+service.
