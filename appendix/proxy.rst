@@ -28,7 +28,7 @@ Download Dependencies
 During installation and operation of Zammad, some connections to online services
 are required. Depending on your installation method and Zammad configuration,
 a connection to the following services is made (maybe also helpful for firewall
-configuration)::
+configuration):
 
 .. csv-table::
    :header: "Address", "Comment"
