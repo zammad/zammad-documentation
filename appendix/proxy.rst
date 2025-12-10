@@ -28,9 +28,9 @@ Set it the way you want and adjust the values to your use case:
 
    .. code-block:: sh
 
-      export HTTP_PROXY=$http_proxy
-      export HTTPS_PROXY=$https_proxy
-      export ES_JAVA_OPTS=$es_java_opts
+      export http_proxy=$HTTP_PROXY
+      export https_proxy=$HTTPS_PROXY
+      export es_java_opts=$ES_JAVA_OPTS
 
 Download Dependencies
 ---------------------
