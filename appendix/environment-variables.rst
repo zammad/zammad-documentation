@@ -133,16 +133,17 @@ Zammad
        | JOBS_WORKERS
      -
      - unset
-     - Allows parallelization of channel fetching. Useful if you have many
-       channels and/or mailboxes added. ``0`` means it done in one process,
-       ``1`` means one additional process, etc. The maximum number of workers is
-       ``16``.
+     - Allows parallelization of fetching inbound communication channels.
+       Useful if you have many channels and/or mailboxes added. ``0`` means it
+       runs in the main process, ``1`` means one additional process, etc. The
+       maximum number of workers is ``16``.
    * - | ZAMMAD_PROCESS_DELAYED\_
        | COMMUNICATION_INBOUND\_
        | JOBS_WORKER_THREADS
      -
      - ``1``
-     - How many threads should be used by inbound jobs workers. The maximum
+     - Threads used for fetching inbound communication channels. How many
+       threads should be used by inbound jobs workers. The maximum
        number of threads is ``16``.
    * - MEMCACHE_SERVERS
      -
