@@ -87,16 +87,16 @@ Zammad
        `this example file <https://github.com/zammad/zammad/blob/stable/contrib/auto_wizard_example.json>`_
        should help.
    * - ZAMMAD_HTTP_TYPE
-     - 
+     -
      - unset
      - Set the :admin-docs:`http type </settings/system/base.html>` for your
        instance. Possible values are ``http`` and ``https``.
    * - ZAMMAD_FQDN
-     - 
+     -
      - unset
      - Set the :admin-docs:`FQDN </settings/system/base.html>` for your instance.
    * - RAILS_TRUSTED_PROXIES
-     - 
+     -
      - ``127.0.0.1,::1``
      - This setting is important for the correct detection of client IP addresses
        and features based on it, like rate limiting.
@@ -111,7 +111,7 @@ Zammad
        another network.
    * - | ZAMMAD_PROCESS_DELAYED\_
        | AI_JOBS_WORKERS
-     - 
+     -
      - unset
      - How many instances of AI workers to run simultaneously. AI workers handle
        Zammad's AI requests and fetch the responses from the configured AI
@@ -122,20 +122,37 @@ Zammad
        The maximum number of workers is ``16``.
    * - | ZAMMAD_PROCESS_DELAYED\_
        | AI_JOBS_WORKERS_THREADS
-     - 
+     -
      - ``5``
      - How many threads should be processed by **one** AI worker (if you have more
        than one worker, it is multiplied by the amount of workers). This may
        speed up the AI processing, but be aware that a Ruby worker can only span
        across 1 core anyway. The maximum number of threads is ``16``.
+   * - | ZAMMAD_PROCESS_DELAYED\_
+       | COMMUNICATION_INBOUND\_
+       | JOBS_WORKERS
+     -
+     - unset
+     - Allows concurrent fetching of inbound communication channels.
+       Useful if you have many channels and/or mailboxes added. ``0`` means it
+       runs in the main process, ``1`` means one additional process, etc. The
+       maximum number of workers is ``16``.
+   * - | ZAMMAD_PROCESS_DELAYED\_
+       | COMMUNICATION_INBOUND\_
+       | JOBS_WORKER_THREADS
+     -
+     - ``1``
+     - Threads used for fetching inbound communication channels. How many
+       threads should be used by inbound jobs workers. The maximum
+       number of threads is ``16``.
    * - MEMCACHE_SERVERS
-     - 
+     -
      - - Docker: ``zammad-memcached:11211``
        - Package: unset
      - Provide your own Memcached instance to Zammad if you already have one.
        The package installation fallback is ``/opt/zammad/tmp/cache*``.
    * - REDIS_URL
-     - 
+     -
      - - Docker: ``redis://zammad-redis:6379``
        - Package: unset
      - Provide your own Redis instance if you already have one.
@@ -315,7 +332,7 @@ the :doc:`configure-database-server` for more information.
      - Default Value
      - Description
    * - ZAMMAD_WEB_CONCURRENCY
-     - 
+     -
      - unset
      - Allows spawning ``n`` workers to allow more simultaneous connections for
        Zammad's web UI.
@@ -323,7 +340,7 @@ the :doc:`configure-database-server` for more information.
        the zammad-railsserver's CPU setting should match the value from this variable.
    * - | ZAMMAD_PROCESS\_
        | SESSION_JOBS_WORKERS
-     - 
+     -
      - unset
      - How many instances of the session worker to run at a time. Increasing
        this value can speed up background jobs (like the scheduler) when many
@@ -336,7 +353,7 @@ the :doc:`configure-database-server` for more information.
        settings variables.
    * - | ZAMMAD_PROCESS\_
        | SCHEDULED_JOBS_WORKERS
-     - 
+     -
      - unset
      - Allows spawning ``1`` independent scheduled jobs worker to release
        pressure from Zammad's background worker. Maximum number of workers:
@@ -347,7 +364,7 @@ the :doc:`configure-database-server` for more information.
        settings variables.
    * - | ZAMMAD_PROCESS\_
        | DELAYED_JOBS_WORKERS
-     - 
+     -
      - unset
      - Allows spawning ``n`` delayed jobs workers to release pressure from
        Zammad's background worker.
