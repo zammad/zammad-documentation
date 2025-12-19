@@ -133,7 +133,7 @@ Zammad
        | JOBS_WORKERS
      -
      - unset
-     - Allows parallelization of fetching inbound communication channels.
+     - Allows concurrent fetching of inbound communication channels.
        Useful if you have many channels and/or mailboxes added. ``0`` means it
        runs in the main process, ``1`` means one additional process, etc. The
        maximum number of workers is ``16``.
