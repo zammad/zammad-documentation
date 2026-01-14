@@ -58,7 +58,7 @@ Add certificate to Zammad (Elasticsearch 8 and newer)
 
       .. code-block:: console
 
-         $ sudo cat /etc/elasticsearch/certs/http_ca.crt | zammad run rails r "SSLCertificate.create!(certificate: STDIN.read)"
+         $ sudo cat /etc/elasticsearch/certs/http_ca.crt | zammad run rails r 'SSLCertificate.create!(certificate: STDIN.read)'
 
    Add it via **UI**:
       In case you already have a running and configured Zammad, you can add the
