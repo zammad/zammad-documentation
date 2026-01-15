@@ -74,7 +74,7 @@ Add the Repository
    .. tab:: CentOS/RHEL
 
       Create the file ``/etc/yum.repos.d/elasticsearch.repo`` and add:
-      
+
       .. code-block:: text
 
          [elasticsearch]
@@ -127,19 +127,19 @@ Install Elasticsearch
 Configuration
 -------------
 
-Open ``/etc/elasticsearch/elasticsearch.yml`` and adjust/uncomment the
-following values:
+Optionally, check and configure Elasticsearch's configuration file which you can
+find under ``/etc/elasticsearch/elasticsearch.yml``.
 
-.. code-block:: yaml
-
-   network.host: 0.0.0.0
-   transport.host: 0.0.0.0
-
-Optional to increase the maximum context size to index:
+We recommend to adjust the maximum context size which should get indexed
+by Elasticsearch. Adjust it to a reasonable size like in the example:
 
 .. code-block:: yaml
 
    http.max_content_length: 400mb
+
+Additional configuration is out of scope of this documentation. In case your
+scenario needs additional configuration, have a look at
+`Elastic's configuration reference <https://www.elastic.co/docs/reference/elasticsearch/configuration-reference>`_.
 
 Start and Enable Elasticsearch
 ------------------------------
