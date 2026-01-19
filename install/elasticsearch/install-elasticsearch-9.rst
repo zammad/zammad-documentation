@@ -16,7 +16,7 @@ Download and Add the Public Signing Key
 
 .. tabs::
 
-   .. tab:: Ubuntu/Debian
+   .. group-tab:: Ubuntu / Debian
 
       Install required tools:
 
@@ -32,13 +32,13 @@ Download and Add the Public Signing Key
            gpg --dearmor | sudo tee /usr/share/keyrings/elasticsearch-keyring.gpg \
            && sudo chmod 644 /usr/share/keyrings/elasticsearch-keyring.gpg
 
-   .. tab:: OpenSUSE/SLES
+   .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-   .. tab:: CentOS/RHEL
+   .. group-tab:: CentOS / RHEL
 
       .. code-block:: console
 
@@ -50,13 +50,13 @@ Add the Repository
 
 .. tabs::
 
-   .. tab:: Ubuntu/Debian
+   .. group-tab:: Ubuntu / Debian
 
       .. code-block:: console
 
          $ echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
 
-   .. tab:: OpenSUSE/SLES
+   .. group-tab:: OpenSUSE / SLES
 
       Create the file ``/etc/zypp/repos.d/elasticsearch.repo`` and add:
 
@@ -71,7 +71,7 @@ Add the Repository
          autorefresh=1
          type=rpm-md
 
-   .. tab:: CentOS/RHEL
+   .. group-tab:: CentOS / RHEL
 
       Create the file ``/etc/yum.repos.d/elasticsearch.repo`` and add:
 
@@ -90,13 +90,13 @@ Install Elasticsearch
 
 .. tabs::
 
-   .. tab:: Ubuntu/Debian
+   .. group-tab:: Ubuntu / Debian
 
       .. code-block:: console
 
          $ sudo apt-get update && sudo apt-get install elasticsearch
 
-   .. tab:: OpenSUSE/SLES
+   .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
@@ -104,7 +104,7 @@ Install Elasticsearch
            sudo zypper install elasticsearch; \
            sudo zypper modifyrepo --disable elasticsearch
 
-   .. tab:: CentOS/RHEL
+   .. group-tab:: CentOS / RHEL
 
       CentOS and RHEL 7 or earlier:
 
