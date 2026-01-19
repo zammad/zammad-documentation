@@ -33,19 +33,19 @@ a shell (e.g. for automation).
 
 .. tabs::
 
-   .. tab:: Docker Installation
+   .. group-tab:: Docker Installation
 
       .. code-block:: console
 
          $ docker compose run --rm zammad-railsserver bundle exec rails r '{COMMAND}'
 
-   .. tab:: Package Installation
+   .. group-tab:: Package Installation
 
       .. code-block:: console
 
          $ zammad run rails r '{COMMAND}'
 
-   .. tab:: Source/Development Installation
+   .. group-tab:: Source/Development Installation
 
       .. code-block:: console
 
@@ -61,7 +61,7 @@ It allows you to run several commands inside it.
 
 .. tabs::
 
-   .. tab:: Docker Installation
+   .. group-tab:: Docker Installation
 
       .. code-block:: console
 
@@ -71,13 +71,13 @@ It allows you to run several commands inside it.
          you can even use a
          :ref:`console via Portainer's GUI <docker-run-commands>`.
 
-   .. tab:: Package Installation
+   .. group-tab:: Package Installation
 
       .. code-block:: console
 
          $ zammad run rails c
 
-   .. tab:: Source/Development Installation
+   .. group-tab:: Source/Development Installation
 
       .. code-block:: console
 
@@ -99,7 +99,6 @@ It allows you to run several commands inside it.
    .. tabs::
 
       .. tab:: Package Installation
-
 
          .. code-block:: console
 

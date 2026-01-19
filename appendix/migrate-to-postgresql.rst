@@ -30,7 +30,7 @@ Install PostgreSQL
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu / Debian
 
       .. code-block:: console
 
@@ -48,7 +48,7 @@ Install PostgreSQL
 
          $ sudo systemctl enable postgresql
 
-   .. tab:: CentOS
+   .. group-tab:: CentOS
 
       .. code-block:: console
 
@@ -67,7 +67,7 @@ Install PostgreSQL
 
          $ sudo systemctl enable postgresql
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
@@ -98,7 +98,7 @@ Install pgloader
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu / Debian
 
       .. code-block:: console
 
@@ -108,13 +108,13 @@ Install pgloader
 
          $ sudo apt install pgloader
 
-   .. tab:: CentOS
+   .. group-tab:: CentOS
 
       .. code-block:: console
 
          $ sudo yum install -y pgloader
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
@@ -178,7 +178,7 @@ Migrate
 
 .. tabs::
 
-   .. tab:: Dry run
+   .. group-tab:: Dry run
 
       You can check your configuration by running pgloader in a dry run first:
 
@@ -186,7 +186,7 @@ Migrate
 
          $ pgloader --dry-run /tmp/pgloader-command
 
-   .. tab:: Actual run
+   .. group-tab:: Actual run
 
       Once you are ready and setup you can start the actual migration:
 

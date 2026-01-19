@@ -17,7 +17,7 @@ Installation
 
 .. tabs::
 
-   .. tab:: Ubuntu/Debian
+   .. tab:: Ubuntu / Debian
 
       .. code-block:: console
 

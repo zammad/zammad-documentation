@@ -17,13 +17,19 @@ some operating systems may require additional packages if not already installed.
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu
 
       .. code-block:: console
 
          $ sudo apt install curl apt-transport-https gnupg
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: Debian
+
+      .. code-block:: console
+
+         $ sudo apt install curl apt-transport-https gnupg
+
+   .. group-tab:: OpenSUSE / SLES
 
       OpenSUSE doesn't require any additional steps here!
 
@@ -38,7 +44,7 @@ some operating systems may require additional packages if not already installed.
 
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
       .. code-block:: console
 
@@ -59,7 +65,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu
 
       List your current locale settings:
 
@@ -84,7 +90,32 @@ To make Zammad work correctly, your system has to use the correct locales.
       After fixing it, make sure to check the output again for including
       ``<lang_code>.utf8``. A reboot may help if unsuccessful.
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: Debian
+
+      List your current locale settings:
+
+      .. code-block:: console
+
+         $ locale | grep "LANG="
+
+      .. include:: /install/includes/include-utf-8-clause.rst
+
+      .. code-block:: console
+
+         $ sudo apt install locales
+
+      .. code-block:: console
+
+         $ sudo locale-gen en_US.UTF-8
+
+      .. code-block:: console
+
+         $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
+
+      After fixing it, make sure to check the output again for including
+      ``<lang_code>.utf8``. A reboot may help if unsuccessful.
+
+   .. group-tab:: OpenSUSE / SLES
 
       List your current locale settings:
 
@@ -109,7 +140,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
          This does not affect other users and thus can be ignored.
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
       List your current locale settings:
 
@@ -137,7 +168,7 @@ Add Repository
 
 .. tabs::
 
-   .. tab:: Ubuntu
+   .. group-tab:: Ubuntu
 
       Install Repository Key
          .. code-block:: console
@@ -166,7 +197,7 @@ Add Repository
             Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
             sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
-   .. tab:: Debian
+   .. group-tab:: Debian
 
       .. hint::
          Starting with Debian 13, the packages are hosted under a different
@@ -204,7 +235,7 @@ Add Repository
             $ curl -fsSL https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list \
                -o /etc/apt/sources.list.d/zammad.list
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: OpenSUSE / SLES
 
       Install Repository Key
          .. code-block:: console
@@ -218,7 +249,7 @@ Add Repository
             https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
 
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
       Install Repository Key
          .. code-block:: console
@@ -243,7 +274,7 @@ Install Zammad
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu
 
       .. code-block:: console
 
@@ -253,7 +284,17 @@ Install Zammad
 
          $ sudo apt install zammad
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: Debian
+
+      .. code-block:: console
+
+         $ sudo apt update
+
+      .. code-block:: console
+
+         $ sudo apt install zammad
+
+   .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
@@ -263,7 +304,7 @@ Install Zammad
 
          $ sudo zypper install zammad
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
       .. code-block:: console
 
@@ -323,7 +364,7 @@ firewall. It may not cover your case.
 
 .. tabs::
 
-   .. tab:: Ubuntu
+   .. group-tab:: Ubuntu
 
       Open Port 80 and 443 on your Firewall:
 
@@ -339,7 +380,7 @@ firewall. It may not cover your case.
 
          $ sudo ufw reload
 
-   .. tab:: Debian
+   .. group-tab:: Debian
 
       .. warning::
 
@@ -388,7 +429,23 @@ firewall. It may not cover your case.
 
       To load your new rules, simply run ``sudo systemctl reload nftables``.
 
-   .. tab:: CentOS, RHEL, openSUSE, SLES
+   .. group-tab:: OpenSUSE / SLES
+
+      Open Port 80 and 443 on your Firewall:
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=http --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=https --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --reload
+
+   .. group-tab:: CentOS / RHEL
 
       Open Port 80 and 443 on your Firewall:
 
