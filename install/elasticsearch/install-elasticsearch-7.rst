@@ -162,14 +162,15 @@ Increase virtual memory map limit
 
       $ sudo sysctl -w vm.max_map_count=262144
 
-Adjust ``/etc/elasticsearch/elasticsearch.yml``
+Adjust ``elasticsearch.yml``
    We use the following settings to optimize the performance of our Elasticsearch
    servers. You may want to append that to your ``elasticsearch.yml`` as a useful
-   basic configuration.
+   basic configuration. Depending on your distro, you may find the file in
+   ``/etc/elasticsearch/elasticsearch.yml`` or ``/etc/default/elasticsearch``.
 
    .. code-block:: text
 
-      # /etc/elasticsearch/elasticsearch.yml
+      # elasticsearch.yml
 
       # Tickets above this size (articles + attachments + metadata)
       # may fail to be properly indexed (Default: 100mb).
