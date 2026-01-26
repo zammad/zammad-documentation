@@ -3,18 +3,16 @@
 Update Instructions Debian 12 > 13
 ==================================
 
-In case you want to update Debian 12 to Debian 13 on Zammad's host machine,
-you need to take additional steps due to changes in the package hosting.
-In case you just want to install (and not update) Zammad on Debian 13, please
+Zammad 7 adds support for Debian 13. However, packages for Debian 13 are only
+available in a new repository because of changes in the package toolchain and
+its hosting. This is why you need to do some extra steps for this update. In
+case you just want to install (and not update) Zammad on Debian 13, please
 follow the instructions in :doc:`package`.
 
-.. warning::
-
-   - Debian 13 is supported starting with Zammad 7.
-   - The steps below are to give you an orientation about the basic steps for an
-     update process of a standard Debian 12 system. You should first and
-     foremost follow Debian's
-     `official update instruction <https://www.debian.org/releases/trixie/release-notes/upgrading.en.html>`_.
+The steps below are to give you an orientation about the basic steps for an
+update process of a standard Debian 12 system, including Zammad. Make sure to
+also have a look at Debian's
+`official update instructions <https://www.debian.org/releases/trixie/release-notes/upgrading.en.html>`_.
 
 Stop Zammad
 -----------
