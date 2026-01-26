@@ -152,11 +152,6 @@ ensure to enable it by default and start it.
 Configuration
 -------------
 
-Install ingest-plugin (only for Elasticsearch <= 7)
-   .. code-block:: console
-
-      $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
 Increase virtual memory map limit
    .. code-block:: console
 

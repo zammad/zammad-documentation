@@ -40,6 +40,7 @@ Follow Debian's
 - Add new sources in /etc/apt/sources.list.d/debian.sources
 - Remove /etc/apt/sources.list & /etc/apt/sources.list.d/zammad.list 
 - Update Debian with apt update & apt full-upgrade
+- Don't update PostgreSQL
 - Apt autoremove
 - Reboot
 
