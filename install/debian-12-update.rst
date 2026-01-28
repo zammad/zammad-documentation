@@ -12,7 +12,8 @@ follow the instructions in :doc:`package`.
 The steps below are to give you an orientation about the basic steps for an
 update process of a standard Debian 12 system, including Zammad. Make sure to
 also have a look at Debian's
-`official update instructions <https://www.debian.org/releases/trixie/release-notes/upgrading.en.html>`_.
+`official update instructions <https://www.debian.org/releases/trixie/release-notes/upgrading.en.html>`_
+as well as the general :doc:`update` page.
 
 Stop Zammad
 -----------
@@ -32,6 +33,11 @@ more information.
 
 Add New Sources
 ---------------
+
+.. hint:: In case you want to upgrade Debian first and do it step by step, skip
+   the Zammad part in the first place, upgrade Debian, reboot and then update
+   Zammad afterwards. You may want to disable Zammad updates during the system
+   update, e.g. by using ``sudo apt-mark hold zammad``.
 
 Debian 13
 ^^^^^^^^^
@@ -106,6 +112,8 @@ Update
 .. code-block:: console
 
    $ sudo apt autoremove
+
+Reboot your system now.
 
 Start Zammad
 ------------
