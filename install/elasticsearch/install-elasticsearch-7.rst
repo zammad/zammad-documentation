@@ -152,24 +152,20 @@ ensure to enable it by default and start it.
 Configuration
 -------------
 
-Install ingest-plugin (only for Elasticsearch <= 7)
-   .. code-block:: console
-
-      $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
 Increase virtual memory map limit
    .. code-block:: console
 
       $ sudo sysctl -w vm.max_map_count=262144
 
-Adjust ``/etc/elasticsearch/elasticsearch.yml``
+Adjust ``elasticsearch.yml``
    We use the following settings to optimize the performance of our Elasticsearch
    servers. You may want to append that to your ``elasticsearch.yml`` as a useful
-   basic configuration.
+   basic configuration. Depending on your distro, you may find the file in
+   ``/etc/elasticsearch/elasticsearch.yml`` or ``/etc/default/elasticsearch``.
 
    .. code-block:: text
 
-      # /etc/elasticsearch/elasticsearch.yml
+      # elasticsearch.yml
 
       # Tickets above this size (articles + attachments + metadata)
       # may fail to be properly indexed (Default: 100mb).
