@@ -1,125 +1,128 @@
-Set Up Elasticsearch
-====================
+Install Elasticsearch
+=====================
 
-Zammad's search function can be powered by Elasticsearch (which is **highly
-recommended**).
+This guide shows a simple standard installation of Elasticsearch 8. The
+intention is to get you up and running quickly. However, in case you
+need a more advanced configuration or face any issues, have a look at
+the `official Elasticsearch installation
+documentation <https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch>`__.
+Adapt it wherever needed if your use-case differs.
 
-.. include:: /install/includes/hosted-services.rst
+Installation
+------------
 
-.. note:: Some steps may be required depending on your Elasticsearch version and
-   configuration. See remarks in the configuration steps below.
-
-Step 1: Installation
---------------------
-
-Elasticsearch offers different versions. Currently, the versions 7 and 8
-are supported by Zammad. For installation instructions, you should first and
-foremost follow
-`Elastic's installation documentation <https://www.elastic.co/guide/en/elasticsearch/reference/8.19/install-elasticsearch.html>`_.
-Use the dropdown in the top left corner to choose which version you want to
-install.
-
-However, if you want go with Elasticsearch 7 (which is slightly easier to
-install), you can find the consolidated installation steps below.
-Be aware that the maintenance of version 7 might be stopped earlier than for
-later versions, which also come with some additional security features.
-
-.. hint:: If you are installing Elasticsearch 8 and want to follow our
-   standard configuration in step 2, make sure to copy/save the password which
-   is shown while installing Elasticsearch.
+Download and Add the Public Signing Key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabs::
 
-   .. tab:: Ubuntu
+   .. group-tab:: Ubuntu / Debian
 
-      ::
+      Install required tools:
 
-         $ apt install apt-transport-https sudo wget curl gnupg
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
+      .. code-block:: console
+
+         $ sudo apt-get install apt-transport-https
+
+      Add repo key:
+
+      .. code-block:: console
+
          $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null \
-           && chmod 644 /etc/apt/trusted.gpg.d/elasticsearch.gpg
-         $ apt update
-         $ apt install elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+           gpg --dearmor | sudo tee /usr/share/keyrings/elasticsearch-keyring.gpg \
+           && sudo chmod 644 /usr/share/keyrings/elasticsearch-keyring.gpg
 
-   .. tab:: Debian
+   .. group-tab:: OpenSUSE / SLES
 
-      ::
-
-         $ apt install apt-transport-https sudo wget curl gnupg
-         $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/elasticsearch.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"| \
-           tee -a /etc/apt/sources.list.d/elastic-7.x.list > /dev/null
-         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | tee /etc/apt/trusted.gpg.d/elasticsearch.gpg> /dev/null \
-           && chmod 644 /etc/apt/trusted.gpg.d/elasticsearch.gpg
-         $ apt update
-         $ apt install elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. tab:: CentOS
-
-      ::
+      .. code-block:: console
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         $ echo "[elasticsearch-7.x]
-         name=Elasticsearch repository for 7.x packages
-         baseurl=https://artifacts.elastic.co/packages/7.x/yum
-         gpgcheck=1
-         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         enabled=1
-         autorefresh=1
-         type=rpm-md"| tee /etc/yum.repos.d/elasticsearch-7.x.repo
-         $ yum install -y elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 
-   .. tab:: OpenSUSE
+   .. group-tab:: CentOS / RHEL
 
-      ::
+      .. code-block:: console
 
          $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         $ echo "[elasticsearch-7.x]
-         name=Elasticsearch repository for 7.x packages
-         baseurl=https://artifacts.elastic.co/packages/7.x/yum
+
+
+Add the Repository
+^^^^^^^^^^^^^^^^^^
+
+.. tabs::
+
+   .. group-tab:: Ubuntu / Debian
+
+      .. code-block:: console
+
+         $ echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+
+   .. group-tab:: OpenSUSE / SLES
+
+      Create the file ``/etc/zypp/repos.d/elasticsearch.repo`` and add:
+
+      .. code-block:: text
+
+         [elasticsearch]
+         name=Elasticsearch repository for 8.x packages
+         baseurl=https://artifacts.elastic.co/packages/8.x/yum
          gpgcheck=1
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-         enabled=1
+         enabled=0
          autorefresh=1
-         type=rpm-md"| tee /etc/zypp/repos.d/elasticsearch-7.x.repo
-         $ zypper install elasticsearch
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+         type=rpm-md
 
-   .. tab:: Direct Download
+   .. group-tab:: CentOS / RHEL
 
-      Find the latest release on the
-      `downloads page <https://www.elastic.co/downloads/elasticsearch>`_,
-      or see the
-      `installation guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html>`_
-      for in-depth instructions. Ensure to also install the fitting
-      (and mandatory!) attachment plugin for elasticsearch, if installing
-      version 7.
+      Create the file ``/etc/yum.repos.d/elasticsearch.repo`` and add:
 
-      .. code-block:: sh
+      .. code-block:: text
 
-         # Install the attachment plugin
-         $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+         [elasticsearch]
+         name=Elasticsearch repository for 8.x packages
+         baseurl=https://artifacts.elastic.co/packages/8.x/yum
+         gpgcheck=1
+         gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         enabled=0
+         type=rpm-md
 
-         # Increase the virtual memory map limit
-         $ sysctl -w vm.max_map_count=262144
+Install Elasticsearch
+^^^^^^^^^^^^^^^^^^^^^
 
-After you installed Elasticsearch and its attachment plugin,
-ensure to enable it by default and start it.
+.. tabs::
 
-.. code-block:: sh
+   .. group-tab:: Ubuntu / Debian
 
-   $ systemctl start elasticsearch
-   $ systemctl enable elasticsearch
+      .. code-block:: console
 
-.. note:: 🐋 **Docker installations on macOS/Windows:**
+         $ sudo apt-get update && sudo apt-get install elasticsearch
 
-   Setting the ``vm.max_map_count`` kernel parameter requires
-   `additional steps <https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#_set_vm_max_map_count_to_at_least_262144s>`_.
+   .. group-tab:: OpenSUSE / SLES
+
+      .. code-block:: console
+
+         $ sudo zypper modifyrepo --enable elasticsearch && \
+           sudo zypper install elasticsearch; \
+           sudo zypper modifyrepo --disable elasticsearch
+
+   .. group-tab:: CentOS / RHEL
+
+      CentOS and RHEL 7 or earlier:
+
+      .. code-block:: console
+
+         $ sudo yum install --enablerepo=elasticsearch elasticsearch
+
+      RHEL 8 and later:
+
+      .. code-block:: console
+
+         $ sudo dnf install --enablerepo=elasticsearch elasticsearch
+
+.. tip::
+
+   Make sure to check the output and to copy the password of the
+   built-in superuser. Otherwise, you have to recreate it by running
+   ``/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic``.
 
 Step 2: Configuration
 ---------------------
@@ -180,18 +183,14 @@ commands, as this will fail otherwise.
    and run the bare ``rails ...`` or ``rake ...`` commands instead.
 
 Elasticsearch URL
+   Set the Elasticsearch server address; adapt it to your scenario:
+
    .. code-block:: sh
 
-      # Set the Elasticsearch server address; adapt it to your scenario.
-
-      # Elasticsearch 7:
-      $ sudo zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
-
-      # Elasticsearch 8:
       $ sudo zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
 
-Elasticsearch user and password (only for Elasticsearch >= 8)
+Elasticsearch user and password
    Now you need your password which was shown to you while installing
    Elasticsearch.
 
@@ -201,17 +200,32 @@ Elasticsearch user and password (only for Elasticsearch >= 8)
       $ zammad run rails r "Setting.set('es_user', 'elastic')"
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
-Add certificate to Zammad (only for Elasticsearch >= 8)
-   Show and copy the auto-generated certificate from Elasticsearch and add it
-   to Zammad. Make sure to copy/paste the delimiters
-   (e.g. ``-----BEGIN CERTIFICATE-----``) too.
+Add certificate to Zammad
+   Add it via **Rails console**:
+      In case you are installing a new Zammad and didn't run through the
+      getting started wizard already, add the certificate via console:
 
-   .. code-block:: sh
+      .. code-block:: console
 
-      $ sudo cat /etc/elasticsearch/certs/http_ca.crt
+         $ sudo cat /etc/elasticsearch/certs/http_ca.crt | zammad run rails r 'SSLCertificate.create!(certificate: STDIN.read)'
 
-   Go to the admin panel of Zammad and add your copied certificate under
-   :admin-docs:`SSL Certificates </settings/security/ssl-certificates.html>`.
+   Add it via **UI**:
+      In case you already have a running and configured Zammad, you can add the
+      certificate in Zammad's
+      :admin-docs:`admin settings </settings/security/ssl-certificates.html>`
+      (*Settings > Security > SSL Certificates*) as an alternative.
+      To show and copy the auto-generated certificate from Elasticsearch, run:
+
+      .. code-block:: console
+
+         $ sudo cat /etc/elasticsearch/certs/http_ca.crt
+
+      To add it in Zammad, either upload the certificate file or paste the
+      content in the dialog. Make sure to copy/paste the delimiters
+      (e.g. ``-----BEGIN CERTIFICATE-----``) too.
+
+   In any case, you can find the certificate in the UI. This looks like
+   this:
 
    .. figure:: /images/install/elasticsearch/admin-certificate-management.png
       :alt: Screenshot shows certificate management in Zammad's admin panel
