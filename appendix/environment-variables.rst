@@ -223,7 +223,9 @@ PostgreSQL
    * - POSTGRESQL_HOST
      - |docker|
      - ``zammad-postgresql``
-     - Host name of your PostgreSQL server. Use your own if you already have one.
+     - Host name or IP address of your PostgreSQL server. In case you use an
+       IPv6 address, enclose the address in square brackets (e.g.
+       ``[2001:db8::2]``).
    * - POSTGRESQL_PORT
      - |docker|
      - ``5432``
