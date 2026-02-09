@@ -192,7 +192,7 @@ Add Repository
 
             $ printf "Types: deb
             URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
-            Suites: 22.04
+            Suites: 24.04
             Components: main
             Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
             sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
