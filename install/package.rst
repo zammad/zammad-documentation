@@ -174,13 +174,13 @@ Add Repository
          .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-              gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg > /dev/null \
-               && sudo chmod 644 /etc/apt/trusted.gpg.d/pkgr-zammad.gpg
+              gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg > /dev/null \
+               && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
 
       Ubuntu 22.04
          .. code-block:: console
 
-            $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
+            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       Ubuntu 24.04
@@ -194,7 +194,7 @@ Add Repository
             URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
             Suites: 24.04
             Components: main
-            Signed-By: /etc/apt/trusted.gpg.d/pkgr-zammad.gpg" | \
+            Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
             sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
    .. group-tab:: Debian
