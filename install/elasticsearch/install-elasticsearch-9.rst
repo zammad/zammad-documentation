@@ -24,14 +24,6 @@ Download and Add the Public Signing Key
 
          $ sudo apt-get install apt-transport-https
 
-      Add repo key:
-
-      .. code-block:: console
-
-         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | sudo tee /usr/share/keyrings/elasticsearch-keyring.gpg \
-           && sudo chmod 644 /usr/share/keyrings/elasticsearch-keyring.gpg
-
    .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
@@ -51,6 +43,16 @@ Add the Repository
 .. tabs::
 
    .. group-tab:: Ubuntu / Debian
+
+      Add repo key:
+
+      .. code-block:: console
+
+         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
+           gpg --dearmor | sudo tee /usr/share/keyrings/elasticsearch-keyring.gpg \
+           && sudo chmod 644 /usr/share/keyrings/elasticsearch-keyring.gpg
+
+      Add repo:
 
       .. code-block:: console
 
