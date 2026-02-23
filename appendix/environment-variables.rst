@@ -284,6 +284,7 @@ Nginx
      - If the Nginx container for Zammad **is not** the upstream server
        (aka you're using another proxy in front of Nginx) ``$scheme`` may be
        wrong. You can set the correct scheme ``http`` or ``https`` if needed.
+       Set this if you face a ``CSRF Token Verification Failed`` error.
    * - NGINX_CLIENT_MAX_BODY_SIZE
      - |docker|
      - unset
