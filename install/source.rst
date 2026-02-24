@@ -14,6 +14,5 @@ We decided to remove the instructions to install Zammad from source from this
 documentation because of better alternatives for production deployments.
 
 However, if you want to install it from source, you can follow our
-`developer manual <https://github.com/zammad/zammad/blob/develop/doc/developer_manual/development_environment/how-to-set-up-a-development-environment.md>`_
-in the Github repository. You can also find instructions there about how to
-configure your development environment when using a Mac.
+`developer manual <https://github.com/zammad/zammad/blob/develop/doc/developer_manual/development_environment/getting-started.md>`_
+in the Github repository.
