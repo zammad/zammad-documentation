@@ -91,8 +91,6 @@ Install PostgreSQL
 
          $ sudo systemctl enable postgresql
 
-Please also have a look at :doc:`/appendix/configure-database-server`.
-
 Install pgloader
 ^^^^^^^^^^^^^^^^
 
@@ -128,27 +126,54 @@ Install pgloader
 Create pgloader Command File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create a command file for pgloader with:
+Create a command file for pgloader:
 
 .. code-block:: console
 
    $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
-Afterwards, you need to tweak the created file with the correct URL of the
-target PostgreSQL server.
+.. hint::
 
-Adjust the PostgreSQL URL below to the correct value before executing this
-command file:
+   In case you accidentally updated to Zammad 7 already, use the template below
+   to create the file:
+   
+   .. code-block:: psql
+   
+      LOAD DATABASE
+        -- Adjust the MySQL URL below to correct value before executing this command file.
+        FROM mysql://zammad:mysql_password@localhost/zammad
+      
+        -- Adjust the PostgreSQL URL below to correct value before executing this command file.
+        INTO pgsql://zammad:pgsql_password@localhost/zammad
+      
+      ALTER SCHEMA 'zammad' RENAME TO 'public'
+      
+      AFTER LOAD DO
+        $$ alter table smime_certificates alter column email_addresses type varchar[] using translate(email_addresses::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table pgp_keys alter column email_addresses type varchar[] using translate(email_addresses::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table public_links alter column screen type varchar[] using translate(screen::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table checklists alter column sorted_item_ids type varchar[] using translate(sorted_item_ids::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table checklist_templates alter column sorted_item_ids type varchar[] using translate(sorted_item_ids::varchar, '[]', '{}')::varchar[] $$
+      
+      WITH BATCH CONCURRENCY = 1
+      SET timezone = 'UTC'
+      SET client_timezone TO '00:00'
+      ;
+
+Afterwards, you need to tweak the created file with the correct URL of the
+target PostgreSQL server and provide the correct credentials for the
+MySQL/MariaDB source database.
 
 .. code-block:: text
 
    pgsql://zammad:pgsql_password@localhost/zammad
+   [...]
+   mysql://zammad:mysql_password@localhost/zammad
 
-You will at least need to replace ``psql_password`` placeholder in the provided
-example.
+Replace them with the correct values before continuing.
 
-Verify the rest of the MySQL credentials in the command file, they should reflect the
-configuration of your current environment.
+Please also have a look at :doc:`/appendix/configure-database-server` in case
+you want to adjust your configuration.
 
 Database Credentials
 ^^^^^^^^^^^^^^^^^^^^
