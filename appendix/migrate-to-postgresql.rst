@@ -134,8 +134,8 @@ Create a command file for pgloader:
 
 .. hint::
 
-   In case you accidentally updated to Zammad 7 already, use the template below
-   and add it to the ``/tmp/pgloader-command`` file:
+   In case you accidentally updated to Zammad 7 already, add the
+   ``/tmp/pgloader-command`` file manually with the template content:
    
    .. code-block:: psql
    
