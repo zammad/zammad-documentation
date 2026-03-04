@@ -3,13 +3,13 @@ Install with Docker
 
 .. include:: /install/includes/hosted-services.rst
 
-Zammad can be deployed using Docker-Compose. You can even use
-graphical docker front ends like
+Zammad can be deployed using Docker Compose. You can even use
+graphical Docker front ends like
 `Portainer <https://www.portainer.io/>`_.
 
 .. hint::
 
-   We do not provide support in terms of Docker (-Compose) or Portainer specific
+   We do not provide support in terms of Docker (Compose) or Portainer specific
    problems. If you choose to run Zammad via Docker, support is only provided
    for the Zammad application.
 
@@ -21,14 +21,17 @@ Prerequisites
 * Make sure to have at least 4 GB of RAM to run the containers.
 * Adjust your host's settings to run Elasticsearch properly:
 
-   .. code-block:: sh
+  .. code-block:: console
 
-      sysctl -w vm.max_map_count=262144
+     $ sudo sysctl -w vm.max_map_count=262144
 
-Deployment with Portainer
--------------------------
+Deployment
+----------
 
-The easiest way to get Zammad running is via a graphical docker UI. We recommend
+With Portainer
+^^^^^^^^^^^^^^
+
+The easiest way to get Zammad running is via a graphical Docker UI. We recommend
 `Portainer <https://www.portainer.io/>`_.
 For installation instructions, check out
 `Portainer's documentation <https://docs.portainer.io/>`_.
@@ -49,7 +52,7 @@ Step 2: Build From Repository
    - **Repository reference**: ``refs/heads/master``
    - **Compose path**: ``docker-compose.yml`` (default)
 
-   In some cases, our default environment is not what a Docker-Compose user is
+   In some cases, our default environment is not what a Docker Compose user is
    looking for. You can customize the stack using pre-defined scenarios and
    adjust environment variables. Jump to the
    :ref:`the customization section <customizing-stack>` below to find more
@@ -62,40 +65,43 @@ Step 3: Deploy the Stack
    Finally, click the **Deploy the stack** button. The first time, it may take
    some time until the Docker images are fetched.
 
-   After the stack is ready, you can access Zammad via the configured docker
+   After the stack is ready, you can access Zammad via the configured Docker
    host and port, e.g. ``http://localhost:8080/``.
 
 
-Deployment with Docker-Compose
-------------------------------
+With Docker Compose
+^^^^^^^^^^^^^^^^^^^
 
 Step 1: Clone the GitHub Repo
-   .. code-block:: sh
+   .. code-block:: console
 
-      git clone https://github.com/zammad/zammad-docker-compose.git
+      $ git clone https://github.com/zammad/zammad-docker-compose.git
 
    Make sure to run ``git pull`` frequently to fetch updates.
    Alternatively, you can download the files from
    `the releases page <https://github.com/zammad/zammad-docker-compose/releases>`_.
 
 Step 2: Adjust Environment as Needed
-   In some cases, our default environment is not what a docker-compose user is
+   In some cases, our default environment is not what a Docker Compose user is
    looking for. You can customize the stack using pre-defined scenarios and
    adjust environment variables. Jump to the
    :ref:`customization section <customizing-stack>` below to find more
    information.
 
 Step 3: Start the stack
-   .. code-block:: sh
+   .. code-block:: console
 
-      cd zammad-docker-compose
-      docker compose up -d
+      $ cd zammad-docker-compose
+
+   .. code-block:: console
+
+      $ docker compose up -d
 
    Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
    Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
    section.
 
-   After the stack is ready, you can access Zammad via the configured docker
+   After the stack is ready, you can access Zammad via the configured Docker
    host and port, e.g. ``http://localhost:8080/``.
 
 Exposing the Stack via HTTPS
@@ -105,11 +111,11 @@ To publish a Zammad stack on the internet, it needs be secured via the HTTPS
 protocol. To achieve that without modifying the Zammad stack, you can:
 
 - Use a reverse proxy like Nginx Proxy Manager (NPM). It has a GUI that provides
-  an easy `Letsencrypt <https://letsencrypt.org/>`_ integration.
+  an easy `Let's Encrypt <https://letsencrypt.org/>`_ integration.
 - Use a cloudflare tunnel, which provides SSL termination.
 
 Both scenarios are covered in the
-:doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
+:doc:`Docker Compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
 .. _customizing-stack:
 
@@ -118,19 +124,18 @@ Customizing the Zammad Stack
 
 The Zammad stack can be customized by loading additional scenario files for
 common use cases. For example, you can deploy the stack with an included Nginx
-Proxy Manager (NPM) or with disabled Postgres or Elasticsearch services, in case
+Proxy Manager (NPM) or with disabled PostgreSQL or Elasticsearch services, in case
 you already have these services running.
 
-Please see the :doc:`Docker compose scenarios section <docker-compose/docker-compose-scenarios>`.
+Please see the :doc:`Docker Compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
 To adjust the stack and settings, use
-:doc:`docker specific environment variables </install/docker-compose/environment>`.
+:doc:`Docker specific environment variables </appendix/environment-variables>`.
 
 .. toctree::
    :hidden:
    :maxdepth: 1
 
-   /install/docker-compose/environment
    /install/docker-compose/docker-compose-scenarios
 
 
@@ -139,7 +144,7 @@ To adjust the stack and settings, use
 How to Run Commands in the Stack
 --------------------------------
 
-The docker entrypoint script sets up environment variables required by Zammad
+The Docker entrypoint script sets up environment variables required by Zammad
 to function properly. That is why calling ``rails`` or ``rake`` on the console
 should be done via one of the following methods:
 
@@ -148,40 +153,52 @@ should be done via one of the following methods:
    .. tab:: Via Portainer GUI
 
       In your Portainer GUI, go to the container view and select the running
-      rails container from your Zammad stack. Click on the **Exec Console**
-      icon in the "Quick Actions" column.
+      Rails container from your Zammad stack. Click on the **Exec Console**
+      icon in the "Quick Actions" column and on the **Connect** button.
 
       .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
          :alt:
          :width: 70%
 
-      In the "Execute" dialog, select the "rails console" entry point as you
-      can see in the screenshot:
+      Run the interactive Rails console by executing:
 
-      .. figure:: /images/install/docker-compose/portainer/portainer-execute-command.png
-         :alt:
-         :width: 70%
+      .. code-block:: console
+
+         $ bundle exec rails c
+
+      Directly execute a specific command:
+
+      .. code-block:: console
+
+         $ bundle exec rails r '...your rails command here...'
 
    .. tab:: Via console
 
       Directly execute a specific command:
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         docker compose run --rm zammad-railsserver rails r '...your rails command here...'
+         $ docker compose run --rm zammad-railsserver bundle exec rails r '...your rails command here...'
 
-      Run the interactive rails console to manually enter Rails commands:
+      Run the interactive Rails console to manually enter Rails commands:
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         docker compose run --rm zammad-railsserver rails c
+         $ docker compose run --rm zammad-railsserver bundle exec rails c
 
-      Via ``docker exec``:
+      Via ``docker compose exec``:
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         docker exec zammad-docker-compose-zammad-railsserver-1 /docker-entrypoint.sh rails r '...your rails command here...'
+         $ docker compose exec zammad-railsserver bundle exec rails r '...your rails command here...'
 
-      If you need to retrieve information from the rails server, you can place
-      for example ``pp`` (pretty print) in front of your rails command. This
+      If you need to retrieve information from the Rails server, you can place
+      for example ``pp`` (pretty print) in front of your Rails command. This
       leads to an output in your terminal.
+
+Backup & Restore
+----------------
+
+Because the backup and restore procedure is different than for the package
+installation, we created a dedicated
+:doc:`/appendix/backup-and-restore/docker-compose` page for that.

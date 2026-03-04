@@ -9,7 +9,7 @@ Fetch Emails
 The below command will do a manual fetch of mail channels.
 This will also show errors that might appear within that process.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Channel.fetch
 
@@ -69,7 +69,7 @@ Add Translation
 This comes in handy if you e.g. added a new state that you need to translate
 for several languages.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Translation.create_if_not_exists(:locale => 'de-de', :source => "New", :target => "Neu", created_by_id: 1, updated_by_id: 1)
 
@@ -93,11 +93,22 @@ This will translate the attribute display name and the display names of values
 (if it's a value field). For this to work, just replace ``{attribute-name}``
 with the name of your attribute.
 
-.. code-block:: ruby
+Find the attribute:
+
+.. code-block:: irb
 
    >> attribute = ObjectManager::Attribute.find_by(name: '{attribute-name}')
-   >> attribute.data_option[:translate] = true  # set this to false to disable
-                                                # translation again
+
+Enable translation (set to ``false`` to disable it again):
+
+.. code-block:: irb
+
+   >> attribute.data_option[:translate] = true
+
+Apply it:
+
+.. code-block:: irb
+
    >> attribute.save!
 
 .. note::
@@ -108,7 +119,7 @@ with the name of your attribute.
    * Select
    * Tree Select
 
-   If you're translating the display name of e.g. an Integer-attribute,
+   If you're translating the display name of e.g. an integer-attribute,
    this works as well!
 
 Fill a Test System With Test Data
@@ -124,6 +135,6 @@ The below command will add ``50`` agents, ``1000`` customers, ``20`` groups,
 You can always use ``0`` to not create specific items.
 Zammad will create random data which make no logical sense.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> FillDb.load(agents: 50,customers: 1000,groups: 20,organizations: 40,overviews: 5,tickets: 100,)

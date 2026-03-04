@@ -7,8 +7,8 @@ Limitations
 Please note below OTRS specific limitations.
 These are additional limitations to the :ref:`general ones listed <migration_limitations>`.
 
-   * | Password migration works for OTRS >= 3.3 only
-     | (on older instances a password reset within Zammad will be required)
+   * Password migration works for OTRS >= 3.3 only (on older instances, a
+     password reset within Zammad will be required)
    * If you plan to import a differential migration after,
      do not change any data in Zammad!
    * Only customers of tickets are imported
@@ -17,7 +17,7 @@ These are additional limitations to the :ref:`general ones listed <migration_lim
 
    .. note::
 
-      Supported OTRS version: **3.1** up to **6.x**
+      Supported OTRS versions: **3.1** up to **6.x**
 
 Prerequisites
 -------------
@@ -25,62 +25,23 @@ Prerequisites
 Step 1: Install Znuny4OTRS-Repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is a dependency of the OTRS migration plugin.
+This is a dependency of the OTRS migration plugin. Add the repository that
+matches your OTRS version:
 
-.. tabs::
-
-   .. tab:: OTRS 6
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-6.0.76.opm
-
-   .. tab:: OTRS 5
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-5.0.56.opm
-
-   .. tab:: OTRS 4
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-4.0.25.opm
-
-   .. tab:: OTRS 3
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-3.3.2.opm
+- `OTRS 6 repository <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-6.0.76.opm>`_
+- `OTRS 5 repository <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-5.0.56.opm>`_
+- `OTRS 4 repository <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-4.0.25.opm>`_
+- `OTRS 3 repository <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-Repo-3.3.2.opm>`_
 
 Step 2: Install OTRS Migration Plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabs::
+Install the version that matches your OTRS version:
 
-   .. tab:: OTRS 6
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-6.0.7.opm
-
-   .. tab:: OTRS 5
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-5.0.4.opm
-
-   .. tab:: OTRS 4
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-4.1.12.opm
-
-   .. tab:: OTRS 3
-
-      .. code-block::
-
-         https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-3.0.33.opm
+- `OTRS 6 plugin <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-6.0.7.opm>`_
+- `OTRS 5 plugin <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-5.0.4.opm>`_
+- `OTRS 4 plugin <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-4.1.12.opm>`_
+- `OTRS 3 plugin <https://ftp.zammad.com/otrs-migrator-plugins/Znuny4OTRS-ZammadMigrator-3.0.33.opm>`_
 
 .. hint::
 
@@ -91,41 +52,48 @@ Importing OTRS Data
 
 .. tabs::
 
-   .. tab:: via Browser
+   .. tab:: Via browser
 
       .. note::
 
-         If your OTRS installation is rather huge, you might want to consider using
-         the command line version of this feature. This also applies if you
-         experience Timeouts during the migration.
+         If your OTRS installation is rather huge, you might want to consider
+         using the command line version of this feature. This also applies if
+         you experience timeouts during the migration or if you want to
+         re-import again.
 
       After installing Zammad and configuring your
       :doc:`webserver </getting-started/configure-webserver>`, navigate to your
-      Zammads FQDN in your Browser and follow the migration wizard.
+      Zammad's FQDN in your Browser and follow the migration wizard.
 
       Depending on the size of your OTRS installation this may take a while.
-
       You can get an idea of this process in the
       `migrator video on vimeo <https://vimeo.com/187752786>`_ .
 
-   .. tab:: via Console
+   .. tab:: Via console
 
       .. include:: /migration/includes/rails-console-migrator-hint.include.rst
 
-      If you miss this at the beginning or you want to re-import again you have
-      to use the command line at the moment.
+      Set import mode
+         Stop all internal Zammad processes and set Zammad to import mode (no
+         events are fired, e.g. notifications, sending emails, etc.).
 
-      Stop all Zammad processes and switch Zammad to import mode (no events are
-      fired - e. g. notifications, sending emails, ...)
+         .. code-block:: irb
+
+            >> Setting.set('import_mode', true)
 
       Start the migration
-         Ensure to replace `xxx` with your values.
+         Ensure to replace the values in ``{}`` brackets with your values.
 
-         .. code-block:: ruby
+         .. code-block:: irb
 
-            >> Setting.set('import_otrs_endpoint', 'https://xxx/otrs/public.pl?Action=ZammadMigrator')
-            >> Setting.set('import_otrs_endpoint_key', 'xxx')
-            >> Setting.set('import_mode', true)
+            >> Setting.set('import_otrs_endpoint', 'https://{your instance}/otrs/public.pl?Action=ZammadMigrator')
+
+         .. code-block:: irb
+
+            >> Setting.set('import_otrs_endpoint_key', '{xxx}')
+
+         .. code-block:: irb
+
             >> Import::OTRS.start
 
       .. include:: /migration/includes/commands-after-migration.include.rst
@@ -137,18 +105,32 @@ Importing a Differential
 
 .. note::
 
-   This is only possible after finishing an earlier OTRS import **successful**.
+   This is only possible after finishing an earlier OTRS import successfully.
 
 In some cases it might be desirable to update the already imported data from OTRS.
 This is possible with the following commands.
 
 Run a differential import
-   .. code-block:: ruby
+   Ensure to replace the values in ``{}`` brackets with your values.
 
-      >> Setting.set('import_otrs_endpoint', 'http://xxx/otrs/public.pl?Action=ZammadMigrator')
-      >> Setting.set('import_otrs_endpoint_key', 'xxx')
+   .. code-block:: irb
+
+      >> Setting.set('import_otrs_endpoint', 'http://{your instance}/otrs/public.pl?Action=ZammadMigrator')
+
+   .. code-block:: irb
+
+      >> Setting.set('import_otrs_endpoint_key', '{xxx}')
+
+   .. code-block:: irb
+
       >> Setting.set('import_mode', true)
+
+   .. code-block:: irb
+
       >> Setting.set('system_init_done', false)
+
+   .. code-block:: irb
+
       >> Import::OTRS.diff_worker
 
 .. include:: /migration/includes/commands-after-migration.include.rst

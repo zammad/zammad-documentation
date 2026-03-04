@@ -59,9 +59,10 @@ Common Problems
 
    Usually, authentication can be allowed like this:
 
-   .. code-block:: sh
+   Adjust the example to your needs:
 
-      # THIS IS A SAMPLE AND MAY NOT FIT YOUR ENVIRONMENT
+   .. code-block:: text
+
       host    all             all             127.0.0.1/32            md5
       host    all             all             ::1/128                 md5
 

@@ -13,19 +13,32 @@ check the EML-file itself.
 To get the first articles EML-file, you can use the following command.
 In our example the ticket number in question is ``101234``.
 
-.. code-block:: ruby
+.. code-block:: irb
 
-  >> Ticket.find_by(number:'101234').articles.first.as_raw.content
+   >> Ticket.find_by(number:'101234').articles.first.as_raw.content
 
 If needed, you can also get the raw content of later articles (you'll need to
 find the correct article though). Again, we expect ``101234`` to be our ticket
 number. In the first step we get all article IDs of the ticket, from the list
 we get, we can then get the articles content.
 
-.. code-block:: ruby
+Get article IDs:
 
-  >> Ticket.find_by(number:'101234').article_ids
-  => [4, 3, 2]
+.. code-block:: irb
+
+   >> Ticket.find_by(number:'101234').article_ids
+
+Example output:
+
+.. code-block:: irb
+   :class: no-copybutton
+
+   => [4, 3, 2]
+
+Get raw content of specific article ID:
+
+.. code-block:: irb
+
   >> Ticket::Article.find(3).as_raw.content
 
 .. note::
@@ -41,7 +54,7 @@ Update All Tickets of a Specific Customer
    Please note that this action can be expensive resource wise, if you have many
    tickets, this might slow down Zammad.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Ticket.where(customer_id: 4).update_all(customer_id: 1)
 
@@ -66,7 +79,7 @@ This will show all state types needed for creating new ticket states.
    If you want to add custom states, have a look in our
    :admin-docs:`admin documentation section </system/objects.html#system-attributes>`.
 
-.. code-block:: ruby
+.. code-block:: irb
 
    >> Ticket::StateType.pluck(:id, :name)
 

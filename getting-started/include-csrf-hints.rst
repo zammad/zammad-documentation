@@ -8,16 +8,16 @@
 
    The following options expect HTTPS connections which should be your goal.
 
-   nginx
+   Nginx
       Within your virtual host configuration, locate both directives
       ``proxy_set_header X-Forwarded-Proto`` and replace ``$scheme`` by
       ``https``.
 
-   apache2
+   Apache2
       Within your virtual host configuration just above the first
       ``ProxyPass`` directive insert:
 
-      .. code-block::
+      .. code-block:: text
 
          RequestHeader set X_FORWARDED_PROTO 'https'
          RequestHeader set X-Forwarded-Ssl on

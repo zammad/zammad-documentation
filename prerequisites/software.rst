@@ -12,43 +12,28 @@ requirements for your clients. This ensures that Zammad works as expected.
 1.1 Supported Browsers
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: Zammad/Browser version compatibility
-   :header-rows: 1
-   :widths: 20, 30
+Because Zammad is a web application, only an up-to-date browser is needed. The
+following browsers are supported in their latest stable version:
 
-   * - Browser
-     - Remarks
-   * - Firefox 78+
-     - (ESR)
-   * - (Google) Chrome 83+
-     - This also applies for all Chromium based Browsers like Microsoft Edge
-   * - Opera 69+
-     - (based on Chromium 83)
-   * - Microsoft Internet Explorer 11
-     - ⚠️ Deprecated, will be removed with Zammad 7
-   * - Safari 14.1+
-     -
+- Firefox
+- Chrome (and Chromium-based)
+- Opera
+- Safari
 
-.. danger:: ⚠️ Deprecation warning ⚠️
+This does not mean that Zammad will not work with other browsers or older
+versions, just that we do not test against or provide support for them.
 
-   Zammad 7 will no longer support Internet Explorer 11 environments.
-   Users using IE will be forced to use a different browser.
-
-Please note that Zammad heavily uses Javascript which makes it a hard
-requirement. Some browser addons that hook into page content may interfere with
-Zammads function which is not a bug.
-For example the Google Chrome translation module is known to do odd things,
-especially to state names. Use Zammads internal translations instead.
+The communication between client and server is based on web sockets. Some
+firewalls may filter these connections. This may lead to decreased browser
+performance.
 
 1.2 Network Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zammad uses web sockets. Some application firewalls may filter these
 connections. This may lead to decreased browser performance.
-
 There's a fallback to Ajax which causes a higher application server load
 and thus should be avoided.
-
 In case you're having issues with field selection, you can activate the
 :admin-docs:`AJAX Mode for "Core Workflows" </settings/system/frontend.html>`
 separately.
@@ -64,41 +49,12 @@ If you want to install Zammad, you need the following software.
    version)  are minimum requirements of Zammad. We strongly encourage you to
    use most current possible versions that *are not end of life*.
 
+   Docker and Kubernetes are shipping all dependencies and services by default!
+
 .. warning:: Due to a known issue in OpenSSL 3.6.0, this version is **not**
    supported. In case your distro offers you 3.6.0 already, check if you can
    stay on a lower version or - when available - jump directly to a higher
    version.
-
-2.1 Ruby Programming Language
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. hint:: **🤓 Only relevant for source code installations**
-
-   Docker and package installations provide the required ruby dependencies!
-
-Zammad requires Ruby. All required rubygems like ruby on rails are listed in
-the Gemfile.
-
-In the following table you can find the supported Ruby version for the
-different Zammad versions:
-
-.. csv-table:: Zammad/Ruby version compatibility
-   :header: "Zammad", "Ruby"
-   :widths: 20, 20
-
-   "6.6+", "3.3.8"
-   "6.5", "3.2.8"
-   "6.3.1 - 6.4", "3.2.4"
-   "6.3.0", "3.2.3"
-   "5.4 - 6.2", "3.1.3"
-   "5.2 - 5.3", "3.0.4"
-   "5.0 - 5.1", "2.7.4"
-   "3.4.1 - 4.1", "2.6.6"
-   "3.4.0", "2.6.5"
-   "3.1 - 3.3", "2.5.5"
-   "2.5 - 3.0", "2.4.4"
-
-2.2 Supported Distributions
 
 2.1 Supported Distributions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,19 +71,16 @@ Below you can find all distributions Zammad provides packages for.
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
-   "CentOS / RHEL", "8 & 9"
-   "Debian", "11 & 12"
+   "CentOS / RHEL", "9"
+   "Debian", "11, 12 & 13"
    "OpenSUSE / SLES", "Leap 15.x / 15"
-   "Ubuntu", "20.04, 22.04 & 24.04"
+   "Ubuntu", "22.04 & 24.04"
 
-.. warning:: ⚠️ SuSE Tumbleweed **does not** meet Zammad requirements and thus
-   **is not** supported!
-
-.. note:: **🤓 What about my specific distribution?! It's so cool!**
+.. note:: **What about my specific distribution?**
 
    If you distribution is not listed, you can still install Zammad.
-   For this you can either use :doc:`Docker-Compose </install/docker-compose>`
-   or :doc:`Source </install/source>` installation.
+   For this you can either use :doc:`Docker Compose </install/docker-compose>`
+   or :doc:`Kubernetes </install/kubernetes>` installation.
 
    We try to provide all current distributions that are supported by
    `Packager.io <https://packager.io/>`_. This means that we can't always
@@ -135,43 +88,50 @@ Below you can find all distributions Zammad provides packages for.
 
 .. _package_dependencies:
 
-2.3 Package Dependencies
+2.2 Package Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The below dependencies need to be installed on your system.
-If you're using the package install, the packages below will automatically
-installed with the Zammad-Package.
+The dependencies below need to be installed on your system.
+If you're using the package installation method, these packages will
+automatically be installed with the Zammad-Package.
 
-.. code-block:: sh
+.. tabs::
 
-   # Debian & Ubuntu
-   $ apt install libimlib2
+   .. tab:: Debian & Ubuntu
 
-   # openSUSE
-   $ zypper install imlib2
+      .. code-block:: console
 
-   # CentOS
-   $ yum install epel-release
-   $ yum install imlib2
+         $ sudo apt install libimlib2
+
+   .. tab:: openSUSE
+
+      .. code-block:: console
+
+         $ sudo zypper install imlib2
+
+   .. tab:: CentOS
+
+      .. code-block:: console
+
+         $ sudo yum install epel-release
+
+      .. code-block:: console
+
+         $ sudo yum install imlib2
 
 .. note::
 
    | ``libimlib2-dev`` **or** ``imlib2-devel`` are no longer required.
-   | *However:* If you have to use ``bundle install`` for e.g. custom Gems or
+   | *However:* If you have to use ``bundle install`` for e.g. custom gems or
      development, you'll need to install it!
 
-2.4 Database Server
+2.3 Database Server
 ^^^^^^^^^^^^^^^^^^^
 
-Zammad will store all content in a Database.
-You can choose between the following database servers:
-
-* PostgreSQL 10+
-* MySQL 5.7+ / MariaDB 10.3+ (⚠️ deprecated with Zammad 7.0+)
-
-.. danger::
-
-   .. include:: /appendix/includes/mysql-deprication-note.rst
+Zammad stores its content in a database. The supported database system is
+`PostgreSQL <https://www.postgresql.org/>`_ 13 or newer.
+If no PostgreSQL server could be detected, it will be installed automatically
+during the package installation.
 
 .. note::
    If you use database connection pooling software like PgBouncer, make sure
@@ -179,43 +139,7 @@ You can choose between the following database servers:
    this is called "session connection pooling". Transaction-based connection
    pooling is not supported and may lead to errors during database migrations.
 
-
-For **MySQL/MariaDB**, the following configuration is required:
-
-* Use ``UTF-8`` encoding - ``utf8mb4`` for example will fail!
-* Set ``max_allowed_packet`` to a value larger than the default of 4 MB
-  (64 MB+ recommended).
-
-You may also want to consider the following settings for your **MySQL** server::
-
-   innodb_file_format = Barracuda
-   innodb_file_per_table = on
-   innodb_default_row_format = dynamic
-   innodb_large_prefix = 1
-   innodb_file_format_max = Barracuda
-
-2.5 Node.js
-^^^^^^^^^^^
-
-Node.js is required for asset compiling.
-
-**Package installations** come pre-bundled with the correct NodeJS version.
-A manual installation is *not required* unless you require NodeJS for other
-projects.
-
-Node.js is only required on **source code installations** if you need to change
-any javascript or stylesheet files via ``rake assets:precompile``.
-
-.. csv-table:: Zammad/Node.js version compatibility
-   :header: "Zammad", "Node.js"
-   :widths: 20, 20
-
-   "6.3+", "18.10+"
-   "6.2", "18.0+"
-   "5.2 - 6.1", "16.0+"
-   "5.0 - 5.1", "10.0+"
-
-2.6 Reverse Proxy
+2.4 Reverse Proxy
 ^^^^^^^^^^^^^^^^^
 
 In a typical web environment today, you use a reverse proxy to deliver the
@@ -227,33 +151,33 @@ The following reverse proxies are supported:
 * Nginx 1.3+
 * Apache 2.2+
 
-
 .. hint::
 
    Some configuration is required, please see :doc:`/getting-started/configure-webserver`.
 
-
-
-2.7 Redis
+2.5 Redis
 ^^^^^^^^^
 
-Starting with Zammad 6.0, `Redis <https://redis.io/>`_ is required for
-realtime communication via web socket.
+`Redis <https://redis.io/>`_ is required for realtime communication via web
+socket. Zammad requires Redis 6 or newer. It gets installed automatically
+(package) or is included in the stack (Docker Compose) with a working
+configuration. However, the installation and configuration is out of scope of
+this documentation. Please follow the official guides and ensure to set it up in
+a secure way.
 
-The installation and configuration is out of our scope.
-Please follow the official vendor guides and ensure to have a
-tight security on your installation.
+Available environment variables for standard and Sentinel setups are briefly
+mentioned in the :doc:`Redis Variables </appendix/redis>` page.
 
 .. _prerequisites_elasticsearch:
 
-2.8 Elasticsearch (optional)
+2.6 Elasticsearch (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Zammad uses Elasticsearch to
+Zammad uses Elasticsearch to:
 
-   1) make the search faster
-   2) support advanced features like reports
-   3) search for content of email attachments
+   1) make the search faster,
+   2) support advanced features like reports,
+   3) search for content of email attachments.
 
 This becomes increasingly important the higher the number of tickets in your
 system gets.
@@ -265,18 +189,12 @@ system gets.
    the search will be very limited. We recommend using Elasticsearch, as it will
    boost the usage of Zammad greatly!
 
-.. hint:: 📦 **If you install Zammad via package manager...**
-
-   It's perfectly safe to manually override the Elasticsearch dependency.
-   The appropriate command line flag will depend on your platform
-   (*e.g.,* ``--force``, ``--ignore-depends``, ``--skip-broken``);
-   check your package manager's manpage to find out.
-
 .. csv-table:: Zammad/Elasticsearch version compatibility
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "5.2+", ">= 7.8, < 9"
+   "7.0+", ">= 7.8, < 10"
+   "5.2 - 6.5", ">= 7.8, < 9"
    "5.0 - 5.1", ">= 7.8, < 8"
    "4.0-4.1", ">= 6.5, <= 7.12"
    "3.4-3.6", ">= 5.5, <= 7.9"
@@ -289,26 +207,35 @@ An Elasticsearch plugin is required for version 7 or older to index the
 contents of email attachments: ``ingest-attachment``. Starting with
 Elasticsearch 8, it is included by default.
 
-2.9 Memcached
+.. hint:: You can override the Elasticsearch dependency for package
+   installations (not recommended!)
+
+   It depends on your system how to manually override the Elasticsearch
+   dependency (e.g. ``--force``, ``--ignore-depends``, ``--skip-broken``);
+   check your package manager's manpage to find out.
+
+2.7 Memcached
 ^^^^^^^^^^^^^
 
-Zammad heavily relies on caching to improve performance. This cache can be stored
-in the file system without relying on externals services. However, this is only possible
-if all services of Zammad are running on the same file system!
+Zammad heavily relies on caching to improve performance. This cache can be
+stored in the file system without relying on externals services. However, this
+is only possible if all services of Zammad are running on the same file system!
 
-In all other cases like deploying Zammad via containers (Docker or Kubernetes) or on separate cluster nodes, a
-`Memcached <https://memcached.org/>`_ service is required to store the cache and serve it to all Zammad instances.
+In all other cases like deploying Zammad via containers (Docker or Kubernetes)
+or on separate cluster nodes, a `Memcached <https://memcached.org/>`_ service is
+required to store the cache and serve it to all Zammad instances.
 The Docker and Kubernetes stacks already include this service.
 
-However, even local file system installations may benefit from Memcached's performance improvements.
-You might want to have a look at our :ref:`performance_tuning` section too.
+However, even local file system installations may benefit from Memcached's
+performance improvements. You might want to have a look at our
+:doc:`/appendix/environment-variables` section too.
 
 The installation and configuration is out of scope of this documentation.
 In case you have to install Memcached manually, please follow the
 `official documentation of Memcached <https://docs.memcached.org/>`_.
 
-2.10 GnuPG (optional)
-^^^^^^^^^^^^^^^^^^^^^
+2.8 GnuPG (optional)
+^^^^^^^^^^^^^^^^^^^^
 If you want to use the PGP integration for sending and receiving signed and
 encrypted emails, you need to install the GnuPG-Tool.
 Please have a look at the official `GnuPG website`_.

@@ -15,29 +15,28 @@ Please note that these clients may not provide access to all available
 endpoints listed here.
 
    * `Ruby Client <https://github.com/zammad/zammad-api-client-ruby>`_
-     *(Official)*
+     *(official)*
    * `PHP Client <https://github.com/zammad/zammad-api-client-php>`_
-     *(Official)*
-   * `Python Client <https://pypi.org/project/zammad-py/>`_ *(Third-Party)*
-   * `.NET Client <https://github.com/Asesjix/Zammad-Client>`_ *(Third-Party)*
+     *(official)*
+   * `Python Client <https://pypi.org/project/zammad-py/>`_ *(third party)*
+   * `.NET Client [System.Text.Json] <https://github.com/meenzen/Zammad.Client.SystemTextJson>`_ *(third party)*
+   * `.NET Client [Newtonsoft.Json] <https://github.com/S3bt3r/Zammad.Client>`_ *(third party; unmaintained)*
    * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_
-     *(Third-Party)*
+     *(third party)*
    * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
-     *(Third-Party; API client only, no "ready to use" App)*
-
+     *(third party; API client only, no "ready to use" app)*
 
 Authentication
 --------------
 
 Zammad supports three different authentication methods for its API.
 
-
 HTTP Basic Authentication (username/password)
    | The username / password must be provided as HTTP header in the HTTP call.
    | This authentication method can be disabled and may not be available in your
      system.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ curl -u {username}:{password} https://{fqdn}/{endpoint}
 
@@ -52,16 +51,15 @@ HTTP Token Authentication (access token)
    | This authentication method can be disabled and may not be available in your
      system.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ curl -H "Authorization: Token token={your_token}" https://{fqdn}/{endpoint}
-
 
 OAuth2 (token access)
    | The token must be provided as HTTP header in your calls.
    | This allows 3rd party applications to authenticate against Zammad.
 
-   .. code-block:: sh
+   .. code-block:: console
 
       $ curl -H "Authorization: Bearer {your_token}" https://{fqdn}/{endpoint}
 
@@ -107,15 +105,12 @@ and user each.
             .. code-block:: json
 
                {
-                  "active": true,
                   "login_failed": 0,
-                  "verified": false,
-                  "source": null,
-                  "login": "chris@chrispresso.com",
-                  "last_login": "2021-09-23T13:17:24.817Z",
-                  "id": 3,
+                  "last_login": "2025-06-30T11:45:19.503Z",
                   "updated_by_id": 1,
+                  "id": 3,
                   "organization_id": 2,
+                  "login": "chris@chrispresso.com",
                   "firstname": "Christopher",
                   "lastname": "Miller",
                   "email": "chris@chrispresso.com",
@@ -125,129 +120,98 @@ and user each.
                   "phone": "",
                   "fax": "",
                   "mobile": "",
-                  "department": "",
+                  "department": null,
                   "street": "",
                   "zip": "",
                   "city": "",
                   "country": "",
-                  "address": "",
+                  "address": null,
                   "vip": false,
+                  "verified": false,
+                  "active": true,
                   "note": "",
+                  "source": null,
                   "out_of_office": false,
                   "out_of_office_start_at": null,
                   "out_of_office_end_at": null,
                   "out_of_office_replacement_id": null,
-                  "preferences":
-                  {
-                     "notification_config":
-                     {
-                        "matrix":
-                        {
-                           "create":
-                           {
-                              "criteria":
-                              {
+                  "preferences": {
+                     "locale": "de-de",
+                     "notification_config": {
+                        "matrix": {
+                           "create": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": true,
                                  "subscribed": true,
-                                 "no": true
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            },
-                           "update":
-                           {
-                              "criteria":
-                              {
+                           "update": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": true,
                                  "subscribed": true,
-                                 "no": true
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            },
-                           "reminder_reached":
-                           {
-                              "criteria":
-                              {
+                           "reminder_reached": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": false,
-                                 "no": true
+                                 "subscribed": false,
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            },
-                           "escalation":
-                           {
-                              "criteria":
-                              {
+                           "escalation": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": false,
-                                 "no": true
+                                 "subscribed": false,
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            }
-                        },
-                        "group_ids":
-                        [
-                           "2",
-                           "1",
-                           "3"
-                        ]
+                        }
                      },
-                     "locale": "de-de",
                      "intro": true,
-                     "notification_sound":
-                     {
-                        "file": "Xylo.mp3",
-                        "enabled": true
-                     },
-                     "cti": true,
-                     "tickets_closed": 0,
-                     "tickets_open": 1
+                     "keyboard_shortcuts_clues": true,
+                     "theme": "light"
                   },
                   "created_by_id": 1,
-                  "created_at": "2021-07-26T14:44:41.066Z",
-                  "updated_at": "2021-09-23T13:17:24.825Z",
-                  "role_ids":
-                  [
+                  "created_at": "2025-06-24T10:46:48.487Z",
+                  "updated_at": "2025-06-30T11:45:19.549Z",
+                  "role_ids": [
                      1,
                      2
                   ],
-                  "organization_ids":
-                  [],
-                  "authorization_ids":
-                  [],
-                  "karma_user_ids":
-                  [
-                     1
-                  ],
-                  "group_ids":
-                  {
-                     "1":
-                     [
+                  "two_factor_preference_ids": [],
+                  "organization_ids": [],
+                  "authorization_ids": [],
+                  "overview_sorting_ids": [],
+                  "group_ids": {
+                     "1": [
                         "full"
                      ],
-                     "2":
-                     [
+                     "2": [
                         "full"
                      ],
-                     "3":
-                     [
+                     "3": [
                         "full"
                      ]
                   }
@@ -258,15 +222,12 @@ and user each.
             .. code-block:: json
 
                {
-                  "active": true,
                   "login_failed": 0,
-                  "verified": false,
-                  "source": null,
-                  "login": "chris@chrispresso.com",
-                  "last_login": "2021-09-23T13:17:24.817Z",
-                  "id": 3,
+                  "last_login": "2025-06-30T11:45:19.503Z",
                   "updated_by_id": 1,
+                  "id": 3,
                   "organization_id": 2,
+                  "login": "chris@chrispresso.com",
                   "firstname": "Christopher",
                   "lastname": "Miller",
                   "email": "chris@chrispresso.com",
@@ -276,160 +237,125 @@ and user each.
                   "phone": "",
                   "fax": "",
                   "mobile": "",
-                  "department": "",
+                  "department": null,
                   "street": "",
                   "zip": "",
                   "city": "",
                   "country": "",
-                  "address": "",
+                  "address": null,
                   "vip": false,
+                  "verified": false,
+                  "active": true,
                   "note": "",
+                  "source": null,
                   "out_of_office": false,
                   "out_of_office_start_at": null,
                   "out_of_office_end_at": null,
                   "out_of_office_replacement_id": null,
-                  "preferences":
-                  {
-                     "notification_config":
-                     {
-                        "matrix":
-                        {
-                           "create":
-                           {
-                              "criteria":
-                              {
+                  "preferences": {
+                     "locale": "de-de",
+                     "notification_config": {
+                        "matrix": {
+                           "create": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": true,
                                  "subscribed": true,
-                                 "no": true
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            },
-                           "update":
-                           {
-                              "criteria":
-                              {
+                           "update": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": true,
                                  "subscribed": true,
-                                 "no": true
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            },
-                           "reminder_reached":
-                           {
-                              "criteria":
-                              {
+                           "reminder_reached": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": false,
-                                 "no": true
+                                 "subscribed": false,
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            },
-                           "escalation":
-                           {
-                              "criteria":
-                              {
+                           "escalation": {
+                              "criteria": {
                                  "owned_by_me": true,
                                  "owned_by_nobody": false,
-                                 "no": true
+                                 "subscribed": false,
+                                 "no": false
                               },
-                              "channel":
-                              {
+                              "channel": {
                                  "email": true,
                                  "online": true
                               }
                            }
-                        },
-                        "group_ids":
-                        [
-                           "2",
-                           "1",
-                           "3"
-                        ]
+                        }
                      },
-                     "locale": "de-de",
                      "intro": true,
-                     "notification_sound":
-                     {
-                        "file": "Xylo.mp3",
-                        "enabled": true
-                     },
-                     "cti": true,
-                     "tickets_closed": 0,
-                     "tickets_open": 1
+                     "keyboard_shortcuts_clues": true,
+                     "theme": "light"
                   },
                   "created_by_id": 1,
-                  "created_at": "2021-07-26T14:44:41.066Z",
-                  "updated_at": "2021-09-23T13:17:24.825Z",
-                  "role_ids":
-                  [
+                  "created_at": "2025-06-24T10:46:48.487Z",
+                  "updated_at": "2025-06-30T11:45:19.549Z",
+                  "role_ids": [
                      1,
                      2
                   ],
-                  "organization_ids":
-                  [],
-                  "authorization_ids":
-                  [],
-                  "karma_user_ids":
-                  [
-                     1
-                  ],
-                  "group_ids":
-                  {
-                     "1":
-                     [
+                  "two_factor_preference_ids": [],
+                  "organization_ids": [],
+                  "authorization_ids": [],
+                  "overview_sorting_ids": [],
+                  "group_ids": {
+                     "1": [
                         "full"
                      ],
-                     "2":
-                     [
+                     "2": [
                         "full"
                      ],
-                     "3":
-                     [
+                     "3": [
                         "full"
                      ]
                   },
-                  "roles":
-                  [
+                  "roles": [
                      "Admin",
                      "Agent"
                   ],
-                  "organizations":
-                  [],
-                  "authorizations":
-                  [],
+                  "two_factor_preferences": [],
+                  "organizations": [],
+                  "authorizations": [],
+                  "overview_sortings": [],
                   "organization": "Chrispresso Inc.",
-                  "groups":
-                  {
-                     "Sales":
-                     [
+                  "groups": {
+                     "Sales": [
                         "full"
                      ],
-                     "2nd Level":
-                     [
+                     "2nd Level": [
                         "full"
                      ],
-                     "Service/Desk":
-                     [
+                     "Service Desk": [
                         "full"
                      ]
                   },
                   "created_by": "-",
                   "updated_by": "-"
                }
+
 
    .. tab:: Ticket payload
 
@@ -445,7 +371,7 @@ and user each.
                   "priority_id": 2,
                   "state_id": 4,
                   "organization_id": 3,
-                  "number": "71003",
+                  "number": "53003",
                   "title": "Order 787556",
                   "owner_id": 3,
                   "customer_id": 7,
@@ -461,9 +387,10 @@ and user each.
                   "update_escalation_at": null,
                   "update_in_min": null,
                   "update_diff_in_min": null,
-                  "last_contact_at": "2021-02-26T12:44:43.888Z",
-                  "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
-                  "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
+                  "last_close_at": null,
+                  "last_contact_at": "2025-01-24T08:46:58.510Z",
+                  "last_contact_agent_at": "2025-01-24T08:46:58.510Z",
+                  "last_contact_customer_at": "2025-01-22T10:46:58.255Z",
                   "last_owner_update_at": null,
                   "create_article_type_id": 1,
                   "create_article_sender_id": 2,
@@ -472,12 +399,12 @@ and user each.
                   "pending_time": null,
                   "type": null,
                   "time_unit": null,
-                  "preferences":
-                  {},
+                  "preferences": {},
                   "updated_by_id": 4,
                   "created_by_id": 7,
-                  "created_at": "2021-02-24T14:44:43.828Z",
-                  "updated_at": "2021-07-26T14:44:43.906Z"
+                  "created_at": "2025-01-22T10:46:58.255Z",
+                  "updated_at": "2025-06-24T10:46:58.554Z",
+                  "checklist_id": null
                }
 
          .. tab:: ``?expand=true``
@@ -490,7 +417,7 @@ and user each.
                   "priority_id": 2,
                   "state_id": 4,
                   "organization_id": 3,
-                  "number": "71003",
+                  "number": "53003",
                   "title": "Order 787556",
                   "owner_id": 3,
                   "customer_id": 7,
@@ -506,9 +433,10 @@ and user each.
                   "update_escalation_at": null,
                   "update_in_min": null,
                   "update_diff_in_min": null,
-                  "last_contact_at": "2021-02-26T12:44:43.888Z",
-                  "last_contact_agent_at": "2021-02-26T12:44:43.888Z",
-                  "last_contact_customer_at": "2021-02-24T14:44:43.828Z",
+                  "last_close_at": null,
+                  "last_contact_at": "2025-01-24T08:46:58.510Z",
+                  "last_contact_agent_at": "2025-01-24T08:46:58.510Z",
+                  "last_contact_customer_at": "2025-01-22T10:46:58.255Z",
                   "last_owner_update_at": null,
                   "create_article_type_id": 1,
                   "create_article_sender_id": 2,
@@ -517,23 +445,23 @@ and user each.
                   "pending_time": null,
                   "type": null,
                   "time_unit": null,
-                  "preferences":
-                  {},
+                  "preferences": {},
                   "updated_by_id": 4,
                   "created_by_id": 7,
-                  "created_at": "2021-02-24T14:44:43.828Z",
-                  "updated_at": "2021-07-26T14:44:43.906Z",
-                  "article_ids":
-                  [
+                  "created_at": "2025-01-22T10:46:58.255Z",
+                  "updated_at": "2025-06-24T10:46:58.554Z",
+                  "checklist_id": null,
+                  "referencing_checklist_ids": [],
+                  "article_ids": [
                      5,
                      6
                   ],
-                  "ticket_time_accounting_ids":
-                  [],
+                  "ticket_time_accounting_ids": [],
+                  "ai_stored_result_ids": [],
+                  "referencing_checklists": [],
                   "group": "Sales",
                   "organization": "Awesome Customer Inc.",
-                  "ticket_time_accounting":
-                  [],
+                  "ticket_time_accounting": [],
                   "state": "closed",
                   "priority": "2 normal",
                   "owner": "chris@chrispresso.com",
@@ -541,7 +469,8 @@ and user each.
                   "created_by": "samuel@example.com",
                   "updated_by": "jacob@chrispresso.com",
                   "create_article_type": "email",
-                  "create_article_sender": "Customer"
+                  "create_article_sender": "Customer",
+                  "ai_stored_results": []
                }
 
 .. warning::
@@ -594,8 +523,6 @@ explicitly covered in this documentation:
 - Overview
 - Templates
 - Text module
-
-
 
 Search example
    ``GET``-Request sent: ``/api/v1/tickets/search?query=welcome``
@@ -722,7 +649,6 @@ Search example
             "create_article_sender": "Customer"
          }
       ]
-
 
 ``Full`` Parameter
    You can even extend the response by using the ``full`` parameter. Be aware
@@ -4389,7 +4315,6 @@ different to the ones for the endpoint search.
       ]
    }
 
-
 Condition Based Search
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4409,13 +4334,13 @@ So, how do I build such a condition based request?
   setup.
 - Search for the created condition, adjust the following examples to your needs:
 
-.. code-block:: ruby
+.. code-block:: irb
 
-   puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
+   >> puts Overview.find_by(name: 'My test overview').attributes.slice('condition').to_json
 
-.. code-block:: ruby
+.. code-block:: irb
 
-   puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
+   >> puts Trigger.find_by(name: 'My new test trigger').attributes.slice('condition').to_json
 
 This leads to an output like the following:
 

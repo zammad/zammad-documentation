@@ -3,7 +3,14 @@ Generic CTI
 
 This page describes the generic CTI API scopes and functionalities.
 
-.. include:: /api/generic-cti/cti-endpoint-limitations.include.rst
+.. warning:: **🚧 Limitations / Notes 🚧**
+
+   * Authentication on this endpoint works fundamentally different compared to
+     the rest of the API.
+   * API clients *do not* work with the CTI endpoints unless explicitly stated
+     by the client vendor!
+   * The CTI endpoints are relevant for PBX systems only.
+
 
 Features
    Here's a small condensed list of the possibilities this CTI API provides.

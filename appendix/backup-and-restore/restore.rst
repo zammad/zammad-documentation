@@ -26,8 +26,7 @@ your data.
      independent directory. You're working out of script and
      documentation scope!
 
-* PostgreSQL based installations will drop and re-create the database!
-  MySQL / MariaDB based installations restore on the existing database.
+* It will drop and re-create the database!
 * You require at least twice the backed up Zammad instance size of free
   storage. If you have the dump only, factor 3 could be a good number.
 
@@ -40,7 +39,7 @@ Step 1: Copy your backup files to a fitting location (if needed)
 
    The Zammad backup consists of two files. They are named like this:
 
-   .. code-block:: sh
+   .. code-block:: text
 
       <timestamp>_zammad_db.psql.gz
       <timestamp>_zammad_files.tar.gz
@@ -48,7 +47,7 @@ Step 1: Copy your backup files to a fitting location (if needed)
    There are also two symlinks in your backup directory pointing to the
    newest backup created.
 
-   .. code-block:: sh
+   .. code-block:: text
 
       latest_zammad_db.psql.gz
       latest_zammad_files.tar.gz
@@ -59,7 +58,13 @@ Step 2: Configure the backup script (if needed)
    Please consult :doc:`/appendix/backup-and-restore/configuration` for more
    information.
 
-Step 3: Run the restore
+Step 3: Clean up the storage folder
+   In case you restore to a production environment with activated file system
+   storage, you should purge the content of the directory
+   ``/opt/zammad/storage/``. The restore process only adds/overwrites files
+   there, no cleanup will take place.
+
+Step 4: Run the restore
    .. include:: /appendix/backup-and-restore/restore-warning-old-dumps.include.rst
 
    Restoration works in two possible ways, depending on how interactive
@@ -69,7 +74,7 @@ Step 3: Run the restore
 
       .. tab:: Interactive restoration (recommended)
 
-         .. code-block:: sh
+         .. code-block:: console
 
             $ /opt/zammad/contrib/backup/zammad_restore.sh
 
@@ -85,15 +90,13 @@ Step 3: Run the restore
             The following command will overwrite existing data without further
             prompts!
 
-         .. code-block:: sh
+         .. code-block:: console
 
-            # When called with a timestamp argument (matching the backups filename),
-            # Zammad will proceed immediately to restoring the specified backup.
             $ /opt/zammad/contrib/backup/zammad_restore.sh 20170507121848
 
    The restore operation should look like this:
 
-   .. code-block:: sh
+   .. code-block:: text
 
       # Zammad restore started - Fri Jan 21 17:54:13 CET 2022!
 
@@ -102,9 +105,7 @@ Step 3: Run the restore
 
       Please ensure to have twice the storage of the uncompressed backup size!
 
-
       Note that the restoration USUALLY requires root permissions as services are stopped!
-
 
       Enter 'yes' if you want to proceed!
       Restore?: yes
@@ -130,7 +131,7 @@ Step 3: Run the restore
 
       # Zammad restored successfully - Fri Jan 21 17:54:34 CET 2022!
 
-Step 4: Re-install Zammad if restoring a full filesystem restore
+Step 5: Re-install Zammad if restoring a full filesystem restore
    The backup script optionally back up the whole filesystem of Zammad.
 
    If your filesystem dump contains attachments only (the tar will contain
@@ -139,7 +140,7 @@ Step 4: Re-install Zammad if restoring a full filesystem restore
    For a better overview, please see:
    :doc:`step 9 of our migration path </appendix/backup-and-restore/migrate-hosts>`.
 
-Step 5: Apply missing environmental settings
+Step 6: Apply missing environmental settings
    .. include:: /appendix/backup-and-restore/add-missing-environment.include.rst
 
 If you are facing issues, consider reading our

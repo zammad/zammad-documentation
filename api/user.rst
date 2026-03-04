@@ -25,6 +25,9 @@ Response:
    # HTTP-Code 200 Ok
 
    {
+      "login_failed": 0,
+      "last_login": "2025-06-30T11:45:19.503Z",
+      "updated_by_id": 1,
       "id": 3,
       "organization_id": 2,
       "login": "chris@chrispresso.com",
@@ -47,116 +50,92 @@ Response:
       "verified": false,
       "active": true,
       "note": "",
-      "last_login": "2021-11-03T12:26:53.410Z",
       "source": null,
-      "login_failed": 0,
       "out_of_office": false,
       "out_of_office_start_at": null,
       "out_of_office_end_at": null,
       "out_of_office_replacement_id": null,
-      "preferences":
-      {
-         "notification_config":
-         {
-            "matrix":
-            {
-               "create":
-               {
-                  "criteria":
-                  {
+      "preferences": {
+         "locale": "de-de",
+         "notification_config": {
+            "matrix": {
+               "create": {
+                  "criteria": {
                      "owned_by_me": true,
                      "owned_by_nobody": true,
                      "subscribed": true,
                      "no": false
                   },
-                  "channel":
-                  {
+                  "channel": {
                      "email": true,
                      "online": true
                   }
                },
-               "update":
-               {
-                  "criteria":
-                  {
+               "update": {
+                  "criteria": {
                      "owned_by_me": true,
                      "owned_by_nobody": true,
                      "subscribed": true,
                      "no": false
                   },
-                  "channel":
-                  {
+                  "channel": {
                      "email": true,
                      "online": true
                   }
                },
-               "reminder_reached":
-               {
-                  "criteria":
-                  {
+               "reminder_reached": {
+                  "criteria": {
                      "owned_by_me": true,
                      "owned_by_nobody": false,
                      "subscribed": false,
                      "no": false
                   },
-                  "channel":
-                  {
+                  "channel": {
                      "email": true,
                      "online": true
                   }
                },
-               "escalation":
-               {
-                  "criteria":
-                  {
+               "escalation": {
+                  "criteria": {
                      "owned_by_me": true,
                      "owned_by_nobody": false,
                      "subscribed": false,
                      "no": false
                   },
-                  "channel":
-                  {
+                  "channel": {
                      "email": true,
                      "online": true
                   }
                }
             }
          },
-         "locale": "en-us",
-         "intro": true
+         "intro": true,
+         "keyboard_shortcuts_clues": true,
+         "theme": "light"
       },
-      "updated_by_id": 3,
       "created_by_id": 1,
-      "created_at": "2021-11-03T11:57:15.975Z",
-      "updated_at": "2021-11-03T12:26:55.642Z",
-      "role_ids":
-      [
+      "created_at": "2025-06-24T10:46:48.487Z",
+      "updated_at": "2025-06-30T11:45:19.549Z",
+      "role_ids": [
          1,
          2
       ],
-      "organization_ids":
-      [],
-      "authorization_ids":
-      [],
-      "karma_user_ids":
-      [],
-      "group_ids":
-      {
-         "1":
-         [
+      "two_factor_preference_ids": [],
+      "organization_ids": [],
+      "authorization_ids": [],
+      "overview_sorting_ids": [],
+      "group_ids": {
+         "1": [
             "full"
          ],
-         "2":
-         [
+         "2": [
             "full"
          ],
-         "3":
-         [
+         "3": [
             "full"
          ]
       }
    }
-
 
 List
 ----
@@ -205,22 +184,17 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {},
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:51:12.786Z",
-         "updated_at": "2021-11-03T11:51:12.786Z",
-         "role_ids":
-         [],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "created_at": "2025-06-24T10:46:31.114Z",
+         "updated_at": "2025-06-24T10:46:31.114Z",
+         "role_ids": [],
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
          "id": 2,
@@ -252,29 +226,27 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {
+         "preferences": {
             "tickets_closed": 0,
             "tickets_open": 1
          },
          "updated_by_id": 2,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:51:13.703Z",
-         "updated_at": "2021-11-03T12:01:05.411Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:34.110Z",
+         "updated_at": "2025-06-24T10:55:36.632Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
+         "login_failed": 0,
+         "last_login": "2025-06-30T11:45:19.503Z",
+         "updated_by_id": 1,
          "id": 3,
          "organization_id": 2,
          "login": "chris@chrispresso.com",
@@ -297,112 +269,89 @@ Response:
          "verified": false,
          "active": true,
          "note": "",
-         "last_login": "2021-11-03T12:26:53.410Z",
          "source": null,
-         "login_failed": 0,
          "out_of_office": false,
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {
-            "notification_config":
-            {
-               "matrix":
-               {
-                  "create":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": true,
-                        "subscribed": true,
-                        "no": false
+         "preferences": {
+            "locale": "de-de",
+            "notification_config": {
+               "matrix": {
+                  "create": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": true,
+                     "subscribed": true,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "update":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": true,
-                        "subscribed": true,
-                        "no": false
+                  "update": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": true,
+                     "subscribed": true,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "reminder_reached":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": false,
-                        "subscribed": false,
-                        "no": false
+                  "reminder_reached": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": false,
+                     "subscribed": false,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "escalation":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": false,
-                        "subscribed": false,
-                        "no": false
+                  "escalation": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": false,
+                     "subscribed": false,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   }
                }
             },
-            "locale": "en-us",
-            "intro": true
+            "intro": true,
+            "keyboard_shortcuts_clues": true,
+            "theme": "light"
          },
-         "updated_by_id": 3,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:15.975Z",
-         "updated_at": "2021-11-03T12:26:55.642Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:48.487Z",
+         "updated_at": "2025-06-30T11:45:19.549Z",
+         "role_ids": [
             1,
             2
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {
-            "1":
-            [
-               "full"
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {
+            "1": [
+            "full"
             ],
-            "2":
-            [
-               "full"
+            "2": [
+            "full"
             ],
-            "3":
-            [
-               "full"
+            "3": [
+            "full"
             ]
          }
       },
@@ -436,104 +385,82 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {
-            "notification_config":
-            {
-               "matrix":
-               {
-                  "create":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": true,
-                        "subscribed": true,
-                        "no": false
+         "preferences": {
+            "locale": "en-us",
+            "notification_config": {
+               "matrix": {
+                  "create": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": true,
+                     "subscribed": true,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "update":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": true,
-                        "subscribed": true,
-                        "no": false
+                  "update": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": true,
+                     "subscribed": true,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "reminder_reached":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": false,
-                        "subscribed": false,
-                        "no": false
+                  "reminder_reached": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": false,
+                     "subscribed": false,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "escalation":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": false,
-                        "subscribed": false,
-                        "no": false
+                  "escalation": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": false,
+                     "subscribed": false,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   }
                }
-            },
-            "locale": "en-us"
+            }
          },
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:16.160Z",
-         "updated_at": "2021-11-03T11:57:16.214Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:49.127Z",
+         "updated_at": "2025-06-24T10:46:49.355Z",
+         "role_ids": [
             1,
             2
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {
-            "1":
-            [
-               "full"
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {
+            "1": [
+            "full"
             ],
-            "2":
-            [
-               "full"
+            "2": [
+            "full"
             ],
-            "3":
-            [
-               "full"
+            "3": [
+            "full"
             ]
          }
       },
@@ -567,103 +494,81 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {
-            "notification_config":
-            {
-               "matrix":
-               {
-                  "create":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": true,
-                        "subscribed": true,
-                        "no": false
+         "preferences": {
+            "locale": "en-us",
+            "notification_config": {
+               "matrix": {
+                  "create": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": true,
+                     "subscribed": true,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "update":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": true,
-                        "subscribed": true,
-                        "no": false
+                  "update": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": true,
+                     "subscribed": true,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "reminder_reached":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": false,
-                        "subscribed": false,
-                        "no": false
+                  "reminder_reached": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": false,
+                     "subscribed": false,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   },
-                  "escalation":
-                  {
-                     "criteria":
-                     {
-                        "owned_by_me": true,
-                        "owned_by_nobody": false,
-                        "subscribed": false,
-                        "no": false
+                  "escalation": {
+                     "criteria": {
+                     "owned_by_me": true,
+                     "owned_by_nobody": false,
+                     "subscribed": false,
+                     "no": false
                      },
-                     "channel":
-                     {
-                        "email": true,
-                        "online": true
+                     "channel": {
+                     "email": true,
+                     "online": true
                      }
                   }
                }
-            },
-            "locale": "en-us"
+            }
          },
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:16.349Z",
-         "updated_at": "2021-11-03T11:57:16.409Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:49.621Z",
+         "updated_at": "2025-06-24T10:46:49.894Z",
+         "role_ids": [
             2
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {
-            "1":
-            [
-               "full"
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {
+            "1": [
+            "full"
             ],
-            "2":
-            [
-               "full"
+            "2": [
+            "full"
             ],
-            "3":
-            [
-               "full"
+            "3": [
+            "full"
             ]
          }
       },
@@ -697,24 +602,22 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {
+            "lat": 37.8202408,
+            "lng": -122.47857
+         },
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:16.526Z",
-         "updated_at": "2021-11-03T11:57:16.611Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:50.081Z",
+         "updated_at": "2025-06-24T10:46:50.514Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
          "id": 7,
@@ -746,24 +649,19 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {},
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:16.748Z",
-         "updated_at": "2021-11-03T11:57:16.861Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:50.697Z",
+         "updated_at": "2025-06-24T10:46:52.531Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
          "id": 8,
@@ -795,24 +693,22 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {
+            "lat": -33.8274348,
+            "lng": 151.0818508
+         },
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:17.000Z",
-         "updated_at": "2021-11-03T11:57:17.060Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:53.070Z",
+         "updated_at": "2025-06-24T10:46:53.939Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
          "id": 9,
@@ -844,24 +740,19 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {},
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:17.190Z",
-         "updated_at": "2021-11-03T11:57:17.250Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:54.098Z",
+         "updated_at": "2025-06-24T10:46:54.985Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
          "id": 10,
@@ -893,24 +784,22 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {
+            "lat": 48.8582599,
+            "lng": 2.2945006
+         },
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:17.495Z",
-         "updated_at": "2021-11-03T11:57:17.561Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:56.035Z",
+         "updated_at": "2025-06-24T10:46:56.946Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       },
       {
          "id": 11,
@@ -942,24 +831,22 @@ Response:
          "out_of_office_start_at": null,
          "out_of_office_end_at": null,
          "out_of_office_replacement_id": null,
-         "preferences":
-         {},
+         "preferences": {
+            "lat": 51.5004439,
+            "lng": -0.1265398
+         },
          "updated_by_id": 1,
          "created_by_id": 1,
-         "created_at": "2021-11-03T11:57:17.741Z",
-         "updated_at": "2021-11-03T11:57:17.794Z",
-         "role_ids":
-         [
+         "created_at": "2025-06-24T10:46:57.114Z",
+         "updated_at": "2025-06-24T10:46:57.889Z",
+         "role_ids": [
             3
          ],
-         "organization_ids":
-         [],
-         "authorization_ids":
-         [],
-         "karma_user_ids":
-         [],
-         "group_ids":
-         {}
+         "two_factor_preference_ids": [],
+         "organization_ids": [],
+         "authorization_ids": [],
+         "overview_sorting_ids": [],
+         "group_ids": {}
       }
    ]
 
@@ -1010,17 +897,21 @@ Response:
       "out_of_office_start_at": null,
       "out_of_office_end_at": null,
       "out_of_office_replacement_id": null,
-      "preferences": {},
+      "preferences": {
+         "lat": 51.5004439,
+         "lng": -0.1265398
+      },
       "updated_by_id": 1,
       "created_by_id": 1,
-      "created_at": "2021-11-03T11:57:17.741Z",
-      "updated_at": "2021-11-03T11:57:17.794Z",
+      "created_at": "2025-06-24T10:46:57.114Z",
+      "updated_at": "2025-06-24T10:46:57.889Z",
       "role_ids": [
          3
       ],
+      "two_factor_preference_ids": [],
       "organization_ids": [],
       "authorization_ids": [],
-      "karma_user_ids": [],
+      "overview_sorting_ids": [],
       "group_ids": {}
    }
 
@@ -1048,12 +939,12 @@ Required permission: ``admin.user`` **or** ``ticket.agent``
 .. code-block:: json
 
    {
-     "firstname": "Jane",
-     "lastname": "Doe",
-     "email": "jdoe@example.com",
-     "login": "jdoe",
-     "organization": "Sample Corp.",
-     "roles": [
+      "firstname": "Jane",
+      "lastname": "Doe",
+      "email": "jdoe@example.com",
+      "login": "jdoe",
+      "organization": "Zammad Foundation",
+      "roles": [
          "Agent",
          "Customer"
       ]
@@ -1067,8 +958,8 @@ Response:
    # HTTP-Code 201 Created
 
    {
-      "id": 16,
-      "organization_id": 5,
+      "id": 13,
+      "organization_id": 1,
       "login": "jdoe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -1147,21 +1038,22 @@ Response:
                      "online": true
                   }
                }
-            }
+               }
          },
-         "locale": "en-us"
+         "locale": "de-de"
       },
       "updated_by_id": 3,
       "created_by_id": 3,
-      "created_at": "2021-11-03T14:42:36.855Z",
-      "updated_at": "2021-11-03T14:42:36.855Z",
+      "created_at": "2025-06-30T12:14:48.194Z",
+      "updated_at": "2025-06-30T12:14:48.178Z",
       "role_ids": [
-         2,
-         3
+         3,
+         2
       ],
+      "two_factor_preference_ids": [],
       "organization_ids": [],
       "authorization_ids": [],
-      "karma_user_ids": [],
+      "overview_sorting_ids": [],
       "group_ids": {}
    }
 
@@ -1193,13 +1085,13 @@ Response:
    # HTTP-Code 200 Ok
 
    {
-      "id": 16,
-      "organization_id": 5,
-      "login": "jdoe",
-      "firstname": "Jane",
-      "lastname": "Doe",
-      "email": "jdoe@example.com",
-      "image": null,
+      "id": 10,
+      "organization_id": null,
+      "login": "david@example.com",
+      "firstname": "David",
+      "lastname": "Bell",
+      "email": "david@example.com",
+      "image": "d829d234f377f231534802df6d5500a7",
       "image_source": null,
       "web": "",
       "phone": "+49 30 55 57 160 00",
@@ -1214,7 +1106,7 @@ Response:
       "vip": false,
       "verified": false,
       "active": true,
-      "note": "",
+      "note": "did order viennese melange, ask next time if the flavor was as expected",
       "last_login": null,
       "source": null,
       "login_failed": 0,
@@ -1223,71 +1115,20 @@ Response:
       "out_of_office_end_at": null,
       "out_of_office_replacement_id": null,
       "preferences": {
-         "notification_config": {
-            "matrix": {
-               "create": {
-                  "criteria": {
-                     "owned_by_me": true,
-                     "owned_by_nobody": true,
-                     "subscribed": true,
-                     "no": false
-                  },
-                  "channel": {
-                     "email": true,
-                     "online": true
-                  }
-               },
-               "update": {
-                  "criteria": {
-                     "owned_by_me": true,
-                     "owned_by_nobody": true,
-                     "subscribed": true,
-                     "no": false
-                  },
-                  "channel": {
-                     "email": true,
-                     "online": true
-                  }
-               },
-               "reminder_reached": {
-                  "criteria": {
-                     "owned_by_me": true,
-                     "owned_by_nobody": false,
-                     "subscribed": false,
-                     "no": false
-                  },
-                  "channel": {
-                     "email": true,
-                     "online": true
-                  }
-               },
-               "escalation": {
-                  "criteria": {
-                     "owned_by_me": true,
-                     "owned_by_nobody": false,
-                     "subscribed": false,
-                     "no": false
-                  },
-                  "channel": {
-                     "email": true,
-                     "online": true
-                  }
-               }
-            }
-         },
-         "locale": "en-us"
+         "lat": 52.5223438,
+         "lng": 13.384115
       },
       "updated_by_id": 3,
-      "created_by_id": 3,
-      "created_at": "2021-11-03T14:42:36.855Z",
-      "updated_at": "2021-11-03T14:49:20.018Z",
+      "created_by_id": 1,
+      "created_at": "2025-06-24T10:46:56.035Z",
+      "updated_at": "2025-06-30T12:16:51.240Z",
       "role_ids": [
-         2,
          3
       ],
+      "two_factor_preference_ids": [],
       "organization_ids": [],
       "authorization_ids": [],
-      "karma_user_ids": [],
+      "overview_sorting_ids": [],
       "group_ids": {}
    }
 

@@ -92,10 +92,13 @@ Zammad System Documentation
 
 
    /appendix/backup-and-restore/index
-   /appendix/configure-env-vars
+   /appendix/backup-and-restore/docker-compose
+   /appendix/environment-variables
    /appendix/configure-database-server
    /appendix/migrate-to-postgresql
    /appendix/privacy
+   /appendix/proxy
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
+   /appendix/redis
    /appendix/custom-kb-url

@@ -12,16 +12,26 @@ Deleting Records
 Removing Tickets (And Their Articles)
 -------------------------------------
 
-.. code-block:: ruby
+Delete a ticket (specified by database ID):
 
-   # Delete a ticket (specified by database ID)
+.. code-block:: irb
+
    >> Ticket.find(4).destroy
 
-   # Delete all tickets
+Delete all tickets:
+
+.. code-block:: irb
+
    >> Ticket.destroy_all
 
-   # Keep some tickets (specified by database ID); delete the rest
+Keep some tickets (specified by database ID) and delete the rest:
+
+.. code-block:: irb
+
    >> tickets_to_keep = [1, 2, 3]
+
+.. code-block:: irb
+
    >> Ticket.where.not(id: tickets_to_keep).destroy_all
 
 Removing Users
@@ -29,20 +39,13 @@ Removing Users
 
 .. warning::
 
-   Customers **may not** be deleted while they have tickets remaining in the
-   system.
-
-   As such, the examples below will delete not only the specified customers,
-   but **all tickets associated with them**, as well. Below commands remove
-   upon executing without any further warnings.
-
-.. hint::
-
-   If you're not sure what to do and need to learn more about what Zammad does
-   upon removing users, please consider using Zammad's UI options in stead.
-
-   Our documentation for the :admin-docs:`data privacy </system/data-privacy.html>`
-   function will help you a lot!
+   - Deletion via console is not recommended. Use Zammad's
+     :admin-docs:`data privacy </system/data-privacy.html>` UI feature to delete
+     users and organizations.
+   - Customers **cannot** be deleted while they have tickets remaining in the
+     system. The examples below will delete **all tickets associated with them**
+     as well.
+   - The commands below remove data without requiring a confirmation.
 
 Removing users is possible in 2 ways: A single user and in bulk.
 
@@ -50,13 +53,13 @@ Removing users is possible in 2 ways: A single user and in bulk.
 
    .. tab:: Remove a single user
 
-      .. code-block:: ruby
+      .. code-block:: irb
 
          >> User.find_by(email: '<email address>').destroy
 
    .. tab:: Remove several users
 
-      .. code-block:: ruby
+      .. code-block:: irb
 
          >> User.where(
                email: ['<email address 1>', '<email address 2>']
@@ -68,24 +71,31 @@ Removing Organizations
 .. note:: Removing an organization does **not** delete associated customers.
 
 Step 1: Select organizations
-   .. code-block:: ruby
+   By "active" status:
 
-      # by "active" status
+   .. code-block:: irb
+
       >> organizations = Organization.where(active: false)
 
-      # by name
+   By name:
+
+   .. code-block:: irb
+
       >> organizations = Organization.where(name: 'Acme')
 
-      # by partial match on notes
+   By partial match of the notes field:
+
+   .. code-block:: irb
+
       >> organizations = Organization.where('note LIKE ?', '%foo%')
 
 Step 2: Preview affected organizations
-   .. code-block:: ruby
+   .. code-block:: irb
 
       >> puts organizations.map { |org| "ORGANIZATION #{org.name}" }.join("\n")
 
 Step 3: Proceed with deletion
-   .. code-block:: ruby
+   .. code-block:: irb
 
       >> organizations.each do |org|
            puts %{Preparing deletion of organization "#{org.name}"...}
@@ -102,20 +112,28 @@ Step 3: Proceed with deletion
 Removing System Records
 -----------------------
 
-.. code-block:: ruby
+Remove all online notifications:
 
-   # Remove all online notifications
+.. code-block:: irb
+
    >> OnlineNotification.destroy_all
 
-   # Remove all entries from the Activity Stream (dashboard)
+Remove all entries from the Activity Stream (dashboard):
+
+.. code-block:: irb
+
    >> ActivityStream.destroy_all
 
-   # Remove entries for all recently viewed objects
-   # (tickets, users, organizations)
+Remove entries for all recently viewed objects (tickets, users, organizations):
+
+.. code-block:: irb
+
    >> RecentView.destroy_all
 
-   # Remove all history information from tickets, users and organizations
-   # (dangerous!)
+Remove all history information from tickets, users and organizations (dangerous!):
+
+.. code-block:: irb
+
    >> History.destroy_all
 
 .. _dangerzone_reset_zammad:
@@ -125,15 +143,39 @@ Reset Zammad Installation
 
 .. hint::
 
-   Below commands are incomplete intentionally, error outputs will hint you
-   through! The following operations will cause data loss and are for
+   Below commands are intentionally incomplete, error output will guide you
+   through! The following operations will cause data loss and are intended for
    development / testing only.
 
-   Don't forget to stop Zammad before trying to drop the database!
+   Don't forget to stop Zammad before trying to reset your instance!
 
-.. code-block:: sh
+Truncate the database:
 
-   $ rake db:drop
-   $ rake db:create
+.. code-block:: console
+
+   $ rake zammad:db:truncate
+
+Migrate the database:
+
+.. code-block:: console
+
    $ rake db:migrate
+
+Load the seed data:
+
+.. code-block:: console
+
    $ rake db:seed
+
+Clear the cache and reload the settings:
+
+.. code-block:: console
+
+   $ rake zammad:db:rebuild
+
+.. hint::
+
+   You can also use the ``zammad:db:reset`` command to reset your instance. This task
+   will truncate the database, run the migrations, seed the database, clear the cache
+   and reload the settings. However, it will not ask for your confirmation between each 
+   step, so you should use it with caution.

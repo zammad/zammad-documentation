@@ -1,5 +1,5 @@
-Backup and Restore
-==================
+Backup & Restore (Package)
+==========================
 
 Zammad ships scripts for backup & restore in package installations which you
 can use in your backup strategy.
@@ -36,6 +36,8 @@ Basic Backup Setup
 #. Change default parameters in  the ``config`` file if needed. Learn more
    about the configuration options
    :doc:`here </appendix/backup-and-restore/configuration>`.
+#. Optional: install ``pigz`` - if installed, ``pigz`` will be used by the
+   scripts. (see: `pig-zee <https://zlib.net/pigz/>`_)
 #. Execute ``/opt/zammad/contrib/backup/zammad_backup.sh``.
 
 
@@ -98,7 +100,7 @@ or availability:
      :doc:`here </appendix/migrate-to-postgresql>` how to manually switch
      databases.
    * System settings (like
-     :doc:`environment variables </appendix/configure-env-vars>`) are
+     :doc:`environment variables </appendix/environment-variables>`) are
      not backed up.
    * Restore to an older Zammad version is not possible.
    * **Do not** restore backup files from custom scripts with the

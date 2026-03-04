@@ -2,7 +2,7 @@
 
 .. note::
 
-   Keep in mind that docker-compose and source code installations do not know
+   Keep in mind that Docker Compose and source code installations do not know
    ``zammad run``. Below commands show the package installation way, just remove
    all ``zammad run`` parts from the commands and run them.
 

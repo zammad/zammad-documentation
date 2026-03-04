@@ -1,7 +1,7 @@
 Console
 =======
 
-Zammad uses Ruby on Rails so you can make use of the `rails console`_.
+Zammad uses Ruby on Rails so you can make use of the `Rails console`_.
 
 .. _rails console:
    http://guides.rubyonrails.org/command_line.html
@@ -12,7 +12,7 @@ Zammad uses Ruby on Rails so you can make use of the `rails console`_.
    might cause data loss or damaged tickets! If you're unsure,
    **use a test system first**!
 
-To open the rails console on the shell you have to enter the following commands.
+To open the Rails console on the shell you have to enter the following commands.
 
 Start Zammad's Rails Console
 ----------------------------
@@ -33,21 +33,21 @@ a shell (e.g. for automation).
 
 .. tabs::
 
-   .. tab:: Docker Installation
+   .. group-tab:: Docker Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         $ docker compose run --rm zammad-railsserver rails r '{COMMAND}'
+         $ docker compose run --rm zammad-railsserver bundle exec rails r '{COMMAND}'
 
-   .. tab:: Package Installation
+   .. group-tab:: Package Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ zammad run rails r '{COMMAND}'
 
-   .. tab:: Source/Development Installation
+   .. group-tab:: Source/Development Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ rails r '{COMMAND}'
 
@@ -56,67 +56,72 @@ a shell (e.g. for automation).
 Running Several Commands in a Shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following command will provide you a rails console.
+The following command will provide you a Rails console.
 It allows you to run several commands inside it.
 
 .. tabs::
 
-   .. tab:: Docker Installation
+   .. group-tab:: Docker Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         $ docker compose run --rm zammad-railsserver rails c
+         $ docker compose run --rm zammad-railsserver bundle exec rails c
 
       .. tip:: If you use Portainer to manage your Docker containers,
          you can even use a
          :ref:`console via Portainer's GUI <docker-run-commands>`.
 
-   .. tab:: Package Installation
+   .. group-tab:: Package Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         $ $ zammad run rails c
+         $ zammad run rails c
 
-   .. tab:: Source/Development Installation
+   .. group-tab:: Source/Development Installation
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ rails c
 
 .. hint:: **Starting Rails Console in Safe Mode**
 
-   Normally, starting rails console requires certain
-   :doc:`third-party services </prerequisites/software>` to be up and running.
+   Normally, starting a Rails console requires certain
+   :doc:`third party services </prerequisites/software>` to be up and running.
    You may receive errors and console will refuse to start in case they are not
    available.
 
-   However, it's possible to start rails console in safe mode by setting
-   :ref:`a special environment variable <safe_mode>`. With
-   ``ZAMMAD_SAFE_MODE=1`` set, availability of these services will be ignored.
+   However, it's possible to start Rails console in safe mode by setting
+   the environment variable ``ZAMMAD_SAFE_MODE=1``. With this setting enabled,
+   the availability of these services will be ignored.
+
+   **Set variable and run Rails console:**
 
    .. tabs::
 
-      .. code-tab:: console Package Installation
+      .. tab:: Package Installation
 
-         $ ZAMMAD_SAFE_MODE=1 zammad run rails c
-         Zammad is running in safe mode. Any third-party services like Redis are ignored.
+         .. code-block:: console
 
-         There was an error trying to connect to Redis via redis://localhost:6379.
-         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
-         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
-         Loading production environment (Rails 6.1.7.3)
-         3.1.3 :001 >
+            $ ZAMMAD_SAFE_MODE=1 zammad run rails c
 
-      .. code-tab:: console Source Installation
+      .. tab:: Source Installation
 
-         $ ZAMMAD_SAFE_MODE=1 rails c
-         Zammad is running in safe mode. Any third-party services like Redis are ignored.
+         .. code-block:: console
 
-         There was an error trying to connect to Redis via redis://localhost:6379.
-         Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
-         ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
-         Loading production environment (Rails 6.1.7.3)
-         3.1.3 :001 >
+            $ ZAMMAD_SAFE_MODE=1 rails c
+
+   **This gives you a response like this:**
+
+   .. code-block:: text
+      :class: no-copybutton
+
+      Zammad is running in safe mode. Any third party services like Redis are ignored.
+
+      There was an error trying to connect to Redis via redis://localhost:6379.
+      Please provide a Redis instance at localhost:6379 or set REDIS_URL to point to a different location.
+      ＃<Redis::CannotConnectError: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)>
+      Loading production environment (Rails 6.1.7.3)
+      3.1.3 :001 >
 
 Working on the console
 ----------------------

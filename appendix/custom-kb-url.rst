@@ -56,7 +56,7 @@ Advanced tab
     - **Custom Nginx Configuration**: Add the upper part of Zammad's snippet,
       which should be similar to the following one:
 
-    .. code-block::
+    .. code-block:: text
 
         # Add following lines to "server" directive
         if ($host = help.your.domain ) {

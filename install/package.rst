@@ -17,27 +17,36 @@ some operating systems may require additional packages if not already installed.
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt install curl apt-transport-https gnupg
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: Debian
+
+      .. code-block:: console
+
+         $ sudo apt install curl apt-transport-https gnupg
+
+   .. group-tab:: OpenSUSE / SLES
 
       OpenSUSE doesn't require any additional steps here!
 
       SLES 15 requires additional repositories to be
       activated. To do so, run the following commands.
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo SUSEConnect --product sle-module-desktop-applications/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
+
+      .. code-block:: console
+
          $ sudo SUSEConnect --product PackageHub/$(. /etc/os-release; echo $VERSION_ID)/$(uname -i)
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo yum install wget epel-release
 
@@ -45,8 +54,9 @@ some operating systems may require additional packages if not already installed.
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Elasticsearch is not a hard dependency of Zammad, but strongly recommended! It
-needs to be installed before Zammad. Please take a look at the
-:doc:`instructions </install/elasticsearch>` first.
+needs to be installed before Zammad. Read on in the
+:doc:`Elasticsearch section </install/elasticsearch>` first and continue
+with the next step after you finished the installation of it.
 
 3. Ensure Correct Locale
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,36 +65,67 @@ To make Zammad work correctly, your system has to use the correct locales.
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu
 
-      List your current locale settings.
+      List your current locale settings:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt install locales
+
+      .. code-block:: console
+
          $ sudo locale-gen en_US.UTF-8
+
+      .. code-block:: console
+
          $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
 
       After fixing it, make sure to check the output again for including
       ``<lang_code>.utf8``. A reboot may help if unsuccessful.
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: Debian
 
-      List your current locale settings.
+      List your current locale settings:
 
-      .. code-block:: sh
+      .. code-block:: console
+
+         $ locale | grep "LANG="
+
+      .. include:: /install/includes/include-utf-8-clause.rst
+
+      .. code-block:: console
+
+         $ sudo apt install locales
+
+      .. code-block:: console
+
+         $ sudo locale-gen en_US.UTF-8
+
+      .. code-block:: console
+
+         $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
+
+      After fixing it, make sure to check the output again for including
+      ``<lang_code>.utf8``. A reboot may help if unsuccessful.
+
+   .. group-tab:: OpenSUSE / SLES
+
+      List your current locale settings:
+
+      .. code-block:: console
 
          $ localectl status | grep LANG
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo localectl set-locale LANG=en_US.UTF-8
 
@@ -99,17 +140,17 @@ To make Zammad work correctly, your system has to use the correct locales.
 
          This does not affect other users and thus can be ignored.
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
-      List your current locale settings.
+      List your current locale settings:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ locale | grep "LANG="
 
       .. include:: /install/includes/include-utf-8-clause.rst
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo localectl set-locale LANG=en_US.UTF-8
 
@@ -127,83 +168,102 @@ Add Repository
 
 .. tabs::
 
-   .. tab:: Ubuntu
+   .. group-tab:: Ubuntu
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg> /dev/null \
+              gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg > /dev/null \
                && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
 
-      Ubuntu 20.04
-         .. code-block:: sh
-
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 20.04 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
-
       Ubuntu 22.04
-         .. code-block:: sh
+         .. code-block:: console
 
             $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
       Ubuntu 24.04
-         .. code-block:: sh
+         .. hint:: Starting with Ubuntu 24.04, we provide the command to add the
+            repository in the
+            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 24.04 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+         .. code-block:: console
 
-   .. tab:: Debian
+            $ printf "Types: deb
+            URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
+            Suites: 24.04
+            Components: main
+            Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
+            sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
 
-      Install Repository Key
-         .. code-block:: sh
+   .. group-tab:: Debian
+
+      .. hint::
+         Starting with Debian 13, the packages are hosted under a different
+         URL and the signing key is saved to a different directory.
+
+      Add Repository Key (Debian 11 & 12)
+         .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-               gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg > /dev/null \
+              gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg > /dev/null \
                && sudo chmod 644 /etc/apt/trusted.gpg.d/pkgr-zammad.gpg
 
-      Debian 11
-         .. code-block:: sh
+      Add Repository Key (Debian 13)
+         .. code-block:: console
+
+            $ curl -fsSL https://go.packager.io/srv/deb/zammad/zammad/gpg-key.asc | \
+               gpg --dearmor | sudo tee /usr/share/keyrings/zammad.gpg > /dev/null \
+               && sudo chmod 644 /usr/share/keyrings/zammad.gpg
+
+      Add Repository (Debian 11)
+         .. code-block:: console
 
             $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-      Debian 12
-         .. code-block:: sh
+      Add Repository (Debian 12)
+         .. code-block:: console
 
             $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
                sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
 
-   .. tab:: OpenSUSE / SLES
+      Add Repository (Debian 13)
+         .. code-block:: console
+
+            $ curl -fsSL https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list \
+               -o /etc/apt/sources.list.d/zammad.list
+
+   .. group-tab:: OpenSUSE / SLES
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
       openSUSE 15.x / SLES 15
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo wget -O /etc/zypp/repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
 
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
       Install Repository Key
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
       CentOS 8 / RHEL 8
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo wget -O /etc/yum.repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
 
       CentOS 9 / RHEL 9
-         .. code-block:: sh
+         .. code-block:: console
 
             $ sudo wget -O /etc/yum.repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
@@ -214,36 +274,230 @@ Install Zammad
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo apt update
+
+      .. code-block:: console
+
          $ sudo apt install zammad
 
-   .. tab:: OpenSUSE / SLES
+   .. group-tab:: Debian
 
-      .. code-block:: sh
+      .. code-block:: console
+
+         $ sudo apt update
+
+      .. code-block:: console
+
+         $ sudo apt install zammad
+
+   .. group-tab:: OpenSUSE / SLES
+
+      .. code-block:: console
 
          $ sudo zypper ref
+
+      .. code-block:: console
+
          $ sudo zypper install zammad
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ sudo yum install zammad
 
       Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
-      packager.io on CentOS you'll need to correct file permissions for
+      Packager.io on CentOS you'll need to correct file permissions for
       public files.
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         sudo chmod -R 755 /opt/zammad/public/
+         $ sudo chmod -R 755 /opt/zammad/public/
 
-.. include:: /install/includes/firewall-and-selinux.rst
+Firewall & SELinux
+------------------
 
-.. include:: /install/includes/manage-services.rst
+Some parts of these steps may not apply to you, feel free to skip them!
 
-.. include:: /install/includes/next-steps.rst
+SELinux
+^^^^^^^
+.. note::
+   The commands below only work on Ubuntu, Debian and CentOS. If you use a
+   different distribution, please have a look at their documentation.
+
+Allow Nginx or Apache to access public files of Zammad and communicate:
+
+.. code-block:: console
+
+   $ sudo chcon -Rv --type=httpd_sys_content_t /opt/zammad/public/
+
+.. code-block:: console
+
+   $ sudo setsebool httpd_can_network_connect on -P
+
+.. code-block:: console
+
+   $ sudo semanage fcontext -a -t httpd_sys_content_t /opt/zammad/public/
+
+.. code-block:: console
+
+   $ sudo restorecon -Rv /opt/zammad/public/
+
+.. code-block:: console
+
+   $ sudo chmod -R a+r /opt/zammad/public/
+
+Firewall
+^^^^^^^^
+
+Ensure to open ports ``80`` and ``443`` (TCP & UDP) beside of the ports you
+need. Below you can find a few examples for different distributions.
+If you are using a different distribution, please have a look at their
+documentation.
+
+Please note that the examples below only cover the distribution's default
+firewall. It may not cover your case.
+
+.. tabs::
+
+   .. group-tab:: Ubuntu
+
+      Open Port 80 and 443 on your Firewall:
+
+      .. code-block:: console
+
+         $ sudo ufw allow 80
+
+      .. code-block:: console
+
+         $ sudo ufw allow 443
+
+      .. code-block:: console
+
+         $ sudo ufw reload
+
+   .. group-tab:: Debian
+
+      .. warning::
+
+         We're covering ``nftables`` in this part - iptables is discouraged
+         starting from Debian 10 (Buster).
+         Our example uses the ``input`` chain, yours may be a different one!
+
+      Add the following lines to ``/etc/nftables.conf`` or your specific rule
+      file. Ensure to add these lines to your input-chain.
+
+      Open Port 80 and 443 for Zammad:
+
+      .. code-block::
+
+         $ sudo tcp dport { http, https } accept
+
+      .. code-block::
+
+         $ sudo udp dport { http, https } accept
+
+      The result should look like the following. Keep in mind that your
+      environment could require different / more rules.
+
+      .. code-block:: text
+
+         #!/usr/local/sbin/nft -f
+         flush ruleset
+
+         table inet filter {
+            chain input {
+               type filter hook input priority 0; policy drop;
+               ct state established,related accept
+               tcp dport ssh log accept
+               tcp dport { http, https } accept
+               udp dport { http, https } accept
+            }
+
+            chain forward {
+               type filter hook forward priority 0; policy accept;
+            }
+
+            chain output {
+               type filter hook output priority 0; policy accept;
+            }
+         }
+
+      To load your new rules, simply run ``sudo systemctl reload nftables``.
+
+   .. group-tab:: OpenSUSE / SLES
+
+      Open Port 80 and 443 on your Firewall:
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=http --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=https --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --reload
+
+   .. group-tab:: CentOS / RHEL
+
+      Open Port 80 and 443 on your Firewall:
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=http --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --zone=public --add-service=https --permanent
+
+      .. code-block:: console
+
+         $ sudo firewall-cmd --reload
+
+Manage Services of Zammad
+-------------------------
+
+Zammad uses three services. These services can be managed individually or all at
+once by using the parent **zammad**.
+
+- **zammad**: includes the services below
+
+  - **zammad-web**: internal puma server (relevant for displaying the web app)
+  - **zammad-worker**: background worker - relevant for all delayed- and background jobs
+  - **zammad-websocket**: websocket server for session related information
+
+Manage the services with ``systemctl``'s commands ``start``, ``restart``,
+``stop``, ``status``. Example to start Zammad with all sub-services:
+
+.. code-block:: console
+
+   $ sudo systemctl start zammad
+
+To stop or restart a service or to check its status, adjust the command as
+mentioned above.
+
+Next Steps
+----------
+
+With this Zammad technically is ready to go.
+However, you'll need to follow the following further steps to access
+Zammad's Web-UI and getting started with it.
+
+   #. :ref:`Connect Zammad with Elasticsearch <configure_zammad_with_elasticsearch>`
+   #. :doc:`/getting-started/configure-webserver`
+   #. :doc:`/getting-started/first-steps`
+   #. You may also find Zammad's :doc:`/admin/console` commands useful
+
+If you expect usage with 5 agents or more you may also want to consider the
+following pages.
+
+   * :doc:`/appendix/environment-variables`
+   * :doc:`/appendix/configure-database-server`
+

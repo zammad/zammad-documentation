@@ -7,9 +7,12 @@ you to provide a configuration file. We're shipping a ``config.dist`` within the
 
 To do so run the following commands as either ``root`` or ``zammad`` user.
 
-.. code-block:: sh
+.. code-block:: console
 
    $ cd /opt/zammad/contrib/backup/
+
+.. code-block:: console
+
    $ mv config.dist config
 
 Adjust the values according to your needs. See the explanation of each
@@ -41,7 +44,7 @@ parameter in the table below.
       * ``1`` will keep backups of the last 25 hours
       * ``-1`` will remove all available backups (except the new one)
   * - ``FULL_FS_DUMP``
-    - ``yes``
+    - ``no``
     - If set to ``yes``, the backup includes also application files.
 
       If set to ``no``, the backup includes only user data.
@@ -49,7 +52,7 @@ parameter in the table below.
       In any case, it includes the Zammad database and the attachments, if you
       :admin-docs:`stored them in the file system </settings/system/storage.html>`.
 
-      If you are in doubt, set this to ``no``.
+      If you are in doubt, stay with ``no``.
   * - ``DEBUG``
     - ``no``
     - Setting this option to ``yes`` will output useful debug messages.

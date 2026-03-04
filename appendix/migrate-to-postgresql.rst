@@ -1,115 +1,179 @@
 Migrate to PostgreSQL Server
 ============================
 
-.. include:: /appendix/includes/mysql-deprication-note.rst
+The following guide will give you some hints for the migration from
+MySQL/MariaDB to PostgreSQL. Starting with Zammad 7, the only supported database
+server is PostgreSQL.
 
-The following guide will provide you with a rough direction through that
-migration process.
+.. warning::
 
-.. note:: **🤓 Zammad version requirement ahead**
-
-   Below commands will only work with Zammad 5.3.0 or higher.
-   Please make sure to update the latest (MySQL supported) version first.
-
-.. warning:: **Proof of concept ahead**
-
-   As the technical details may differ from system to system, this guide
-   comes without any warranty. Please proceed at your own risk. In doubt
-   please refer to the documentation of the tools used.
-
+   - The commands on this page will only work with Zammad 5.3 or higher.
+   - Make sure to migrate **before** upgrading to Zammad 7. An upgrade
+     to Zammad 7 is not possible on a MySQL installation.
+   - As the technical details may differ from system to system, this guide
+     comes without any warranty. Please proceed at your own risk. In doubt,
+     please refer to the documentation of the tools used.
 
 Preparation
 -----------
 
 #. Stop Zammad:
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      $ systemctl stop zammad
+      $ sudo systemctl stop zammad
 
 #. Create a backup of your instance.
-
 
 Install PostgreSQL
 ^^^^^^^^^^^^^^^^^^
 
-.. include:: /install/includes/postgres-installation.rst
-
-Please also have a look at :doc:`/appendix/configure-database-server`.
-
 .. tabs::
 
-   .. tab:: Package installation
+   .. group-tab:: Ubuntu / Debian
 
-      Nothing to do, continue with the next step. 🎉
+      .. code-block:: console
 
-   .. tab:: Source code installations
+         $ sudo apt update
 
-      .. include:: /install/includes/postgres-dependencies.rst
+      .. code-block:: console
 
+         $ sudo apt install postgresql postgresql-contrib
+
+      .. code-block:: console
+
+         $ sudo systemctl start postgresql
+
+      .. code-block:: console
+
+         $ sudo systemctl enable postgresql
+
+   .. group-tab:: CentOS
+
+      .. code-block:: console
+
+         $ sudo yum install postgresql-server postgresql-contrib
+
+      .. code-block:: console
+
+         $ sudo postgresql-setup initdb
+
+      .. code-block:: console
+
+         $ sudo systemctl start postgresql
+
+
+      .. code-block:: console
+
+         $ sudo systemctl enable postgresql
+
+   .. group-tab:: OpenSUSE / SLES
+
+      .. code-block:: console
+
+         $ sudo zypper refresh
+
+      .. code-block:: console
+
+         $ sudo zypper install postgresql postgresql-server postgresql-contrib
+
+      openSuSE 15 also requires:
+
+      .. code-block:: console
+
+         $ sudo zypper install postgresql-server-devel
+
+      .. code-block:: console
+
+         $ sudo systemctl start postgresql
+
+      .. code-block:: console
+
+         $ sudo systemctl enable postgresql
 
 Install pgloader
 ^^^^^^^^^^^^^^^^
 
 .. tabs::
 
-   .. tab:: Ubuntu / Debian
+   .. group-tab:: Ubuntu / Debian
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         $ apt update
-         $ apt install pgloader
+         $ sudo apt update
 
-   .. tab:: CentOS
+      .. code-block:: console
 
-      .. code-block:: sh
+         $ sudo apt install pgloader
 
-         $ yum install -y pgloader
+   .. group-tab:: CentOS
 
-   .. tab:: OpenSUSE / SLES
+      .. code-block:: console
 
-      .. code-block:: sh
+         $ sudo yum install -y pgloader
 
-         $ zypper refresh
-         $ zypper install pgloader
+   .. group-tab:: OpenSUSE / SLES
+
+      .. code-block:: console
+
+         $ sudo zypper refresh
+
+      .. code-block:: console
+
+         $ sudo zypper install pgloader
 
 
 Create pgloader Command File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create a command file for pgloader with:
+Create a command file for pgloader:
 
-.. tabs::
+.. code-block:: console
 
-   .. tab:: Package installation
+   $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
 
-      .. code-block:: sh
+.. hint::
 
-         $ zammad run rake zammad:db:pgloader > /tmp/pgloader-command
+   In case you accidentally updated to Zammad 7 already, add the
+   ``/tmp/pgloader-command`` file manually with the template content:
+   
+   .. code-block:: psql
+   
+      LOAD DATABASE
+        -- Adjust the MySQL URL below to correct value before executing this command file.
+        FROM mysql://zammad:mysql_password@localhost/zammad
+      
+        -- Adjust the PostgreSQL URL below to correct value before executing this command file.
+        INTO pgsql://zammad:pgsql_password@localhost/zammad
+      
+      ALTER SCHEMA 'zammad' RENAME TO 'public'
+      
+      AFTER LOAD DO
+        $$ alter table smime_certificates alter column email_addresses type varchar[] using translate(email_addresses::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table pgp_keys alter column email_addresses type varchar[] using translate(email_addresses::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table public_links alter column screen type varchar[] using translate(screen::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table checklists alter column sorted_item_ids type varchar[] using translate(sorted_item_ids::varchar, '[]', '{}')::varchar[] $$,
+        $$ alter table checklist_templates alter column sorted_item_ids type varchar[] using translate(sorted_item_ids::varchar, '[]', '{}')::varchar[] $$
+      
+      WITH BATCH CONCURRENCY = 1
+      SET timezone = 'UTC'
+      SET client_timezone TO '00:00'
+      ;
 
-   .. tab:: Source installation
+Afterwards, you need to tweak the created file with the correct URL of the
+target PostgreSQL server and provide the correct credentials for the
+MySQL/MariaDB source database.
 
-      .. code-block:: sh
+.. code-block:: text
 
-         $ su - zammad
-         $ rake zammad:db:pgloader > /tmp/pgloader-command
+   pgsql://zammad:pgsql_password@localhost/zammad
+   [...]
+   mysql://zammad:mysql_password@localhost/zammad
 
+Replace them with the correct values before continuing.
 
-Afterwards, you need to tweak the created file with the correct URL
-of the target PostgreSQL server.
-
-.. code-block:: cfg
-
-   -- Adjust the PostgreSQL URL below to correct value before executing this command file.
-   INTO pgsql://zammad:pgsql_password@localhost/zammad
-
-
-You will at least need to replace ``psql_password`` placeholder in the provided
-example.
-
-Verify the rest of the MySQL credentials in the command file, they should reflect the
-configuration of your current environment.
-
+Please also have a look at :doc:`/appendix/configure-database-server` in case
+you want to adjust your configuration.
 
 Database Credentials
 ^^^^^^^^^^^^^^^^^^^^
@@ -117,73 +181,54 @@ Database Credentials
 Adjust the configuration file to fill in the credentials for your new
 PostgreSQL server. Use ``postgresql`` as ``adapter``.
 
+.. tip::
 
-.. include:: /install/includes/postgres-permissions.rst
+   **🤓 For easiest usage ...**
 
+   If you provide your Zammad user with database creation permission, you can
+   run ``db:create`` in the following section. If you don't want that, you'll
+   have to create the database manually.
 
 Create Empty Database
 ^^^^^^^^^^^^^^^^^^^^^
 
 Now you need to create an empty database in PostgreSQL.
 
-.. tabs::
+.. code-block:: console
 
-   .. tab:: Package installation
-
-      .. code-block:: sh
-
-         $ zammad run rake db:create
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rake db:create
-
+   $ zammad run rake db:create
 
 Migrate
 -------
 
 .. tabs::
 
-   .. tab:: Dry run
+   .. group-tab:: Dry run
 
       You can check your configuration by running pgloader in a dry run first:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ pgloader --dry-run /tmp/pgloader-command
 
-   .. tab:: Actual run
+   .. group-tab:: Actual run
 
       Once you are ready and setup you can start the actual migration:
 
-      .. code-block:: sh
+      .. code-block:: console
 
          $ pgloader --verbose /tmp/pgloader-command
-
 
 Finishing
 ---------
 
-After the migration has completed, you'll better clear some cache files:
+After the migration has completed, it is recommended to remove some cache files
+and restart Zammad:
 
-.. tabs::
+.. code-block:: console
 
-   .. tab:: Package installation
+   $ zammad run rails r 'Rails.cache.clear'
 
-      .. code-block:: sh
+.. code-block:: console
 
-         $ zammad run rails r 'Rails.cache.clear'
-         $ systemctl start zammad
-
-   .. tab:: Source installation
-
-      .. code-block:: sh
-
-         $ su - zammad
-         $ rails r 'Rails.cache.clear'
-
-         # Run as root
-         $ systemctl start zammad
+   $ sudo systemctl start zammad

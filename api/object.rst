@@ -8,7 +8,7 @@ Object
    fields.
 
    If you want to hide fields, consider :admin-docs:`Core Workflows </system/core-workflows.html>`
-   instead. For states and priorities use either API endpoints or rails console.
+   instead. For states and priorities use either API endpoints or Rails console.
 
 List
 ----

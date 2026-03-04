@@ -67,9 +67,9 @@ type
       requests via twitter.
 
    ``facebook feed post`` & ``facebook feed comment``
-      These articles types are used by Zammads facebook channel.
+      These articles types are used by Zammads Facebook channel.
       Technically you can use these to automatically respond to existing
-      requests via facebook.
+      requests via Facebook.
 
    ``telegram personal-message``
       Used by Zammads Telegram channel.
