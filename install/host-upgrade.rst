@@ -87,26 +87,11 @@ next steps.
 Adjust Package Repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add New Repository
-""""""""""""""""""
-
-If the repository key has changed, add the new one. Otherwise skip this
-step and go on by changing the repository configuration to point to the new
-package version fitting your operating system. Depending on where and how your
-operating system expects the repository configuration, you might
-need to move or recreate the repository configuration file or add a new
-repository in your package manager.
-
-.. include:: /install/package.rst
-   :start-after: .. repo-start:
-   :end-before: .. repo-end:
-
 Remove Old Repository
 """""""""""""""""""""
 
-This is only needed in case you added a **new** repository instead adjusting
-the old. Remove the old repository configuration file or disable/delete the
-old repository in your package manager.
+Remove the old repository configuration file or disable/delete the old
+repository in your package manager.
 
 .. tabs::
 
@@ -116,6 +101,7 @@ old repository in your package manager.
             .. code-block:: console
 
                   $ sudo rm /etc/apt/sources.list.d/zammad.list
+
          Ubuntu 20.04
             .. code-block:: console
 
@@ -138,6 +124,17 @@ old repository in your package manager.
          .. code-block:: console
       
                $ sudo rm /etc/yum.repos.d/zammad.repo
+
+Add New Repository
+""""""""""""""""""
+
+If the repository key has changed, add the new one. Otherwise, skip this
+step and proceed with adding the new repository.
+
+.. include:: /install/package.rst
+   :start-after: .. repo-start:
+   :end-before: .. repo-end:
+
 
 Update Zammad
 ^^^^^^^^^^^^^
