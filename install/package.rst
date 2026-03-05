@@ -166,11 +166,13 @@ Add Repository and Install Zammad
 Add Repository
 ^^^^^^^^^^^^^^
 
+.. repo-start:
+
 .. tabs::
 
    .. group-tab:: Ubuntu
 
-      Install Repository Key
+      Add Repository Key
          .. code-block:: console
 
             $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
@@ -237,7 +239,7 @@ Add Repository
 
    .. group-tab:: OpenSUSE / SLES
 
-      Install Repository Key
+      Add Repository Key
          .. code-block:: console
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
@@ -251,7 +253,7 @@ Add Repository
 
    .. group-tab:: CentOS / RHEL
 
-      Install Repository Key
+      Add Repository Key
          .. code-block:: console
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
@@ -268,6 +270,7 @@ Add Repository
             $ sudo wget -O /etc/yum.repos.d/zammad.repo \
             https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
 
+.. repo-end:
 
 Install Zammad
 ^^^^^^^^^^^^^^
