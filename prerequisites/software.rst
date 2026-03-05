@@ -67,7 +67,9 @@ long-term-support version is generally recommended.
 
 Below you can find all distributions Zammad provides packages for.
 
-.. csv-table:: Supported operating system matrix
+.. supported-os-table-start:
+
+.. csv-table:: Supported operating systems for package installation
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
@@ -75,6 +77,8 @@ Below you can find all distributions Zammad provides packages for.
    "Debian", "11, 12 & 13"
    "OpenSUSE / SLES", "Leap 15.x / 15"
    "Ubuntu", "22.04 & 24.04"
+
+.. supported-os-table-end:
 
 If you distribution is not listed, you can still install Zammad.
 For this you can either use :doc:`Docker Compose </install/docker-compose>`
