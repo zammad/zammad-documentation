@@ -142,6 +142,12 @@ old repository in your package manager.
 Update Zammad
 ^^^^^^^^^^^^^
 
+.. hint::
+
+   If there is a new Zammad version available and you want to update to it,
+   check the `release notes <https://zammad.com/en/product/releases>`_ for any
+   required additional steps.
+
 Re-enable updates for Zammad and update Zammad to the latest version available
 for your operating system.
 
@@ -203,12 +209,6 @@ for your operating system.
       .. code-block:: console
    
          $ sudo yum upgrade zammad
-
-.. note::
-
-   If there is a new Zammad version available and you updated to it, check the
-   `release notes <https://zammad.com/en/product/releases>`_ for any required
-   additional steps.
 
 Start Zammad
 ^^^^^^^^^^^^
