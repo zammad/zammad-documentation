@@ -222,28 +222,27 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          .. code-block:: console
 
-            $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild
+            $ docker compose run --rm zammad-railsserver bundle exec rake zammad:searchindex:rebuild
 
          With specifying CPU cores to use (example: 8):
 
          .. code-block:: console
 
-            $ docker compose run --rm zammad-railsserver rails r rake zammad:searchindex:rebuild[8]
+            $ docker compose run --rm zammad-railsserver bundle exec rake zammad:searchindex:rebuild[8]
 
          **Portainer:**
 
-         Open the :ref:`console via Portainer's GUI <docker-run-commands>`
-         (but use the entrypoint ``bash-via-entrypoint: /docker-entrypoint.sh /bin/bash``
-         instead) and run:
+         Open the :ref:`console via Portainer's GUI <docker-run-commands>` with
+         the standard entrypoint ``/bin/bash`` and run:
 
          Without specifying CPU cores:
 
          .. code-block:: console
 
-            $ rake zammad:searchindex:rebuild
+            $ bundle exec rake zammad:searchindex:rebuild
 
          With specifying CPU cores to use (example: 8):
 
          .. code-block:: console
 
-            $ rake zammad:searchindex:rebuild[8]
+            $ bundle exec rake zammad:searchindex:rebuild[8]
