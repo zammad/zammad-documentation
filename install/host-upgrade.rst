@@ -128,13 +128,13 @@ repository in your package manager.
 Add New Repository
 """"""""""""""""""
 
-If the repository key has changed, add the new one. Otherwise, skip this
-step and proceed with adding the new repository.
+If the repository key is different for the old and new version your distribution
+or your distribution expects it in a different location, add the new one.
+Otherwise, you can add the new repository configuration directly.
 
 .. include:: /install/package.rst
    :start-after: .. repo-start:
    :end-before: .. repo-end:
-
 
 Update Zammad
 ^^^^^^^^^^^^^
