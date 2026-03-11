@@ -30,8 +30,8 @@ The general steps, no matter which operating system you are using, are:
 #. Update Zammad
 #. Start Zammad
 
-Detailled Steps
----------------
+Detailed Steps
+--------------
 
 Stop Zammad
 ^^^^^^^^^^^
