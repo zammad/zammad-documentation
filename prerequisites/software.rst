@@ -67,7 +67,9 @@ long-term-support version is generally recommended.
 
 Below you can find all distributions Zammad provides packages for.
 
-.. csv-table:: Supported operating system matrix
+.. supported-os-table-start:
+
+.. csv-table:: Supported operating systems for package installation
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
@@ -76,15 +78,21 @@ Below you can find all distributions Zammad provides packages for.
    "OpenSUSE / SLES", "Leap 15.x / 15"
    "Ubuntu", "22.04 & 24.04"
 
-.. note:: **What about my specific distribution?**
+.. supported-os-table-end:
 
-   If you distribution is not listed, you can still install Zammad.
-   For this you can either use :doc:`Docker Compose </install/docker-compose>`
-   or :doc:`Kubernetes </install/kubernetes>` installation.
+If you distribution is not listed, you can still install Zammad.
+For this you can either use :doc:`Docker Compose </install/docker-compose>`
+or :doc:`Kubernetes </install/kubernetes>` installation.
+We try to provide all current distributions that are supported by
+`Packager.io <https://packager.io/>`_. This means that we can't always
+provide support for your favorite system.
 
-   We try to provide all current distributions that are supported by
-   `Packager.io <https://packager.io/>`_. This means that we can't always
-   provide support for your favorite system.
+.. note::
+   Upgrading your host operating system to a newer supported version?
+   
+   Make sure to follow the installation guide for the new version and have a
+   look at the host upgrade page, where you can find general steps how to do
+   this.
 
 .. _package_dependencies:
 
