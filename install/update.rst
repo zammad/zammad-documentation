@@ -206,11 +206,11 @@ using `Zammad hosting`_ for your and your customers' safety.
 
          .. code-block:: console
 
-            $ docker-compose pull
+            $ docker compose pull
 
          .. code-block:: console
 
-            $ docker-compose up -d
+            $ docker compose up -d
 
       Rebuild Elasticsearch index (optional)
          Only needed if the release note tells you to rebuild the Elasticsearch
