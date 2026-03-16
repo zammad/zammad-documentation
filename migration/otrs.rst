@@ -47,6 +47,23 @@ Install the version that matches your OTRS version:
 
    In some cases restarting your webserver may help to solve internal server errors.
 
+Timeout Adjustments
+-------------------
+
+If your import runs in a timeout or you already know that this could be an
+issue, you can adjust timeouts via environment variables. To do so, set the
+environment variables ``ZAMMAD_OTRS_IMPORT_READ_TIMEOUT`` and
+``ZAMMAD_OTRS_IMPORT_TOTAL_TIMEOUT`` to a higher timeout in seconds. If unset,
+the defaults apply:
+
+.. csv-table::
+   :header: "", "Zammad \< 7.0", "Zammad \≥ 7.0"
+   :widths: 50, 25, 25
+
+   ``ZAMMAD_OTRS_IMPORT_READ_TIMEOUT``,   "120",  "600"
+   ``ZAMMAD_OTRS_IMPORT_TOTAL_TIMEOUT``,  "360",  "1200"
+
+
 Importing OTRS Data
 -------------------
 
