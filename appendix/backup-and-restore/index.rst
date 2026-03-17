@@ -92,7 +92,6 @@ Please note the following limitations which may affect script functionality
 or availability:
 
    * These scripts won't work in container and source code based installations.
-   * They only work for PostgreSQL installations.
    * The backup is always a full dump (no incremental backup).
    * Partial backup and restore (e.g. only specific data like tickets, users)
      is not possible.

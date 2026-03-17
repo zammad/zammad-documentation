@@ -15,7 +15,6 @@ Database Helper: (Re)set Password
 =================================
 
 Limitations
-   * This script is working for PostgreSQL installations only.
    * Only local database servers are supported (script changes user).
    * This script requires to be run as ``root`` or similar privileged user.
    * Be aware that the script will automatically stop and start Zammad!
