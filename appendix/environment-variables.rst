@@ -220,25 +220,25 @@ PostgreSQL
      - Limited
      - Default Value
      - Description
-   * - POSTGRESQL_HOST
+   * - POSTGRES_HOST
      - |docker|
      - ``zammad-postgresql``
      - Host name or IP address of your PostgreSQL server. In case you use an
        IPv6 address, enclose the address in square brackets (e.g.
        ``[2001:db8::2]``).
-   * - POSTGRESQL_PORT
+   * - POSTGRES_PORT
      - |docker|
      - ``5432``
      - Adjust the Port of your PostgreSQL server.
-   * - POSTGRESQL_USER
+   * - POSTGRES_USER
      - |docker|
      - ``zammad``
      - The database user for Zammad.
-   * - POSTGRESQL_PASS
+   * - POSTGRES_PASS
      - |docker|
      - ``zammad``
      - The password of Zammad's database user.
-   * - POSTGRESQL_DB
+   * - POSTGRES_DB
      - |docker|
      - ``zammad_production``
      - Zammad's database to use.
