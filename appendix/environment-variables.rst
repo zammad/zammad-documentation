@@ -212,6 +212,10 @@ Elasticsearch
 PostgreSQL
 ----------
 
+.. note:: Variables for Docker and package installation are partially different.
+   Check the *Limited* column and make sure to pick the right one. The both
+   variables at the end of the table are valid for both installation types.
+
 .. list-table::
    :widths: 28 3 22 47
    :header-rows: 1
@@ -220,6 +224,28 @@ PostgreSQL
      - Limited
      - Default Value
      - Description
+   * - POSTGRESQL_HOST
+     - |package|
+     - ``zammad-postgresql``
+     - Host name or IP address of your PostgreSQL server. In case you use an
+       IPv6 address, enclose the address in square brackets (e.g.
+       ``[2001:db8::2]``).
+   * - POSTGRESQL_PORT
+     - |package|
+     - ``5432``
+     - Adjust the Port of your PostgreSQL server.
+   * - POSTGRESQL_USER
+     - |package|
+     - ``zammad``
+     - The database user for Zammad.
+   * - POSTGRESQL_PASS
+     - |package|
+     - ``zammad``
+     - The password of Zammad's database user.
+   * - POSTGRESQL_DB
+     - |package|
+     - ``zammad_production``
+     - Zammad's database to use.
    * - POSTGRES_HOST
      - |docker|
      - ``zammad-postgresql``
@@ -243,11 +269,11 @@ PostgreSQL
      - ``zammad_production``
      - Zammad's database to use.
    * - POSTGRESQL_OPTIONS
-     - |docker|
+     - 
      - ``?pool=50``
      - Additional PostgreSQL params to be appended to the database URI.
    * - POSTGRESQL_DB_CREATE
-     - |docker|
+     - 
      - ``true``
      - By default, Zammad creates the required database. On already existing
        database servers, the default might be troublesome.
