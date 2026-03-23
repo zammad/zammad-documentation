@@ -77,6 +77,25 @@ Delete Unwanted Emails
    be removed from the database, their files deleted and finally the empty folder
    removed.
 
+Show and Retry Failed Data Privacy Jobs
+---------------------------------------
+
+In rare cases, Zammad's data privacy jobs might fail. To show them, you can use
+the following rake command:
+
+.. code-block:: console
+
+   $ rake zammad:data_privacy:failed:show
+
+To retry failed data privacy jobs, you can use the following command. However,
+without changing the underlying issue that caused the failure, the job will fail
+again. So make sure to check the logs for the root cause of the failure and fix
+it before retrying the job.
+
+.. code-block:: console
+
+   $ rake zammad:data_privacy:failed:retry
+
 Add Translation
 ---------------
 
