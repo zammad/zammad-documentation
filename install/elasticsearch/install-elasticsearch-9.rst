@@ -22,7 +22,7 @@ Download and Add the Public Signing Key
 
       .. code-block:: console
 
-         $ sudo apt-get install apt-transport-https
+         $ sudo apt install apt-transport-https
 
    .. group-tab:: OpenSUSE / SLES
 
@@ -96,7 +96,7 @@ Install Elasticsearch
 
       .. code-block:: console
 
-         $ sudo apt-get update && sudo apt-get install elasticsearch
+         $ sudo apt update && sudo apt install elasticsearch
 
    .. group-tab:: OpenSUSE / SLES
 

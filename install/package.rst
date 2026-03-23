@@ -201,40 +201,29 @@ Add Repository
 
    .. group-tab:: Debian
 
-      .. hint::
-         Starting with Debian 13, the packages are hosted under a different
-         URL and the signing key is saved to a different directory.
-
-      Add Repository Key (Debian 11 & 12)
+      Add Repository Key
          .. code-block:: console
 
-            $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-              gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/pkgr-zammad.gpg > /dev/null \
-               && sudo chmod 644 /etc/apt/trusted.gpg.d/pkgr-zammad.gpg
-
-      Add Repository Key (Debian 13)
-         .. code-block:: console
-
-            $ curl -fsSL https://go.packager.io/srv/deb/zammad/zammad/gpg-key.asc | \
-               gpg --dearmor | sudo tee /usr/share/keyrings/zammad.gpg > /dev/null \
-               && sudo chmod 644 /usr/share/keyrings/zammad.gpg
+            $ curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
+               -o /usr/share/keyrings/zammad.gpg && sudo chmod 644 /usr/share/keyrings/zammad.gpg
 
       Add Repository (Debian 11)
          .. code-block:: console
 
-            $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 11 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/11.list" \
+               -o /etc/apt/sources.list.d/zammad.list
 
       Add Repository (Debian 12)
          .. code-block:: console
 
-            $ echo "deb [signed-by=/etc/apt/trusted.gpg.d/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/debian 12 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/12.list" \
+               -o /etc/apt/sources.list.d/zammad.list
+
 
       Add Repository (Debian 13)
          .. code-block:: console
 
-            $ curl -fsSL https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list \
+            $ curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list" \
                -o /etc/apt/sources.list.d/zammad.list
 
    .. group-tab:: OpenSUSE / SLES
