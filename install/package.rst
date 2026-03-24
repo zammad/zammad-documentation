@@ -176,7 +176,7 @@ Add Repository
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
-                -o /usr/share/keyrings/zammad.gpg
+                -o /usr/share/keyrings/zammad.gpg && sudo chmod 644 /usr/share/keyrings/zammad.gpg
 
       Ubuntu 22.04
          .. code-block:: console
@@ -196,52 +196,46 @@ Add Repository
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
-               -o /usr/share/keyrings/zammad.gpg && sudo chmod 644 /usr/share/keyrings/zammad.gpg
+                -o /usr/share/keyrings/zammad.gpg && sudo chmod 644 /usr/share/keyrings/zammad.gpg
 
       Add Repository (Debian 11)
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/11.list" \
-               -o /etc/apt/sources.list.d/zammad.list
+                -o /etc/apt/sources.list.d/zammad.list
 
       Add Repository (Debian 12)
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/12.list" \
-               -o /etc/apt/sources.list.d/zammad.list
+                -o /etc/apt/sources.list.d/zammad.list
 
       Add Repository (Debian 13)
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list" \
-               -o /etc/apt/sources.list.d/zammad.list
+                -o /etc/apt/sources.list.d/zammad.list
 
    .. group-tab:: OpenSUSE / SLES
-
-      Add Repository Key
-         .. code-block:: console
-
-            $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
       openSUSE 15.x / SLES 15
          .. code-block:: console
 
-            $ sudo wget -O /etc/zypp/repos.d/zammad.repo \
-            https://dl.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo
-
+            $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
+                "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo"
 
    .. group-tab:: CentOS / RHEL
 
       Add Repository Key
          .. code-block:: console
 
-            $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
+            $ sudo rpm --import https://go.packager.io/srv/rpm/zammad/zammad/gpg-key.asc
 
       CentOS 9 / RHEL 9
          .. code-block:: console
 
-            $ sudo wget -O /etc/yum.repos.d/zammad.repo \
-            https://dl.packager.io/srv/zammad/zammad/stable/installer/el/9.repo
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/el/9.repo" \
+                -o /etc/yum.repos.d/zammad.repo
 
 .. repo-end:
 
@@ -274,7 +268,7 @@ Install Zammad
 
       .. code-block:: console
 
-         $ sudo zypper ref
+         $ sudo zypper refresh
 
       .. code-block:: console
 
@@ -284,7 +278,11 @@ Install Zammad
 
       .. code-block:: console
 
-         $ sudo yum install zammad
+         $ sudo dnf update
+
+      .. code-block:: console
+
+         $ sudo dnf install zammad
 
       Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
       Packager.io on CentOS you'll need to correct file permissions for
