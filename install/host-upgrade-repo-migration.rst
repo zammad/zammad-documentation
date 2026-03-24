@@ -27,7 +27,7 @@ The following operating systems are supported:
 Stop Zammad
 -----------
 
-.. code-block:: bash
+.. code-block:: console
 
    $ sudo systemctl stop zammad
 
