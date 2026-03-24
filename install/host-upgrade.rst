@@ -205,7 +205,7 @@ for your operating system.
 
       .. code-block:: console
 
-         $ sudo yum upgrade zammad
+         $ sudo dnf upgrade zammad
 
 Start Zammad
 ^^^^^^^^^^^^
