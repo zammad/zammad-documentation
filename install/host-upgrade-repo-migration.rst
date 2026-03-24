@@ -5,8 +5,8 @@ Host Upgrade and Repository Migration
 
 This page covers the required steps for a host upgrade and to switch to Zammad's
 new package repositories. If you just want to update Zammad itself, please refer
-to :doc:`update`. If you just want to switch to the new repositories without
-upgrading your host system, skip the host upgrade steps after stopping Zammad.
+to :doc:`update`. To just switch to the new repositories without a host upgrade,
+skip the host upgrade steps.
 
 Starting with Zammad 7, packages are being built using a new toolchain and
 hosted under another URL. The packages are being built via old toolchain as well
@@ -39,29 +39,29 @@ Disable Updates for Zammad
 
 .. tabs::
 
-    .. group-tab:: Ubuntu
+   .. group-tab:: Ubuntu
 
-        .. code-block:: console
+      .. code-block:: console
 
-            $ sudo apt-mark hold zammad
+         $ sudo apt-mark hold zammad
 
-    .. group-tab:: Debian
+   .. group-tab:: Debian
 
-        .. code-block:: console
+      .. code-block:: console
 
-            $ sudo apt-mark hold zammad
+         $ sudo apt-mark hold zammad
 
-    .. group-tab:: OpenSUSE / SLES
+   .. group-tab:: OpenSUSE / SLES
 
-        .. code-block:: console
+      .. code-block:: console
 
-            $ sudo zypper addlock zammad
+         $ sudo zypper addlock zammad
 
-    .. group-tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
-        .. code-block:: console
+      .. code-block:: console
 
-            $ sudo dnf upgrade --exclude zammad
+         $ sudo dnf upgrade --exclude zammad
 
 Perform Host Upgrade
 ^^^^^^^^^^^^^^^^^^^^
@@ -89,35 +89,35 @@ repository in your package manager.
 
 .. tabs::
 
-      .. group-tab:: Ubuntu
+   .. group-tab:: Ubuntu
 
-         Ubuntu 20.04
-            .. code-block:: console
-
-                  $ sudo rm /etc/apt/sources.list.d/zammad.sources
-
-         Ubuntu 22.04
-            .. code-block:: console
-
-                  $ sudo rm /etc/apt/sources.list.d/zammad.list
-
-      .. group-tab:: Debian
-
-            .. code-block:: console
-
-                  $ sudo rm /etc/apt/sources.list.d/zammad.list
-
-      .. group-tab:: OpenSUSE / SLES
-
+      Ubuntu 20.04
          .. code-block:: console
 
-               $ sudo rm /etc/zypp/repos.d/zammad.repo
+            $ sudo rm /etc/apt/sources.list.d/zammad.sources
 
-      .. group-tab:: CentOS / RHEL
-
+      Ubuntu 22.04
          .. code-block:: console
 
-               $ sudo rm /etc/yum.repos.d/zammad.repo
+            $ sudo rm /etc/apt/sources.list.d/zammad.list
+
+   .. group-tab:: Debian
+
+      .. code-block:: console
+
+         $ sudo rm /etc/apt/sources.list.d/zammad.list
+
+   .. group-tab:: OpenSUSE / SLES
+
+      .. code-block:: console
+
+         $ sudo rm /etc/zypp/repos.d/zammad.repo
+
+   .. group-tab:: CentOS / RHEL
+
+      .. code-block:: console
+
+         $ sudo rm /etc/yum.repos.d/zammad.repo
 
 Add New Repository
 ^^^^^^^^^^^^^^^^^^
