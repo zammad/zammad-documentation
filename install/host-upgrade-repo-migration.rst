@@ -1,4 +1,4 @@
-Host Upgrade and Change of Repository
+Host Upgrade and Repository Migration
 =====================================
 
 .. include:: includes/hosted-services.rst
