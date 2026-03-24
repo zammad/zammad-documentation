@@ -46,28 +46,28 @@ Disable Updates for Zammad
 .. tabs::
 
     .. group-tab:: Ubuntu
-    
+
         .. code-block:: console
-    
+
             $ sudo apt-mark hold zammad
 
     .. group-tab:: Debian
-    
+
         .. code-block:: console
-    
+
             $ sudo apt-mark hold zammad
-    
+
     .. group-tab:: OpenSUSE / SLES
-    
+
         .. code-block:: console
-    
+
             $ sudo zypper addlock zammad
-    
+
     .. group-tab:: CentOS / RHEL
-    
+
         .. code-block:: console
-    
-            $ sudo yum upgrade --exclude zammad
+
+            $ sudo dnf upgrade --exclude zammad
 
 Perform Host Upgrade
 ^^^^^^^^^^^^^^^^^^^^
@@ -96,7 +96,7 @@ repository in your package manager.
 .. tabs::
 
       .. group-tab:: Ubuntu
-      
+
          Ubuntu 22.04
             .. code-block:: console
 
@@ -108,21 +108,21 @@ repository in your package manager.
                   $ sudo rm /etc/apt/sources.list.d/zammad.sources
 
       .. group-tab:: Debian
-      
+
             .. code-block:: console
 
                   $ sudo rm /etc/apt/sources.list.d/zammad.list
-      
+
       .. group-tab:: OpenSUSE / SLES
-      
+
          .. code-block:: console
-      
+
                $ sudo rm /etc/zypp/repos.d/zammad.repo
-      
+
       .. group-tab:: CentOS / RHEL
-      
+
          .. code-block:: console
-      
+
                $ sudo rm /etc/yum.repos.d/zammad.repo
 
 Add New Repository
@@ -204,7 +204,7 @@ for your operating system.
    .. group-tab:: CentOS / RHEL
 
       .. code-block:: console
-   
+
          $ sudo yum upgrade zammad
 
 Start Zammad
