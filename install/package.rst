@@ -284,14 +284,6 @@ Install Zammad
 
          $ sudo dnf install zammad
 
-      Due to an `issue <https://github.com/crohr/pkgr/issues/165>`_ with
-      Packager.io on CentOS you'll need to correct file permissions for
-      public files.
-
-      .. code-block:: console
-
-         $ sudo chmod -R 755 /opt/zammad/public/
-
 Firewall & SELinux
 ------------------
 
