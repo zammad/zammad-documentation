@@ -175,55 +175,45 @@ Add Repository
       Add Repository Key
          .. code-block:: console
 
-            $ curl -fsSL https://dl.packager.io/srv/zammad/zammad/key | \
-              gpg --dearmor | sudo tee /etc/apt/keyrings/pkgr-zammad.gpg > /dev/null \
-               && sudo chmod 644 /etc/apt/keyrings/pkgr-zammad.gpg
+            $ sudo curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
+                -o /usr/share/keyrings/zammad.gpg
 
       Ubuntu 22.04
          .. code-block:: console
 
-            $ echo "deb [signed-by=/etc/apt/keyrings/pkgr-zammad.gpg] https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu 22.04 main"| \
-               sudo tee /etc/apt/sources.list.d/zammad.list > /dev/null
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/ubuntu/22.04.list" \
+                -o /etc/apt/sources.list.d/zammad.list
 
       Ubuntu 24.04
-         .. hint:: Starting with Ubuntu 24.04, we provide the command to add the
-            repository in the
-            `deb822 format <https://repolib.readthedocs.io/en/latest/deb822-format.html>`_.
-
          .. code-block:: console
 
-            $ printf "Types: deb
-            URIs: https://dl.packager.io/srv/deb/zammad/zammad/stable/ubuntu
-            Suites: 24.04
-            Components: main
-            Signed-By: /etc/apt/keyrings/pkgr-zammad.gpg" | \
-            sudo tee /etc/apt/sources.list.d/zammad.sources > /dev/null
+            $ sudo curl -fsSL  "https://go.packager.io/srv/zammad/zammad/stable/installer/ubuntu/24.04.list" \
+                -o /etc/apt/sources.list.d/zammad.list
 
    .. group-tab:: Debian
 
       Add Repository Key
          .. code-block:: console
 
-            $ curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
+            $ sudo curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
                -o /usr/share/keyrings/zammad.gpg && sudo chmod 644 /usr/share/keyrings/zammad.gpg
 
       Add Repository (Debian 11)
          .. code-block:: console
 
-            $ curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/11.list" \
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/11.list" \
                -o /etc/apt/sources.list.d/zammad.list
 
       Add Repository (Debian 12)
          .. code-block:: console
 
-            $ curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/12.list" \
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/12.list" \
                -o /etc/apt/sources.list.d/zammad.list
-
 
       Add Repository (Debian 13)
          .. code-block:: console
 
-            $ curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list" \
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/13.list" \
                -o /etc/apt/sources.list.d/zammad.list
 
    .. group-tab:: OpenSUSE / SLES
