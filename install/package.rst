@@ -237,12 +237,6 @@ Add Repository
 
             $ sudo rpm --import https://dl.packager.io/srv/zammad/zammad/key
 
-      CentOS 8 / RHEL 8
-         .. code-block:: console
-
-            $ sudo wget -O /etc/yum.repos.d/zammad.repo \
-            https://dl.packager.io/srv/zammad/zammad/stable/installer/el/8.repo
-
       CentOS 9 / RHEL 9
          .. code-block:: console
 
