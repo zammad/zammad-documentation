@@ -48,7 +48,7 @@ some operating systems may require additional packages if not already installed.
 
       .. code-block:: console
 
-         $ sudo yum install wget epel-release
+         $ sudo dnf install curl epel-release
 
 2. Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^
