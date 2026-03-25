@@ -119,6 +119,56 @@ repository in your package manager.
 
          $ sudo rm /etc/yum.repos.d/zammad.repo
 
+Remove Old Repository Key
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remove the old repository key from your system. Depending on your operating
+system and version, the location or method differs.
+
+.. tabs::
+
+   .. group-tab:: Ubuntu
+
+      .. code-block:: console
+
+         $ sudo rm /etc/apt/keyrings/pkgr-zammad.gpg
+
+   .. group-tab:: Debian
+
+      .. code-block:: console
+
+         $ sudo rm /etc/apt/trusted.gpg.d/pkgr-zammad.gpg
+
+   .. group-tab:: OpenSUSE / SLES
+
+      List the keys of your system:
+
+      .. code-block:: console
+
+         $ rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'
+
+      Delete the key(s) related to Zammad (and only those!), replace
+      ``<key-name>`` with the actual key ID:
+
+      .. code-block:: console
+
+         $ sudo rpm -e <key-name>
+
+   .. group-tab:: CentOS / RHEL
+
+      List the keys of your system:
+
+      .. code-block:: console
+
+         $ rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'
+
+      Delete the key(s) related to Zammad (and only those!), replace
+      ``<key-name>`` with the actual key ID:
+
+      .. code-block:: console
+
+         $ sudo rpm -e <key-name>
+
 Add New Repository
 ^^^^^^^^^^^^^^^^^^
 
