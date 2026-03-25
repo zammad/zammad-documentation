@@ -51,11 +51,6 @@ using `Zammad hosting`_ for your and your customers' safety.
 
             .. tab:: Ubuntu / Debian
 
-               .. warning:: Updating from Debian 12 to Debian 13?
-
-                  Then you have to follow the instructions in
-                  :doc:`debian-12-update`.
-
                Update package index:
 
                .. code-block:: console
