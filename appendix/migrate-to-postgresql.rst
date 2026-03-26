@@ -52,7 +52,7 @@ Install PostgreSQL
 
       .. code-block:: console
 
-         $ sudo yum install postgresql-server postgresql-contrib
+         $ sudo dnf install postgresql-server postgresql-contrib
 
       .. code-block:: console
 
@@ -61,7 +61,6 @@ Install PostgreSQL
       .. code-block:: console
 
          $ sudo systemctl start postgresql
-
 
       .. code-block:: console
 
@@ -110,7 +109,7 @@ Install pgloader
 
       .. code-block:: console
 
-         $ sudo yum install -y pgloader
+         $ sudo dnf install -y pgloader
 
    .. group-tab:: OpenSUSE / SLES
 

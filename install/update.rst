@@ -116,23 +116,17 @@ using `Zammad hosting`_ for your and your customers' safety.
 
             .. tab:: CentOS / RHEL
 
-               Update package index:
-
-               .. code-block:: console
-
-                  $ sudo yum check-update
-
                Update all packages except Zammad:
 
                .. code-block:: console
 
-                  $ sudo yum upgrade --exclude zammad
+                  $ sudo dnf upgrade --exclude zammad
 
                Update Zammad:
 
                .. code-block:: console
 
-                  $ sudo yum upgrade
+                  $ sudo dnf upgrade zammad
 
             The package comes with maintenance scripts that will run regular
             tasks during updates for you. However, you should **always** have
