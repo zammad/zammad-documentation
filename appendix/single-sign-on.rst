@@ -254,7 +254,7 @@ Please see :doc:`/getting-started/configure-webserver` before continuing.
 
       .. code-block:: console
 
-         $ sudo yum install krb5-workstation mod_auth_kerb
+         $ sudo dnf install krb5-workstation mod_auth_kerb
 
    .. tab:: OpenSUSE
 
