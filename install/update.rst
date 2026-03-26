@@ -126,7 +126,7 @@ using `Zammad hosting`_ for your and your customers' safety.
 
                .. code-block:: console
 
-                  $ sudo dnf upgrade zammad
+                  $ sudo dnf upgrade
 
             The package comes with maintenance scripts that will run regular
             tasks during updates for you. However, you should **always** have
