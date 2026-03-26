@@ -89,7 +89,7 @@ provide support for your favorite system.
 
 .. note::
    Upgrading your host operating system to a newer supported version?
-   
+
    Make sure to follow the installation guide for the new version and have a
    look at the host upgrade page, where you can find general steps how to do
    this.
@@ -111,21 +111,21 @@ automatically be installed with the Zammad-Package.
 
          $ sudo apt install libimlib2
 
-   .. tab:: openSUSE
+   .. tab:: openSUSE / SLES
 
       .. code-block:: console
 
          $ sudo zypper install imlib2
 
-   .. tab:: CentOS
+   .. tab:: CentOS / RHEL
 
       .. code-block:: console
 
-         $ sudo yum install epel-release
+         $ sudo dnf install epel-release
 
       .. code-block:: console
 
-         $ sudo yum install imlib2
+         $ sudo dnf install imlib2
 
 .. note::
 

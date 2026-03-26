@@ -22,19 +22,19 @@ Download and Add the Public Signing Key
 
       .. code-block:: console
 
-         $ sudo apt-get install apt-transport-https
+         $ sudo apt install apt-transport-https
 
    .. group-tab:: OpenSUSE / SLES
 
       .. code-block:: console
 
-         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
    .. group-tab:: CentOS / RHEL
 
       .. code-block:: console
 
-         $ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+         $ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 
 Add the Repository
@@ -96,7 +96,7 @@ Install Elasticsearch
 
       .. code-block:: console
 
-         $ sudo apt-get update && sudo apt-get install elasticsearch
+         $ sudo apt update && sudo apt install elasticsearch
 
    .. group-tab:: OpenSUSE / SLES
 
@@ -107,14 +107,6 @@ Install Elasticsearch
            sudo zypper modifyrepo --disable elasticsearch
 
    .. group-tab:: CentOS / RHEL
-
-      CentOS and RHEL 7 or earlier:
-
-      .. code-block:: console
-
-         $ sudo yum install --enablerepo=elasticsearch elasticsearch
-
-      RHEL 8 and later:
 
       .. code-block:: console
 

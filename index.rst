@@ -31,7 +31,7 @@ Zammad System Documentation
    /install/source
    /install/elasticsearch
    /install/update
-   /install/host-upgrade
+   /install/host-upgrade-repo-migration
 
 .. toctree::
    :maxdepth: 2
