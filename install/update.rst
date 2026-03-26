@@ -18,6 +18,10 @@ using `Zammad hosting`_ for your and your customers' safety.
 .. _release notes: https://zammad.com/en/releases
 .. _Zammad hosting: https://zammad.com/en/pricing
 
+.. hint:: This page describes how to update Zammad only. In case you want to
+   update your host operating system too, have a look at
+   :doc:`host-upgrade-repo-migration`.
+
 .. tabs::
 
    .. tab:: Package Installation
@@ -46,11 +50,6 @@ using `Zammad hosting`_ for your and your customers' safety.
          .. tabs::
 
             .. tab:: Ubuntu / Debian
-
-               .. warning:: Updating from Debian 12 to Debian 13?
-
-                  Then you have to follow the instructions in
-                  :doc:`debian-12-update`.
 
                Update package index:
 
