@@ -118,7 +118,7 @@ Zammad
    * - | ZAMMAD_PROCESS_DELAYED\_
        | AI_JOBS_WORKERS
      -
-     - unset
+     - ``0``
      - How many instances of AI workers to run simultaneously. AI workers handle
        Zammad's AI requests and fetch the responses from the configured AI
        provider. By default, one worker is running.
@@ -139,7 +139,7 @@ Zammad
        | COMMUNICATION_INBOUND\_
        | JOBS_WORKERS
      -
-     - unset
+     - ``0``
      - Allows concurrent fetching of inbound communication channels.
        Useful if you have many channels and/or mailboxes added. ``0`` means it
        runs in the main process, ``1`` means one additional process, etc. The
@@ -155,7 +155,7 @@ Zammad
    * - | ZAMMAD_PROCESS_DELAYED\_
        | JOBS_WORKERS
      -
-     -
+     - ``0``
      - Allows concurrent execution of delayed jobs.
        Useful if you have a big instance with a high load. ``0`` means it
        runs in the main process, ``1`` means one additional process, etc. The
@@ -163,7 +163,7 @@ Zammad
    * - | ZAMMAD_PROCESS_DELAYED\_
        | JOBS_WORKER_THREADS
      -
-     -
+     - ``1``
      - Threads used for delayed jobs. How many threads should be used by delayed
        jobs workers. The maximum number of threads is ``16``.
    * - MEMCACHE_SERVERS
