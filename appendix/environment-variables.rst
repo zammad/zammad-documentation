@@ -152,20 +152,6 @@ Zammad
      - Threads used for fetching inbound communication channels. How many
        threads should be used by inbound jobs workers. The maximum
        number of threads is ``16``.
-   * - | ZAMMAD_PROCESS_DELAYED\_
-       | JOBS_WORKERS
-     -
-     - ``0``
-     - Allows concurrent execution of delayed jobs.
-       Useful if you have a big instance with a high load. ``0`` means it
-       runs in the main process, ``1`` means one additional process, etc. The
-       maximum number of workers is ``16``.
-   * - | ZAMMAD_PROCESS_DELAYED\_
-       | JOBS_WORKER_THREADS
-     -
-     - ``1``
-     - Threads used for delayed jobs. How many threads should be used by delayed
-       jobs workers. The maximum number of threads is ``16``.
    * - MEMCACHE_SERVERS
      -
      - - Docker: ``zammad-memcached:11211``
@@ -417,11 +403,19 @@ the :doc:`configure-database-server` for more information.
      -
      - unset
      - Allows spawning ``n`` delayed jobs workers to release pressure from
-       Zammad's background worker.
+       Zammad's background worker. ``0`` means it runs in the main process,
+       ``1`` means one additional process, etc. The maximum number of workers
+       is ``16``.
 
        In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
        the zammad-scheduler CPU setting should match the sum of all worker
        settings variables.
+   * - | ZAMMAD_PROCESS_DELAYED\_
+       | JOBS_WORKER_THREADS
+     -
+     - unset
+     - Threads used for delayed jobs. How many threads should be used by delayed
+       jobs workers. The maximum number of threads is ``16``.
 
 .. |package| image:: /images/package.svg
    :height: 24px
