@@ -102,33 +102,33 @@ RAILS_TRUSTED_PROXIES
    address instead of the actual proxy server IP address, if it is placed in
    another network.
 
-ZAMMAD_MANAGE_SESSIONS\_JOBS_WORKERS
+ZAMMAD_MANAGE_SESSIONS_JOBS_WORKERS
    Default: ``0``
 
    Allows to fork the job that dispatches the session jobs to their workers
    to a child process. Allowed value to enable it: ``1``.
 
-ZAMMAD_PROCESS_DELAYED\_AI_JOBS_WORKERS
+ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS
    Default: ``0``
 
-   How many instances of AI workers to run simultaneously. AI workers handle
-   Zammad's AI requests and fetch the responses from the configured AI
-   provider. By default, one worker is running.
+   How many instances of AI worker processes to run simultaneously. AI workers
+   handle Zammad's AI requests and fetch the responses from the configured AI
+   provider. ``0`` means it runs in the main process, ``1`` means one additional
+   process, etc. The maximum number of workers is ``16``.
+
    Self hosted AI users should be careful in increasing it, your AI service
    might collapse. For AI cloud service users with a big Zammad instance, it
    could make sense to increase it to have some kind of parallelization.
-   ``0`` means it runs in the main process, ``1`` means one additional
-   process, etc. The maximum number of workers is ``16``.
 
-ZAMMAD_PROCESS_DELAYED\_AI_JOBS_WORKERS_THREADS
+ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS_THREADS
    Default: ``5``
 
-   How many threads should be processed by **one** AI worker (if you have more
-   than one worker, it is multiplied by the amount of workers). This may
-   speed up the AI processing, but be aware that a Ruby worker can only span
+   How many threads should be processed by **one** AI worker process (if you
+   have more than one worker process, it is multiplied by their amount). This
+   may speed up the AI processing, but be aware that a Ruby worker can only span
    across 1 core anyway. The maximum number of threads is ``16``.
 
-ZAMMAD_PROCESS_DELAYED\_COMMUNICATION_INBOUND\_JOBS_WORKERS
+ZAMMAD_PROCESS_DELAYED_COMMUNICATION_INBOUND_JOBS_WORKERS
    Default: ``0``
 
    Allows concurrent fetching of inbound communication channels.
@@ -136,7 +136,7 @@ ZAMMAD_PROCESS_DELAYED\_COMMUNICATION_INBOUND\_JOBS_WORKERS
    runs in the main process, ``1`` means one additional process, etc. The
    maximum number of workers is ``16``.
 
-ZAMMAD_PROCESS_DELAYED\_COMMUNICATION_INBOUND\_JOBS_WORKER_THREADS
+ZAMMAD_PROCESS_DELAYED_COMMUNICATION_INBOUND_JOBS_WORKER_THREADS
    Default: ``1``
 
    Threads used for fetching inbound communication channels. How many
@@ -184,7 +184,7 @@ ELASTICSEARCH_PORT |docker|
 ELASTICSEARCH_SCHEMA |docker|
    Default: ``http``
 
-   By default, Elasticsearch is accessible via HTTP.
+   Change it to ``https`` if your Elasticsearch cluster is configured to use SSL.
 
 ELASTICSEARCH_NAMESPACE |docker|
    Default: ``zammad``
@@ -362,28 +362,28 @@ the :doc:`configure-database-server` for more information.
 ZAMMAD_WEB_CONCURRENCY
    Default: unset
 
-   Allows spawning ``n`` workers to allow more simultaneous connections for
-   Zammad's web UI.
+   Allows spawning ``n`` worker processes to allow more simultaneous connections
+   for Zammad's web UI.
    In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
    the zammad-railsserver's CPU setting should match the value from this variable.
 
-ZAMMAD_PROCESS\_SESSION_JOBS_WORKERS
+ZAMMAD_PROCESS_SESSION_JOBS_WORKERS
    Default: unset
 
-   How many instances of the session worker to run at a time. Increasing
+   How many processes of the session worker to run at a time. Increasing
    this value can speed up background jobs (like the scheduler) when many
    users are on Zammad at once. However, it is not useful to adjust this
    setting if you have less than 40 active users at a time. Increasing the
-   amount of workers can consume a lot of resources!
+   amount of these processes can consume a lot of resources!
 
    In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
    the zammad-scheduler CPU setting should match the sum of all worker
    settings variables.
 
-ZAMMAD_PROCESS\_SCHEDULED_JOBS_WORKERS
+ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
    Default: unset
 
-   Allows spawning ``1`` independent scheduled jobs worker to release
+   Allows spawning ``1`` independent worker process to release
    pressure from Zammad's background worker. Maximum number of workers:
    ``1``.
 
@@ -391,10 +391,10 @@ ZAMMAD_PROCESS\_SCHEDULED_JOBS_WORKERS
    the zammad-scheduler CPU setting should match the sum of all worker
    settings variables.
 
-ZAMMAD_PROCESS\_DELAYED_JOBS_WORKERS
+ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    Default: unset
 
-   Allows spawning ``n`` delayed jobs workers to release pressure from
+   Allows spawning ``n`` worker processes to release pressure from
    Zammad's background worker. ``0`` means it runs in the main process,
    ``1`` means one additional process, etc. The maximum number of workers
    is ``16``.
@@ -403,11 +403,12 @@ ZAMMAD_PROCESS\_DELAYED_JOBS_WORKERS
    the zammad-scheduler CPU setting should match the sum of all worker
    settings variables.
 
-ZAMMAD_PROCESS_DELAYED\_JOBS_WORKER_THREADS
+ZAMMAD_PROCESS_DELAYED_JOBS_WORKER_THREADS
    Default: unset
 
-   Threads used for delayed jobs. How many threads should be used by delayed
-   jobs workers. The maximum number of threads is ``16``.
+   Threads used by **one** delayed jobs worker process (if you have more than
+   one worker process, it is multiplied by their amount). The maximum number of
+   threads is ``16``.
 
 .. |package| image:: /images/package.svg
    :height: 24px
