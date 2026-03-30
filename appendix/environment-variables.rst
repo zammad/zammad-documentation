@@ -109,6 +109,12 @@ Zammad
        Note that in Docker context, Zammad may see the network gateway IP
        address instead of the actual proxy server IP address, if it is placed in
        another network.
+   * - | ZAMMAD_MANAGE_SESSIONS\_
+       | JOBS_WORKERS
+     -
+     - ``0``
+     - Allows to fork the job that dispatches the session jobs to their workers
+       to a child process. Allowed value to enable it: ``1``.
    * - | ZAMMAD_PROCESS_DELAYED\_
        | AI_JOBS_WORKERS
      -
@@ -119,7 +125,8 @@ Zammad
        Self hosted AI users should be careful in increasing it, your AI service
        might collapse. For AI cloud service users with a big Zammad instance, it
        could make sense to increase it to have some kind of parallelization.
-       The maximum number of workers is ``16``.
+       ``0`` means it runs in the main process, ``1`` means one additional
+       process, etc. The maximum number of workers is ``16``.
    * - | ZAMMAD_PROCESS_DELAYED\_
        | AI_JOBS_WORKERS_THREADS
      -
@@ -145,6 +152,20 @@ Zammad
      - Threads used for fetching inbound communication channels. How many
        threads should be used by inbound jobs workers. The maximum
        number of threads is ``16``.
+   * - | ZAMMAD_PROCESS_DELAYED\_
+       | JOBS_WORKERS
+     -
+     -
+     - Allows concurrent execution of delayed jobs.
+       Useful if you have a big instance with a high load. ``0`` means it
+       runs in the main process, ``1`` means one additional process, etc. The
+       maximum number of workers is ``16``.
+   * - | ZAMMAD_PROCESS_DELAYED\_
+       | JOBS_WORKER_THREADS
+     -
+     -
+     - Threads used for delayed jobs. How many threads should be used by delayed
+       jobs workers. The maximum number of threads is ``16``.
    * - MEMCACHE_SERVERS
      -
      - - Docker: ``zammad-memcached:11211``
