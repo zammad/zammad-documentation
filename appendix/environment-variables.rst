@@ -111,10 +111,12 @@ ZAMMAD_MANAGE_SESSIONS_JOBS_WORKERS
 ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS
    Default: ``0``
 
-   How many instances of AI worker processes to run simultaneously. AI workers
-   handle Zammad's AI requests and fetch the responses from the configured AI
-   provider. ``0`` means it runs in the main process, ``1`` means one additional
-   process, etc. The maximum number of workers is ``16``.
+   Such a worker handles Zammad's AI requests and fetches the responses from the
+   configured AI provider.
+   This variable allows you to specify the number of workers to run simultaneously.
+   ``0`` means a thread in the main process is used, ``1`` means a separate
+   worker gets spawned, etc. The maximum number of workers is
+   ``16``. See also ``ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS_THREADS``.
 
    Self hosted AI users should be careful in increasing it, your AI service
    might collapse. For AI cloud service users with a big Zammad instance, it
@@ -123,8 +125,8 @@ ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS
 ZAMMAD_PROCESS_DELAYED_AI_JOBS_WORKERS_THREADS
    Default: ``5``
 
-   How many threads should be processed by **one** AI worker process (if you
-   have more than one worker process, it is multiplied by their amount). This
+   How many threads should be processed by a **single** AI worker (if you run
+   more than one worker process, it gets multiplied). This
    may speed up the AI processing, but be aware that a Ruby worker can only span
    across 1 core anyway. The maximum number of threads is ``16``.
 
@@ -132,15 +134,16 @@ ZAMMAD_PROCESS_DELAYED_COMMUNICATION_INBOUND_JOBS_WORKERS
    Default: ``0``
 
    Allows concurrent fetching of inbound communication channels.
-   Useful if you have many channels and/or mailboxes added. ``0`` means it
-   runs in the main process, ``1`` means one additional process, etc. The
-   maximum number of workers is ``16``.
+   Useful if you have many channels and/or mailboxes added.
+   ``0`` means a thread in the main process is used, ``1`` means a separate
+   worker gets spawned, etc. The maximum number of workers is ``16``.
 
 ZAMMAD_PROCESS_DELAYED_COMMUNICATION_INBOUND_JOBS_WORKER_THREADS
    Default: ``1``
 
-   Threads used for fetching inbound communication channels. How many
-   threads should be used by inbound jobs workers. The maximum
+   Threads used for fetching inbound communication channels.
+   How many threads should be processed by a **single** inbound jobs worker
+   (if you run more than one worker process, it gets multiplied). The maximum
    number of threads is ``16``.
 
 MEMCACHE_SERVERS
@@ -383,7 +386,7 @@ ZAMMAD_PROCESS_SESSION_JOBS_WORKERS
 ZAMMAD_PROCESS_SCHEDULED_JOBS_WORKERS
    Default: unset
 
-   Allows spawning ``1`` independent worker process to release
+   Allows spawning ``1`` independent worker to release
    pressure from Zammad's background worker. Maximum number of workers:
    ``1``.
 
@@ -395,9 +398,9 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
    Default: unset
 
    Allows spawning ``n`` worker processes to release pressure from
-   Zammad's background worker. ``0`` means it runs in the main process,
-   ``1`` means one additional process, etc. The maximum number of workers
-   is ``16``.
+   Zammad's background worker.
+   ``0`` means a thread in the main process is used, ``1`` means a separate
+   worker gets spawned, etc. The maximum number of workers is ``16``.
 
    In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
    the zammad-scheduler CPU setting should match the sum of all worker
@@ -406,8 +409,8 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKERS
 ZAMMAD_PROCESS_DELAYED_JOBS_WORKER_THREADS
    Default: unset
 
-   Threads used by **one** delayed jobs worker process (if you have more than
-   one worker process, it is multiplied by their amount). The maximum number of
+   Threads used by a **single** delayed jobs worker (if you have more than
+   one worker process, it gets multiplied). The maximum number of
    threads is ``16``.
 
 .. |package| image:: /images/package.svg
