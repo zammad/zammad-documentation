@@ -85,7 +85,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: console
 
-         $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
+         $ echo "LANG=en_US.UTF-8" | sudo tee /etc/default/locale
 
       After fixing it, make sure to check the output again for including
       ``<lang_code>.utf8``. A reboot may help if unsuccessful.
@@ -110,7 +110,7 @@ To make Zammad work correctly, your system has to use the correct locales.
 
       .. code-block:: console
 
-         $ echo "LANG=en_US.UTF-8" > sudo /etc/default/locale
+         $ echo "LANG=en_US.UTF-8" | sudo tee /etc/default/locale
 
       After fixing it, make sure to check the output again for including
       ``<lang_code>.utf8``. A reboot may help if unsuccessful.
