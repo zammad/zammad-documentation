@@ -17,7 +17,7 @@ Response:
 
    {
       "id": 3,
-      "name": "My Checklist Template",
+      "name": "My checklist template",
       "active": true,
       "sorted_item_ids": [
          "7",
@@ -140,7 +140,6 @@ Response:
          24
       ]
    }
-
 
 Update
 ------
