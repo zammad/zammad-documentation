@@ -1,6 +1,61 @@
 Checklist Templates
 ===================
 
+List
+====
+
+Required permission: ``admin.checklists``
+
+``GET``-Request sent: ``/api/v1/checklist_templates``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 OK
+
+   {
+      "id": 3,
+      "name": "My checklist template",
+      "active": true,
+      "sorted_item_ids": [
+         "7",
+         "8",
+         "9"
+      ],
+      "created_by_id": 3,
+      "updated_by_id": 3,
+      "created_at": "2026-04-07T12:43:21.347Z",
+      "updated_at": "2026-04-07T12:43:21.378Z",
+      "item_ids": [
+         7,
+         8,
+         9
+      ]
+   },
+   {
+      "id": 4,
+      "name": "Onboarding",
+      "active": true,
+      "sorted_item_ids": [
+         "10",
+         "11",
+         "12",
+         "13"
+      ],
+      "created_by_id": 3,
+      "updated_by_id": 3,
+      "created_at": "2026-04-07T12:45:11.249Z",
+      "updated_at": "2026-04-07T12:45:11.269Z",
+      "item_ids": [
+         10,
+         11,
+         12,
+         13
+      ]
+   }
+
 Show
 ----
 
@@ -16,26 +71,26 @@ Response:
    # HTTP-Code 200 OK
 
    {
-        "name": "Return order",
-        "active": true,
-        "updated_by_id": 3,
-        "created_by_id": 3,
-        "id": 28,
-        "sorted_item_ids": [
-            "18",
-            "19",
-            "20",
-            "21"
-        ],
-        "created_at": "2024-10-15T12:43:14.642Z",
-        "updated_at": "2024-10-15T12:43:34.242Z",
-        "item_ids": [
-            18,
-            19,
-            20,
-            21
-        ]
-    }
+      "name": "Return order",
+      "active": true,
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "id": 28,
+      "sorted_item_ids": [
+          "18",
+          "19",
+          "20",
+          "21"
+      ],
+      "created_at": "2024-10-15T12:43:14.642Z",
+      "updated_at": "2024-10-15T12:43:34.242Z",
+      "item_ids": [
+          18,
+          19,
+          20,
+          21
+      ]
+   }
 
 Create
 ------
@@ -86,7 +141,6 @@ Response:
       ]
    }
 
-
 Update
 ------
 
@@ -106,7 +160,7 @@ Request:
          "Item 7",
          "Item 8",
          "Item 9"
-         ]
+      ]
    }
 
 Response:
