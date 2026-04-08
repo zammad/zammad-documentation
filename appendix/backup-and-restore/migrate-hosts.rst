@@ -69,7 +69,7 @@ Step 7: Transfer your backup files
    how to adjust the config file to your needs.
 
 Step 8: Restore your backup
-   Follow the steps **1 to 3** of our
+   Follow the steps **1 to 4** of our
    :doc:`restoration page </appendix/backup-and-restore/restore>` to restore
    the backup on the new host.
 
