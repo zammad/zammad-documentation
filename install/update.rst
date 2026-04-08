@@ -181,6 +181,13 @@ using `Zammad hosting`_ for your and your customers' safety.
          `Docker Compose release notes <https://github.com/zammad/zammad-docker-compose/releases>`_
          for updating instructions first.
 
+      .. hint::
+
+         If you want to update Zammad to a specific version, use the ``VERSION``
+         environment variable
+         (`example <https://github.com/zammad/zammad-docker-compose/blob/master/.env.dist>`_
+         with further explanation) and specify the version number.
+
       Updating Portainer based Installations
          In your Zammad stack, click on **Pull and redeploy**, activate
          **Re-pull image and redeploy** and click on **Update**.
