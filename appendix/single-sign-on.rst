@@ -494,12 +494,13 @@ lines! Keep only the one you need.
 Step 3: Enable SSO in Zammad
 ----------------------------
 
-Next, enable "Authentication via SSO" in Zammad's admin panel under
-*Security > Third-party Applications*:
+Next, enable "Authentication via SSO" in Zammad's admin settings under
+*Settings > Security > Third-party Applications*. Make sure to configure the
+trusted SSO proxy IPs for production systems.
 
 .. figure:: /images/appendix/single-sign-on/authentication-via-sso.png
    :align: center
-   :alt: "Authentication via SSO" toggle button in the admin panel
+   :alt: Screenshot shows SSO configuration in Zammad.
 
 Step 4: Configure Client System (Windows Only)
 ----------------------------------------------
