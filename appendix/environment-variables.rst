@@ -413,6 +413,26 @@ ZAMMAD_PROCESS_DELAYED_JOBS_WORKER_THREADS
    one worker process, it gets multiplied). The maximum number of
    threads is ``16``.
 
+HTTP Client Settings
+--------------------
+
+Global HTTP timeout settings. These variables control the default timeout
+behavior for Zammad's internal HTTP client when connecting to external services
+(e.g. OAuth providers, webhooks, or integrations).
+
+ZAMMAD_HTTP_OPEN_TIMEOUT
+   Default: ``30``
+
+   Defines the maximum time in seconds to wait for a connection to be
+   established with a remote server (e.g. if you have a slow connection).
+
+ZAMMAD_HTTP_READ_TIMEOUT
+   Default: ``60``
+
+   Defines the maximum time in seconds to wait for a response after a connection
+   has been established (e.g. if you have a slow connection or slow response
+   times on external side).
+
 .. |package| image:: /images/package.svg
    :height: 24px
    :width: 24px
