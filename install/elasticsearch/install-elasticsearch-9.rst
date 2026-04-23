@@ -60,10 +60,9 @@ Add the Repository
 
    .. group-tab:: OpenSUSE / SLES
 
-      Create the file ``/etc/zypp/repos.d/elasticsearch.repo`` and add:
+      .. code-block:: console
 
-      .. code-block:: text
-
+         $ sudo cat << EOF > /etc/zypp/repos.d/elasticsearch.repo
          [elasticsearch]
          name=Elasticsearch repository for 9.x packages
          baseurl=https://artifacts.elastic.co/packages/9.x/yum
@@ -72,13 +71,13 @@ Add the Repository
          enabled=0
          autorefresh=1
          type=rpm-md
+         EOF
 
    .. group-tab:: CentOS / RHEL
 
-      Create the file ``/etc/yum.repos.d/elasticsearch.repo`` and add:
+      .. code-block:: console
 
-      .. code-block:: text
-
+         $ sudo cat << EOF > /etc/yum.repos.d/elasticsearch.repo
          [elasticsearch]
          name=Elasticsearch repository for 9.x packages
          baseurl=https://artifacts.elastic.co/packages/9.x/yum
@@ -86,6 +85,7 @@ Add the Repository
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
          enabled=0
          type=rpm-md
+         EOF
 
 Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^
@@ -102,9 +102,7 @@ Install Elasticsearch
 
       .. code-block:: console
 
-         $ sudo zypper modifyrepo --enable elasticsearch && \
-           sudo zypper install elasticsearch; \
-           sudo zypper modifyrepo --disable elasticsearch
+         $ sudo zypper modifyrepo --enable elasticsearch && sudo zypper install elasticsearch
 
    .. group-tab:: CentOS / RHEL
 
