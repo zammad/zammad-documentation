@@ -18,11 +18,11 @@ Download and Add the Public Signing Key
 
    .. group-tab:: Ubuntu / Debian
 
-      Install required tools:
-
       .. code-block:: console
 
-         $ sudo apt install apt-transport-https
+         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
+           gpg --dearmor | sudo tee /usr/share/keyrings/elasticsearch-keyring.gpg \
+           && sudo chmod 644 /usr/share/keyrings/elasticsearch-keyring.gpg
 
    .. group-tab:: OpenSUSE / SLES
 
@@ -35,7 +35,6 @@ Download and Add the Public Signing Key
       .. code-block:: console
 
          $ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-
 
 Add the Repository
 ^^^^^^^^^^^^^^^^^^
@@ -44,26 +43,15 @@ Add the Repository
 
    .. group-tab:: Ubuntu / Debian
 
-      Add repo key:
-
-      .. code-block:: console
-
-         $ curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
-           gpg --dearmor | sudo tee /usr/share/keyrings/elasticsearch-keyring.gpg \
-           && sudo chmod 644 /usr/share/keyrings/elasticsearch-keyring.gpg
-
-      Add repo:
-
       .. code-block:: console
 
          $ echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
 
    .. group-tab:: OpenSUSE / SLES
 
-      Create the file ``/etc/zypp/repos.d/elasticsearch.repo`` and add:
+      .. code-block:: console
 
-      .. code-block:: text
-
+         $ sudo cat << EOF > /etc/zypp/repos.d/elasticsearch.repo
          [elasticsearch]
          name=Elasticsearch repository for 9.x packages
          baseurl=https://artifacts.elastic.co/packages/9.x/yum
@@ -72,13 +60,13 @@ Add the Repository
          enabled=0
          autorefresh=1
          type=rpm-md
+         EOF
 
    .. group-tab:: CentOS / RHEL
 
-      Create the file ``/etc/yum.repos.d/elasticsearch.repo`` and add:
+      .. code-block:: console
 
-      .. code-block:: text
-
+         $ sudo cat << EOF > /etc/yum.repos.d/elasticsearch.repo
          [elasticsearch]
          name=Elasticsearch repository for 9.x packages
          baseurl=https://artifacts.elastic.co/packages/9.x/yum
@@ -86,6 +74,7 @@ Add the Repository
          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
          enabled=0
          type=rpm-md
+         EOF
 
 Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^
@@ -102,9 +91,7 @@ Install Elasticsearch
 
       .. code-block:: console
 
-         $ sudo zypper modifyrepo --enable elasticsearch && \
-           sudo zypper install elasticsearch; \
-           sudo zypper modifyrepo --disable elasticsearch
+         $ sudo zypper modifyrepo --enable elasticsearch && sudo zypper install elasticsearch
 
    .. group-tab:: CentOS / RHEL
 
