@@ -370,7 +370,7 @@ ZAMMAD_WEB_CONCURRENCY
    In case you applied :doc:`Docker hardware resource limits </install/docker-compose/docker-compose-scenarios>`,
    the zammad-railsserver's CPU setting should match the value from this variable.
 
-ZAMMAD_PROCESS_SESSION_JOBS_WORKERS
+ZAMMAD_PROCESS_SESSIONS_JOBS_WORKERS
    Default: unset
 
    How many processes of the session worker to run at a time. Increasing
