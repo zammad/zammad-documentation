@@ -4,29 +4,22 @@ Proxy and Connections
 Proxy
 -----
 
-In addition to the proxy configuration via environment variables, Zammad also
-includes a proxy configuration via GUI which you can find in the
-:admin-docs:`system settings section of the admin docs </settings/system/network.html>`.
-Make sure to avoid a conflicting configuration.
+This section covers the proxy configuration via environment variables. As an
+alternative, the proxy configuration is also possible via Zammad UI. You can
+find more information about that in the
+:admin-docs:`network section of the admin documentation </settings/system/network.html>`.
 
-Important Information
-^^^^^^^^^^^^^^^^^^^^^
+.. csv-table:: Proxy configuration comparison
+   :header: "", "GUI configuration", "Environment variable"
+   :widths: 40, 30, 30
 
-- Use the environment variables configuration to cover connections for used
-  Ruby gems.
-- Use the UI configuration in Zammad to cover connections from Zammad itself.
-- If in doubt, set both accordingly.
-- There are parts in Zammad which disregard any proxy configuration:
-
-   - WhatsApp
-   - Massenversand
-   - Zendesk Migrator
-
-Variables
-^^^^^^^^^
+   "Host OS access required",                   "No",  "Yes"
+   "Automatically excluded loopback addresses", "Yes", "No"
+   "Configuration check",                       "Yes", "Manually via test script"
+   "Exceptions",                                "Yes", "No"
 
 The following environment variables can be used to configure proxy settings.
-Adjust the example values so they fit your environment.
+Adjust the values according to your environment.
 
 HTTP_PROXY
    Variable for HTTP traffic. Set it to the address of your proxy server,
@@ -46,7 +39,8 @@ HTTPS_PROXY
 
 NO_PROXY
    Variable for addresses that should be accessed directly and without proxy.
-   It supports wildcards as well. Provide a comma separated list of addresses.
+   Expects a comma separated list of addresses and supports wildcards. Make sure
+   to include loopback addresses to exclude them from being routed via proxy.
    Example:
 
    .. code-block:: sh
@@ -75,9 +69,6 @@ ES_JAVA_OPTS
 External Connections
 --------------------
 
-Download Dependencies
-^^^^^^^^^^^^^^^^^^^^^
-
 During installation and operation of Zammad, some connections to online services
 are required. Depending on your installation method and Zammad configuration,
 a connection to the following services is made (maybe also helpful for firewall
@@ -95,8 +86,6 @@ configuration):
    "index.rubygems.org",    "Download of gems for ruby"
    "registry.npmjs.org",    "Download of js dependencies"
 
-Test Script
-^^^^^^^^^^^
 
 You can use a script to check the connection state of your system.
 It tries to connect to the services mentioned above and shows the
