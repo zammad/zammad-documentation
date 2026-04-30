@@ -39,8 +39,10 @@ HTTPS_PROXY
 
 NO_PROXY
    Variable for addresses that should be accessed directly and without proxy.
-   Expects a comma separated list of addresses and supports wildcards. Make sure
-   to include loopback addresses to exclude them from being routed via proxy.
+   Expects a comma separated list of addresses and supports wildcards. Use
+   a leading ``.`` as wildcard for subdomains, e.g. ``.example.com`` would match
+   example.com and all of its subdomains. Make sure to include loopback addresses
+   to exclude them from being routed via proxy.
    Example:
 
    .. code-block:: sh
