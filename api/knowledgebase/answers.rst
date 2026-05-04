@@ -707,7 +707,7 @@ Required permission: ``knowledge_base.editor``
    :force:
 
    {
-      "category_id": "1",,
+      "category_id": "1",
       "translations_attributes": [
          {
             "content_attributes": {
