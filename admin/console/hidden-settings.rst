@@ -72,84 +72,60 @@ To check what setting is set currently, simply run:
 
    >> Setting.get('ui_ticket_create_default_type')
 
-Adding a Warning to the Ticket Creation Process
------------------------------------------------
+Show a Note During Article Creation
+-----------------------------------
 
-If in case you need to give your agent a note or warning during ticket creation,
-you can do so with the below command.
+If you need to give your agents a note or warning with important information
+during the article creation, you can create such a static note for different
+article types. Be aware that there are two settings: one for ticket creation and
+the other for article creation in an existing ticket. Adjust the commands below
+to use it for the desired article types and replace the text with yours. In case
+you don't want a warning for all article types, simply omit these types.
 
-You can use three different warnings for
+.. figure:: /images/console/article-creation-warning.png
+   :alt: Screenshot shows the article editor with a warning above.
+   :align: center
 
-   * Incoming calls ``:"phone-in"=>""``,
-   * Outgoing calls ``:"phone-out"=>""`` and
-   * Outgoing emails ``:"email-out"=>""``.
+Ticket creation
+   .. code-block:: irb
 
-.. code-block:: irb
+      >> Setting.set('ui_ticket_create_notes', {
+            "phone-in"  => "You're about to note an incoming phone call.",
+            "phone-out" => "You're about to note an outgoing phone call.",
+            "email-out" => "You're going to send out an email."
+         })
 
-   >> Setting.set('ui_ticket_create_notes', {
-         "phone-in"  => "You're about to note an incoming phone call.",
-         "phone-out" => "You're about to note an outgoing phone call.",
-         "email-out" => "You're going to send out an email."
-      })
+Append article in existing tickets
+   .. code-block:: irb
 
-.. note::
+      >> Setting.set('ui_ticket_add_article_hint', {
+            "note-internal"  => "You are writing an |internal note|, only people of your organization will see it.",
+            "note-public"    => "You are writing a |public note|.",
+            "phone-internal" => "You are writing an |internal phone note|, only people of your organization will see it.",
+            "phone-public"   => "You are writing a |public phone note|.",
+            "email-internal" => "You are writing an |internal email|, only people of your organization will see it.",
+            "email-public"   => "You are writing a |public email|."
+         })
 
-   You can use those three sub-settings independently, if you e.g. don't need a
-   warning on incoming calls, simply leave out ``:"phone-in"=>""`` out of the
-   setting. The setting itself is done within an array ( ``{}`` ).
+Check what's currently set
+   .. code-block:: irb
 
+      >> Setting.get('ui_ticket_create_notes')
 
-To check what's currently set, you can use:
+   .. code-block:: irb
 
-.. code-block:: irb
+      >> Setting.get('ui_ticket_add_article_hint')
 
-   >> Setting.get('ui_ticket_create_notes')
+Markup options
+   To apply text formatting, use the following markup:
 
-Sample of the above setting:
-
-.. image:: /images/console/ui_ticket_create_notes.gif
-
-Adding a Warning to the Article Reply Process
----------------------------------------------
-
-In case you need to give your agent a warning during the ticket article reply,
-you can do that with the command below.
-
-You can provide different warnings for different channels and article visibility:
-
-   * Internal notes
-   * Public notes
-   * Internal calls
-   * Public calls
-   * Internal emails
-   * Public emails
-
-.. code-block:: irb
-
-   >> Setting.set('ui_ticket_add_article_hint', {
-         "note-internal"  => "You are writing an |internal note|, only people of your organization will see it.",
-         "note-public"    => "You are writing a |public note|.",
-         "phone-internal" => "You are writing an |internal phone note|, only people of your organization will see it.",
-         "phone-public"   => "You are writing a |public phone note|.",
-         "email-internal" => "You are writing an |internal email|, only people of your organization will see it.",
-         "email-public"   => "You are writing a |public email|."
-      })
-
-.. note::
-
-   You can use example sub-settings above independently, if you e.g. don't need
-   a warning on internal calls, simply leave out ``"phone-internal"``
-   of the setting. The setting itself is in a form of a hash (``{}``).
-
-To check what's currently set, you can use:
-
-.. code-block:: irb
-
-   >> Setting.get('ui_ticket_add_article_hint')
-
-Sample of the above setting:
-
-.. image:: /images/console/ui_ticket_add_article_hint-example.gif
+   - ``||italic||``
+   - ``|bold|``
+   - ``_underline_``
+   - ``//strikethrough//``
+   - ``§key§`` (renders a keyboard key like :kbd:`key`)
+   - ``¶`` (newline)
+   - ``[link text](/example.com)``
 
 Show Email Address of Customer on Customer Selection (Ticket Creation)
 ----------------------------------------------------------------------
