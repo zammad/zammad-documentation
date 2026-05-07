@@ -1,30 +1,32 @@
 Introduction
 ============
 
-Zammad provides a powerful REST-API which allows all operations that
-are available via UI as well.
+Zammad provides a powerful REST-API which allows all operations that are
+available via UI as well. This page gives you an introduction and basic
+information about important topics which are valid for the API in general. In
+case you want to see examples directly, just navigate to the actual section in
+the left navigation menu.
 
-This page gives you a first impression for things that generally count for
-all endpoints and how to adapt.
-
-API clients
+API Clients
 -----------
 
-There are API clients available.
-Please note that these clients may not provide access to all available
-endpoints listed here.
+Instead of using the plain REST-API, you could also use one of the available
+API clients. But please note that these clients may not provide access to all
+available endpoints. In case we forgot to mention a client, feel free to let us
+know.
 
-   * `Ruby Client <https://github.com/zammad/zammad-api-client-ruby>`_
-     *(official)*
-   * `PHP Client <https://github.com/zammad/zammad-api-client-php>`_
-     *(official)*
-   * `Python Client <https://pypi.org/project/zammad-py/>`_ *(third party)*
-   * `.NET Client [System.Text.Json] <https://github.com/meenzen/Zammad.Client.SystemTextJson>`_ *(third party)*
-   * `.NET Client [Newtonsoft.Json] <https://github.com/S3bt3r/Zammad.Client>`_ *(third party; unmaintained)*
-   * `Android API-Client <https://github.com/KirkBushman/zammad-android>`_
-     *(third party)*
-   * `Go Client <https://github.com/AlessandroSechi/zammad-go>`_
-     *(third party; API client only, no "ready to use" app)*
+**Official:**
+
+- `Ruby client <https://rubygems.org/gems/zammad_api>`_
+- `PHP client <https://packagist.org/packages/zammad/zammad-api-client-php>`_
+
+**Third-party:**
+
+- `Python client <https://pypi.org/project/zammad-py/>`_
+- `.NET client [System.Text.Json] <https://www.nuget.org/packages/Zammad.Client.SystemTextJson/>`_
+- `Android client <https://github.com/KirkBushman/zammad-android>`_
+- `Go client <https://pkg.go.dev/github.com/AlessandroSechi/zammad-go>`_ (API
+  client only, no ready to use app)
 
 Authentication
 --------------
