@@ -23,7 +23,7 @@ Adjust the values according to your environment.
 
 HTTP_PROXY
    Variable for HTTP traffic. Set it to the address of your proxy server,
-   including the port. Example:
+   including the port. Does not work in Docker context. Example:
 
    .. code-block:: sh
 
@@ -31,7 +31,7 @@ HTTP_PROXY
 
 HTTPS_PROXY
    Variable for HTTPS traffic. Set it to the address of your proxy server,
-   including the port. Example:
+   including the port. Does not work in Docker context. Example:
 
    .. code-block:: sh
 
