@@ -105,19 +105,31 @@ automatically be installed with the Zammad-Package.
 
 .. tabs::
 
-   .. tab:: Debian & Ubuntu
+   .. group-tab:: Ubuntu
 
       .. code-block:: console
 
          $ sudo apt install libimlib2
 
-   .. tab:: openSUSE / SLES
+   .. group-tab:: Debian
+
+      Debian 13
+         .. code-block:: console
+
+            $ sudo apt install libimlib2t64
+
+      Debian 11 & 12
+         .. code-block:: console
+
+            $ sudo apt install libimlib2
+
+   .. group-tab:: openSUSE / SLES
 
       .. code-block:: console
 
          $ sudo zypper install imlib2
 
-   .. tab:: CentOS / RHEL
+   .. group-tab:: CentOS / RHEL
 
       .. code-block:: console
 
