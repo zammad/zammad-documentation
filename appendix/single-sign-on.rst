@@ -6,12 +6,9 @@ using Microsoft Active Directory.
 
 .. note:: SSO can only be configured on **self-hosted installations**.
 
-.. figure:: /images/appendix/single-sign-on/using-sso-for-logging-into-zammad.gif
+.. figure:: /images/appendix/single-sign-on/login-sso-button.png
    :alt: Login screen with SSO button for one-click login.
    :align: center
-   :width: 80%
-
-   As of Zammad 3.5, enabling SSO adds a new button to the sign-in page.
 
 Conceptual Overview
 -------------------
@@ -532,10 +529,6 @@ Zammad users must:
          User Authentication > Logon**,
          select "Automatic logon only in Intranet Zone".
 
-      .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_internet-options.gif
-         :align: center
-         :alt: Adding Zammad as a single sign-on site in Windows Internet options
-
    .. tab:: Firefox
 
       .. note:: This option cannot be centrally managed
@@ -546,13 +539,6 @@ Zammad users must:
       2. Search for the ``network.negotiate-auth.trusted-uris`` option.
       3. Double-click to edit, then add your Zammad FQDN.
       4. Restart Firefox to apply your changes.
-
-      .. figure:: /images/appendix/single-sign-on/add-zammad-fqdn-to-trusted-zone_firefox.gif
-         :align: center
-         :alt: Adding Zammad as a single sign-on site in the Firefox about:config menu
-
-         Enter ``about:config`` in the address bar to access advanced
-         settings in Firefox.
 
 Troubleshooting
 ---------------
