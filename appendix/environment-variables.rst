@@ -433,6 +433,14 @@ ZAMMAD_HTTP_READ_TIMEOUT
    has been established (e.g. if you have a slow connection or slow response
    times on external side).
 
+ZAMMAD_HTTP_TOTAL_TIMEOUT
+   Default: ``60``
+
+   Defines the maximum total time in seconds for the complete HTTP request,
+   wrapping connection establishment and response read. This is an additional
+   hard ceiling on top of ``ZAMMAD_HTTP_OPEN_TIMEOUT`` and
+   ``ZAMMAD_HTTP_READ_TIMEOUT``.
+
 .. |package| image:: /images/package.svg
    :height: 24px
    :width: 24px
