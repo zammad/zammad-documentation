@@ -1354,10 +1354,10 @@ Required permission: ``admin.object``
 
    The attribute ``object`` controls which context is being used:
 
-      - ``Ticket``
-      - ``User``
-      - ``Organisation``
-      - ``Group``
+   - ``Ticket``
+   - ``User``
+   - ``Organisation``
+   - ``Group``
 
    .. tabs::
 
