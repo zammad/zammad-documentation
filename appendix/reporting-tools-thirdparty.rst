@@ -36,7 +36,7 @@ Getting Started
 
 You will need
 
-   * An instance of the reporting tool of your choice (hosted or self-hosted)
+   - An instance of the reporting tool of your choice (hosted or self-hosted)
 
 .. include:: reporting-tools-thirdparty/include-requirements.rst
 

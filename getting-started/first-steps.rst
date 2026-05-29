@@ -3,9 +3,9 @@ First Steps
 
 After successfully installing Zammad you'll have a couple of options.
 
-   * :doc:`Migrate from a supported source </migration/index>`
-   * :ref:`Restore Zammad from an existing backup <restore_zammad>`
-   * Start from scratch (move on to the next section)
+   - :doc:`Migrate from a supported source </migration/index>`
+   - :ref:`Restore Zammad from an existing backup <restore_zammad>`
+   - Start from scratch (move on to the next section)
 
 Getting Started Wizard
 ----------------------
@@ -28,9 +28,9 @@ Step 1: Create your very first administrator account
 
    Zammad does require the following password security by default:
 
-   * Password length of 10 or more
-   * 2 upper and 2 lower characters
-   * contains at least one digit
+   - Password length of 10 or more
+   - 2 upper and 2 lower characters
+   - contains at least one digit
 
 Step 2: Provide company information
    You can upload a custom logo fitting to your company here.

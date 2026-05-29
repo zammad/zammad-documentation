@@ -8,9 +8,9 @@ see below). 🚀
 
 You can contribute to:
 
- * :ref:`source-code`
- * :ref:`documentation`
- * :ref:`translation`
+ - :ref:`source-code`
+ - :ref:`documentation`
+ - :ref:`translation`
 
 Please have a look on our notes on how to contribute below.
 
@@ -35,24 +35,24 @@ branches.
 
 ``develop``
 """""""""""
-* This is the current (unreleased) development state of next major release
+- This is the current (unreleased) development state of next major release
   (this will become the new ``stable`` branch).
-* Don't use it for production!
-* Supported with bug and security fixes - see also our `Security Policy`_.
+- Don't use it for production!
+- Supported with bug and security fixes - see also our `Security Policy`_.
 
 ``stable``
 """"""""""
 
-* This is the current stable release, e.g. Zammad 5.2.
-* Use this branch for production installations.
-* Supported with bug and security fixes - see also our `Security Policy`_.
+- This is the current stable release, e.g. Zammad 5.2.
+- Use this branch for production installations.
+- Supported with bug and security fixes - see also our `Security Policy`_.
 
 ``stable-x.y``
 """"""""""""""
 
-* These are the branches of old versions of Zammad like ``stable-5.1`` for
+- These are the branches of old versions of Zammad like ``stable-5.1`` for
   Zammad 5.1.
-* No support for bug or security issues is provided.
+- No support for bug or security issues is provided.
 
 .. _Security Policy: https://github.com/zammad/zammad/blob/develop/SECURITY.md
 
@@ -65,18 +65,18 @@ Do you want to contribute to the Zammad documentation?
 
 Open a new GitHub pull request at
 
-  * https://github.com/zammad/zammad-documentation (this documentation)
-  * https://github.com/zammad/zammad-admin-documentation
-  * https://github.com/zammad/zammad-user-documentation
+  - https://github.com/zammad/zammad-documentation (this documentation)
+  - https://github.com/zammad/zammad-admin-documentation
+  - https://github.com/zammad/zammad-user-documentation
 
 with your changes.
 
 The Zammad documentation is hosted on `Read the Docs`_.
 You can read it there at
 
-  * https://docs.zammad.org (this documentation)
-  * https://admin-docs.zammad.org
-  * https://user-docs.zammad.org
+  - https://docs.zammad.org (this documentation)
+  - https://admin-docs.zammad.org
+  - https://user-docs.zammad.org
 
 or browse the files via GitHub which also renders the used ReStructuredText
 markup.
@@ -92,9 +92,9 @@ ReStructuredText Markup
 If you like to edit the docs, use the ReStructuredText markup language.
 Information about this language can be found at:
 
-  * http://www.sphinx-doc.org/en/stable/rest.html
-  * http://docutils.sourceforge.net/docs/user/rst/quickref.html
-  * http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
+  - http://www.sphinx-doc.org/en/stable/rest.html
+  - http://docutils.sourceforge.net/docs/user/rst/quickref.html
+  - http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
 
 Thanks! ❤ ❤ ❤
 
@@ -136,18 +136,18 @@ projects:
 
 Structure of translation projects in Weblate:
 
-* Documentation
+- Documentation
 
-   * User Documentation (latest)
-   * User Documentation (pre-release)
-   * Admin Documentation (latest)
-   * Admin Documentation (pre-release)
+   - User Documentation (latest)
+   - User Documentation (pre-release)
+   - Admin Documentation (latest)
+   - Admin Documentation (pre-release)
 
-* Zammad
+- Zammad
 
-   * Zammad (development version)
-   * Zammad (stable version)
-   * *Some more which aren't relevant here*
+   - Zammad (development version)
+   - Zammad (stable version)
+   - *Some more which aren't relevant here*
 
 
 .. note::
@@ -199,13 +199,13 @@ the user interface of Weblate:
    from the glossary are highlighted in the source strings, as well.
 4. **Some useful tabs**:
 
-    * **Nearby strings**: shows you the context of the word or string
-    * **Automatic suggestions**: here you can find automatic suggestions from
+    - **Nearby strings**: shows you the context of the word or string
+    - **Automatic suggestions**: here you can find automatic suggestions from
       DeepL and suggestions from similar strings, which are already translated.
       Use the "*Clone to translation*" button to insert it in the translation
       field to apply changes. Use the "*Accept*" button to accept the suggested
       translation and automatically switch to the next string.
-    * **Other languages**: here you can get an overview, which languages are
+    - **Other languages**: here you can get an overview, which languages are
       translated and you can also see the translated strings (could be useful
       for languages, which are similar).
 

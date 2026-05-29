@@ -7,13 +7,13 @@ Limitations
 Please note below OTRS specific limitations.
 These are additional limitations to the :ref:`general ones listed <migration_limitations>`.
 
-   * Password migration works for OTRS >= 3.3 only (on older instances, a
+   - Password migration works for OTRS >= 3.3 only (on older instances, a
      password reset within Zammad will be required)
-   * If you plan to import a differential migration after,
+   - If you plan to import a differential migration after,
      do not change any data in Zammad!
-   * Only customers of tickets are imported
-   * Zammad expects your OTRS timestamps to be UTC and won't adjust them
-   * If you plan to import a differential after, **do not** change any data in Zammad!
+   - Only customers of tickets are imported
+   - Zammad expects your OTRS timestamps to be UTC and won't adjust them
+   - If you plan to import a differential after, **do not** change any data in Zammad!
 
    .. note::
 

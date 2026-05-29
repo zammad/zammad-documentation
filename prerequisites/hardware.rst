@@ -35,8 +35,8 @@ Minimum Setup
 For a minimalistic Zammad deployment with a PostgreSQL database server, you
 should not go below the following values:
 
-* 2 CPU cores
-* 6 GB of RAM (+4 GB if you want to run Elasticsearch on the same server)
+- 2 CPU cores
+- 6 GB of RAM (+4 GB if you want to run Elasticsearch on the same server)
 
 If you run your Elasticsearch instance on a lightweight machine like this and
 your RAM got exhausted, you could try a less-than-ideal solution like
@@ -49,8 +49,8 @@ This is a basic setup for **up to 40 agents**. As mentioned above, it highly
 depends on many factors, but this can be a good starting point for dimensioning
 your system.
 
-* 6 CPU cores
-* 6 GB of RAM (+6 GB if you want to run Elasticsearch on the same server)
+- 6 CPU cores
+- 6 GB of RAM (+6 GB if you want to run Elasticsearch on the same server)
 
 Performance Tuning
 ------------------

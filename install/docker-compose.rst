@@ -16,10 +16,10 @@ graphical Docker front ends like
 Prerequisites
 -------------
 
-* This documentation expects you already have a working
+- This documentation expects you already have a working
   `Docker Compose <https://docs.docker.com/compose/>`_ environment.
-* Make sure to have at least 4 GB of RAM to run the containers.
-* Adjust your host's settings to run Elasticsearch properly:
+- Make sure to have at least 4 GB of RAM to run the containers.
+- Adjust your host's settings to run Elasticsearch properly:
 
   .. code-block:: console
 
@@ -62,7 +62,7 @@ Step 2: Build From Repository
    :alt: Screenshot showing stack creation with necessary information
 
 Step 3: Deploy the Stack
-   Finally, click the **Deploy the stack** button. The first time, it may take
+   Finally, click the ``Deploy the stack`` button. The first time, it may take
    some time until the Docker images are fetched.
 
    After the stack is ready, you can access Zammad via the configured Docker

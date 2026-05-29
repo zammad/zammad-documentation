@@ -1078,10 +1078,10 @@ Required permission: ``admin.object``
 
          Zammad input fields can have 4 different types:
 
-            * ``email``
-            * ``tel``
-            * ``text``
-            * | ``url``
+            - ``email``
+            - ``tel``
+            - ``text``
+            - | ``url``
               | ⚠ *URL* does not support link-templates ⚠
 
          Depending on the chosen input type, Zammad expects different formats
@@ -1354,10 +1354,10 @@ Required permission: ``admin.object``
 
    The attribute ``object`` controls which context is being used:
 
-      * ``Ticket``
-      * ``User``
-      * ``Organisation``
-      * ``Group``
+      - ``Ticket``
+      - ``User``
+      - ``Organisation``
+      - ``Group``
 
    .. tabs::
 

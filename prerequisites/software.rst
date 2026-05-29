@@ -168,8 +168,8 @@ requests are forwarded to the application server.
 
 The following reverse proxies are supported:
 
-* Nginx 1.3+
-* Apache 2.2+
+- Nginx 1.3+
+- Apache 2.2+
 
 .. hint::
 

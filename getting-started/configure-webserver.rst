@@ -161,9 +161,9 @@ directory and make sure to replace ``server_name localhost;`` (Nginx) or
          The easiest way to get certificates is to buy an annual
          subscription through a commercial CA, such as:
 
-         * `Sectigo (formerly Comodo)`_
-         * `Secorio`_
-         * `GlobalSign`_
+         - `Sectigo (formerly Comodo)`_
+         - `Secorio`_
+         - `GlobalSign`_
 
          (Zammad is not affiliated with these CAs in any way.)
 
@@ -250,9 +250,9 @@ Adjusting the Webserver Configuration
          certificates your obtained on the prior steps. Adjust the following
          directives to match your setup:
 
-            * ``ssl_certificate`` (your ssl certificate)
-            * ``ssl_certificate_key`` (the certificates private key)
-            * ``ssl_trusted_certificate`` (the public CA certificate)
+            - ``ssl_certificate`` (your ssl certificate)
+            - ``ssl_certificate_key`` (the certificates private key)
+            - ``ssl_trusted_certificate`` (the public CA certificate)
 
             .. note::
 
@@ -338,9 +338,9 @@ Adjusting the Webserver Configuration
          certificates your obtained on the prior steps. Adjust the following
          directives to match your setup:
 
-            * ``SSLCertificateFile`` (your ssl certificate)
-            * ``SSLCertificateKeyFile`` (the certificates private key)
-            * ``SSLCertificateChainFile`` (the public CA certificate)
+            - ``SSLCertificateFile`` (your ssl certificate)
+            - ``SSLCertificateKeyFile`` (the certificates private key)
+            - ``SSLCertificateChainFile`` (the public CA certificate)
 
             .. note::
 

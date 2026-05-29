@@ -26,11 +26,11 @@ Overview
 --------
 
 **Quickly jump to...**
-   * `Setting up required data sources`_
-   * `The Dashboards`_
+   - `Setting up required data sources`_
+   - `The Dashboards`_
 
 You will need
-   * A Grafana 10.3+ instance (hosted or self hosted)
+   - A Grafana 10.3+ instance (hosted or self hosted)
 
 .. include:: include-requirements.rst
 
@@ -159,30 +159,30 @@ Ticket statistics
       :alt: Screenshot showing the Ticket dashboard with demo data.
 
 This dashboard provides graphs for:
-   * ticket opening and closing [2]_
-   * created articles
-   * ticket SLA (in time *and* violation) per type [2]_ [3]_
+   - ticket opening and closing [2]_
+   - created articles
+   - ticket SLA (in time *and* violation) per type [2]_ [3]_
 
 It also contains specific ticket and article meta information:
-   * ticket group distribution
-   * sender ratio (e.g. Customer / Agent) [1]_
-   * article type ratio (e.g. email, phone) [1]_
-   * article content type
-   * escalation ratios [2]_
-   * average first response, update time and close time [3]_
-   * top 10
+   - ticket group distribution
+   - sender ratio (e.g. Customer / Agent) [1]_
+   - article type ratio (e.g. email, phone) [1]_
+   - article content type
+   - escalation ratios [2]_
+   - average first response, update time and close time [3]_
+   - top 10
 
-      * organization of ticket customer [2]_
-      * ticket customers [2]_
-      * ticket owners [2]_
-      * average accounted time on ticket
-      * ticket tags [2]_
-   * last 10 escalated tickets
+      - organization of ticket customer [2]_
+      - ticket customers [2]_
+      - ticket owners [2]_
+      - average accounted time on ticket
+      - ticket tags [2]_
+   - last 10 escalated tickets
 
 Required data sources:
-   * ``ES - Ticket Articles``
-   * ``ES - Tickets by created_at``
-   * ``ES - Tickets by closed_at``
+   - ``ES - Ticket Articles``
+   - ``ES - Tickets by created_at``
+   - ``ES - Tickets by closed_at``
 
 .. [1] Specific reference IDs are not the same on every instance and thus the
        panel may not work or show incorrect data. Check the panels description
@@ -203,22 +203,22 @@ Chat-Session statistics
       :alt: Screenshot showing the Chat dashboard with demo data.
 
 This dashboard provides graphs for:
-   * Chat session creations
+   - Chat session creations
 
 It also contains specific chat session meta information:
-   * top 10
+   - top 10
 
-      * chat tags
-      * chat agents
-      * chat exit pages
-      * city origins
-   * chat topic ratio
-   * average number of messages within chat-sessions
-   * average chatting time
-   * World map with chat origin countries
+      - chat tags
+      - chat agents
+      - chat exit pages
+      - city origins
+   - chat topic ratio
+   - average number of messages within chat-sessions
+   - average chatting time
+   - World map with chat origin countries
 
 Required data sources:
-   * ``ES - Chat Sessions``
+   - ``ES - Chat Sessions``
 
 CTI-Log statistics
 ^^^^^^^^^^^^^^^^^^
@@ -231,16 +231,16 @@ CTI-Log statistics
       :alt: Screenshot showing the CTI dashboard with demo data.
 
 This dashboard provides graphs for:
-   * number of calls per direction (in / out)
+   - number of calls per direction (in / out)
 
 It also contains specific chat session meta information:
-   * call ratio (in / out)
-   * average waiting time
-   * average talking time
-   * top 10
+   - call ratio (in / out)
+   - average waiting time
+   - average talking time
+   - top 10
 
-      * callers (in)
-      * call answerers (in)
+      - callers (in)
+      - call answerers (in)
 
 Required data sources:
-   * ``ES - CTI Log``
+   - ``ES - CTI Log``

@@ -91,18 +91,18 @@ Limitations
 Please note the following limitations which may affect script functionality
 or availability:
 
-   * These scripts won't work in container and source code based installations.
-   * The backup is always a full dump (no incremental backup).
-   * Partial backup and restore (e.g. only specific data like tickets, users)
+   - These scripts won't work in container and source code based installations.
+   - The backup is always a full dump (no incremental backup).
+   - Partial backup and restore (e.g. only specific data like tickets, users)
      is not possible.
-   * Switching database system **is not** possible. See
+   - Switching database system **is not** possible. See
      :doc:`here </appendix/migrate-to-postgresql>` how to manually switch
      databases.
-   * System settings (like
+   - System settings (like
      :doc:`environment variables </appendix/environment-variables>`) are
      not backed up.
-   * Restore to an older Zammad version is not possible.
-   * **Do not** restore backup files from custom scripts with the
+   - Restore to an older Zammad version is not possible.
+   - **Do not** restore backup files from custom scripts with the
      provided scripts by Zammad. This might cause problems.
 
 

@@ -18,7 +18,7 @@ Tickets and users
    (*e.g.* in compliance with a “Right to Forget” request under the GDPR),
    you can use the
    :admin-docs:`data privacy functions </system/data-privacy.html>`
-   in the admin panel or
+   in the admin settings or
    :doc:`use the console </admin/console/dangerzone-for-experts>`.
 
 Chat sessions
@@ -46,7 +46,7 @@ User sessions
    Zammad maintains session information about every user currently logged in.
 
    This information is automatically purged when a user logs out,
-   and can be viewed or manually deleted via the admin panel (under **System → Sessions**).
+   and can be viewed or manually deleted via the admin settings (under **System → Sessions**).
    Users may also delete their own session information
    via the user preferences menu, under **Device**.
 
@@ -61,7 +61,7 @@ External Services
 
 Zammad utilizes third party web services for certain functions,
 meaning that user data may occasionally be sent or exposed to third parties.
-These functions can be individually disabled in the admin panel
+These functions can be individually disabled in the admin settings
 under **Settings → System → Services**.
 
 .. note:: By default, the third party services that Zammad relies on

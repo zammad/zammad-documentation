@@ -81,7 +81,7 @@ sure to provide additional volumes for persistence (e.g. for their database).
       .. tab:: Via Portainer
 
          In your Portainer web UI, go to **Containers** in the left menu and
-         click the **Add container** button.
+         click the ``Add container`` button.
 
          Add the following information:
 
@@ -91,7 +91,7 @@ sure to provide additional volumes for persistence (e.g. for their database).
            container.
          - Advanced container settings:
 
-           - Switch to **Volumes** and click the **map additional volume** button.
+           - Switch to **Volumes** and click the ``map additional volume`` button.
            - Enter ``/srv`` in the container section and select the volume
              containing ``zammad-backup``
 

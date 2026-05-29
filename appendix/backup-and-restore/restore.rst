@@ -17,17 +17,17 @@ your data.
 - The restoration process **stops & restarts** Zammad. Therefore you have to
   run the restore script with appropriate permissions (e.g. as ``root``).
 
-   * This is **mandatory** for *package installations*
-   * On *source code installations*, this does not work because of different
+   - This is **mandatory** for *package installations*
+   - On *source code installations*, this does not work because of different
      environments. You could load it beforehand as root user to have
      access to Zammad specific commands.
-   * If both approaches above do not fit your case, consider
+   - If both approaches above do not fit your case, consider
      adjusting the backup and restore scripts to your need in an
      independent directory. You're working out of script and
      documentation scope!
 
-* It will drop and re-create the database!
-* You require at least twice the backed up Zammad instance size of free
+- It will drop and re-create the database!
+- You require at least twice the backed up Zammad instance size of free
   storage. If you have the dump only, factor 3 could be a good number.
 
 Restore

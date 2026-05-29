@@ -4387,9 +4387,9 @@ by a different user.
 To do so, add a new HTTP header named ``From`` to your request.
 The value of this header can be one of the following:
 
-   * user ID
-   * user login
-   * user email
+   - user ID
+   - user login
+   - user email
 
 ``From`` is available for all endpoints.
 
