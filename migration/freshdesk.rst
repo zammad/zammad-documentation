@@ -8,18 +8,18 @@ Please note below Freshdesk specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
-   * Differential migrations are **not** supported!
-     The general suggestion is to run a test import before to learn
-     how long the migration is going to take.
-   * **Important:** Please note that migration speed highly depends on your
-     Freshdesk plan (API rate limits apply).
-   * Due to API limitations Zammad will not show the total number of objects
-     to import, but instead correct them in steps of ``100``.
-   * Your Freshdesk plan has to provide API support. This may not apply to all
-     available plans.
-   * User passwords are not migrated and will require the user to use the
-     :admin-docs:`password reset link </settings/security/base.html#lost-password>`
-     on the login page.
+- Differential migrations are **not** supported!
+  The general suggestion is to run a test import before to learn
+  how long the migration is going to take.
+- **Important:** Please note that migration speed highly depends on your
+  Freshdesk plan (API rate limits apply).
+- Due to API limitations Zammad will not show the total number of objects
+  to import, but instead correct them in steps of ``100``.
+- Your Freshdesk plan has to provide API support. This may not apply to all
+  available plans.
+- User passwords are not migrated and will require the user to use the
+  :admin-docs:`password reset link </settings/security/base.html#lost-password>`
+  on the login page.
 
 Prerequisites
 -------------

@@ -9,8 +9,8 @@ Connect Zammad with Elasticsearch
 Before proceeding here, make sure to install Zammad before running below
 commands, as this will fail otherwise.
 
-* Install from :doc:`package <../package>`
-* Install with :doc:`Docker <../docker-compose>` (the default stack already includes Elasticsearch)
+- Install from :doc:`package <../package>`
+- Install with :doc:`Docker <../docker-compose>` (the default stack already includes Elasticsearch)
 
 .. note::
    This guide uses the ``zammad run`` command prefix in command line examples.
@@ -79,7 +79,7 @@ Add certificate to Zammad (Elasticsearch 8 and newer)
    this:
 
    .. figure:: /images/install/elasticsearch/admin-certificate-management.png
-      :alt: Screenshot shows certificate management in Zammad's admin panel
+      :alt: Screenshot shows certificate management in Zammad's admin settings
       :align: center
 
 .. _es-rebuild-searchindex:

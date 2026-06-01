@@ -36,9 +36,9 @@ at ``https://your.zammad.host/auth/sso``.
 When the Zammad server receives a GET request at this endpoint
 with a valid username in **any one of the following**:
 
-* an ``X-Forwarded-User`` request header
-* a ``REMOTE_USER`` web server environment variable
-* an ``HTTP_REMOTE_USER`` web server environment variable
+- an ``X-Forwarded-User`` request header
+- a ``REMOTE_USER`` web server environment variable
+- an ``HTTP_REMOTE_USER`` web server environment variable
 
 it creates a new session for that user.
 
@@ -76,17 +76,17 @@ Getting Started
 
 You will need:
 
-* a Microsoft Active Directory environment with
+- a Microsoft Active Directory environment with
 
-  * root access
-  * support for AES 256-bit encryption
+  - root access
+  - support for AES 256-bit encryption
 
-* a Zammad host with
+- a Zammad host with
 
-  * root access
-  * a fully-qualified domain name (FQDN)
+  - root access
+  - a fully-qualified domain name (FQDN)
 
-* some familiarity with system administration (*e.g.,* Apache configuration)
+- some familiarity with system administration (*e.g.,* Apache configuration)
 
 For best results, set up :admin-docs:`LDAP integration </system/integrations/ldap/index.html>`
 to make sure your Active Directory and Zammad user accounts
@@ -543,9 +543,9 @@ Zammad users must:
 Troubleshooting
 ---------------
 
-* Are all relevant FQDNs/hostnames reachable
+- Are all relevant FQDNs/hostnames reachable
   from your Active Directory and Zammad servers (including each other's)?
-* Are the system clocks of your Active Directory and Zammad servers synchronized
+- Are the system clocks of your Active Directory and Zammad servers synchronized
   within five minutes of each other?
   (Kerberos is a time-sensitive protocol.)
 
