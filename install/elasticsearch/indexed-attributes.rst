@@ -817,16 +817,16 @@ Chat Session
    * - chat
      - Contains these attributes:
 
-          * active: ``true``
-          * block_country: ``null``
-          * block_ip: ``null``
-          * created_at: ``2021-03-03T14:50:22.607Z``
-          * created_by_id: ``1``
-          * id: ``1``
-          * max_queue: ``5``
-          * name: ``default``
-          * note: ``""``
-          * preferences: ``{}``
+          - active: ``true``
+          - block_country: ``null``
+          - block_ip: ``null``
+          - created_at: ``2021-03-03T14:50:22.607Z``
+          - created_by_id: ``1``
+          - id: ``1``
+          - max_queue: ``5``
+          - name: ``default``
+          - note: ``""``
+          - preferences: ``{}``
           - public: ``false``
           - updated_at: ``2021-03-03T14:50:22.607Z``
           - updated_by_id: ``1``
