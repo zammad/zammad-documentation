@@ -1078,11 +1078,10 @@ Required permission: ``admin.object``
 
          Zammad input fields can have 4 different types:
 
-            - ``email``
-            - ``tel``
-            - ``text``
-            - | ``url``
-              | ⚠ *URL* does not support link-templates ⚠
+         - ``email``
+         - ``tel``
+         - ``text``
+         - ``url`` (URL does not support link-templates)
 
          Depending on the chosen input type, Zammad expects different formats
          of data. E.g.: *email* demands a email address to be provided.

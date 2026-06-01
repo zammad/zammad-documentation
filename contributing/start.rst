@@ -65,18 +65,18 @@ Do you want to contribute to the Zammad documentation?
 
 Open a new GitHub pull request at
 
-  - https://github.com/zammad/zammad-documentation (this documentation)
-  - https://github.com/zammad/zammad-admin-documentation
-  - https://github.com/zammad/zammad-user-documentation
+- https://github.com/zammad/zammad-documentation (this documentation)
+- https://github.com/zammad/zammad-admin-documentation
+- https://github.com/zammad/zammad-user-documentation
 
 with your changes.
 
 The Zammad documentation is hosted on `Read the Docs`_.
 You can read it there at
 
-  - https://docs.zammad.org (this documentation)
-  - https://admin-docs.zammad.org
-  - https://user-docs.zammad.org
+- https://docs.zammad.org (this documentation)
+- https://admin-docs.zammad.org
+- https://user-docs.zammad.org
 
 or browse the files via GitHub which also renders the used ReStructuredText
 markup.
@@ -92,9 +92,9 @@ ReStructuredText Markup
 If you like to edit the docs, use the ReStructuredText markup language.
 Information about this language can be found at:
 
-  - http://www.sphinx-doc.org/en/stable/rest.html
-  - http://docutils.sourceforge.net/docs/user/rst/quickref.html
-  - http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
+- http://www.sphinx-doc.org/en/stable/rest.html
+- http://docutils.sourceforge.net/docs/user/rst/quickref.html
+- http://docs.readthedocs.io/en/latest/_themes/sphinx_rtd_theme/demo_docs/source/demo.html
 
 Thanks! ❤ ❤ ❤
 

@@ -170,13 +170,11 @@ It also contains specific ticket and article meta information:
    - article content type
    - escalation ratios [2]_
    - average first response, update time and close time [3]_
-   - top 10
-
    - organization of ticket customer [2]_
    - ticket customers [2]_
-      - ticket owners [2]_
-      - average accounted time on ticket
-      - ticket tags [2]_
+   - ticket owners [2]_
+   - average accounted time on ticket
+   - ticket tags [2]_
    - last 10 escalated tickets
 
 Required data sources:
@@ -206,12 +204,10 @@ This dashboard provides graphs for:
    - Chat session creations
 
 It also contains specific chat session meta information:
-   - top 10
-
-      - chat tags
+   - chat tags
    - chat agents
-      - chat exit pages
-      - city origins
+   - chat exit pages
+   - city origins
    - chat topic ratio
    - average number of messages within chat-sessions
    - average chatting time
@@ -237,8 +233,6 @@ It also contains specific chat session meta information:
    - call ratio (in / out)
    - average waiting time
    - average talking time
-   - top 10
-
    - callers (in)
    - call answerers (in)
 

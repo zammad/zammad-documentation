@@ -17,16 +17,15 @@ fields below.
 
 .. hint:: **Below you can find some hints:**
 
-      - **(SLA)**: Attributes marked as SLA attribute are only set if the ticket is
-        affected by SLA calculation. Please note that some attributes may
-        not be set if specific conditions are not met.
-
-        Also note that some attributes may be reset to ``null`` if no
-        longer applicable.
-      - ``note`` **attribute**: Note attributes usually are empty if not
-        specified via console or API.
-      - **Timestamps**: All timestamps provided by Zammad are UTC by default.
-        This also applies to times provided by Elasticsearch
+   - **(SLA)**: Attributes marked as SLA attribute are only set if the ticket is
+     affected by SLA calculation. Please note that some attributes may
+     not be set if specific conditions are not met.
+     Also note that some attributes may be reset to ``null`` if no
+     longer applicable.
+   - ``note`` **attribute**: Note attributes usually are empty if not
+     specified via console or API.
+   - **Timestamps**: All timestamps provided by Zammad are UTC by default.
+     This also applies to times provided by Elasticsearch
 
 Ticket
 ------

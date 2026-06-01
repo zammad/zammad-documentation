@@ -7,8 +7,8 @@ The source installation is the most difficult installation type of Zammad.
 If you're not too experienced with Linux and system configuration and don't
 want to use Zammad's cloud service, try another installation type:
 
-   - :doc:`/install/package`
-   - :doc:`/install/docker-compose`
+- :doc:`/install/package`
+- :doc:`/install/docker-compose`
 
 We decided to remove the instructions to install Zammad from source from this
 documentation because of better alternatives for production deployments.

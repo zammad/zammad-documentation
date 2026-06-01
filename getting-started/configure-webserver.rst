@@ -250,13 +250,13 @@ Adjusting the Webserver Configuration
          certificates your obtained on the prior steps. Adjust the following
          directives to match your setup:
 
-            - ``ssl_certificate`` (your ssl certificate)
-            - ``ssl_certificate_key`` (the certificates private key)
-            - ``ssl_trusted_certificate`` (the public CA certificate)
+         - ``ssl_certificate`` (your ssl certificate)
+         - ``ssl_certificate_key`` (the certificates private key)
+         - ``ssl_trusted_certificate`` (the public CA certificate)
 
-            .. note::
+         .. note::
 
-               Technically this is not a hard requirement, but recommended!
+            Technically this is not a hard requirement, but recommended!
 
          .. include:: /getting-started/include-dhparam-webserver.rst
 
@@ -338,13 +338,13 @@ Adjusting the Webserver Configuration
          certificates your obtained on the prior steps. Adjust the following
          directives to match your setup:
 
-            - ``SSLCertificateFile`` (your ssl certificate)
-            - ``SSLCertificateKeyFile`` (the certificates private key)
-            - ``SSLCertificateChainFile`` (the public CA certificate)
+         - ``SSLCertificateFile`` (your ssl certificate)
+         - ``SSLCertificateKeyFile`` (the certificates private key)
+         - ``SSLCertificateChainFile`` (the public CA certificate)
 
-            .. note::
+         .. note::
 
-               Technically this is not a hard requirement, but recommended!
+            Technically this is not a hard requirement, but recommended!
 
          .. include:: /getting-started/include-dhparam-webserver.rst
 
