@@ -29,8 +29,8 @@ Step 2: Install Zammad on the destination host
 
    Have a look at the installation instructions:
 
-      - :doc:`Package Installation </install/package>`
-      - :doc:`Install with Docker </install/docker-compose>`
+   - :doc:`Package Installation </install/package>`
+   - :doc:`Install with Docker </install/docker-compose>`
 
 Step 3: Activate maintenance mode
    This ends all agent and customer sessions.

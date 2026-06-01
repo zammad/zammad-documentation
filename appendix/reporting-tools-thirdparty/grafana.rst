@@ -172,8 +172,8 @@ It also contains specific ticket and article meta information:
    - average first response, update time and close time [3]_
    - top 10
 
-      - organization of ticket customer [2]_
-      - ticket customers [2]_
+   - organization of ticket customer [2]_
+   - ticket customers [2]_
       - ticket owners [2]_
       - average accounted time on ticket
       - ticket tags [2]_
@@ -209,7 +209,7 @@ It also contains specific chat session meta information:
    - top 10
 
       - chat tags
-      - chat agents
+   - chat agents
       - chat exit pages
       - city origins
    - chat topic ratio
@@ -239,8 +239,8 @@ It also contains specific chat session meta information:
    - average talking time
    - top 10
 
-      - callers (in)
-      - call answerers (in)
+   - callers (in)
+   - call answerers (in)
 
 Required data sources:
    - ``ES - CTI Log``
