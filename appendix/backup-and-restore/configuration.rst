@@ -41,8 +41,8 @@ parameter in the table below.
 
       **Examples:**
 
-      * ``1`` will keep backups of the last 25 hours
-      * ``-1`` will remove all available backups (except the new one)
+      - ``1`` will keep backups of the last 25 hours
+      - ``-1`` will remove all available backups (except the new one)
   * - ``FULL_FS_DUMP``
     - ``no``
     - If set to ``yes``, the backup includes also application files.

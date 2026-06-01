@@ -89,9 +89,9 @@ internal
 sender
    Indicates which use did create the article. You can choose from:
 
-      * ``Agent``
-      * ``Customer``
-      * ``System``
+      - ``Agent``
+      - ``Customer``
+      - ``System``
 
    .. warning::
 

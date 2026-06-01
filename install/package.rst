@@ -463,6 +463,6 @@ Zammad's Web-UI and getting started with it.
 If you expect usage with 5 agents or more you may also want to consider the
 following pages.
 
-   * :doc:`/appendix/environment-variables`
-   * :doc:`/appendix/configure-database-server`
+   - :doc:`/appendix/environment-variables`
+   - :doc:`/appendix/configure-database-server`
 

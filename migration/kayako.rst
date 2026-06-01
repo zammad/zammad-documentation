@@ -8,24 +8,24 @@ Please note below Kayako specific limitations.
 These are additional limitations to the
 :ref:`general ones listed <migration_limitations>`.
 
-   * Differential migrations are **not** supported!
-     The general suggestion is to run a test import before to learn
-     how long the migration is going to take.
-   * Self hosted installations (Kayako classic) are **not** supported.
-   * The following ticket field customizations are being ignored
-     (affects "Scale" plan):
+- Differential migrations are **not** supported!
+  The general suggestion is to run a test import before to learn
+  how long the migration is going to take.
+- Self hosted installations (Kayako classic) are **not** supported.
+- The following ticket field customizations are being ignored
+  (affects "Scale" plan):
 
-        * Custom ticket states,
-        * Custom ticket priorities, and
-        * Custom ticket types.
+   - Custom ticket states,
+   - Custom ticket priorities, and
+   - Custom ticket types.
 
-   * **Important:** Please note that migration speed highly depends on your
-     Kayako plan (API rate limits apply).
-   * Your Kayako plan has to provide API support. This may not apply to all
-     available plans.
-   * User passwords are not migrated and will require the user to use the
-     :admin-docs:`password reset link </settings/security/base.html#lost-password>`
-     on the login page.
+- **Important:** Please note that migration speed highly depends on your
+  Kayako plan (API rate limits apply).
+- Your Kayako plan has to provide API support. This may not apply to all
+  available plans.
+- User passwords are not migrated and will require the user to use the
+  :admin-docs:`password reset link </settings/security/base.html#lost-password>`
+  on the login page.
 
 Prerequisites
 -------------

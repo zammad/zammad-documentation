@@ -17,16 +17,15 @@ fields below.
 
 .. hint:: **Below you can find some hints:**
 
-      * **(SLA)**: Attributes marked as SLA attribute are only set if the ticket is
-        affected by SLA calculation. Please note that some attributes may
-        not be set if specific conditions are not met.
-
-        Also note that some attributes may be reset to ``null`` if no
-        longer applicable.
-      * ``note`` **attribute**: Note attributes usually are empty if not
-        specified via console or API.
-      * **Timestamps**: All timestamps provided by Zammad are UTC by default.
-        This also applies to times provided by Elasticsearch
+   - **(SLA)**: Attributes marked as SLA attribute are only set if the ticket is
+     affected by SLA calculation. Please note that some attributes may
+     not be set if specific conditions are not met.
+     Also note that some attributes may be reset to ``null`` if no
+     longer applicable.
+   - ``note`` **attribute**: Note attributes usually are empty if not
+     specified via console or API.
+   - **Timestamps**: All timestamps provided by Zammad are UTC by default.
+     This also applies to times provided by Elasticsearch
 
 Ticket
 ------
@@ -74,13 +73,13 @@ Ticket
    * - create_article_sender
      - Contains these attributes:
 
-          * note: ``null``
-          * updated_at: ``2021-03-03T14:50:20.812Z``
-          * name: ``Customer``
-          * created_at: ``2021-03-03T14:50:20.812Z``
-          * updated_by_id: ``1``
-          * id: ``2``
-          * created_by_id: ``1``
+          - note: ``null``
+          - updated_at: ``2021-03-03T14:50:20.812Z``
+          - name: ``Customer``
+          - created_at: ``2021-03-03T14:50:20.812Z``
+          - updated_by_id: ``1``
+          - id: ``2``
+          - created_by_id: ``1``
      - Sender of the article (System, Agent, Customer)
    * - create_article_sender_id
      - ``1``, ``2``
@@ -88,15 +87,15 @@ Ticket
    * - create_article_type
      - Contains these attributes:
 
-          * note: ``null``
-          * updated_at: ``2021-03-03T14:50:20.812Z``
-          * name: ``phone``, ``email``, ``web``
-          * active: ``true``
-          * created_at: ``2021-03-03T14:50:20.812Z``
-          * updated_by_id: ``1``
-          * id: ``5``
-          * created_by_id: ``1``
-          * communication: ``true``, ``false``
+          - note: ``null``
+          - updated_at: ``2021-03-03T14:50:20.812Z``
+          - name: ``phone``, ``email``, ``web``
+          - active: ``true``
+          - created_at: ``2021-03-03T14:50:20.812Z``
+          - updated_by_id: ``1``
+          - id: ``5``
+          - created_by_id: ``1``
+          - communication: ``true``, ``false``
 
      - Information of first article type and nature
    * - create_article_type_id
@@ -124,9 +123,9 @@ Ticket
      - Time stamp of the next applicable escalation. One of the following
        attributes:
 
-          * ``close_escalation_at``
-          * ``first_response_escalation_at``
-          * ``update_escalation_at``
+          - ``close_escalation_at``
+          - ``first_response_escalation_at``
+          - ``update_escalation_at``
 
        **(SLA)**
    * - first_response_at
@@ -346,13 +345,13 @@ Ticket State
    * - state_type
      - Contains these attributes:
 
-          * created_at: ``2021-03-03T14:50:20.582Z``
-          * created_by_id: ``1``
-          * id: ``4``
-          * name: ``pending action``
-          * note: ``null``
-          * updated_at: ``2021-03-03T14:50:20.582Z``
-          * updated_by_id: ``1``
+          - created_at: ``2021-03-03T14:50:20.582Z``
+          - created_by_id: ``1``
+          - id: ``4``
+          - name: ``pending action``
+          - note: ``null``
+          - updated_at: ``2021-03-03T14:50:20.582Z``
+          - updated_by_id: ``1``
      - Contains all available information of the states type
    * - state_type_id
      - ``4``
@@ -667,17 +666,17 @@ Group
    * - email_address
      - Contains these attributes:
 
-          * active: ``true``
-          * channel_id: ``3``
-          * created_at: ``2021-03-24T23:54:58.187Z``
-          * created_by_id: ``3``
-          * email: ``alias@domain.tld``
-          * id: ``1``
-          * note: ``null``
-          * realname: ``Zammad GmbH``
-          * updated_at: ``2021-03-24T23:54:58.187Z``
-          * updated_by_id: ``3``
-          * preferences: ``null``
+          - active: ``true``
+          - channel_id: ``3``
+          - created_at: ``2021-03-24T23:54:58.187Z``
+          - created_by_id: ``3``
+          - email: ``alias@domain.tld``
+          - id: ``1``
+          - note: ``null``
+          - realname: ``Zammad GmbH``
+          - updated_at: ``2021-03-24T23:54:58.187Z``
+          - updated_by_id: ``3``
+          - preferences: ``null``
      - Contains all available information of the groups email address
    * - email_address_id
      - ``3``
@@ -700,15 +699,15 @@ Group
    * - signature
      - Contains these attributes:
 
-          * active: ``true``
-          * body: ``<br>  #{user.firstname} #{user.lastname}<br>--<br>That Inc``
-          * created_at: ``2021-03-03T14:50:19.775Z``
-          * created_by_id: ``1``
-          * id: ``1``
-          * name: ``default``
-          * note: ``null``
-          * updated_at: ``2021-03-03T14:50:19.775Z``
-          * updated_by_id: ``1``
+          - active: ``true``
+          - body: ``<br>  #{user.firstname} #{user.lastname}<br>--<br>That Inc``
+          - created_at: ``2021-03-03T14:50:19.775Z``
+          - created_by_id: ``1``
+          - id: ``1``
+          - name: ``default``
+          - note: ``null``
+          - updated_at: ``2021-03-03T14:50:19.775Z``
+          - updated_by_id: ``1``
      - Contains all available information of the groups signature
    * - signature_id
      - ``1``
@@ -817,20 +816,20 @@ Chat Session
    * - chat
      - Contains these attributes:
 
-          * active: ``true``
-          * block_country: ``null``
-          * block_ip: ``null``
-          * created_at: ``2021-03-03T14:50:22.607Z``
-          * created_by_id: ``1``
-          * id: ``1``
-          * max_queue: ``5``
-          * name: ``default``
-          * note: ``""``
-          * preferences: ``{}``
-          * public: ``false``
-          * updated_at: ``2021-03-03T14:50:22.607Z``
-          * updated_by_id: ``1``
-          * whitelisted_websites: ``null``
+          - active: ``true``
+          - block_country: ``null``
+          - block_ip: ``null``
+          - created_at: ``2021-03-03T14:50:22.607Z``
+          - created_by_id: ``1``
+          - id: ``1``
+          - max_queue: ``5``
+          - name: ``default``
+          - note: ``""``
+          - preferences: ``{}``
+          - public: ``false``
+          - updated_at: ``2021-03-03T14:50:22.607Z``
+          - updated_by_id: ``1``
+          - whitelisted_websites: ``null``
      - Contains various preferences of the chat topic in charge
    * - chat_id
      - ``1``
@@ -847,12 +846,12 @@ Chat Session
    * - messages
      - ``(Array)`` - Array entries contain these attributes:
 
-          * chat_session_id: ``1``
-          * content: ``Hello dear customer``
-          * created_at: ``2021-03-25T10:26:35.977Z``
-          * created_by_id: ``null``, ``3``
-          * id: ``1``
-          * updated_at: ``2021-03-25T10:26:35.977Z``
+          - chat_session_id: ``1``
+          - content: ``Hello dear customer``
+          - created_at: ``2021-03-25T10:26:35.977Z``
+          - created_by_id: ``null``, ``3``
+          - id: ``1``
+          - updated_at: ``2021-03-25T10:26:35.977Z``
      - Array with all messages of chat
    * - name
      - ``null``, ``John Doe``
@@ -860,11 +859,11 @@ Chat Session
    * - preferences
      - Contains these attributes:
 
-          * dns_name: ``host.domain.tld``
-          * geo_ip: ``{}``
-          * participants: ``Array``, ``["47118371175780", "47118371850300"]``
-          * remote_ip: ``192.168.2.19``
-          * url: ``https://zammad.com/en/company/contact``
+          - dns_name: ``host.domain.tld``
+          - geo_ip: ``{}``
+          - participants: ``Array``, ``["47118371175780", "47118371850300"]``
+          - remote_ip: ``192.168.2.19``
+          - url: ``https://zammad.com/en/company/contact``
      - Various internal Meta data of the session_id
    * - session_id
      - ``92f2909631f1ad5ff4d5d1e046952be8``

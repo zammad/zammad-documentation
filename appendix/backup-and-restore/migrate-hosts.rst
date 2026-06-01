@@ -29,8 +29,8 @@ Step 2: Install Zammad on the destination host
 
    Have a look at the installation instructions:
 
-      * :doc:`Package Installation </install/package>`
-      * :doc:`Install with Docker </install/docker-compose>`
+   - :doc:`Package Installation </install/package>`
+   - :doc:`Install with Docker </install/docker-compose>`
 
 Step 3: Activate maintenance mode
    This ends all agent and customer sessions.
@@ -97,9 +97,9 @@ Step 9: Run required maintenance tasks after restoring
 
             This step is only needed, if one of the following points is met:
 
-            * The source and destination Zammad versions are not the same
-            * The Zammad installation is not a source code installation
-            * The Zammad backup is not an export from our hosted setup
+            - The source and destination Zammad versions are not the same
+            - The Zammad installation is not a source code installation
+            - The Zammad backup is not an export from our hosted setup
 
             Full dumps for source code installations are not covered, however,
             basically the same below applies to you: You have to ensure that
