@@ -58,9 +58,9 @@ By default this will be a incoming phone call.
 
 You can choose between
 
-   - ``phone-in`` (incoming call, **default**),
-   - ``phone-out`` (outgoing call) and
-   - ``email-out``  (Sending an email out).
+- ``phone-in`` (incoming call, **default**),
+- ``phone-out`` (outgoing call) and
+- ``email-out``  (Sending an email out).
 
 .. code-block:: irb
 

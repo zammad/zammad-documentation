@@ -118,8 +118,8 @@ seconds, e.g. ``1``:
 
 The following settings are available in a default installation:
 
-   - ``DB`` (database)
-   - ``File`` (Filesystem (``/opt/zammad/storage/``))
+- ``DB`` (database)
+- ``File`` (Filesystem (``/opt/zammad/storage/``))
 
 Configuring Elasticsearch
 -------------------------
