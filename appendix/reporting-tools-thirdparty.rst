@@ -34,9 +34,9 @@ This guide will discuss how to set up third party reporting tools with Zammad.
 Getting Started
 ---------------
 
-You will need
+You will need:
 
-   * An instance of the reporting tool of your choice (hosted or self-hosted)
+- An instance of the reporting tool of your choice (hosted or self-hosted)
 
 .. include:: reporting-tools-thirdparty/include-requirements.rst
 

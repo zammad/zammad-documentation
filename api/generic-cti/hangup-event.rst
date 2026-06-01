@@ -56,9 +56,9 @@ Call Hangup
      - Zammad will look up for a user with given value, the following
        attributes will be evaluated in given order:
 
-          * ``user.phone``
-          * ``user.login``
-          * ``user.id``
+          - ``user.phone``
+          - ``user.login``
+          - ``user.id``
 
        This value is optional.
 

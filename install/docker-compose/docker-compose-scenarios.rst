@@ -49,7 +49,7 @@ General Usage
     :doc:`general deployment guide <../docker-compose>`
     and apply the following changes.
 
-    Below the "Compose path" field, click on the **Add file** button. This opens
+    Below the "Compose path" field, click on the ``Add file`` button. This opens
     the "Additional paths" section where you can specify the scenario you want to
     use. Add ``scenarios/{scenario you want to use}.yml`` and replace the last
     part in ``{}`` brackets with the name of one of the scenario files. You can

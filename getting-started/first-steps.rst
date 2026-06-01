@@ -3,9 +3,9 @@ First Steps
 
 After successfully installing Zammad you'll have a couple of options.
 
-   * :doc:`Migrate from a supported source </migration/index>`
-   * :ref:`Restore Zammad from an existing backup <restore_zammad>`
-   * Start from scratch (move on to the next section)
+- :doc:`Migrate from a supported source </migration/index>`
+- :ref:`Restore Zammad from an existing backup <restore_zammad>`
+- Start from scratch (move on to the next section)
 
 Getting Started Wizard
 ----------------------
@@ -28,9 +28,9 @@ Step 1: Create your very first administrator account
 
    Zammad does require the following password security by default:
 
-   * Password length of 10 or more
-   * 2 upper and 2 lower characters
-   * contains at least one digit
+   - Password length of 10 or more
+   - 2 upper and 2 lower characters
+   - contains at least one digit
 
 Step 2: Provide company information
    You can upload a custom logo fitting to your company here.
@@ -74,19 +74,19 @@ In our opinion the next step order would like below sample.
 You can skip parts you don't need or adapt. All parts are described within
 :admin-docs:`Zammad's admin documentation </>`.
 
-   #. Configure your required groups
-   #. Adjust triggers as needed
-   #. Add postmaster filters if needed
-   #. Configure SLAs if needed
-   #. | add email / social media channels & signatures
-      | (go back to group settings to add outgoing email addresses)
-   #. Add Text Modules
-   #. Add Organizations
-   #. Configure roles if needed
-   #. Consider Third Party logins or LDAP integration for easier logins
-   #. Add agent accounts (users)
-   #. Consider backup strategies for Zammad, see
-      :doc:`/appendix/backup-and-restore/index`
+#. Configure your required groups
+#. Adjust triggers as needed
+#. Add postmaster filters if needed
+#. Configure SLAs if needed
+#. | add email / social media channels & signatures
+   | (go back to group settings to add outgoing email addresses)
+#. Add Text Modules
+#. Add Organizations
+#. Configure roles if needed
+#. Consider Third Party logins or LDAP integration for easier logins
+#. Add agent accounts (users)
+#. Consider backup strategies for Zammad, see
+   :doc:`/appendix/backup-and-restore/index`
 
 From point 5 on you'll be able to work productive in theory. 🙌
 
