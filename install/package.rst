@@ -230,10 +230,16 @@ Add Repository
 
             $ sudo rpm --import https://go.packager.io/srv/rpm/zammad/zammad/gpg-key.asc
 
-      Add repository
+      Add repository (CentOS/RHEL 9)
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/el/9.repo" \
+                -o /etc/yum.repos.d/zammad.repo
+
+      Add repository (CentOS/RHEL 10)
+         .. code-block:: console
+
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/el/10.repo" \
                 -o /etc/yum.repos.d/zammad.repo
 
 .. repo-end:
