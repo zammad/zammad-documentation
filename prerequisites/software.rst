@@ -75,7 +75,7 @@ Below you can find all distributions Zammad provides packages for.
 
    "CentOS / RHEL", "9, 10"
    "Debian", "11, 12 & 13"
-   "OpenSUSE / SLES", "Leap 15.x / 15"
+   "OpenSUSE Leap / SLES", "15 & 16"
    "Ubuntu", "22.04, 24.04 & 26.04"
 
 .. supported-os-table-end:

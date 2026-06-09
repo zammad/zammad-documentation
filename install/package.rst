@@ -224,10 +224,17 @@ Add Repository
 
    .. group-tab:: OpenSUSE / SLES
 
-      .. code-block:: console
+      Add repository (OpenSUSE/SLES 15)
+         .. code-block:: console
 
-         $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
-            "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo"
+            $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
+               "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo"
+
+      Add repository (OpenSUSE/SLES 16)
+         .. code-block:: console
+
+            $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
+               "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/16.repo"
 
    .. group-tab:: CentOS / RHEL
 
