@@ -187,7 +187,13 @@ Add Repository
       Add repository (Ubuntu 24.04)
          .. code-block:: console
 
-            $ sudo curl -fsSL  "https://go.packager.io/srv/zammad/zammad/stable/installer/ubuntu/24.04.list" \
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/ubuntu/24.04.list" \
+                -o /etc/apt/sources.list.d/zammad.list
+
+      Add repository (Ubuntu 26.04)
+         .. code-block:: console
+
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/develop/installer/ubuntu/26.04.list" \
                 -o /etc/apt/sources.list.d/zammad.list
 
    .. group-tab:: Debian
