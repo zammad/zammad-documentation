@@ -187,7 +187,13 @@ Add Repository
       Add repository (Ubuntu 24.04)
          .. code-block:: console
 
-            $ sudo curl -fsSL  "https://go.packager.io/srv/zammad/zammad/stable/installer/ubuntu/24.04.list" \
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/ubuntu/24.04.list" \
+                -o /etc/apt/sources.list.d/zammad.list
+
+      Add repository (Ubuntu 26.04)
+         .. code-block:: console
+
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/develop/installer/ubuntu/26.04.list" \
                 -o /etc/apt/sources.list.d/zammad.list
 
    .. group-tab:: Debian
@@ -218,10 +224,17 @@ Add Repository
 
    .. group-tab:: OpenSUSE / SLES
 
-      .. code-block:: console
+      Add repository (OpenSUSE/SLES 15)
+         .. code-block:: console
 
-         $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
-            "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo"
+            $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
+               "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/15.repo"
+
+      Add repository (OpenSUSE/SLES 16)
+         .. code-block:: console
+
+            $ sudo curl -o /etc/zypp/repos.d/zammad.repo \
+               "https://go.packager.io/srv/zammad/zammad/stable/installer/sles/16.repo"
 
    .. group-tab:: CentOS / RHEL
 
@@ -230,10 +243,16 @@ Add Repository
 
             $ sudo rpm --import https://go.packager.io/srv/rpm/zammad/zammad/gpg-key.asc
 
-      Add repository
+      Add repository (CentOS/RHEL 9)
          .. code-block:: console
 
             $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/el/9.repo" \
+                -o /etc/yum.repos.d/zammad.repo
+
+      Add repository (CentOS/RHEL 10)
+         .. code-block:: console
+
+            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/el/10.repo" \
                 -o /etc/yum.repos.d/zammad.repo
 
 .. repo-end:

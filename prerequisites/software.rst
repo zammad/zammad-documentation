@@ -73,10 +73,10 @@ Below you can find all distributions Zammad provides packages for.
    :header: "Distribution", "Versions"
    :widths: 20, 20
 
-   "CentOS / RHEL", "9"
+   "CentOS / RHEL", "9, 10"
    "Debian", "11, 12 & 13"
-   "OpenSUSE / SLES", "Leap 15.x / 15"
-   "Ubuntu", "22.04 & 24.04"
+   "OpenSUSE Leap / SLES", "15 & 16"
+   "Ubuntu", "22.04, 24.04 & 26.04"
 
 .. supported-os-table-end:
 
@@ -187,6 +187,10 @@ a secure way.
 
 Available environment variables for standard and Sentinel setups are briefly
 mentioned in the :doc:`Redis Variables </appendix/redis>` page.
+
+.. note:: CentOS and RHEL 10 use `Valkey <https://valkey.io/>`_ as a
+   drop-in-replacement for Redis. During the Zammad installation on those
+   distros, it gets installed automatically as a dependency.
 
 .. _prerequisites_elasticsearch:
 
