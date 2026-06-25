@@ -22,7 +22,7 @@ If you are experiencing this issue and installed Elasticsearch according to
 :doc:`/install/elasticsearch`, please follow these steps to make sure
 Elasticsearch is working correctly.
 
-Step 1: Verify Elasticsearch is running
+Verify Elasticsearch is running
    Check Elasticsearch status:
 
    .. code-block:: console
@@ -57,36 +57,7 @@ Step 1: Verify Elasticsearch is running
       | Try completely purging and reinstalling Elasticsearch according
          to :doc:`/install/elasticsearch`
 
-
-Step 2: Verify the ingest-attachment plugin is installed correctly
-   List installed Elasticsearch plugins:
-
-   .. code-block:: console
-
-      $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
-
-   The output should include ``ingest-attachment``.
-
-   Otherwise, try reinstalling the ``ingest-attachment`` plugin and check
-   again:
-
-   .. code-block:: console
-
-      $ /usr/share/elasticsearch/bin/elasticsearch-plugin remove ingest-attachment
-
-   .. code-block:: console
-
-      $ /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-
-   .. code-block:: console
-
-      $ sudo systemctl restart elasticsearch
-
-   .. code-block:: console
-
-      $ /usr/share/elasticsearch/bin/elasticsearch-plugin list
-
-Step 3: Verify Zammad can access Elasticsearch and rebuild the indexes
+Verify Zammad can access Elasticsearch and rebuild the indexes
    Without specifying CPU cores to use:
 
    .. code-block:: console
