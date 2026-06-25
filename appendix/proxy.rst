@@ -79,7 +79,6 @@ configuration):
    :header: "Address", "Comment"
    :widths: 40, 70
 
-   "artifacts.elastic.co",  "Download of optional plugins"
    "dl.packager.io",        "Download of OS package (package installation)"
    "go.packager.io",        "As above; new package hosting service"
    "geo.zammad.com",        "Used for geo data"
