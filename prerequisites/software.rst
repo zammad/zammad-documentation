@@ -217,19 +217,16 @@ system gets.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "7.0+", ">= 7.8, < 10"
-   "5.2 - 6.5", ">= 7.8, < 9"
-   "5.0 - 5.1", ">= 7.8, < 8"
-   "4.0-4.1", ">= 6.5, <= 7.12"
-   "3.4-3.6", ">= 5.5, <= 7.9"
-   "3.3", ">= 2.4, <=7.6"
-   "3.2", ">= 2.4, <=7.5"
-   "3.1", ">= 2.4, <=7.4"
-   "2.0-3.0", ">= 2.4, <=5.6"
-
-An Elasticsearch plugin is required for version 7 or older to index the
-contents of email attachments: ``ingest-attachment``. Starting with
-Elasticsearch 8, it is included by default.
+   "7.2+",        ">= 8.11, < 10"
+   "7.0 - 7.1",   ">= 7.8, < 10"
+   "5.2 - 6.5",   ">= 7.8, < 9"
+   "5.0 - 5.1",   ">= 7.8, < 8"
+   "4.0-4.1",     ">= 6.5, <= 7.12"
+   "3.4-3.6",     ">= 5.5, <= 7.9"
+   "3.3",         ">= 2.4, <=7.6"
+   "3.2",         ">= 2.4, <=7.5"
+   "3.1",         ">= 2.4, <=7.4"
+   "2.0-3.0",     ">= 2.4, <=5.6"
 
 .. hint:: You can override the Elasticsearch dependency for package
    installations (not recommended!)

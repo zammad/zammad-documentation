@@ -52,8 +52,7 @@ NO_PROXY
 ES_JAVA_OPTS
    Variable for setting a proxy for Elasticsearch. By default, Elasticsearch
    does not communicate to external systems during the operation. However,
-   there can be cases where this is needed, for example when downloading the
-   ingest plugin for Elasticsearch versions below 8. Example:
+   there can be cases where this is needed. Example:
 
    .. code-block:: sh
 
@@ -80,7 +79,6 @@ configuration):
    :header: "Address", "Comment"
    :widths: 40, 70
 
-   "artifacts.elastic.co",  "Download of the ingest plugin (only ES < 8)"
    "dl.packager.io",        "Download of OS package (package installation)"
    "go.packager.io",        "As above; new package hosting service"
    "geo.zammad.com",        "Used for geo data"
