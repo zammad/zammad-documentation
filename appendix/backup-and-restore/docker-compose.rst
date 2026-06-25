@@ -52,3 +52,12 @@ Restore
    directory is detected and the backup files are in place.
 #. After the restore process has finished, the ``restore`` directory got renamed.
    You can safely delete it now.
+
+.. hint::
+
+   If you restored into a stack that had data before, you need to perform final clean-ups.
+
+   #. You need to clear the cache of Zammad by running ``Rails.cache.clear``.
+   #. The Elasticsearch index is out of date now, and you should
+      :ref:`trigger a rebuild <es-rebuild-searchindex>` to synchronize it with
+      the restored state of Zammad.
