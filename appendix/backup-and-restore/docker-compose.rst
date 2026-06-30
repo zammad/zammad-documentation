@@ -48,7 +48,16 @@ Restore
    Only backups from package and Docker installations are supported by this
    built-in backup method. Don't provide the ``latest_zammad_*.gz`` files
    because they link to an unknown location for the restore process.
-#. Start the stack. The restore process is triggered if the ``restore``
-   directory is detected and the backup files are in place.
+#. Start the stack. The restore process is triggered in the ``zammad-backup``
+   service if the ``restore`` directory is detected and the backup files are in place.
+
+   .. hint::
+      As a part of this process, the cache will be cleared and any pre-existing
+      Elasticsearch indexes will be dropped.
+      All other containers will be waiting for the restore to finish. When that is the case,
+      they will resume their normal operations, which includes an automatic Elasticsearch
+      reindexing (depending on the ENV variables). You can check the container logs for
+      details.
+
 #. After the restore process has finished, the ``restore`` directory got renamed.
    You can safely delete it now.
