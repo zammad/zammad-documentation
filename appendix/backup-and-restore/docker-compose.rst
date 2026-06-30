@@ -61,4 +61,3 @@ Restore
 
 #. After the restore process has finished, the ``restore`` directory got renamed.
    You can safely delete it now.
-
