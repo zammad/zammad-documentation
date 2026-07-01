@@ -162,14 +162,11 @@ during the package installation.
 2.4 Reverse Proxy
 ^^^^^^^^^^^^^^^^^
 
-In a typical web environment today, you use a reverse proxy to deliver the
-static content of your application. Only the "expensive" app required HTTP
-requests are forwarded to the application server.
+The following reverse proxies are supported in their currently maintained
+versions:
 
-The following reverse proxies are supported:
-
-- Nginx 1.3+
-- Apache 2.2+
+- Nginx
+- Apache
 
 .. hint::
 
