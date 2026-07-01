@@ -149,7 +149,7 @@ automatically be installed with the Zammad-Package.
 ^^^^^^^^^^^^^^^^^^^
 
 Zammad stores its content in a database. The supported database system is
-`PostgreSQL <https://www.postgresql.org/>`_ 13 or newer.
+`PostgreSQL <https://www.postgresql.org/>`_ 15 or newer.
 If no PostgreSQL server could be detected, it will be installed automatically
 during the package installation.
 
@@ -162,14 +162,11 @@ during the package installation.
 2.4 Reverse Proxy
 ^^^^^^^^^^^^^^^^^
 
-In a typical web environment today, you use a reverse proxy to deliver the
-static content of your application. Only the "expensive" app required HTTP
-requests are forwarded to the application server.
+The following reverse proxies are supported in their currently maintained
+versions:
 
-The following reverse proxies are supported:
-
-- Nginx 1.3+
-- Apache 2.2+
+- Nginx
+- Apache
 
 .. hint::
 
@@ -179,7 +176,7 @@ The following reverse proxies are supported:
 ^^^^^^^^^
 
 `Redis <https://redis.io/>`_ is required for realtime communication via web
-socket. Zammad requires Redis 6 or newer. It gets installed automatically
+socket. Zammad requires Redis 7 or newer. It gets installed automatically
 (package) or is included in the stack (Docker Compose) with a working
 configuration. However, the installation and configuration is out of scope of
 this documentation. Please follow the official guides and ensure to set it up in
