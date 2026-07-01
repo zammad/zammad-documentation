@@ -84,7 +84,7 @@ If you distribution is not listed, you can still install Zammad.
 For this you can either use :doc:`Docker Compose </install/docker-compose>`
 or :doc:`Kubernetes </install/kubernetes>` installation.
 We try to provide all current distributions that are supported by
-`Packager.io <https://packager.io/>`_. This means that we can't always
+`go.packager.io <https://go.packager.io/>`_. This means that we can't always
 provide support for your favorite system.
 
 .. note::
