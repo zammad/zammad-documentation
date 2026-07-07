@@ -103,3 +103,4 @@ Zammad System Documentation
    /appendix/reporting-tools-thirdparty
    /appendix/redis
    /appendix/custom-kb-url
+   /appendix/custom-kb-css
