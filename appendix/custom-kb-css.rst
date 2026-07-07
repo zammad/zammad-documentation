@@ -1,7 +1,7 @@
 Custom CSS for Public Knowledge Base
 ====================================
 
-You can apply visual changes to your published knowledge base via custom CSS.
+You can apply visual changes to your public knowledge base via custom CSS.
 To do so, follow these steps:
 
 #. Add your CSS file(s) inside the directory
