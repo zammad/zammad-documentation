@@ -73,7 +73,14 @@ clients are commonly used.
    .. group-tab:: acme.sh
 
       `acme.sh <https://github.com/acmesh-official/acme.sh>`_ is a
-      lightweight shell-based ACME client and an alternative to Certbot.
+      lightweight shell-based ACME client and an alternative to Certbot,
+      but it no longer uses Let's Encrypt by default. Set the default
+      CA to Let's Encrypt before issuing a certificate:
+
+      .. code-block:: console
+
+         $ acme.sh --set-default-ca --server letsencrypt
+
       Issue the certificate by replacing ``<webserver-plugin>`` with
       ``nginx``, ``apache`` or ``standalone`` and ``zammad.example.com``
       with your subdomain:
@@ -82,10 +89,11 @@ clients are commonly used.
 
          $ acme.sh --issue --<webserver-plugin> -d zammad.example.com
 
-      Install the certificate to a directory of your choice and reload
-      the webserver after each renewal by replacing
-      ``<webserver-service>`` with the matching systemd service name
-      (``nginx``, ``apache2`` or ``httpd``):
+      Install the certificate to a directory of your choice (e.g.
+      ``/etc/ssl/private/``) and reload the webserver after each
+      renewal. Replace ``<webserver-service>`` in the command below
+      with the matching systemd service name (``nginx``, ``apache2``
+      or ``httpd``):
 
       .. code-block:: console
 
@@ -121,15 +129,20 @@ Adjust the Webserver Configuration
          .. include:: includes/nginx-config-paths.include.rst
 
       Adjust server name and certificate paths
-         Open the copied file in a text editor and replace
-         ``example.com`` in the ``server_name`` directive with your
-         subdomain (e.g. ``zammad.example.com``), then adjust the
-         following directives:
+         Adjust the just copied file with a text editor of your
+         choice (e.g. ``vi`` or ``nano``).
 
-         - ``ssl_certificate`` (path to your certificate)
-         - ``ssl_certificate_key`` (path to your certificate's private key)
-         - ``ssl_trusted_certificate`` (path to the public CA bundle, used
-           for OCSP stapling)
+         Locate the ``server_name`` directive and adjust
+         ``example.com`` to the subdomain you have chosen for your
+         Zammad instance.
+
+         Now you'll need to adjust the path and file names for
+         your ssl certificates you obtained on the prior steps.
+         Adjust the following directives to match your setup:
+
+         - ``ssl_certificate`` (your ssl certificate)
+         - ``ssl_certificate_key`` (the certificates private key)
+         - ``ssl_trusted_certificate`` (the public CA certificate)
 
          To improve HTTPS security, also configure a Diffie-Hellman
          parameter file and point ``ssl_dhparam`` at it:
@@ -144,10 +157,6 @@ Adjust the Webserver Configuration
          .. code-block:: console
 
             $ sudo systemctl reload nginx
-
-         Visit ``https://<your-subdomain>`` in a browser. You should reach
-         the Zammad getting started wizard. If you do not, see the
-         :ref:`Troubleshooting section <configure_webserver_troubleshooting>`.
 
    .. tab:: Apache 2
 
@@ -199,14 +208,22 @@ Adjust the Webserver Configuration
          Do not rename it.
 
       Adjust server name and certificate paths
-         Open the copied file in a text editor and replace
-         ``localhost`` in the ``ServerName`` directive with your
-         subdomain (e.g. ``zammad.example.com``), then adjust the
-         following directives:
+         Adjust the just copied file with a text editor of your
+         choice (e.g. ``vi`` or ``nano``).
 
-         - ``SSLCertificateFile`` (path to your certificate)
-         - ``SSLCertificateKeyFile`` (path to your certificate's private key)
-         - ``SSLCertificateChainFile`` (path to the public CA bundle)
+         Locate any ``ServerName`` directive and adjust ``example.com``
+         to the subdomain you have chosen for your Zammad instance.
+         The first ``ServerName`` (in the HTTP VirtualHost) defaults to
+         ``example.com`` and the second (in the HTTPS VirtualHost) to
+         ``localhost``.
+
+         Now you'll need to adjust the path and file names for
+         your ssl certificates you obtained on the prior steps.
+         Adjust the following directives to match your setup:
+
+         - ``SSLCertificateFile`` (your ssl certificate)
+         - ``SSLCertificateKeyFile`` (the certificates private key)
+         - ``SSLCertificateChainFile`` (the public CA certificate)
 
          To improve HTTPS security, also configure a Diffie-Hellman
          parameter file and point ``SSLOpenSSLConfCmd DHParameters`` at
@@ -241,10 +258,6 @@ Adjust the Webserver Configuration
 
             $ sudo systemctl reload apache2
 
-         Visit ``https://<your-subdomain>`` in a browser. You should reach
-         the Zammad getting started wizard. If you do not, see the
-         :ref:`Troubleshooting section <configure_webserver_troubleshooting>`.
-
    .. tab:: Local testing or other proxy servers
 
       Zammad's main application listens on ``http://127.0.0.1:3000`` and
@@ -261,8 +274,10 @@ Adjust the Webserver Configuration
          provides plain HTTP and would be reachable without
          authentication.
 
-If you just installed Zammad, you'll be greeted by our getting started
-wizard. You can now continue with :doc:`first-steps`.
+Now visit your configured Zammad domain in a browser. You should reach
+the Zammad getting started wizard for new installations (see screenshot below).
+If you don't see Zammad's setup wizard or Zammad UI at all, check the
+:ref:`Troubleshooting section <configure_webserver_troubleshooting>` below.
 
 .. figure:: /images/install/getting-started-wizard.png
    :alt: Getting started wizard after installing Zammad
