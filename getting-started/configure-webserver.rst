@@ -3,6 +3,11 @@ Configure the Webserver
 
 .. include:: /install/includes/hosted-services.rst
 
+Configure your webserver to reverse-proxy the Zammad application
+server. The page covers obtaining an SSL certificate, adjusting the
+sample configuration for Nginx or Apache 2 and reloading the
+webserver to apply the changes.
+
 You can find current sample configuration files for your webserver within
 ``contrib/`` of your Zammad installation.
 If you're using the package installation, Zammad attempts to automatically
@@ -10,11 +15,12 @@ install a configuration file to your Nginx for you.
 
 .. note::
 
-   **Docker Compose / Kubernetes users**
+   **Docker Compose / Kubernetes users**:
+
    Skip this page. Configure the webserver port, hostname and
    scheme via the ``NGINX_*`` and ``ZAMMAD_RAILSSERVER_*``
-   variables, as you can find on the :doc:`environment variables
-   page </appendix/environment-variables>`.
+   variables, as you can find on the
+   :doc:`environment variables page </appendix/environment-variables>`.
 
 .. _configure_webserver_obtain_certificate:
 
@@ -142,7 +148,7 @@ Adjust the Webserver Configuration
 
          Visit ``https://<your-subdomain>`` in a browser. You should reach
          the Zammad getting started wizard. If you do not, see the
-         `Troubleshooting`_ section below.
+         :ref:`Troubleshooting section <configure_webserver_troubleshooting>`.
 
    .. tab:: Apache 2
 
@@ -238,7 +244,7 @@ Adjust the Webserver Configuration
 
          Visit ``https://<your-subdomain>`` in a browser. You should reach
          the Zammad getting started wizard. If you do not, see the
-         `Troubleshooting`_ section below.
+         :ref:`Troubleshooting section <configure_webserver_troubleshooting>`.
 
    .. tab:: Local testing or other proxy servers
 
@@ -255,6 +261,14 @@ Adjust the Webserver Configuration
          Do not expose Zammad directly to the internet. Zammad only
          provides plain HTTP and would be reachable without
          authentication.
+
+If you just installed Zammad, you'll be greeted by our getting started
+wizard. You can now continue with :doc:`first-steps`.
+
+.. figure:: /images/install/getting-started-wizard.png
+   :alt: Getting started wizard after installing Zammad
+   :width: 80%
+   :align: center
 
 .. _configure_webserver_troubleshooting:
 
@@ -295,13 +309,3 @@ Apache 2
 
       RequestHeader set X_FORWARDED_PROTO 'https'
       RequestHeader set X-Forwarded-Ssl on
-
-If you just installed Zammad, you'll be greeted by our getting started
-wizard. You can now continue with :doc:`first-steps`.
-
-.. _Troubleshooting: #configure-webserver-troubleshooting
-
-.. figure:: /images/install/getting-started-wizard.png
-   :alt: Getting started wizard after installing Zammad
-   :width: 80%
-   :align: center
