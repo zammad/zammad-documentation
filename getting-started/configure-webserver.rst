@@ -3,15 +3,14 @@ Configure the Webserver
 
 .. include:: /install/includes/hosted-services.rst
 
-Configure your webserver to reverse-proxy the Zammad application
-server. The page covers obtaining an SSL certificate, adjusting the
-sample configuration for Nginx or Apache 2 and reloading the
-webserver to apply the changes.
+Configure your webserver to reverse-proxy the Zammad application server. The
+page covers obtaining an SSL certificate, adjusting the sample configuration for
+Nginx and Apache 2 and reloading the webserver to apply the changes.
 
-You can find current sample configuration files for your webserver within
-``contrib/`` of your Zammad installation.
-If you're using the package installation, Zammad attempts to automatically
-install a configuration file to your Nginx for you.
+You can find sample configuration files for your webserver within the
+``contrib/`` directory of your Zammad installation. During a package
+installation of Zammad, it tries to automatically install a configuration
+file to your Nginx.
 
 .. note::
 
@@ -56,9 +55,9 @@ clients are commonly used.
       upstream
       `Certbot installation instructions <https://certbot.eff.org/instructions>`_,
       select your distribution and the matching webserver plugin in
-      the selector and complete the install. Once installed, request a
-      certificate by replacing ``<webserver>`` with either ``nginx``
-      or ``apache`` and ``zammad.example.com`` with your subdomain:
+      the selector and complete the install. Once installed, request
+      a certificate by replacing ``<webserver>`` with ``nginx`` or
+      ``apache`` and ``zammad.example.com`` with your subdomain:
 
       .. code-block:: console
 
