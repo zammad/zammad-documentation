@@ -7,10 +7,15 @@ Configure your webserver to reverse-proxy the Zammad application server. The
 page covers obtaining an SSL certificate, adjusting the sample configuration for
 Nginx and Apache 2 and reloading the webserver to apply the changes.
 
-You can find sample configuration files for your webserver within the
-``contrib/`` directory of your Zammad installation. During a package
-installation of Zammad, it tries to automatically install a configuration
-file to your Nginx.
+You can find sample configuration files for your webserver within
+the ``contrib/`` directory of your Zammad installation. There are
+two example files per webserver: ``zammad.conf`` (plain HTTP) and
+``zammad_ssl.conf`` (HTTPS). The non-SSL file is intended for
+local testing only and must not be used in production. During a
+package installation of Zammad, the package automatically copies
+the non-SSL ``zammad.conf`` to your webserver's config directory.
+For production use, replace it with the ``zammad_ssl.conf`` and
+follow the steps on this page.
 
 .. note::
 
@@ -130,17 +135,17 @@ Adjust the Webserver Configuration
 
       Adjust server name and certificate paths
          Adjust the just copied file with a text editor of your
-         choice (e.g. ``vi`` or ``nano``).
-
-         Locate the ``server_name`` directive and adjust
-         ``example.com`` to the subdomain you have chosen for your
-         Zammad instance.
+         choice (e.g. vi or nano).
+         Locate both ``server_name`` directives (one in the HTTP
+         server block on port 80, one in the HTTPS server block on
+         port 443) and adjust ``example.com`` to the subdomain you
+         have chosen for your Zammad instance.
 
          Now you'll need to adjust the path and file names for
-         your ssl certificates you obtained on the prior steps.
+         your SSL certificates you obtained on the prior steps.
          Adjust the following directives to match your setup:
 
-         - ``ssl_certificate`` (your ssl certificate)
+         - ``ssl_certificate`` (your SSL certificate)
          - ``ssl_certificate_key`` (the certificates private key)
          - ``ssl_trusted_certificate`` (the public CA certificate)
 
@@ -209,8 +214,7 @@ Adjust the Webserver Configuration
 
       Adjust server name and certificate paths
          Adjust the just copied file with a text editor of your
-         choice (e.g. ``vi`` or ``nano``).
-
+         choice (e.g. vi or nano).
          Locate any ``ServerName`` directive and adjust ``example.com``
          to the subdomain you have chosen for your Zammad instance.
          The first ``ServerName`` (in the HTTP VirtualHost) defaults to
@@ -218,10 +222,10 @@ Adjust the Webserver Configuration
          ``localhost``.
 
          Now you'll need to adjust the path and file names for
-         your ssl certificates you obtained on the prior steps.
+         your SSL certificates you obtained on the prior steps.
          Adjust the following directives to match your setup:
 
-         - ``SSLCertificateFile`` (your ssl certificate)
+         - ``SSLCertificateFile`` (your SSL certificate)
          - ``SSLCertificateKeyFile`` (the certificates private key)
          - ``SSLCertificateChainFile`` (the public CA certificate)
 
