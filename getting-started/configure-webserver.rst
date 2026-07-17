@@ -157,7 +157,13 @@ Adjust the Webserver Configuration
             $ sudo openssl dhparam -out /etc/ssl/dhparam.pem 4096
 
       Reload and verify
-         Reload Nginx and verify the configuration:
+         Verify the configuration:
+
+          .. code-block:: console
+
+             $ sudo nginx -t
+
+         Reload Nginx:
 
          .. code-block:: console
 
@@ -264,10 +270,9 @@ Adjust the Webserver Configuration
 
    .. tab:: Local testing or other proxy servers
 
-      Zammad's main application listens on ``http://127.0.0.1:3000`` and
-      the websocket server on ``ws://127.0.0.1:6042``. If you proxy Zammad
-      through another reverse proxy, make sure to forward the websockets
-      as well.
+      Zammad's main application listens on port ``3000`` and the websocket
+      server on port ``6042``. If you put your own reverse proxy in front of
+      Zammad, forward both.
 
       If the default ports conflict with other applications on your host,
       see :doc:`/appendix/environment-variables` to change them.
@@ -305,7 +310,13 @@ DNS Not Resolving
 ^^^^^^^^^^^^^^^^^
 
 If the subdomain does not resolve, double-check the DNS records for
-your domain and wait for them to propagate.
+your domain and wait for them to propagate. Replace the ``zammad.example.com``
+in the following command with your configured domain of Zammad and check if
+the domain points to the right server:
+
+.. code-block:: console
+
+   $ host zammad.example.com
 
 CSRF Token Errors
 ^^^^^^^^^^^^^^^^^
