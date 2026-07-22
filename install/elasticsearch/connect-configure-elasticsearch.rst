@@ -106,7 +106,6 @@ Build/rebuild the searchindex
 
       $ zammad run rake zammad:searchindex:rebuild[8]
 
-
 Optional settings
 -----------------
 

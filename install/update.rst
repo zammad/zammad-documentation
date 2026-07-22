@@ -216,6 +216,9 @@ using `Zammad hosting`_ for your and your customers' safety.
          Only needed if the release note tells you to rebuild the Elasticsearch
          index.
 
+         .. Rebuild commands used in appendix/backup-and-restore/docker-compose-rst
+         .. When changing, make sure to adjust the reference there as well
+
          **Docker Compose:**
 
          Without specifying CPU cores:
