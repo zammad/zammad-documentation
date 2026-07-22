@@ -57,8 +57,11 @@ Restore
    You can safely delete it now.
 #. Rebuild the Elasticsearch index. You can use Zammad while the rebuild is
    running, but search performance is degraded and some data may be temporarily
-   unavailable in search results.
+   unavailable in search results. Use the command below for Docker Compose
+   deployments. When using GUIs like portainer, have a look at the
+   :ref:`docker-run-commands` section in
+   the installation documentation.
 
-   .. include:: /install/elasticsearch/connect-configure-elasticsearch.rst
-      :start-after: es-reindex-command:
-      :end-before: Optional settings
+   .. include:: /install/update.rst
+      :start-after: **Docker Compose:**
+      :end-before: **Portainer:**

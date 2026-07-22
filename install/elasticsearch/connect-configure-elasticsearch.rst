@@ -85,8 +85,6 @@ Build/rebuild the searchindex
       - Consider specifying a number of CPU cores to be used for the rebuild
         (see example below).
 
-   .. _es-reindex-command:
-
    Without specifying CPU cores:
 
    .. code-block:: console
