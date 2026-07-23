@@ -29,9 +29,9 @@ volume to restore it.
 Backup
 ------
 
-By default, a backup is created at each start of the stack as well as at 3
-o'clock each night. The backup is stored in the volume of the
-**zammad-backup** container under ``/var/tmp/zammad``.
+By default, a backup is created at at 3 o'clock each night. The backup is
+stored in the volume of the **zammad-backup** container under
+``/var/tmp/zammad``.
 
 Restore
 -------
