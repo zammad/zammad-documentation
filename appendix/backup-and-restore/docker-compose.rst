@@ -31,7 +31,28 @@ Backup
 
 By default, a backup is created at at 3 o'clock each night. The backup is
 stored in the volume of the **zammad-backup** container under
-``/var/tmp/zammad``.
+``/var/tmp/zammad``. To trigger a one-time backup manually, use the following
+command:
+
+.. tabs::
+
+   .. group-tab:: Docker Compose
+
+      In your Docker Compose directory, run:
+      
+      .. code-block:: sh
+
+         $ docker compose run --rm --env BACKUP_ONCE=true zammad-backup
+
+   .. group-tab:: Portainer
+    
+      Open the :ref:`console via Portainer's GUI <docker-run-commands>` for the
+      ``zammad-backup`` container with the standard entrypoint ``/bin/bash``
+      and run:
+
+      .. code-block:: sh
+
+         $ BACKUP_ONCE=true bin/docker-entrypoint zammad-backup
 
 Restore
 -------
@@ -58,10 +79,37 @@ Restore
 #. Rebuild the Elasticsearch index. You can use Zammad while the rebuild is
    running, but search performance is degraded and some data may be temporarily
    unavailable in search results. Use the command below for Docker Compose
-   deployments. When using GUIs like portainer, have a look at the
-   :ref:`docker-run-commands` section in
-   the installation documentation.
+   deployments. 
 
-   .. include:: /install/update.rst
-      :start-after: **Docker Compose:**
-      :end-before: **Portainer:**
+   .. tabs::
+
+      .. group-tab:: Docker Compose
+
+         Without specifying CPU cores:
+
+         .. code-block:: console
+
+            $ docker compose run --rm zammad-railsserver bundle exec rake zammad:searchindex:rebuild
+
+         With specifying CPU cores to use (example: 8):
+
+         .. code-block:: console
+
+            $ docker compose run --rm zammad-railsserver bundle exec rake zammad:searchindex:rebuild[8]
+
+      .. group-tab:: Portainer
+
+         Open the :ref:`console via Portainer's GUI <docker-run-commands>` with
+         the standard entrypoint ``/bin/bash`` and run:
+
+         Without specifying CPU cores:
+
+         .. code-block:: console
+
+            $ bundle exec rake zammad:searchindex:rebuild
+
+         With specifying CPU cores to use (example: 8):
+
+         .. code-block:: console
+
+            $ bundle exec rake zammad:searchindex:rebuild[8]

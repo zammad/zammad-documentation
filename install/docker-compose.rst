@@ -149,30 +149,7 @@ of the following methods by using ``bundle exec``.
 
 .. tabs::
 
-   .. tab:: Via Portainer GUI
-
-      In your Portainer GUI, go to the container view and select the running
-      Rails container from your Zammad stack. Click on the **Exec Console**
-      icon in the "Quick Actions" column, select the standard ``/bin/bash``
-      entrypoint and click **Connect**.
-
-      .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
-         :alt:
-         :width: 70%
-
-      Run the interactive Rails console by executing:
-
-      .. code-block:: console
-
-         $ bundle exec rails c
-
-      Directly execute a specific command:
-
-      .. code-block:: console
-
-         $ bundle exec rails r '...your rails command here...'
-
-   .. tab:: Via console
+   .. tab:: Docker Compose
 
       Directly execute a specific command:
 
@@ -195,6 +172,29 @@ of the following methods by using ``bundle exec``.
       If you need to retrieve information from the Rails server, you can place
       for example ``pp`` (pretty print) in front of your Rails command. This
       leads to an output in your terminal.
+
+   .. tab:: Portainer
+
+      In your Portainer GUI, go to the container view and select the running
+      Rails container from your Zammad stack. Click on the **Exec Console**
+      icon in the "Quick Actions" column, select the standard ``/bin/bash``
+      entrypoint and click **Connect**.
+
+      .. figure:: /images/install/docker-compose/portainer/portainer-exec-console.png
+         :alt:
+         :width: 70%
+
+      Run the interactive Rails console by executing:
+
+      .. code-block:: console
+
+         $ bundle exec rails c
+
+      Directly execute a specific command:
+
+      .. code-block:: console
+
+         $ bundle exec rails r '...your rails command here...'
 
 Backup & Restore
 ----------------
