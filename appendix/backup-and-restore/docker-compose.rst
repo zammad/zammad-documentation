@@ -31,8 +31,8 @@ Backup
 
 By default, a backup is created at at 3 o'clock each night. The backup is
 stored in the volume of the **zammad-backup** container under
-``/var/tmp/zammad``. To trigger a one-time backup manually, use the following
-command:
+``/var/tmp/zammad``. To trigger a one-time backup manually, use one of the
+commands below, depending on your deployment method.
 
 .. tabs::
 
@@ -78,8 +78,8 @@ Restore
    You can safely delete it now.
 #. Rebuild the Elasticsearch index. You can use Zammad while the rebuild is
    running, but search performance is degraded and some data may be temporarily
-   unavailable in search results. Use the command below for Docker Compose
-   deployments. 
+   unavailable in search results. Use one of the commands below, depending on
+   your deployment method.
 
    .. tabs::
 
