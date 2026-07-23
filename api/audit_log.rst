@@ -4,7 +4,6 @@ Audit Log
 The audit log records security-relevant changes to your Zammad system:
 who changed what, and when. The audit log is read-only.
 
-
 List
 ----
 
@@ -31,7 +30,7 @@ Response:
        "action_type": "create",
        "auditable_type": "ChecklistTemplate",
        "auditable_id": 1,
-       "auditable_name": "asdf",
+       "auditable_name": "Onboarding",
        "value_from": {},
        "value_to": {
          "name": "Onboarding",
@@ -288,7 +287,8 @@ To filter on a specific attribute rather than substring-match the
 whole record, prefix the attribute name. You can even use the logical ``AND``
 connector to narrow down the results:
 
-``GET``-Request sent: ``/api/v1/audit_logs/search?query=auditable_type:Setting AND user_id:3``
+``GET``-Request sent:
+``/api/v1/audit_logs/search?query=auditable_type:Setting AND user_id:3``
 
 .. note::
 
