@@ -71,6 +71,7 @@ Zammad System Documentation
    :caption: REST API
 
    /api/intro
+   /api/audit_log
    /api/calendar
    /api/checklist
    /api/generic-cti/index
