@@ -50,6 +50,41 @@ Get current setting (``nil`` is false):
 
 .. image:: /images/console/ui_table_group_by_show_count-example.png
 
+Available Types for Ticket Creation
+------------------------------------
+
+Zammad's ticket creation dialog offers three article types: *phone-in*
+(incoming call), *phone-out* (outgoing call), and *email-out* (outgoing
+email). This setting controls which of these types are available to agents.
+You can only restrict from this set — adding custom types is not supported,
+as the available types are defined by the application.
+
+.. note::
+
+   The default type set by :ref:`Default Ticket Type on Creation
+   <default-ticket-type-on-creation>` must be included in this list.
+   If it isn't, Zammad falls back to the first type in the list.
+
+Check which types are currently available:
+
+.. code-block:: irb
+
+   >> Setting.get('ui_ticket_create_available_types')
+
+Limit the available types to phone calls only:
+
+.. code-block:: irb
+
+   >> Setting.set('ui_ticket_create_available_types', ['phone-in', 'phone-out'])
+
+Restore all default types:
+
+.. code-block:: irb
+
+   >> Setting.set('ui_ticket_create_available_types', ['phone-in', 'phone-out', 'email-out'])
+
+.. _default-ticket-type-on-creation:
+
 Default Ticket Type on Creation
 -------------------------------
 
@@ -234,17 +269,18 @@ indexes all knowledge base answers into a vector database for semantic search.
 This hidden setting lets you exclude specific categories (and their entire
 subtrees) from that index.
 
-.. note::
-
-   This setting has no UI equivalent. It can only be managed via the rails
-   console.
-
 .. tip::
 
    You can find a category's ID in the URL of your browser when browsing
    the knowledge base in Zammad's admin interface.
 
 The default is an empty list (``[]``), meaning all categories are indexed.
+
+Check which categories are currently excluded:
+
+.. code-block:: irb
+
+   >> Setting.get('vectordb_knowledge_base_excluded_category_ids')
 
 Exclude a category by its ID:
 
@@ -257,12 +293,6 @@ Exclude multiple categories:
 .. code-block:: irb
 
    >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [5, 12, 27])
-
-Check which categories are currently excluded:
-
-.. code-block:: irb
-
-   >> Setting.get('vectordb_knowledge_base_excluded_category_ids')
 
 Re-enable all categories:
 
@@ -282,5 +312,5 @@ Re-enable all categories:
 
    This drops and recreates the vector index, then re-indexes all eligible
    knowledge base answers. The rebuild reuses cached embeddings so it does
-   not generate AI API calls (nothing new will appear in the AI logs), but
-   the per-record processing can take a while on larger knowledge bases.
+   not generate AI API calls, but the processing can take a moment on larger
+   knowledge bases.
