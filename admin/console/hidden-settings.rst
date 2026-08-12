@@ -56,14 +56,8 @@ Available Types for Ticket Creation
 Zammad's ticket creation dialog offers three article types: *phone-in*
 (incoming call), *phone-out* (outgoing call), and *email-out* (outgoing
 email). This setting controls which of these types are available to agents.
-You can only restrict from this set — adding custom types is not supported,
+You can only restrict from this set - adding custom types is not supported,
 as the available types are defined by the application.
-
-.. note::
-
-   The default type set by :ref:`Default Ticket Type on Creation
-   <default-ticket-type-on-creation>` must be included in this list.
-   If it isn't, Zammad falls back to the first type in the list.
 
 Check which types are currently available:
 
