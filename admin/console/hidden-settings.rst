@@ -225,3 +225,62 @@ customer dialog is not shown automatically.
 .. code-block:: irb
 
    >> Setting.set('cti_customer_last_activity', '90') # set the time period to 90 days
+
+Exclude Knowledge Base Categories from the AI Index
+----------------------------------------------------
+
+Zammad's :admin-docs:`knowledge base assistant </ai/knowledge-base-assistant.html>`
+indexes all knowledge base answers into a vector database for semantic search.
+This hidden setting lets you exclude specific categories (and their entire
+subtrees) from that index.
+
+.. note::
+
+   This setting has no UI equivalent. It can only be managed via the rails
+   console.
+
+.. tip::
+
+   You can find a category's ID in the URL of your browser when browsing
+   the knowledge base in Zammad's admin interface.
+
+The default is an empty list (``[]``), meaning all categories are indexed.
+
+Exclude a category by its ID:
+
+.. code-block:: irb
+
+   >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [5])
+
+Exclude multiple categories:
+
+.. code-block:: irb
+
+   >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [5, 12, 27])
+
+Check which categories are currently excluded:
+
+.. code-block:: irb
+
+   >> Setting.get('vectordb_knowledge_base_excluded_category_ids')
+
+Re-enable all categories:
+
+.. code-block:: irb
+
+   >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [])
+
+.. warning::
+
+   After changing this setting, you must rebuild the vector database so that
+   the excluded answers are actually removed from the index (or newly included
+   answers are added). Run the following in the rails console:
+
+   .. code-block:: irb
+
+      >> Service::AI::VectorDB::Rebuild.execute
+
+   This drops and recreates the vector index, then re-indexes all eligible
+   knowledge base answers. The rebuild reuses cached embeddings so it does
+   not generate AI API calls (nothing new will appear in the AI logs), but
+   the per-record processing can take a while on larger knowledge bases.
