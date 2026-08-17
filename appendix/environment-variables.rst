@@ -309,7 +309,7 @@ NGINX_SERVER_NAME |docker|
    You can provide your IP / FQDN if you want to.
 
 NGINX_SERVER_SCHEME |docker|
-   Default: ``\$scheme``
+   Default: ``$scheme``
 
    If the Nginx container for Zammad **is not** the upstream server
    (aka you're using another proxy in front of Nginx) ``$scheme`` may be
