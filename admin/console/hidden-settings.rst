@@ -50,6 +50,35 @@ Get current setting (``nil`` is false):
 
 .. image:: /images/console/ui_table_group_by_show_count-example.png
 
+Available Types for Ticket Creation
+------------------------------------
+
+Zammad's ticket creation dialog offers three article types: *phone-in*
+(incoming call), *phone-out* (outgoing call) and *email-out* (outgoing
+email). This setting controls which of these types are available to agents.
+You can only restrict from this set - adding custom types is not supported,
+as the available types are defined by the application.
+
+Check which types are currently available:
+
+.. code-block:: irb
+
+   >> Setting.get('ui_ticket_create_available_types')
+
+Limit the available types to phone calls only:
+
+.. code-block:: irb
+
+   >> Setting.set('ui_ticket_create_available_types', ['phone-in', 'phone-out'])
+
+Restore all default types:
+
+.. code-block:: irb
+
+   >> Setting.set('ui_ticket_create_available_types', ['phone-in', 'phone-out', 'email-out'])
+
+.. _default-ticket-type-on-creation:
+
 Default Ticket Type on Creation
 -------------------------------
 
@@ -225,3 +254,57 @@ customer dialog is not shown automatically.
 .. code-block:: irb
 
    >> Setting.set('cti_customer_last_activity', '90') # set the time period to 90 days
+
+Exclude Knowledge Base Categories from the AI Index
+----------------------------------------------------
+
+Zammad's :admin-docs:`knowledge base assistant </ai/knowledge-base-assistant.html>`
+indexes all knowledge base answers into a vector database for semantic search.
+This hidden setting lets you exclude specific categories (and their entire
+subtrees) from that index.
+
+.. tip::
+
+   You can find a category's ID in the URL of your browser when browsing
+   the knowledge base in Zammad's admin interface.
+
+The default is an empty list (``[]``), meaning all categories are indexed.
+
+Check which categories are currently excluded:
+
+.. code-block:: irb
+
+   >> Setting.get('vectordb_knowledge_base_excluded_category_ids')
+
+Exclude a category by its ID:
+
+.. code-block:: irb
+
+   >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [5])
+
+Exclude multiple categories:
+
+.. code-block:: irb
+
+   >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [5, 12, 27])
+
+Re-enable all categories:
+
+.. code-block:: irb
+
+   >> Setting.set('vectordb_knowledge_base_excluded_category_ids', [])
+
+.. warning::
+
+   After changing this setting, you must rebuild the vector database so that
+   the excluded answers are actually removed from the index (or newly included
+   answers are added). Run the following in the rails console:
+
+   .. code-block:: irb
+
+      >> Service::AI::VectorDB::Rebuild.execute
+
+   This drops and recreates the vector index, then re-indexes all eligible
+   knowledge base answers. The rebuild reuses cached embeddings so it does
+   not generate AI API calls, but the processing can take a moment on larger
+   knowledge bases.
