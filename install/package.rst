@@ -135,8 +135,7 @@ To make Zammad work correctly, your system has to use the correct locales.
       .. hint::
 
          By default OpenSUSE uses ``POSIX`` as ``LANG`` value for the root
-         user. Learn more about this within the `OpenSUSE documentation
-         <https://doc.opensuse.org/documentation/leap/startup/html/book-opensuse-startup/cha-yast-lang.html#pro-yast-lang-additional>`_.
+         user. Learn more about this within the OpenSUSE documentation.
 
          This does not affect other users and thus can be ignored.
 
