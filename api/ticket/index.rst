@@ -164,15 +164,33 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 .. tip::
 
-   **🐱‍👤 On behalf of users**
+   **On behalf of users**
 
    If you want to create tickets on behalf of other users, use
-   the ``customer_id`` attribute. ``ticket.agent`` is mandatory for this.
+   the ``customer_id`` attribute. This requires the ``ticket.agent``
+   permission. Without it, ``customer_id`` is ignored and the ticket's
+   **Customer** field is set to the current user.
    Use ``guess:{email address}`` to save an API call if you don't know the
    user's ID or want to create the user in question
    (``"customer_id": "guess:jane@doe.com"``).
 
-   **📣 Add mention subscription right away**
+   When creating a ticket on behalf of a customer with an initial article,
+   you **must** set ``article.sender`` to "Customer" explicitly.
+   Without this, the sender defaults to "Agent" (based on the current
+   user's permission). This affects the ticket's ``create_article_sender_id``
+   and the resulting contact timestamp calculations.
+
+   The same applies to articles added later via PUT: set sender
+   explicitly there as well when acting on behalf of a customer. Since
+   the sender of an article cannot be changed after creation, it is
+   important to set it correctly from the start.
+
+   For more details on the sender attribute, see
+   :doc:`articles`.
+
+.. tip::
+
+   **Add mention subscription right away**
 
    Add the ``mentions`` attribute to your ticket payload and provide
    an array of user ids to directly subscribe them during ticket creation.
@@ -191,6 +209,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
          "subject": "My subject",
          "body": "I am a message!",
          "type": "note",
+         "sender": "Customer",
          "internal": false
       }
    }
@@ -229,7 +248,7 @@ Response:
       "last_contact_customer_at": null,
       "last_owner_update_at": null,
       "create_article_type_id": 10,
-      "create_article_sender_id": 1,
+      "create_article_sender_id": 2,
       "article_count": 1,
       "escalation_at": null,
       "pending_time": null,
@@ -248,7 +267,9 @@ Response:
 
 .. hint::
 
-   For more article attributes and options have a look into :doc:`articles`.
+   The ``sender`` attribute of the initial article determines the ticket's
+   ``create_article_sender_id`` and contact timestamps. For the full list
+   of article attributes and their behavior, see :doc:`articles`.
 
 Update
 ------
