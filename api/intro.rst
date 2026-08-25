@@ -510,6 +510,7 @@ Endpoint Search
 
 Some endpoints support a search query. These are:
 
+- :doc:`Audit Log <audit_log>`
 - :doc:`Groups <group>`
 - :doc:`Organizations <organization>`
 - :doc:`Roles <role>`
