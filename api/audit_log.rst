@@ -318,7 +318,8 @@ Field Reference
 ``user_fullname``
    Full name of the user at the time the entry was written. Stored
    separately so it remains readable after the user account is
-   removed.
+   removed. When the action was performed via ``View from user's
+   perspective``, the format is ``Original User -> Acting User``.
 
 ``action_type``
    Type of the recorded change. One of:
@@ -358,7 +359,10 @@ Field Reference
 ``preferences``
    Object (JSON) holding additional per-entry metadata. For
    ``update`` entries this contains a ``changed_attributes`` array
-   listing the attributes that actually changed.
+   listing the attributes that actually changed. For entries created
+   while a user session was taken over via ``View from user's
+   perspective``, this also contains ``switched_from_user_id`` and
+   ``switched_from_user_fullname`` identifying the original user.
 
 ``created_at``
    Timestamp at which the entry was written. Audit log entries are
