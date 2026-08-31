@@ -56,6 +56,25 @@ S3_URL |package|
    Example for value:
    ``https://key:secret@s3.eu-central-1.amazonaws.com/zammad-storage-bucket?region=eu-central-1&force_path_style=true``
 
+LD_PRELOAD |package|
+   Default: unset (package installations set it to ``libjemalloc.so.2``
+   automatically if the jemalloc library is present on your system)
+
+   Preloads a shared library for all Zammad processes. Package installations
+   use it to enable jemalloc as memory allocator (see
+   :doc:`Memory Allocator </appendix/memory-allocator>`). This variable is
+   managed by the package install script and may be overwritten during
+   updates.
+
+ZAMMAD_USE_JEMALLOC |package|
+   Default: unset
+
+   Set to ``no`` to opt out of jemalloc as memory allocator. Takes
+   effect on the next package installation or upgrade (see
+   :doc:`Memory Allocator </appendix/memory-allocator>`). Unset it to opt
+   back in; any value other than ``no`` re-enables jemalloc on the next
+   package installation or upgrade.
+
 Zammad
 ------
 
@@ -361,6 +380,10 @@ will begin to emerge.
 
 Below settings may consume all available database connections. Please consider
 the :doc:`configure-database-server` for more information.
+
+jemalloc as memory allocator is active by default on package
+installations and reduces memory usage. See :doc:`Memory Allocator
+</appendix/memory-allocator>` for details.
 
 ZAMMAD_WEB_CONCURRENCY
    Default: unset

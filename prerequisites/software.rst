@@ -145,6 +145,11 @@ automatically be installed with the Zammad-Package.
    | *However:* If you have to use ``bundle install`` for e.g. custom gems or
      development, you'll need to install it!
 
+On Debian/Ubuntu and CentOS/RHEL, the jemalloc memory allocator is
+installed automatically as dependency and preloaded by all Zammad Ruby
+processes. On SLES it's not installed automatically; see
+:doc:`Memory Allocator </appendix/memory-allocator>` for details.
+
 2.3 Database Server
 ^^^^^^^^^^^^^^^^^^^
 
