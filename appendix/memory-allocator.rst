@@ -7,7 +7,7 @@ reduces memory usage and fragmentation. The package postinstall script
 preloads the jemalloc library automatically if it's present on your system.
 This happens on every package installation and upgrade.
 
-Docker installations have jemalloc always active (baked into the image).
+Docker installations have jemalloc enabled by default (baked into the image).
 To opt out, override the environment variable with an empty value (e.g.
 ``LD_PRELOAD=""`` in your compose or env file).
 
@@ -18,8 +18,8 @@ Availability
   dependency.
 - CentOS / RHEL: jemalloc is installed automatically from the EPEL
   repository (already a Zammad dependency).
-- SLES: jemalloc is **not** installed automatically (only available via
-  SUSE Package Hub). If you install it manually with
+- SLES: jemalloc is **not** installed automatically (available via
+  SUSE Package Hub or SLE modules). If you install it manually with
   ``zypper install jemalloc``, Zammad activates it automatically on the
   next package installation or upgrade.
 
