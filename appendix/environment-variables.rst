@@ -283,7 +283,9 @@ POSTGRES_PORT |docker|
 POSTGRES_USER |docker|
    Default: ``zammad``
 
-   The database user for Zammad.
+   The database user for Zammad. In the Docker Compose stack this is an
+   unprivileged login role that owns Zammad's database, but holds no superuser
+   privileges. It is created when the database volume is initialized.
 
 POSTGRES_PASS |docker|
    Default: ``zammad``
@@ -295,16 +297,36 @@ POSTGRES_DB |docker|
 
    Zammad's database to use.
 
+POSTGRES_SUPERUSER |docker|
+   Default: ``postgres``
+
+   The administrative superuser of the PostgreSQL service in the Docker Compose
+   stack. Zammad never connects with it, it only exists for maintenance tasks
+   such as creating extensions or dumping globals. It is applied when the
+   database volume is initialized, changing it later has no effect.
+
+POSTGRES_SUPERUSER_PASS |docker|
+   Default: ``zammad``
+
+   The password of the administrative superuser. It is applied when the database
+   volume is initialized, changing it later has no effect.
+
 POSTGRESQL_OPTIONS
    Default: ``?pool=50``
 
    Additional PostgreSQL params to be appended to the database URI.
 
 POSTGRESQL_DB_CREATE
-   Default: ``true``
+   Default: ``true``, but ``false`` in the Docker Compose stack
 
-   By default, Zammad creates the required database. On already existing
-   database servers, the default might be troublesome.
+   By default, Zammad creates the required database on startup. On already
+   existing database servers, the default might be troublesome.
+
+   The Docker Compose stack sets this to ``false``, because its PostgreSQL
+   service creates the database up front and the role Zammad connects with is
+   deliberately not allowed to create databases. Set it to ``true`` if you use
+   an external database server and want Zammad to create the database itself.
+   The configured database user then needs the ``CREATEDB`` attribute.
 
 Nginx
 -----
