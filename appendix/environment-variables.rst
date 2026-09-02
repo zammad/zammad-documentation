@@ -305,11 +305,17 @@ POSTGRES_SUPERUSER |docker|
    such as creating extensions or dumping globals. It is applied when the
    database volume is initialized, changing it later has no effect.
 
-POSTGRES_SUPERUSER_PASS |docker|
-   Default: ``zammad``
+   This must differ from ``POSTGRES_USER``, otherwise Zammad would connect as
+   the superuser. The database service then stays unhealthy and the rest of the
+   stack does not start.
 
-   The password of the administrative superuser. It is applied when the database
-   volume is initialized, changing it later has no effect.
+POSTGRES_SUPERUSER_PASS |docker|
+   Default: the value of ``POSTGRES_PASS``, which itself defaults to ``zammad``
+
+   The password of the administrative superuser. Set this only if the superuser
+   should use a different password than Zammad's own database role. It is
+   applied when the database volume is initialized, changing it later has no
+   effect.
 
 POSTGRESQL_OPTIONS
    Default: ``?pool=50``
