@@ -305,9 +305,9 @@ POSTGRES_SUPERUSER |docker|
    such as creating extensions or dumping globals. It is applied when the
    database volume is initialized, changing it later has no effect.
 
-   This must differ from ``POSTGRES_USER``, otherwise Zammad would connect as
-   the superuser. The database service then stays unhealthy and the rest of the
-   stack does not start.
+   When a database volume is initialized, this must differ from
+   ``POSTGRES_USER``, otherwise Zammad would connect as the superuser. The
+   database is then not created and the service stays unhealthy.
 
 POSTGRES_SUPERUSER_PASS |docker|
    Default: the value of ``POSTGRES_PASS``, which itself defaults to ``zammad``
