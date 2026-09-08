@@ -82,7 +82,17 @@ Making the Stack Available via HTTPS
 ------------------------------------
 
 If you set up Zammad for production use, it needs to be secured by using an
-HTTPS connection. There are different scenarios for achieving this:
+HTTPS connection. There are different scenarios for achieving this, which have
+one thing in common:
+
+The scenarios below publish Zammad through a reverse proxy that terminates TLS
+and forwards plain HTTP to Zammad. Zammad's own Nginx overwrites the
+``X-Forwarded-Proto`` header with the scheme of the connection it receives, so
+the scenarios set the environment variable ``NGINX_SERVER_SCHEME`` to
+``https``. Without it, Zammad does not write its session cookie and login
+fails with a CSRF token verification error. The default from the scenario
+files is usually correct, see :doc:`environment variables
+</appendix/environment-variables>` if you need to change it.
 
 Add Cloudflare Tunnel
 ^^^^^^^^^^^^^^^^^^^^^
