@@ -221,7 +221,7 @@ Required permission: ``admin.group``
 
    Please note that removing groups cannot be undone.
 
-   Removing organizations with references in e.g. activity streams or tickets
+   Removing groups with references in e.g. activity streams or tickets
    is not possible via API - this will be indicated by
    ``"error": "Can't delete, object has references."``. This is *not* a bug.
 
