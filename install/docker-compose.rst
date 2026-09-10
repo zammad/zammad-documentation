@@ -16,8 +16,9 @@ graphical Docker front ends like
 Prerequisites
 -------------
 
-- This documentation expects you already have a working
-  `Docker Compose <https://docs.docker.com/compose/>`_ environment.
+- Make sure your Docker Compose setup matches the
+  `requirements <https://github.com/zammad/zammad-docker-compose#requirements>`_
+  you can find in the README of Zammad's Docker Compose repository.
 - Make sure to have at least 4 GB of RAM to run the containers.
 - Adjust your host's settings to run Elasticsearch properly:
 
