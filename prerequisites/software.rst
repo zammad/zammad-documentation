@@ -74,7 +74,7 @@ Below you can find all distributions Zammad provides packages for.
    :widths: 20, 20
 
    "CentOS / RHEL", "9, 10"
-   "Debian", "11, 12 & 13"
+   "Debian", "12 & 13"
    "OpenSUSE Leap / SLES", "15 & 16"
    "Ubuntu", "22.04, 24.04 & 26.04"
 
@@ -118,7 +118,7 @@ automatically be installed with the Zammad-Package.
 
             $ sudo apt install libimlib2t64
 
-      Debian 11 & 12
+      Debian 12
          .. code-block:: console
 
             $ sudo apt install libimlib2
