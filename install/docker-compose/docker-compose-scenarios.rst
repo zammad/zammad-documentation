@@ -36,10 +36,52 @@ The following scenarios are supported and explained further below:
 You can find the files in the
 `Zammad Docker Compose repository <https://github.com/zammad/zammad-docker-compose>`_.
 
+.. _general-usage-scenarios:
+
 General Usage
 -------------
 
 .. tabs::
+
+  .. tab::
+
+    Docker Compose
+
+    Follow the first 2 steps of the
+    :doc:`general deployment guide <../docker-compose>`. Instead of passing
+    scenario files with additional ``-f`` flags on every command, list the
+    scenarios you want to use in an ``include`` section of a
+    ``docker-compose.override.yml`` file in the cloned repository folder.
+    The stack repository ships an inactive example file you can copy and
+    adjust:
+
+    .. code-block:: console
+
+      $ cp docker-compose.override.yml.dist docker-compose.override.yml
+
+    Edit the copy and add the scenario you want to use:
+
+    .. code-block:: yaml
+
+      include:
+        - scenarios/{scenario you want to use}.yml
+
+    Replace the part in ``{}`` brackets with the file name of one of the scenario
+    files. You can even combine the scenarios by adding additional files according
+    to the example above. Then start the stack as usual with plain
+    ``docker compose up -d`` (step 3 of
+    the general deployment guide). Keep two things in mind: the ``include``
+    keyword requires Docker Compose 2.20 or higher, and scenarios that
+    bind-mount host files have to be included with the long form below.
+    Otherwise their relative paths resolve against the ``scenarios`` folder
+    and Docker silently creates empty directories instead of mounting your
+    files:
+
+    .. code-block:: yaml
+
+      include:
+        - path: scenarios/{scenario you want to use}.yml
+          project_directory: .
 
   .. tab::
 
@@ -58,23 +100,6 @@ General Usage
     .. figure:: /images/install/docker-compose/additional-scenarios/portainer-additional-paths.png
         :alt: Screenshot shows where to add additional paths in Portainer
         :scale: 70%
-
-  .. tab::
-
-    Docker Compose
-
-    Follow the first 2 steps of the
-    :doc:`general deployment guide <../docker-compose>`. To start the stack with
-    one or more additional scenarios, use the following command for step 3 in
-    the cloned repository folder instead:
-
-    .. code-block:: console
-
-      $ docker compose -f docker-compose.yml -f scenarios/{scenario you want to use}.yml up -d
-
-    Replace the part in ``{}`` brackets with the file name of one of the scenario
-    files. You can even combine the scenarios by adding additional files according
-    to the example above.
 
 .. _stack-https:
 
@@ -255,3 +280,7 @@ you do not change the ``docker-compose.yml`` file, but instead create a local
 ``docker-compose.override.yml`` that includes all your modifications.
 Docker Compose will
 `automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/>`_.
+
+Besides your own modifications, this file is also the place to pull in
+pre-defined scenarios via the ``include`` keyword, as described in the
+:ref:`general usage <general-usage-scenarios>` section above.
