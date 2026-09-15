@@ -56,7 +56,7 @@ Step 3: Start the stack
 
       $ docker compose up -d
 
-   Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
+   Optional: Use an additional ``.yml`` file to use a pre-defined scenario.
    Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
    section.
 
@@ -107,7 +107,7 @@ Step 3: Deploy the Stack
 Exposing the Stack via HTTPS
 ----------------------------
 
-To publish a Zammad stack on the internet, it needs be secured via the HTTPS
+To publish a Zammad stack on the internet, it needs to be secured via the HTTPS
 protocol. To achieve that without modifying the Zammad stack, you can:
 
 - Use a reverse proxy like Nginx Proxy Manager (NPM). It has a GUI that provides
