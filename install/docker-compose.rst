@@ -28,6 +28,41 @@ Prerequisites
 Deployment
 ----------
 
+With Docker Compose
+^^^^^^^^^^^^^^^^^^^
+
+Step 1: Clone the GitHub Repo
+   .. code-block:: console
+
+      $ git clone https://github.com/zammad/zammad-docker-compose.git
+
+   Make sure to run ``git pull`` frequently to fetch updates.
+   Alternatively, you can download the files from
+   `the releases page <https://github.com/zammad/zammad-docker-compose/releases>`_.
+
+Step 2: Adjust Environment as Needed
+   In some cases, our default environment is not what a Docker Compose user is
+   looking for. You can customize the stack using pre-defined scenarios and
+   adjust environment variables. Jump to the
+   :ref:`customization section <customizing-stack>` below to find more
+   information.
+
+Step 3: Start the stack
+   .. code-block:: console
+
+      $ cd zammad-docker-compose
+
+   .. code-block:: console
+
+      $ docker compose up -d
+
+   Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
+   Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
+   section.
+
+   After the stack is ready, you can access Zammad via the configured Docker
+   host and port, e.g. ``http://localhost:8080/``.
+
 With Portainer
 ^^^^^^^^^^^^^^
 
@@ -68,41 +103,6 @@ Step 3: Deploy the Stack
    After the stack is ready, you can access Zammad via the configured Docker
    host and port, e.g. ``http://localhost:8080/``.
 
-
-With Docker Compose
-^^^^^^^^^^^^^^^^^^^
-
-Step 1: Clone the GitHub Repo
-   .. code-block:: console
-
-      $ git clone https://github.com/zammad/zammad-docker-compose.git
-
-   Make sure to run ``git pull`` frequently to fetch updates.
-   Alternatively, you can download the files from
-   `the releases page <https://github.com/zammad/zammad-docker-compose/releases>`_.
-
-Step 2: Adjust Environment as Needed
-   In some cases, our default environment is not what a Docker Compose user is
-   looking for. You can customize the stack using pre-defined scenarios and
-   adjust environment variables. Jump to the
-   :ref:`customization section <customizing-stack>` below to find more
-   information.
-
-Step 3: Start the stack
-   .. code-block:: console
-
-      $ cd zammad-docker-compose
-
-   .. code-block:: console
-
-      $ docker compose up -d
-
-   Optional: Use an additional ``.yml`` file to use a pre-defines scenario.
-   Read on in the :ref:`Customizing the Zammad Stack <customizing-stack>`
-   section.
-
-   After the stack is ready, you can access Zammad via the configured Docker
-   host and port, e.g. ``http://localhost:8080/``.
 
 Exposing the Stack via HTTPS
 ----------------------------
