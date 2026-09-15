@@ -59,16 +59,16 @@ General Usage
 
       $ cp docker-compose.override.yml.dist docker-compose.override.yml
 
-    Edit the copy and add the scenario you want to use:
+    Edit the copy and add the scenarios you want to use:
 
     .. code-block:: yaml
 
       include:
         - scenarios/{scenario you want to use}.yml
+        - scenarios/{another scenario you want to use}.yml
 
-    Replace the part in ``{}`` brackets with the file name of one of the scenario
-    files. You can even combine the scenarios by adding additional files according
-    to the example above. Then start the stack as usual with plain
+    Replace the parts in ``{}`` brackets with the file names of the scenario
+    files you want to combine. Then start the stack as usual with plain
     ``docker compose up -d`` (step 3 of
     the general deployment guide). Keep two things in mind: the ``include``
     keyword requires Docker Compose 2.20 or higher, and scenarios that
