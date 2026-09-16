@@ -49,39 +49,25 @@ General Usage
 
     Follow the first 2 steps of the
     :doc:`general deployment guide <../docker-compose>`. Instead of passing
-    scenario files with additional ``-f`` flags on every command, list the
-    scenarios you want to use in an ``include`` section of a
-    ``docker-compose.override.yml`` file in the cloned repository folder.
-    The stack repository ships an inactive example file you can copy and
-    adjust:
+    scenario files with additional ``-f`` flags on every command, list all
+    compose files in a ``COMPOSE_FILE`` variable in your ``.env`` file in
+    the cloned repository folder (copy ``.env.dist`` if you don't have one
+    yet). ``docker-compose.yml`` always comes first, further files are
+    applied in the order given, and ``:`` separates them:
 
     .. code-block:: console
 
-      $ cp docker-compose.override.yml.dist docker-compose.override.yml
-
-    Edit the copy and add the scenarios you want to use:
-
-    .. code-block:: yaml
-
-      include:
-        - scenarios/{scenario you want to use}.yml
-        - scenarios/{another scenario you want to use}.yml
+       COMPOSE_FILE=docker-compose.yml:scenarios/{scenario you want to use}.yml:scenarios/{another scenario you want to use}.yml
 
     Replace the parts in ``{}`` brackets with the file names of the scenario
     files you want to combine. Then start the stack as usual with plain
     ``docker compose up -d`` (step 3 of
-    the general deployment guide). Keep two things in mind: the ``include``
-    keyword requires Docker Compose 2.20 or higher, and scenarios that
-    bind-mount host files have to be included with the long form below.
-    Otherwise their relative paths resolve against the ``scenarios`` folder
-    and Docker silently creates empty directories instead of mounting your
-    files:
-
-    .. code-block:: yaml
-
-      include:
-        - path: scenarios/{scenario you want to use}.yml
-          project_directory: .
+    the general deployment guide). Keep two things in mind: the paths are
+    resolved against the directory your ``.env`` file lives in, so run
+    ``docker compose`` from there. And setting ``COMPOSE_FILE`` turns off
+    the automatic pickup of ``docker-compose.override.yml`` - append it to
+    the list if you use one, otherwise your local changes would go unused
+    without any warning.
 
   .. tab::
 
@@ -280,7 +266,17 @@ you do not change the ``docker-compose.yml`` file, but instead create a local
 ``docker-compose.override.yml`` that includes all your modifications.
 Docker Compose will
 `automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/>`_.
+The stack repository ships an inactive example file you can copy and adjust:
 
-Besides your own modifications, this file is also the place to pull in
-pre-defined scenarios via the ``include`` keyword, as described in the
-:ref:`general usage <general-usage-scenarios>` section above.
+.. code-block:: console
+
+   $ cp docker-compose.override.yml.dist docker-compose.override.yml
+
+Keep in mind that this file is for changing settings of the services that
+``docker-compose.yml`` already defines. Loading scenarios here is not
+supported, use the ``COMPOSE_FILE`` variable in your ``.env`` file instead,
+as described in the :ref:`general usage <general-usage-scenarios>` section
+above. If you do, append this file to that list as well: setting
+``COMPOSE_FILE`` turns off the automatic pickup of
+``docker-compose.override.yml``, so your changes here would otherwise go
+unused without any warning.
