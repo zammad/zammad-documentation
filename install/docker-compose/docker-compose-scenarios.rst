@@ -47,27 +47,25 @@ General Usage
 
     Docker Compose
 
-    Follow the first 2 steps of the
-    :doc:`general deployment guide <../docker-compose>`. Instead of passing
-    scenario files with additional ``-f`` flags on every command, list all
-    compose files in a ``COMPOSE_FILE`` variable in your ``.env`` file in
-    the cloned repository folder (copy ``.env.dist`` if you don't have one
-    yet). ``docker-compose.yml`` always comes first, further files are
-    applied in the order given, and ``:`` separates them:
+    To use a scenario, list its compose file in the environment variable
+    ``COMPOSE_FILE``. Either create a ``.env`` file or copy and rename the
+    ``.env.dist`` in the cloned repository folder. The main Docker Compose file
+    must be specified first. One or more scenarios follow, separated by a
+    colon (``:``). The files are applied in the order given. Replace the
+    placeholder in curly brackets with the filename of the scenario you want
+    to use.
 
     .. code-block:: console
 
        COMPOSE_FILE=docker-compose.yml:scenarios/{scenario you want to use}.yml:scenarios/{another scenario you want to use}.yml
 
-    Replace the parts in ``{}`` brackets with the file names of the scenario
-    files you want to combine. Then start the stack as usual with plain
-    ``docker compose up -d`` (step 3 of
-    the general deployment guide). Keep two things in mind: the paths are
-    resolved against the directory your ``.env`` file lives in, so run
-    ``docker compose`` from there. And setting ``COMPOSE_FILE`` turns off
-    the automatic pickup of ``docker-compose.override.yml`` - append it to
-    the list if you use one, otherwise your local changes would go unused
-    without any warning.
+    After specifying the scenarios, start the stack with
+    ``docker compose up -d``.
+
+    .. note::
+       When using the ``COMPOSE_FILE`` variable, the
+       ``docker-compose.override.yml`` is ignored. If you want to use it,
+       make sure to append it to the environment variable's list.
 
   .. tab::
 
