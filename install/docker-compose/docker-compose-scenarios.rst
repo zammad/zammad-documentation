@@ -66,8 +66,9 @@ General Usage
 
     .. note::
        When using the ``COMPOSE_FILE`` variable, the
-       ``docker-compose.override.yml`` is ignored. If you want to use it,
-       make sure to append it to the environment variable's list.
+       ``docker-compose.override.yml``  is not automatically picked up. If you
+       want to use it, make sure to append it to the environment variable's
+       list.
 
   .. tab::
 
