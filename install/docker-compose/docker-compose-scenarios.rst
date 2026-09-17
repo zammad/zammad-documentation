@@ -49,11 +49,13 @@ General Usage
 
     To use a scenario, list its compose file in the environment variable
     ``COMPOSE_FILE``. Either create a ``.env`` file or copy and rename the
-    ``.env.dist`` in the cloned repository folder. The main Docker Compose file
-    must be specified first. One or more scenarios follow, separated by a
+    ``.env.dist`` in the cloned repository folder. The main compose file
+    must be specified first, followed by one or more scenarios, separated by a
     colon (``:``). The files are applied in the order given. Replace the
     placeholder in curly brackets with the filename of the scenario you want
     to use.
+
+    **Example with two scenario placeholders:**
 
     .. code-block:: console
 
