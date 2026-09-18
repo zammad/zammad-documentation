@@ -1067,6 +1067,19 @@ Required permission: ``admin.user`` **or** ``ticket.agent``
    Agents can't set user passwords, roles or group permission. Instead
    Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
 
+.. note:: **🤓 group_ids / role_ids need session or Basic Auth, not a token**
+
+   Separately from the permission level above: writing ``group_ids`` or
+   ``role_ids`` is silently dropped when authenticating with an API token
+   (``Authorization: Token token=...``), confirmed directly, repeatedly,
+   across multiple tokens each holding full ``admin.user`` permission. The
+   request returns ``200 Ok`` and the response looks normal, but the field
+   simply doesn't change. The exact same payload succeeds when
+   authenticating with HTTP Basic Auth (a real user's email + password)
+   instead, if a write via token looks like it "did nothing" with no
+   error, try the same call over Basic Auth before assuming the payload
+   is wrong.
+
 ``PUT``-Request sent: ``/api/v1/users/{id}``
 
 .. code-block:: json
