@@ -247,7 +247,7 @@ the :admin-docs:`provider configuration </ai/provider.html>`.
 Add LibreTranslate
 ^^^^^^^^^^^^^^^^^^
 
-You can spin up an additional `LibreTranslate <https://libretranslate.com/>`_
+You can run an additional `LibreTranslate <https://libretranslate.com/>`_
 container to power Zammad's article translation on your own hardware. For
 details on the integration itself, see the :admin-docs:`translation services
 documentation </system/integrations/translation-services.html>`.
@@ -268,21 +268,21 @@ LT_LOAD_ONLY
    language models are downloaded, which can take minutes on cold starts.
 
 LT_UPDATE_MODELS
-   Set to ``true`` to update the language models on every stack startup. This
-   redownloads already existing models too, even without actual updates.
+   Set to ``true`` to update the language models on every stack startup. Only
+   models with a newer available version are redownloaded. Without it, the
+   models are downloaded on the first start only.
 
 LT_API_KEYS
-   Set to ``true`` to enable API key support. Requests with an API key get
-   higher rate limits. To issue a key, start the service and run:
+   Set to ``true`` to enable API key support. Each key carries its own
+   allowed requests per minute. To issue a key, start the service and run:
 
    .. code-block:: console
 
       $ docker compose exec libretranslate ltmanage keys add 120
 
-   The number is the allowed requests per minute for this key. Each key can
-   have its own limit. The command prints the generated key, which is a UUID
-   created by LibreTranslate itself. You can also provide your own key with
-   the ``--key`` option instead.
+   The number is the allowed requests per minute for this key. The command
+   prints the generated key, which is a UUID created by LibreTranslate itself.
+   You can also provide your own key with the ``--key`` option instead.
 
 LT_REQUIRE_API_KEY_SECRET
    Set to ``true`` to make API keys mandatory for all requests. Requires
