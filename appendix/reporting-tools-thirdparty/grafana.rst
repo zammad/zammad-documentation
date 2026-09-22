@@ -1,240 +1,137 @@
-Grafana
-=======
+Reporting with Grafana
+======================
 
-Grafana allows you to query, visualize and alert on metrics your Zammad
-installation stores within the Elasticsearch indexes.
+Grafana is a third party analytics/visualization application you can connect
+to Zammad (precisely: Elasticsearch). It can access the Elasticsearch index
+and visualize your Zammad data. If you don't want to start from scratch,
+Zammad provides ready-made sample dashboards that you can import into your
+Grafana instance within minutes.
 
-.. figure:: /images/appendix/reporting-tools/grafana/grafana-dashboard-several-metas.png
-   :alt: Sample Dashboard with metrics from a Zammad instance.
-   :width: 90%
+Prerequisites
+-------------
+
+- A running instance of Grafana (hosted or self hosted) in version 10.3 or
+  higher
+- Read access to your Elasticsearch index
+
+.. warning::
+
+   Never expose Elasticsearch to the public if you're not sure how to do it.
+   Especially **never** without authentication! Zammad stores **very
+   sensitive** information within the Elasticsearch index.
+
+This guide expects all requirements to be up and running. For a deeper
+insight, have a look at our :doc:`/install/elasticsearch/indexed-attributes`
+and the `documentation of Grafana <https://grafana.com/docs/>`_.
+
+Setup
+-----
+
+Data sources are Grafana's connection settings for external data providers
+and are managed under *Connections > Data sources*. A data source is a
+prerequisite to have a dashboard showing you numbers.
+
+Add a data source of type *Elasticsearch* and provide the following information:
+
+- URL: the URL of your Elasticsearch instance, e.g. ``http://localhost:9200``
+- Authentication: select the correct method and provide your credentials
+- Index name: ``zammad_production_*`` (replace the prefix to match your
+  installation, see note below)
+- Time field name: ``created_at`` (required by Grafana, but overridden per
+  panel by the dashboards below, so any valid field name works)
+
+After configuring it, click on ``Save & test``. If everything is fine, you
+should see a message like "Elasticsearch data source is healthy".
+
+The dashboards pick their own index fields and time stamps, so no further data
+source tuning is required. All sample dashboards below work with a single
+Elasticsearch data source. If you build your own dashboards and want
+separate data sources per index, feel free to do so.
+
+.. note:: **Not sure about your index prefix?**
+
+   The default prefix is ``zammad_production``. It only differs if the index
+   namespace was changed after installation, e.g. to separate multiple
+   Zammad instances on a single Elasticsearch server.
+
+   To double check, query your Elasticsearch instance (replace
+   ``http://localhost:9200`` with the HTTP type and URL of your setup):
+
+   .. code-block:: console
+
+      $ curl http://localhost:9200/_aliases?pretty=true
+
+   This returns a list of your indexes, which looks similar to the
+   following:
+
+   .. code-block:: json
+
+      {
+        "zammad_production_ticket" : {
+          "aliases" : { }
+        },
+        "zammad_production_ticket_state" : {
+          "aliases" : { }
+        }
+      }
+
+Dashboards
+----------
+
+A dashboard can be imported to Grafana in different ways. You can copy/paste
+raw JSON content, upload a JSON file or fetch it by its ID (easiest way).
+You can find the dashboard templates for Zammad in
+`GitHub <https://github.com/zammad/grafana-dashboards>`_ or grafana.com.
+
+To import a dashboard, click the **➕** icon in the top right corner of your
+Grafana instance and choose **Import dashboard**. You can either upload the
+json file you downloaded from GitHub or enter the grafana.com ID given
+below. Grafana then fetches the dashboard and shows a settings page where
+you can provide a name and target folder before importing.
+
+Below the name settings, Grafana lists the data sources the dashboard
+requires. Just assign your created data source to every entry. The names in
+this list are placeholders from the dashboard creation, so the mapping (not
+the names) decides which data your panels show.
+
+Empty panels after import usually mean a mapped data source doesn't match or
+your instance has no data of that kind yet: an unmatched mapping imports
+fine, but every affected panel stays empty. You can fix the mapping any time
+via the panel's edit dialog.
+
+Tickets
+^^^^^^^
+
+Grafana.com ID: ``14222``
+
+.. figure:: /images/appendix/reporting-tools/grafana/dashboard/tickets.png
    :align: center
+   :alt: Screenshot showing the Ticket dashboard with demo data.
 
-.. note:: **🚧 Limitations 🚧**
+Provides ticket opening and closing rates, created articles, ticket and
+article meta information as well as SLA insights (the latter requires the
+SLA function to be active).
 
-   Please note that this guide expects all requirements to be up and running.
-   We will not cover core configurations of each tool. Please also note that
-   we can't support you with configuration of your specific third party tool.
+Chats
+^^^^^
 
-   **🤓 Specific use cases**
+Grafana.com ID: ``14224``
 
-   You may have specific use cases which we can't cover in this documentation.
-   The following sub pages and also our
-   :doc:`/install/elasticsearch/indexed-attributes` should provide enough
-   information to help you!
+.. figure:: /images/appendix/reporting-tools/grafana/dashboard/chat-sessions.png
+   :align: center
+   :alt: Screenshot showing the Chat dashboard with demo data.
 
-Overview
---------
+Provides chat session statistics, e.g. session creations, chat tags, agents
+and origins as well as average chatting time.
 
-**Quickly jump to...**
-   - `Setting up required data sources`_
-   - `The Dashboards`_
+CTI log
+^^^^^^^
 
-You will need
-   - A Grafana 10.3+ instance (hosted or self hosted)
+Grafana.com ID: ``14223``
 
-.. include:: include-requirements.rst
+.. figure:: /images/appendix/reporting-tools/grafana/dashboard/calls.png
+   :align: center
+   :alt: Screenshot showing the CTI dashboard with demo data.
 
-Setting up required data sources
---------------------------------
-
-.. hint:: **🤓 You may not need all data sources**
-
-**Before we start:** The data sources always follow the same scheme. We reduced
-below information to ``name``, ``time field name`` and ``index name``.
-Everything else relies on your environment and is out of our scope.
-
-   .. note::
-
-      Please replace ``zammad_production_`` with your fitting prefix.
-
-ES - Chat Sessions:
-   | Index name: ``zammad_production_chat_session``
-   | Time field name: ``created_at``
-
-ES - CTI Log:
-   | Index name: ``zammad_production_cti_log``
-   | Time field name: ``start_at``
-
-ES - Ticket Articles:
-   | Index name: ``zammad_production_ticket``
-   | Time field name: ``article.created_at``
-
-ES - Tickets by closed_at:
-   | Index name: ``zammad_production_ticket``
-   | Time field name: ``close_at``
-
-ES - Tickets by created_at:
-   | Index name: ``zammad_production_ticket``
-   | Time field name: ``created_at``
-
-ES - Tickets by first_response_at:
-   | Index name: ``zammad_production_ticket``
-   | Time field name: ``first_response_at``
-
-With above data sources you basically have everything you need to start
-building your own dashboards. 🎉
-
-   .. tip:: **🤓 Not sure about your index names?**
-
-      Querying your Elasticsearch like this and replace ``localhost:9200`` with
-      the IP/URL of your setup:
-
-      .. code-block:: console
-
-         $ curl http://localhost:9200/_aliases?pretty=true
-
-      This will return a list that looks similar to the following:
-
-      .. code-block:: json
-
-         {
-           "zammad_production_knowledge_base_translation" : {
-             "aliases" : { }
-           },
-           "zammad_production_ticket_priority" : {
-             "aliases" : { }
-           },
-           "zammad_production_stats_store" : {
-             "aliases" : { }
-           },
-           "zammad_production_organization" : {
-             "aliases" : { }
-           },
-           "zammad_production_cti_log" : {
-             "aliases" : { }
-           },
-           "zammad_production_group" : {
-             "aliases" : { }
-           },
-           "zammad_production_knowledge_base_answer_translation" : {
-             "aliases" : { }
-           },
-           "zammad_production_ticket" : {
-             "aliases" : { }
-           },
-           "zammad_production_ticket_state" : {
-             "aliases" : { }
-           },
-           "zammad_production_chat_session" : {
-             "aliases" : { }
-           },
-           "zammad_production_user" : {
-             "aliases" : { }
-           },
-           "zammad_production_knowledge_base_category_translation" : {
-             "aliases" : { }
-           }
-         }
-
-The Dashboards
---------------
-
-If you want to get inspired, you can also use our sample dashboards as
-mentioned below. These dashboards can also be found on
-`GitHub <https://github.com/zammad/grafana-dashboards>`_.
-
-Importing an existing Dashboard
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Navigate to **➕ → Import** and either upload the json file you received or
-use the grafana.com ID. During importing you can provide a dashboard name
-and folder. You'll also be asked to map the data sources to your environment.
-If you used our data source names above, you can simply search for the same name.
-
-   .. figure:: /images/appendix/reporting-tools/grafana/import-existing-dashboard.gif
-      :alt: Screencast showing how to import existing dashboards by grafana.com ID
-      :width: 90%
-      :align: center
-
-      Importing existing dashboards by ID
-
-Ticket statistics
-^^^^^^^^^^^^^^^^^
-
-   .. tip:: **🤓 Grafana.com ID:** ``14222``
-
-   .. figure:: /images/appendix/reporting-tools/grafana/dashboard/tickets.png
-      :width: 80%
-      :align: center
-      :alt: Screenshot showing the Ticket dashboard with demo data.
-
-This dashboard provides graphs for:
-   - ticket opening and closing [2]_
-   - created articles
-   - ticket SLA (in time *and* violation) per type [2]_ [3]_
-
-It also contains specific ticket and article meta information:
-   - ticket group distribution
-   - sender ratio (e.g. Customer / Agent) [1]_
-   - article type ratio (e.g. email, phone) [1]_
-   - article content type
-   - escalation ratios [2]_
-   - average first response, update time and close time [3]_
-   - organization of ticket customer [2]_
-   - ticket customers [2]_
-   - ticket owners [2]_
-   - average accounted time on ticket
-   - ticket tags [2]_
-   - last 10 escalated tickets
-
-Required data sources:
-   - ``ES - Ticket Articles``
-   - ``ES - Tickets by created_at``
-   - ``ES - Tickets by closed_at``
-
-.. [1] Specific reference IDs are not the same on every instance and thus the
-       panel may not work or show incorrect data. Check the panels description
-       on how to find our the relations on your system.
-.. [2] Some values are not available as time series information.
-       This means we can only display the *last* value of the field in question.
-.. [3] Requires SLA function to be active.
-       Negative values indicate SLA violations.
-
-Chat-Session statistics
-^^^^^^^^^^^^^^^^^^^^^^^
-
-   .. tip:: **🤓 Grafana.com ID:** ``14224``
-
-   .. figure:: /images/appendix/reporting-tools/grafana/dashboard/chat-sessions.png
-      :width: 80%
-      :align: center
-      :alt: Screenshot showing the Chat dashboard with demo data.
-
-This dashboard provides graphs for:
-   - Chat session creations
-
-It also contains specific chat session meta information:
-   - chat tags
-   - chat agents
-   - chat exit pages
-   - city origins
-   - chat topic ratio
-   - average number of messages within chat-sessions
-   - average chatting time
-   - World map with chat origin countries
-
-Required data sources:
-   - ``ES - Chat Sessions``
-
-CTI-Log statistics
-^^^^^^^^^^^^^^^^^^
-
-   .. tip:: **🤓 Grafana.com ID:** ``14223``
-
-   .. figure:: /images/appendix/reporting-tools/grafana/dashboard/calls.png
-      :width: 80%
-      :align: center
-      :alt: Screenshot showing the CTI dashboard with demo data.
-
-This dashboard provides graphs for:
-   - number of calls per direction (in / out)
-
-It also contains specific chat session meta information:
-   - call ratio (in / out)
-   - average waiting time
-   - average talking time
-   - callers (in)
-   - call answerers (in)
-
-Required data sources:
-   - ``ES - CTI Log``
+Provides call statistics, e.g. calls per direction, average waiting and
+talking times as well as top callers and answerers.
