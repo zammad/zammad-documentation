@@ -268,9 +268,9 @@ LT_LOAD_ONLY
    language models are downloaded, which can take minutes on cold starts.
 
 LT_UPDATE_MODELS
-   Set to ``true`` to update the language models on every stack startup. Only
-   models with a newer available version are redownloaded. Without it, the
-   models are downloaded on the first start only.
+   Set to ``true`` to check for updated language models on every stack
+   startup. Only models with a newer available version are redownloaded.
+   Without it, the models are downloaded on the first start only.
 
 LT_API_KEYS
    Set to ``true`` to enable API key support. Each key carries its own
