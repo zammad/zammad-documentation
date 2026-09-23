@@ -190,3 +190,19 @@ Response:
    # HTTP-Code 200 Ok
 
    {}
+
+Clear All
+---------
+
+Required permission: ``any``
+
+``DELETE``-Request sent: ``/api/v1/online_notifications/clear_all``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {}

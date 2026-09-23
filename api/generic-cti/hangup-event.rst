@@ -95,9 +95,9 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: console
+            .. code-block:: bash
 
-               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
+               curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "hangup",
@@ -131,9 +131,9 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: console
+            .. code-block:: bash
 
-               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
+               curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --header 'Content-Type: application/json' \
                   --data-raw '{
                      "event": "hangup",
@@ -170,9 +170,9 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: console
+            .. code-block:: bash
 
-               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
+               curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --form 'event="hangup"' \
                   --form 'from="493023125741"' \
                   --form 'to="492214710334"' \
@@ -201,9 +201,9 @@ There's two options on how to ``POST`` the relevant data to Zammad.
 
          Sample curl command:
 
-            .. code-block:: console
+            .. code-block:: bash
 
-               $ curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
+               curl --request POST 'https://{FQDN-Zammad}/api/v1/cti/{instance specific token}' \
                   --form 'event="hangup"' \
                   --form 'from="493023125741"' \
                   --form 'to="492214710334"' \

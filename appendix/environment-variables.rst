@@ -56,6 +56,25 @@ S3_URL |package|
    Example for value:
    ``https://key:secret@s3.eu-central-1.amazonaws.com/zammad-storage-bucket?region=eu-central-1&force_path_style=true``
 
+LD_PRELOAD |package|
+   Default: unset (package installations set it to ``libjemalloc.so.2``
+   automatically if the jemalloc library is present on your system)
+
+   Preloads a shared library for all Zammad processes. Package installations
+   use it to enable jemalloc as memory allocator (see
+   :doc:`Memory Allocator </appendix/memory-allocator>`). This variable is
+   managed by the package install script and may be overwritten during
+   updates.
+
+ZAMMAD_USE_JEMALLOC |package|
+   Default: unset
+
+   Set to ``no`` to opt out of jemalloc as memory allocator. Takes
+   effect on the next package installation or upgrade (see
+   :doc:`Memory Allocator </appendix/memory-allocator>`). Unset it to opt
+   back in; any value other than ``no`` re-enables jemalloc on the next
+   package installation or upgrade.
+
 Zammad
 ------
 
@@ -264,7 +283,9 @@ POSTGRES_PORT |docker|
 POSTGRES_USER |docker|
    Default: ``zammad``
 
-   The database user for Zammad.
+   The database user for Zammad. In the Docker Compose stack this is an
+   unprivileged login role that owns Zammad's database, but holds no superuser
+   privileges. It is created when the database volume is initialized.
 
 POSTGRES_PASS |docker|
    Default: ``zammad``
@@ -276,16 +297,42 @@ POSTGRES_DB |docker|
 
    Zammad's database to use.
 
+POSTGRES_SUPERUSER |docker|
+   Default: ``postgres``
+
+   The administrative superuser of the PostgreSQL service in the Docker Compose
+   stack. Zammad never connects with it, it only exists for maintenance tasks
+   such as creating extensions or dumping globals. It is applied when the
+   database volume is initialized, changing it later has no effect.
+
+   When a database volume is initialized, this must differ from
+   ``POSTGRES_USER``, otherwise Zammad would connect as the superuser. The
+   database is then not created and the service stays unhealthy.
+
+POSTGRES_SUPERUSER_PASS |docker|
+   Default: the value of ``POSTGRES_PASS``, which itself defaults to ``zammad``
+
+   The password of the administrative superuser. Set this only if the superuser
+   should use a different password than Zammad's own database role. It is
+   applied when the database volume is initialized, changing it later has no
+   effect.
+
 POSTGRESQL_OPTIONS
    Default: ``?pool=50``
 
    Additional PostgreSQL params to be appended to the database URI.
 
 POSTGRESQL_DB_CREATE
-   Default: ``true``
+   Default: ``true``, but ``false`` in the Docker Compose stack
 
-   By default, Zammad creates the required database. On already existing
-   database servers, the default might be troublesome.
+   By default, Zammad creates the required database on startup. On already
+   existing database servers, the default might be troublesome.
+
+   The Docker Compose stack sets this to ``false``, because its PostgreSQL
+   service creates the database up front and the role Zammad connects with is
+   deliberately not allowed to create databases. Set it to ``true`` if you use
+   an external database server and want Zammad to create the database itself.
+   The configured database user then needs the ``CREATEDB`` attribute.
 
 Nginx
 -----
@@ -361,6 +408,10 @@ will begin to emerge.
 
 Below settings may consume all available database connections. Please consider
 the :doc:`configure-database-server` for more information.
+
+jemalloc as memory allocator is active by default on package
+installations and reduces memory usage. See :doc:`Memory Allocator
+</appendix/memory-allocator>` for details.
 
 ZAMMAD_WEB_CONCURRENCY
    Default: unset

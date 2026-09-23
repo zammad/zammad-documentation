@@ -149,11 +149,6 @@ using `Zammad hosting`_ for your and your customers' safety.
             `documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html>`_
             and follow the instructions.
 
-            In case your are using plugins for Elasticsearch, make sure they are
-            updated as well (note: starting with Elasticsearch 8, the
-            ingest-attachment is no longer a plugin, it's now included in
-            Elasticsearch).
-
       Step 6: Rebuild Elasticsearch index (optional)
          Only needed if the release note tells you to rebuild the Elasticsearch
          index.

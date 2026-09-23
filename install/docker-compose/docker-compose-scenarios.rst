@@ -31,6 +31,7 @@ The following scenarios are supported and explained further below:
 
   - Disable the backup service
   - Add an Ollama instance to the stack
+  - Add a LibreTranslate instance to the stack
   - Limit hardware resources of the stack
 
 You can find the files in the
@@ -47,41 +48,28 @@ General Usage
 
     Docker Compose
 
-    Follow the first 2 steps of the
-    :doc:`general deployment guide <../docker-compose>`. Instead of passing
-    scenario files with additional ``-f`` flags on every command, list the
-    scenarios you want to use in an ``include`` section of a
-    ``docker-compose.override.yml`` file in the cloned repository folder.
-    The stack repository ships an inactive example file you can copy and
-    adjust:
+    To use a scenario, list its compose file in the environment variable
+    ``COMPOSE_FILE``. Either create a ``.env`` file or copy and rename the
+    ``.env.dist`` in the cloned repository folder. The main compose file
+    must be specified first, followed by one or more scenarios, separated by a
+    colon (``:``). The files are applied in the order given. Replace the
+    placeholder in curly brackets with the filename of the scenario you want
+    to use.
+
+    **Example with two scenario placeholders:**
 
     .. code-block:: console
 
-      $ cp docker-compose.override.yml.dist docker-compose.override.yml
+       COMPOSE_FILE=docker-compose.yml:scenarios/{scenario you want to use}.yml:scenarios/{another scenario you want to use}.yml
 
-    Edit the copy and add the scenarios you want to use:
+    After specifying the scenarios, start the stack with
+    ``docker compose up -d``.
 
-    .. code-block:: yaml
-
-      include:
-        - scenarios/{scenario you want to use}.yml
-        - scenarios/{another scenario you want to use}.yml
-
-    Replace the parts in ``{}`` brackets with the file names of the scenario
-    files you want to combine. Then start the stack as usual with plain
-    ``docker compose up -d`` (step 3 of
-    the general deployment guide). Keep two things in mind: the ``include``
-    keyword requires Docker Compose 2.20 or higher, and scenarios that
-    bind-mount host files have to be included with the long form below.
-    Otherwise their relative paths resolve against the ``scenarios`` folder
-    and Docker silently creates empty directories instead of mounting your
-    files:
-
-    .. code-block:: yaml
-
-      include:
-        - path: scenarios/{scenario you want to use}.yml
-          project_directory: .
+    .. note::
+       When using the ``COMPOSE_FILE`` variable, the
+       ``docker-compose.override.yml``  is not automatically picked up. If you
+       want to use it, make sure to append it to the environment variable's
+       list.
 
   .. tab::
 
@@ -256,6 +244,59 @@ out of the box.
 To use it in Zammad, add the service name and port (``http://ollama:11434``) to
 the :admin-docs:`provider configuration </ai/provider.html>`.
 
+Add LibreTranslate
+^^^^^^^^^^^^^^^^^^
+
+You can run an additional `LibreTranslate <https://libretranslate.com/>`_
+container to power Zammad's article translation on your own hardware. For
+details on the integration itself, see the :admin-docs:`translation services
+documentation </system/integrations/translation-services.html>`.
+
+To deploy a LibreTranslate container inside the Zammad stack, use the scenario
+file ``scenarios/add-libretranslate.yml``. The service doesn't publish any
+ports to the host; Zammad reaches it inside the stack network as
+``http://libretranslate:5000``.
+
+.. hint:: The first start takes a while, as the container downloads the
+   language models before the service becomes available. The models are kept
+   in a Docker volume, so they survive stack restarts.
+
+The scenario supports the following environment variables:
+
+LT_LOAD_ONLY
+   Comma-separated list of languages to load, e.g. ``en,de,fr``. If unset, all
+   language models are downloaded, which can take minutes on cold starts.
+
+LT_UPDATE_MODELS
+   Set to ``true`` to check for updated language models on every stack
+   startup. Only models with a newer available version are redownloaded.
+   Without it, the models are downloaded on the first start only.
+
+LT_API_KEYS
+   Set to ``true`` to enable API key support. Each key carries its own
+   allowed requests per minute. To issue a key, start the service and run:
+
+   .. code-block:: console
+
+      $ docker compose exec libretranslate ltmanage keys add 120
+
+   The number is the allowed requests per minute for this key. The command
+   prints the generated key, which is a UUID created by LibreTranslate itself.
+   You can also provide your own key with the ``--key`` option instead.
+
+LT_REQUIRE_API_KEY_SECRET
+   Set to ``true`` to make API keys mandatory for all requests. Requires
+   ``LT_API_KEYS=true``.
+
+.. note:: LibreTranslate supports many more options. They are described in
+   the `official documentation <https://docs.libretranslate.com/>`_, which
+   also lists the environment variables the container accepts.
+
+Once the stack is up, configure the service under
+*System > Integrations > Translation services*: point the URL to
+``http://libretranslate:5000`` and provide an API key if your instance
+requires one.
+
 Limit Resources
 ^^^^^^^^^^^^^^^
 
@@ -280,7 +321,17 @@ you do not change the ``docker-compose.yml`` file, but instead create a local
 ``docker-compose.override.yml`` that includes all your modifications.
 Docker Compose will
 `automatically load this file and merge its changes into your stack <https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/>`_.
+The stack repository ships an inactive example file you can copy and adjust:
 
-Besides your own modifications, this file is also the place to pull in
-pre-defined scenarios via the ``include`` keyword, as described in the
-:ref:`general usage <general-usage-scenarios>` section above.
+.. code-block:: console
+
+   $ cp docker-compose.override.yml.dist docker-compose.override.yml
+
+Keep in mind that this file is for changing settings of the services that
+``docker-compose.yml`` already defines. Loading scenarios here is not
+supported, use the ``COMPOSE_FILE`` variable in your ``.env`` file instead,
+as described in the :ref:`general usage <general-usage-scenarios>` section
+above. If you do, append this file to that list as well: setting
+``COMPOSE_FILE`` turns off the automatic pickup of
+``docker-compose.override.yml``, so your changes here would otherwise go
+unused without any warning.

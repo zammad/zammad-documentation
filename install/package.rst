@@ -50,6 +50,10 @@ some operating systems may require additional packages if not already installed.
 
          $ sudo dnf install curl epel-release
 
+Zammad uses `jemalloc <https://jemalloc.net/>`_ as memory allocator out of
+the box on Debian, Ubuntu, CentOS and RHEL. For SLES, opt-out and
+verification details, see :doc:`Memory Allocator </appendix/memory-allocator>`.
+
 2. Install Elasticsearch
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

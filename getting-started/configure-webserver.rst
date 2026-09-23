@@ -321,20 +321,35 @@ the domain points to the right server:
 CSRF Token Errors
 ^^^^^^^^^^^^^^^^^
 
-If users cannot log in because of CSRF token errors, your webserver
-chain may not pass the original connection type to Zammad. Tell the
-proxy directly that the connection is HTTPS.
+If users cannot log in because of CSRF token errors, the HTTPS scheme
+doesn't arrive at Zammad correctly. Two causes are common: the proxy in
+front of Zammad doesn't pass the original connection type at all, or an
+additional proxy further up the chain overwrites the header afterwards.
+Zammad's bundled webserver configuration shows the recommended setup.
 
 Nginx
    Within your virtual host configuration, locate
    ``proxy_set_header X-Forwarded-Proto`` and replace ``$scheme``
-   with ``https``.
+   with ``https``. If Zammad sits behind another proxy (e.g. an
+   external load balancer), also blank the headers that such a proxy
+   can use to overwrite the scheme:
+
+   .. code-block:: nginx
+
+      proxy_set_header Forwarded "";
+      proxy_set_header X-Forwarded-Scheme "";
+      proxy_set_header X-Forwarded-Ssl "";
 
 Apache 2
    Within your virtual host configuration, just above the first
    ``ProxyPass`` directive, insert:
 
-   .. code-block:: text
+   .. code-block:: apache
 
       RequestHeader set X_FORWARDED_PROTO 'https'
       RequestHeader set X-Forwarded-Ssl on
+
+If you use the Docker Compose stack instead of your own webserver, the
+scenario files already set the ``NGINX_SERVER_SCHEME`` environment
+variable for you (see :doc:`the HTTPS scenarios
+</install/docker-compose/docker-compose-scenarios>`).

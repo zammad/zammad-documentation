@@ -84,7 +84,7 @@ If you distribution is not listed, you can still install Zammad.
 For this you can either use :doc:`Docker Compose </install/docker-compose>`
 or :doc:`Kubernetes </install/kubernetes>` installation.
 We try to provide all current distributions that are supported by
-`Packager.io <https://packager.io/>`_. This means that we can't always
+`go.packager.io <https://go.packager.io/>`_. This means that we can't always
 provide support for your favorite system.
 
 .. note::
@@ -145,11 +145,16 @@ automatically be installed with the Zammad-Package.
    | *However:* If you have to use ``bundle install`` for e.g. custom gems or
      development, you'll need to install it!
 
+On Debian/Ubuntu and CentOS/RHEL, the jemalloc memory allocator is
+installed automatically as dependency and preloaded by all Zammad Ruby
+processes. On SLES it's not installed automatically; see
+:doc:`Memory Allocator </appendix/memory-allocator>` for details.
+
 2.3 Database Server
 ^^^^^^^^^^^^^^^^^^^
 
 Zammad stores its content in a database. The supported database system is
-`PostgreSQL <https://www.postgresql.org/>`_ 13 or newer.
+`PostgreSQL <https://www.postgresql.org/>`_ 15 or newer.
 If no PostgreSQL server could be detected, it will be installed automatically
 during the package installation.
 
@@ -162,14 +167,11 @@ during the package installation.
 2.4 Reverse Proxy
 ^^^^^^^^^^^^^^^^^
 
-In a typical web environment today, you use a reverse proxy to deliver the
-static content of your application. Only the "expensive" app required HTTP
-requests are forwarded to the application server.
+The following reverse proxies are supported in their currently maintained
+versions:
 
-The following reverse proxies are supported:
-
-- Nginx 1.3+
-- Apache 2.2+
+- Nginx
+- Apache
 
 .. hint::
 
@@ -179,7 +181,7 @@ The following reverse proxies are supported:
 ^^^^^^^^^
 
 `Redis <https://redis.io/>`_ is required for realtime communication via web
-socket. Zammad requires Redis 6 or newer. It gets installed automatically
+socket. Zammad requires Redis 7 or newer. It gets installed automatically
 (package) or is included in the stack (Docker Compose) with a working
 configuration. However, the installation and configuration is out of scope of
 this documentation. Please follow the official guides and ensure to set it up in
@@ -217,19 +219,16 @@ system gets.
    :header: "Zammad", "Elasticsearch"
    :widths: 20, 20
 
-   "7.0+", ">= 7.8, < 10"
-   "5.2 - 6.5", ">= 7.8, < 9"
-   "5.0 - 5.1", ">= 7.8, < 8"
-   "4.0-4.1", ">= 6.5, <= 7.12"
-   "3.4-3.6", ">= 5.5, <= 7.9"
-   "3.3", ">= 2.4, <=7.6"
-   "3.2", ">= 2.4, <=7.5"
-   "3.1", ">= 2.4, <=7.4"
-   "2.0-3.0", ">= 2.4, <=5.6"
-
-An Elasticsearch plugin is required for version 7 or older to index the
-contents of email attachments: ``ingest-attachment``. Starting with
-Elasticsearch 8, it is included by default.
+   "7.2+",        ">= 8.15, < 10"
+   "7.0 - 7.1",   ">= 7.8, < 10"
+   "5.2 - 6.5",   ">= 7.8, < 9"
+   "5.0 - 5.1",   ">= 7.8, < 8"
+   "4.0-4.1",     ">= 6.5, <= 7.12"
+   "3.4-3.6",     ">= 5.5, <= 7.9"
+   "3.3",         ">= 2.4, <=7.6"
+   "3.2",         ">= 2.4, <=7.5"
+   "3.1",         ">= 2.4, <=7.4"
+   "2.0-3.0",     ">= 2.4, <=5.6"
 
 .. hint:: You can override the Elasticsearch dependency for package
    installations (not recommended!)

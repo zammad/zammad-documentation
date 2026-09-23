@@ -20,20 +20,11 @@ commands, as this will fail otherwise.
 Elasticsearch URL
    Set the Elasticsearch server address; adapt it to your scenario.
 
-   Elasticsearch 7:
-
-   .. code-block:: console
-
-      $ zammad run rails r "Setting.set('es_url', 'http://localhost:9200')"
-
-   Elasticsearch 8 and newer:
-
    .. code-block:: console
 
       $ zammad run rails r "Setting.set('es_url', 'https://localhost:9200')"
 
-
-Elasticsearch user and password (Elasticsearch 8 and newer)
+Elasticsearch user and password
    Now you need your password which was shown during the installation.
 
    Set Elasticsearch user:
@@ -51,7 +42,7 @@ Elasticsearch user and password (Elasticsearch 8 and newer)
 
       $ zammad run rails r "Setting.set('es_password', '<password>')"
 
-Add certificate to Zammad (Elasticsearch 8 and newer)
+Add certificate to Zammad
    Add it via **Rails console**:
       In case you are installing a new Zammad and didn't run through the
       getting started wizard already, add the certificate via console:

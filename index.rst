@@ -71,6 +71,7 @@ Zammad System Documentation
    :caption: REST API
 
    /api/intro
+   /api/audit_log
    /api/calendar
    /api/checklist
    /api/generic-cti/index
@@ -102,4 +103,6 @@ Zammad System Documentation
    /appendix/single-sign-on
    /appendix/reporting-tools-thirdparty
    /appendix/redis
+   /appendix/memory-allocator
    /appendix/custom-kb-url
+   /appendix/custom-kb-css

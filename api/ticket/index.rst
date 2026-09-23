@@ -6,6 +6,21 @@ Tickets
    Ticket endpoints depend on group permissions and if the user you're
    using is an **agent**. Because of this tickets may or may not be available.
 
+.. tip::
+
+   **Suppress notifications**
+
+   To create or update a ticket without triggering agent notifications (email and
+   in-app), add the following HTTP header to your request:
+
+   .. code-block:: text
+
+      X-Zammad-Suppress-Notifications: true
+
+   This is useful for automated integrations that manage tickets via
+   webhooks or triggers to avoid notification loops. The header only affects
+   admin and agent accounts and is ignored for customers.
+
 List
 ----
 
