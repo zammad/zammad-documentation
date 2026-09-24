@@ -11,13 +11,6 @@ Email Notification
    channel (Admin → Channels → Email, for customer correspondence),
    which is a separate feature not covered by this page.
 
-.. note::
-
-   ``admin.channel_email`` is a confirmed Zammad permission.
-   ``admin.email_address`` below follows this site's naming convention
-   for admin permissions (e.g. ``admin.sla``) but hasn't been
-   independently confirmed against Zammad's permission list.
-
 List
 ----
 
@@ -26,8 +19,8 @@ Required permission: ``admin.channel_email``
 ``GET``-Request sent: ``/api/v1/channels_email``
 
 This is a combined index: it returns the notification channel(s), the
-ticket mailbox channel(s) (empty here, since none was configured), and
-the local sender addresses in one response. The response below is
+ticket mailbox channel(s) (empty in this example), and the local sender
+addresses in one response. The response below is
 trimmed to the fields relevant to notification email configuration.
 
 Response:
@@ -106,14 +99,12 @@ Required permission: ``admin.channel_email``
 
 .. note::
 
-   🤓 The required payload shape took real trial-and-error to find. A
-   plausible-but-wrong shape, using a top-level key named
-   ``new_configuration`` instead of ``options`` (matching the parameter
-   name of the *internal* Rails service class behind this endpoint,
-   ``Service::System::SetEmailNotificationConfiguration``, rather than
-   the endpoint's own contract), does **not** return a clean
-   validation error. It returns an unhandled ``undefined method 'key?'
-   for nil`` instead. Use ``options`` as shown below.
+   Pass the adapter settings in a top-level ``options`` key as shown
+   below. Other key names, such as ``new_configuration`` (the parameter
+   name of the internal service class
+   ``Service::System::SetEmailNotificationConfiguration``), are not
+   rejected with a validation error. The request fails with an unhandled
+   ``undefined method 'key?' for nil`` error instead.
 
 .. code-block:: json
 
@@ -150,15 +141,12 @@ Response:
 
 .. note::
 
-   ``POST /api/v1/channels_email_probe`` looks like it might offer
-   the same live-test capability, but it doesn't, for this use case
-   it was tested directly, multiple times, with different payload
-   shapes, and it always validates a *full* inbound+outbound mailbox
-   (``EmailHelper::Probe.full``, not an outbound-only probe). Testing
-   outbound-only SMTP settings against it consistently returns
+   ``POST /api/v1/channels_email_probe`` is not an alternative to this
+   endpoint for a notification-only setup. It always validates a *full*
+   inbound and outbound mailbox (``EmailHelper::Probe.full``). Sending
+   outbound-only SMTP settings to it returns
    ``{"result": "failed", "reason": "inbound failed"}``, even when the
-   outbound settings themselves are correct. It is not a usable
-   alternative to this endpoint for a notification-only setup.
+   outbound settings are correct.
 
 Sender Address
 --------------
@@ -169,17 +157,43 @@ managed as an ``EmailAddress`` resource.
 List
 ^^^^
 
-Required permission: ``admin.email_address``
+Required permission: ``admin.channel_email`` **or** ``ticket.agent``
 
 ``GET``-Request sent: ``/api/v1/email_addresses``
 
-Confirmed working. Returns an array of objects, each shaped like the
-single object shown in the *Create* response below.
+Returns an array of objects, each shaped like the single object shown in
+the *Show* response below.
+
+Show
+^^^^
+
+Required permission: ``admin.channel_email`` **or** ``ticket.agent``
+
+``GET``-Request sent: ``/api/v1/email_addresses/{id}``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {
+      "id": 1,
+      "channel_id": 1,
+      "name": "Example Sender",
+      "email": "sender@example.com",
+      "note": null,
+      "active": true,
+      "created_by_id": 3,
+      "updated_by_id": 3,
+      "group_ids": [1]
+   }
 
 Create
 ^^^^^^
 
-Required permission: ``admin.email_address``
+Required permission: ``admin.channel_email``
 
 ``POST``-Request sent: ``/api/v1/email_addresses``
 
@@ -226,13 +240,34 @@ Response:
 Update
 ^^^^^^
 
-Required permission: ``admin.email_address``
+Required permission: ``admin.channel_email``
 
 ``PUT``-Request sent: ``/api/v1/email_addresses/{id}``
 
-Same payload shape as Create above. Confirmed working by re-sending the
-same Create-shaped payload against an already-existing address's
-``id``, it correctly updated the existing record in place (verified
-via the ``id`` and total count staying stable across repeated runs)
-rather than creating a duplicate. Response is the updated record, same
-shape as the Create response above.
+Same payload shape as Create above. Sending the full Create payload to
+an existing address's ``id`` updates that record in place. It doesn't
+create a duplicate. Response is the updated record, same shape as the
+Create response above.
+
+Delete
+^^^^^^
+
+Required permission: ``admin.channel_email``
+
+.. danger:: **This is a permanent removal**
+
+   Please note that removing email addresses cannot be undone.
+
+   Groups that use the deleted address as their sender address
+   (``email_address_id``) are reset to no sender address.
+
+``DELETE``-Request sent: ``/api/v1/email_addresses/{id}``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {}

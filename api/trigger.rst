@@ -55,12 +55,12 @@ Response:
 
 .. note::
 
-   🤓 ``recipient: "article_last_sender"`` emails whoever wrote the
-   triggering article, correct here since the condition requires
-   ``article.sender_id`` to be ``2`` (Customer). If an *agent* wrote the
-   article instead, this would wrongly email the agent; use
-   ``recipient: "ticket_customer"`` (see Create below) to always target
-   the customer regardless of who performed the action.
+   ``recipient: "article_last_sender"`` emails whoever wrote the
+   triggering article. In this example that is always the customer,
+   because the condition requires ``article.sender_id`` to be ``2``
+   (Customer). If an agent wrote the article, the agent would receive the
+   email instead. Use ``recipient: "ticket_customer"`` (see Create below)
+   to always target the customer regardless of who performed the action.
 
 Show
 ----
@@ -142,12 +142,10 @@ Required permission: ``admin.trigger``
 
 .. note::
 
-   Two ``condition`` shapes both work when creating a trigger through
-   this API: a flat dict keyed by field name (as shown in the List
-   example above, matching Zammad's own stock triggers) and the explicit
-   ``{"operator": "AND", "conditions": [...]}`` array form used above.
-   Both were directly confirmed to be accepted and to function correctly
-   when the trigger fires.
+   ``condition`` accepts two shapes: a flat object keyed by field name
+   (as shown in the List example above, matching Zammad's stock
+   triggers) and the explicit
+   ``{"operator": "AND", "conditions": [...]}`` form used above.
 
 .. note::
 
@@ -211,7 +209,26 @@ shape as Show/Create with ``updated_at`` refreshed.
 .. note::
 
    A partial payload works too, e.g. ``{"active": false}`` to toggle
-   just that field. Re-sending the same full Create payload updates the
-   existing record in place rather than creating a duplicate, locate the
-   trigger's id first via ``GET /api/v1/triggers`` (list and filter by
-   ``name``), then ``PUT`` to ``/api/v1/triggers/{id}`` with that id.
+   just that field. To update a trigger by name, look up its ``id`` via
+   ``GET /api/v1/triggers`` first, then send the ``PUT`` request to
+   ``/api/v1/triggers/{id}``.
+
+Delete
+------
+
+Required permission: ``admin.trigger``
+
+.. danger:: **This is a permanent removal**
+
+   Please note that removing triggers cannot be undone.
+
+``DELETE``-Request sent: ``/api/v1/triggers/{id}``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {}

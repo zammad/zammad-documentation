@@ -1555,10 +1555,12 @@ and the second one the new to be values
 .. note::
 
    Provide the full record shape shown above, not just the fields you're
-   changing, ``data_option`` in particular. Zammad is very picky if you
-   leave out required fields, a payload missing ``data_option`` fails with
-   an unhandled ``undefined method 'match?' for nil`` rather than a clean
-   validation error. Please note that changing the object type *after*
+   changing. Zammad is very picky if you leave out required fields: a
+   payload missing ``data_type`` fails with an unhandled
+   ``undefined method 'match?' for nil`` error rather than a clean
+   validation error. Leaving out ``data_option`` is also unsafe: for
+   ``select`` attributes it's replaced with empty defaults, which removes
+   the existing options. Please note that changing the object type *after*
    creation is not possible.
 
 Response:

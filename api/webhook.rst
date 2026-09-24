@@ -48,9 +48,9 @@ Response:
 
 .. note::
 
-   🤓 ``signature_token`` is always masked as ``**********`` on read once
-   it's set, the API never returns the real secret back to you after
-   creation. An empty/unset token is returned as an empty string instead.
+   ``signature_token`` is always masked as ``**********`` on read once
+   it's set. The API never returns the stored secret after creation. An
+   empty/unset token is returned as an empty string instead.
 
 Show
 ----
@@ -153,3 +153,28 @@ Required permission: ``admin.webhook``
 
 Same payload shape as Create above. Response is the updated record, same
 shape as Show/Create with ``updated_at`` refreshed.
+
+Delete
+------
+
+Required permission: ``admin.webhook``
+
+.. danger:: **This is a permanent removal**
+
+   Please note that removing webhooks cannot be undone.
+
+   A webhook that is still referenced by the ``perform`` action of another
+   object (e.g. a :doc:`Trigger </api/trigger>`) can't be deleted. The API
+   responds with ``422 Unprocessable Entity`` and lists the referencing
+   objects. Remove the reference first.
+
+``DELETE``-Request sent: ``/api/v1/webhooks/{id}``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {}

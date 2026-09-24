@@ -55,10 +55,36 @@ Response:
 
 .. note::
 
-   Only ``id`` and ``name`` are shown here, see Create below for the
-   full field set a single profile returns (``condition``, ``active``,
-   ``role_ids``, etc.). Entry ``1`` (``-all-``) is Zammad's own built-in
-   stock profile; the rest were created by this project.
+   Only ``id`` and ``name`` are shown here. See Show below for the full
+   field set of a single profile (``condition``, ``active``,
+   ``role_ids``, etc.). Entry ``1`` (``-all-``) is Zammad's built-in
+   default profile.
+
+Show
+----
+
+Required permission: ``admin.report_profile``
+
+``GET``-Request sent: ``/api/v1/report_profiles/{id}``
+
+Response:
+
+.. code-block:: json
+   :force:
+
+   # HTTP-Code 200 Ok
+
+   {
+      "id": 4,
+      "name": "Example profile",
+      "condition": {
+         "ticket.state_id": {"operator": "is", "value": ["1", "2"]}
+      },
+      "active": true,
+      "role_ids": [1, 2],
+      "created_by_id": 3,
+      "updated_by_id": 3
+   }
 
 Create
 ------
@@ -81,11 +107,9 @@ Required permission: ``admin.report_profile``
 
 .. note::
 
-   Resolve ``role_ids`` by name via a ``GET`` to
-   :doc:`/api/v1/roles </api/role>` first, rather than assuming ids,
-   they aren't guaranteed stable across instances. In this example,
-   ``[1, 2]`` was resolved to the Admin and Agent roles on the tested
-   instance.
+   Role ids aren't guaranteed to be the same across instances. Look up
+   the ids of the roles you need via :doc:`/api/v1/roles </api/role>`
+   first instead of hard-coding them.
 
 Response:
 
@@ -109,7 +133,7 @@ Response:
 
 .. note::
 
-   🤓 Unlike Core Workflow, Report Profile's ``condition`` **does**
+   Unlike Core Workflow, Report Profile's ``condition`` **does**
    validate that referenced fields are real, fully-migrated ticket
    fields. Referencing a custom field that exists but hasn't finished
    its schema migration yet (``to_create``/``to_migrate`` still ``true``
@@ -140,18 +164,15 @@ shape as Create's response.
 
 .. note::
 
-   Verified by re-sending the same Create-shaped payload to an
-   already-existing profile's ``id`` multiple times, each re-send
-   updated the existing record in place (the profile's ``id`` and the
-   overall list count stayed stable across reruns) rather than creating
-   a duplicate.
+   Sending the full Create payload to an existing profile's ``id``
+   updates that record in place. It doesn't create a duplicate.
 
 Delete
 ------
 
 Required permission: ``admin.report_profile``
 
-.. danger:: **⚠ This is a permanent removal**
+.. danger:: **This is a permanent removal**
 
    Please note that removing report profiles cannot be undone.
 
@@ -165,13 +186,3 @@ Response:
    # HTTP-Code 200 Ok
 
    {}
-
-.. note::
-
-   The exact response body wasn't specifically captured for this
-   resource, the deleted profile simply stopped appearing in a
-   subsequent ``GET /api/v1/report_profiles`` list. The empty ``{}``
-   body shown above follows Zammad's consistent convention for this
-   action, as seen on other resources that support delete (Object
-   Manager Attribute, and this site's own :doc:`User </api/user>`
-   delete example).
