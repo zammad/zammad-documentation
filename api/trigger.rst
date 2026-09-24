@@ -77,34 +77,32 @@ Response:
    # HTTP-Code 200 Ok
 
    {
-      "id": 13,
-      "name": "Notify customer on public note",
+      "id": 4,
+      "name": "Notify customer on auto-close",
       "condition": {
          "operator": "AND",
          "conditions": [
-            {"name": "ticket.action", "operator": "is", "value": "update"},
-            {"name": "article.type_id", "operator": "is", "value": 10},
-            {"name": "article.internal", "operator": "is", "value": false}
+            {"name": "ticket.state_id", "operator": "is", "value": [4]}
          ]
       },
       "perform": {
          "notification.email": {
             "recipient": "ticket_customer",
-            "subject": "Update on your ticket (#{ticket.title})",
-            "body": "<div>There has been a follow-up on your ticket <b>(#{config.ticket_hook}#{ticket.number})</b>.</div><br/><div>To view the details, click the following link:<a href=\"#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}\">#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}</a></div><br/><div>Your #{config.product_name} Team</div>"
+            "subject": "Your ticket #{ticket.number} has been closed",
+            "body": "<div>Your ticket <b>#{ticket.number}</b> has been closed. Thank you for contacting us.</div>"
          }
       },
       "disable_notification": false,
       "localization": null,
       "timezone": null,
-      "note": "Notifies the customer by email whenever an agent adds a public note.",
+      "note": "Sends a confirmation email when a ticket is closed.",
       "activator": "action",
       "execution_condition_mode": "selective",
-      "active": false,
+      "active": true,
       "updated_by_id": 3,
       "created_by_id": 3,
-      "created_at": "2026-09-18T00:00:00.000Z",
-      "updated_at": "2026-09-18T00:00:00.000Z"
+      "created_at": "2026-09-24T12:31:52.822Z",
+      "updated_at": "2026-09-24T12:31:52.822Z"
    }
 
 Create
@@ -117,27 +115,25 @@ Required permission: ``admin.trigger``
 .. code-block:: json
 
    {
-      "name": "Notify customer on public note",
+      "name": "Notify customer on auto-close",
       "condition": {
          "operator": "AND",
          "conditions": [
-            {"name": "ticket.action", "operator": "is", "value": "update"},
-            {"name": "article.type_id", "operator": "is", "value": 10},
-            {"name": "article.internal", "operator": "is", "value": false}
+            {"name": "ticket.state_id", "operator": "is", "value": [4]}
          ]
       },
       "perform": {
          "notification.email": {
             "recipient": "ticket_customer",
-            "subject": "Update on your ticket (#{ticket.title})",
-            "body": "<div>There has been a follow-up on your ticket <b>(#{config.ticket_hook}#{ticket.number})</b>.</div><br/><div>To view the details, click the following link:<a href=\"#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}\">#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}</a></div><br/><div>Your #{config.product_name} Team</div>"
+            "subject": "Your ticket #{ticket.number} has been closed",
+            "body": "<div>Your ticket <b>#{ticket.number}</b> has been closed. Thank you for contacting us.</div>"
          }
       },
       "disable_notification": false,
       "activator": "action",
       "execution_condition_mode": "selective",
-      "active": false,
-      "note": "Notifies the customer by email whenever an agent adds a public note."
+      "active": true,
+      "note": "Sends a confirmation email when a ticket is closed."
    }
 
 .. note::
@@ -147,16 +143,10 @@ Required permission: ``admin.trigger``
    triggers) and the explicit
    ``{"operator": "AND", "conditions": [...]}`` form used above.
 
-.. note::
-
-   ``article.type_id: 10`` is Zammad's internal id for the "note"
-   article type.
-
-In this example, an agent adding a public note to a ticket results in
-the ticket's actual customer receiving the email, not the agent who
-wrote the note, because ``recipient: "ticket_customer"`` always
-resolves to the customer regardless of who performed the triggering
-action.
+In this example, closing a ticket results in the ticket's customer
+receiving a confirmation email, because ``recipient:
+"ticket_customer"`` always resolves to the customer regardless of who
+performed the closing action.
 
 Response:
 
@@ -166,34 +156,32 @@ Response:
    # HTTP-Code 201 Created
 
    {
-      "id": 13,
-      "name": "Notify customer on public note",
+      "id": 4,
+      "name": "Notify customer on auto-close",
       "condition": {
          "operator": "AND",
          "conditions": [
-            {"name": "ticket.action", "operator": "is", "value": "update"},
-            {"name": "article.type_id", "operator": "is", "value": 10},
-            {"name": "article.internal", "operator": "is", "value": false}
+            {"name": "ticket.state_id", "operator": "is", "value": [4]}
          ]
       },
       "perform": {
          "notification.email": {
             "recipient": "ticket_customer",
-            "subject": "Update on your ticket (#{ticket.title})",
-            "body": "<div>There has been a follow-up on your ticket <b>(#{config.ticket_hook}#{ticket.number})</b>.</div><br/><div>To view the details, click the following link:<a href=\"#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}\">#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}</a></div><br/><div>Your #{config.product_name} Team</div>"
+            "subject": "Your ticket #{ticket.number} has been closed",
+            "body": "<div>Your ticket <b>#{ticket.number}</b> has been closed. Thank you for contacting us.</div>"
          }
       },
       "disable_notification": false,
       "localization": null,
       "timezone": null,
-      "note": "Notifies the customer by email whenever an agent adds a public note.",
+      "note": "Sends a confirmation email when a ticket is closed.",
       "activator": "action",
       "execution_condition_mode": "selective",
-      "active": false,
+      "active": true,
       "updated_by_id": 3,
       "created_by_id": 3,
-      "created_at": "2026-09-18T00:00:00.000Z",
-      "updated_at": "2026-09-18T00:00:00.000Z"
+      "created_at": "2026-09-24T12:31:52.822Z",
+      "updated_at": "2026-09-24T12:31:52.822Z"
    }
 
 Update

@@ -44,14 +44,12 @@ Response:
                   "outbound": {
                      "adapter": "smtp",
                      "options": {
-                        "host": "mailpit",
-                        "port": 1025,
-                        "ssl": false,
-                        "ssl_verify": false,
+                        "host": "smtp.example.com",
+                        "port": 25,
+                        "ssl": true,
                         "user": "",
                         "password": "",
-                        "domain": "your-zammad-host",
-                        "enable_starttls_auto": true
+                        "domain": "zammad.example.com"
                      }
                   }
                },
@@ -72,13 +70,12 @@ Response:
          "email": {
             "inbound": {"imap": "IMAP", "pop3": "POP3"},
             "outbound": {
-               "smtp": "SMTP - configure your own outgoing SMTP settings",
-               "sendmail": "Local MTA (Sendmail/Postfix/Exim/…) - use server setup"
+               "smtp": "SMTP - configure your own outgoing SMTP settings"
             }
          }
       },
       "config": {
-         "notification_sender": "\"Zammad Helpdesk\" <noreply@your-zammad-host>"
+         "notification_sender": "\"Zammad Helpdesk\" <noreply@zammad.example.com>"
       }
    }
 
@@ -111,10 +108,9 @@ Required permission: ``admin.channel_email``
    {
       "adapter": "smtp",
       "options": {
-         "host": "mailpit",
-         "port": 1025,
-         "ssl": false,
-         "ssl_verify": false,
+         "host": "smtp.example.com",
+         "port": 25,
+         "ssl": true,
          "user": "",
          "password": ""
       }
@@ -181,13 +177,16 @@ Response:
    {
       "id": 1,
       "channel_id": 1,
-      "name": "Example Sender",
-      "email": "sender@example.com",
-      "note": null,
+      "name": "Zammad Support",
+      "email": "zammad@example.com",
       "active": true,
-      "created_by_id": 3,
+      "note": "Default outbound sender address.",
+      "preferences": null,
       "updated_by_id": 3,
-      "group_ids": [1]
+      "created_by_id": 3,
+      "created_at": "2026-09-24T12:32:20.671Z",
+      "updated_at": "2026-09-24T12:32:20.671Z",
+      "group_ids": []
    }
 
 Create
@@ -205,10 +204,10 @@ Required permission: ``admin.channel_email``
 .. code-block:: json
 
    {
-      "email": "zammad@local.test",
-      "name": "Local Zammad",
+      "email": "zammad@example.com",
+      "name": "Zammad Support",
       "channel_id": 1,
-      "note": "Local-only sender captured by Mailpit."
+      "note": "Default outbound sender address."
    }
 
 Response:
@@ -221,13 +220,16 @@ Response:
    {
       "id": 1,
       "channel_id": 1,
-      "name": "Local Zammad",
-      "email": "zammad@local.test",
-      "note": "Local-only sender captured by Mailpit.",
+      "name": "Zammad Support",
+      "email": "zammad@example.com",
       "active": true,
-      "created_by_id": 3,
+      "note": "Default outbound sender address.",
+      "preferences": null,
       "updated_by_id": 3,
-      "group_ids": [1, 2, 11]
+      "created_by_id": 3,
+      "created_at": "2026-09-24T12:32:20.671Z",
+      "updated_at": "2026-09-24T12:32:20.671Z",
+      "group_ids": []
    }
 
 .. note::

@@ -34,8 +34,9 @@ Response:
    [
       {
          "id": 11,
-         "name": "Ticket eligibility – Incident",
+         "name": "Restrict priority for incidents",
          "object": "Ticket",
+         "preferences": {},
          "condition_saved": {},
          "condition_selected": {
             "ticket.type": {
@@ -44,15 +45,19 @@ Response:
             }
          },
          "perform": {
-            "ticket.requester_category": {
+            "ticket.state_id": {
                "operator": "set_fixed_to",
-               "set_fixed_to": ["internal", "partner", "customer"]
+               "set_fixed_to": ["new", "open"]
             }
          },
          "active": true,
          "stop_after_match": false,
          "changeable": true,
-         "priority": 100
+         "priority": 100,
+         "updated_by_id": 3,
+         "created_by_id": 3,
+         "created_at": "2026-09-24T12:32:01.736Z",
+         "updated_at": "2026-09-24T12:32:01.736Z"
       }
    ]
 
@@ -79,8 +84,9 @@ Response:
 
    {
       "id": 11,
-      "name": "Ticket eligibility – Incident",
+      "name": "Restrict priority for incidents",
       "object": "Ticket",
+      "preferences": {},
       "condition_saved": {},
       "condition_selected": {
          "ticket.type": {
@@ -89,15 +95,19 @@ Response:
          }
       },
       "perform": {
-         "ticket.requester_category": {
+         "ticket.state_id": {
             "operator": "set_fixed_to",
-            "set_fixed_to": ["internal", "partner", "customer"]
+            "set_fixed_to": ["new", "open"]
          }
       },
       "active": true,
       "stop_after_match": false,
       "changeable": true,
-      "priority": 100
+      "priority": 100,
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "created_at": "2026-09-24T12:32:01.736Z",
+      "updated_at": "2026-09-24T12:32:01.736Z"
    }
 
 Create
@@ -110,7 +120,7 @@ Required permission: ``admin.core_workflow``
 .. code-block:: json
 
    {
-      "name": "Ticket eligibility – Incident",
+      "name": "Restrict priority for incidents",
       "object": "Ticket",
       "condition_saved": {},
       "condition_selected": {
@@ -120,9 +130,9 @@ Required permission: ``admin.core_workflow``
          }
       },
       "perform": {
-         "ticket.requester_category": {
+         "ticket.state_id": {
             "operator": "set_fixed_to",
-            "set_fixed_to": ["internal", "partner", "customer"]
+            "set_fixed_to": ["new", "open"]
          }
       },
       "active": true,
@@ -140,8 +150,9 @@ Response:
 
    {
       "id": 11,
-      "name": "Ticket eligibility – Incident",
+      "name": "Restrict priority for incidents",
       "object": "Ticket",
+      "preferences": {},
       "condition_saved": {},
       "condition_selected": {
          "ticket.type": {
@@ -150,15 +161,19 @@ Response:
          }
       },
       "perform": {
-         "ticket.requester_category": {
+         "ticket.state_id": {
             "operator": "set_fixed_to",
-            "set_fixed_to": ["internal", "partner", "customer"]
+            "set_fixed_to": ["new", "open"]
          }
       },
       "active": true,
       "stop_after_match": false,
       "changeable": true,
-      "priority": 100
+      "priority": 100,
+      "updated_by_id": 3,
+      "created_by_id": 3,
+      "created_at": "2026-09-24T12:32:01.736Z",
+      "updated_at": "2026-09-24T12:32:01.736Z"
    }
 
 .. note::

@@ -25,15 +25,15 @@ Response:
    [
       {
          "id": 1,
-         "name": "Local Operaton ticket lifecycle",
+         "name": "Example webhook",
          "endpoint": "https://example.com/webhooks/incoming",
          "http_method": "post",
          "signature_token": "**********",
          "ssl_verify": true,
-         "basic_auth_username": null,
+         "basic_auth_username": "user",
          "basic_auth_password": "**********",
-         "bearer_token": "**********",
-         "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
+         "bearer_token": null,
+         "note": "Notifies an external system about ticket updates.",
          "pre_defined_webhook_type": null,
          "customized_payload": false,
          "custom_payload": null,
@@ -41,16 +41,16 @@ Response:
          "active": true,
          "updated_by_id": 3,
          "created_by_id": 3,
-         "created_at": "2026-09-07T07:31:30.066Z",
-         "updated_at": "2026-09-07T07:51:40.855Z"
+         "created_at": "2026-09-24T12:31:34.578Z",
+         "updated_at": "2026-09-24T12:31:44.512Z"
       }
    ]
 
 .. note::
 
    ``signature_token``, ``basic_auth_password`` and ``bearer_token`` are
-   always returned as ``**********``, whether they're set or not. The API
-   never returns the stored secrets.
+   returned as ``**********`` once they're set. The API never returns the
+   stored secrets. Fields that aren't set are returned as ``null``.
 
 Show
 ----
@@ -68,15 +68,15 @@ Response:
 
    {
       "id": 1,
-      "name": "Local Operaton ticket lifecycle",
+      "name": "Example webhook",
       "endpoint": "https://example.com/webhooks/incoming",
       "http_method": "post",
       "signature_token": "**********",
       "ssl_verify": true,
-      "basic_auth_username": null,
+      "basic_auth_username": "user",
       "basic_auth_password": "**********",
-      "bearer_token": "**********",
-      "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
+      "bearer_token": null,
+      "note": "Notifies an external system about ticket updates.",
       "pre_defined_webhook_type": null,
       "customized_payload": false,
       "custom_payload": null,
@@ -84,8 +84,8 @@ Response:
       "active": true,
       "updated_by_id": 3,
       "created_by_id": 3,
-      "created_at": "2026-09-07T07:31:30.066Z",
-      "updated_at": "2026-09-07T07:51:40.855Z"
+      "created_at": "2026-09-24T12:31:34.578Z",
+      "updated_at": "2026-09-24T12:31:44.512Z"
    }
 
 Create
@@ -98,13 +98,13 @@ Required permission: ``admin.webhook``
 .. code-block:: json
 
    {
-      "name": "Local Operaton ticket lifecycle",
+      "name": "Example webhook",
       "endpoint": "https://example.com/webhooks/incoming",
       "http_method": "post",
       "signature_token": "your-signature-token",
       "ssl_verify": true,
       "customized_payload": false,
-      "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
+      "note": "Notifies an external system about ticket updates.",
       "active": true
    }
 
@@ -124,15 +124,15 @@ Response:
 
    {
       "id": 1,
-      "name": "Local Operaton ticket lifecycle",
+      "name": "Example webhook",
       "endpoint": "https://example.com/webhooks/incoming",
       "http_method": "post",
       "signature_token": "**********",
       "ssl_verify": true,
       "basic_auth_username": null,
-      "basic_auth_password": "**********",
-      "bearer_token": "**********",
-      "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
+      "basic_auth_password": null,
+      "bearer_token": null,
+      "note": "Notifies an external system about ticket updates.",
       "pre_defined_webhook_type": null,
       "customized_payload": false,
       "custom_payload": null,
@@ -140,8 +140,8 @@ Response:
       "active": true,
       "updated_by_id": 3,
       "created_by_id": 3,
-      "created_at": "2026-09-07T07:31:30.066Z",
-      "updated_at": "2026-09-07T07:31:30.066Z"
+      "created_at": "2026-09-24T12:31:34.578Z",
+      "updated_at": "2026-09-24T12:31:34.578Z"
    }
 
 Update

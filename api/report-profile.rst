@@ -32,24 +32,8 @@ Response:
          "name": "-all-"
       },
       {
-         "id": 4,
-         "name": "Customer onboarding response (≤1h)"
-      },
-      {
-         "id": 5,
-         "name": "Partner onboarding consulting (≤4h)"
-      },
-      {
-         "id": 6,
-         "name": "HR requests within committed window (≥95%)"
-      },
-      {
-         "id": 7,
-         "name": "IT requests within committed window (≥90%)"
-      },
-      {
-         "id": 8,
-         "name": "Product requests delivered as planned (95%)"
+         "id": 2,
+         "name": "Open tickets (new or open)"
       }
    ]
 
@@ -75,15 +59,23 @@ Response:
    # HTTP-Code 200 Ok
 
    {
-      "id": 4,
-      "name": "Example profile",
+      "id": 2,
+      "name": "Open tickets (new or open)",
       "condition": {
-         "ticket.state_id": {"operator": "is", "value": ["1", "2"]}
+         "ticket.state_id": {
+            "operator": "is",
+            "value": ["1", "2"]
+         }
       },
       "active": true,
-      "role_ids": [1, 2],
+      "updated_by_id": 3,
       "created_by_id": 3,
-      "updated_by_id": 3
+      "created_at": "2026-09-24T12:32:01.918Z",
+      "updated_at": "2026-09-24T12:32:01.905Z",
+      "role_ids": [
+         2,
+         1
+      ]
    }
 
 Create
@@ -96,10 +88,9 @@ Required permission: ``admin.report_profile``
 .. code-block:: json
 
    {
-      "name": "Customer onboarding response (≤1h)",
+      "name": "Open tickets (new or open)",
       "condition": {
-         "ticket.type": {"operator": "is", "value": ["Onboarding support"]},
-         "ticket.requester_category": {"operator": "is", "value": ["customer"]}
+         "ticket.state_id": {"operator": "is", "value": ["1", "2"]}
       },
       "active": true,
       "role_ids": [1, 2]
@@ -119,16 +110,20 @@ Response:
    # HTTP-Code 201 Created
 
    {
-      "id": 4,
-      "name": "Customer onboarding response (≤1h)",
+      "id": 2,
+      "name": "Open tickets (new or open)",
       "condition": {
-         "ticket.type": {"operator": "is", "value": ["Onboarding support"]},
-         "ticket.requester_category": {"operator": "is", "value": ["customer"]}
+         "ticket.state_id": {"operator": "is", "value": ["1", "2"]}
       },
       "active": true,
-      "role_ids": [1, 2],
+      "updated_by_id": 3,
       "created_by_id": 3,
-      "updated_by_id": 3
+      "created_at": "2026-09-24T12:32:01.918Z",
+      "updated_at": "2026-09-24T12:32:01.905Z",
+      "role_ids": [
+         2,
+         1
+      ]
    }
 
 .. note::
