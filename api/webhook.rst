@@ -31,8 +31,8 @@ Response:
          "signature_token": "**********",
          "ssl_verify": true,
          "basic_auth_username": null,
-         "basic_auth_password": null,
-         "bearer_token": null,
+         "basic_auth_password": "**********",
+         "bearer_token": "**********",
          "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
          "pre_defined_webhook_type": null,
          "customized_payload": false,
@@ -48,9 +48,9 @@ Response:
 
 .. note::
 
-   ``signature_token`` is always masked as ``**********`` on read once
-   it's set. The API never returns the stored secret after creation. An
-   empty/unset token is returned as an empty string instead.
+   ``signature_token``, ``basic_auth_password`` and ``bearer_token`` are
+   always returned as ``**********``, whether they're set or not. The API
+   never returns the stored secrets.
 
 Show
 ----
@@ -74,8 +74,8 @@ Response:
       "signature_token": "**********",
       "ssl_verify": true,
       "basic_auth_username": null,
-      "basic_auth_password": null,
-      "bearer_token": null,
+      "basic_auth_password": "**********",
+      "bearer_token": "**********",
       "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
       "pre_defined_webhook_type": null,
       "customized_payload": false,
@@ -130,8 +130,8 @@ Response:
       "signature_token": "**********",
       "ssl_verify": true,
       "basic_auth_username": null,
-      "basic_auth_password": null,
-      "bearer_token": null,
+      "basic_auth_password": "**********",
+      "bearer_token": "**********",
       "note": "Correlates local Zammad lifecycle events to one Operaton process instance per ticket.",
       "pre_defined_webhook_type": null,
       "customized_payload": false,
