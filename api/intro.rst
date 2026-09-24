@@ -34,9 +34,9 @@ Authentication
 Zammad supports three different authentication methods for its API.
 
 HTTP Basic Authentication (username/password)
-   | The username / password must be provided as HTTP header in the HTTP call.
-   | This authentication method can be disabled and may not be available in your
-     system.
+   The username / password must be provided as HTTP header in the HTTP call.
+   This authentication method can be disabled and may not be available in your
+   system.
 
    .. code-block:: console
 
@@ -48,22 +48,31 @@ HTTP Basic Authentication (username/password)
       Use access tokens when ever possible!
 
 HTTP Token Authentication (access token)
-   | The access token must be provided as HTTP header in the HTTP call.
-   | Each user can create several access tokens in their user preferences.
-   | This authentication method can be disabled and may not be available in your
-     system.
+   The access token must be provided as HTTP header in the HTTP call.
+   Each user can create several access tokens in their user preferences.
+   This authentication method can be disabled and may not be available in your
+   system.
+
+   Access tokens can be sent with two header formats. Both work
+   interchangeably for the same token.
 
    .. code-block:: console
 
       $ curl -H "Authorization: Token token={your_token}" https://{fqdn}/{endpoint}
 
-OAuth2 (token access)
-   | The token must be provided as HTTP header in your calls.
-   | This allows 3rd party applications to authenticate against Zammad.
+   Or alternatively:
 
    .. code-block:: console
 
       $ curl -H "Authorization: Bearer {your_token}" https://{fqdn}/{endpoint}
+
+OAuth2 (token access)
+   The token must be provided as HTTP header in your calls.
+   This allows 3rd party applications to authenticate against Zammad.
+
+   .. code-block:: console
+
+      $ curl -H "Authorization: Bearer ***" https://{fqdn}/{endpoint}
 
 Endpoints and Example Data
 --------------------------
