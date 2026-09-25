@@ -19,7 +19,7 @@ Required permission: ``admin.channel_email``
 ``GET``-Request sent: ``/api/v1/channels_email``
 
 This is a combined index: it returns the notification channel(s), the
-ticket mailbox channel(s) (empty in this example), and the local sender
+ticket mailbox channel(s) (empty in this example) and the local sender
 addresses in one response. The response below is
 trimmed to the fields relevant to notification email configuration.
 
