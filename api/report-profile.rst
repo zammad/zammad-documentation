@@ -3,14 +3,17 @@ Report Profile
 
 .. note::
 
-   A Report Profile is a saved, reusable filter/condition for
-   Zammad's Reporting module, it isn't an automation and doesn't do
+   A report profile is a saved, reusable filter/condition for
+   Zammad's reporting module, it isn't an automation and doesn't do
    anything by itself. It's a named condition that shows up as a
-   selectable view when generating reports in Admin → Reports, scoped
-   to whichever roles (``role_ids``) can see it. Compare to
-   :doc:`Core Workflow </api/core-workflow>`, which uses a
+   selectable view when generating reports with Zammad's reporting
+   feature, scoped to whichever roles (``role_ids``) can see it.
+   Compare to :doc:`Core Workflow </api/core-workflow>`, which uses a
    similarly-shaped condition object but does not validate referenced
    fields.
+
+   See the :admin-docs:`report profiles admin documentation </manage/report-profiles.html>`
+   for the UI-side picture of this feature.
 
 List
 ----
@@ -99,7 +102,7 @@ Required permission: ``admin.report_profile``
 .. note::
 
    Role ids aren't guaranteed to be the same across instances. Look up
-   the ids of the roles you need via :doc:`/api/v1/roles </api/role>`
+   the ids of the roles you need via the :doc:`roles API </api/role>`
    first instead of hard-coding them.
 
 Response:
@@ -128,7 +131,7 @@ Response:
 
 .. note::
 
-   Unlike Core Workflow, Report Profile's ``condition`` **does**
+   Unlike core workflows, a report profile's ``condition`` *does*
    validate that referenced fields are real, fully-migrated ticket
    fields. Referencing a custom field that exists but hasn't finished
    its schema migration yet (``to_create``/``to_migrate`` still ``true``

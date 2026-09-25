@@ -3,11 +3,11 @@ Trigger
 
 .. note::
 
-   Triggers can ``perform`` a ``notification.webhook`` action that
-   references a :doc:`Webhook </api/webhook>` by id
+   Triggers can run a ``notification.webhook`` action that references a
+   :doc:`Webhook </api/webhook>` by id
    (``{"notification.webhook": {"webhook_id": <id>}}``) instead of, or
    alongside, ``notification.email``, create the webhook first, then
-   point the trigger's ``perform`` at its ``id``.
+   point the trigger's perform action at its ``id``.
 
 List
 ----

@@ -3,11 +3,11 @@ Core Workflow
 
 .. note::
 
-   Core Workflows are different from Triggers: they control the ticket
+   Core Workflows are different from triggers: they control the ticket
    create/edit form while someone fills it out, for example by restricting
    which values are selectable in another field. The form sends its current
    values to Zammad, which evaluates the workflows and returns the resulting
-   field changes. Unlike Triggers, they don't act on existing tickets in the
+   field changes. Unlike triggers, they don't act on existing tickets in the
    background.
 
    See the :admin-docs:`Core Workflows admin documentation </system/core-workflows.html>`
@@ -178,7 +178,7 @@ Response:
 
 .. note::
 
-   Core Workflow does **not** validate that fields referenced in
+   Core Workflow does *not* validate that fields referenced in
    ``condition_selected`` or ``perform`` exist. A workflow that references
    a field that doesn't exist yet is saved without error. It has no
    visible effect in the ticket form until the referenced field exists.

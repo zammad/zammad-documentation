@@ -3,7 +3,7 @@ Email Notification
 
 .. note::
 
-   This page covers the system's outbound **notification** email
+   This page covers the system's outbound *notification* email
    configuration: the SMTP (or local MTA) settings Zammad uses to send
    its own internal notifications, like "you were assigned a ticket",
    plus the local sender identity (``EmailAddress``) that gets attached
