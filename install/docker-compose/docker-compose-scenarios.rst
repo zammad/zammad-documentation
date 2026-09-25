@@ -356,4 +356,4 @@ How you do this depends on what you want to achieve:
    override file, see the :ref:`general usage <general-usage-scenarios>`
    section above. Docker Compose resolves relative paths against the
    directory containing the main compose file, including paths used by
-   custom scenario files in local/.
+   custom scenario files in ``local/``.
