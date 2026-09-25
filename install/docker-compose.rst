@@ -123,15 +123,19 @@ Both scenarios are covered in the
 Customizing the Zammad Stack
 ----------------------------
 
-The Zammad stack can be customized by loading additional scenario files for
-common use cases. For example, you can deploy the stack with an included Nginx
-Proxy Manager (NPM) or with disabled PostgreSQL or Elasticsearch services, in case
-you already have these services running.
+The Zammad Docker Compose stack is ready to run with its default settings. You
+can adapt it to your environment by loading predefined scenario files, adjusting
+environment variables and adding files specific to your instance.
 
-Please see the :doc:`Docker Compose scenarios section <docker-compose/docker-compose-scenarios>`.
+See the :doc:`Docker Compose scenarios section
+<docker-compose/docker-compose-scenarios>` for supported use cases and detailed
+instructions on loading scenario files. To change individual settings, use the
+:doc:`Docker-specific environment variables
+</appendix/environment-variables>`.
 
-To adjust the stack and settings, use
-:doc:`Docker specific environment variables </appendix/environment-variables>`.
+If you deployed the stack with Docker Compose by cloning the repository, use
+its ``local/`` directory for files that belong only to your instance. See
+:ref:`customize the stack locally <customize-stack-locally>` for details.
 
 .. toctree::
    :hidden:
