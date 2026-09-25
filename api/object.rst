@@ -1554,9 +1554,12 @@ and the second one the new to be values
 
 .. note::
 
-   Ensure to provide ``data_option``. Zammad is very picky if you leave out
-   this attribute. Please note that changing the object type *after* creation
-   is not possible.
+   Provide the full record shape shown above, not just the fields you're
+   changing. Zammad is very picky if you leave out required fields: a
+   payload missing ``data_type`` fails with an unhandled
+   ``undefined method 'match?' for nil`` error rather than a clean
+   validation error. Please note that changing the object type *after*
+   creation is not possible.
 
 Response:
 
