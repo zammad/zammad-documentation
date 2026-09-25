@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
       with:
         fetch-depth: 50
 
@@ -54,7 +54,7 @@ jobs:
         sudo apt-get -q -y install ${{ inputs.system_dependencies }}
 
     - name: Setup Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ inputs.python_version }}
 
@@ -136,7 +136,7 @@ jobs:
 
     - name: Upload html Artifact
       id: html
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: html-${{ steps.sha.outputs.sha_short }}
         path: ${{ inputs.docs_path }}/_build/html/
