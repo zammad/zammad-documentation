@@ -1067,6 +1067,12 @@ Required permission: ``admin.user`` **or** ``ticket.agent``
    Agents can't set user passwords, roles or group permission. Instead
    Zammad will apply to :admin-docs:`default sign up role </manage/roles/index.html#role-details>`.
 
+.. note:: **group_ids only apply to agents**
+
+   Changes to ``group_ids`` are ignored if the target user doesn't have
+   the ``ticket.agent`` permission (e.g. via the Agent role). The request
+   still returns ``200 Ok``, but the user's group assignments don't change.
+
 ``PUT``-Request sent: ``/api/v1/users/{id}``
 
 .. code-block:: json

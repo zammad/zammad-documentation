@@ -74,17 +74,22 @@ Zammad System Documentation
    /api/audit_log
    /api/calendar
    /api/checklist
+   /api/core-workflow
+   /api/email-notification
    /api/generic-cti/index
    /api/group
    /api/knowledgebase
    /api/notification
    /api/object
    /api/organization
+   /api/report-profile
    /api/role
    /api/sla
    /api/ticket
+   /api/trigger
    /api/user
    /api/user-access-token
+   /api/webhook
 
 
 .. toctree::
