@@ -111,20 +111,35 @@ put addon code into a new stock image. Do not mount an old application directory
 over the new image.
 
 To update an addon, replace its staged file with the new package version and
-rebuild using a new image tag. Staged packages with the same or an older version
-than the installed package are skipped; this workflow does not downgrade a
-package. Test compatibility and migrations before updating production.
+rebuild using a new image tag. Never stage a version older than the installed
+package. Init skips registration when the installed version is the same or
+newer, but the image build still unpacks the staged code. An older package would
+therefore combine older code with newer database state. Test compatibility and
+migrations before updating production.
 
 Remove an Addon
 ---------------
 
 Keep the installed version of the package for the removal build. Remove it from
 ``packages/install/`` and place it in ``packages/uninstall/`` instead. Include
-any dependent packages that must also be removed. Build a new image with a new
-tag and repeat the deployment steps. The init service uninstalls staged packages
-in reverse dependency order and executes their down migrations.
+any dependent packages that must also be removed. Build a removal image with a
+new tag and select it in ``.env``. Take a backup, stop the application services
+as shown above, and run ``docker compose run --rm zammad-init``. The init service
+uninstalls staged packages in reverse dependency order and executes their down
+migrations.
 
-Verify that the package is no longer registered and that removal completed
-successfully. In a subsequent image build, omit the removed package from both
-staging directories. Simply dropping its files from the image leaves its
-database registration and migration state behind.
+Keep the application services stopped: the removal image still contains the
+outgoing addon code so its down migrations can run. Verify that removal completed
+successfully and the package is no longer registered:
+
+.. code-block:: console
+
+   $ docker compose run --rm zammad-railsserver bundle exec rails r 'pp Package.all.pluck(:name, :version)'
+
+Then build a clean image from a fresh source checkout of the same Zammad release.
+Include any remaining addons in ``packages/install/``, and omit removed packages
+from both staging directories. A fresh checkout prevents unpacked addon files
+from a previous build being copied into the clean image. Select the clean image's
+new tag in ``.env``, run init again, and only then run ``docker compose up -d``
+to restart the application services. Simply dropping package files before their
+down migrations leaves database registration and migration state behind.
