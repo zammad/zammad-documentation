@@ -170,6 +170,11 @@ using `Zammad hosting`_ for your and your customers' safety.
 
    .. tab:: Docker Installation
 
+      If you use addon packages in a custom image, rebuild that image for the
+      target Zammad release before updating the stack. Follow
+      :doc:`/install/docker-compose/addon-packages` for package compatibility,
+      image selection and migration steps.
+
       .. hint::
 
          Docker Compose stack updates may require extra steps or introduce breaking changes. Always check the
