@@ -107,10 +107,11 @@ Web Push Notifications
 ----------------------
 
 Zammad can notify agents about their tickets on mobile devices. These
-notifications are delivered as web push messages of the device's browser and
-require the mobile view to be installed as an app. How to set them up on a
-device is described in the :user-docs:`mobile view documentation
-</extras/mobile-view.html>`.
+notifications are delivered as web push messages of the device's browser. On
+Android, a supported browser and the installed mobile view can both receive
+them. On iPhone and iPad, the mobile view has to be added to the home screen
+first. How to set them up on a device is described in the :user-docs:`mobile
+view documentation </extras/mobile-view.html>`.
 
 The messages are sent by the background worker of Zammad over HTTPS (port 443)
 to the push service of the browser vendor. A firewall that restricts outgoing
@@ -139,7 +140,7 @@ changed: all existing device subscriptions become invalid if it changes.
 
 The push service of the browser vendor delivers the messages, not Zammad.
 Depending on the device, delivery can take a while, for example when battery
-optimisation delays it on Android devices. A message that cannot be delivered
+optimization delays it on Android devices. A message that cannot be delivered
 right away is kept by the push service for up to one day. On iPhone and iPad,
 several messages about the same ticket stay as separate notifications, while
 other platforms replace the previous one.
