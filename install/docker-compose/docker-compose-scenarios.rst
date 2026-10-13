@@ -248,9 +248,7 @@ Add LibreTranslate
 ^^^^^^^^^^^^^^^^^^
 
 You can run an additional `LibreTranslate <https://libretranslate.com/>`_
-container to power Zammad's article translation on your own hardware. For
-details on the integration itself, see the :admin-docs:`translation services
-documentation </system/integrations/translation-services.html>`.
+container as a self-hosted translation service inside the Zammad stack.
 
 To deploy a LibreTranslate container inside the Zammad stack, use the scenario
 file ``scenarios/add-libretranslate.yml``. The service doesn't publish any
@@ -291,11 +289,6 @@ LT_REQUIRE_API_KEY_SECRET
 .. note:: LibreTranslate supports many more options. They are described in
    the `official documentation <https://docs.libretranslate.com/>`_, which
    also lists the environment variables the container accepts.
-
-Once the stack is up, configure the service under
-*System > Integrations > Translation services*: point the URL to
-``http://libretranslate:5000`` and provide an API key if your instance
-requires one.
 
 Limit Resources
 ^^^^^^^^^^^^^^^
