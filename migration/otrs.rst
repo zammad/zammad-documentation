@@ -98,6 +98,8 @@ Importing OTRS Data
 
             >> Setting.set('import_mode', true)
 
+         .. include:: /migration/includes/import-mode-maintenance.include.rst
+
       Start the migration
          Ensure to replace the values in ``{}`` brackets with your values.
 

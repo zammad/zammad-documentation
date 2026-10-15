@@ -112,6 +112,8 @@ consider using the console over the browser version.
 
             >> Setting.set('import_mode', true)
 
+         .. include:: /migration/includes/import-mode-maintenance.include.rst
+
       Dry run:
          If you want to know if your configuration works in a dry run,
          run the following command:
