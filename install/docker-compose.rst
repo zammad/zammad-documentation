@@ -133,6 +133,10 @@ instructions on loading scenario files. To change individual settings, use the
 :doc:`Docker-specific environment variables
 </appendix/environment-variables>`.
 
+To include addon packages in a custom image, follow
+:doc:`docker-compose/addon-packages`. This also explains how to keep addon code
+available when containers are replaced or Zammad is updated.
+
 If you deployed the stack with Docker Compose by cloning the repository, use
 its ``local/`` directory for files that belong only to your instance. See
 :ref:`customize the stack locally <customize-stack-locally>` for details.
@@ -142,6 +146,7 @@ its ``local/`` directory for files that belong only to your instance. See
    :maxdepth: 1
 
    /install/docker-compose/docker-compose-scenarios
+   /install/docker-compose/addon-packages
 
 
 .. _docker-run-commands:
