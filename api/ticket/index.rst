@@ -212,10 +212,11 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
    *E.g.:* ``"mentions": [1, 5, 7, 8],``
 
-   Mentioning other users requires at least ``read`` access to the group
-   of the ticket, ``full`` access also qualifies. With ``create`` access
-   alone the request fails with HTTP status 403 and the message "You have
-   insufficient permissions to mention other users."
+   Mentioning other users requires the ``ticket.agent`` permission and at
+   least ``read`` access to the group of the ticket, ``full`` access also
+   qualifies. With ``create`` access alone the request fails with HTTP
+   status 403 and the message "You have insufficient permissions to
+   mention other users."
 
 ``POST``-Request sent: ``/api/v1/tickets``
 
