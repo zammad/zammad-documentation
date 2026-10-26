@@ -3,14 +3,15 @@ Mentions
 
 .. warning::
 
-    Mentions depend on the group permissions of the ticket: the user needs
-    at least ``read`` access to its group, ``full`` access also qualifies.
-    Otherwise the request fails with HTTP status 403.
+    Mentioning other users requires the ``ticket.agent`` permission and at
+    least ``read`` access to the group of the ticket, ``full`` access also
+    qualifies. Otherwise the request fails with HTTP status 403.
 
 List
 ----
 
-Required permission: ``ticket.agent`` **or** ``ticket.customer``
+Required permission: ``ticket.agent`` and at least ``read`` access to the
+group of the ticket, ``full`` access also qualifies
 
 ``GET``-Request sent: ``/api/v1/mentions``
 
@@ -47,7 +48,8 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 Create
 ------
 
-Required permission: ``ticket.agent``
+Required permission: ``ticket.agent`` and at least ``read`` access to the
+group of the ticket, ``full`` access also qualifies
 
 ``POST``-Request sent: ``/api/v1/mentions``
 
