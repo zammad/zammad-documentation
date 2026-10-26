@@ -3,8 +3,9 @@ Mentions
 
 .. warning::
 
-    The mention endpoint depends on the group permissions and if the user you're
-    using is an **agent**. Because of this tickets may or may not be available.
+    Mentions depend on the group permissions of the ticket: the user needs
+    at least ``read`` access to its group, ``full`` access also qualifies.
+    Otherwise the request fails with HTTP status 403.
 
 List
 ----
