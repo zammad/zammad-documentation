@@ -215,20 +215,6 @@ Response:
             "updated_at": "2021-11-09T13:12:31.682Z"
          },
          {
-            "id": 19,
-            "name": "admin.channel_twitter",
-            "note": "Manage %s",
-            "preferences": {
-               "translations": [
-                  "Channel - Twitter"
-               ]
-            },
-            "active": true,
-            "allow_signup": false,
-            "created_at": "2021-11-09T13:12:31.671Z",
-            "updated_at": "2021-11-09T13:12:31.671Z"
-         },
-         {
             "id": 16,
             "name": "admin.channel_web",
             "note": "Manage %s",
@@ -482,7 +468,7 @@ Response:
          },
          {
             "id": 27,
-            "name": "admin.setting_system",
+            "name": "admin.system",
             "note": "Manage %s Settings",
             "preferences": {
                "translations": [
