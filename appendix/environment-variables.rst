@@ -121,6 +121,10 @@ RAILS_TRUSTED_PROXIES
    address instead of the actual proxy server IP address, if it is placed in
    another network.
 
+   The same list decides which address Zammad treats as the client's, and
+   single sign-on checks that address against the *Trusted SSO Proxy IPs*
+   setting, see :doc:`/appendix/single-sign-on`.
+
 ZAMMAD_MANAGE_SESSIONS_JOBS_WORKERS
    Default: ``0``
 
