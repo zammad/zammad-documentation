@@ -122,7 +122,7 @@ RAILS_TRUSTED_PROXIES
    another network.
 
    The same list decides which address Zammad treats as the client's, and
-   single sign-on checks that address against the *Trusted SSO Proxy IPs*
+   single sign-on checks that address against the **Trusted SSO Proxy IPs**
    setting, see :doc:`/appendix/single-sign-on`.
 
 ZAMMAD_MANAGE_SESSIONS_JOBS_WORKERS

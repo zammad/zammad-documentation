@@ -135,7 +135,7 @@ Admin privileges are not required; a normal user account will do.
    **Properties > Account > Account options**.
 
 Without this option, the keytab carries only RC4 keys, which current Kerberos
-libraries reject; the Docker SSO container is one of them.
+libraries reject. The Docker SSO container is one of them.
 
 1b. Reset Password
 ^^^^^^^^^^^^^^^^^^
@@ -534,7 +534,7 @@ you cannot swap it for Apache as in the package installation. Instead, a
 small additional container does the Kerberos part: the reverse proxy in
 front of the stack sends only ``/auth/sso`` through it, everything else goes
 straight to ``zammad-nginx`` as before. Zammad and the stack's compose files
-stay as they are; the SSO container is part of your infrastructure, like the
+stay as they are. The SSO container is part of your infrastructure, like the
 reverse proxy that terminates TLS.
 
 .. code-block:: text
@@ -560,7 +560,7 @@ in the login.
 You need:
 
 - the stack behind a reverse proxy that routes by path. This guide uses the
-  :ref:`Nginx Proxy Manager scenario <add-nginx-proxy-manager>`; any proxy
+  :ref:`Nginx Proxy Manager scenario <add-nginx-proxy-manager>`. Any proxy
   with path-based routing works the same way. If your proxy runs in a
   separate compose project, use the :ref:`external network scenario
   <add-external-network-to-nginx>` and add that network to the
@@ -573,7 +573,8 @@ You need:
 Files
 """""
 
-Create the following files next to the stack's ``docker-compose.yml``:
+The SSO container consists of the following files next to the stack's
+``docker-compose.yml``:
 
 .. code-block:: text
 
@@ -693,7 +694,9 @@ the stack:
      </Location>
    </VirtualHost>
 
-``docker-compose.override.yml`` adds the container:
+Add the ``zammad-sso`` service to your ``docker-compose.override.yml``. If
+the stack has no override file yet, create it from the shipped template, see
+:ref:`customize-stack-locally`:
 
 .. code-block:: yaml
 
@@ -754,12 +757,12 @@ Configure the Reverse Proxy
 In Nginx Proxy Manager:
 
 1. Create a proxy host for your Zammad FQDN with scheme ``http``, forward
-   host ``zammad-nginx`` and port ``8080``. Enable *Websockets Support* and
-   set up the certificate on the *SSL* tab.
-2. Add a *Custom Location* for ``/auth/sso`` with scheme ``http``, forward
+   host ``zammad-nginx`` and port ``8080``. Enable **Websockets Support** and
+   set up the certificate on the **SSL** tab.
+2. Add a **Custom Location** for ``/auth/sso`` with scheme ``http``, forward
    host ``zammad-sso`` and port ``8080``.
 
-Do not rely on the *Advanced* field to strip headers: ``proxy_set_header``
+Do not rely on the **Advanced** field to strip headers: ``proxy_set_header``
 lines entered there do not reach the generated locations and would only
 give a false sense of security. Client-sent headers are removed in the SSO
 container.
@@ -778,13 +781,13 @@ Trusted Proxies
 
 Zammad has to trust the reverse proxy, so that it takes the address of the
 user's browser as the client instead of a container address. That is what
-``RAILS_TRUSTED_PROXIES`` in ``.env`` does; with another proxy, name that one
+``RAILS_TRUSTED_PROXIES`` in ``.env`` does. With another proxy, name that one
 instead, see :doc:`/appendix/environment-variables`. The SSO container does
 not need to be listed: Zammad takes the address the reverse proxy forwarded
 and falls back to the sending container only when no untrusted forwarded
 address is left.
 
-The *Trusted SSO Proxy IPs* setting in :ref:`sso-enable` then holds the
+The **Trusted SSO Proxy IPs** setting in :ref:`sso-enable` then holds the
 address ranges from which users may sign in via SSO, typically your intranet.
 A changed value applies after at most 15 seconds. Without the reverse proxy
 in ``RAILS_TRUSTED_PROXIES``, Zammad takes a container's address as the
@@ -804,20 +807,21 @@ Portainer
 Without shell access to the Docker host, you can build and run the same
 container through the Portainer UI:
 
-1. *Images → Build a new image*: upload a tarball that contains the three
-   files of ``zammad-sso/`` at its top level (not the directory itself) and
-   tag the image, e.g. ``zammad-sso:local``. The image contains no keytab, so
-   it holds no secret.
-2. *Volumes → Add volume*: create ``zammad-sso-secrets``.
+1. Under **Images**, choose **Build a new image**, upload a tarball that
+   contains the three files of ``zammad-sso/`` at its top level (not the
+   directory itself) and tag the image, e.g. ``zammad-sso:local``. The image
+   contains no keytab, so it holds no secret.
+2. Under **Volumes**, choose **Add volume** and create ``zammad-sso-secrets``.
 3. Put ``zammad.keytab`` and ``krb5.conf`` into the volume. Portainer Business
    has a volume browser with upload. In the Community Edition, deploy a
    throwaway container (``alpine`` with the command ``sleep infinity``) that
    mounts the volume at ``/secrets``, paste the files through its console
    (for example via ``base64 -d``), set owner ``33`` and mode ``0400`` on the
    keytab, and remove the container again.
-4. *Stacks → Add stack* with the web editor: deploy the SSO container as a
-   stack of its own that joins the Zammad stack's network. Replace
-   ``<zammad-stack>`` with the name of your Zammad stack in Portainer.
+4. Under **Stacks**, choose **Add stack** and deploy the SSO container with
+   the web editor as a stack of its own that joins the Zammad stack's
+   network. Replace ``<zammad-stack>`` with the name of your Zammad stack in
+   Portainer.
 
    .. code-block:: yaml
 
@@ -989,9 +993,16 @@ Docker Stack
    Manager resolves the name only when it loads its configuration, so reload
    it: ``docker compose exec nginx-proxy-manager nginx -s reload``.
 
+"SSO request from untrusted IP address." after recreating the reverse proxy
+   Zammad resolves the names in ``RAILS_TRUSTED_PROXIES`` when it starts, see
+   :doc:`/appendix/environment-variables`, so it still trusts the proxy's old
+   address, sees the new one as the client and checks it against **Trusted SSO
+   Proxy IPs**. Restart the services that trust the proxy: ``docker compose
+   restart zammad-railsserver zammad-websocket``.
+
 Signing in via SSO fails although the ``zammad-sso`` container is healthy
    The health check verifies that the keytab is readable and that Apache
-   issues the Kerberos challenge; it cannot verify the key itself. Check
+   issues the Kerberos challenge. It cannot verify the key itself. Check
    ``docker compose logs zammad-sso``: a line ``GSS ERROR … cannot decrypt
    ticket`` means the keytab does not match the service account's current
    key, usually because it was exported before the last password reset.
