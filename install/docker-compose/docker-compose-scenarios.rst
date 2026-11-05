@@ -120,6 +120,8 @@ If you want to publish Zammad in a very convenient way, you can use a
 - Provide your Cloudflare tunnel token to the Zammad stack by using the
   environment variable ``CLOUDFLARE_TUNNEL_TOKEN``
 
+.. _add-nginx-proxy-manager:
+
 Add Nginx Proxy Manager
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -135,6 +137,11 @@ running reverse proxy, head over to the next section.
   the NPM host
 - Configure a new proxy host in your NPM and follow the steps to get an SSL
   certificate
+
+Kerberos single sign-on for the Docker stack builds on this scenario, see
+:doc:`/appendix/single-sign-on`.
+
+.. _add-external-network-to-nginx:
 
 Add External Docker Network to Nginx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
