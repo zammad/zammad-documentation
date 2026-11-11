@@ -95,6 +95,14 @@ Zammad System Documentation
 .. toctree::
    :maxdepth: 2
    :glob:
+   :caption: MCP Server
+
+   /api/mcp
+
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
    :caption: Appendix
 
 
