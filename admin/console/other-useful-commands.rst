@@ -37,8 +37,18 @@ This will also show errors that might appear within that process.
 Reprocess Failed Emails
 -----------------------
 
-When Zammad fetches a mail it cannot parse (e.g. due to a parser bug or a
-malformed message), it will store the mail in the database and warn in
+.. note::
+
+   Since Zammad 7.3, an email that cannot be processed becomes a ticket titled
+   ``Unprocessable email`` instead of a failed email record. The commands below
+   only handle records that were created before the update. Reprocessing such
+   a record creates a ticket from it, which can be an error ticket as well. See
+   the :admin-docs:`unprocessable emails
+   </channels/email/advanced/unprocessable-emails.html>` page for the current
+   handling.
+
+When Zammad fetched a mail it could not parse (e.g. due to a parser bug or a
+malformed message), it stored the mail in the database and warned in
 the monitoring section about it.
 
 In case of a malformed message (e.g. an invalid email address in one of the
