@@ -482,6 +482,9 @@ lines! Keep only the one you need.
             GssapiLocalName On
             require valid-user
 
+            # inbound client values never survive
+            RequestHeader unset Remote-User
+            RequestHeader unset X-Forwarded-User
             RewriteEngine On
             RewriteCond %{LA-U:REMOTE_USER} (.+)
             RewriteRule . - [E=RU:%1,NS]
@@ -511,6 +514,9 @@ lines! Keep only the one you need.
             Krb5KeyTab /etc/httpd/zammad.keytab
             require valid-user
 
+            # inbound client values never survive
+            RequestHeader unset Remote-User
+            RequestHeader unset X-Forwarded-User
             RewriteEngine On
             RewriteCond %{LA-U:REMOTE_USER} (.+)
             RewriteRule . - [E=RU:%1,NS]
