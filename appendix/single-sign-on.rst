@@ -19,9 +19,13 @@ authenticating them, and managing their sessions.
 
 If your IT department keeps its own user identity store (like Active Directory),
 Zammad's SSO support allows you to leverage that existing auth system
-so that anyone with an account on your local intranet will
-1) automatically have an account in Zammad and
-2) be able to log in with a single click.
+so that users with an account on your local intranet can log in to Zammad
+with a single click.
+
+SSO only signs in users who already exist in Zammad; it never creates
+accounts. Use the :admin-docs:`LDAP integration
+</system/integrations/ldap/index.html>` to create the Zammad accounts for your
+Active Directory users and keep them in sync.
 
 .. note:: If you *don't* have this IT infrastructure
    but still want one-click login,
@@ -86,11 +90,16 @@ You will need:
   - root access
   - a fully-qualified domain name (FQDN)
 
+- a Zammad account for every user who signs in via SSO, whose **login** is the
+  user's Active Directory user name without the realm (``sAMAccountName``).
+  The :admin-docs:`LDAP integration </system/integrations/ldap/index.html>`
+  creates these accounts and maps ``sAMAccountName`` to the login by default.
+
 - some familiarity with system administration (*e.g.,* Apache configuration)
 
-For best results, set up :admin-docs:`LDAP integration </system/integrations/ldap/index.html>`
-to make sure your Active Directory and Zammad user accounts
-are always in sync.
+.. note:: Zammad matches the user name against the login only, ignoring
+   case. An account whose email address matches but whose login differs is
+   not found.
 
 .. _sso-register-spn:
 
@@ -554,6 +563,21 @@ Troubleshooting
 - Are the system clocks of your Active Directory and Zammad servers synchronized
   within five minutes of each other?
   (Kerberos is a time-sensitive protocol.)
+
+Errors in Zammad
+^^^^^^^^^^^^^^^^
+
+"User '<name>' could not be found."
+   Kerberos authentication succeeded, but Zammad has no user whose login is
+   ``<name>``. SSO does not create accounts. Make sure the user exists in
+   Zammad and that their login matches their Active Directory user name,
+   *e.g.,* by running the :admin-docs:`LDAP integration
+   </system/integrations/ldap/index.html>` with ``sAMAccountName`` mapped to
+   the login.
+
+   The LDAP integration skips Active Directory users whose first name, last
+   name and email address are all empty, so these users never get an account
+   in Zammad. Fill in at least one of these attributes in Active Directory.
 
 Errors in Apache Logs
 ^^^^^^^^^^^^^^^^^^^^^
