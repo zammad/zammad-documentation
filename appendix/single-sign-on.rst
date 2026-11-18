@@ -598,24 +598,25 @@ Keep the keytab out of the build context: Docker reads every file in
 container's user may read makes the build fail. The container runs as
 ``www-data`` with user ID 33, so give the keytab to that user and make it
 readable for nobody else. Do this from a throwaway container, which works
-with a rootful as well as a rootless Docker daemon:
+with a rootful as well as a rootless Docker daemon. Run it from the stack's
+directory:
 
 .. code-block:: console
 
    $ docker run --rm -v "$PWD/local/zammad-sso:/k" alpine \
        sh -c 'chown 33 /k/zammad.keytab && chmod 0400 /k/zammad.keytab'
 
+Afterwards, your own user on the host can no longer read the keytab. To
+replace it, delete it, copy the new one in its place and run the command
+again.
+
 .. note:: With a rootless Docker daemon, user ID 33 inside a container is a
    different user ID on the host. ``chown 33`` on the host therefore fails or
    gives the keytab to the wrong user, and the container cannot read it.
 
-   Don't make the keytab readable for everyone (mode ``0644``) instead:
-   anyone who can read it can act as the Zammad service towards Active
-   Directory.
-
-   Afterwards, your own user on the host can no longer read the keytab. To
-   replace it, delete it, copy the new one in its place and run the command
-   again.
+.. warning:: Don't solve the permission problem by making the keytab readable
+   for everyone (mode ``0644``): anyone who can read it can act as the Zammad
+   service towards Active Directory.
 
 ``zammad-sso/Dockerfile`` builds Apache with ``mod_auth_gssapi`` from the
 Debian packages and runs it unprivileged:
@@ -1021,9 +1022,9 @@ Docker Stack
 The ``zammad-sso`` container stays unhealthy
    Check whether the container's user can read the keytab: ``docker compose
    exec zammad-sso klist -k /etc/apache2/zammad.keytab``. If it reports
-   "Permission denied while starting keytab scan", the keytab's owner or mode
-   was set on the host, which does not work with a rootless Docker daemon.
-   Set them from a container as described in :ref:`sso-docker`.
+   "Permission denied while starting keytab scan", the keytab's owner was set
+   on the host, which does not work with a rootless Docker daemon. Set it from
+   a container as described in :ref:`sso-docker`.
 
 Signing in via SSO fails although the ``zammad-sso`` container is healthy
    The health check verifies that the keytab is readable and that Apache
