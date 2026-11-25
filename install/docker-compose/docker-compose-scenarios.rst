@@ -120,6 +120,8 @@ If you want to publish Zammad in a very convenient way, you can use a
 - Provide your Cloudflare tunnel token to the Zammad stack by using the
   environment variable ``CLOUDFLARE_TUNNEL_TOKEN``
 
+.. _add-nginx-proxy-manager:
+
 Add Nginx Proxy Manager
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -135,6 +137,11 @@ running reverse proxy, head over to the next section.
   the NPM host
 - Configure a new proxy host in your NPM and follow the steps to get an SSL
   certificate
+
+Kerberos single sign-on for the Docker stack builds on this scenario, see
+:doc:`/appendix/single-sign-on`.
+
+.. _add-external-network-to-nginx:
 
 Add External Docker Network to Nginx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,9 +255,7 @@ Add LibreTranslate
 ^^^^^^^^^^^^^^^^^^
 
 You can run an additional `LibreTranslate <https://libretranslate.com/>`_
-container to power Zammad's article translation on your own hardware. For
-details on the integration itself, see the :admin-docs:`translation services
-documentation </system/integrations/translation-services.html>`.
+container as a self-hosted translation service inside the Zammad stack.
 
 To deploy a LibreTranslate container inside the Zammad stack, use the scenario
 file ``scenarios/add-libretranslate.yml``. The service doesn't publish any
@@ -291,11 +296,6 @@ LT_REQUIRE_API_KEY_SECRET
 .. note:: LibreTranslate supports many more options. They are described in
    the `official documentation <https://docs.libretranslate.com/>`_, which
    also lists the environment variables the container accepts.
-
-Once the stack is up, configure the service under
-*System > Integrations > Translation services*: point the URL to
-``http://libretranslate:5000`` and provide an API key if your instance
-requires one.
 
 Limit Resources
 ^^^^^^^^^^^^^^^

@@ -109,6 +109,14 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
 
 ``GET``-Request sent: ``/api/v1/ticket_articles/by_ticket/{ticket id}``
 
+.. note::
+
+   Article responses separate regular attachments from inline images.
+   ``attachments`` lists files that belong to the article, while
+   ``inline_attachments`` lists images embedded in the article body
+   (e.g. pasted screenshots). Inline images are never part of
+   ``attachments``.
+
 Response:
 
 .. code-block:: json
@@ -141,6 +149,7 @@ Response:
          "created_at": "2021-08-02T11:57:18.068Z",
          "updated_at": "2021-08-02T11:57:18.068Z",
          "attachments": [],
+         "inline_attachments": [],
          "type": "email",
          "sender": "Customer",
          "created_by": "david@example.com",
@@ -171,6 +180,7 @@ Response:
          "created_at": "2021-08-03T09:57:18.121Z",
          "updated_at": "2021-08-03T09:57:18.121Z",
          "attachments": [],
+         "inline_attachments": [],
          "type": "email",
          "sender": "Agent",
          "created_by": "emma@chrispresso.com",
@@ -216,6 +226,7 @@ Response:
       "created_at": "2021-08-02T11:57:18.068Z",
       "updated_at": "2021-08-02T11:57:18.068Z",
       "attachments": [],
+      "inline_attachments": [],
       "type": "email",
       "sender": "Customer",
       "created_by": "david@example.com",
@@ -286,6 +297,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
             "created_at": "2021-11-08T16:13:35.962Z",
             "updated_at": "2021-11-08T16:13:35.962Z",
             "attachments": [],
+            "inline_attachments": [],
             "type": "phone",
             "sender": "Agent",
             "created_by": "chris@chrispresso.com",
@@ -365,6 +377,7 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
                   }
                }
             ],
+            "inline_attachments": [],
             "type": "note",
             "sender": "Agent",
             "created_by": "chris@chrispresso.com",
@@ -419,7 +432,8 @@ Required permission: ``ticket.agent`` **or** ``ticket.customer``
             "origin_by_id": null,
             "created_at": "2021-11-09T12:10:49.375Z",
             "updated_at": "2021-11-09T12:10:49.375Z",
-            "attachments": [
+            "attachments": [],
+            "inline_attachments": [
                {
                   "id": 19,
                   "filename": "image1.png",

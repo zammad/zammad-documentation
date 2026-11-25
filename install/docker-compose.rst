@@ -118,6 +118,9 @@ protocol. To achieve that without modifying the Zammad stack, you can:
 Both scenarios are covered in the
 :doc:`Docker Compose scenarios section <docker-compose/docker-compose-scenarios>`.
 
+Single sign-on with Kerberos uses the same reverse proxy, see
+:doc:`/appendix/single-sign-on`.
+
 .. _customizing-stack:
 
 Customizing the Zammad Stack

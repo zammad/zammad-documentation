@@ -1,7 +1,8 @@
 Reporting Tools (Third party)
 =============================
 
-This guide will discuss how to set up third party reporting tools with Zammad.
+Zammad stores its data in Elasticsearch, which opens it up to a wide range
+of third party reporting and visualization tools.
 
 .. figure:: /images/appendix/reporting-tools/grafana-sample-dashboard-with-graphs.png
    :alt: Screenshot showing a Grafana dashboard fed from Zammad data.
@@ -10,38 +11,34 @@ This guide will discuss how to set up third party reporting tools with Zammad.
 
    Use third party reporting tools to boost your reporting capabilities.
 
-.. IGNORE THE NEXT BLOCK - This functionality is not yet available.
-   .. note:: **💰 Availability**
+Both self-hosted and Zammad SaaS (hosted) customers can connect reporting
+tools to their instance. The only requirement is access to your
+Elasticsearch index: self-hosted customers have it by default, while hosted
+customers can enable it via the
+:admin-docs:`Elasticsearch (SaaS) integration
+</system/integrations/elasticsearch.html>` (Plus or Ultimate plans).
 
-      The following information require either a self-hosted installation or
-      a hosted instance with **PLUS** package. If you're a Hosted user, please
-      also check :admin-docs:`the Elasticsearch integration </system/integrations/elasticsearch.html>`
-      page for information on how to hook your tool to the index.
-
-.. note:: **🚧 Limitations 🚧**
-
-   Please note that this guide expects all requirements to be up and running.
-   We will not cover core configurations of each tool. Please also note that
-   we can't support you with configuration of your specific third party tool.
-
-   **🤓 Specific use cases**
-
-   You may have specific use cases which we can't cover in this documentation.
-   The following sub pages and also our
-   :doc:`/install/elasticsearch/indexed-attributes` should provide enough
-   information to help you!
-
-Getting Started
+Getting started
 ---------------
 
-You will need:
+You need:
 
 - An instance of the reporting tool of your choice (hosted or self-hosted)
+- Read access to your Elasticsearch index
 
-.. include:: reporting-tools-thirdparty/include-requirements.rst
+.. warning::
 
-Third Party Reporting Tools Known to be Working
------------------------------------------------
+   Never expose Elasticsearch to the public if you're not sure how to do it.
+   Especially **never** without authentication! Zammad stores **very
+   sensitive** information within the Elasticsearch index.
+
+We will not cover core configurations of each tool and can't support you
+with the configuration of your specific third party tool. For a deeper
+insight, have a look at our
+:doc:`/install/elasticsearch/indexed-attributes`.
+
+Known to be working
+-------------------
 
 .. toctree::
    :maxdepth: 1
@@ -52,5 +49,6 @@ Third Party Reporting Tools Known to be Working
 
    **Want to use another tool?**
 
-   Don't worry, if it does support Elasticsearch Indexes, you may be good to go!
-   See :doc:`/install/elasticsearch/indexed-attributes` for available indexes.
+   Don't worry, if it does support Elasticsearch indexes, you may be good to
+   go! See :doc:`/install/elasticsearch/indexed-attributes` for available
+   indexes.

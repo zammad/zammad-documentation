@@ -207,12 +207,6 @@ Add Repository
             $ sudo curl -fsSL "https://go.packager.io/srv/deb/zammad/zammad/gpg-key.gpg" \
                 -o /usr/share/keyrings/zammad.gpg && sudo chmod 644 /usr/share/keyrings/zammad.gpg
 
-      Add repository (Debian 11)
-         .. code-block:: console
-
-            $ sudo curl -fsSL "https://go.packager.io/srv/zammad/zammad/stable/installer/debian/11.list" \
-                -o /etc/apt/sources.list.d/zammad.list
-
       Add repository (Debian 12)
          .. code-block:: console
 

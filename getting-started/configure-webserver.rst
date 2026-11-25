@@ -141,6 +141,11 @@ Adjust the Webserver Configuration
          port 443) and adjust ``example.com`` to the subdomain you
          have chosen for your Zammad instance.
 
+         Use the same domain as the fully qualified domain name in Zammad's
+         :admin-docs:`Base settings </settings/system/base.html>`. Zammad only
+         accepts live updates from that origin, so a differing server name
+         breaks the real-time channel.
+
          Now you'll need to adjust the path and file names for
          your SSL certificates you obtained on the prior steps.
          Adjust the following directives to match your setup:
@@ -226,6 +231,11 @@ Adjust the Webserver Configuration
          The first ``ServerName`` (in the HTTP VirtualHost) defaults to
          ``example.com`` and the second (in the HTTPS VirtualHost) to
          ``localhost``.
+
+         Use the same domain as the fully qualified domain name in Zammad's
+         :admin-docs:`Base settings </settings/system/base.html>`. Zammad only
+         accepts live updates from that origin, so a differing server name
+         breaks the real-time channel.
 
          Now you'll need to adjust the path and file names for
          your SSL certificates you obtained on the prior steps.
@@ -353,3 +363,13 @@ If you use the Docker Compose stack instead of your own webserver, the
 scenario files already set the ``NGINX_SERVER_SCHEME`` environment
 variable for you (see :doc:`the HTTPS scenarios
 </install/docker-compose/docker-compose-scenarios>`).
+
+Ticket Changes Not Saved or Missing Live Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If agents change ticket fields but the save button does nothing, or changes
+made by other users only appear after a manual reload, the webserver host
+name likely differs from the fully qualified domain name in Zammad's
+:admin-docs:`Base settings </settings/system/base.html>`. Zammad accepts
+live updates only from that origin. Adjust ``server_name`` (Nginx) or
+``ServerName`` (Apache 2) to match the setting.

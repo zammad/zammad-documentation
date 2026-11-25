@@ -102,3 +102,46 @@ Use local script
    .. code-block:: sh
 
       /opt/zammad/contrib/packager.io/test_download_dependencies_connection.sh
+
+Web Push Notifications
+----------------------
+
+Zammad can notify agents about their tickets on mobile devices. These
+notifications are delivered as web push messages of the device's browser. On
+Android, a supported browser and the installed mobile view can both receive
+them. On iPhone and iPad, the mobile view has to be added to the home screen
+first. How to set them up on a device is described in the :user-docs:`mobile
+view documentation </extras/mobile-view.html>`.
+
+The messages are sent by the background worker of Zammad over HTTPS (port 443)
+to the push service of the browser vendor. A firewall that restricts outgoing
+traffic has to allow the following addresses, including their subdomains:
+
+.. csv-table::
+   :header: "Address", "Comment"
+   :widths: 40, 70
+
+   "fcm.googleapis.com",        "Web push for Chrome and other Chromium-based browsers"
+   "jmt17.google.com",          "Alternative address of the Google push service"
+   "notify.windows.com",        "Web push for Microsoft Edge"
+   "push.services.mozilla.com", "Web push for Mozilla Firefox"
+   "web.push.apple.com",        "Web push for Safari on iPhone, iPad and Mac"
+
+The proxy configuration described above applies to these connections as well,
+including the no-proxy list of the GUI configuration and the ``NO_PROXY``
+environment variable.
+
+Zammad only accepts device subscriptions of the push services listed above. A
+browser that uses another push service cannot enable push notifications.
+
+There is nothing to configure in Zammad. The key pair used to sign the
+messages (VAPID) is generated once per installation and is not meant to be
+changed: all existing device subscriptions become invalid if it changes.
+
+The push service of the browser vendor delivers the messages, not Zammad.
+Depending on the device, delivery can take a while, for example when battery
+optimization delays it on Android devices. A message that cannot be delivered
+right away is kept by the push service for up to one day. On iPhone and iPad,
+several messages about the same ticket stay as separate notifications, while
+other platforms replace the previous one.
+
