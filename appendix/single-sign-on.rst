@@ -111,11 +111,6 @@ You will need:
   The :admin-docs:`LDAP integration </system/integrations/ldap/index.html>`
   creates these accounts and maps ``sAMAccountName`` to the login by default.
 
-- a Zammad account for every user who signs in via SSO, whose **login** is the
-  user's Active Directory user name without the realm (``sAMAccountName``).
-  The :admin-docs:`LDAP integration </system/integrations/ldap/index.html>`
-  creates these accounts and maps ``sAMAccountName`` to the login by default.
-
 - some familiarity with system administration (*e.g.,* Apache configuration)
 
 .. note:: Zammad matches the user name against the login only, ignoring
