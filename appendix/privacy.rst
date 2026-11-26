@@ -17,8 +17,8 @@ the point in time noted with each entry. The interval column says how
 often Zammad checks for entries to delete, so actual removal can lag
 the retention period by up to one interval.
 
-These cleanups are built-in. They don't appear under *Admin settings →
-Manage → Scheduler*, which only lists jobs you create yourself, and
+These cleanups are built-in. They don't appear under *Manage →
+Scheduler*, which only lists jobs you create yourself, and
 neither the periods nor the intervals can be changed through settings.
 Adjusting or deactivating a built-in task requires the Rails console.
 
@@ -55,7 +55,7 @@ Adjusting or deactivating a built-in task requires the Rails console.
      - daily
    - - Mobile taskbar entries
      - 1 day after the app was last in contact
-     - daily
+     - every 10 minutes
    - - Online notifications
      - 9 months after creation, or shortly after being seen
      - every 2 hours
@@ -79,7 +79,7 @@ HTTP logs
    Zammad records the HTTP calls it performs for integrations here.
    They appear as **Recent Logs** on the related admin pages, e.g. for
    webhooks, LDAP, SAML or WhatsApp. AI provider requests are logged
-   too and show up under *Admin settings → AI → Feedback & Logs*.
+   too and show up under *AI → Feedback & Logs*.
    HttpLog masks specific credential patterns in the stored request
    and response content: Bearer, Basic and DeepL-Auth-Key
    Authorization headers, ``*-token`` headers such as
@@ -111,7 +111,7 @@ Sessions
    Zammad keeps one session per logged-in client, holding the IP
    address, browser and location derived from the IP. A session is
    also deleted when the user logs out. Administrators can view and
-   delete sessions under *Admin settings → System → Sessions*, and
+   delete sessions under *System → Sessions*, and
    users can do so for their own devices in their profile settings.
 
 Data Without Automatic Deletion
@@ -124,7 +124,7 @@ Tickets and users
    By default, Zammad never deletes tickets or users.
 
    To delete them automatically, create a scheduler job under
-   *Admin settings → Manage → Scheduler*. Pick **Ticket** or **User**
+   *Manage → Scheduler*. Pick **Ticket** or **User**
    as the object, add conditions that select the records to remove
    (e.g. a state and an age) and choose an action:
    **Delete immediately** removes tickets without a trace, while
@@ -162,12 +162,12 @@ Devices
 Imports
    Imported tickets are regular tickets with no separate retention.
    The import job itself, including its error data, stays in the
-   system until removed under *Admin settings → System → Import*.
+   system until you delete it.
 
 AI feedback and analytics
    Ratings, free-text comments on AI results and the run data behind
    them are stored without an end date. They appear under
-   *Admin settings → AI → Feedback & Logs* and can be exported from
+   *AI → Feedback & Logs* and can be exported from
    there as a report. Ratings and comments are removed when their
    author is deleted, nothing else is.
 
