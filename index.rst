@@ -117,5 +117,6 @@ Zammad System Documentation
    /appendix/reporting-tools-thirdparty
    /appendix/redis
    /appendix/memory-allocator
+   /appendix/software-bill-of-materials
    /appendix/custom-kb-url
    /appendix/custom-kb-css

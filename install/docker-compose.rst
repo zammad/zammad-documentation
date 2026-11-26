@@ -210,3 +210,7 @@ Backup & Restore
 Because the backup and restore procedure is different than for the package
 installation, we created a dedicated
 :doc:`/appendix/backup-and-restore/docker-compose` page for that.
+
+The Zammad image from 7.4 on carries a
+:doc:`Software Bill of Materials </appendix/software-bill-of-materials>`,
+which you can read out of the image without running it.

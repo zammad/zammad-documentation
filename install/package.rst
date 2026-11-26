@@ -482,3 +482,7 @@ following pages.
    - :doc:`/appendix/environment-variables`
    - :doc:`/appendix/configure-database-server`
 
+Every Zammad package from 7.4 on contains a
+:doc:`Software Bill of Materials </appendix/software-bill-of-materials>` at
+``/opt/zammad/sbom.cdx.json``.
+
