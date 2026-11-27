@@ -48,19 +48,21 @@ Package installation
    ``/opt/zammad/sbom.cdx.json``.
 
 Docker image
-   Read the file out of an image without running it:
+   Create a container from the image without starting it, copy the file
+   out and remove the container again:
 
    .. code-block:: console
 
-      $ docker run --rm --entrypoint cat ghcr.io/zammad/zammad:<version> \
-        /opt/zammad/sbom.cdx.json > sbom.cdx.json
+      $ container=$(docker create ghcr.io/zammad/zammad:<version>)
+      $ docker cp "$container":/opt/zammad/sbom.cdx.json sbom.cdx.json
+      $ docker rm "$container"
 
 Kubernetes
    For a Helm release named ``zammad``:
 
    .. code-block:: console
 
-      $ kubectl exec deploy/zammad-railsserver -- \
+      $ kubectl exec deploy/zammad-railsserver -c zammad-railsserver -- \
         cat /opt/zammad/sbom.cdx.json > sbom.cdx.json
 
 Scanning the SBOM
@@ -82,4 +84,7 @@ Trust
 
 There is no separate signature or checksum for the SBOM. Its origin is
 covered by the delivery channel: DEB and RPM packages arrive from a signed
-package repository, and Docker images can be pinned by their digest.
+package repository, and Docker images can be pinned by their digest. The digest
+identifies the exact content of an image, but it does not verify who published
+it. Use a digest obtained from a trusted source, as pinning alone is not proof
+of origin.
